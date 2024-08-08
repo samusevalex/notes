@@ -1,0 +1,285 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1049{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}}
+{\colortbl ;\red0\green0\blue0;\red0\green0\blue255;}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\nowidctlpar\sl240\slmult1\cf1\kerning1\f0\fs22 MPLS.Configuration.on.Cisco.IOS.Software.Oct.2005.eBook-DDU.chm \'d7\'e0\'f1\'f2\'fc.11.2\par
+\par
+1. Basic MPLS Configuration\par
+Frame-Mode - \'f0\'e0\'f1\'ef\'f0\'ee\'f1\'f2\'f0\'e0\'ed\'e5\'ed\'e8\'e5 \'ec\'e5\'f2\'ee\'ea MPLS, \'e2 \'f7\'e0\'f1\'f2\'ed\'ee\'f1\'f2\'e8, \'ef\'ee Ethernet \'e8\'eb\'e8 ATM AAL5 \'e3\'e4\'e5 \'ef\'e0\'ea\'e5\'f2\'ed\'e0\'ff \'ef\'e5\'f0\'e5\'e4\'e0\'f7\'e0 \'e4\'e0\'ed\'ed\'fb\'f5\par
+Cell-Mode  - \'f0\'e0\'f1\'ef\'f0\'ee\'f1\'f2\'f0\'e0\'ed\'e5\'ed\'e8\'e5 \'ec\'e5\'f2\'ee\'ea MPLS, \'e2 \'f7\'e0\'f1\'f2\'ed\'ee\'f1\'f2\'e8, \'ef\'ee ATM, \'e3\'e4\'e5 \'e4\'e0\'ed\'ed\'fb\'e5 \'ef\'e5\'f0\'e5\'e4\'e0\'fe\'f2\'f1\'ff "\'ff\'f7\'e5\'e9\'ea\'e0\'ec\'e8"\par
+\par
+2. PE-CE Static \'e8 RIP\par
+\'cc\'e0\'f0\'f8\'f0\'f3\'f2\'fb Static \'e8 RIP \'ef\'f0\'ee\'f1\'f2\'ee redistribute-\'e8\'f2\'fc\'f1\'ff \'e2 MP-BGP \'e1\'e5\'e7\'ee \'e2\'f1\'ff\'ea\'e8\'f5 \'ec\'e5\'f2\'f0\'e8\'ea. \'cf\'f0\'ee\'f1\'f2\'ee \'ea\'e0\'ea \'ec\'e0\'f0\'f8\'f0\'f3\'f2.\par
+\par
+3. PE-CE OSPF\par
+\par
+\'ce\'e1\'fb\'f7\'ed\'ee \'f2\'e0\'ea: \ul Area 1\ulnone  OSPF \b CE\b0  <--LSA1/LSA2--> \b PE\b0  OSPF redistribute to \b MP-BGP \b0 to redistribute OSPF \b PE\b0  <--LSA5--> \b CE\b0  OSPF \ul Area 2\ulnone\par
+\par
+\'cd\'ee \'f5\'ee\'f2\'e5\'eb\'ee\'f1\'fc \'e1\'fb \'f2\'e0\'ea: \ul Area 0\ulnone  OSPF \b CE\b0  <-> \b PE\b0  MPLS \b PE\b0  <-> \b CE\b0  OSPF \ul Area 0\ulnone  \'ed\'e0\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff Superbackbone\par
+\'cc\'e5\'f2\'f0\'e8\'ea\'e0 OSPF \'ef\'e5\'f0\'e5\'ed\'ee\'f1\'e8\'f2\'f1\'ff \'ef\'ee MP-BGP \'f7\'e5\'f0\'e5\'e7 3-\'e8 BGP extended attributes:\par
+\par
+\ul OSPF Router Type\ulnone :\par
+|\tab 2 \'c1\'e0\'e9\'f2\'e0\tab |\tab 4 \'c1\'e0\'e9\'f2\'e0\tab |\tab 1 \'c1\'e0\'e9\'f2\tab |\tab 1 \'c1\'e0\'e9\'f2\tab |\par
+|-----------------------------------------------------------------------|\par
+|\tab Type\tab\tab |OSPF Area Number\tab |\tab LSA Type\tab |  OSPF Options\tab |\par
+\par
+Type = 0x0306 - \'f2\'e8\'ef SAFI. 0x8000 - \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e4\'eb\'ff \'ef\'ee\'e4\'f2\'e2\'e5\'f0\'e6\'e4\'e5\'ed\'e8\'ff backwards \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'ea\'e8.\par
+OSPF Area Number = \'e2\'f1\'b8 \'ef\'ee\'ed\'ff\'f2\'ed\'ee. \'c4\'eb\'ff External \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'ee\'e2 \'ef\'ee\'eb\'e5 = 0 (\'ef\'ee\'f7\'e5\'ec\'f3-\'f2\'ee!).\par
+LSA Type - \'e2\'f1\'b8 \'ef\'ee\'ed\'ff\'f2\'ed\'ee. \'c5\'f1\'f2\'fc \'ef\'f0\'e0\'e2\'e4\'e0 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 129 - For Sham Link Endpoint Addresses.\par
+OSPF Options - \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e4\'eb\'ff external \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'ee\'e2 (LSA5 \'e8 LSA7). \'c5\'f1\'eb\'e8 \'ef\'ee\'eb\'e5 =0, \'e7\'ed\'e0\'f7\'e8\'f2 metric type E1. \'c5\'f1\'eb\'e8 \'ef\'ee\'eb\'e5 =1, \'e7\'ed\'e0\'f7\'e8\'f2 E2.\par
+\par
+\ul OSPF Router ID\ulnone :\par
+|\tab 2 \'c1\'e0\'e9\'f2\'e0\tab |\tab\tab 4 \'c1\'e0\'e9\'f2\'e0\tab\tab\tab |\tab 2 \'c1\'e0\'e9\'f2\'e0\tab |\par
+|-----------------------------------------------------------------------|\par
+|\tab Type\tab\tab |\tab\tab Router ID\tab\tab\tab |\tab Unused\tab |\par
+\par
+Type = 0x0107. 0x8001 - \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e4\'eb\'ff \'ef\'ee\'e4\'f2\'e2\'e5\'f0\'e6\'e4\'e5\'ed\'e8\'ff backwards \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'ea\'e8.\par
+Router ID = OSPF Router ID.\par
+\par
+\ul OSPF Domain ID\ulnone :\par
+|\tab 2 \'c1\'e0\'e9\'f2\'e0\tab |\tab 2 \'c1\'e0\'e9\'f2\'e0\tab |\tab\tab 4 \'c1\'e0\'e9\'f2\tab\tab\tab |\par
+|-----------------------------------------------------------------------|\par
+|\tab Type\tab\tab | OSPF Domain ID\tab |\tab\tab Unused\tab\tab\tab |\par
+\par
+Type = 0x8000 \'e8\'eb\'e8 0x0105 \'e8\'eb\'e8 0x0205 \'e8\'eb\'e8 0x8005\par
+OSPF Domain ID = OSPF Process ID - Router(config)#\b router ospf\b0  \ul 12\ulnone  \'e8\'eb\'e8 Router(config-router OSPF)#\b domain-id\b0  \i ip-address\ul\i0\par
+\par
+\ulnone\'c1\'fb\'e2\'e0\'fe\'f2 \'e7\'e0\'ec\'ee\'f0\'ee\'f7\'ea\'e8 \'f1 \'ee\'e1\'f0\'e0\'e7\'ee\'e2\'e0\'ed\'e8\'e5\'ec loop-\'ee\'e2. \'c5\'f1\'eb\'e8 \'ee\'e4\'e8\'ed site \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e5\'ed 2-\'ff \'eb\'e8\'ed\'ea\'e0\'ec\'e8 \'ea MPLS. \'d0\'e5\'f8\'e0\'e5\'f2\'f1\'ff OSPF Route Tag \'e8 VPN Route Tag.\par
+Router(config-router-af BGP)#\b redistribute ospf\b0  \i n\i0  \b match internal external 1 external 2\b0\par
+\par
+\'c5\'f9\'b8 \'e7\'e0\'ec\'ee\'f0\'ee\'f7\'ea\'e8 \'f1 OSPF Sham-Links\par
+Router(config-router OSPF)#\b area\b0  \i area-id\i0  \b sham-link\b0  \i src_addr dst_addr\i0  \b cost\b0  \i number\i0\par
+\par
+192.168.199.0/24 MED \ul 84\ulnone , RT:1:200\tab\tab 84 - OSPF cost!!!\par
+OSPF Domain ID:0x0005:0x000000CA0200\par
+OSPF RT:0.0.0.0:5:0\par
+OSPF Router ID:192.168.202.1:512\par
+\par
+Router#\b show ip bgp vpnv4 all 192.168.199.0\b0\par
+BGP routing table entry for 1:200:192.168.199.0/24, version 146\par
+Paths: (1 available, best #1, table Cust_B)\par
+  Advertised to update-groups:\par
+     1\par
+  Local\par
+    192.168.2.2 from 0.0.0.0 (10.10.10.102)\par
+      Origin incomplete, metric \ul 84\ulnone , localpref 100, weight 32768, valid, sourced, best\tab - 84 OSPF cost\par
+      Extended Community: RT:1:200 OSPF DOMAIN ID:\ul 0x0005:0x000000CA0200\ulnone\tab\tab\tab\tab - Process ID\par
+        OSPF RT:\ul 0.0.0.0:5:1\ulnone  OSPF ROUTER ID:192.168.202.1:512,\tab\tab\tab\tab\tab - 0.0.0.0 \'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2 Area 0, 5 - LSA5, 0 - No options.\par
+      mpls labels in/out 27/nolabel\par
+\par
+4. PE-CE EIGRP\par
+\'c5\'f1\'f2\'fc \'ef\'ee\'e4\'ee\'e1\'ed\'fb\'e9 \'ec\'e5\'f5\'e0\'ed\'e8\'e7\'ec. \'c2 MP-BGP \'e5\'f1\'f2\'fc extended attributes \'e4\'eb\'ff \'ef\'f0\'ee\'e1\'f0\'ee\'f1\'e0 EIGRP \'ec\'e5\'f2\'f0\'e8\'ea \'f7\'e5\'f0\'e5\'e7 MPLS.\par
+\par
+5. PE-CE BGP\par
+\'c5\'f1\'eb\'e8 \'e5\'f1\'f2\'fc \'f1\'f5\'e5\'ec\'e0: AS1 <-> MPLS AS 3 <-> AS 5 - \'f2\'f3\'f2 \'ed\'e8\'ea\'e0\'ea\'e8\'f5 \'ef\'f0\'ee\'e1\'eb\'e5\'ec. \'ce\'e1\'fb\'f7\'ed\'fb\'e5 \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e8:\par
+\par
+AS1.\par
+router bgp 1\par
+ neighbor 10.0.12.2 remote-as 3\par
+ network 1.0.0.0 mask 255.255.255.255\par
+\par
+AS2.\par
+router bgp 3\par
+ neighbor 4.0.0.0 remote-as 3\par
+ neighbor 4.0.0.0 update-source Loopback 0\par
+ !\par
+ address-family vpnv4\par
+  neighbor 4.0.0.0 activate\par
+  neighbor 4.0.0.0 send-community extended\par
+ !\par
+ address-family ipv4 vrf 1\par
+  neighbor 10.0.12.1 remote-as 1\par
+  neighbor 10.0.12.1 activate\par
+\par
+\'cd\'e0 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'e8\'e7\'e0\'f2\'ee\'f0\'e5 AS5 \'e1\'f3\'e4\'e5\'f2 route \'ed\'e0 1.0.0.0/32 as-path 3 1\par
+\par
+\'c5\'f1\'eb\'e8 \'e6\'e5 \'ec\'fb \'e4\'e5\'eb\'e0\'e5\'ec \'f1\'f5\'e5\'ec\'f3 AS5 <-> MPLS AS3 <-> AS5, \'f2\'ee \'f2\'f3\'f2 \'ed\'e0\'e4\'ee \'e1\'f3\'e4\'e5\'f2 \'e4\'ee\'e1\'e0\'e2\'e8\'f2\'fc\par
+\b neighbor 10.0.12.1 as-override\b0\par
+\'e1\'e5\'e7 \'fd\'f2\'ee\'e9 \'ea\'ee\'ec\'e0\'ed\'e4\'fb \'ed\'e0 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'e8\'e7\'e0\'f2\'ee\'f0 AS\ul 5\ulnone  \'ef\'f0\'e8\'e4\'b8\'f2 route 1.0.0.0/32 as-path 3 \ul 5\ulnone  \'e8 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'e8\'e7\'e0\'f2\'ee\'f0 \'e5\'e3\'ee \'e4\'f0\'ee\'ef\'ed\'e5\'f2, \'f2\'e0\'ea \'ea\'e0\'ea \'e2 as-path \'f3\'e2\'e8\'e4\'e8\'f2 \'f1\'e2\'ee\'fe AS\par
+\'f1 \'fd\'f2\'ee\'e9 \'ea\'ee\'ec\'e0\'ed\'e4\'ee\'e9 \'ec\'e0\'f0\'f8\'f0\'f3\'f2 \'e8\'e7 MPLS AS3 \'e1\'f3\'e4\'e5\'f2 \'e2\'fb\'f5\'ee\'e4\'e8\'f2\'fc \'f1 as-path 3 3, \'f2.\'e5. \'ef\'f0\'ee\'e8\'e7\'ee\'e9\'e4\'b8\'f2 override 5 -> 3.\par
+\par
+6. \'c7\'e0\'e3\'ee\'ed \'ef\'f0\'ee Route Reflectors\par
+\'d0\'e0\'f1\'f1\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff \'ef\'f0\'ee \'f2\'ee, \'f7\'f2\'ee \'ec\'ee\'e6\'ed\'ee \'e4\'e5\'eb\'e0\'f2\'fc \'ee\'f2\'e4\'e5\'eb\'fc\'ed\'ee RR \'e4\'eb\'ff vpnv4 \'e8 \'ee\'f2\'e4\'e5\'eb\'fc\'ed\'ee \'e4\'eb\'ff ipv4\par
+\par
+neighbor 10.0.12.1 route-reflector-client\par
+\par
+\'c5\'f1\'f2\'fc \'f4\'e8\'f7\'e0:\par
+\b ip extcommunity-list standard \b0 ASD\par
+ permit rt 1:100\par
+!\par
+router bgp 1\par
+ address-family vpnv4\par
+ \b bgp rr-group\b0  ASD\par
+\'c8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'f2\'e0\'ea \'e6\'e5 \'ea\'e0\'ea \'e8 route-map \'f2\'ee\'eb\'fc\'ea\'ee \'e4\'eb\'ff RT.\par
+\par
+\'cf\'f0\'e8\'e2\'ee\'e4\'e8\'f2\'f1\'ff \'ef\'f0\'e8\'ec\'e5\'f0\'fb 2-\'f5 case-\'ee\'e2 \'f0\'e5\'e0\'eb\'e8\'e7\'e0\'f6\'e8\'e8 hub-and-spoke: \'ca\'ee\'e3\'e4\'e0 \'f3 \'e2\'f1\'e5\'f5 spokes \'ee\'e4\'e8\'ed\'e0\'ea\'ee\'e2\'e0\'ff AS \'e8 \'ea\'ee\'e3\'e4\'e0 \'f3 \'e2\'f1\'e5\'f5 spokes - \'f0\'e0\'e7\'ed\'e0\'ff. \'c2 \'e8\'f2\'ee\'e3\'e5 \'ed\'e0 PE, \'ea \'ea\'ee\'f2\'ee\'f0\'ee\'ec\'f3 \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e5\'ed "hub" \'e4\'ee\'eb\'e6\'ed\'ee \'e1\'fb\'f2\'fc 2-\'e0 vrf: \'ed\'e0 1-\'fb\'e9 \'f2\'f0\'e0\'f4\'e8\'ea \'ef\'f0\'e8\'f5\'ee\'e4\'ff\'f2 \'f1\'ee \'e2\'f1\'e5\'f5 spokes \'e8 \'f3\'f5\'ee\'e4\'e8\'f2 \'ed\'e0 hub-CE; \'e0 2-\'ee\'e9 \'ee\'f2\'e4\'e0\'b8\'f2 \'f2\'f0\'e0\'f4\'e8\'ea \'f1 hub-\'e0.\par
+\par
+\b neighbor\b0  \i ip-address\i0  \b allowas-in\b0  - \'ef\'ee\'e7\'e2\'ee\'eb\'ff\'e5\'f2 \'ef\'f0\'e8\'ed\'e8\'ec\'e0\'f2\'fc \'ee\'f2 \'f1\'ee\'f1\'e5\'e4\'e0 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'fb \'f1 as-path \'e2 \'ea\'ee\'f2\'ee\'f0\'fb\'f5 \'ef\'f0\'e8\'f1\'f3\'f2\'f1\'f2\'e2\'f3\'e5\'f2 \'f1\'e2\'ee\'ff \'e6\'e5 AS\par
+\par
+7. \'c5\'f1\'f2\'fc \'ea\'eb\'e8\'e5\'ed\'f2 A, Site 1 \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e5\'ed \'ea \'ef\'f0\'ee\'e2\'e0\'e9\'e4\'e5\'f0\'f3 SP1. Site 2 \'ea \'ef\'f0\'ee\'e2\'e0\'e9\'e4\'e5\'f0\'f3 SP2. \'cd\'e0\'e4\'ee \'ec\'e5\'e6\'e4\'f3 \'ef\'f0\'ee\'e2\'e0\'e9\'e4\'e5\'f0\'e0\'ec\'e8 \'f1\'e4\'e5\'eb\'e0\'f2\'fc \'eb\'e8\'ed\'ea.\par
+a) \'ed\'e0 ASBR-SP1 \'e8 ASBR-SP2 \'ef\'ee\'e4\'ed\'e8\'ec\'e0\'e5\'f2\'f1\'ff VRF A. \'cc\'e5\'e6\'e4\'f3 \'fd\'f2\'e8\'ec\'e8 VRF \'ef\'ee\'e4\'ed\'e8\'ec\'e0\'e5\'f2\'f1\'ff BGP \'f1\'e5\'f1\'f1\'e8\'ff. \'c8 \'e2 \'ee\'e1\'f9\'e5\'ec \'e2\'f1\'b8 \'ea\'e0\'ea-\'f2\'ee \'f2\'e0\'ec \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'e1\'e5\'e7\'ee \'e2\'f1\'ff\'ea\'e8\'f5 \'ec\'e5\'f2\'ee\'ea\par
+\'e1)\par
+\par
+Layer 3 VPN \endash  \'fd\'f2\'ee \'ef\'ee\'ed\'ff\'f2\'ed\'ee\par
+Layer 2 VPN \endash  \'f1\'ee\'f1\'f2\'ee\'e8\'f2 \'e8\'e7 2-\'f5 \'f7\'e0\'f1\'f2\'e5\'e9:\par
+   VPLS(Virtual Private LAN Service) \endash  \'fd\'f2\'ee \'ee\'e1\'fb\'f7\'ed\'fb\'e9 Ethernet \'e4\'ee\'ec\'e5\'ed \'f7\'e5\'f0\'e5\'e7 MPLS \'ff\'e4\'f0\'ee\par
+   VPWS(Virtual Private Wire Service) \endash  \'f1\'ee\'e7\'e4\'e0\'ed\'e8\'e5 pseudo-wire \b\'d02\'d0\b0  \'f2\'f3\'ed\'ed\'e5\'eb\'e5\'e9\par
+      L2TPv3 \endash  \'e4\'eb\'ff non-MPLS \'f1\'e5\'f2\'e5\'e9, \'f0\'e0\'e7\'eb\'e8\'f7\'ed\'fb\'e5 \'e2\'e8\'e4\'fb \'f2\'f3\'ed\'ed\'e5\'eb\'e5\'e9 \'f2\'e8\'ef\'e0 xconnect\par
+      AToM (Any Transport over MPLS) \endash  \'e4\'eb\'ff MPLS \'f1\'e5\'f2\'e5\'e9\par
+\par
+\par
+AToM \'e1\'fb\'e2\'e0\'e5\'f2: MPLS.Configuration.on.Cisco.IOS.Software.Oct.2005.eBook-DDU.chm \'d7\'e0\'f1\'f2\'fc.11.2\par
+- ATM AAL5 frames over MPLS\par
+- ATM Cell Relay over MPLS\par
+- PPP over MPLS\par
+- HDLC over MPLS\par
+- Frame Relay over MPLS\par
+- Ethernet over MPLS\par
+   Router-based port mode \endash  \'e4\'eb\'ff \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'e8\'e7\'e0\'f2\'ee\'f0\'ee\'e2\par
+   Router-based VLAN mode \endash  \'e4\'eb\'ff \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'e8\'e7\'e0\'f2\'ee\'f0\'ee\'e2\par
+   Switch-based port mode \endash  \'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5 \'e4\'eb\'ff Catalyst 6500\par
+   Switch-based VLAN mode \endash  \'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5 \'e4\'eb\'ff Catalyst 6500\par
+   Switch-based dot1q tunnel mode \endash  QinQ \'e2 Catalyst 6500\par
+\par
+\'cc\'ee\'e6\'ed\'ee \'f1 \'ee\'e4\'ed\'ee\'e9 \'f1\'f2\'ee\'f0\'ee\'ed\'fb \'ef\'f0\'e8\'ed\'ff\'f2\'fc Ethernet, \'e0 \'f1 \'e4\'f0\'f3\'e3\'ee\'e9 \'ee\'f2\'e4\'e0\'f2\'fc Frame Relay - \'fd\'f2\'ee \'ed\'e0\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff Any-to-Any Interworking\par
+- Frame Relay to AAL5\par
+- Frame Relay to PPP\par
+- Frame Relay to VLAN\par
+- AAL5 to VLAN\par
+\par
+AToM \'e2 \'ea\'e0\'f7\'e5\'f1\'f2\'e2\'e5 \'ea\'eb\'e8\'e5\'ed\'f2\'ee\'e2 \'ec\'ee\'e6\'e5\'f2 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc:\par
+1. Attachment circuit - \'f5\'e7\par
+2. Packet switched network - \'f5\'e7\par
+3. Emulated VC \endash  \'f1\'ed\'e0\'f7\'e0\'eb\'e0 \'e8\'e4\'b8\'f2 \'f2\'f0\'e0\'ed\'f1\'ef\'ee\'f0\'f2\'ed\'e0\'ff \'ec\'e5\'f2\'ea\'e0. \'cf\'ee\'f2\'ee\'ec \'f1\'e5\'f0\'e2\'e8\'f1\'ed\'e0\'ff, \'ea\'ee\'f2\'ee\'f0\'e0\'ff \'ef\'ee\'ff\'e2\'e8\'eb\'e0\'f1\'fc \'ef\'ee\'f1\'eb\'e5 \'ee\'f2\'e4\'e5\'eb\'fc\'ed\'ee\'e3\'ee \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'eb\'e5\'ed\'e8\'ff LDP TCP \'f1\'e5\'f1\'f1\'e8\'e8 \'ec\'e5\'e6\'e4\'f3 \'e4\'e2\'f3\'ec\'ff PE. \'cf\'ee\'f2\'ee\'ec \'ed\'e5\'ea\'ee\'e5 \b\'d1ontrol Word \b0 (\'ea\'e0\'ea\'ee\'e5-\'f2\'ee \'e2\'e0\'e6\'ed\'ee\'e5 \'ef\'ee\'eb\'e5!!!), \'e7\'e0\'e4\'e0\'f7\'e0 \'ea\'ee\'f2\'ee\'f0\'ee\'e3\'ee \'e8\'e7\'e1\'e0\'e2\'eb\'e5\'ed\'e8\'e5 \'ee\'f2 \'ef\'e5\'f0\'e5\'f1\'ee\'f0\'f2\'e8\'f6\'fb + \'ef\'f0\'e8 \'e8\'ed\'ea\'e0\'ef\'f1\'f3\'eb\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'e8 \'f2\'e5\'f0\'ff\'e5\'f2\'f1\'ff \'ea\'e0\'ea\'e0\'ff-\'f2\'ee \'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'ff (\'e2 FR \'ea\'e0\'ea \'ef\'f0\'e8\'ec\'e5\'f0 \'fd\'f2\'ee FECN, BECN, DE \'e8 CRC), \'e2 \'ee\'e1\'f9\'e5\'ec \'fd\'f2\'ee \'ef\'ee\'eb\'e5 \'ea\'e0\'ea-\'f2\'ee \'e5\'e3\'ee \'ea\'ee\'ec\'ef\'e5\'ed\'f1\'e8\'f0\'f3\'e5\'f2.\par
+\'c5\'f1\'f2\'fc \'e5\'f9\'b8 \'ec\'e5\'f5\'e0\'ed\'e8\'e7\'ec VC Label Withdrawal \endash  \'fd\'f2\'ee \'ea\'ee\'e3\'e4\'e0 \'ef\'f0\'ee\'ef\'e0\'e4\'e0\'e5\'f2 \'eb\'e8\'ed\'ea \'ec\'e5\'e6\'e4\'f3 PE1 \'e8 CE1, \'f2\'ee PE1 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 P2 \'ed\'e5\'ea\'e8\'e9 LDP \'ef\'e0\'ea\'e5\'f2, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'ea\'eb\'e0\'e4\'b8\'f2 \'f2\'f3\'ed\'ed\'e5\'eb\'fc.\par
+\par
+\b #\b0  \b xconnect\b0  \i ip-address vc-id \b\i0 encapsulation mpls\b0  \emdash  \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1 \'e7\'e0\'e2\'e8\'f1\'e8\'f2 \'ee\'f2 \'f2\'ee\'e3\'ee \'f7\'f2\'ee \'e1\'f3\'e4\'e5\'ec \'ef\'f0\'ee\'e3\'ee\'ed\'ff\'f2\'fc \'ef\'ee MPLS\par
+\par
+\b #\b0  \b show mpls l2transport vc\b0\par
+\b # show mpls l2transport binding\b0\par
+\par
+Carrier Supporting Carriers = BGP Labeled Unicast\par
+\par
+\'c8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff 3-\'e8 \'f2\'e0\'e1\'eb\'e8\'f6\'fb:\par
+1. FIB (Forwarding Information Base) - \'e2 Cisco \'fd\'f2\'ee CEF\par
+2. RIB (Routing Information Base) - \'ee\'e1\'fb\'f7\'e0\'ff \'f2\'e0\'e1\'eb\'e8\'f6\'e0 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'e8\'e7\'e0\'f6\'e8\'e8\par
+2. LIB (MPLS Label Information Base) - \'f2\'e0\'e1\'eb\'e8\'f6\'e0 \'ec\'e5\'f2\'ee\'ea - \'e0\'ed\'e0\'eb\'ee\'e3 RIB, \'f2\'ee\'eb\'fc\'ea\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'fe\'f2\'f1\'ff \'ec\'e5\'f2\'ea\'e8\par
+\pard\nowidctlpar\li568\sl240\slmult1 Router#\b show mpls ip binding\b0\par
+  10.0.0.0/24\par
+        in label:     imp-null\par
+        out label:    imp-null  lsr: 10.0.0.2:0\par
+  10.0.1.0/24\par
+        in label:     16\par
+        out label:    imp-null  lsr: 10.0.0.2:0       inuse\par
+\pard\nowidctlpar\sl240\slmult1 3. LFIB (MPLS Label Forwarding Information Base) - \'e0\'ed\'e0\'eb\'ee\'e3 FIB\par
+\pard\nowidctlpar\li568\sl240\slmult1 Router#\b show mpls forwarding-table\b0\par
+Local  Outgoing    Prefix            Bytes tag  Outgoing   Next Hop\par
+tag    tag or VC   or Tunnel Id      switched   interface\par
+16     Pop tag     10.0.1.0/24       0          Fa0/0      10.0.0.2\par
+\pard\nowidctlpar\sl240\slmult1\par
+\'d2\'e5\'f0\'ec\'e8\'ed\'ee\'eb\'ee\'e3\'e8\'ff:\par
+MPLS Label Switch Router (\b LSR\b0 ) - \'f0\'ee\'f3\'f2\'e5\'f0\'fb \'e2\'ed\'f3\'f2\'f0\'e8 MPLS. \'d3\'e1\'e8\'f0\'e0\'fe, \'e2\'f1\'f2\'e0\'e2\'eb\'ff\'fe\'f2, \'e7\'e0\'ec\'e5\'ed\'ff\'fe\'f2 \'ec\'e5\'f2\'ea\'e8\par
+MPLS Label Switched Path (\b LSP\b0 ) - \'ec\'e0\'f0\'f8\'f0\'f3\'f2 \'ee\'f2 source \'ea destination\par
+\par
+--------------------------------------\par
+|\tab Label\tab\tab  | EXP |S|\tab TTL\tab  |\par
+--------------------------------------\par
+0\tab\tab\tab 19\tab 22 23\tab\tab 31\par
+\par
+Label - 20 \'e1\'e8\'f2 \'f1\'e0\'ec\'ee\'e9 \'ec\'e5\'f2\'ea\'e8\par
+EXP - \'ea\'e0\'ea \'ef\'f0\'e0\'e2\'e8\'eb\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e4\'eb\'ff QoS\par
+\pard\nowidctlpar\fi-284\li284\sl240\slmult1 S - Stack =1 \'e5\'f1\'eb\'e8 \'fd\'f2\'ee \'e2\'e5\'f0\'f5\'ed\'e8\'e9 \'e7\'e0\'e3\'ee\'eb\'ee\'e2\'ee\'ea MPLS, \'f2.\'e5. \'f2\'ee\'f2 \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'f1\'ed\'e8\'ec\'e0\'f2\'fc\'f1\'ff \'e1\'f3\'e4\'e5\'f2 \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e8\'ec. \'c5\'f1\'eb\'e8 \'f0\'ee\'f3\'f2\'e5\'f0 \'e2\'e8\'e4\'e8\'f2, \'f7\'f2\'ee flag S=0 - \'e7\'ed\'e0\'f7\'e8\'f2 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff Stack MPLS \'e7\'e0\'e3\'ee\'eb\'ee\'e2\'ea\'ee\'e2.\par
+TTL - Time-to-Live - \'ed\'e5 \'e7\'e0\'e1\'fb\'e2\'e0\'f2\'fc, \'f7\'f2\'ee \'f3 \'ea\'e0\'e6\'e4\'ee\'e9 \'f1\'eb\'e5\'e4\'f3\'fe\'f9\'e5\'e3\'ee \'e7\'e0\'e3\'ee\'eb\'ee\'e2\'ea\'e0 \'e2 \'f1\'f2\'e5\'ea\'e5 \'f1\'e2\'ee\'e9 TTL. \'ca\'ee\'e3\'e4\'e0 IP \'ef\'e0\'ea\'e5\'f2 \'ef\'f0\'e5\'ee\'e1\'f0\'e0\'e7\'f3\'e5\'f2\'f1\'ff \'e2 MPLS \'ef\'e0\'ea\'e5\'f2, TTL \'e8\'e7 IP \'ef\'e0\'ea\'e5\'f2\'e0 \'ea\'ee\'ef\'e8\'f0\'f3\'e5\'f2\'f1\'ff \'e2 MPLS \'e7\'e0\'e3\'ee\'eb\'ee\'e2\'ee\'ea. \'cd\'e0\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff IP to label TTL propagation. \'cc\'ee\'e6\'ed\'ee \'ee\'f2\'ea\'eb\'fe\'f7\'e8\'f2\'fc Router(config)#\b no mpls ip propagate-ttl\b0  \'d2\'ee\'e3\'e4\'e0 \'e2 \'f1\'ee\'e7\'e4\'e0\'ed\'ed\'ee\'ec MPLS \'e7\'e0\'e3\'ee\'eb\'ee\'e2\'ea\'e5 TTL \'e1\'f3\'e4\'e5\'f2 = 255. \'c5\'f1\'eb\'e8 Propagation \'e2\'ea\'eb\'fe\'f7\'b8\'ed, \'f2\'ee\'e3\'e4\'e0 \'ec\'ee\'e6\'ed\'ee \'e4\'e5\'eb\'e0\'f2\'fc traceroute.\par
+\pard\nowidctlpar\sl240\slmult1\par
+\'d0\'e0\'f1\'ef\'f0\'ee\'f1\'f2\'f0\'e0\'ed\'e5\'ed\'e8\'e5 \'ec\'e5\'f2\'ee\'ea \'e1\'fb\'e2\'e0\'e5\'f2:\par
+\pard\nowidctlpar\fi-284\li284\sl240\slmult1 1. \b Downstream on demand\b0  - \'ea\'ee\'e3\'e4\'e0 \'f0\'ee\'f3\'f2\'e5\'f0 \'ef\'ee \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'e8\'e7\'e0\'f6\'e8\'e8 \'f3\'e7\'ed\'e0\'eb \'ec\'e0\'f0\'f8\'f0\'f3\'f2 (Prefix) \'e8 \'f0\'ee\'f3\'f2\'e5\'f0\'f3 \'ef\'f0\'ee\'f2\'e8\'e2 \'e4\'e2\'e8\'e6\'e5\'ed\'e8\'ff \'f2\'f0\'e0\'f4\'e8\'ea\'e0, \'e3\'ee\'e2\'ee\'f0\'e8\'f2, \'f7\'f2\'ee \'e4\'eb\'ff \'f2\'e0\'ea\'ee\'e3\'ee prefix \'e1\'f3\'e4\'e5\'f2 \'f2\'e0\'ea\'e0\'ff \'ec\'e5\'f2\'ea\'e0. \'c4\'eb\'ff \'fd\'f2\'ee\'e3\'ee \'ec\'e5\'f2\'ee\'e4\'e0 \'ed\'e8\'e6\'e5\'f1\'f2\'ee\'ff\'f9\'e8\'e9 \'f0\'ee\'f3\'f2\'e5\'f0 \'f3\'e6\'e5 \'e4\'ee\'eb\'e6\'e5\'ed \'e7\'ed\'e0\'f2\'fc \'ee \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'e5.\par
+2. \b Unsolicited downstream\b0  - \'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5, \'f2\'ee\'eb\'fc\'ea\'ee \'ff \'e3\'ee\'e2\'ee\'f0\'fe \'e2\'fb\'f8\'e5\'f1\'f2\'ee\'ff\'f9\'e5\'ec\'f3 \'f0\'ee\'f3\'f2\'e5\'f0\'f3 \'f2\'e8\'ef\'e0 \'e5\'f1\'f2\'fc \'f2\'e0\'ea\'ee\'e9 \'ec\'e0\'f0\'f8\'f0\'f3\'f2, \'e2\'ee\'f2 \'f2\'e5\'e1\'e5 \'ec\'e5\'f2\'ea\'e0, \'e0 \'e7\'ed\'e0\'e5\'f8\'fc \'f2\'fb \'e8\'eb\'e8 \'ed\'e5 \'e7\'ed\'e0\'e5\'f8\'fc \'f7\'f2\'ee \'fd\'f2\'ee \'e7\'e0 \'ec\'e0\'f0\'f8\'f0\'f3\'f2 \'ec\'e5\'ed\'ff \'f3\'e6\'e5 \'ed\'e5 \'e2\'ee\'eb\'ed\'f3\'e5\'f2.\par
+\par
+\'c5\'f9\'b8 \'ec\'e5\'f2\'ea\'e8 \'e1\'fb\'e2\'e0\'fe:\par
+1. \b Untagged \b0 - MPLS \'ef\'e0\'ea\'e5\'f2 \'ea\'ee\'ed\'e2\'e5\'f0\'f2\'e8\'f0\'f3\'e5\'f2\'f1\'ff \'e2 \'ee\'e1\'fb\'f7\'ed\'fb\'e9 IP \'ef\'e0\'ea\'e5\'f2. \'c8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e2 MPLS VPN.\par
+2. \b Implicit-null\b0  \'e8\'eb\'e8 POP - \'ea\'ee\'e3\'e4\'e0 \'f3\'e4\'e0\'eb\'ff\'e5\'f2\'f1\'ff \'ce\'c4\'cd\'c8\'cd \'e7\'e0\'e3\'ee\'eb\'ee\'e2\'ee\'ea. \'c1\'fb\'eb \'f1\'f2\'e5\'ea \'e8\'e7 3-\'f5 \'e7\'e0\'e3\'ee\'eb\'ee\'e2\'ea\'ee\'e2, \'f1\'f2\'e0\'eb \'e8\'e7 2-\'f5. \'c8\'eb\'e8 \'e1\'fb\'eb \'ee\'e4\'e8\'ed \'e7\'e0\'e3\'ee\'eb\'ee\'e2\'ee\'ea, \'f1\'f2\'e0\'eb \'ee\'e1\'fb\'f7\'ed\'fb\'e9 IP \'ef\'e0\'ea\'e5\'f2.\par
+3. \b Explicit-null\b0  - \'fd\'f2\'ee \'ea\'ee\'e3\'e4\'e0 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 \'f1\'e0\'ec\'ee\'e9 Label = 0. \'c8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e4\'eb\'ff QoS owith MPLS.\par
+4. \b Aggregate\b0  - \'f3\'e4\'e0\'eb\'ff\'fe\'f2\'f1\'ff \'e2\'f1\'e5 \'e7\'e0\'e3\'ee\'eb\'ee\'e2\'ea\'e8 \'e8 \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'f2\'f1\'ff \'ee\'e1\'fb\'f7\'ed\'fb\'e9 IP \'ef\'e0\'ea\'e5\'f2. \'c8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e2 MPLS VPN\par
+\par
+\b Penultimate Hop Popping\b0  (PHP) - \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e8\'e9 \'e7\'e0\'e3\'ee\'eb\'ee\'e2\'ee\'ea \'f1\'ed\'e8\'ec\'e0\'e5\'f2\'f1\'ff \'ed\'e5 \'ed\'e0 Edge, \'e0 \'ed\'e0 \'ef\'f0\'e5\'e4\'fb\'e4\'f3\'f9\'e5\'ec \'f0\'ee\'f3\'f2\'e5\'f0\'e5, \'e4\'eb\'ff \'f2\'ee\'e3\'ee \'f7\'f2\'ee\'e1\'fb \'f1\'ed\'ff\'f2\'fc \'ed\'e0\'e3\'f0\'f3\'e7\'ea\'f3 \'f1 Edge \'e8 \'e8\'e7\'e1\'e0\'e2\'e8\'f2\'f1\'ff \'ee\'f2 lookup \'ed\'e0 Edge (\'f3\'f1\'eb\'ee\'e2\'ed\'ee \'ed\'e0 Edge \'ef\'f0\'e8\'f5\'ee\'e4\'e8\'f2 \'ef\'f0\'ee\'f1\'f2\'ee\'e9 IP \'ef\'e0\'ea\'e5\'f2 \'e8 \'e4\'e0\'eb\'fc\'f8\'e5 \'f1\'ec\'ee\'f2\'f0\'e8\'f2\'f1\'ff \'e2 inet.0 \'f7\'f2\'ee \'f1 \'ed\'e8\'ec \'e4\'e5\'eb\'e0\'f2\'fc). \'c5\'f1\'eb\'e8 \'f2\'e0\'ea\'ee\'e5 \'ed\'e5 \'ed\'e0\'e4\'ee \'ec\'ee\'e6\'ed\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc Router(config)#\b mpls ldp explicit-null\b0  \'e4\'eb\'ff QoS\par
+\par
+Frame-Mode MPLS - \'ee\'e1\'fb\'f7\'ed\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff. \'c2\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2\'f1\'ff \'f1\'e2\'ee\'e9 \'e7\'e0\'e3\'ee\'eb\'ee\'e2\'ee\'ea \'f1 Label \'ec\'e5\'e6\'e4\'f3 L2 \'e8 L3.\par
+Cell-Mode MPLS - \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e2 ATM AAL5. \'d2\'e0\'ea \'ea\'e0\'ea \'e2 ATM \'ed\'e5\'eb\'fc\'e7\'ff \'e2\'f1\'f2\'e0\'e2\'e8\'f2\'fc \ul\'e2 \'ea\'e0\'e6\'e4\'fb\'e9\ulnone  \'ef\'e0\'ea\'e5\'f2 Label, \'f2\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2 ATM \'e7\'e0\'e3\'ee\'eb\'ee\'e2\'ee\'ea \'e2 \'ea\'e0\'f7\'e5\'f1\'f2\'e2\'e5 Label. \'d2\'ee\'eb\'fc\'ea\'ee \'e2 \'ef\'e5\'f0\'e2\'fb\'e9 \'ef\'e0\'ea\'e5\'f2 \'e2\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2\'f1\'ff Label.\par
+\par
+\b show mpls interfaces\b0\par
+\b show mpls ldp discovery\b0\par
+\b show mpls ldp neighbor detail\b0\par
+\b show mpls ldp parameters\b0\par
+\b show mpls ldp bindings\b0\par
+\b show mpls forwarding-table\b0\par
+\b show ip cef 192.168.20.0 detail\b0\par
+\par
+\b debug mpls ldp \'85\b0\par
+\b debug mpls lfib \'85\b0\par
+\b debug mpls packets \b0\i interface\i0\par
+\par
+\'c4\'eb\'ff \'f2\'ee\'e3\'ee \'f7\'f2\'ee\'e1\'fb \'ed\'e0 PE \'f0\'ee\'f3\'f2\'e5\'f0 \'ec\'ee\'e6\'ed\'ee \'e1\'fb\'eb\'ee \'ef\'f0\'e8\'e7\'e5\'ec\'eb\'e8\'f2\'fc \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee Customer-\'ee\'e2 \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee instance \'f2\'ee\'e3\'ee \'e6\'e5 RIP \'e8\'eb\'e8 BGP. \'cd\'ee \'f2\'e0\'ea\'ee\'e5 \'ed\'e5 \'e2\'ee\'e7\'ec\'ee\'e6\'ed\'ee, \'ef\'ee\'fd\'f2\'ee\'ec\'f3 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'fe\'f2 \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee "\'ea\'ee\'ed\'f2\'e5\'ea\'f1\'f2\'ee\'e2" \'e2 \'ee\'e4\'ed\'ee\'ec \'ef\'f0\'ee\'f2\'ee\'ea\'ee\'eb\'e5. \'ca\'ee\'ed\'f2\'e5\'ea\'f1\'f2\'fb \'f0\'e0\'e1\'ee\'f2\'e0\'fe\'f2 \'ea\'e0\'ea \'e2 BGPv4 \'e8 RIPv2, \'f2\'e0\'ea \'e8 \'e2 OSPFv2 \'e8 EIGRP, \'e3\'e4\'e5 \'ec\'ee\'e6\'ed\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'e8 \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee instance.\par
+\'c4\'eb\'ff \'f2\'ee\'e3\'ee, \'f7\'f2\'ee\'e1\'fb \'e2\'ed\'f3\'f2\'f0\'e8 \'ee\'e4\'ed\'ee\'e3\'ee \'ea\'ee\'ed\'f2\'e5\'ea\'f1\'f2\'e0 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'fb \'ee\'f2 \'f0\'e0\'e7\'ed\'fb\'f5 customer-\'ee\'e2 \'ed\'e5 \'ef\'e5\'f0\'e5\'ec\'e5\'f8\'e8\'e2\'e0\'eb\'e8\'f1\'fc, \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'ef\'ee\'ed\'ff\'f2\'e8\'e5 RD (Route Distinguisher), \'f2.\'e5. \'ea \'ea\'e0\'e6\'e4\'ee\'ec\'f3 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'f3 \'e5\'f9\'b8 \'ef\'f0\'e8\'ea\'f0\'e5\'ef\'eb\'ff\'e5\'f2\'f1\'ff \'fd\'f2\'ee\'f2 RD.\par
+RD = 64 \'e1\'e8\'f2\'e0, \'ef\'f0\'e8\'ea\'f0\'e5\'ef\'eb\'ff\'e5\'f2\'f1\'ff \'ea 32 \'e1\'e8\'f2\'ed\'ee\'ec\'f3 IP Prefix, \'f2.\'e5. \'e2 \'e8\'f2\'ee\'e3\'e5 = 96 \'e1\'e8\'f2\'ed\'fb\'e9 \'e0\'e4\'f0\'e5\'f1, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'ed\'e0\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff \b VPNv4 \'e0\'e4\'f0\'e5\'f1\b0  \'ec\'ee\'e6\'e5\'f2 \'f1\'e2\'ee\'e1\'ee\'e4\'ed\'ee \'f0\'e0\'f1\'ef\'f0\'ee\'f1\'f2\'f0\'e0\'ed\'ff\'f2\'fc\'f1\'ff \'e2 MPLS \'e4\'ee\'ec\'e5\'ed\'e5. \b RD - \'f3\'ed\'e8\'ea\'e0\'eb\'fc\'ed\'ee \'e4\'eb\'ff \'ea\'e0\'e6\'e4\'ee\'e3\'ee VRF \'e6\'e5\'eb\'e0\'f2\'e5\'eb\'fc\'ed\'ee \'ee\'f2\'e4\'e5\'eb\'fc\'ed\'ee\'e3\'ee \'f0\'ee\'f3\'f2\'e5\'f0\'e0 !\b0\par
+\'c4\'eb\'ff \'f2\'ee\'e3\'ee \'f7\'f2\'ee\'e1\'fb \'ef\'e5\'f0\'e5\'e4\'e0\'e2\'e0\'f2\'fc 96 \'e1\'e8\'f2\'ed\'fb\'e5 Prefix \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff MP-BGP. MP-BGP \'f2\'e0\'ea\'e6\'e5 \'ed\'e0\'e7\'ed\'e0\'f7\'e0\'e5\'f2 MPLS \'ec\'e5\'f2\'ea\'e8 \'e2\'ee \'e2\'f2\'ee\'f0\'ee\'ec \'e7\'e0\'e3\'ee\'eb\'ee\'e2\'ea\'e5.\par
+Route-targets export\\import - \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'e5\'f2:\cf0 http://habrahabr.ru/post/273679/\cf1\par
+\par
+BGP Update:\par
+- MPLS \'e7\'e0\'e3\'ee\'eb\'ee\'e2\'ee\'ea\par
+       MPLS Label: 17\par
+       MPLS Exp: 6\par
+       MPLS Bottom of Label Stack: 1\par
+       MPLS TTL: 255\par
+- IP \'e7\'e0\'e3\'ee\'eb\'ee\'e2\'ee\'ea\par
+- TCP \'e7\'e0\'e3\'ee\'eb\'ee\'e2\'ee\'ea\par
+- BGP \'e7\'e0\'e3\'ee\'eb\'ee\'e2\'ee\'ea\par
+       Update Message\par
+          MP_REACH_NLRI\par
+             Address family: IPv4\par
+             Subsequent address family identifier: Labeled VPN Unicast\par
+             Next hop network address\par
+             Next hop: Empty Label Stack RD=0:0 IPv4=5.5.5.5\par
+             Network layer reachability information:\par
+                MP Reach NLRI Prefix length: /32\par
+                MP Reach NLRI Label Stack: 22 (bottom)\par
+                MP Reach NLRI Route Distinguisher: 1:1\par
+                MP Reach NLRI IPv4 prefix: 56.56.56.56\par
+          MP_UNREACH_NLRI\par
+             Address family: IPv4\par
+             Subsequent address family identifier: Labeled VPN Unicast\par
+             Withdrawn routes:\par
+                MP Unreach NLRI Prefix length: /24\par
+                MP Unreach NLRI Label Stack: 3 (bottom)\par
+                MP Unreach NLRI Route Distinguisher: 1:1\par
+                MP Unreach NLRI IPv4 prefix: 10.0.56.0\par
+\pard\nowidctlpar\sl240\slmult1\par
+BGP Labeled unicast \emdash  \'ec\'e5\'f2\'ea\'e8 \'e8\'e4\'f3\'f2 \'e2 \'f2\'e0\'ea\'ee\'ec \'ef\'ee\'f0\'ff\'e4\'ea\'e5: LDP Transport, LDP BGP, LDP \'e4\'eb\'ff VPN. LDP BGP \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec \'e4\'eb\'ff \'ef\'f0\'ee\'e1\'f0\'ee\'f1\'e0 BGP \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'ee\'e2 \'f7\'e5\'f0\'e5\'e7 \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee IGP \'e4\'ee\'ec\'e5\'ed\'ee\'e2.\par
+\cf0{\field{\*\fldinst{HYPERLINK "http://www.cisco.com/c/en/us/support/docs/multiprotocol-label-switching-mpls/mpls/116127-configure-technology-00.html"}}{\fldrslt{\ul\cf2 http://www.cisco.com/c/en/us/support/docs/multiprotocol-label-switching-mpls/mpls/116127-configure-technology-00.html}}}\cf1\f0\fs22\par
+\par
+LDP \'ec\'ee\'e6\'e5\'f2 \'f1\'e8\'ed\'f5\'f0\'ee\'ed\'e8\'e7\'e8\'f0\'ee\'e2\'e0\'f2\'fc\'f1\'ff \'f1 IGP.\par
+\b\par
+mpls ldp neighbor targeted\b0  \emdash  \'fd\'f2\'ee \'ea\'ee\'e3\'e4\'e0 LDP \'f1\'ee\'e5\'e4\'e8\'ed\'e5\'ed\'e8\'e5 \'f3\'f1\'f2\'e0\'ed\'e0\'e2\'eb\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'ed\'e5 \'f1 \'f1\'ee\'f1\'e5\'e4\'ed\'e8\'ec \'f0\'ee\'f3\'f2\'e5\'f0\'ee\'ec, \'e0 \'f7\'e5\'f0\'e5\'e7 \'ee\'e4\'e8\'ed \'e8\'eb\'e8 \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee (TCP \'f1\'e5\'f1\'f1\'e8\'ff), \'e2\'e8\'e4\'e0\'f2\'fc \'e2 Hello \'ef\'e0\'ea\'e5\'f2\'e5 \'ea\'e0\'ea-\'f2\'ee \'ee\'e1\'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2\'f1\'ff, \'f7\'f2\'ee \'fd\'f2\'ee targeted. \'cf\'e8\'f8\'f3\'f2, \'f7\'f2\'ee \'ef\'f0\'e8\'ec\'e5\'ed\'ff\'e5\'f2\'f1\'ff \'e2 TE \'e8 AToM.\par
+\b\par
+mpls ldp discovery targeted-hello accept\b0  \emdash  \'ef\'ee default-\'f3 \'f0\'ee\'f3\'f2\'e5\'f0 \'ed\'e5 \'ef\'f0\'e8\'ed\'e8\'ec\'e0\'e5\'f2 targeted hello, \'e0 \'f2\'e5\'ef\'e5\'f0\'fc \'e1\'f3\'e4\'e5\'f2\par
+\b\par
+\b0\'d0\'e0\'f1\'f1\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff \'ef\'f0\'ee 2-\'e0 \'f2\'e8\'ef\'e0 LDP label spaces: \'ee\'e1\'fb\'f7\'ed\'fb\'e9 (platform-wide) \'e8 (interface-specific) \'f2\'ee\'f2, \'f3 \'ea\'ee\'f2\'ee\'f0\'ee\'e3\'ee \'ed\'ee\'ec\'e5\'f0 \'ec\'e5\'f2\'ea\'e8  \'ef\'f0\'e8\'e2\'ff\'e7\'e0\'ed \'ea VPI/VCI.\par
+LDP ID \emdash  \'fd\'f2\'ee 6 \'e1\'e0\'e9\'f2 = <router ID> + <local space ID>. \'c2 Platform-wide <local space ID> = 0\par
+\'c4\'e0\'eb\'e5\'e5 \'ef\'e8\'f8\'f3\'f2 \'ef\'f0\'ee \'ee\'e1\'ff\'e7\'e0\'f2\'e5\'eb\'fc\'ed\'ee\'e5 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'ed\'e8\'e5 \'ea\'ee\'ec\'e0\'ed\'e4\'fb: \b mpls ldp router-id\b0  \i interface\i0  \b force\b0  \emdash  force \'ef\'f0\'e8\'ed\'f3\'e4\'e8\'f2\'e5\'eb\'fc\'ed\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'fd\'f2\'ee\'f2 interface.\par
+\'d1\'ee\'f1\'e5\'e4\'e5\'e9 \'ec\'ee\'e6\'ed\'ee \'ea\'eb\'fe\'f7\'e5\'e2\'e0\'f2\'fc: \b mpls ldp neighbor \b0 1.1.1.1\b  password\b0  string\par
+\par
+Router(config)#\b ip cef\b0  \emdash  \'e2\'ea\'eb\'fe\'f7\'e8\'f2\'fc CEF \'ed\'e0 \'e2\'f1\'e5\'f5 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0\'f5\par
+Router(config-if)#\b no ip route-cache cef \emdash\b0  \'e2\'fb\'ea\'eb\'fe\'f7\'e8\'f2\'fc CEF \'ed\'e0 \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'ee\'ec \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e5\par
+\par
+Router(config)#\b mpls ip\b0\par
+Router(config)#\b mpls label protocol ldp\b0  \emdash  \'e2\'ea\'eb\'fe\'f7\'e8\'f2\'fc LDP \'ef\'ee default-\'f3\par
+Router(config-if)#\b mpls label protocol tdp\b0  \emdash  \'e2\'ea\'eb\'fe\'f7\'e8\'f2\'fc TDP \'ed\'e0 \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'ee\'ec \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e5\par
+\par
+Router(config-if)#\b mpls mtu\b0  1600 \emdash  \'f3\'e2\'e5\'eb\'e8\'f7\'e8\'f2\'fc MTU \'ed\'e0 \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'ee\'ec \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e5, \'f2\'e0\'ea \'ea\'e0\'ea mpls \'e7\'e0\'e3\'ee\'eb\'ee\'e2\'ee\'ea \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'f2 \'f1\'e2\'ee\'e8 4 \'e1\'e0\'e9\'f2\'e0 \'e2 \'ef\'e0\'ea\'e5\'f2\par
+Router(config)#\b mplp ldp advertise-labels for\b0  \i ACL\i0  \emdash  \'ec\'ee\'e6\'ed\'ee \'ea\'ee\'ed\'f2\'f0\'ee\'eb\'e8\'f0\'ee\'e2\'e0\'f2\'fc \'ea\'ee\'ec\'f3 \'ee\'f2\'e4\'e0\'e2\'e0\'f2\'fc \'e8\'eb\'e8 \'ef\'f0\'e8\'ed\'e8\'ec\'e0\'f2\'fc \'ec\'e5\'f2\'ea\'e8\par
+\par
+\'d1\'ee\'f1\'e5\'e4\'e5\'e9 \'ec\'ee\'e6\'ed\'ee \'ea\'eb\'fe\'f7\'e5\'e2\'e0\'f2\'fc: \b mpls ldp neighbor \b0 1.1.1.1\b  password\b0  string\par
+\par
+\'ca\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'e5 LC-ATM (Label-controlled ATM) \'f1\'ec. Implementing Cisco MPLS \'f1\'f2\'f0.290\par
+\par
+\b\par
+\par
+}
+ 

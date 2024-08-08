@@ -1,0 +1,702 @@
+{\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}}
+{\colortbl ;\red0\green0\blue255;\red0\green0\blue0;}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\nowidctlpar\hyphpar0\sl240\slmult1\lang1049\kerning1\f0\fs22\'c2 Google: z80 instruction set\par
+\par
+{\field{\*\fldinst{HYPERLINK "https://www.opennet.ru/docs/262.shtml"}}{\fldrslt{\ul\cf1 https://www.opennet.ru/docs/262.shtml}}}\cf2\f0\fs22  \'e0\'f1\'f1\'e5\'ec\'e1\'eb\'e5\'f0 \'ed\'e0 \'f0\'f3\'f1\'f1\'ea\'ee\'ec.\cf0\par
+\'cf\'f0\'ee .cfi_startproc {\field{\*\fldinst{HYPERLINK "http://www.logix.cz/michal/devel/gas-cfi/"}}{\fldrslt{\ul\cf1 http://www.logix.cz/michal/devel/gas-cfi/}}}\f0\fs22\par
+{\field{\*\fldinst{HYPERLINK "https://www.codeproject.com/Articles/45788/The-Real-Protected-Long-mode-assembly-tutorial-for"}}{\fldrslt{\ul\cf1 https://www.codeproject.com/Articles/45788/The-Real-Protected-Long-mode-assembly-tutorial-for}}}\f0\fs22  \'e2 \'f6\'e5\'eb\'ee\'ec \'ef\'f0\'ee \'e0\'f1\'f1\'e5\'ec\'e1\'eb\'e5\'f0, protected mode, A20 line\par
+\par
+{\field{\*\fldinst{HYPERLINK "https://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-vol-2b-manual.pdf"}}{\fldrslt{\ul\cf1 https://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-vol-2b-manual.pdf}}}\f0\fs22\tab\'e8\'ed\'f1\'f2\'f0\'f3\'f6\'e8\'e8 Intel 64\par
+\par
+\'c5\'f1\'f2\'fc \'ec\'e5\'e6-CPU-\'ef\'f0\'e5\'f0\'fb\'e2\'e0\'ed\'e8\'ff: \'ef\'e5\'f0\'e2\'fb\'e9 CPU \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2 \'f1\'e2\'ee\'fe \'f0\'e0\'e1\'ee\'f2\'f3 \'f1 \'e0\'e4\'f0\'e5\'f1\'e0 0xFFFF:0xFFF0, \'e0 \'e2\'f1\'e5 \'ee\'f1\'f2\'e0\'eb\'fc\'ed\'fb\'e5 CPU \'ed\'e0\'f5\'ee\'e4\'ff\'f2\'f1\'ff \'e2 state = Wait-for-SIPI (Startup Inter-Processor Interrupt). \'cf\'e5\'f0\'e2\'fb\'e9 CPU \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'ec \'ee\'f1\'f2\'e0\'eb\'fc\'ed\'fb\'ec \'fd\'f2\'ee \'ef\'f0\'e5\'f0\'fb\'e2\'e0\'ed\'e8\'e5 \'f1 \'e0\'e4\'f0\'e5\'f1\'ee\'ec, \'f1 \'ea\'ee\'f2\'ee\'f0\'ee\'e3\'ee \'ee\'ed\'e8 \'e4\'ee\'eb\'e6\'ed\'fb \'ed\'e0\'f7\'e0\'f2\'fc \'e2\'fb\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'e5 \'ea\'ee\'ec\'e0\'ed\'e4.\par
+\par
+\'c4\'eb\'ff \'f5\'f0\'e0\'ed\'e5\'ed\'e8\'ff Interrupt Table \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'f0\'e5\'e3\'e8\'f1\'f2\'f0 IDT. \'d1\'e0\'ec\'e0 \'f2\'e0\'e1\'eb\'e8\'f6\'e0 \'e2\'fb\'e3\'eb\'ff\'e4\'e8\'f2 \'ef\'f0\'e8\'ec\'e5\'f0\'ed\'ee \'f2\'e0\'ea:\par
+\tab\'ea\'f2\'ee \'e2\'fb\'e7\'fb\'e2\'e0\'e5\'f2:\par
+int 00h\tab CPU\tab\'e2 \'f1\'e8\'f2\'f3\'e0\'f6\'e8\'ff\'f5 \'e4\'e5\'eb\'e5\'ed\'e8\'e5 \'ed\'e0 0 {\field{\*\fldinst{HYPERLINK "http://stanislavs.org/helppc/int_table.html"}}{\fldrslt{\ul\cf1 http://stanislavs.org/helppc/int_table.html}}}\f0\fs22\par
+int 01h\tab CPU\tab single-step execution during the debugging of a program\par
+int 02h\tab CPU\tab = NMI (non-maskable interrupt)\par
+int 03h\tab CPU\tab break-point \'ef\'f0\'e5\'f0\'fb\'e2\'e0\'ed\'e8\'e5\par
+int 04h\tab CPU\tab\'e2\'fb\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff, \'ea\'ee\'e3\'e4\'e0 \'e2\'fb\'f1\'f2\'e0\'e2\'eb\'e5\'ed \'f4\'eb\'e0\'e3 overflow\par
+int 05h\tab BIOS\tab print screen\par
+int 06h\tab CPU\tab\'e2\'fb\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff \'ef\'f0\'e8 Invalid opcode\par
+int 07h\tab CPU\tab Coprocessor not available\par
+int 08h\tab IRQ0\tab real time clock interrupt - \'e2\'ee \'e2\'f0\'e5\'ec\'ff \'fd\'f2\'ee\'e3\'ee \'ef\'f0\'e5\'f0\'fb\'e2\'e0\'ed\'e8\'ff BIOS \'f3\'e2\'e5\'eb\'e8\'f7\'e8\'e2\'e0\'e5\'f2 time-of-day \'f1\'f7\'b8\'f2\'f7\'e8\'ea\par
+int 09h\tab IRQ1\tab\'e2\'fb\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff, \'ea\'ee\'e3\'e4\'e0 \'ed\'e0\'e6\'e8\'ec\'e0\'e5\'f2 \'eb\'fe\'e1\'f3\'fe \'ea\'eb\'e0\'e2\'e8\'f8\'f3 \'ed\'e0 \'ea\'eb\'e0\'e2\'e8\'e0\'f2\'f3\'f0\'e5 (Keyboard controller)\par
+int 0Ah\tab IRQ2\tab slave 8259 or EGA/VGA vertical retrace - \'ed\'e5 \'ef\'ee\'ed\'ff\'f2\'ed\'ee\par
+int 0Bh\tab IRQ3\tab COM2 service\par
+int 0Ch\tab IRQ4\tab COM1 service\par
+int 0Dh\tab IRQ5\tab\'e7\'e0\'ef\'f0\'ee\'f1 \'e4\'e0\'ed\'ed\'fb\'f5 \'f1 LPT2\par
+int 0Eh\tab IRQ6\tab floppy disk\par
+int 0Fh\tab IRQ7\tab\'e7\'e0\'ef\'f0\'ee\'f1 \'e4\'e0\'ed\'ed\'fb\'f5 \'f1 LPT1\par
+int 10h\tab BIOS\tab\'ef\'f0\'e5\'f0\'fb\'e2\'e0\'ed\'e8\'e5 BIOS \'f1\'ec\'e5\'ed\'e0 \'e2\'e8\'e4\'e5\'ee \'f0\'e5\'e6\'e8\'ec\'e0 {\field{\*\fldinst{HYPERLINK "https://en.wikipedia.org/wiki/BIOS_interrupt_call"}}{\fldrslt{\ul\cf1 https://en.wikipedia.org/wiki/BIOS_interrupt_call}}}\f0\fs22\par
+int 11h\tab BIOS\tab\'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 \'f1\'ef\'e8\'f1\'ee\'ea \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'eb\'e5\'ed\'ed\'ee\'e3\'ee equipment\par
+int 12h\tab BIOS\tab\'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 \'f0\'e0\'e7\'ec\'e5\'f0 RAM\par
+int 13h\tab BIOS\tab Low Level Disk Services = \'f0\'e0\'e1\'ee\'f2\'e0 \'f1 \'e4\'e8\'f1\'ea\'e0\'ec\'e8 \'e2 DOS\par
+int 14h\tab BIOS\tab\'e4\'eb\'ff \'f0\'e0\'e1\'ee\'f2\'fb \'f1 Serial Port - serial communications\par
+int 15h\tab BIOS\tab cassette service\par
+int 16h\tab BIOS\tab\'f7\'f2\'e5\'ed\'e8\'e5 \'f1\'e8\'ec\'e2\'ee\'eb\'ee\'e2 \'f1 \'ea\'eb\'e0\'e2\'e8\'e0\'f2\'f3\'f0\'fb\par
+int 1Ah\tab BIOS\tab\'ee\'e1\'f1\'eb\'f3\'e6\'e8\'e2\'e0\'e5\'f2 PCI \'ea\'ee\'ed\'f2\'f0\'ee\'eb\'eb\'e5\'f0\par
+int 21h \tab DOS\tab\'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e2 DOS \'e8\'eb\'e8 Real Mode\par
+int 80h\tab Linux/Windows\tab\'f1\'e4\'e5\'eb\'e0\'f2\'fc syscall {\field{\*\fldinst{HYPERLINK "http://asm.sourceforge.net"}}{\fldrslt{\ul\cf1 http://asm.sourceforge.net}}}\f0\fs22\par
+\par
+ 0h-1Fh\tab BIOS Interrupts \par
+20h-3Fh\tab DOS Interrupts \par
+40h-7Fh\tab reserved \par
+80h-F0h\tab ROM BASIC \par
+F1h-Ffh\tab not used\par
+\par
+\'c2 \'ee\'e1\'fb\'f7\'ed\'ee\'ec \'e0\'f1\'f1\'e5\'ec\'e1\'eb\'e5\'f0\'e5 \'e2\'fb\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'e5 \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2\'f1\'ff \'f1 \'ec\'e5\'f2\'ea\'e8 main, \'ed\'ee \'e4\'eb\'ff \'f2\'ee\'e3\'ee \'f7\'f2\'ee\'e1\'fb \'e5\'b8 \'f3\'e2\'e8\'e4\'e5\'eb \'eb\'e8\'ed\'ea\'ee\'e2\'f9\'e8\'ea, \'ed\'e0\'e4\'ee \'e5\'b8 \'f1\'e4\'e5\'eb\'e0\'f2\'fc \'e2 \b .global\b0  \'ee\'e1\'eb\'e0\'f1\'f2\'e8 \'e2\'e8\'e4\'e8\'ec\'ee\'f1\'f2\'e8.\par
+\par
+\'cf\'f0\'ee\'f6\'e5\'f1\'ee\'ee\'f0\'fb \'f532 \'e8\'ec\'e5\'fe\'f2 \'f0\'e5\'e6\'e8\'ec\'fb:\par
+\tab 1. \'d0\'e5\'e0\'eb\'fc\'ed\'fb\'e9 (\'ed\'e5\'e7\'e0\'f9\'e8\'f9\'b8\'ed\'ed\'fb\'e9) \'f0\'e5\'e6\'e8\'ec (Real Mode) - \'f0\'e5\'e6\'e8\'ec, \'e2 \'ea\'ee\'f2\'ee\'f0\'ee\'ec \'f0\'e0\'e1\'ee\'f2\'e0\'eb 8086. \'d1\'e5\'e9\'f7\'e0\'f1 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'f2\'ee\'eb\'fc\'ea\'ee \'e4\'eb\'ff \'f1\'ee\'e2\'ec\'e5\'f1\'f2\'e8\'ec\'ee\'f1\'f2\'e8 \'f1 \'e4\'f0\'e5\'e2\'ed\'e8\'ec \'cf\'ce - DOS \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e0\'ec\'e8.\par
+\tab 2.\'c7\'e0\'f9\'e8\'f9\'b8\'ed\'ed\'fb\'e9 \'f0\'e5\'e6\'e8\'ec (Protected Mode) - \'e2\'ef\'e5\'f0\'e2\'fb\'e5 \'e1\'fb\'eb \'f0\'e5\'e0\'eb\'e8\'e7\'ee\'e2\'e0\'ed \'e2 80286. \'d1\'e5\'e9\'f7\'e0\'f1 Windows \'e8 Linux \'f0\'e0\'f2\'ee\'f2\'e0\'fe\'f2 \'e2 \'fd\'f2\'ee\'ec \'f0\'e5\'e6\'e8\'ec\'e5. \'cf\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'fb \'f0\'e5\'e0\'eb\'fc\'ed\'ee\'e3\'ee \'f0\'e5\'e6\'e8\'ec\'e0 \'ed\'e5 \'ec\'ee\'e3\'f3\'f2 \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc \'e2 \'e7\'e0\'f9\'e8\'f9\'b8\'ed\'ed\'ee\'ec \'f0\'e5\'e6\'e8\'ec\'e5.\par
+\tab 3. \'d0\'e5\'e6\'e8\'ec \'e2\'e8\'f0\'f2\'f3\'e0\'eb\'fc\'ed\'ee\'e3\'ee \'ef\'f0\'ee\'f6\'e5\'f1\'f1\'ee\'f0\'e0 8086 (virtual-8086 mode, V86) - \'e2 \'fd\'f2\'ee\'f2 \'f0\'e5\'e6\'e8\'ec \'ec\'ee\'e6\'ed\'ee \'ef\'e5\'f0\'e5\'e9\'f2\'e8 \'f2\'ee\'eb\'fc\'ea\'ee \'e8\'e7 \'e7\'e0\'f9\'e8\'f9\'b8\'ed\'ed\'ee\'e3\'ee \'f0\'e5\'e6\'e8\'ec\'e0. \'d1\'eb\'f3\'e6\'e8\'f2 \'e4\'eb\'ff \'fd\'ec\'f3\'eb\'ff\'f6\'e8\'e8 \'ef\'f0\'ee\'f6\'e5\'f1\'f1\'ee\'f0\'e0 8086.\par
+\tab 4. \'cd\'e5\'f0\'e5\'e0\'eb\'fc\'ed\'fb\'e9 \'f0\'e5\'e6\'e8\'ec (unreal mode, \'ee\'ed \'e6\'e5 big real mode) - \'e0\'ed\'e0\'eb\'ee\'e3\'e8\'f7\'e5\'ed \'f0\'e5\'e0\'eb\'fc\'ed\'ee\'ec\'f3 \'f0\'e5\'e6\'e8\'ec\'f3, \'f2\'ee\'eb\'fc\'ea\'ee \'ef\'ee\'e7\'e2\'ee\'eb\'ff\'e5\'f2 \'ef\'ee\'eb\'f3\'f7\'e0\'f2\'fc \'e4\'ee\'f1\'f2\'f3\'ef \'ea\'ee \'e2\'f1\'e5\'e9 \'f4\'e8\'e7\'e8\'f7\'e5\'f1\'ea\'ee\'e9 \'ef\'e0\'ec\'ff\'f2\'e8, \'f7\'f2\'ee \'ed\'e5\'e2\'ee\'e7\'ec\'ee\'e6\'ed\'ee \'e2 \'f0\'e5\'e0\'eb\'fc\'ed\'ee\'ec \'f0\'e5\'e6\'e8\'ec\'e5.\par
+\tab 5. \'d0\'e5\'e6\'e8\'ec \'f1\'e8\'f1\'f2\'e5\'ec\'ed\'ee\'e3\'ee \'f3\'ef\'f0\'e0\'e2\'eb\'e5\'ed\'e8\'ff (Sustem Management Mode SMM) - \'e2 \'f1\'eb\'f3\'e6\'e5\'e1\'ed\'fb\'f5 \'e8 \'ee\'f2\'eb\'e0\'e4\'ee\'f7\'ed\'fb\'f5 \'f6\'e5\'eb\'ff\'f5.\par
+\par
+\'cf\'f0\'ee\'f6\'e5\'f1\'f1\'ee\'f0\'fb \'f564 \'e8\'ec\'e5\'fe\'f2 \'f2\'f0\'e8 \'f0\'e5\'e6\'e8\'ec\'e0:\par
+\tab 1. Real Mode\par
+\tab 2. Legacy mode = \'f532 Protected Mode\par
+\tab 3. \b Long mode\b0  \'e2\'f1\'e5\'e3\'e4\'e0 \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'f1 \'e2\'ea\'eb\'fe\'f7\'e5\'ed\'ed\'fb\'ec paging/\'d0\'c0\'c5 \'e8 \'ef\'ee\'e4\'f0\'e0\'e7\'e4\'e5\'eb\'ff\'e5\'f2\'f1\'ff \'ed\'e0\par
+\tab\tab Compatibility mode - \'ef\'ee\'e7\'e2\'ee\'eb\'ff\'e5\'f2 \'f564 \'ee\'ef\'e5\'f0\'e0\'f6\'e8\'ee\'ed\'ea\'e5 \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'f2\'fc \'f532 \'ef\'f0\'e8\'eb\'ee\'e6\'e5\'ed\'e8\'ff\par
+\tab\tab 64 - bit mode - \'f7\'e5\'f1\'f2\'ed\'fb\'e9 \'f564 \'e8 OS \'e8 \'ef\'f0\'e8\'eb\'ee\'e6\'e5\'ed\'e8\'e5\par
+\par
+\ul\'d0\'e5\'e3\'e8\'f1\'f2\'f0\'fb\ulnone :\par
+RAX\\EAX\\AX\\AH\\AL - Accumulator - \'e0\'ea\'ea\'f3\'ec\'f3\'eb\'ff\'f2\'ee\'f0\par
+RBX\\EBX\\BX\\BH\\BL - Base - \'e1\'e0\'e7\'e0, \'e0\'e4\'f0\'e5\'f1\'e0\'f6\'e8\'ff \'ef\'ee \'e1\'e0\'e7\'e5\par
+R\'d1X\\E\'d1X\\\'d1X\\\'d1H\\\'d1L - Counter - \'eb\'eb\'ff \'ee\'f0\'e3\'e0\'ed\'e8\'e7\'e0\'f6\'e8\'e8 \'f6\'e8\'ea\'eb\'e0\par
+RDX\\EDX\\DX\\DH\\DL - Data - \'e4\'e0\'ed\'ed\'fb\'e5\par
+ESI\\SI - Source Index - \'e8\'ed\'e4\'e5\'ea\'f1 \'e8\'f1\'f2\'ee\'f7\'ed\'e8\'ea\'e0, \'ee\'e1\'fb\'f7\'ed\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e2 \'ee\'ef\'e5\'f0\'e0\'f6\'e8\'ff\'f5 \'f1\'ee \'f1\'f2\'f0\'ee\'ea\'e0\'ec\'e8, \'ed\'ee\'ec\'e5\'f0 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'e0\par
+EDI\\DI - Destination Index - \'e8\'ed\'e4\'e5\'ea\'f1 \'ef\'f0\'e8\'b8\'ec\'ed\'e8\'ea\'e0, \'ee\'e1\'fb\'f7\'ed\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e2 \'ee\'ef\'e5\'f0\'e0\'f6\'e8\'ff\'f5 \'f1\'ee \'f1\'f2\'f0\'ee\'ea\'e0\'ec\'e8, \'f2\'e5\'ea\'f3\'f9\'e8\'e9 \'e0\'e4\'f0\'e5\'f1 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'e0\par
+EBP\\BP - Base Pointer - \'f3\'ea\'e0\'e7\'e0\'f2\'e5\'eb\'fc \'e1\'e0\'e7\'fb \'ea\'e0\'e4\'f0\'e0 \'f1\'f2\'e5\'ea\'e0, \'e4\'eb\'ff \'ee\'f0\'e3\'e0\'ed\'e8\'e7\'e0\'f6\'e8\'e8 \'ef\'f0\'ee\'e8\'e7\'e2\'ee\'eb\'fc\'ed\'ee\'e3\'ee \'e4\'ee\'f1\'f2\'f3\'ef\'e0 \'ea \'e4\'e0\'ed\'ed\'fb\'ec \'f1\'f2\'e5\'ea\'e0\par
+ESP\\SP - Stack Pointer - \'f3\'ea\'e0\'e7\'e0\'f2\'e5\'eb\'fc \'e2\'e5\'f0\'f8\'e8\'ed\'fb \'f1\'f2\'e5\'ea\'e0\par
+\par
+\'c2 Real Addess Mode \'ef\'f0\'ee\'f6\'e5\'f1\'f1\'ee\'f0 \'ec\'ee\'e6\'e5\'f2 \'e4\'e5\'eb\'e8\'f2\'fc \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'f3 \'ed\'e0 3-\'e8 \'ee\'e1\'eb\'e0\'f1\'f2\'e8:\par
+\tab 1. \'d1\'e5\'e3\'ec\'e5\'ed\'f2 \'ea\'ee\'e4\'e0 CS - Code Segment\par
+\tab 2. \'d1\'e5\'e3\'ec\'e5\'ed\'f2 \'f1\'f2\'e5\'ea\'e0 SS - Stack Segment\par
+\tab 3. \'d1\'e5\'e3\'ec\'e5\'ed\'f2 \'e4\'e0\'ed\'ed\'fb\'f5 DS - Data Segment, \'e0 \'f2\'e0\'ea\'e6\'e5 ES, GS \'e8 FS\par
+\par
+\'c5\'f1\'f2\'fc \'f0\'e5\'e3\'e8\'f1\'f2\'f0: \'f3\'ea\'e0\'e7\'e0\'f2\'e5\'eb\'fc \'ea\'ee\'ec\'ec\'e0\'ed\'e4 EIP\\IP - Instruction Pointer - \'e0\'e4\'f0\'e5\'f1 \'f1\'eb\'e5\'e4\'f3\'fe\'f9\'e5\'e9 \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'e5\'ec\'ee\'e9 \'ea\'ee\'ec\'e0\'ed\'e4\'fb \'e8 EFLAGS\\FLAGS - \'f4\'eb\'e0\'e3\'ee\'e2\'fb\'e9 \'f0\'e5\'e3\'e8\'f1\'f2\'f0.\par
+\par
+\'c5\'f1\'f2\'fc \'f1\'e8\'f1\'f2\'e5\'ec\'ed\'fb\'e5 \'f0\'e5\'e3\'e8\'f1\'f2\'f0\'fb:\par
+4-\'e5 \'f0\'e5\'e3\'e8\'f1\'f2\'f0\'e0 \'f1\'e8\'f1\'f2\'e5\'ec\'ed\'fb\'f5 \'e0\'e4\'f0\'e5\'f1\'ee\'e2:\par
+\tab GDT - Global Descriptor Table - 48-\'e1\'e8\'f2\'ed\'fb\'e9, \'f1\'ee\'e4\'e5\'f0\'e6\'e8\'f2 \'e0\'e4\'f0\'e5\'f1 \'e8 \'f0\'e0\'e7\'ec\'e5\'f0 paging table\par
+\tab LDT - Local Descriptor Table\par
+\tab IDT - Interrupt Descriptor Table\par
+\tab TR\par
+5 \'f0\'e5\'e3\'e8\'f1\'f2\'f0\'ee\'e2 \'f3\'ef\'f0\'e0\'e2\'eb\'e5\'ed\'e8\'ff - CR0..CR4 (CR0 - \'e2 \'ee\'f1\'ed\'ee\'e2\'ed\'ee\'ec \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e4\'eb\'ff \'ef\'e5\'f0\'e5\'f5\'ee\'e4\'e0 \'e2 protected mode (\'e1\'e8\'f2 0) \'e8 enable paging (\'e1\'e8\'f2 31); CR2 - \'f1\'ee\'e4\'e5\'f0\'e6\'e8\'f2 Page Fault Linear \'e0\'e4\'f0\'e5\'f1; CR3 - \'f1\'ee\'e4\'e5\'f0\'e6\'e8\'f2 \'e0\'e4\'f0\'e5\'f1 paging \'f2\'e0\'e1\'eb\'e8\'f6\'fb.\par
+8 \'f0\'e5\'e3\'e8\'f1\'f2\'f0\'ee\'e2 \'ee\'f2\'eb\'e0\'e4\'ea\'e8 - DR0..DR7\par
+\par
+\'c4\'eb\'ff \'f0\'e0\'e1\'ee\'f2\'fb \'f1 \'f7\'e8\'f1\'eb\'e0\'ec\'e8 \'f1 \'ef\'eb\'e0\'e2\'e0\'fe\'f9\'e5\'e9 \'f2\'ee\'f7\'ea\'ee\'e9, \'ed\'e0 \'f1\'ee\'ef\'f0\'ee\'f6\'e5\'f1\'f1\'ee\'f0\'e5 \'e5\'f1\'f2\'fc \'f0\'e5\'e3\'e8\'f1\'f2\'f0\'fb:\par
+....\par
+\par
+\'c8\'e7\'ed\'e0\'f7\'e0\'eb\'fc\'ed\'ee \'e0\'f0\'f5\'e8\'f2\'e5\'ea\'f2\'f3\'f0\'e0 Intel \'e1\'fb\'eb\'e0 16 \'e1\'e8\'f2\'ed\'ee\'e9 -> \'ec\'e0\'ea\'f1\'e8\'ec\'e0\'eb\'fc\'ed\'fb\'e9 \'e0\'e4\'f0\'e5\'f1\'f3\'e5\'ec\'fb\'e9 \'e1\'eb\'ee\'ea \'ef\'e0\'ec\'ff\'f2\'e8 2*16 = 64 \'ca\'e1\'e0\'e9\'f2. \'c4\'eb\'ff \'f0\'e0\'f1\'f8\'e8\'f0\'e5\'ed\'e8\'ff \'ef\'e0\'ec\'ff\'f2\'e8 \'e1\'fb\'eb \'f1\'ee\'e7\'e4\'e0\'ed \'e4\'e8\'f1\'ef\'e5\'f2\'f7\'e5\'f0 \'ef\'e0\'ec\'ff\'f2\'e8, \'e4\'eb\'ff \'f3\'ef\'f0\'e0\'e2\'eb\'e5\'ed\'e8\'ff \'ea\'ee\'f2\'ee\'f0\'fb\'ec \'e1\'fb\'eb\'e8 \'e2\'e2\'e5\'e4\'e5\'ed\'fb: CS, DS \'e8 SS. \'d2\'e5\'ef\'e5\'f0\'fc \'ec\'ee\'e6\'ed\'ee \'e1\'fb\'eb\'ee \'e0\'e4\'f0\'e5\'f1\'ee\'e2\'e0\'f2\'fc \'e4\'ee 1\'cc\'e1\'e0\'e9\'f2. \'c2 Real Address Mode \'e8 V86 \'e4\'ee \'f1\'e8\'f5 \'ef\'ee\'f0 \'ee\'e3\'f0\'e0\'ed\'e8\'f7\'e5\'ed\'e8\'e5 \'ef\'e0\'ec\'ff\'f2\'e8 \'e4\'ee 1\'cc\'e1\'e0\'e9\'f2.\par
+\par
+\'c2 \'e7\'e0\'f9\'e8\'f9\'b8\'ed\'ed\'ee\'ec \'f0\'e5\'e6\'e8\'ec\'e5 \'ef\'ee\'ff\'e2\'e8\'eb\'ee\'f1\'fc \'e5\'f9\'b8 4-\'e5 \'ec\'ee\'e4\'e5\'eb\'e8 \'ef\'ff\'ec\'ff\'f2\'e8:\par
+\tab 1. \'cb\'e8\'ed\'e5\'e9\'ed\'e0\'ff/\'ef\'eb\'ee\'f1\'ea\'e0\'ff \'ec\'ee\'e4\'e5\'eb\'fc (flat memory model) - \'ee\'e4\'e8\'ed \'e1\'ee\'eb\'fc\'f8\'ee\'e9 \'e1\'eb\'ee\'ea \'e2 \'f532 \'e4\'ee 4\'c3\'e1\'e0\'e9\'f2. DS:BX \'e0\'e4\'f0\'e5\'f1 \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e0 *10h + \'f1\'ec\'e5\'f9\'e5\'ed\'e8\'e5. \'d1\'e5\'e3\'ec\'e5\'ed\'f2\'fb \'ef\'ee 64\'ca\'e1\'e0\'e9\'f2\'e0.\par
+\tab 2. \'d1\'e5\'e3\'ec\'e5\'ed\'f2\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'e0\'ff \'ec\'ee\'e4\'e5\'eb\'fc (segmented memory model) - \'e2 \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'ed\'fb\'e5 \'f0\'e5\'e3\'e8\'f1\'f2\'f0\'fb \'e7\'e0\'e3\'f0\'f3\'e6\'e0\'fe\'f2\'f1\'ff "\'f1\'e5\'eb\'e5\'ea\'f2\'ee\'f0\'fb", \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'f3\'ea\'e0\'e7\'fb\'e2\'e0\'fe\'f2 \'ed\'e0 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 \'e2 \'f2\'e0\'e1\'eb\'e8\'f6\'e5 \'e4\'e5\'f1\'ea\'f0\'e8\'ef\'f2\'ee\'f0\'ee\'e2. \'d2\'e0\'ea\'e8\'f5 \'f2\'e0\'e1\'eb\'e8\'f6 \'e4\'e2\'e5: GDT \'e8 LDT. \'c5\'f1\'f2\'fc \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'b8\'ed\'ed\'fb\'e5 \'ef\'f0\'e0\'e2\'e0 \'e4\'ee\'f1\'f2\'f3\'ef\'e0 \'ea \'ef\'e0\'ec\'ff\'f2\'e8 \'e8 \'f2.\'ef.\par
+\tab 3. \'d1\'f2\'f0\'e0\'ed\'e8\'f7\'ed\'e0\'ff \'ec\'ee\'e4\'e5\'eb\'fc (paging) - \'ed\'e0\'e4\'f1\'f2\'f0\'ee\'e9\'ea\'e0 \'ed\'e0\'e4 \'ef\'eb\'ee\'f1\'ea\'ee\'e9 \'e8 \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'ee\'e9 \'ec\'ee\'e4\'e5\'eb\'fc\'fe. \'d1\'ee\'e2\'ee\'ea\'f3\'ef\'ed\'ee\'f1\'f2\'fc \'e1\'eb\'ee\'ea\'ee\'e2/\'f1\'f2\'f0\'e0\'ed\'e8\'f6 \'f4\'e8\'ea\'f1\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'ee\'e3\'ee \'f0\'e0\'e7\'ec\'e5\'f0\'e0 \'e4\'ee 4\'cc\'e1\'e0\'e9\'f2. \'cf\'f0\'e5\'e4\'ed\'e0\'e7\'ed\'e0\'f7\'e5\'ed\'e0 \'e4\'eb\'ff \'ee\'f0\'e3\'e0\'ed\'e8\'e7\'e0\'f6\'e8\'e8 \'e2\'e8\'f0\'f2\'f3\'e0\'eb\'fc\'ed\'ee\'e9 \'ef\'e0\'ec\'ff\'f2\'e8, \'e2 \'f7\'e0\'f1\'f2\'ed\'ee\'f1\'f2\'e8, \'f4\'e0\'e9\'eb\'e0 \'ef\'ee\'e4\'ea\'e0\'f7\'ea\'e8 swap-\'f4\'e0\'e9\'eb, \'f0\'e0\'f1\'ef\'ee\'eb\'ee\'e6\'e5\'ed\'ed\'ee\'e3\'ee \'ed\'e0 hdd. \'d1\'f2\'f0\'e0\'ed\'e8\'f7\'ed\'fb\'e9 \'e0\'e4\'f0\'e5\'f1 \'ed\'e5 \'f1\'ee\'e2\'ef\'e0\'e4\'e0\'e5\'f2 \'f1 \'eb\'e8\'ed\'e5\'e9\'ed\'fb\'ec.\par
+\tab 4. \'cc\'ee\'e4\'e5\'eb\'fc \'ef\'e0\'ec\'ff\'f2\'e8 \'e2 \'f0\'e5\'e6\'e8\'ec\'e5 V86 - \'f1 \'f2\'ee\'f7\'ea\'e8 \'e7\'f0\'e5\'ed\'e8\'ff \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e8\'f1\'f2\'e0 \'fd\'f2\'ee = \'ef\'eb\'ee\'f1\'ea\'ee\'e9 \'ec\'ee\'e4\'e5\'eb\'e8, \'ed\'ee \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'fe\'f2\'f1\'ff \'e2\'f1\'e5 \'ef\'f0\'ee\'e2\'e5\'f0\'ea\'e8 \'e7\'e0\'f9\'e8\'f2\'fb \'e7\'e0\'f9\'e8\'f9\'b8\'ed\'ed\'ee\'e3\'ee \'f0\'e5\'e6\'e8\'ec\'e0, \'f2.\'e5. \'e8\'ed\'f1\'f2\'f0\'f3\'ea\'f6\'e8\'e9: IN, OUT, INS, OUTS, INT n, PUSFF, POPF, STI, CLI, IRET.\par
+\par
+\'c4\'e8\'e0\'ef\'ee\'e7\'ee\'ed \'ef\'ee\'f0\'f2\'ee\'e2 \'c2\'e2\'ee\'e4\'e0-\'c2\'fb\'e2\'ee\'e4\'e0 \'ee\'f2 0 \'e4\'ee 65535.\par
+\par
+\'d1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'fe\'f2 \'e4\'e2\'e0 \'f1\'e8\'ed\'f2\'e0\'ea\'f1\'e8\'f1\'e0: Intel (\'e4\'eb\'ff MS-DOS) \'e8 AT&T (\'e4\'eb\'ff Unix)\par
+\par
+[\'ec\'e5\'f2\'ea\'e0:] \'ea\'ee\'ec\'e0\'ed\'e4\'e0 [\'ee\'ef\'e5\'f0\'e0\'ed\'e4\'fb] [;\'ea\'ee\'ec\'ec\'e5\'ed\'f2\'e0\'f0\'e8\'e8]\par
+Down:  add di,320  ;\'ed\'e0\'f0\'e0\'f9\'e8\'e2\'e0\'ed\'e8\'e5 \'ea\'ee\'ee\'f0\'e4\'e8\'ed\'e0\'f2\'fb\par
+\par
+\ul\'c4\'e8\'f0\'e5\'ea\'f2\'e8\'e2\'e0 COMMENT\ulnone :\par
+\'e4\'eb\'ff \'ed\'e0\'ef\'e8\'f1\'e0\'ed\'e8\'ff \'ea\'ee\'ec\'ec\'e5\'ed\'f2\'e0\'f0\'e8\'e5\'e2.\par
+\par
+[\'e8\'ec\'ff_\'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'ee\'e9] d* [\'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5]\par
+db - \'f0\'e5\'e7\'e5\'f0\'e2\'e8\'f0\'f3\'e5\'f2 \'ef\'e0\'ec\'ff\'f2\'fc \'e4\'eb\'ff \'e4\'e0\'ed\'ed\'fb\'f5 \'e2 1 \'e1\'e0\'e9\'f2\par
+dw - 2 \'e1\'e0\'e9\'f2\'e0\par
+dd - 4 \'e1\'e0\'e9\'f2\'e0\par
+df - 6 \'e1\'e0\'e9\'f2\par
+dp - 6 \'e1\'e0\'e9\'f2\par
+dq - 8 \'e1\'e0\'e9\'f2\par
+dt - 10 \'e1\'e0\'e9\'f2\par
+\'c5\'f1\'eb\'e8 \'e2\'ec\'e5\'f1\'f2\'ee \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'ff \'f1\'f2\'ee\'e8\'f2 ?, \'f2\'ee \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'e0\'ff \'ed\'e5\'e8\'ed\'e8\'f6\'e8\'e0\'eb\'e8\'e7\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'e0\par
+\'cf\'f0\'e8\'ec\'e5\'f0:\par
+name1\tab\tab db\tab 5, 5, 5\tab\tab ; \'fd\'ea\'e2\'e8\'e2\'e0\'eb\'e5\'ed\'f2\'ed\'ee\par
+name1\tab\tab db\tab 3 dup (5)\tab ; dup - \'ea\'ee\'eb\'e8\'f7\'e5\'f1\'f2\'e2\'ee \'ef\'ee\'e2\'f2\'ee\'f0\'e5\'ed\'e8\'e9\par
+name2\tab\tab dw\tab ?\par
+name3\tab\tab db\tab 1, 0Ah, 'A'\par
+float_name\tab dd\tab 2.7e5\par
+str\tab\tab db\tab 'Hello, World'\tab ; \'fd\'ea\'e2\'e8\'e2\'e0\'eb\'e5\'ed\'f2\'ed\'ee\par
+str\tab\tab db\tab 'H','e','l','l','o'.....\par
+\par
+\ul\'c4\'e8\'f0\'e5\'ea\'f2\'e8\'e2\'e0 \'fd\'ea\'e2\'e8\'e2\'e0\'eb\'e5\'ed\'f2\'ed\'ee\'f1\'f2\'e8\ulnone :\par
+~ #define \'e2 \'d1++ \'e7\'e0\'ec\'e5\'ed\'ff\'e5\'f2 \'e2 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e5 \'f1\'eb\'ee\'e2\'ee Nuber \'ed\'e0 15\par
+[\'e8\'ec\'ff] EQU [\'ee\'ef\'e5\'f0\'e0\'ed\'e4]\par
+Number EQU 15\par
+\par
+\ul\'c4\'e8\'f0\'e5\'ea\'f2\'e8\'e2\'e0 \'ef\'f0\'e8\'f1\'e2\'e0\'e8\'e2\'e0\'ed\'e8\'ff\ulnone :\par
+\'e0\'ed\'e0\'eb\'ee\'e3\'e8\'f7\'ed\'ee \'e4\'e8\'f0\'e5\'ea\'f2\'e8\'e2\'e5 \'fd\'ea\'e2\'e8\'e2\'e0\'eb\'e5\'ed\'f2\'ed\'ee\'f1\'f2\'e8, \'ed\'ee \'f2\'ee\'eb\'fc\'ea\'ee \'e2 \'ea\'e0\'f7\'e5\'f1\'f2\'e2\'e5 \'ee\'ef\'e5\'f0\'e0\'ed\'e4\'e0 - \'ea\'ee\'ed\'f1\'f2\'e0\'ed\'f2\'e0\par
+\'d5=10 \'e8\'eb\'e8 offset=X+10\par
+\par
+\ul\'c4\'e8\'f0\'e5\'ea\'f2\'e8\'e2\'fb \'ed\'e0\'e1\'ee\'f0\'e0 \'ea\'ee\'ec\'e0\'ed\'e4\ulnone :\par
+.286 \'e8\'eb\'e8 .286\'f1\tab ; \'f0\'e0\'e7\'f0\'e5\'f8\'e5\'ed\'fb \'ed\'e5\'ef\'f0\'e8\'e2\'e8\'eb\'e5\'e3\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'fb\'e5 \'ea\'ee\'ec\'e0\'ed\'e4\'fb 80286\par
+.286\'f0\tab\tab\tab ; \'f0\'e0\'e7\'f0\'e5\'f8\'e5\'ed\'fb \'e2\'f1\'e5 \'ea\'ee\'ec\'e0\'ed\'e4\'fb 80286\par
+.586\'f0\tab\tab\tab ; \'f0\'e0\'e7\'f0\'e5\'f8\'e5\'ed\'fb \'e2\'f1\'e5 \'ea\'ee\'ec\'e0\'ed\'e4\'fb Pentium 5\par
+\par
+\ul\'c4\'e8\'f0\'e5\'ea\'f2\'e8\'e2\'fb \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'e5\'ed\'e8\'ff \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e0\ulnone :\par
+\par
+.data \'e8\'eb\'e8 .DATA\tab ; \'ed\'e0\'f7\'e0\'eb\'ee \'e8\'eb\'e8 \'ef\'f0\'ee\'e4\'ee\'eb\'e6\'e5\'ed\'e8\'e5 \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e0 \'e8\'ed\'e8\'f6\'e8\'e0\'eb\'e8\'e7\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'fb\'f5 \'e4\'e0\'ed\'ed\'fb\'f5\par
+\tab var1\tab dw\tab 13\par
+\tab str1\tab db\tab "Text string"\par
+\tab var2\tab dq\tab ?\tab ; \'e7\'e0\'f0\'e5\'e7\'e5\'f0\'e2\'e8\'f0\'f3\'e5\'f2\'f1\'ff \'e1\'eb\'ee\'ea \'ef\'ee\'e4 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'f3\'fe var2 \'e8 \'e1\'eb\'ee\'ea \'e7\'e0\'ef\'ee\'eb\'ed\'e8\'f2\'f1\'ff \'f1\'eb\'f3\'f7\'e0\'e9\'ed\'fb\'ec\'e8 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'ff\'ec\'e8\par
+\par
+.data? \'e8\'eb\'e8 .DATA?\tab ; \'ed\'e0\'f7\'e0\'eb\'ee \'e8\'eb\'e8 \'ef\'f0\'ee\'e4\'ee\'eb\'e6\'e5\'ed\'e8\'e5 \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e0 \'cd\'c5\'e8\'ed\'e8\'f6\'e8\'e0\'eb\'e8\'e7\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'fb\'f5 \'e4\'e0\'ed\'ed\'fb\'f5.\par
+\tab var2\tab dq\tab ?\tab ; \'ef\'f0\'ee\'f1\'f2\'ee \'e7\'e0\'f0\'e5\'e7\'e5\'f0\'e2\'e8\'f0\'f3\'e5\'f2\'f1\'ff \'e1\'eb\'ee\'ea \'ef\'ee\'e4 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'f3\'fe var2\par
+\par
+.const \'e8\'eb\'e8 .CONST?\tab ; \'ed\'e0\'f7\'e0\'eb\'ee \'e8\'eb\'e8 \'ef\'f0\'ee\'e4\'ee\'eb\'e6\'e5\'ed\'e8\'e5 \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e0 \'f1 \'e0\'f2\'f0\'e8\'e1\'f3\'f2\'ee\'ec read-only\par
+\par
+.stack [\'f0\'e0\'e7\'ec\'e5\'f0] \'e8\'eb\'e8 .STACK [\'f0\'e0\'e7\'ec\'e5\'f0]\tab ; \'ed\'e0\'f7\'e0\'eb\'ee \'e8\'eb\'e8 \'ef\'f0\'ee\'e4\'ee\'eb\'e6\'e5\'ed\'e8\'e5 \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e0 \'f1\'f2\'e5\'ea. \'c5\'f1\'eb\'e8 \'f0\'e0\'e7\'ec\'e5\'f0 \'ed\'e5 \'f3\'ea\'e0\'e7\'e0\'ed, \'f2\'ee 1\'ca\'e1\'e0\'e9\'f2\par
+\par
+.code [\'e8\'ec\'ff] \'e8\'eb\'e8 .CODE [\'e8\'ec\'ff]\tab ; \'ed\'e0\'f7\'e0\'eb\'ee \'e8\'eb\'e8 \'ef\'f0\'ee\'e4\'ee\'eb\'e6\'e5\'ed\'e8\'e5 \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e0 \'ea\'ee\'e4\'e0. \'c5\'f1\'eb\'e8 \'e8\'ec\'ff \'ed\'e5 \'f3\'ea\'e0\'e7\'e0\'ed\'ee, \'f2\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e8\'ec\'ff _TEXT \'e4\'eb\'ff \'ec\'ee\'e4\'e5\'eb\'e5\'e9 \'ef\'e0\'ec\'ff\'f2\'e8 tiny, small, compact \'e8 flat \'e8\'eb\'e8 \'e8\'ec\'ff_\'ec\'ee\'e4\'f3\'eb\'ff_TEXT \'e4\'eb\'ff \'ec\'ee\'e4\'e5\'eb\'e5\'e9 \'ef\'e0\'ec\'ff\'f2\'e8 mediun, large \'e8 huge\par
+\par
+\ul\'c4\'e8\'f0\'e5\'ea\'f2\'e8\'e2\'e0 \'f3\'ea\'e0\'e7\'e0\'ed\'e8\'ff \'ec\'ee\'e4\'e5\'eb\'e8 \'ef\'e0\'ec\'ff\'f2\'e8\ulnone :\par
+\'c4\'ee\'eb\'e6\'ed\'e0 \'ed\'e0\'f5\'ee\'e4\'e8\'f2\'f1\'ff \'ef\'e5\'f0\'e5\'e4 \'eb\'fe\'e1\'ee\'e9 \'e8\'e7 \'e4\'e8\'f0\'e5\'ea\'f2\'e8\'e2 \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'e5\'ed\'e8\'ff \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'ee\'e2.\par
+.model \'ec\'ee\'e4\'e5\'eb\'fc [,\'ff\'e7\'fb\'ea] [,\'ec\'ee\'e4\'e8\'f4\'e8\'ea\'e0\'f2\'ee\'f0]\par
+\'cc\'ee\'e4\'e5\'eb\'e8 \'ef\'e0\'ec\'ff\'f2\'e8:\par
+\tab 1. TINY - \'ee\'e4\'e8\'ed \'f1\'e5\'e3\'ec\'e5\'ed\'f2 <64\'ca\'e1\'e0\'e9\'f2. \'c2\'f1\'b8 \'e2 \'ed\'b8\'ec \'e8 .code \'e8 .data \'e8 .stack\par
+\tab 2. SMALL - \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc \'e4\'ee 3-\'f5 \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'ee\'e2 <64\'ca\'e1\'e0\'e9\'f2. \'ce\'f2\'e4\'e5\'eb\'fc\'ed\'ee \'e4\'eb\'ff .code, .data, .stack\par
+\tab 3. COMPACT - \'f2\'ee\'e6\'e5, \'f7\'f2\'ee \'e8 SMALL, \'ed\'ee \'ec\'ee\'e6\'e5\'f2 \'e8\'ec\'e5\'f2\'fc \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee .data\par
+\tab 4. MEDIUM - \'f2\'ee\'e6\'e5, \'f7\'f2\'ee \'e8 SMALL, \'ed\'ee \'ec\'ee\'e6\'e5\'f2 \'e8\'ec\'e5\'f2\'fc \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee .code\par
+\tab 5. LARGE - \'ec\'ee\'e6\'e5\'f2 \'e8\'ec\'e5\'f2\'fc \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee .code \'e8 .data, \'ed\'ee \'ee\'e4\'e8\'ed \'f1\'e5\'e3\'ec\'e5\'ed\'f2 .stack\par
+\tab 6. HUGE - .data \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc >64\'ca\'e1\'e0\'e9\'f2, \'e0 \'e2 \'ee\'f1\'f2\'e0\'eb\'fc\'ed\'ee\'ec ~LARGE. \'d0\'e5\'e0\'eb\'e8\'e7\'f3\'e5\'f2\'f1\'ff \'e2 \'e7\'e0\'f9\'e8\'f9\'b8\'ed\'ed\'ee\'ec \'f0\'e5\'e6\'e8\'ec\'e5 \'ef\'f0\'ee\'f6\'e5\'f1\'f1\'ee\'f0\'e0.\par
+\tab 7. FLAT - \'e2\'f1\'ff \'ef\'e0\'ec\'ff\'f2\'fc - \'ee\'e4\'e8\'ed \'f1\'e5\'e3\'ec\'e5\'ed\'f2 <4\'c3\'e1\'e0\'e9\'f2. \'ce\'f1\'ed\'ee\'e2\'ed\'e0\'ff \'ec\'ee\'e4\'e5\'eb\'fc \'ef\'e0\'ec\'ff\'f2\'e8, \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'ec\'e0\'ff \'e2 \'e7\'e0\'f9\'e8\'f9\'b8\'ed\'ed\'ee\'ec \'f0\'e5\'e6\'e8\'ec\'e5.\par
+\par
+\'df\'e7\'fb\'ea - \'ed\'e5\'ee\'e1\'ff\'e7\'e0\'f2\'e5\'eb\'fc\'ed\'fb\'e9 \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0 \'e4\'eb\'ff \'f1\'e2\'ff\'e7\'e8 \'ec\'ee\'e4\'f3\'eb\'e5\'e9 \'ed\'e0 \'e0\'f1\'f1\'e5\'ec\'e1\'eb\'e5\'f0\'e5 \'f1 \'ff\'e7\'fb\'ea\'e0\'ec\'e8 \'e2\'fb\'f1\'ee\'ea\'ee\'e3\'ee \'f3\'f0\'ee\'e2\'ed\'ff. \'cc\'ee\'e6\'e5\'f2 \'ef\'f0\'e8\'ed\'e8\'ec\'e0\'f2\'fc \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'ff: \b stdcall\b0 , \'d1, PASCAL, BASIC \'e8 \'f2.\'e4.\par
+stdcall \'e4\'eb\'ff \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'ed\'e8\'ff Windows API.\par
+\'cc\'ee\'e4\'e8\'f4\'e8\'ea\'e0\'f2\'ee\'f0 - \'ef\'ee default-\'f3 = NEARSTACK - \'ee\'e1\'eb\'e0\'f1\'f2\'fc \'e4\'e0\'ed\'ed\'fb\'f5 \'e8 \'f1\'f2\'e5\'ea\'e0 \'f0\'e0\'e7\'ec\'e5\'f9\'e0\'fe\'f2\'f1\'ff \'e2 \'ee\'e4\'ed\'ee\'ec \'f2 \'f2\'ee\'ec \'e6\'e5 \'f4\'e8\'e7\'e8\'f7\'e5\'f1\'ea\'ee\'ec \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e5. \'c8\'eb\'e8 FARSTACK - \'e2 \'f0\'e0\'e7\'ed\'fb\'f5.\par
+\'cd\'e0\'ef\'e8\'f1\'e0\'ed\'ee, \'f7\'f2\'ee \'e4\'e8\'f0\'e5\'ea\'f2\'e8\'e2\'e0 .MODEL \'e4\'e5\'eb\'e0\'e5\'f2 \'e4\'ee\'f1\'f2\'f3\'ef\'ed\'fb\'ec\'e8 \'e8\'e4\'e5\'ed\'f2\'e8\'f4\'e8\'ea\'e0\'f2\'ee\'f0\'fb:\par
+@code - \'f4\'e8\'e7\'e8\'f7\'e5\'f1\'ea\'e8\'e9 \'e0\'e4\'f0\'e5\'f1 \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e0 \'ea\'ee\'e4\'e0\par
+@data - \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e0 \'e4\'e0\'ed\'ed\'fb\'f5 \'f2\'e8\'ef\'e0 near\par
+@fardata - \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e0 \'e4\'e0\'ed\'ed\'fb\'f5 \'f2\'e8\'ef\'e0 far\par
+@stack - \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e0 \'f1\'f2\'e5\'ea\'e0\par
+@fardata? \'e8\'eb\'e8 @curseg - \'f4\'e8\'e7\'e8\'f7\'e5\'f1\'ea\'e8\'e9 \'e0\'e4\'f0\'e5\'f1 \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e0 \'ed\'e5\'e8\'ed\'e8\'f6\'e8\'e0\'eb\'e8\'e7\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'fb\'f5 \'e4\'e0\'ed\'ed\'fb\'f5 \'f2\'e8\'ef\'e0 far\par
+\par
+\ul\'cf\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e0 \'f2\'e8\'ef\'e0 COM\ulnone :\par
+\tab .model\tab tiny\tab ; \'f2\'e8\'ef \'ef\'e0\'ec\'ff\'f2\'e8 TINY, \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'ec\'fb\'e9 \'d2\'ce\'cb\'dc\'ca\'ce \'e4\'eb\'ff COM-\'f4\'e0\'e9\'eb\'ee\'e2: CS = DS = SS = ES = \'e7\'e4\'e5\'f1\'fc.\par
+\tab .code\tab\tab ; \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2\'f1\'ff \'f1\'e5\'e3\'ec\'e5\'ed\'f2 \'ea\'ee\'e4\'e0, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'e8 \'f1\'e5\'e3\'ec\'e5\'ed\'f2 \'e4\'e0\'ed\'ed\'fb\'f5 \'e8 \'f1\'f2\'e5\'ea\'e0 (TINY!)\par
+\tab org\tab 100h\tab ; \'ee\'f1\'e2\'ee\'e1\'ee\'e4\'e8\'f2\'fc \'ef\'e5\'f0\'e2\'fb\'e5 256 \'e1\'e0\'e9\'f2 (100h) \'e4\'eb\'ff PSP\par
+start:\tab mov\tab ah,9\tab ; AH=9 - \'ed\'ee\'ec\'e5\'f0 DOS \'f4\'f3\'ed\'ea\'f6\'e8\'e8 int 21h - \'e2\'fb\'e2\'ee\'e4 \'f1\'f2\'f0\'ee\'ea\'e8, \'f0\'e0\'f1\'ef\'ee\'eb\'ee\'e6\'e5\'ed\'ed\'ee\'e9 \'ef\'ee \'e0\'e4\'f0\'e5\'f1\'f3 DS:DX, \'ed\'e0 \'fd\'ea\'f0\'e0\'ed\par
+\tab mov\tab dx,offset mes\tab ; \'e7\'e0\'ef\'e8\'f1\'fc \'e2 DX \'ce\'d2\'cd\'ce\'d1\'c8\'d2\'c5\'cb\'dc\'cd\'ce\'c3\'ce (offset), \'ed\'e5 \'e0\'e1\'f1\'ee\'eb\'fe\'f2\'ed\'ee\'e3\'ee \'e0\'e4\'f0\'e5\'f1\'e0 \'e1\'eb\'ee\'ea\'e0 \'ef\'e0\'ec\'ff\'f2\'e8 "mes" \par
+\tab int\tab 21h\par
+\tab ret\tab\tab ; \'f2\'e0\'ea \'e7\'e0\'e2\'e5\'f0\'f8\'e0\'e5\'f2\'f1\'ff \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e0 COM\par
+mes:\tab db\tab "Hello, World",0Dh,0Ah,'$'\par
+\tab end\tab start\tab ; \'e3\'e4\'e5 \'e7\'e0\'ea\'e0\'ed\'f7\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e0 \'e8 \'ee\'e1\'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2 \'ec\'e5\'f2\'ea\'f3, \'e3\'e4\'e5 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e0 \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2\'f1\'ff\par
+\par
+COM-\'f4\'e0\'e9\'eb\'fb \'ed\'e5 \'f1\'ee\'e4\'e5\'f0\'e6\'e0\'f2 \'e2 \'f1\'e5\'e1\'e5 \'ed\'e8\'ea\'e0\'ea\'ee\'e9 \'f1\'eb\'f3\'e6\'e5\'e1\'ed\'ee\'e9 \'e8\'ed\'f4\'fb, \'f2\'ee\'eb\'fc\'ea\'ee \'ea\'ee\'e4 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'fb. \'cf\'ee\'fd\'f2\'ee\'ec\'f3 \'ee\'ed\'e8 \'f5\'f0\'e0\'ed\'ff\'f2\'f1\'ff \'ed\'e0 \'e4\'e8\'f1\'ea\'e5 \'f2\'ee\'f7\'ed\'ee \'e2 \'f2\'ee\'ec \'e6\'e5 \'e2\'e8\'e4\'e5, \'f7\'f2\'ee \'e8 \'e2 \'ef\'e0\'ec\'ff\'f2\'e8. COM-\'f4\'e0\'e9\'eb \'ed\'e5 \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc >64\'ca\'e1\'e0\'e9\'f2.\par
+PSP - \'ef\'f0\'e5\'f4\'e8\'ea\'f1 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'ed\'ee\'e3\'ee \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e0. MS-DOS \'f1\'e0\'ec \'e0\'e2\'f2\'ee\'ec\'e0\'f2\'e8\'f7\'e5\'f1\'ea\'e8 \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'f2 \'fd\'f2\'ee\'f2 \'e1\'eb\'ee\'ea. \'cb\'fe\'e1\'e0\'ff \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e0 \'e4\'eb\'ff COM-\'f4\'e0\'e9\'eb\'e0 \'e4\'ee\'eb\'e6\'ed\'e0 \'ed\'e0\'f7\'e8\'ed\'e0\'f2\'fc\'f1\'ff \'f1 org 100h.\par
+MS-DOS \'e2\'fb\'e2\'ee\'e4\'e8\'f2 \'f1\'f2\'f0\'ee\'ea\'f3 \'ed\'e0 \'fd\'ea\'f0\'e0\'ed \'e4\'ee \'e2\'f1\'f2\'f0\'e5\'f7\'e8 \'ef\'e5\'f0\'e2\'ee\'e3\'ee \'f1\'e8\'ec\'e2\'ee\'eb\'e0 '$'. 0Dh - \'e2\'ee\'e7\'e2\'f0\'e0\'f2 \'ea\'e0\'f0\'e5\'f2\'ea\'e8. 0Ah - \'ef\'e5\'f0\'e5\'e2\'ee\'e4 \'f1\'f2\'f0\'ee\'ea\'e8.\par
+\par
+\ul\'cf\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e0 \'f2\'e8\'ef\'e0 EXE\ulnone :\par
+\tab .model small\tab ; \'e0\'e4\'f0\'e5\'f1\'e0 \'e2 CS, ES \'e8 SS MS-DOS \'e7\'e0\'ed\'ee\'f1\'e8\'f2 \'e0\'e2\'f2\'ee\'ec\'e0\'f2\'e8\'f7\'e5\'f1\'ea\'e8\par
+\tab .stack\tab 100h\par
+\tab .code\par
+start:\tab mov\tab ax,@data\tab ; \'ee\'e1\'ff\'e7\'e0\'f2\'e5\'eb\'fc\'ed\'ee \'e4\'eb\'ff EXE: \'e7\'e0\'e3\'f0\'f3\'e7\'e8\'f2\'fc \'e2 DS \'e8 ES \'e0\'e4\'f0\'e5\'f1 \'ed\'e0\'f7\'e0\'eb\'e0 \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e0 .data\par
+\tab mov\tab ds,ax\par
+\tab mov\tab es,ax\tab\tab ; \'e2 \'e4\'e0\'ed\'ed\'ee\'e9 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e5 ES \'ed\'e5 \'ed\'f3\'e6\'e5\'ed\par
+\tab mov\tab ah,9\par
+\tab mov\tab dx,offset mes\par
+\tab int\tab 21h\par
+\tab mov\tab ax,4C00h\tab ; \'e4\'eb\'ff \'e7\'e0\'e2\'e5\'f0\'f8\'e5\'ed\'e8\'ff EXE \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec \'e2\'fb\'e7\'ee\'e2 ah=4Ch \'f4\'f3\'ed\'ea\'f6\'e8\'e8 MS-DOS, AL=0 \'ea\'ee\'e4 \'e2\'ee\'e7\'e2\'f0\'e0\'f2\'e0.\par
+\tab int\tab 21h\par
+\tab .data\par
+mes:\tab db\tab "Hello, World",0Dh,0Ah,'$'\par
+\tab end\tab start\par
+\par
+\'ce\'ef\'e8\'f1\'e0\'ed\'e8\'e5 \'f4\'f3\'ed\'ea\'f6\'e8\'e9 \'ea\'e0\'ea \'e4\'eb\'ff BIOS \'f2\'e0\'ea \'e8 \'e4\'eb\'ff DOS \'ec\'ee\'e6\'ed\'ee \'ed\'e0\'e9\'f2\'e8 \'e2 "\'cb\'e8\'f1\'f2\'e5 \'ef\'f0\'e5\'f0\'fb\'e2\'e0\'ed\'e8\'e9 \'d0\'e0\'eb\'fc\'f4\'e0 \'c1\'f0\'e0\'f3\'ed\'e0"\par
+{\field{\*\fldinst{HYPERLINK "http://www.cs.cmu.edu/~ralf/files.html"}}{\fldrslt{\ul\cf1 http://www.cs.cmu.edu/~ralf/files.html}}}\f0\fs22  \'e8\'eb\'e8 {\field{\*\fldinst{HYPERLINK "http://www.ctyme.com/rbrown.htm"}}{\fldrslt{\ul\cf1 http://www.ctyme.com/rbrown.htm}}}\f0\fs22\par
+\par
+\ul\'cf\'f0\'e5\'f4\'e8\'ea\'f1 PSP\ulnone :\par
+\'c4\'eb\'ff COM-\'f4\'e0\'e9\'eb\'ee\'e2 \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee \'ee\'f1\'e2\'ee\'e1\'ee\'e6\'e4\'e0\'f2\'fc \'ec\'e5\'f1\'f2\'ee \'e4\'eb\'ff PSP \'e4\'e8\'f0\'e5\'ea\'f2\'e8\'e2\'ee\'e9 org 100h.\par
+\'c5\'f1\'f2\'fc \'ee\'ef\'e8\'f1\'e0\'ed\'e8\'e5 \'fd\'f2\'ee\'e3\'ee \'e1\'eb\'ee\'ea\'e0, \'e4\'eb\'ff \'ed\'e0\'f1 \'ec\'ee\'e6\'e5\'f2 \'ee\'ea\'e0\'e7\'e0\'f2\'fc\'f1\'ff \'ef\'ee\'eb\'e5\'e7\'ed\'fb\'ec \'ef\'ee\'eb\'e5 PSP:80h \'e2 \'ea\'ee\'f2\'ee\'f0\'ee\'ec \'f5\'f0\'e0\'ed\'ff\'f2\'fc\'f1\'ff \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'fb \'ea\'ee\'ec\'e0\'ed\'e4\'ed\'ee\'e9 \'f1\'f2\'f0\'ee\'ea\'e8.\par
+\par
+\'ce\'f2\'eb\'e0\'e4\'f7\'e8\'ea \'e4\'eb\'ff \'e0\'f1\'f1\'e5\'ec\'e1\'eb\'e5\'f0\'e0 - CodeView. \'cf\'ee\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2 \'f1\'e0\'ec\'f3 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'f3, \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e5 \'f0\'e5\'e3\'e8\'f1\'f2\'f0\'ee\'e2, \'f4\'eb\'e0\'e3\'e0, \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'e5 \'ef\'e0\'ec\'ff\'f2\'e8.\par
+\par
+\ul\'cf\'ee\'e4\'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'fb\ulnone :\par
+\tab .model\tab tiny\par
+\tab .code\par
+\tab org\tab 100h\par
+start:\tab move\tab dx,offset mes\par
+\tab call\tab output\par
+\tab ret\par
+output\tab\b PROC\b0  far\tab ; \'e1\'fb\'e2\'e0\'e5\'f2 far - \'e7\'ed\'e0\'f7\'e8\'f2 jump 4 \'e1\'e0\'e9\'f2\'e0, \'ef\'ee default-\'f3 near - \'e7\'ed\'e0\'f7\'e8\'f2 jump 2 \'e1\'e0\'e9\'f2\'e0\par
+\tab mov\tab ah,9\par
+\tab int\tab 21h\par
+\tab ret\par
+output\tab\b ENDP\b0\par
+mes\tab db\tab "Hello, World!",0Dh,0Ah,'$'\par
+\tab end\tab start\par
+\par
+\b include \b0\i\'e8\'ec\'ff_\'f4\'e0\'e9\'eb\'e0\i0  - \'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5, \'f7\'f2\'ee \'e8 \'e2 \'d1++\par
+\par
+\'d2\'ee\'e6\'e5 \'e5\'f1\'f2\'fc \'e4\'e8\'f0\'e5\'ea\'f2\'e8\'e2\'fb: \b IF\b0  \'f3\'f1\'eb\'ee\'e2\'e8\'e5 \b ELSE\b0  \'ea\'ee\'ec\'e0\'ed\'e4\'fb ENDIF; \'f2\'ee\'e6\'e5 \'e8 \'f1 WHILE \'e8 ENDW\par
+\par
+\'c4\'e8\'f0\'e5\'ea\'f2\'e8\'e2\'fb \'ea\'ee\'ed\'f2\'f0\'ee\'eb\'ff \'ee\'f8\'e8\'e1\'ee\'ea \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'fe\'f2\'f1\'ff \'e4\'eb\'ff \'ee\'f2\'eb\'e0\'e4\'ea\'e8 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'fb. \'cf\'ee\'ec\'e5\'f9\'e0\'fe\'f2\'f1\'ff \'e2 \'ea\'ee\'e4 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'fb \'e8 \'ea\'ee\'ed\'f2\'f0\'ee\'eb\'e8\'f0\'f3\'fe\'f2 \'f3\'f1\'eb\'ee\'e2\'e8\'ff \'e0\'f1\'f1\'e5\'ec\'e1\'eb\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'ff:\par
+.\b ERR1\b0  - \'ee\'f8\'e8\'e1\'ea\'e0 \'f2\'ee\'eb\'fc\'ea\'ee \'ef\'f0\'e8 \'ef\'e5\'f0\'e2\'ee\'ec \'ef\'f0\'ee\'f5\'ee\'e4\'e5 \'e0\'f1\'f1\'e5\'ec\'e1\'eb\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'ff\par
+.ERRNDEF \'ec\'e5\'f2\'ea\'e0 - \'ee\'f8\'e8\'e1\'ea\'e0, \'e5\'f1\'f2\'fc \'ec\'e5\'f2\'ea\'e0 \'ed\'e5 \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'e5\'ed\'e0\par
+.ERRB \'e0\'f0\'e3\'f3\'ec\'e5\'ed\'f2 - \'ee\'f8\'e8\'e1\'ea\'e0, \'e5\'f1\'eb\'e8 \'e0\'f0\'e3\'f3\'ec\'e5\'ed\'f2 \'ef\'f3\'f1\'f2\par
+.ERRDIFI \'e0\'f0\'e3\'f3\'ec\'e5\'ed\'f21 \'e0\'f0\'e3\'f3\'ec\'e5\'ed\'f22 - \'ee\'f8\'e8\'e1\'ea\'e0, \'e5\'f1\'eb\'e8 \'e0\'f0\'e3\'f3\'ec\'e5\'ed\'f2\'fb \'f0\'e0\'e7\'eb\'e8\'f7\'ed\'fb (\'e1\'e5\'e7 \'f0\'e0\'e7\'eb\'e8\'f7\'e8\'ff \'e1\'ee\'eb\'fc\'f8\'e8\'f5 \'e8 \'ec\'e0\'eb\'e5\'ed\'fc\'ea\'e8\'f5 \'e1\'f3\'ea\'e2)\par
+\'e8 \'f2.\'e4.\par
+\par
+\ul\'cc\'e0\'ea\'f0\'ee\'f1\'fb\ulnone :\tab\tab\tab\'d1\'ee\'ee\'f2\'e2\'e5\'f2\'f1\'f2\'e2\'f3\'e5\'f2:\par
+addx\tab\b MACRO\b0  x1,x2,x3\tab\tab .model\par
+\tab mov\tab x1,x2\tab\tab\tab .code\par
+\tab add\tab x1,x3\tab\tab\tab org\tab 100h\par
+\tab\b ENDM\b0\tab\tab\tab start:\tab mov\tab ax,20h\par
+\tab .model\tab\tab\tab\tab add\tab ax,-7\par
+\tab .code\tab\tab\tab\tab ret\par
+\tab org\tab 100h\tab\tab\tab end start\par
+start:\tab addx\tab ax,20h,-7\par
+\tab ret\par
+\tab end start\par
+\par
+\ul\'c4\'e8\'f0\'e5\'ea\'f2\'e8\'e2\'e0 IRP\ulnone :\tab\tab\'d1\'ee\'ee\'f2\'e2\'e5\'f2\'f1\'f2\'e2\'f3\'e5\'f2:\par
+\b IRP\b0\tab reg,<ax,bx,cx>\tab push\tab ax\par
+\tab push reg\tab\tab push\tab bx\par
+\b ENDM\b0\tab\tab\b\tab\b0\tab push\tab cx\par
+\par
+\b EXITM\b0  - \'ed\'e5\'ec\'e5\'e4\'eb\'e5\'ed\'ed\'fb\'e9 \'e2\'fb\'f5\'ee\'e4 \'e8\'e7 \'ec\'e0\'ea\'f0\'ee\'f1\'e0 \'e8\'eb\'e8 \'e1\'eb\'ee\'ea\'e0 \'ef\'ee\'e2\'f2\'ee\'f0\'e5\'ed\'e8\'e9\par
+\b LOCAL\b0  \'ec\'e5\'f2\'ea\'e0 - \'e3\'e5\'ed\'e5\'f0\'e8\'f0\'f3\'e5\'f2 \'f3\'ed\'e8\'ea\'e0\'eb\'fc\'ed\'ee\'e5 \'e8\'ec\'ff \'ec\'e5\'f2\'ea\'e8 \'e2 \'ec\'e0\'ea\'f0\'ee\'f1\'e5, \'e4\'eb\'ff \'f2\'ee\'e3\'ee, \'f7\'f2\'ee\'e1\'fb \'ef\'f0\'e8 \'ee\'f7\'e5\'f0\'e5\'e4\'ed\'ee\'ec \'e2\'fb\'e7\'ee\'e2\'e5 \'ec\'e0\'ea\'f0\'ee\'f1\'e0 \'ed\'e5 \'ef\'ee\'eb\'f3\'f7\'e0\'eb\'ee\'f1\'fc \'ea\'ee\'ed\'f4\'eb\'e8\'ea\'f2\'e0 \'ec\'e5\'f2\'ee\'ea\par
+\b PURGE\b0  \'e8\'ec\'ff_\'ec\'e0\'ea\'f0\'ee\'f1\'e0 - \'ee\'f2\'ec\'e5\'ed\'ff\'e5\'f2 \'f0\'e0\'ed\'e5\'e5 \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'b8\'ed\'ed\'fb\'e9 \'ec\'e0\'ea\'f0\'ee\'f1\par
+\par
+\ul\'ce\'ef\'e5\'f0\'e0\'f2\'ee\'f0 PTR\ulnone :\par
+\'cf\'e5\'f0\'e5\'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'e5\'f2 \'e8\'eb\'e8 \'f3\'f2\'ee\'f7\'ed\'ff\'e5\'f2 \'ec\'e5\'f2\'ea\'f3 \'e8\'eb\'e8 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'f3\'fe\par
+\'f2\'e8\'ef\tab\b PTR\b0\tab\'e2\'fb\'f0\'e0\'e6\'e5\'ed\'e8\'e5\tab ; \'f2\'e8\'ef \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc \'ef\'f0\'e5\'e4\'f1\'f2\'e0\'e2\'eb\'e5\'ed \'ea\'e0\'ea \'e8\'ec\'e5\'ed\'e5\'ec, \'f2\'e0\'ea \'e8 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5\'ec\par
+\par
+byte\tab 1\tab\'e1\'e0\'e9\'f2\par
+word\tab 2\tab\'f1\'eb\'ee\'e2\'ee\par
+dword\tab 4\tab\'e4\'e2\'ee\'e9\'ed\'ee\'e5 \'f1\'eb\'ee\'e2\'ee\tab\tab\'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e4\'eb\'ff \'ee\'ef\'e5\'f0\'e0\'ed\'e4\'ee\'e2 \'ef\'e0\'ec\'ff\'f2\'e8\par
+qword\tab 8\tab\'f3\'f7\'e5\'f2\'e2\'e5\'f0\'b8\'ed\'ed\'ee\'e5 \'f1\'eb\'ee\'e2\'ee\par
+tbyte\tab 10\tab 10 \'e1\'e0\'e9\'f2\par
+\par
+near\tab 0FFFFh\tab\'e1\'eb\'e8\'e6\'ed\'e8\'e9 \'ef\'e5\'f0\'e5\'f5\'ee\'e4\tab\'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'f2\'f1\'ff \'e4\'eb\'ff \'ec\'e5\'f2\'ee\'ea\par
+far\tab 0FFFEh\tab\'e4\'e0\'eb\'fc\'ed\'e8\'e9 \'ef\'e5\'f0\'e5\'f5\'ee\'e4\par
+\par
+\'cf\'f0\'e8\'ec\'e5\'f0:\par
+\tab .data\par
+A\tab dw\tab 3612h\par
+mem\tab db\tab ?\par
+\tab .code\par
+mov\tab word ptr mem,15\tab ; \'e7\'e0\'ef\'e8\'f1\'e0\'f2\'fc \'e2 \'ff\'f7\'e5\'e9\'ea\'f3 mem = 15, \'e2 \'ff\'f7\'e5\'e9\'ea\'f3 mem+1 = 0\par
+mov\tab ah,byte ptr A\tab\tab ; \'e7\'e0\'ef\'e8\'f1\'e0\'f2\'fc \'e2 AH=12h\par
+add\tab ah,byte ptr A+1\tab ; AH=AH+36h\par
+\par
+\ul\'c0\'e4\'f0\'e5\'f1\'e0\'f6\'e8\'ff\ulnone :\par
+mov\tab ax,312\tab\tab ; \'ed\'e5\'ef\'ee\'f1\'f0\'e5\'e4\'f1\'f2\'e2\'e5\'ed\'ed\'e0\'ff \'e0\'e4\'f0\'e5\'f1\'e0\'f6\'e8\'ff\par
+mov\tab ds,bx\tab\tab ; \'f0\'e5\'e3\'e8\'f1\'f2\'f0\'ee\'e2\'e0\'ff \'e0\'e4\'f0\'e5\'f1\'e0\'f6\'e8\'ff\par
+mov\tab ax,[bx]\tab\tab ; \'ea\'ee\'f1\'e2\'e5\'ed\'ed\'e0\'ff \'e0\'e4\'f0\'e5\'f1\'e0\'f6\'e8\'ff\par
+mov\tab ax,ss:0037h\tab ; \'ef\'f0\'ff\'ec\'e0\'ff \'e0\'e4\'f0\'e5\'f1\'e0\'f6\'e8\'ff\par
+mov\tab ax,es:var\tab ; \'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5 \'f7\'f2\'ee \'e8 \'ef\'f0\'e5\'e4\'fb\'e4\'f3\'f9\'e5\'e5\par
+mov\tab ax,[bx+5]\tab ; \'e1\'e0\'e7\'ee\'e2\'e0\'ff \'e0\'e4\'f0\'e5\'f1\'e0\'f6\'e8\'ff, \'e5\'f1\'eb\'e8 BP, \'f2\'ee \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'ed\'fb\'e9 \'f0\'e5\'e3\'e8\'f1\'f2\'f0 SS, \'e5\'f1\'eb\'e8 BX -> DS\par
+mov\tab ax,5[bx]\tab ; \'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5 \'f7\'f2\'ee \'e8 \'ef\'f0\'e5\'e4\'fb\'e4\'f3\'f9\'e5\'e5\par
+mov\tab ax,[5][bx]\tab ; \'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5 \'f7\'f2\'ee \'e8 \'ef\'f0\'e5\'e4\'fb\'e4\'f3\'f9\'e5\'e5\par
+mov\tab ax,[bx].5\tab ; \'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5 \'f7\'f2\'ee \'e8 \'ef\'f0\'e5\'e4\'fb\'e4\'f3\'f9\'e5\'e5\par
+mov\tab ax,[bx]+5\tab ; \'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5 \'f7\'f2\'ee \'e8 \'ef\'f0\'e5\'e4\'fb\'e4\'f3\'f9\'e5\'e5\par
+mov\tab ax,[si]\tab\tab ; \'e8\'ed\'e4\'e5\'ea\'f1\'ed\'e0\'ff \'e0\'e4\'f0\'e5\'f1\'e0\'f6\'e8\'ff\par
+mov\tab ax,[esi*4]+2\tab ; \'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5 \'f7\'f2\'ee \'e8 \'ef\'f0\'e5\'e4\'fb\'e4\'f3\'f9\'e5\'e5\par
+mov\tab ax,12[bp+di]\tab ; \'e1\'e0\'e7\'ee\'e2\'e0\'ff-\'e8\'ed\'e4\'e5\'ea\'f1\'ed\'e0\'ff \'e0\'e4\'f0\'e5\'f1\'e0\'f6\'e8\'ff, \'ff\'f7\'e5\'e9\'ea\'e0 = SS:BP+DI+12\par
+\par
+\'ce\'e1\'f9\'e8\'e9 \'f1\'eb\'f3\'f7\'e0\'e9 \'e0\'e4\'f0\'e5\'f1\'e0\'f6\'e8\'e8:\par
+\tab |EAX\tab\tab\tab\tab\tab\tab |\par
+CS:\tab |EBX\tab\tab EAX\tab\tab\tab\tab |\par
+SS:\tab |ECX\tab\tab EBX\tab 1\tab\tab\tab |\par
+DS:\tab |EDX +\tab ECX *\tab 2 +\tab\'f1\'ec\'e5\'f9\'e5\'ed\'e8\'e5\tab |\par
+ES:\tab |EBP\tab\tab EDX\tab 4\tab\tab\tab |\par
+FS:\tab |ESP\tab\tab EBP\tab 8\tab\tab\tab |\par
+GS:\tab |EDI\tab\tab ESI\tab\tab\tab\tab |\par
+\tab |ESI\tab\tab EDI\tab\tab\tab\tab |\par
+\ul\par
+\'ce\'f2\'ed\'ee\'f1\'e8\'f2\'e5\'eb\'fc\'ed\'fb\'e5 \'ee\'ef\'e5\'f0\'e0\'f2\'ee\'f0\'fb\ulnone :\par
+\'c5\'f1\'eb\'e8 \'f3\'f1\'eb\'ee\'e2\'e8\'e5 \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'e5\'f2\'f1\'ff, \'f2\'ee \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 1, \'e5\'f1\'eb\'e8 \'ed\'e5\'f2, \'f2\'ee 0\par
+\par
+\'e2\'fb\'f0\'e0\'e6\'e5\'ed\'e8\'e51\b  EQ \b0\'e2\'fb\'f0\'e0\'e6\'e5\'ed\'e8\'e52\par
+EQ - \'c8\'d1\'d2\'c8\'cd\'c0 (\'e8\'eb\'e8 1) \'e5\'f1\'eb\'e8 \'e2\'fb\'f0\'e0\'e6\'e5\'ed\'e8\'ff \'f0\'e0\'e2\'ed\'fb\par
+NE - \'e2\'fb\'f0\'e0\'e6\'e5\'ed\'e8\'ff \'ed\'e5 \'f0\'e0\'e2\'ed\'fb\par
+LT - \'eb\'e5\'e2\'ee\'e5 \'ec\'e5\'ed\'fc\'f8\'e5, \'f7\'e5\'ec \'ef\'f0\'e0\'e2\'ee\'e5\par
+LE - \'eb\'e5\'e2\'ee\'e5 \'ec\'e5\'ed\'fc\'f8\'e5 \'e8\'eb\'e8 \'f0\'e0\'e2\'ed\'ee \'ef\'f0\'e0\'e2\'ee\'ec\'f3\par
+GT - \'eb\'e5\'e2\'ee\'e5 \'e1\'ee\'eb\'fc\'f8\'e5, \'f7\'e5\'ec \'ef\'f0\'e0\'e2\'ee\'e5\par
+GE - \'eb\'e5\'e2\'ee\'e5 \'e1\'ee\'eb\'fc\'f8\'e5 \'e8\'eb\'e8 \'f0\'e0\'e2\'ed\'ee \'ef\'f0\'e0\'e2\'ee\'ec\'f3\par
+mov\tab al,sum lt 15\tab ; \'e5\'f1\'eb\'e8 sum<15, \'f2\'ee AL=1\par
+\par
+\ul\'ca\'ee\'ec\'e0\'ed\'e4\'fb \'e0\'f1\'f1\'e5\'ec\'e1\'eb\'e5\'f0\'e0\ulnone :\par
+\tab .model\tab tiny\par
+\tab .code\par
+\tab org\tab 100h\par
+start:\tab\b mov\tab cx,5\b0\par
+mark:\tab mov\tab ah,9\par
+\tab mov\tab dx,offset message\par
+\tab int\tab 21h\par
+\tab\b loop\tab mark\b0\tab ; CX=CX-1, \'e5\'f1\'eb\'e8 \'ed\'e5 \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'eb\'e5\'ed NZ \'ef\'e5\'f0\'e5\'f5\'ee\'e4 \'ed\'e0 mark\par
+\tab ret\par
+mes:\tab db\tab "Hello, World!",0Dh,0Ah,'$'\par
+\tab end\tab start\par
+\par
+\'c5\'f1\'f2\'fc \'f0\'e0\'e7\'ed\'ee\'e2\'e8\'e4\'ed\'ee\'f1\'f2\'e8 \'e4\'e8\'f0\'e5\'ea\'f2\'e8\'e2\'fb loop, \'f2\'e8\'ef\'e0 loope, loopnz \'e8 \'f2.\'e4.\par
+\par
+\b jmp \b0\'ec\'e5\'f2\'ea\'e0 - jump \'e1\'e5\'e7\'f3\'f1\'eb\'ee\'e2\'ed\'fb\'e9 \'ef\'e5\'f0\'e5\'f5\'ee\'e4\par
+jmp Lab\tab ; \'e1\'eb\'e8\'e6\'ed\'e8\'e9 \'ef\'e5\'f0\'e5\'f5\'ee\'e4 (near), \'ec\'e5\'f2\'ea\'e0 \'e7\'e0\'ed\'e8\'ec\'e0\'e5\'f2 2 \'e1\'e0\'e9\'f2\'e0, \'e0\'e4\'f0\'e5\'f1\'f3\'e5\'f2 \'e2\'ed\'f3\'f2\'f0\'e8 64\'ca\'e1\'e0\'e9\'f2\'ed\'ee\'e3\'ee \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e0\par
+jmp short Lab\tab ; \'ea\'ee\'f0\'ee\'f2\'ea\'e8\'e9 \'ef\'e5\'f0\'e5\'f5\'ee\'e4 (short), \'ec\'e5\'f2\'ea\'e0 \'e7\'e0\'ed\'e8\'ec\'e0\'e5\'f2 1 \'e1\'e0\'e9\'f2, \'e0\'e4\'f0\'e5\'f1\'f3\'e5\'f2 \'ef\'e5\'f0\'e5\'f5\'ee\'e4 -127..+128\par
+jmp near ptr Lab\tab ; near \'ef\'e5\'f0\'e5\'f5\'ee\'e4, \'ec\'e5\'f2\'ea\'e0 2 \'e1\'e0\'e9\'f2\'e0\par
+jmp far ptr Lab\tab ; \'e4\'e0\'eb\'fc\'ed\'e8\'e9 \'ef\'e5\'f0\'e5\'f5\'ee\'e4 (far), \'ec\'e5\'f2\'ea\'e0 4 \'e1\'e0\'e9\'f2\'e0\par
+jpm short $+4\tab ; \'ef\'e5\'f0\'e5\'f5\'ee\'e4 \'ed\'e0 +4 \'e1\'e0\'e9\'f2\'e0 ($ - \'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2 \'f2\'e5\'ea\'f3\'f9\'e8\'e9 \'e0\'e4\'f0\'e5\'f1)\par
+\par
+\b j.. \b0\'ec\'e5\'f2\'ea\'e0 - \'f3\'f1\'eb\'ee\'e2\'ed\'fb\'e9 \'ef\'e5\'f0\'e5\'f5\'ee\'e4\par
+e - equal, n - not, g - greater, l - less, a - above, b - below \'e8 \'f2.\'e4.\par
+\'cf\'f0\'e8\'ec\'e5\'f0\'fb: jne, jnz, jpe, jo ...\par
+\par
+\b cpm \b0\'ee\'ef\'e5\'f0\'e0\'ed\'e41,\'ee\'ef\'e5\'f0\'e0\'ed\'e42 - (compare) \'f1\'f0\'e0\'e2\'ed\'e5\'ed\'e8\'e5 - \'ed\'e8\'f7\'e5\'e3\'ee \'ed\'e5 \'e4\'e5\'eb\'e0\'e5\'f2, \'ef\'f0\'ee\'f1\'f2\'ee \'e2\'fb\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2 \'f1\'ee\'ee\'f2\'e2\'e5\'f2\'f1\'f2\'e2\'f3\'fe\'f9\'e8\'e5 \'f4\'eb\'e0\'e3\'e8\par
+\par
+\b push\b0 ,\b  pop\b0  - \'f0\'e0\'e1\'ee\'f2\'e0 \'f1\'ee \'f1\'f2\'e5\'ea\'ee\'ec\par
+pushf, popf - \'e4\'eb\'ff 16 \'e1\'e8\'f2 - \'e7\'e0\'ef\'e8\'f1\'fb\'e2\'e0\'e5\'f2 \'f0\'e5\'e3\'e8\'f1\'f2\'f0 FLAGS \'e2 \'f1\'f2\'e5\'ea\par
+pushfd, popfd - \'e4\'eb\'ff 32 \'e1\'e8\'f2 - \'e7\'e0\'ef\'e8\'f1\'fb\'e2\'e0\'e5\'f2 EFLAGS \'e2 \'f1\'f2\'e5\'ea\par
+pusha, popa - \'e4\'eb\'ff 16 \'e1\'e8\'f2 - \'f0\'e0\'e7\'ec\'e5\'f9\'e0\'e5\'f2 \'e2 \'f1\'f2\'e5\'ea\'e5 AX,CX,DX,BX,SP,BP,SI,DI\par
+pushad, popad - \'e4\'eb\'ff 32 \'e1\'e8\'f2 - \'f0\'e0\'e7\'ec\'e5\'f9\'e0\'e5\'f2 \'e2 \'f1\'f2\'e5\'ea\'e5 EAX,ECX,EDX,EBX,ESP,EBP,ESI,EDI\par
+\par
+\'cd\'e8 \'ee\'e4\'ed\'e0 \'ea\'ee\'ec\'e0\'ed\'e4\'e0 \'ed\'e5 \'f1\'ef\'ee\'f1\'ee\'e1\'ed\'e0 \'ec\'e0\'ed\'e8\'ef\'f3\'eb\'e8\'f0\'ee\'e2\'e0\'f2\'fc \'ee\'e4\'ed\'ee\'e2\'f0\'e5\'ec\'e5\'ed\'ed\'ee 2-\'ff \'ee\'ef\'e5\'f0\'e0\'ed\'e4\'e0\'ec\'e8, \'ed\'e0\'f5\'ee\'e4\'ff\'f9\'e8\'ec\'e5\'f1\'ff \'e2 \'ee\'ef\'e5\'f0\'e0\'f2\'e8\'e2\'ed\'ee\'e9 \'ef\'e0\'ec\'ff\'f2\'e8!!!\par
+\par
+\b xchg \b0\'ee\'ef\'e5\'f0\'e0\'ed\'e41, \'ee\'ef\'e5\'f0\'e0\'ed\'e42 - (exchange) \'ec\'e5\'ed\'ff\'e5\'f2 \'ec\'e5\'f1\'f2\'e0\'ec\'e8 \'e4\'e2\'e5 \'e2\'e5\'eb\'e8\'f7\'e8\'ed\'fb \par
+\par
+\b shl\b0 , \b shr\b0  - (shift left \'e8 right) \'ea\'ee\'ec\'e0\'ed\'e4\'fb \'eb\'ee\'e3\'e8\'f7\'e5\'f1\'ea\'ee\'e3\'ee \'f1\'e4\'e2\'e8\'e3\'e0, \'ed\'ee\'e2\'fb\'e5 \'e1\'e8\'f2\'fb = 0, \'e2 \'ee\'f2\'eb\'e8\'f7\'e8\'e8 \'ee\'f2 rol \'e8 ror\par
+mov\tab al,01010111b\par
+shl\tab al,4\tab ; AL = 01110000b, CF =  - \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e8\'e9 \'f1\'e4\'e2\'e8\'ed\'f3\'f2\'fb\'e9 \'e1\'e8\'f2\par
+shr\tab al,3\tab ; AL = 00001010b, CF = \par
+\par
+\b sal\b0 , \b sar\b0  - (shift arithmetic left \'e8 right) \'ea\'ee\'ec\'e0\'ed\'e4\'fb \'e0\'f0\'e8\'f4\'ec\'e5\'f2\'e8\'f7\'e5\'f1\'ea\'ee\'e3\'ee \'f1\'e4\'e2\'e8\'e3\'e0, \'e0\'ed\'e0\'eb\'ee\'e3\'e8\'f7\'ed\'ee, \'f7\'f2\'ee \'e8 shl/shr, \'f2\'ee\'eb\'fc\'ea\'ee \'f7\'f2\'ee-\'f2\'ee \'f2\'e0\'ec \'f1\'ee \'e7\'ed\'e0\'ea\'ee\'ec \'f7\'e8\'f1\'eb\'e0 + sal \'e8\'e4\'e5\'ed\'f2\'e8\'f7\'ed\'e0 shl\par
+\par
+\b rol\b0 , \b ror\b0  - (rotate left \'e8 right) \'f6\'e8\'ea\'eb\'e8\'f7\'e5\'f1\'ea\'e8\'e9 \'f1\'e4\'e2\'e8\'e3\par
+mov\tab al,10101000b\par
+rol\tab al,2\tab ; AL = 10100010b, CF = \par
+ror\tab al,4\tab ; AL = 10001010b, CF = \par
+\par
+\b rcl\b0 , \b rcr\b0  - \'f6\'e8\'ea\'eb\'e8\'f7\'e5\'f1\'ea\'e8\'e9 \'f1\'e4\'e2\'e8\'e3 \'f7\'e5\'f0\'e5\'e7 \'f4\'eb\'e0\'e3 \'ef\'e5\'f0\'e5\'ed\'ee\'f1\'e0\par
+\par
+\ul\'ca\'ee\'ec\'e0\'ed\'e4\'fb \'ee\'e1\'f0\'e0\'e1\'ee\'f2\'ea\'e8 \'f1\'f2\'f0\'ee\'ea\ulnone :\par
+\'d1\'f2\'f0\'ee\'ea\'e0-\'e8\'f1\'f2\'ee\'f7\'ed\'e8\'ea \'ed\'e0\'f5\'ee\'e4\'e8\'f2\'f1\'ff \'ef\'ee \'e0\'e4\'f0\'e5\'f1\'f3 DS:SI(DS:ESI), \'e0 \'f1\'f2\'f0\'ee\'ea\'e0-\'ef\'f0\'e8\'b8\'ec\'ed\'e8\'ea ES:DI(ES:EDI)\par
+\b rep\b0  - (repeat) \'ef\'f0\'e5\'f4\'e8\'ea\'f1 \'ef\'ee\'e2\'f2\'ee\'f0\'e5\'ed\'e8\'e9 \'ee\'ef\'e5\'f0\'e0\'f6\'e8\'e9 CX \'ea\'ee\'eb\'e8\'f7\'e5\'f1\'f2\'e2\'ee \'f0\'e0\'e7, \'e0 \'f2\'e0\'ea \'e6\'e5 repe, repz, repne,repnz\par
+\b cld\b0  - (clear direction flag) \'e2\'fb\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2 \'f4\'eb\'e0\'e3 DF=0, \'e7\'ed\'e0\'f7\'e8\'f2 \'ef\'f0\'e8 \'ee\'f7\'e5\'f0\'e5\'e4\'ed\'ee\'e9 \'e8\'f2\'e5\'f0\'e0\'f6\'e8\'e8 movs SI+1, DI+1\par
+\b std\b0  - (set direction flag) \'e2\'fb\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2 \'f4\'eb\'e0\'e3 DF=1, \'e7\'ed\'e0\'f7\'e8\'f2 \'ef\'f0\'e8 \'ee\'f7\'e5\'f0\'e5\'e4\'ed\'ee\'e9 \'e8\'f2\'e5\'f0\'e0\'f6\'e8\'e8 movs SI-1, DI-1\par
+\b movs\b0  - (move string) \'ef\'e5\'f0\'e5\'f1\'fb\'eb\'e0\'e5\'f2 \'f6\'e5\'ef\'ee\'f7\'ea\'f3 \'e1\'e0\'e9\'f2 \'e8\'e7 DS:SI(DS:ESI)->ES:DI(ES:EDI), \'e0 \'f2\'e0\'ea \'e6\'e5 movsb (byte), movsw (word), movsd (double word)\par
+\par
+\tab lea\tab si,text1\tab ; \'e7\'e0\'e3\'f0\'f3\'e6\'e0\'e5\'ec \'e0\'e4\'f0\'e5\'f1 \'ed\'e0\'f7\'e0\'eb\'e0 \'e4\'e0\'ed\'ed\'fb\'f5 text1 \'e2 SI - \'e8\'f1\'f2\'ee\'f7\'ed\'e8\'ea\par
+\tab lea\tab di,text2\tab ; \'e7\'e0\'e3\'f0\'f3\'e6\'e0\'e5\'ec \'e0\'e4\'f0\'e5\'f1 \'ed\'e0\'f7\'e0\'eb\'e0 \'e4\'e0\'ed\'ed\'fb\'f5 text2 \'e2 DI - \'ef\'f0\'e8\'b8\'ec\'ed\'e8\'ea\par
+\tab cld\tab\tab ; \'e7\'e0\'e4\'e0\'b8\'ec \'ed\'e0\'ef\'f0\'e0\'e2\'eb\'e5\'ed\'e8\'e5 \'ee\'e1\'f0\'e0\'e1\'ee\'f2\'ea\'e8 \'f6\'e5\'ef\'ee\'f7\'ea\'e8, \'ed\'e0\'f7\'e0\'eb\'ee-\'ea\'ee\'ed\'e5\'f6 \'e8\'eb\'e8 \'ea\'ee\'ed\'e5\'f6-\'ed\'e0\'f7\'e0\'eb\'ee\par
+\tab mov\tab cx,10\tab ; \'e7\'e0\'e4\'e0\'b8\'ec \'f7\'e8\'f1\'eb\'ee \'ee\'e1\'f0\'e0\'e1\'e0\'f2\'fb\'e2\'e0\'e5\'ec\'fb\'f5 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'ee\'e2\par
+rep\tab movsb\tab\tab ; \'e1\'e5\'e7 \'ef\'f0\'e5\'f4\'e8\'ea\'f1\'e0 REP \'ea\'ee\'ec\'e0\'ed\'e4\'e0 \'ee\'e1\'f0\'e0\'e1\'ee\'f2\'e0\'eb\'e0\'f1\'fc \'e1\'fb 1 \'f0\'e0\'e7\par
+\par
+\b cmps\b0  - (copmare) \'f1\'f0\'e0\'e2\'ed\'e8\'f2\'fc \'f1\'f2\'f0\'ee\'ea\'e8 DS:SI \'e8 ES:DI; cmpsb, cmpsw, cmpsd\par
+\par
+\tab .code\par
+start:\tab lea\tab si,text1\par
+\tab lea\tab di,text2\par
+\tab cld\par
+\tab mov\tab cx,len_text1\par
+repe\tab cmpsb\par
+\tab je equal\par
+\tab mov\tab dx,offset mes1\par
+\tab mov\tab ah,9\par
+\tab int\tab 21h\par
+\tab jmp\tab exit\par
+equal:\tab mov\tab dx,offset mes2\par
+\tab mov\tab ah,9\par
+\tab int\tab 21h\par
+exit:\tab ret\par
+\tab .data\par
+text1\tab db\tab "Ivan"\par
+len_text1=$-text1\tab ; \'e2 \'ef\'ee\'eb\'e5 \'e7\'e0\'ef\'e8\'f1\'fb\'e2\'e0\'e5\'f2\'f1\'ff \'f7\'e8\'f1\'eb\'ee = \'f2\'e5\'ea\'f3\'f9\'e8\'e9 \'e0\'e4\'f0\'e5\'f1 - \'e0\'e4\'f0\'e5\'f1 \'ed\'e0\'f7\'e0\'eb\'e0 text1\par
+text2\tab db\tab "Ivan"\par
+mes1\tab db\tab "\'ce\'e4\'e8\'ed\'e0\'ea\'ee\'e2\'fb",'$'\par
+mes2\tab db\tab "\'d0\'e0\'e7\'ed\'fb\'e5",'$'\par
+\tab end\tab start\par
+\par
+\b scas\b0  - (scan string) \'f1\'ea\'e0\'ed\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'e5 \'f6\'e5\'ef\'ee\'f7\'e5\'ea, \'e8\'f9\'e5\'f2 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 \'e8\'e7 AL\\AX\\EAX \'e2 ES:DI(ES:EDI): scasb (byte), scasw (word), scasd (double word)\par
+\b lods\b0  - (load string) \'e7\'e0\'e3\'f0\'f3\'e7\'e8\'f2\'fc \'e8\'e7 \'f6\'e5\'ef\'ee\'f7\'ea\'e8 ES:DI(ES:EDI) \'e2 ...: lodsb (\'e1\'e0\'e9\'f2 \'e2 AL), lodsw (\'f1\'eb\'ee\'e2\'ee \'e2 AX), lodsd (\'e2 EAX)\par
+\b stos\b0  - (store string) \'f1\'ee\'f5\'f0\'e0\'ed\'e8\'f2\'fc ... \'e2 \'f6\'e5\'ef\'ee\'f7\'ea\'f3 ES:DI(ES:EDI): stosb (AL), stosw (AX), stosd (EAX)\par
+\b ins\b0  - (input string) \'f1\'f7\'e8\'f2\'e0\'f2\'fc \'fd\'eb\'e5\'ec\'e5\'ed\'f2 \'e8\'e7 \'ef\'ee\'f0\'f2\'e0 \'b9=DX \'e2 \'ef\'e0\'ec\'ff\'f2\'fc ES:DI(ES:EDI). \'c2 \'e7\'e0\'e2\'e8\'f1\'e8\'ec\'ee\'f1\'f2\'e8 \'ee\'f2 \'f4\'eb\'e0\'e3\'e0 DF, \'e2 \'ee\'f7\'e5\'f0\'e5\'e4\'ed\'ee\'e9 \'e8\'f2\'e5\'f0\'e0\'f6\'e8\'e8 ES:DI(ES:EDI) \'e1\'f3\'e4\'e5\'f2 \'e8\'eb\'e8 \'f3\'e2\'e5\'eb\'e8\'f7\'e5\'ed \'e8\'eb\'e8 \'f3\'ec\'e5\'ed\'fc\'f8\'e5\'ed: insb, insw, insd\par
+\b outs\b0  - (output string) \'e7\'e0\'ef\'e8\'f1\'e0\'f2\'fc \'fd\'eb\'e5\'ec\'e5\'ed\'f2 \'e8\'e7 \'ef\'ff\'ec\'ff\'f2\'e8 ES:DI(ES:EDI) \'e2 \'ef\'ee\'f0\'f2 \'b9=DX, \'e7\'e0\'e2\'e8\'f1\'e8\'f2 \'ee\'f2 DF: outsb, outsw, outsd\par
+\b lea\b0  bx,-15 - \'e7\'e0\'e3\'f0\'f3\'e7\'e8\'f2\'fc \'e2 BX \'e0\'e4\'f0\'e5\'f1 \'ff\'f7\'e5\'e9\'ea\'e8 EIP-15, \'e0\'ed\'e0\'eb\'ee\'e3\'e8\'f7\'ed\'ee mov bx,offset string, \'ed\'ee \'e2 mov \'ed\'e5\'eb\'fc\'e7\'ff \'e4\'e5\'eb\'e0\'f2\'fc mov bx,offset string+5, \'e2 lea \'ec\'ee\'e6\'ed\'ee: lds (\'e2 DS), les (\'e2 ES), lgs (\'e2 GS), lfs (\'e2 FS), lss (\'e2 SS). \'ce\'f2\'eb\'e8\'f7\'e8\'e5 lea \'ee\'f2 mov \'f1\'ee\'f1\'f2\'ee\'e8\'f2 \'e2 \'f2\'ee\'ec, \'f7\'f2\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'ec\'e5\'f5\'e0\'ed\'e8\'e7\'ec \'e1\'eb\'ee\'ea\'e0 \'e0\'e4\'f0\'e5\'f1\'e0\'f6\'e8\'e8 \'ef\'f0\'ee\'f6\'e5\'f1\'f1\'ee\'f0\'e0, \'e0 \'ed\'e5 \'e0\'f0\'e8\'f4\'ec\'e5\'f2\'e8\'ea\'ee-\'eb\'ee\'e3\'e8\'f7\'e5\'f1\'ea\'ee\'e3\'ee \'e1\'eb\'ee\'ea\'e0.\par
+\b\par
+xlatb\b0\par
+lea\tab bx, HEX_TABLE\tab ; \'e2 BX \'e7\'e0\'e3\'f0\'f3\'e6\'e0\'e5\'ec \'e0\'e4\'f0\'e5\'f1 \'f2\'e0\'e1\'eb\'e8\'f6\'fb \'f1\'e8\'ec\'e2\'ee\'eb\'ee\'e2\par
+mov\tab al,7\tab\tab\tab ; \'e2 AL \'e7\'e0\'e3\'f0\'f3\'e6\'e0\'e5\'ec \'ed\'ee\'ec\'e5\'f0 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'e0, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'ec\'fb \'f5\'ee\'f2\'e8\'ec \'e2\'fb\'f2\'e0\'f9\'e8\'f2\'fc\par
+xlatb\tab\tab\tab\tab ; \'e2 AL \'e1\'f3\'e4\'e5\'f2 \'eb\'e5\'e6\'e0\'f2\'fc \'f1\'e8\'ec\'e2\'ee\'eb '7' \'e8\'eb\'e8 \'ea\'e0\'ea\'ee\'e5-\'f2\'ee \'f2\'e0\'ec \'e4\'e5\'f1\'ff\'f2\'e8\'f7\'ed\'ee\'e5 \'e5\'e3\'ee \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5\par
+HEX_TABLE\tab db\tab '0123456789'\par
+\par
+\'c2 \'e0\'f1\'f1\'e5\'ec\'e1\'eb\'e5\'f0\'e5 \'ec\'ee\'e6\'ed\'ee \'ef\'e8\'f1\'e0\'f2\'fc \'e8 \'f2\'e0\'ea: mov al,14\\4*3+15 \'e8\'eb\'e8 db 3+2*5\par
+\par
+\ul BCD \'f7\'e8\'f1\'eb\'e0\ulnone :\par
+5096 = \'f5\'f5\'f5\'f50101 \'f5\'f5\'f5\'f50000 \'f5\'f5\'f5\'f51001 \'f5\'f5\'f5\'f50110 - \'ea\'e0\'e6\'e4\'ee\'e5 \'f7\'e8\'f1\'eb\'ee \'e7\'e0\'ef\'e8\'f1\'fb\'e2\'e0\'e5\'f2\'f1\'ff \'ee\'f2\'e4\'e5\'eb\'fc\'ed\'ee \'e2 \'ff\'f7\'e5\'e9\'ea\'f3\par
+\'d3\'ef\'e0\'ea\'ee\'e2\'e0\'ed\'ed\'e0\'ff \'f4\'ee\'f0\'ec\'e0: 5096 = 01010000 10010110\par
+\'d1\'e2\'ff\'e7\'e0\'ed\'ed\'fb\'e5 \'f1 \'ed\'e8\'ec\'e8 \'ea\'ee\'ec\'e0\'ed\'e4\'fb: \'f1\'eb\'ee\'e6\'e5\'ed\'e8\'e5 AAA (ASCII Adjust for Addition), \'e2\'fb\'f7\'e8\'f2\'e0\'ed\'e8\'e5 AAS (ASCII Adjust for Subtraction), \'f3\'ec\'ed\'ee\'e6\'e5\'ed\'e8\'e5 AAM (ASCII Adjust for Multiplication), \'e4\'e5\'eb\'e5\'ed\'e8\'e5 AAD (ASCII Adjust for Division), DAA (Decimal Adjustment for Addition), DAS (Decimal Adjustment for Subtraction)\par
+\par
+\b add\b0  a,b \'e8 \b sub\b0  a,b - \'f1\'eb\'ee\'e6\'e5\'ed\'e8\'e5 \'e8 \'e2\'fb\'f7\'e8\'f2\'e0\'ed\'e8\'e5, add \'ec\'ee\'e6\'e5\'f2 \'ec\'e5\'ed\'ff\'f2\'fc \'f4\'eb\'e0\'e3 \'ef\'e5\'f0\'e5\'ed\'ee\'f1\'e0\par
+\b inc\b0  a \'e8 \b dec\b0  a - \'f3\'e2\'e5\'eb\'e8\'f7\'e8\'f2\'fc \'ed\'e0 1 \'e8\'eb\'e8 \'f3\'ec\'e5\'ed\'fc\'f8\'e8\'f2\'fc \'ed\'e0 1\par
+\b mul\b0  \'e8 \b imul\b0  - \'e1\'e5\'e7 \'e7\'ed\'e0\'ea\'ee\'e2\'ee\'e5 \'e8 \'e7\'ed\'e0\'ea\'ee\'e2\'ee\'e5 \'f3\'ec\'ed\'ee\'e6\'e5\'ed\'e8\'e5\par
+\b neg\b0  a - \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'e5 \'e7\'ed\'e0\'ea\'e0 \'f7\'e8\'f1\'eb\'e0, \'ec\'ee\'e6\'e5\'f2 \'ec\'e5\'ed\'ff\'f2\'fc \'ec\'ed\'ee\'e3\'ee \'f4\'eb\'e0\'e3\'ee\'e2\par
+\par
+\ul\'c2\'e5\'f9\'e5\'f1\'f2\'e2\'e5\'ed\'ed\'fb\'e5 \'f7\'e8\'f1\'eb\'e0 \'e8 \'f1\'ee\'ef\'f0\'ee\'f6\'e5\'f1\'f1\'ee\'f0\ulnone :\par
+IEEE 754-1985\par
+| 0 \'cc\'e0\'ed\'f2\'e8\'f1\'f1\'e0 22 | 23 \'cf\'ee\'f0\'ff\'e4\'ee\'ea 30 | 31 \'c7\'ed\'e0\'ea | - \'e2 \'ee\'e1\'fa\'ff\'e2\'eb\'e5\'ed\'e8\'e8 .data \'fd\'f2\'ee \'e1\'f3\'e4\'e5\'f2 \'ea\'e0\'ea dd \'e8\'eb\'e8 \'ea\'ee\'f0\'ee\'f2\'ea\'e8\'e9 \'f4\'ee\'f0\'ec\'e0\'f2\par
+| 0 \'cc\'e0\'ed\'f2\'e8\'f1\'f1\'e0 51 | 52 \'cf\'ee\'f0\'ff\'e4\'ee\'ea 62 | 63 \'c7\'ed\'e0\'ea | - \'e2 \'ee\'e1\'fa\'ff\'e2\'eb\'e5\'ed\'e8\'e8 .data \'fd\'f2\'ee \'e1\'f3\'e4\'e5\'f2 \'ea\'e0\'ea dq \'e8\'eb\'e8 \'e4\'eb\'e8\'ed\'ed\'fb\'e9 \'f4\'ee\'f0\'ec\'e0\'f2\par
+| 0 \'cc\'e0\'ed\'f2\'e8\'f1\'f1\'e0 62 | 63 \'cf\'ee\'f0\'ff\'e4\'ee\'ea 78 | 79 \'c7\'ed\'e0\'ea | - \'e2 \'ee\'e1\'fa\'ff\'e2\'eb\'e5\'ed\'e8\'e8 .data \'fd\'f2\'ee \'e1\'f3\'e4\'e5\'f2 \'ea\'e0\'ea dt \'e8\'eb\'e8 \'f0\'e0\'f1\'f8\'e8\'f0\'e5\'ed\'ed\'fb\'e9 \'f4\'ee\'f0\'ec\'e0\'f2\par
+\par
+\'c2 \'f1\'ee\'ef\'ee\'f6\'e5\'f1\'f1\'ee\'f0\'e5 8 \'f0\'e5\'e3\'e8\'f1\'f2\'f0\'ee\'e2 R0..R7 \'e2 \'e2\'e8\'e4\'e5 \'f0\'e0\'f1\'f8\'e8\'f0\'e5\'ed\'ed\'ee\'e3\'ee \'f4\'ee\'f0\'ec\'e0\'f2\'e0. \'d0\'e0\'e1\'ee\'f2\'e0\'fe\'f2 \'ea\'e0\'ea \'f1\'f2\'e5\'ea. \'ca \'ef\'f0\'e8\'ec\'e5\'f0\'f3, \'e2 \'ea\'e0\'ea\'ee\'e9-\'f2\'ee \'ec\'ee\'ec\'e5\'ed\'f2 \'e2\'f0\'e5\'ec\'e5\'ed\'e8 ST (\'f2\'e0\'ea\'e6\'e5 \'ed\'e0\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff ST(0)) \'f3\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2 \'ed\'e0 R2. \'cc\'fb \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'e5\'ec \'ea\'ee\'ec\'e0\'ed\'e4\'f3, \'e7\'e0\'ef\'e8\'f1\'e0\'f2\'fc \'e2 ST \'f7\'e8\'f1\'eb\'ee 10. ST \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2 \'f3\'ea\'e0\'e7\'fb\'e2\'e0\'f2\'fc \'ed\'e0 R1 \'e8 \'e2 R1 \'e7\'e0\'ef\'e8\'f1\'fb\'e2\'e0\'e5\'f2 \'f7\'e8\'f1\'eb\'ee 10. \'cc\'fb \'e5\'f9\'b8 \'f0\'e0\'e7 \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'e5\'ec \'ea\'ee\'ec\'e0\'ed\'e4\'f3 \'e7\'e0\'ef\'e8\'f1\'e0\'f2\'fc \'e2 ST \'f7\'e8\'f1\'eb\'ee 20. ST \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2 \'f3\'ea\'e0\'e7\'fb\'e2\'e0\'f2\'fc \'ed\'e0 R0 \'e8 \'e2 R0 \'e7\'e0\'ef\'e8\'f1\'fb\'e2\'e0\'e5\'f2 20. \'d2.\'e5. \'f2\'e5\'ef\'e5\'f0\'fc \'e2 R0=20, R1=10, ST=20, ST(1)=10. \'cc\'fb \'e5\'f9\'b8 \'f0\'e0\'e7 \'e7\'e0\'ef\'e8\'f1\'fb\'e2\'e0\'e5\'ec \'e2 ST \'f7\'e8\'f1\'eb\'ee 30. ST \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2 \'f3\'ea\'e0\'e7\'fb\'e2\'e0\'f2\'fc \'ed\'e0 R7. \'c8 \'e4\'e0\'e6\'e5 \'e5\'f1\'eb\'e8 \'e2 R7 \'e1\'fb\'eb\'ee \'f7\'f2\'ee-\'f2\'ee \'e7\'e0\'ef\'e8\'f1\'e0\'ed\'ee, \'e2\'f1\'b8 \'ef\'e5\'f0\'e5\'e7\'e0\'ef\'e8\'f1\'fb\'e2\'e0\'e5\'f2\'f1\'ff. R7=30, R0=20, R1=10, ST=30, ST(1)=20, ST(2)=10\par
+\par
+\'c2\'f1\'e5 \'ea\'ee\'ec\'e0\'ed\'e4\'fb \'f1\'ee\'ef\'f0\'ee\'f6\'e5\'f1\'f1\'ee\'f0\'e0 \'ed\'e0\'f7\'e8\'ed\'e0\'fe\'f2\'f1\'ff \'f1 f... \'e8 \'e2 \'ea\'ed\'e8\'e3\'e5 \'e8\'e4\'b8\'f2 \'ee\'ef\'e8\'f1\'e0\'ed\'e8\'e5 \'fd\'f2\'ee\'e9 \'ea\'f3\'f7\'e8 \'ea\'ee\'ec\'e0\'ed\'e4.\par
+\tab .model\tab tiny\par
+\tab .code\par
+\tab org\tab 100h\par
+start:\tab finit\tab\tab ; \'e8\'ed\'e8\'f6\'e8\'e0\'eb\'e8\'e7\'e0\'f6\'e8\'ff \'f1\'ee\'ef\'f0\'ee\'f6\'e5\'f1\'f1\'ee\'f0\'e0\par
+\tab fld\tab num1\tab ; \'e7\'e0\'e3\'f0\'f3\'e6\'e0\'e5\'ec \'e2 ST num1\par
+\tab fld\tab num2\tab ; \'e7\'e0\'e3\'f0\'f3\'e6\'e0\'e5\'ec \'e2 ST num2 -> num1 \'ef\'e5\'f0\'e5\'f5\'ee\'e4\'e8\'f2 \'e2 ST(1)\par
+\tab fadd\tab\tab ; \'f1\'ea\'eb\'e0\'e4\'fb\'e2\'e0\'e5\'ec \'e8 \'f1\'f3\'ec\'ec\'e0 \'e2 ST\par
+\tab fstp\tab result\tab ; \'e7\'e0\'ef\'e8\'f1\'fb\'e2\'e0\'e5\'ec ST \'e2 result\par
+\tab ret\par
+num1\tab dd\tab 45.56\par
+num2\tab dd\tab 30.13\par
+result\tab dt\tab ?\par
+\tab end\tab start\par
+\par
+\'c4\'e0\'eb\'fc\'f8\'e5 \'e8\'e4\'b8\'f2 \'ee\'ef\'e8\'f1\'e0\'ed\'e8\'e5 \'f0\'e0\'e7\'eb\'e8\'f7\'ed\'fb\'f5 \'f4\'f3\'ed\'ea\'f6\'e8\'e9 int 21h \'e4\'eb\'ff MS-DOS.\par
+\par
+\ul\'cf\'f0\'ff\'ec\'e0\'ff \'e7\'e0\'ef\'e8\'f1\'fc \'e2 \'e2\'e8\'e4\'e5\'ee\'ef\'ff\'ff\'f2\'fc\ulnone :\par
+\'c2 \'f2\'e5\'ea\'f1\'f2\'ee\'e2\'ee\'ec \'f0\'e5\'e6\'e8\'ec\'e5 \'e0\'e4\'f0\'e5\'f1\'e0 \'ef\'e0\'ec\'ff\'f2\'e8 \'f1 0B800h:0000h \'e4\'ee 0B800h:0FFFFh. \'cf\'ee\'e4 \'ea\'e0\'e6\'e4\'fb\'e9 \'f1\'e8\'ec\'e2\'ee\'eb 2-\'e0 \'e1\'e0\'e9\'f2\'e0: \'ec\'eb\'e0\'e4\'f8\'e8\'e9 ASCII-\'ea\'ee\'e4, \'f1\'f2\'e0\'f0\'f8\'e8\'e9 \'f1\'ee\'f1\'f2\'ee\'e8\'f2 \'e8\'e7 2-\'f5 \'f7\'e0\'f1\'f2\'e5\'e9: \'f6\'e2\'e5\'f2 \'f4\'ee\'ed\'e0 \'e8 \'f1\'e0\'ec\'ee\'e3\'ee \'f1\'e8\'ec\'e2\'ee\'eb\'e0. \'c2\'f1\'e5\'e3\'ee \'f6\'e2\'e5\'f2\'ee\'e2 16.\par
+\'d1\'f2\'f0\'ee\'ea\'e0 \'f1\'ee\'f1\'f2\'ee\'e8\'f2 \'e8\'e7 80 \'f1\'e8\'ec\'e2\'ee\'eb\'ee\'e2. \'d2.\'e5. \'e5\'f1\'eb\'e8 \'e7\'e0\'ef\'e8\'f1\'e0\'f2\'fc \'e2 \'ff\'f7\'e5\'e9\'ea\'f3 +81 \'f7\'f2\'ee-\'f2\'ee, \'f2\'ee \'fd\'f2\'ee \'e1\'f3\'e4\'e5\'f2 \'ef\'e5\'f0\'e2\'fb\'e9 \'f1\'e8\'ec\'e2\'ee\'eb \'ed\'e0 \'e2\'f2\'ee\'f0\'ee\'e9 \'f1\'f2\'f0\'ee\'ea\'e5.\par
+\tab .model\tab tiny\par
+\tab .code\par
+\tab org\tab 100h\par
+start:\tab mov\tab ax,0003h\tab ; \'ef\'e5\'f0\'e5\'f5\'ee\'e4 \'e2 \'e2\'e8\'e4\'e5\'ee\'f0\'e5\'e6\'e8\'ec 3 (\'ee\'f2\'f7\'e8\'f1\'f2\'ea\'e0 \'fd\'ea\'f0\'e0\'ed\'e0)\par
+\tab int\tab 10h\par
+\tab cld\tab\tab\tab ; \'ee\'e1\'f0\'e0\'e1\'ee\'f2\'ea\'e0 \'f1\'f2\'f0\'ee\'ea \'e2 \'ef\'f0\'ff\'ec\'ee\'ec \'ed\'e0\'ef\'f0\'e0\'e2\'eb\'e5\'ed\'e8\'e8\par
+\tab mov\tab ax,0B800h\tab ; \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'ed\'fb\'e9 \'f0\'e5\'e3\'e8\'f1\'f2\'f0 \'e2\'e8\'e4\'e5\'ee\'ef\'ff\'ec\'ff\'f2\'e8\par
+\tab mov\tab es,ax\par
+\tab mov\tab di,0\tab\tab ; \'e0\'e4\'f0\'e5\'f1 \'ed\'e0\'f7\'e0\'eb\'e0 \'e2\'e8\'e4\'e5\'ee\'ef\'ff\'ec\'ff\'f2\'e8 ES:DI\par
+\tab mov\tab si, offset txt\tab ; \'e2 SI \'ed\'e0\'f7\'e0\'eb\'ee \'f1\'f2\'f0\'ee\'ea\'e8 txt\par
+\tab mov\tab cx, txtlen\tab ; \'e2 CX \'e4\'eb\'e8\'ed\'e0 \'f1\'f2\'f0\'ee\'ea\'e8 txt\par
+\tab cld\par
+\tab rep movsb\tab\tab ; \'ea\'ee\'ef\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'e5 \'f1\'e8\'ec\'e2\'ee\'eb\'ee\'e2 \'f1\'f2\'f0\'ee\'ea\'e8 \'e2 \'e2\'e8\'e4\'e5\'ee\'ef\'ff\'ec\'ff\'f2\'fc\par
+\tab int\tab 20h\tab\tab ; \'e2\'fb\'f5\'ee\'e4 \'e8\'e7 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'fb\par
+txt\tab db\tab 'I', 34h, 'v', E9h, 'a', C5h, 'n', 5Dh\par
+txtlen = $ - txt\par
+\tab end\tab start\par
+\par
+\ul\'d1\'ea\'e0\'ed-\'ea\'ee\'e4\'fb \'ea\'eb\'e0\'e2\'e8\'e0\'f2\'f3\'f0\'fb\ulnone :\par
+\'ca\'e0\'e6\'e4\'ee\'e9 \'ea\'ed\'ee\'ef\'ea\'e5 \'ed\'e0 \'ea\'eb\'e0\'e2\'e8\'e0\'f2\'f3\'f0\'e5 \'f1\'ee\'ee\'f2\'e2\'e5\'f2\'f1\'f2\'e2\'f3\'e5\'f2 \'f1\'e2\'ee\'e9 \'f1\'ea\'e0\'ed-\'ea\'ee\'e4. \'cd\'e0\'ef\'f0\'e8\'ec\'e5\'f0, \'f1\'ea\'e0\'ed-\'ea\'ee\'e4 11h=00010001b \'e4\'eb\'ff \'e0\'ed\'e3\'eb\'e8\'e9\'f1\'ea\'ee\'e9 \'ea\'eb\'e0\'e2\'e8\'e0\'f2\'f3\'f0\'fb = W, \'e4\'eb\'ff \'f0\'f3\'f1\'f1\'ea\'ee\'e9 = \'d6, \'e4\'eb\'ff \'f4\'f0\'e0\'ed\'f6\'f3\'e7\'ea\'ee\'e9 = Z. \'c2 \'ef\'f0\'e8\'ec\'e5\'f0\'e5, \'f1\'ea\'e0\'ed-\'ea\'ee\'e4 \'ed\'e0\'e6\'e0\'f2\'e8\'ff \'fd\'f2\'ee\'e9 \'ea\'eb\'e0\'e2\'e8\'f8\'e8 \'e1\'f3\'e4\'e5\'f2 \b 1\b0 0010001, \'e0 \'f1\'ea\'e0\'ed-\'ea\'ee\'e4 \'ee\'f2\'ef\'f3\'f1\'ea\'e0\'ed\'e8\'ff \b 0\b0 0010001. \'c4\'eb\'e8\'ed\'e0 \'f1\'ea\'e0\'ed-\'ea\'ee\'e4\'e0 \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc \'ee\'f2 1 \'e4\'ee 6 \'e1\'e0\'e9\'f2, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'f2\'f1\'ff \'f7\'f2\'e5\'ed\'e8\'e5\'ec \'ef\'ee\'f0\'f2\'e0 60h. \'c2\'f1\'e5 \'f1\'e5\'f0\'fb\'e5 \'ea\'eb\'e0\'e2\'e8\'f8\'e8 \'e8\'ec\'e5\'fe\'f2 \'ef\'f0\'e5\'f4\'e8\'ea\'f1 E0h \'e8 <Ins> \'e8\'ec\'e5\'e5\'f2 \'f1\'ea\'e0\'ed-\'ea\'ee\'e4: E0h 52h\par
+\par
+\ul\'cf\'f0\'e5\'f0\'fb\'e2\'e0\'ed\'e8\'ff\ulnone :\par
+\'cf\'f0\'e5\'f0\'fb\'e2\'e0\'ed\'e8\'ff \'f0\'e0\'f1\'ef\'ee\'eb\'ee\'e6\'e5\'ed\'fb \'f1 00000h \'e4\'ee 00400h. \'ca\'e0\'e6\'e4\'ee\'e5 \'ef\'f0\'e5\'f0\'fb\'e2\'e0\'ed\'e8\'e5 - \'fd\'f2\'ee 4 \'e1\'e0\'e9\'f2\'e0: \'ed\'ee\'ec\'e5\'f0 \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e0 \'ef\'e0\'ec\'ff\'f2\'e8 \'e8 \'f1\'ec\'e5\'f9\'e5\'ed\'e8\'e5.\par
+\'d2.\'e5. \'ef\'f0\'e8 \'e2\'fb\'e7\'ee\'e2\'e5 int 21h \'f1\'ea\'ee\'ef\'e8\'f0\'f3\'fe\'f2\'f1\'ff \'e2 \'f1\'f2\'e5\'ea flag, IP \'e8 CS, \'ef\'ee\'f2\'ee\'ec \'e4\'e0\'ed\'ed\'fb\'e5 \'ef\'ee \'e0\'e4\'f0\'e5\'f1\'f3 4*21h = 00084h \'f1\'ea\'ee\'ef\'e8\'f0\'f3\'e5\'f2\'f1\'ff \'e2 CS \'e8 IP \'e8 \'ef\'ee\'e5\'f5\'e0\'eb\'ee. \'cf\'ee\'f1\'eb\'e5 \'f2\'ee\'e3\'ee \'ea\'e0\'ea \'ef\'f0\'e5\'f0\'fb\'e2\'e0\'ed\'e8\'e5 \'e7\'e0\'ea\'ee\'ed\'f7\'e8\'eb\'ee \'f0\'e0\'e1\'ee\'f2\'f3, \'e2\'fb\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff \'ea\'ee\'ec\'e0\'ed\'e4\'e0 iret.\par
+\par
+NMI (\cf2 non-maskable interrupt) \'e5\'f1\'f2\'fc \'f2\'e0\'ea\'e0\'ff \'ed\'ee\'e6\'ea\'e0 \'f3 CPU. \'dd\'f2\'ee \'ef\'f0\'e5\'f0\'fb\'e2\'e0\'ed\'e8\'e5 \'ed\'e5\'eb\'fc\'e7\'ff \'ee\'f2\'ea\'eb\'fe\'f7\'e8\'f2\'fc \'e2 \'ee\'f2\'eb\'e8\'f7\'e8\'e8 \'ee\'f2 INTR. NMI = int 02h.\cf0\par
+\cf2 INTR (interrupt received) = maskable interrupt \'f2\'ee\'e6\'e5 \'ed\'ee\'e6\'ea\'e0 \'f3 CPU. \'cd\'ee \'f3\'e6\'e5 \'f1 \'ef\'ee\'ec\'ee\'f9\'fc\'fe \'f0\'e5\'e3\'e8\'f1\'f2\'f0\'ee\'e2 \'ec\'ee\'e6\'ed\'ee \'e2\'ea\'eb\'fe\'f7\'e0\'f2\'fc/\'e2\'fb\'ea\'eb\'fe\'f7\'e0\'f2\'fc. \'c8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e4\'eb\'ff I/O.\cf0\par
+\par
+\ul\'cf\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'e5 \'ef\'ee\'e4 Windows\ulnone :\par
+Windows \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2 \'f2\'e8\'ef \'ef\'e0\'ec\'ff\'f2\'e8 \'f2\'ee\'eb\'fc\'ea\'ee flat, \'ed\'ee \'e2\'f1\'b8 \'f0\'e0\'e2\'ed\'ee \'ed\'e0\'e4\'ee \'ee\'e1\'ee\'e7\'ed\'e0\'f7\'e0\'f2\'fc \'f1\'e5\'e3\'ec\'e5\'ed\'f2 .code \'e8 .data. \'ce\'e1\'fb\'f7\'ed\'ee .stack \'ed\'e5 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff.\par
+\'cf\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'e5 \'ed\'e0 \'e0\'f1\'f1\'e5\'ec\'e1\'eb\'e5\'f0\'e5 \'ef\'ee\'e4  Windows \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2 API. \'c4\'eb\'ff \'e2\'fb\'e7\'ee\'e2\'e0 \'f4\'f3\'ed\'ea\'f6\'e8\'e8 int SomeFunc(a,b,c,d) \'e8\'e7 API \'ed\'e0\'e4\'ee \'ed\'e0\'ef\'e8\'f1\'e0\'f2\'fc:\par
+call SomeFunc\par
+\'c2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'ec\'ee\'e5 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 \'e7\'e0\'ef\'e8\'f1\'fb\'e2\'e0\'e5\'f2\'f1\'ff \'e2 EAX.\par
+\'cf\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'fb \'e2 \'f4\'f3\'ed\'ea\'f6\'e8\'fe \'ef\'e5\'f0\'e5\'e4\'e0\'fe\'f2\'f1\'ff \'f2\'ee\'eb\'fc\'ea\'ee \'f7\'e5\'f0\'e5\'e7 \'f1\'f2\'e5\'ea, \'ef\'f0\'e8\'f7\'b8\'ec \'e2\'e0\'e6\'e5\'ed \'ef\'ee\'f0\'ff\'e4\'ee\'ea !\par
+push d\par
+push c\par
+push b\par
+push a\par
+call SomeFunc\par
+\'d4\'f3\'ed\'ea\'f6\'e8\'e8 API \'f1\'e0\'ec\'ee\'f1\'f2\'ee\'ff\'f2\'e0\'eb\'fc\'ed\'ee \'ee\'f7\'e8\'f1\'f2\'ff\'f2 \'f1\'f2\'e5\'ea.\par
+\par
+\ul\'cf\'e5\'f0\'e2\'e0\'ff \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e0 \'e4\'eb\'ff Windows\ulnone :\par
+\'c2\'fb\'e4\'e0\'f2\'fc \'ee\'ea\'ee\'f8\'ea\'ee \'f1 \'e4\'e2\'f3\'ec\'ff \'ea\'ed\'ee\'ef\'ea\'e0\'ec\'e8 OK \'e8 \'ce\'f2\'ec\'e5\'ed\'e0, \'e2 \'e7\'e0\'e3\'ee\'eb\'ee\'e2\'ea\'e5: "Hello, World", \'e2\'ed\'f3\'f2\'f0\'e8 \'ee\'ea\'ed\'e0 "\'cf\'e5\'f0\'e2\'e0\'ff \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e0 \'ef\'ee\'e4 Windows". \'c4\'eb\'ff \'fd\'f2\'ee\'e3\'ee \'e1\'f3\'e4\'e5\'ec \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc API-\'f4\'f3\'ed\'ea\'f6\'e8\'fe:\par
+int MessageBox (HWND hWnd, LPCTSTR lpText, LPCTSTR lpCaption, UINT uType);\par
+hWind - handle \'f0\'ee\'e4\'e8\'f2\'e5\'eb\'fc\'f1\'ea\'ee\'e3\'ee \'ee\'ea\'ed\'e0\par
+lpText - \'f2\'e5\'ea\'f1\'f2, \'ee\'f2\'ee\'e1\'f0\'e0\'e6\'e0\'e5\'ec\'fb\'e9 \'e2\'ed\'f3\'f2\'f0\'e8 \'ee\'ea\'ed\'e0\par
+lpCaption - \'f2\'e5\'ea\'f1\'f2, \'e2 \'e7\'e0\'e3\'ee\'eb\'ee\'e2\'ea\'e5\par
+uType - \'f2\'e8\'ef \'ee\'ea\'ed\'e0 \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'e9: \'ea\'ed\'ee\'ef\'ea\'e8, \'e8\'ea\'ee\'ed\'ea\'e8 \'e8 \'f2.\'e4. \'cc\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc \'ea\'ee\'ec\'e1\'e8\'ed\'e0\'f6\'e8\'e5\'e9 \'f4\'eb\'e0\'e3\'ee\'e2 \'e8\'e7 \'f1\'eb\'e5\'e4\'f3\'fe\'f9\'e8\'f5 \'f2\'e8\'ef\'ee\'e2:\par
+\tab MB_ABORTRETRYIGNORE - \'e2 \'ee\'ea\'ed\'e5 \'f2\'f0\'e8 \'ea\'ed\'ee\'ef\'ea\'e8 Abort, Retry \'e8 Ignore\par
+\tab MB_OKCANCEL - \'e4\'e2\'e5 \'ea\'ed\'ee\'ef\'ea\'e8 OK \'e8 Cancel\par
+\tab MB_YESNO - \'e2 \'ee\'ea\'ed\'e5 \'e1\'f3\'e4\'f3\'f2 Yes \'e8 No\par
+\tab\'e8 \'f2.\'e4.\par
+\'ca\'e0\'e6\'e4\'fb\'e9 \'f4\'eb\'e0\'e3 - \'fd\'f2\'ee \'f7\'e8\'f1\'eb\'ee. \'d7\'e8\'f1\'eb\'ee\'e2\'fb\'e5 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'ff \'ec\'ee\'e6\'ed\'ee \'f3\'e7\'ed\'e0\'f2\'fc \'e2 .h \'f4\'e0\'e9\'eb\'e0\'f5, \'e2 \'e4\'e0\'ed\'ed\'ee\'ec \'f1\'eb\'f3\'f7\'e0\'e5 \'e2 winuser.h\par
+\tab #define MB_ABORTRETRYIGNORE\tab 0x00000002L\par
+\tab #define MB_OKCANCEL\tab\tab 0x00000001L\par
+\tab #define MB_YESNO\tab\tab\tab 0x00000004L\par
+\'c2 Masm32 \'e5\'f1\'f2\'fc \'f4\'e0\'e9\'eb - \'e0\'ed\'e0\'eb\'ee\'e3 windows \'f5\'e5\'e4\'e5\'f0\'ee\'e2 - windows.inc, \'f1 \'ea\'ee\'f2\'ee\'f0\'fb\'ec \'ed\'e0\'e4\'ee \'f1\'e4\'e5\'eb\'e0\'f2\'fc include, \'e2 \'ea\'ee\'f2\'ee\'f0\'ee\'ec \'ef\'f0\'ee\'ef\'e8\'f1\'e0\'ed\'fb \'f2\'e5\'e6\'e5 \'f4\'eb\'e0\'e3\'e8 \'f2\'ee\'eb\'fc\'ea\'ee \'e2 \'f1\'e8\'ed\'f2\'e0\'ea\'f1\'e8\'f1\'e5 \'e0\'f1\'f1\'e5\'ec\'e1\'eb\'e5\'f0\'e0, \'f2.\'e5\par
+\tab MB_OKCANCEL\tab equ\tab 1\par
+API-\'f4\'f3\'ed\'ea\'f6\'e8\'e8 \'f0\'e0\'e1\'ee\'f2\'e0\'fe\'f9\'e8\'e5 \'f1\'ee \'f1\'f2\'f0\'ee\'ea\'e0\'ec\'e8 \'f1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'fe\'f2 \'e2 \'e4\'e2\'f3\'f5 \'e2\'e5\'f0\'f1\'e8\'ff\'f5 \'e4\'eb\'ff ANSI \'e8 Unicode. \'c4\'eb\'ff ANSI \'f4\'f3\'ed\'ea\'f6\'e8\'ff MessageBox \'e1\'f3\'e4\'e5\'f2 \'ed\'e0\'e7\'fb\'e2\'e0\'f2\'fc\'f1\'ff MessageBoxA, \'e0 \'e4\'eb\'ff Unicode - MessageBoxW\par
+\'c4\'eb\'ff ANSI \'e1\'f3\'e4\'e5\'ec \'ef\'e5\'f0\'e5\'e4\'e0\'e2\'e0\'f2\'fc \'f1\'f2\'f0\'ee\'ea\'f3 str db "Ivan",0; \'e4\'eb\'ff Unicode - str dw 'I', 'v', 'a', 'n', 0\par
+\'c2 Windows \'f1\'f2\'f0\'ee\'ea\'e8 \'e7\'e0\'ea\'e0\'ed\'f7\'e8\'e2\'e0\'fe\'f2\'f1\'ff 0, \'e0 \'ed\'e5 \'ea\'e0\'ea \'e2 MS-DOS - $.\par
+\'ca\'e0\'ea \'e8 \'e2 \'d1\'e8 \'ed\'e0\'e4\'ee \'e7\'e0\'e4\'e0\'f2\'fc \'ef\'f0\'ee\'f2\'ee\'f2\'e8\'ef \'f4\'f3\'ed\'ea\'f6\'e8\'e8 MessageBoxA\par
+MB_OKCANCEL\tab equ\tab 1\par
+\tab\tab .386p\par
+\tab\tab .model\tab flat, stdcall\par
+MessageBoxA\tab\b PROTO\b0  :DWORD, :DWORD, :DWORD, :DWORD\par
+\tab\tab .data\par
+hello_mess\tab db\tab "\'cf\'e5\'f0\'e2\'e0\'ff \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e0 \'ef\'ee\'e4 Windows", 0\par
+hello_title\tab db\tab "Hello, World!", 0\par
+\tab\tab .code\par
+start:\tab\tab push\tab MB_OKCANCEL\par
+\tab\tab push\tab offset hello_title\par
+\tab\tab push\tab offset hello_mess\par
+\tab\tab push\tab 0\par
+\tab\tab call\tab MessageBoxA\par
+\tab\tab end\tab start\par
+\'c4\'eb\'ff \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'ed\'e8\'ff MessageBoxA \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e8\'f2\'fc \'f1\'ee\'ee\'f2\'e2\'e5\'f2\'f1\'f2\'e2\'f3\'fe\'f9\'f3\'fe \'e1\'e8\'e1\'eb\'e8\'ee\'f2\'e5\'ea\'f3 Windows. \'c2 MSDN Library \'e2 \'ee\'ef\'e8\'f1\'e0\'ed\'e8\'e8 \'f4\'f3\'ed\'ea\'f6\'e8\'e8 \'e2\'fb\'e8\'e4\'e8\'ec: {\field{\*\fldinst{HYPERLINK "https://msdn.microsoft.com/en-us/library/windows/desktop/ms645505%28v=vs.85%29.aspx"}}{\fldrslt{\ul\cf1 https://msdn.microsoft.com/en-us/library/windows/desktop/ms645505%28v=vs.85%29.aspx}}}\f0\fs22  \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'e1\'e8\'e1\'eb\'e8\'ee\'f2\'e5\'ea\'f3 user32.lib\par
+\b includelib\b0  \\masm32\\lib\\user32.lib\par
+\'cf\'f0\'ee\'f2\'ee\'f2\'e8\'ef\'fb \'f4\'f3\'ed\'ea\'f6\'e8\'e8 MessageBoxA \'ee\'ef\'e8\'f1\'e0\'ed \'e2 \'f4\'e0\'e9\'eb\'e5 \'e2 \'f2\'e0\'ea\'ee\'ec \'e6\'e5 \'f4\'e0\'e9\'eb\'e5 user32.\ul inc\ulnone  \'c2\'ec\'e5\'f1\'f2\'ee MessageBoxA PROTO \'ec\'ee\'e6\'ed\'ee \'e4\'ee\'e1\'e0\'e2\'e8\'f2\'fc \'e2 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'f3:\par
+\b include \b0\\masm32\\include\\user32.inc\par
+\'e2 \'f4\'e0\'e9\'eb\'e5 windows.inc \'ee\'ef\'e8\'f1\'e0\'ed\'fb \'e2\'f1\'e5 \'e8\'e4\'e5\'ed\'f2\'e8\'f4\'e8\'ea\'e0\'f2\'ee\'f0\'fb \'e8 \'f4\'eb\'e0\'e3\'e8, \'f2\'e8\'ef\'e0 MB_OKCANCEL = 0x00000001L\par
+\'c2\'f1\'e5 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'fb \'ed\'e0 Windows \'e7\'e0\'ea\'e0\'ed\'f7\'e8\'e2\'e0\'fe\'f2\'f1\'ff \'e2\'fb\'e7\'ee\'e2\'ee\'ec \par
+void winapi ExitProcess(UINT uExitCode), \'e3\'e4\'e5 \'e2 \'ea\'e0\'f7\'e5\'f1\'f2\'e2\'e5 \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'e0 \'ec\'fb \'e4\'ee\'eb\'e6\'ed\'fb \'ef\'e5\'f0\'e5\'e4\'e0\'f2\'fc 0, \'f2.\'e5. \'ed\'e0\'f8\'e0 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e0 \'f0\'e5\'e0\'eb\'fc\'ed\'ee \'e4\'ee\'eb\'e6\'ed\'e0 \'f1\'ee\'f1\'f2\'ee\'ff\'f2\'fc:\par
+\tab .386\'d0\par
+\tab .model flat, stdcall\par
+\tab option\tab casemap:none\par
+include\tab\\masm32\\include\\windows.inc\par
+include\tab\\masm32\\include\\user32.inc\par
+include \\masm32\\include\\kernel32.inc\par
+includelib \\masm32\\lib\\user32.lib\par
+includelib \\masm32\\lib\\kernel32.lib\par
+\tab .data\par
+\tab .........................\par
+\tab push\tab 0\par
+\tab call\tab MessageBoxA\par
+\tab push\tab 0\par
+\tab call\tab ExitProcess\par
+\tab end\tab start\par
+\'cf\'ee\'f1\'eb\'e5 \'ea\'ee\'ec\'ef\'e8\'eb\'e8\'f0\'f3\'e5\'ec: ml /c /coff /Cp hello.asm, \'e3\'e4\'e5\par
+/c - \'ef\'f0\'ee\'e8\'e7\'e2\'e5\'f1\'f2\'e8 \'f2\'ee\'eb\'fc\'ea\'ee \'ea\'ee\'ec\'ef\'e8\'eb\'ff\'f6\'e8\'fe\par
+/coff - \'f1\'ee\'e7\'e4\'e0\'f2\'fc .obj \'e2 \'f4\'ee\'f0\'ec\'e0\'f2\'e5 COFF (Common Object File Format) - \'ee\'e1\'ff\'e7\'e0\'f2\'e5\'eb\'fc\'ed\'fb\'e9 \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\par
+/Cp - \'f1\'ee\'f5\'f0\'e0\'ed\'e8\'f2\'fc \'f0\'e5\'e3\'e8\'f1\'f2\'f0 \'e8\'ec\'b8\'ed, \'e7\'e0\'e4\'e0\'ed\'ed\'fb\'e9 \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'e5\'ec, \'f7\'f2\'ee \'e0\'ed\'e0\'eb\'ee\'e3\'e8\'f7\'ed\'ee \'f1\'f2\'f0\'ee\'ea\'e5 \'e2 \'f2\'e5\'eb\'e5 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'fb: option casemap:none\par
+\'cf\'ee\'f1\'eb\'e5 \'ea\'ee\'ec\'ef\'e8\'eb\'ff\'f6\'e8\'e8 \'e8\'e7 hello.asm \'ef\'ee\'eb\'f3\'f7\'e8\'ec hello.obj\par
+\'c4\'e0\'eb\'e5\'e5 \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'e5\'ec \'eb\'e8\'ed\'ea\'ee\'e2\'ea\'f3: link.exe /SUBSYSTEM:WINDOWS /LIBPATH:c:\\masm32\\lib hello.obj, \'e3\'e4\'e5\par
+/SUBSYSTEM:WINDOWS - \'ef\'f0\'e8\'eb\'ee\'e6\'e5\'ed\'e8\'e5 \'ee\'ea\'ee\'ed\'ed\'ee\'e5. \'c1\'fb\'e2\'e0\'e5\'f2 \'e5\'f9\'b8 /SUBSYSTEM:CONSOLE\par
+/LIBPATH: \'f3\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2 \'ef\'f3\'f2\'fc \'ea \'e1\'e8\'e1\'eb\'e8\'ee\'f2\'e5\'ea\'e5 \'e8\'ec\'ef\'ee\'f0\'f2\'e0\par
+\par
+\ul\'c4\'e8\'f0\'e5\'ea\'f2\'e8\'e2\'e0 INVOKE\ulnone :\par
+\'c2\'ec\'e5\'f1\'f2\'ee:\par
+push\tab MB_OKCANCEL\par
+push\tab offset hello_title\par
+push\tab offset hello_mess\par
+push\tab 0\par
+call\tab MessageBoxA\par
+\'cc\'ee\'e6\'ed\'ee \'ed\'e0\'ef\'e8\'f1\'e0\'f2\'fc: invoke MessageBoxA, 0, addr hello_mess, addr hello_title, MB_OKCANCEL\par
+\'c2 invoke \'e2\'ec\'e5\'f1\'f2\'ee offset \'ec\'ee\'e6\'ed\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc addr.\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\ul Hello World \'f7\'e5\'f0\'e5\'e7 \'ef\'f0\'e5\'f0\'fb\'e2\'e0\'ed\'e8\'ff BIOS\ulnone .\par
+\par
+\'d3\'f1\'f2\'e0\'ed\'e0\'e2\'eb\'e8\'e2\'e0\'e5\'ec nasm (apt install nasm). \'d5\'ee\'f2\'ff \'f0\'e5\'e0\'eb\'fc\'ed\'ee \'e2 \'ef\'e0\'ea\'e5\'f2\'e5 \'f4\'e0\'e9\'eb\'fb: nasm + \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee \'ea\'ee\'ed\'e2\'e5\'f0\'f2\'e5\'f0\'ee\'e2 \'e8\'e7 \'ee\'e4\'ed\'ee\'e3\'ee \'f4\'ee\'f0\'ec\'e0\'f2\'e0 \'e2 \'e4\'f0\'f3\'e3\'ee\'e9 + man.\par
+\'cf\'e8\'f8\'e5\'ec \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'f3 \'ed\'e0 Intel assembler.\par
+\par
+\'d4\'e0\'e9\'eb boot.s\par
+\par
+org 0x7C00\tab\tab\tab ; BIOS \'e7\'e0\'e3\'f0\'f3\'e6\'e0\'e5\'f2 \'ed\'e0\'f8\'f3 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'f3 \'ed\'e0 \'fd\'f2\'ee\'f2 \'e0\'e4\'f0\'e5\'f1\par
+bits 16\tab\tab\tab ; \'d2\'f3\'f2 \'e1\'f3\'e4\'e5\'ec \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc \'e2 16-\'e1\'e8\'f2\'ed\'ee\'ec mode - \'e2\'f0\'ee\'e4\'e5 \'ea\'e0\'ea \'ed\'e5 \'ee\'e1\'ff\'e7\'e0\'f2\'e5\'eb\'fc\'ed\'fb\'e9 \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\par
+\par
+start:\tab cli\tab\tab\tab ; \'ee\'f2\'ea\'eb\'fe\'f7\'e0\'e5\'ec \'ef\'f0\'e5\'f0\'fb\'e2\'e0\'ed\'e8\'ff - \'ed\'e5 \'ee\'e1\'ff\'e7\'e0\'f2\'e5\'eb\'fc\'ed\'e0\'ff \'ea\'ee\'ec\'e0\'ed\'e4\'e0\par
+\tab\tab mov si, msg\tab\tab ; SI \'e1\'f3\'e4\'e5\'f2 \'f3\'ea\'e0\'e7\'fb\'e2\'e0\'f2\'fc \'ed\'e0 \'e1\'eb\'ee\'ea msg\par
+\tab\tab mov ah, 0x0E\tab ; \'ef\'f0\'e5\'f0\'fb\'e2\'e0\'ed\'e8\'e5 \'e2 BIOS, \'ef\'e5\'f7\'e0\'f2\'e0\'fe\'f9\'e5\'e5 \'ef\'ee \'ee\'e4\'ed\'ee\'e9 \'e1\'f3\'ea\'e2\'e5 - \'fd\'f2\'ee INT 10h \'f1 AH = 0Eh \'e8 AL = ASCII \'ea\'ee\'e4\'ee\'ec \'e1\'f3\'ea\'e2\'fb, \'ea\'ee\'f2\'ee\'f0\'f3\'fe \'f5\'ee\'f2\'e8\'ec \'ed\'e0\'ef\'e5\'f7\'e0\'f2\'e0\'f2\'fc\par
+.print\tab lodsb\tab\tab\tab ; \'e2 AL \'e7\'e0\'e3\'f0\'f3\'e6\'e0\'e5\'ec byte, \'ed\'e0 \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'f3\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2 SI \'e8 \'e4\'e5\'eb\'e0\'e5\'ec increments SI\par
+\tab\tab or al, al\tab\tab ; \'ef\'f0\'ee\'e2\'e5\'f0\'ff\'e5\'ec, \'f7\'f2\'ee AL \'ed\'e5 = 0\par
+\tab\tab jz .done\tab\tab ; \'e5\'f1\'eb\'e8 \'ef\'ee\'f1\'eb\'e5 \'ef\'f0\'ee\'e2\'e5\'f0\'ea\'e8 \'e2\'fb\'f1\'f2\'e0\'e2\'eb\'e5\'ed flag Z = ZERO, \'f2\'ee \'e2\'fb\'f5\'ee\'e4\'e8\'ec \'e8\'e7 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'fb\par
+\tab\tab int 0x10\tab\tab ; \'e2\'fb\'e7\'fb\'e2\'e0\'e5\'ec BIOS \'ef\'f0\'e5\'f0\'fb\'e2\'e0\'ed\'e8\'e5\par
+\tab\tab jmp .print\tab\tab ; \'f3\'f5\'ee\'e4\'e8\'ec \'ed\'e0 \'f1\'eb\'e5\'e4\'f3\'fe\'f9\'e8\'e9 \'ea\'f0\'f3\'e3\par
+.done\tab\tab hlt\tab\tab\tab ; \'ea\'ee\'ec\'e0\'ed\'e4\'e0 \'e4\'eb\'ff CPU \'f7\'f2\'ee\'e1\'fb halt the execution\par
+\par
+msg:\tab\tab\tab\tab db "Hello World"\par
+times 510 \endash  ($ \endash  $$)\tab db 0 ; \'cd\'e0\'f8\'e0 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e0 \'e4\'ee\'eb\'e6\'ed\'e0 \'e1\'fb\'f2\'fc \'f0\'ee\'e2\'ed\'ee 512 \'e1\'e0\'e9\'f2 \'e8 \'e2\'ea\'ee\'ed\'f6\'e5 0xAA55. \'dd\'f2\'e0 \'ea\'ee\'ed\'f1\'f2\'f0\'f3\'ea\'f6\'e8\'ff \'e7\'e0\'e1\'e8\'e2\'e0\'e5\'f2 \'ef\'f3\'f1\'f2\'ee\'e5 \'ec\'e5\'f1\'f2\'ee \'ed\'ee\'eb\'ff\'ec\'e8.\par
+\tab\tab\tab\tab dw 0xAA55\par
+\par
+# nasm boot.s -f bin -o boot.img\tab\'ea\'ee\'ec\'ef\'e8\'eb\'e8\'f0\'f3\'e5\'ec\par
+# qemu-system-i386 boot.img\tab\tab\'ef\'ee\'e4\'f1\'ee\'e2\'fb\'e2\'e0\'e5\'ec \'e2 QEMU \'ed\'e0\'f8 image \'e2 \'ea\'e0\'f7\'e5\'f1\'f2\'e2\'e5 HDD\par
+\par
+\'d2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5 \'ed\'e0 \'e0\'f1\'f1\'e5\'ec\'e1\'eb\'e5\'f0\'e5 AT&T\par
+\par
+\'d4\'e0\'e9\'eb boot.s\par
+\par
+.code16\par
+.global start\par
+\par
+start:\tab cli\par
+\tab\tab mov $msg, %si\par
+\tab\tab mov $0x0e, %ah\par
+print:\tab lodsb\par
+\tab\tab or %al, %al\par
+\tab\tab jz done\par
+\tab\tab int $0x10\par
+\tab\tab jmp print\par
+done:\tab\tab hlt\par
+\par
+msg:\tab\tab .string "Hello world"\par
+\tab\tab .fill 510 - (.-start), 1, 0\par
+\tab\tab .word 0xAA55\par
+\par
+# as -o boot.o boot.s\par
+# ld -o boot.img --oformat binary -e start -Ttext 0x7C00 boot.o\par
+# qemu-system-i386 boot.img\par
+\par
+\par
+\par
+\ul\'d0\'e0\'e1\'ee\'f2\'e0 \'f1 Serial \'ef\'ee\'f0\'f2\'ee\'ec\ulnone .\par
+{\field{\*\fldinst{HYPERLINK "https://www.zeepedia.com/read.php?serial_port_programming_serial_communication_assembly_language_programming&b=5&c=14"}}{\fldrslt{\ul\cf1 https://www.zeepedia.com/read.php?serial_port_programming_serial_communication_assembly_language_programming&b=5&c=14}}}\f0\fs22\par
+\par
+\b INT 14 - INITIALIZE PORT\b0\par
+AH = 00h\par
+AL = \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'fb \'ef\'ee\'f0\'f2\'e0 8 \'e1\'e8\'f2:\par
+\tab 0-1\tab\'f1\'ea\'ee\'eb\'fc\'ea\'ee \'ef\'e5\'f0\'e5\'e4\'e0\'b8\'ec data bits. 00 \cf2\u8594? 5, 01 \u8594? 6, 10 \u8594? 7, 11 \u8594? 8\cf0\par
+\cf2\tab 2\tab\'f1\'ea\'ee\'eb\'fc\'ea\'ee stop bit-\'ee\'e2. 0 \u8594? 1, 1 \u8594? 2\cf0\par
+\cf2\tab 3-4\tab parity \'f7\'b8\'f2\'ed\'ee\'f1\'f2\'fc. 00 \u8594? N, 01 \u8594? N, 10 \u8594? O, 11 \u8594? E\cf0\par
+\cf2\tab 5-7\tab baud rate\tab 000 \u8594? 110 \'e1\'e8\'f2/\'f1, ... , 110 \u8594? 4800 \'e1\'e8\'f2/\'f1, 111 \u8594? 9600 \'e1\'e8\'f2/\'f1\cf0\par
+DX = \'ed\'ee\'ec\'e5\'f0 \'ef\'ee\'f0\'f2\'e0 (00h-03h) \'f7\'e5\'f0\'e5\'e7 BIOS \'ef\'f0\'e5\'f0\'fb\'e2\'e0\'ed\'e8\'ff \'ec\'ee\'e6\'ed\'ee \'f3\'ef\'f0\'e0\'e2\'eb\'ff\'f2\'fc \'f2\'ee\'eb\'fc\'ea\'ee 4-\'ff COM \'ef\'ee\'f0\'f2\'e0\'ec\'e8\par
+\par
+Return:\par
+AH = line status\par
+AL = modem status\par
+\par
+\b INT 14 - WRITE CHARACTER TO PORT\b0\par
+AH = 01h\par
+AL = character to write\par
+DX = \'ed\'ee\'ec\'e5\'f0 \'ef\'ee\'f0\'f2\'e0 (00h-03h)\par
+\par
+Return:\par
+AH bit 7 = error flag\par
+AH bit 0-6 = port status\par
+\par
+\b INT 14 - READ CHARACTER FROM PORT\b0\par
+AH = 02h\par
+DX = \'ed\'ee\'ec\'e5\'f0 \'ef\'ee\'f0\'f2\'e0 (00h-03h)\par
+\par
+Return:\par
+AH = line status\par
+AL = received character \'e5\'f1\'eb\'e8 AH bit 7 = 0, \'f2.\'e5. error flag = \'e2\'f1\'b8 ok\par
+\par
+\b INT 14 - GET PORT STATUS\b0\par
+AH = 03h\par
+DX = \'ed\'ee\'ec\'e5\'f0 \'ef\'ee\'f0\'f2\'e0 (00h-03h)\par
+\par
+Return:\par
+AH = line status\par
+AL = modem status\par
+\par
+\'d2\'e0\'ea\'e6\'e5 COM1 \'e4\'ee\'f1\'f2\'f3\'ef\'e5\'ed \'f7\'e5\'f0\'e5\'e7 \'ef\'ee\'f0\'f2\'fb 3F8-3FF, COM2 - 2F8-2FF\par
+\par
+{\field{\*\fldinst{HYPERLINK "https://fadeevab.com/how-to-setup-qemu-output-to-console-and-automate-using-shell-script/"}}{\fldrslt{\ul\cf1 https://fadeevab.com/how-to-setup-qemu-output-to-console-and-automate-using-shell-script/}}}\f0\fs22\par
+\'c7\'e0\'ef\'f3\'f1\'f2\'e8\'f2\'fc QEMU \'f1 Serial \'ef\'ee\'f0\'f2\'ee\'ec. Redirects the virtual serial port to the host's terminal I/O.\par
+# qemu-system-i386 boot.img -serial stdio\par
+# qemu-system-i386 boot.img -nographic\tab\'ee\'f2\'f0\'e0\'e1\'e0\'f2\'fb\'e2\'e0\'e5\'f2 \'f2\'e0\'ea\'e6\'e5 \'ea\'e0\'ea \'e8 -serial stdio + \'ef\'f0\'ff\'f7\'e5\'f2 QEMU graphical window\par
+\par
+\'c2\'fb\'e2\'ee\'e4\'e8\'f2\'fc \'e4\'e0\'ed\'ed\'fb\'e5 \'e8\'e7 QEMU \'ec\'e0\'f8\'e8\'ed\'fb \'f7\'e5\'f0\'e5\'e7 Serial \'ef\'ee\'f0\'f2 \'ed\'e0 pipe.\par
+# mkfifo /tmp/guest.in /tmp/guest.out\par
+# qemu-system-x86_64 -serial pipe:/tmp/guest\par
+# cat /tmp/guest.out\par
+}
+ 

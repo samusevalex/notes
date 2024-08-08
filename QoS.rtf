@@ -1,0 +1,512 @@
+{\rtf1\ansi\ansicpg1251\deff0\deflang1049{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}{\f1\fnil\fcharset0 Courier New;}}
+{\colortbl ;\red0\green0\blue255;}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\fi-710\li710\sl240\slmult1\f0\fs22 MQC -\tab Modular QoS CLI - \'f2\'e8\'ef\'e0 class-map, policy-map \'e8 \'f2.\'e4.\par
+CAR -\tab\tab committed access rate - \'f1\'f2\'e0\'f0\'e0\'ff cisco-\'e2\'f1\'ea\'e0\'ff \'f4\'e8\'f7\'e0. \'cd\'ee\'e2\'e0\'ff \'f4\'e8\'f7\'e0 - \'fd\'f2\'ee Class-Based Policing ~ MQC. \'d0\'e5\'ea\'ee\'ec\'e5\'ed\'e4\'f3\'fe\'f2 \'e8\'e7\'e1\'e5\'e3\'e0\'f2\'fc \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'ed\'e8\'ff CAR. Route(config-if)#rate-limit input\\output ...\par
+FRTS -\tab Frame Relay traffic shaping\par
+WTD -\tab Weighted tail-drop\par
+RED -\tab Random Early Detection\par
+WRED-\tab Weighted Random Early Detection\par
+SRR -\tab Shaped Round Robin\par
+WRR -\tab Weighted Round Robin\par
+CAC -\tab\tab Call Admission Control - \'ea\'e0\'ea \'ff \'ef\'ee\'ed\'ff\'eb, \'f8\'f2\'f3\'ea\'e0 \'e2 \'f0\'ee\'f3\'f2\'e5\'f0\'e5, \'ed\'e0 \'f3\'f0\'ee\'e2\'ed\'e5 Control Plane, \'ea\'ee\'f2\'ee\'f0\'e0\'ff \'ef\'f0\'e8\'ed\'e8\'ec\'e0\'e5\'f2 \'e7\'e0\'ef\'f0\'ee\'f1\'fb \'ee\'f2 RSVP \'e8 \'f0\'e5\'e7\'e5\'f0\'e2\'e8\'f0\'f3\'e5\'f2 \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'fb\'e5 \'f0\'e5\'f1\'f3\'f0\'f1\'fb.\par
+VIP -\tab\tab Versatile Interface Processor - \'f3\'f1\'ea\'ee\'f0\'e8\'f2\'e5\'eb\'fc \'e4\'eb\'ff \'f0\'e5\'e0\'eb\'e8\'e7\'e0\'f6\'e8\'e8 WFQ \'ed\'e0 Ethernet \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0\'f5 \'f0\'ee\'f3\'f2\'e5\'f0\'e0. \'cf\'ee Default-\'f3 \'ed\'e0 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e5 \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 fifo. \'c5\'f1\'eb\'e8 \'ef\'ee\'f2\'ee\'ea \'e1\'ee\'eb\'fc\'f8\'ee\'e9, \'f2\'ee CPU \'e7\'e0\'e3\'ed\'b8\'f2\'f1\'ff. VIP \'ef\'ee\'ec\'ee\'e6\'e5\'f2.\par
+GTS -\tab\lang1033\f1 G\lang1049\f0 eneric \lang1033\f1 T\lang1049\f0 raffic \lang1033\f1 S\lang1049\f0 haping\par
+DTS -\tab\tab Distributed Traffic Shaping - \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'ed\'e0 high-end \'ef\'eb\'e0\'f2\'f4\'ee\'f0\'ec\'e0\'f5, \'ed\'e0 \'ea\'e0\'f0\'f2\'e0\'f5 VIP \'e8 dCEF.\par
+NBAR -\tab\'c8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e4\'eb\'ff \'ea\'eb\'e0\'f1\'f1\'e8\'f4\'e8\'ea\'e0\'f6\'e8\'e8 \'f2\'f0\'e0\'f4\'e8\'ea\'e0, \'ef\'f0\'e8\'ec\'e5\'f0 \'e8\'e7 \'e3\'ee\'eb\'ee\'e2\'fb: UDP 66 = Oracle\par
+CBWFQ-Class-Based Weighted Fair Queueing\par
+LLQ -\tab Low-latency queuing\par
+\pard\sl240\slmult1\par
+\ul QoS preclassify\ulnone :\tab (Cisco propretary)\par
+\'d2\'f3\'ed\'ed\'e5\'eb\'e8 GRE \'ea\'ee\'ef\'e8\'f0\'f3\'fe\'f2 \'ef\'ee\'eb\'e5 ToS \'e8\'e7 \'ef\'e0\'ea\'e5\'f2\'e0 \'e2 \'f1\'e2\'ee\'e9 IP \'e7\'e0\'e3\'ee\'eb\'ee\'e2\'ee\'ea !\par
+IPSec transport mode - \'ee\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2 IP \'e7\'e0\'e3\'ee\'eb\'ee\'e2\'ee\'ea \'f2\'e0\'ea\'e8\'ec \'ea\'e0\'ea\'e8\'ec \'ee\'ed \'e1\'fb\'eb, \'f2.\'e5. ToS \'ee\'f1\'f2\'e0\'b8\'f2\'f1\'ff.\par
+IPSec tunnel mode - \'ef\'ee\'eb\'e5 ToS \'e8\'e7 IP \'e7\'e0\'e3\'ee\'eb\'ee\'e2\'ea\'e0 \'ea\'ee\'ef\'e8\'f0\'f3\'e5\'f2\'f1\'ff \'e2 IP \'e7\'e0\'e3\'ee\'eb\'ee\'e2\'ee\'ea \'ed\'ee\'e2\'ee\'e3\'ee.\par
+\par
+interface Tunnel0\par
+  ip address 192.168.0.1 255.255.255.0\par
+  tunnel source 1.1.1.1\par
+  tunnel destination 2.2.2.2\par
+  crypto map vpn\par
+  \b qos pre-classify\b0\par
+\par
+crypto map vpn 10 ipsec-isakmp\par
+  set peer 2.2.2.2\par
+  set transform-set br\lang1033\f1 a\lang1049\f0 nch\par
+  match address 100\par
+  \b qos pre-classify\b0\par
+\par
+\'cc\'ee\'e6\'ed\'ee \'ef\'f0\'ee\'e2\'e5\'f0\'e8\'f2\'fc \'e2\par
+#show interface -> \'e1\'f3\'e4\'e5\'f2 \'ed\'e0\'ef\'e8\'f1\'e0\'ed\'ee -> Queueing strategy: fifo (QoS pre-classification)\par
+#show crypto map -> \'f2\'ee\'e6\'e5 \'e2 \'e2\'fb\'e2\'ee\'e4\'e5 \'e1\'f3\'e4\'e5\'f2 \'ed\'e0\'ef\'e8\'f1\'e0\'ed\'ee QoS pre-classification\par
+\par
+\'c7\'ed\'e0\'f7\'e5\'ed\'e8\'ff \'e4\'eb\'ff Voice: Delay < 150 \'ec\'f1; Jitter < 1 \'ec\'f1; Packet Lost < 1%. \'c3\'e0\'f0\'e0\'ed\'f2\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'fb\'e9 Bandwidth (Priority Queue) = 20..150 \'ca\'e1\'e8\'f2\\\'f1 \'ed\'e0 \'ea\'e0\'e6\'e4\'fb\'e9 \'e7\'e2\'ee\'ed\'ee\'ea + 150 \'e1\'e8\'f2\\\'f1 \'ed\'e0 \'f1\'e8\'e3\'ed\'e0\'eb\'fc\'ed\'fb\'e9 \'f2\'f0\'e0\'f4\'e8\'ea \'ed\'e0 \'ea\'e0\'e6\'e4\'fb\'e9 \'e7\'e2\'ee\'ed\'ee\'ea\par
+\par
+\'c7\'ed\'e0\'f7\'e5\'ed\'e8\'ff \'e4\'eb\'ff Video: Delay < 150 \'ec\'f1; Jitter < 30 \'ec\'f1; Packet Lost < 1%. \'c3\'e0\'f0\'e0\'ed\'f2\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'fb\'e9 Bandwidth (Priority Queue) = stream + 20% (\'f2.\'e5. \'e5\'f1\'eb\'e8 \'ef\'ee\'f2\'ee\'ea 348 \'ca\'e1\'e8\'f2\\\'f1, \'f2\'ee \'ef\'ee\'eb\'ee\'f1\'e0 \'e4\'ee\'eb\'e6\'ed\'e0\'ff \'e1\'fb\'f2\'fc 460 \'ca\'e1\'e8\'f2\\\'f1)\par
+\par
+\ul\'cc\'e5\'f5\'e0\'ed\'e8\'e7\'ec\'fb QoS\par
+\ulnone - Classification - NBAR\par
+- Marking\par
+- Congestion management - FIFO, Priority Queuing(PQ), Custom Queuing(CQ), WFQ, CBWFQ, LLQ\par
+- Congestion avoidance - WRED, Tail-Drop\par
+- Policing \'e8 Shaping\par
+- Link Efficiency - \'ea\'ee\'ec\'ef\'f0\'e5\'f1\'f1\'e8\'ff, Link Fragmentation and Interleaving (LFI)\par
+\par
+WRR(Weighted Round-Robin) \'e8 SRR(Shaped Round Robin)- \lang1033\f1 C\lang1049\f0 ongestion \lang1033\f1 M\lang1049\f0 anagement \'ed\'e0 \'f1\'e2\'e8\'f2\'f7\'e0\'f5.\par
+\par
+\'c2 policy-map \'ec\'ee\'e6\'ed\'ee \'e7\'e0\'e4\'e0\'e2\'e0\'f2\'fc:\par
+- \'ec\'e8\'ed\'e8\'ec\'e0\'eb\'fc\'ed\'fb\'e9 \'e3\'e0\'f0\'e0\'ed\'f2\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'fb\'e9 \lang1033\f1 B\lang1049\f0 andwidth \'e8\'eb\'e8 congestion management: CBWFQ, LLQ\par
+- \'ec\'e0\'ea\'f1\'e8\'ec\'e0\'eb\'fc\'ed\'fb\'e9 bandwidth (\lang1033\f1 S\lang1049\f0 haping \'e8 \lang1033\f1 P\lang1049\f0 olicing): \'e1\'ee\'eb\'fc\'f8\'e5 2 \'cc\'e1\'e8\'f2\\\'f1 \'e4\'eb\'ff \'fd\'f2\'ee\'e3\'ee \'f2\'f0\'e0\'f4\'e8\'ea\'e0 \'ed\'e5 \'e4\'e0\'e2\'e0\'f2\'fc\par
+- \'ef\'f0\'e8\'ee\'f0\'e8\'f2\'e5\'f2\'ed\'fb\'e5 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 (Priority Queue)\par
+- \'ec\'e5\'f5\'e0\'ed\'e8\'e7\'ec\'fb \'ef\'f0\'e5\'e4\'ee\'f2\'e2\'f0\'e0\'f9\'e5\'ed\'e8\'ff \lang1033\f1 C\lang1049\f0 ongestion: \'e2 \'f2\'ee\'e9 \'e8\'eb\'e8 \'e8\'ed\'ee\'e9 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc \'ed\'e0\'f1\'f2\'f0\'ee\'e5\'ed\'ee \'f2\'ee\'eb\'fc\'ea\'ee \'ee\'e4\'ed\'ee WRED \'e8\'eb\'e8 Tail-Drop\par
+\par
+Router(config)#\b class-map \b0 ASD\par
+Router(config)#\b policy-map \b0 ASD\par
+Router(config-if)#\b service-policy\b0  in\\out\par
+\par
+\ul\'d0\'e0\'e7\'eb\'e8\'f7\'ed\'fb\'e9 \'ec\'ee\'e4\'e5\'eb\'e8 \'e2\'ed\'e5\'e4\'f0\'e5\'ed\'e8\'ff QoS\ulnone\par
+\par
+\pard\li568\sl240\slmult1 Best-Effort - \'e2\'ee\'ee\'e1\'f9\'e5 \'ed\'e5 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc QoS, \'ef\'f0\'e8\'ec\'e5\'f0 - Internet\par
+IntServ - \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc RSVP \'ea\'e0\'ea \'e2 MPLS, CAC\par
+DiffServ - \'e2\'f1\'b8 \'ef\'f0\'ee\'ef\'e8\'f1\'fb\'e2\'e0\'f2\'fc \'f0\'f3\'f7\'ea\'e0\'ec\'e8\par
+\pard\sl240\slmult1\par
+\pard\fi-710\li710\sl240\slmult1 RSVP - \'ef\'f0\'ee\'f2\'ee\'ea\'ee\'eb, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'e3\'ee\'e2\'ee\'f0\'e8\'f2 \'ea\'e0\'ed\'e0\'eb\'f3 -> \'e6\'e5\'eb\'e5\'e7\'ea\'e5 -> CBWFQ, LLQ, WRED, \'f7\'f2\'ee \'ed\'e0 \'fd\'f2\'ee\'f2 \'ef\'ee\'f2\'ee\'ea \'ed\'e0\'e4\'ee \'e2\'fb\'f1\'f2\'e0\'e2\'e8\'f2\'fc: 20 \'ca\'e1\'e8\'f2\\\'f1 \'e8 Delay 200 \'ec\'f1. \'d0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'ed\'e0 \'f3\'f0\'ee\'e2\'ed\'e5 Control Plane. \'d0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'ea\'e0\'ea \b per-flow state\b0  - \'ed\'e5 \'e2\'e0\'e6\'ed\'ee \'ea\'e0\'ea \'f2\'f0\'e0\'f4\'e8\'ea \'ef\'ee\'ec\'e5\'f7\'e5\'ed, \'e3\'eb\'e0\'e2\'ed\'ee\'e5 \'ee\'f2\'ea\'f3\'e4\'e0 \'e8 \'ea\'f3\'e4\'e0 \'ee\'ed \'e8\'e4\'b8\'f2 !\par
+\pard\sl240\slmult1\par
+\'d2\'e8\'ef\'fb \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'e9 \'e2 RSVP:\par
+- PATH - \'f1\'ee\'e7\'e4\'e0\'ed\'e8\'e5 End-to-End \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'e0 \'e4\'eb\'ff \'f2\'ee\'e3\'ee \'e8\'eb\'e8 \'e8\'ed\'ee\'e3\'ee unicast/multicast\par
+- RESV - \'e2\'fb\'e4\'e5\'eb\'e5\'ed\'e8\'e5 \'ed\'e0 \'ea\'e0\'e6\'e4\'ee\'ec \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'e8\'e7\'e0\'f2\'ee\'f0\'e5 \'e2\'e4\'ee\'eb\'fc \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'e0 \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'fb\'f5 \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'ee\'e2, \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'ec\'fb\'f5 CBWFQ, LLQ, WRED\par
+- Teardown - "\'f1\'ed\'e5\'f1\'f2\'e8" \'f2\'f3\'ed\'ed\'e5\'eb\'fc \'e1\'fb\'e2\'e0\'e5\'f2: path-teardown \'e8 reservation-request teardown\par
+- Error \'e8 Confirmation\par
+\pard\li568\sl240\slmult1\'d2\'e8\'ef\'fb \'ee\'f8\'e8\'e1\'ee\'ea: Path-error \'e8 Reservation-request error\par
+\'d1\'e0\'ec\'e8 \'ee\'f8\'e8\'e1\'ea\'e8: Admission failure, Bandwidth unavailable, Service not supported, Bad flow specification, Ambiguous path\par
+\pard\sl240\slmult1\par
+RSVP \'ef\'f0\'e5\'e4\'ee\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2  \'f2\'f0\'e8 \'f2\'e8\'ef\'e0 \'f1\'e5\'f0\'e2\'e8\'f1\'e0:\par
+- Best effort -\tab\tab\'ed\'e5\'f2 QoS, \'ef\'f0\'ee\'f1\'f2\'ee \'e4\'eb\'ff \'fd\'f2\'ee\'e3\'ee \'f2\'f0\'e0\'f4\'e8\'ea\'e0 fifo\par
+- Guaranteed rate -\tab\'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec \'ec\'e8\'ed\'e8\'ec\'e0\'eb\'fc\'ed\'fb\'e9 Delay. Delay \'e2\'fb\'f7\'e8\'f1\'eb\'ff\'e5\'f2\'f1\'ff \'ed\'e0 \'ee\'f1\'ed\'ee\'e2\'e0\'ed\'e8\'e8 PATH messages. \'c8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2 \'ec\'e5\'f5\'e0\'ed\'e8\'e7\'ec: WRED\par
+- Controlled load -\tab\'ea\'e0\'ea-\'f2\'ee \'ef\'f0\'e5\'e4\'ee\'f1\'f2\'e0\'e2\'e8\'f2\'fc \'ec\'e8\'ed\'e8\'ec\'e0\'eb\'fc\'ed\'ee\'e5 \'ef\'e5\'f0\'e5\'f1\'e5\'f7\'e5\'ed\'e8\'e5 \'f1 \'e4\'f0\'f3\'e3\'e8\'ec \'f2\'f0\'e0\'f4\'e8\'ea\'ee\'ec ??? \'c8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2 \'ec\'e5\'f5\'e0\'ed\'e8\'e7\'ec: WFQ\par
+\par
+\'ca\'ee\'e3\'e4\'e0 RSVP \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'f1\'ee\'e2\'ec\'e5\'f1\'f2\'ed\'ee \'f1 DiffServ, \'f2\'ee RSVP \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2 \'f2\'ee\'eb\'fc\'ea\'ee CAC \'e8 CBWFQ \\ LLQ\par
+RSVP \'ec\'ee\'e6\'e5\'f2 \'f0\'e5\'e7\'e5\'f0\'e2\'e8\'f0\'ee\'e2\'e0\'f2\'fc max 75% \'ee\'f2 \'ef\'f0\'ee\'ef\'f3\'f1\'ea\'ed\'ee\'e9 \'f1\'ef\'ee\'f1\'ee\'e1\'ed\'ee\'f1\'f2\'e8 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0.\par
+\'c8\'ed\'f2\'e5\'e3\'f0\'e0\'f6\'e8\'ff IntServ \'e8 DiffServ. RSVP \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'ed\'e0 \'f3\'f0\'ee\'e2\'ed\'e5 Control Plane, \'e0 DiffServ \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'ed\'e0 \'f3\'f0\'ee\'e2\'ed\'e5 Data Plane.\par
+\'ca\'e0\'ea-\'f2\'ee \'e5\'f9\'b8 \'ef\'e5\'f0\'e5\'e4\'e0\'b8\'f2\'f1\'ff \'ea\'e0\'ea\'ee\'e9 \'f2\'f0\'e0\'f4\'e8\'ea \'ed\'e0\'e4\'ee \'ee\'e1\'f0\'e0\'e1\'e0\'f2\'fb\'e2\'e0\'f2\'fc \'e8 \'ea\'e0\'ea !\par
+\par
+Router(config-if)#\b ip rsvp bandwidth\b0  100000\tab\tab\tab\'c2\'ea\'eb\'fe\'f7\'e8\'f2\'fc RSVP \'ed\'e0 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e5\par
+Router(config-if)#\b ip rsvp resource-provider\b0  none\\wfq\tab\tab\'d0\'e5\'e7\'e5\'f0\'e2\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'e5 \'f0\'e5\'f1\'f3\'f0\'f1\'ee\'e2 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'ee\'e2\par
+Router(config-if)#\b ip rsvp data-packet classification none\b0\tab\'c2\'fb\'ea\'eb\'fe\'f7\'e8\'f2\'fc \'ea\'eb\'e0\'f1\'f1\'e8\'f4\'e8\'ea\'e0\'f6\'e8\'fe \'ef\'e0\'ea\'e5\'f2\'ee\'e2\b\par
+\b0\par
+\ul DiffServ\ulnone  - \b per-packet state\b0 , \'e2\'e0\'e6\'ed\'ee \'ea\'e0\'ea \'ef\'e0\'ea\'e5\'f2 \'ef\'ee\'ec\'e5\'f7\'e5\'ed.\par
+\'d2\'f0\'e0\'f4\'e8\'ea \'f0\'e5\'ea\'ee\'ec\'e5\'ed\'e4\'f3\'e5\'f2\'f1\'ff \'ec\'e5\'f2\'e8\'f2\'fc\\\'ea\'eb\'e0\'f1\'f1\'e8\'f4\'e8\'f6\'e8\'f0\'ee\'e2\'e0\'f2\'fc \'ea\'e0\'ea \'ec\'ee\'e6\'ed\'ee \'e1\'eb\'e8\'e6\'e5 \'ea Edge.\par
+\par
+\'c2 MPLS CoS \'f1\'e8\'e4\'e8\'f2 \'e2 \'ef\'ee\'eb\'e5 EXP\par
+\par
+\ul\'c0\'eb\'e3\'ee\'f0\'e8\'f2\'ec\'fb Queuing\par
+\ulnone\par
+\pard\fi-568\li568\sl240\slmult1 FIFO - \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'ce\'c4\'cd\'c0 \'ee\'f7\'e5\'f0\'e5\'e4\'fc + \'e5\'f1\'eb\'e8 \'ee\'f7\'e5\'f0\'e5\'e4\'fc \'e7\'e0\'e1\'e8\'f2\'e0, \'f2\'ee \'ed\'e5\'e2\'e0\'e6\'ed\'ee \'f7\'f2\'ee \'e7\'e0 \'ef\'e0\'ea\'e5\'f2 \'ef\'f0\'e8\'f8\'b8\'eb \'f1\'f0\'e0\'e7\'f3 tail drop. \'cd\'e5\'e4\'ee\'f1\'f2\'e0\'f2\'ea\'e8: \'f2\'e0\'ea \'ea\'e0\'ea \'e2 \'ee\'f7\'e5\'f0\'e5\'e4\'fc \'ef\'ee\'ef\'e0\'e4\'e0\'fe\'f2 \'ef\'e0\'ea\'e5\'f2\'fb \'e8 1500 \'e8 64, \'f2\'ee \'ed\'e0 \'ef\'ee\'f2\'ee\'ea\'e5 (flow)\lang1033\f1 ,\lang1049\f0  \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2 \'ef\'e0\'ea\'e5\'f2\'fb 64 \'e1\'e0\'e9\'f2\'e0, \'e1\'f3\'e4\'e5\'f2 \'e1\'ee\'eb\'fc\'f8\'ee\'e9 jitter.\par
+PQ - \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee \'ee\'f7\'e5\'f0\'e5\'e4\'e5\'e9 (\'e2\'f0\'ee\'e4\'e5 \'ea\'e0\'ea \'e1\'fb\'e2\'e0\'e5\'f2 \'f2\'ee\'eb\'fc\'ea\'ee = 4), \'e4\'eb\'ff \'ef\'f0\'e8\'ec\'e5\'f0\'e0 \'e1\'f3\'e4\'e5\'ec \'f1\'f7\'e8\'f2\'e0\'f2\'fc \'f7\'f2\'ee 3. \'d1\'ed\'e0\'f7\'e0\'eb\'e0 \'f1\'ec\'ee\'f2\'f0\'e8\'ec \'ef\'f3\'f1\'f2\'e0 \'eb\'e8 \'ee\'f7\'e5\'f0\'e5\'e4\'fc \'b91. \'c5\'f1\'eb\'e8 \'ed\'e5\'f2 - \'f2\'ee \'e1\'e5\'f0\'b8\'ec \'e8\'e7 \'ed\'e5\'b8 \'ef\'e0\'ea\'e5\'f2 \'e8 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'ec \'e2 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1. \'d0\'e0\'e1\'ee\'f2\'e0\'e5\'ec \'f2\'ee\'eb\'fc\'ea\'ee \'f1 \'ee\'f7\'e5\'f0\'e5\'e4\'fc\'fe \'b91 \'ef\'ee\'ea\'e0 \'ee\'ed\'e0 \'ed\'e5 \'ee\'ef\'f3\'f1\'f2\'ee\'f8\'e8\'f2\'f1\'ff. \'cd\'e0 \'e2\'f1\'e5 \'ee\'f1\'f2\'e0\'eb\'fc\'ed\'fb\'e5 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 \'e7\'e0\'e1\'e8\'e2\'e0\'e5\'ec. \'ca\'e0\'ea \'f2\'ee\'eb\'fc\'ea\'ee \'ee\'f7\'e5\'f0\'e5\'e4\'fc \'b91 \'f1\'f2\'e0\'eb\'e0 \'ef\'f3\'f1\'f2\'ee\'e9, \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'ec \'f1 \'ee\'f7\'e5\'f0\'e5\'e4\'fc\'fe \'b92. \'cf\'f0\'e5\'e6\'e4\'e5 \'f7\'e5\'ec \'ee\'f2\'ef\'f0\'e0\'e2\'e8\'f2\'fc \'ef\'e0\'ea\'e5\'f2 \'e8\'e7 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 \'b92 \'e2\'f1\'e5\'e3\'e4\'e0 \'ef\'f0\'ee\'e2\'e5\'f0\'ff\'e5\'ec \'ef\'f3\'f1\'f2\'e0 \'eb\'e8 \'ee\'f7\'e5\'f0\'e5\'e4\'fc \'b91. \'c5\'f1\'eb\'e8 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 \'b91 \'e8 \'b92 \'ef\'f3\'f1\'f2\'fb, \'f2\'ee\'eb\'fc\'ea\'ee \'f2\'ee\'e3\'e4\'e0 \'ef\'e5\'f0\'e5\'f5\'ee\'e4\'e8\'ec \'ea \'ee\'f7\'e5\'f0\'e5\'e4\'e8 \'b93. \'d2\'e0\'ea\'e8\'ec \'ee\'e1\'f0\'e0\'e7\'ee\'ec, \'ef\'e0\'ea\'e5\'f2\'fb, \'ed\'e0\'f5\'ee\'e4\'ff\'f9\'e8\'e5\'f1\'ff \'e2 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 \'b93, \'ec\'ee\'e3\'f3\'f2 \'e2\'ee\'ee\'e1\'f9\'e5 \'ed\'e8\'ea\'ee\'e3\'e4\'e0 \'ed\'e5 \'e4\'ee\'e9\'f2\'e8 \'e4\'ee \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0.\par
+ROUND-ROBIN - \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee \'ee\'f7\'e5\'f0\'e5\'e4\'e5\'e9, \'ea \'ef\'f0\'e8\'ec\'e5\'f0\'f3 3. \'d1\'ed\'e0\'f7\'e0\'eb\'e0 \'ef\'e0\'ea\'e5\'f2 \'e1\'e5\'f0\'b8\'f2\'f1\'ff \'e8\'e7 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 \'b91. \'c2\'f2\'ee\'f0\'fb\'ec \'e1\'e5\'f0\'b8\'f2\'f1\'ff \'ef\'e0\'ea\'e5\'f2 \'e8\'e7 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 \'b92, \'f2\'f0\'e5\'f2\'fc\'e8\'ec \'e8\'e7 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 \'b93, \'f7\'e5\'f2\'e2\'b8\'f0\'f2\'fb\'ec \'f1\'ed\'ee\'e2\'e0 \'e8\'e7 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 \'b91 \'e8 \'f2.\'e4. \'d2\'e0\'ea\'e8\'ec \'ee\'e1\'f0\'e0\'e7\'ee\'ec, \'ef\'e0\'ea\'e5\'f2\'fb \'e8\'e7 \'e2\'f1\'e5\'f5 \'ee\'f7\'e5\'f0\'e5\'e4\'e5\'e9 \'e4\'ee\'e9\'e4\'f3\'f2 \'e4\'ee \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0.\par
+WRR - \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee \'ee\'f7\'e5\'f0\'e5\'e4\'e5\'e9 (max = 16), \'ea \'ef\'f0\'e8\'ec\'e5\'f0\'f3 3. \'cd\'e0 \'ea\'e0\'e6\'e4\'f3\'fe \'ee\'f7\'e5\'f0\'e5\'e4\'fc \'ed\'e0\'e2\'e5\'f8\'e8\'e2\'e0\'e5\'f2\'f1\'ff "Weight". \'b91 = 4; \'b92 = 2; \'b93 = 1. C\'ed\'e0\'f7\'e0\'eb\'e0 \'e1\'e5\'f0\'b8\'f2\'f1\'ff 4 \'ef\'e0\'ea\'e5\'f2\'e0 \'e8\'e7 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 \'b91, \'ef\'ee\'f2\'ee\'ec 2 \'ef\'e0\'ea\'e5\'f2\'e0 \'e8\'e7 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 \'b92, 1 \'e8\'e7 \'b93, 4 \'e8\'e7 \'b91 \'e8 \'f2.\'e4. \'cf\'f0\'e8 \'ef\'e5\'f0\'e5\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'e8 \'ee\'e4\'ed\'ee\'e9 \'e8\'e7 \'ee\'f7\'e5\'f0\'e5\'e4\'e5\'e9 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff tail drop.\par
+WFQ - QoS 2.2 SG Vol2.pdf \'f1\'f2\'f0.36 "\'f0\'e0\'e7\'e1\'e8\'e2\'e0\'e5\'f2" \'e2\'f5\'ee\'e4\'ff\'f9\'e8\'e5 \'ef\'e0\'ea\'e5\'f2\'fb \'ed\'e0 \'ef\'ee\'f2\'ee\'ea\'e8 (flows). \'d1\'f2\'e0\'f0\'e0\'e5\'f2\'f1\'ff \'e2\'fb\'f0\'e0\'e2\'ed\'e8\'f2\'fc \'ef\'ee\'f2\'ee\'ea\'e8: \'ee\'e4\'e8\'ed \'ef\'ee\'f2\'ee\'ea \'f8\'eb\'b8\'f2 \'ef\'e0\'ea\'e5\'f2\'fb \'ef\'ee 1500 \'e1\'e0\'e9\'f2, \'e4\'f0\'f3\'e3\'ee\'e9 500 \'e1\'e0\'e9\'f2 -> \'e2 \'ef\'e5\'f0\'e2\'ee\'ec \'ef\'ee\'f2\'ee\'ea\'e5 \'e1\'f3\'e4\'e5\'f2 3 \'ef\'e0\'ea\'e5\'f2\'e0, \'e2\'ee \'e2\'f2\'ee\'f0\'ee\'ec 9. Tail drop \'ea\'e0\'ea-\'f2\'ee \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'ed\'e0 \'ea\'e0\'e6\'e4\'fb\'e9 \'ef\'ee\'f2\'ee\'ea \'e5\'f1\'eb\'e8 \'ea\'ee\'eb\'e8\'f7\'e5\'f1\'f2\'e2\'ee \'ef\'e0\'ea\'e5\'f2\'ee\'e2 \'e2 WFQ \'f1\'e8\'f1\'f2\'e5\'ec\'e5 \'ef\'f0\'e5\'e2\'fb\'f1\'e8\'eb\'ee hold-queue limit (\'f2.\'e5. \'e1\'ee\'eb\'fc\'f8\'e5\'e5 \'f7\'e8\'f1\'eb\'ee \'ef\'e0\'ea\'e5\'f2\'ee\'e2 WFQ \'ef\'e5\'f0\'e5\'e2\'e0\'f0\'e8\'f2\'fc \'ef\'f0\'ee\'f1\'f2\'ee \'ed\'e5 \'ec\'ee\'e6\'e5\'f2) \'e8\'eb\'e8 \'e4\'ee\'f1\'f2\'e8\'e3\'ed\'f3\'f2 \'ed\'e5\'ea\'e8\'e9 \'ef\'ee\'f0\'ee\'e3, \'ea\'ee\'e3\'e4\'e0 \'f1\'e8\'f1\'f2\'e5\'ec\'e0 \'ed\'e0\'f7\'e8\'ed\'e0\'f2\'fc \'ef\'ee\'ed\'e5\'ec\'ed\'ee\'e3\'f3 drop-\'e0\'f2\'fc \'ef\'e0\'ea\'e5\'f2\'fb. \'ca\'ee\'eb\'e8\'f7\'e5\'f1\'f2\'e2\'ee queues \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc 16..4096. \'d1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'fe\'f2 \'ea\'e0\'ea\'e8\'e5-\'f2\'ee \'e4\'e8\'ed\'e0\'ec\'e8\'f7\'e5\'f1\'ea\'e8\'e5 \'ee\'f7\'e5\'f0\'e5\'e4\'e8. Hash \'ee\'f2 Src\\Dst IP, ToS, TCP\\UDP Src\\Dst Port \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'e5\'f2 \'e2 \'ea\'e0\'ea\'f3\'fe \'ee\'f7\'e5\'f0\'e5\'e4\'fc \'ef\'ee\'ef\'e0\'e4\'b8\'f2 \'f2\'ee\'f2 \'e8\'eb\'e8 \'e8\'ed\'ee\'e9 flow. \'c5\'f1\'f2\'fc \'ea\'e0\'ea\'e0\'ff-\'f2\'ee \'ea\'e0\'eb\'fc\'ea\'f3\'eb\'ff\'f6\'e8\'ff: \'e2 \'ee\'f7\'e5\'f0\'e5\'e4\'fc A \'ef\'f0\'e8\'f8\'b8\'eb \'ef\'e0\'ea\'e5\'f2 A1, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'ed\'e0\'e4\'ee \'ee\'f2\'ef\'f0\'e0\'e2\'e8\'f2\'fc max \'f7\'e5\'f0\'e5\'e7 100 \'ec\'f1, \'ef\'ee\'f2\'ee\'ec \'f7\'e5\'f0\'e5\'e7 20 \'ec\'f1 \'ef\'f0\'e8\'f8\'b8\'eb \'ef\'e0\'ea\'e5\'f2 \'c02, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'ed\'e0\'e4\'ee \'ee\'f2\'ef\'f0\'e0\'e2\'e8\'f2\'fc max \'f7\'e5\'f0\'e5\'e7 20 \'ec\'f1, \'ef\'ee\'f2\'ee\'ec \'ef\'f0\'e8\'f8\'b8\'eb \'c21 ... \'ea\'e0\'ea-\'f2\'ee \'f2\'e0\'ec \'e2\'f1\'b8 \'f1\'f7\'e8\'f2\'e0\'e5\'f2\'f1\'ff, \'e8 \'e2\'fb\'f1\'f2\'f0\'e0\'e8\'e2\'e0\'e5\'f2\'f1\'ff queue \'ea\'e0\'ea \'fd\'f2\'ee \'e2\'f1\'b8 \'e1\'f3\'e4\'e5\'f2 \'e7\'e0\'f5\'ee\'e4\'e8\'f2\'fc \'e2 Hardware. \'c5\'f1\'eb\'e8 \'ef\'f0\'e8\'f8\'b8\'eb \'ef\'e0\'ea\'e5\'f2 \'f0\'e0\'e7\'ec\'e5\'f0\'e0 1500 \'f1 IP Prec =2 (\'ee\'e1\'fb\'f7\'ed\'ee IP Prec =0), \'f2\'ee \'f1\'e8\'f1\'f2\'e5\'ec\'e0 \'f1\'f7\'e8\'f2\'e0\'e5\'f2, \'f7\'f2\'ee \'f0\'e0\'e7\'ec\'e5\'f0 \'ef\'e0\'ea\'e5\'f2\'e0 =1500/(1+2)=500 \'e8 \'e2 \'f1\'ee\'ee\'f2\'e2\'e5\'f2\'f1\'f2\'e2\'e8\'e8 \'f1 \'fd\'f2\'e8\'ec \'e8\'e4\'b8\'f2 \'f0\'e0\'e7\'e3\'ee\'e2\'ee\'f0 \'ee\'e1 \'ee\'f7\'e5\'f0\'e5\'e4\'ff\'f5. \'ca\'e0\'ea \'ef\'f0\'e0\'e2\'e8\'eb\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'f1 RSVP. \'cd\'e5 \'f2\'f0\'e5\'e1\'f3\'e5\'f2 Classification. \'cc\'ee\'e6\'ed\'ee \'e7\'e0\'e4\'e0\'e2\'e0\'f2\'fc Delay.\par
+\pard\li568\sl240\slmult1\par
+#\b show queue\b0\par
+#\b show queueing\par
+\b0 #show interface FastEthernet0/0\par
+FastEthernet0/0 is up, line protocol is up\par
+  Hardware is i82543 (Livengood), address is ca00.0b40.0008 (bia ca00.0b40.0008)\par
+  MTU 1500 bytes, BW 100000 Kbit, DLY 100 usec,\par
+     reliability 255/255, txload 1/255, rxload 1/255\par
+  Encapsulation ARPA, loopback not set\par
+  Keepalive not set\par
+  Full-duplex, 100Mb/s, 100BaseTX/FX\par
+  ARP type: ARPA, ARP Timeout 04:00:00\par
+  Last input never, output never, output hang never\par
+  Last clearing of "show interface" counters never\par
+  Input queue: 0/100/0/0 (size/max/drops/flushes); Total output drops: 0\par
+  Queueing strategy: \b weighted fair\b0\par
+  Output queue: 0/1000/64/0 (size/max total/threshold/drops) - HQO=1000, CDT=64\par
+     Conversations  0/4/256 (active/max active/max total) - \'e4\'e8\'ed\'e0\'ec\'e8\'f7\'e5\'f1\'ea\'e8\'f5 \'ee\'f7\'e5\'f0\'e5\'e4\'e5\'e9=256, concurrent conversation (active queues) = 4\par
+     Reserved Conversations 0/0 (allocated/max allocated)\par
+     Available Bandwidth 75000 kilobits/sec\par
+\par
+#show interface FastEthernet0/0\par
+FastEthernet0/0 is up, line protocol is up\par
+  Hardware is i82543 (Livengood), address is ca00.0a40.0008 (bia ca00.0a40.0008)\par
+  MTU 1500 bytes, BW 100000 Kbit/sec, DLY 100 usec,\par
+     reliability 255/255, txload 1/255, rxload 1/255\par
+  Encapsulation ARPA, loopback not set\par
+  Keepalive not set\par
+  Full-duplex, 100Mb/s, 100BaseTX/FX\par
+  ARP type: ARPA, ARP Timeout 04:00:00\par
+  Last input never, output never, output hang never\par
+  Last clearing of "show interface" counters never\par
+\pard\fi-2840\li3408\sl240\slmult1   Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0 - 75 = default hold queue: Router(config-if)#\b hold-queue\b0  100 \b in\b0  \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc 0..4096\par
+\pard\li568\sl240\slmult1   Queueing strategy: \b fifo\b0\par
+\pard\fi-2840\li3408\sl240\slmult1   Output queue: 0/40 (size/max) - 40 = default hold queue: Router(config-if)#\b hold-queue\b0  60 \b out\b0  \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc 0..4096\par
+\pard\sl240\slmult1\ul\par
+PQ\ulnone\par
+\par
+\'d1\'ee\'e7\'e4\'e0\'b8\'f2\'f1\'ff \'ea\'ee\'ec\'e0\'ed\'e4\'e0\'ec\'e8:\par
+Router(config)#\b priority-list\b0  \i 1\i0  \b protocol\b0  \i ip\i0  \i high\i0  \i tcp telnet\par
+\i0 Router(config)#\b priority-list\b0  \i 1\i0  \b interface\b0  \i FastEthernet0/0\i0  \i high\i0\par
+\pard\fi-568\li568\sl240\slmult1 Router(config-if)#\b priority-group\b0  \i 1\i0\par
+\ul\par
+\'ca\'ee\'ec\'ef\'ee\'ed\'e5\'ed\'f2\'fb Queuing\ulnone\par
+\par
+\b Queuing \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'ea\'ee\'e3\'e4\'e0 \'f4\'e8\'e7\'e8\'f7\'e5\'f1\'ea\'e8\'e9 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1 \'e7\'e0\'e1\'e8\'f2. Shaping \'e8 Policing \'ec\'ee\'e6\'e5\'f2 \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc, \'ea\'ee\'e3\'e4\'e0 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1 "\'ef\'f3\'f1\'f2\'ee\'e9".\ul\b0\par
+\par
+\ulnone Hardware - \'ee\'f7\'e5\'f0\'e5\'e4\'fc \'ed\'e0 \'f4\'e8\'e7\'e8\'f7\'e5\'f1\'ea\'ee\'ec \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e5 \b\'c2\'d1\'c5\'c3\'c4\'c0 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2 FIFO\b0 . \'cd\'e5 \'e7\'e0\'e2\'e8\'f1\'e8\'f2 \'ee\'f2 VLAN-\'ee\'e2, VRF-\'ee\'e2 \'e8 \'f2.\'e4.\b\par
+\b0 Software - \'e2\'ea\'eb\'fe\'f7\'e0\'e5\'f2\'f1\'ff \'f2\'ee\'eb\'fc\'ea\'ee \'f2\'ee\'e3\'e4\'e0, \'ea\'ee\'e3\'e4\'e0 \'ed\'e0 Hardware \'ee\'f7\'e5\'f0\'e5\'e4\'fc is Full. \'cc\'e5\'f5\'e0\'ed\'e8\'e7\'ec \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'fe\'f9\'e8\'e9 \'ea\'e0\'ea \'e2 Hardware \'ef\'ee\'ef\'e0\'e4\'e0\'fe\'f2 \'ef\'e0\'ea\'e5\'f2\'fb.\par
+\par
+Router(config-if)#\b tx-ring-limit\b0  60 - \'e3\'eb\'f3\'e1\'e8\'ed\'e0 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 Hardware. \'cf\'e8\'f8\'f3\'f2, \'f7\'f2\'ee \'e5\'f1\'eb\'e8 \'f3\'e2\'e5\'eb\'e8\'f7\'e8\'f2\'fc \'e30\'eb\'f3\'e1\'e8\'ed\'f3, \'f2\'ee \'e1\'f3\'e4\'e5\'f2 \'e1\'ee\'eb\'fc\'f8\'e5 Latancy. \'cd\'ee \'e5\'f1\'f2\'fc \'e5\'f9\'b8 hold-queue !\par
+\par
+\pard\sl240\slmult1 WFQ "\'f0\'e0\'e7\'e1\'e8\'e2\'e0\'e5\'f2" FIFO \'ed\'e0 \'f3\'f1\'eb\'ee\'e2\'ed\'fb\'e5 \'ef\'ee\'f2\'ee\'ea\'e8 (flows).\par
+\par
+WFQ \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2 \'f4\'e8\'ea\'f1\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'ee\'e5 \'ea\'ee\'eb\'e8\'f7\'e5\'f1\'f2\'e2\'ee \'ee\'f7\'e5\'f0\'e5\'e4\'e5\'e9. Hash \'ee\'f2 Src\\Dst IP, ToS, TCP\\UDP Src\\Dst Port \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'e5\'f2 \'e2 \'ea\'e0\'ea\'f3\'fe \'ee\'f7\'e5\'f0\'e5\'e4\'fc \'ef\'ee\'ef\'e0\'e4\'b8\'f2 \'f2\'ee\'f2 \'e8\'eb\'e8 \'e8\'ed\'ee\'e9 Flow. 8 \'ee\'f7\'e5\'f0\'e5\'e4\'e5\'e9 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e4\'eb\'ff \'d1\'e8\'f1\'f2\'e5\'ec\'ed\'fb\'f5 \'ef\'e0\'ea\'e5\'f2\'ee\'e2. \'c8 \'e4\'ee 1000 \'ee\'f7\'e5\'f0\'e5\'e4\'e5\'e9 \'e4\'eb\'ff RSVP flows. \'ca\'ee\'eb\'e8\'f7\'e5\'f1\'f2\'e2\'ee \'e4\'e8\'ed\'e0\'ec\'e8\'f7\'e5\'f1\'ea\'e8\'f5 \'ee\'f7\'e5\'f0\'e5\'e4\'e5\'e9 WFQ \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'e5\'f2\'f1\'ff \'ee\'f1\'ed\'ee\'e2\'fb\'e2\'e0\'ff\'f1\'fc \'ed\'e0 bandwidth \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0. (QoS 2.2 SG Vol2.pdf \'f1\'f2\'f0.40) \'cf\'ee default-\'f3 \'ea\'ee\'eb\'e8\'f7\'e5\'f1\'f2\'e2\'ee \'e4\'e8\'ed\'e0\'ec\'e8\'f7\'e5\'f1\'ea\'e8\'f5 \'ee\'f7\'e5\'f0\'e5\'e4\'e5\'e9 \'e4\'eb\'ff \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'ee\'e2 \'e3\'e4\'e5 bandwidth > 512 kbps = 256 \'f8\'f2. \'c2 \'ee\'e1\'f9\'e5\'ec \'ea\'ee\'eb\'e8\'f7\'e5\'f1\'f2\'e2\'ee \'ee\'f7\'e5\'f0\'e5\'e4\'e5\'e9 \'ec\'ee\'e6\'ed\'ee \'ed\'e0\'f1\'f2\'f0\'ee\'e8\'f2\'fc \'ee\'f2 16 \'e4\'ee 4096, \'ed\'ee \'f7\'e8\'f1\'eb\'ee \'e4\'ee\'eb\'e6\'ed\'ee \'e1\'fb\'f2\'fc = \'f1\'f2\'e5\'ef\'e5\'ed\'e8 2.\par
+\par
+WFQ \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2 "\'e0\'e3\'f0\'e5\'f1\'f1\'e8\'e2\'ed\'ee" \'e4\'f0\'ee\'ef\'e8\'f2\'fc \'ef\'e0\'ea\'e5\'f2\'fb \'e5\'f1\'eb\'e8 \'e4\'ee\'f1\'f2\'e8\'e3\'ed\'f3\'f2 \'ef\'ee\'f0\'ee\'e3 Hold-queue out limit (HQO) - \'ec\'e0\'ea\'f1\'e8\'ec\'e0\'eb\'fc\'ed\'ee\'e5 \'ea\'ee\'eb\'e8\'f7\'e5\'f1\'f2\'e2\'ee \'ef\'e0\'ea\'e5\'f2\'ee\'e2, \'ea\'ee\'f2\'ee\'f0\'ee\'e5 \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc \'e2 \'f1\'e8\'f1\'f2\'e5\'ec\'e5 WFQ.\par
+\'cf\'f0\'e8 \'e4\'ee\'f1\'f2\'e8\'e6\'e5\'ed\'ed\'e8\'e8 \'ef\'ee\'f0\'ee\'e3\'e0 congestive discard threshold (CDT) < HQO \'ed\'e0 \'f1\'e0\'ec\'fb\'f5 \'e0\'e3\'f0\'e5\'f1\'f1\'e8\'e2\'ed\'fb\'f5 flows \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2\'f1\'ff early dropping \'e8\'e7 \'f1\'e5\'f0\'e8\'e8 WRED.\par
+\'c5\'f1\'eb\'e8 \'e4\'e0\'e6\'e5 WFQ \'f1\'e8\'f1\'f2\'e5\'ec\'e0 \'e2\'fb\'f8\'e5 \'ef\'ee\'f0\'ee\'e3\'e0 CDT, \'ef\'e0\'ea\'e5\'f2\'fb \'e2\'f1\'b8 \'f0\'e0\'e2\'ed\'ee \'ec\'ee\'e3\'f3\'f2 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'f2\'fc\'f1\'ff \'e2 \'f4\'e8\'e7\'e8\'f7\'e5\'f1\'ea\'e8\'e9 \'e8\'f1\'f5\'ee\'e4\'ff\'f9\'e8\'e9 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1, \'e5\'f1\'eb\'e8 per-flow \'ee\'f7\'e5\'f0\'e5\'e4\'fc \'ef\'f3\'f1\'f2\'e0.??? (\'f7\'f2\'ee-\'f2\'ee \'f1\'e2\'ff\'e7\'e0\'ed\'ed\'ee\'e5 \'f1 Worst Finish Time \'e8 \'ed\'ee\'e2\'fb\'ec\'e8 \'e8 \'f1\'f2\'e0\'f0\'fb\'ec\'e8 \'ef\'e0\'ea\'e5\'f2\'e0\'ec\'e8)\par
+\par
+\'d1\'f2\'f0\'e0\'f2\'e5\'e3\'e8\'ff \'e4\'f0\'ee\'ef\'ee\'e2 \'ef\'e0\'ea\'e5\'f2\'ee\'e2 \'ed\'e5 \'ed\'e0 \'ef\'f0\'ff\'ec\'f3\'fe \'e7\'e0\'e2\'e8\'f1\'e8\'f2 \'ee\'f2 IP precedence.\par
+\'d1\'f5\'e5\'ec\'e0 \'f0\'e0\'e1\'ee\'f2\'fb \'ef\'ee\'f0\'ee\'e3\'ee\'e2 HDQ \'e8 CDT \'e2 QoS 2.2 SG Vol2.pdf \'f1\'f2\'f0.43\par
+\par
+\'c2 \'f1\'e8\'f1\'f2\'e5\'ec\'f3 WFQ \'ef\'f0\'e8\'f5\'ee\'e4\'e8\'f2 \'ed\'ee\'e2\'fb\'e9 \'ed\'ee\'e2\'fb\'e9 \'ef\'e0\'ea\'e5\'f2. \'c5\'f1\'eb\'e8 \'e1\'f3\'f4\'e5\'f0 WFQ \'ef\'e5\'f0\'e5\'ef\'ee\'eb\'ed\'e5\'ed, \'f2.\'e5. \'ef\'f0\'e5\'e2\'fb\'f8\'e5\'ed \'ef\'ee\'f0\'ee\'e3 HDQ, \'ef\'f0\'ee\'e8\'f1\'f5\'ee\'e4\'e8\'f2 \'ef\'f0\'ee\'e2\'e5\'f0\'ea\'e0 \'ed\'e0 Finish Time (FT). \'c5\'f1\'eb\'e8 FT \'e1\'ee\'eb\'fc\'f8\'ee\'e9, \'f2\'ee drop. \'c5\'f1\'eb\'e8 FT "\'ec\'e0\'eb\'e5\'ed\'fc\'ea\'e8\'e9", \'f2\'ee \'ea\'e0\'ea-\'f2\'ee \'ef\'f0\'ee\'e2\'e5\'f0\'ff\'e5\'f2\'f1\'ff \'ed\'e0 "\'ed\'ee\'e2\'fb\'e5" \'e8 "\'f1\'f2\'e0\'f0\'fb\'e5" \'ef\'e0\'ea\'e5\'f2\'fb?? \'c5\'f1\'eb\'e8 "\'f1\'f2\'e0\'f0\'fb\'e9", \'f2\'ee drop. \'c5\'f1\'eb\'e8 "\'ed\'ee\'e2\'fb\'e9", \'f2\'ee \'e2 \'f4\'e8\'e7\'e8\'f7\'e5\'f1\'ea\'e8\'e9 \'e8\'f1\'f5\'ee\'e4\'ff\'f9\'e8\'e9 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1.\par
+\par
+\'c5\'f1\'eb\'e8 \'e1\'f3\'f4\'e5\'f0 WFQ < HDQ, \'f2\'ee \'e4\'e0\'eb\'e5\'e5 \'ef\'f0\'ee\'e2\'e5\'f0\'ff\'e5\'f2\'f1\'ff \'e2\'fb\'f8\'e5 \'e8\'eb\'e8 \'ed\'e8\'e6\'e5 \'ef\'ee\'f0\'ee\'e3\'e0 CDT. \'c5\'f1\'eb\'e8 \'e2\'fb\'f8\'e5, \'f2\'ee \'ef\'f0\'ee\'e2\'e5\'f0\'ff\'e5\'f2\'f1\'ff \'ed\'e0 FT. \'d1 \'e1\'ee\'eb\'fc\'f8\'e8\'ec FT \'e2 drop, \'f1 \'ec\'e0\'eb\'e5\'ed\'fc\'ea\'e8\'ec FT \'e2 \'f4\'e8\'e7\'e8\'f7\'e5\'f1\'ea\'e8\'e9 \'e8\'f1\'f5\'ee\'e4\'ff\'f9\'e8\'e9 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1.\par
+\par
+\'c5\'f1\'eb\'e8 \'e1\'f3\'f4\'e5\'f0 WFQ < CDT < HDQ, \'f2\'ee \'f1\'f0\'e0\'e7\'f3 \'e2 \'f4\'e8\'e7\'e8\'f7\'e5\'f1\'ea\'e8\'e9 \'e8\'f1\'f5\'ee\'e4\'ff\'f9\'e8\'e9 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1.\par
+\par
+\'c4\'eb\'e8\'ed\'e0 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 \'e8\'e7\'ec\'e5\'f0\'ff\'e5\'f2\'f1\'ff \'ed\'e5 \'e2 \'ef\'e0\'ea\'e5\'f2\'e0\'f5, \'e0 \'e2\'ee \'e2\'f0\'e5\'ec\'e5\'ed\'e8, \'ea\'ee\'f2\'ee\'f0\'ee\'e5 \'ef\'ee\'ed\'e0\'e4\'ee\'e1\'e8\'f2\'f1\'ff \'e4\'eb\'ff \'ef\'e5\'f0\'e5\'e4\'e0\'f7\'e8 \'e2\'f1\'e5\'f5 \'ef\'e0\'ea\'e5\'f2\'ee\'e2, \'ed\'e0\'f5\'ee\'e4\'ff\'f9\'e8\'f5\'f1\'ff \'e2 \'e4\'e0\'ed\'ed\'ee\'e9 \'ee\'f7\'e5\'f0\'e5\'e4\'e8. \'d2\'e5\'ec \'f1\'e0\'ec\'fb\'ec WFQ \'ef\'fb\'f2\'e0\'e5\'f2\'f1\'ff \'e2\'fb\'e1\'e8\'f2\'fc \'ee\'e4\'e8\'ed\'e0\'ea\'ee\'e2\'ee\'e5 \'ea\'ee\'eb\'e8\'f7\'e5\'f1\'f2\'e2\'ee bandwidth \'ee\'f2 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0 \'ed\'e0 \'ea\'e0\'e6\'e4\'f3\'fe \'ee\'f7\'e5\'f0\'e5\'e4\'fc.\par
+\par
+\'cd\'e0 QoS 2.2 SG Vol2.pdf \'f1\'f2\'f0.44 \'f0\'e0\'f1\'f1\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff \'ea\'e0\'ea \'f1\'f7\'e8\'f2\'e0\'e5\'f2\'f1\'ff Finish Time (FT) \'e4\'eb\'ff \'ea\'e0\'e6\'e4\'ee\'e3\'ee \'ef\'e0\'ea\'e5\'f2\'e0 - \'e2\'f0\'e5\'ec\'ff, \'f7\'e5\'f0\'e5\'e7 \'ea\'ee\'f2\'ee\'f0\'ee\'e5 \'ef\'e0\'ea\'e5\'f2 \'e2\'fb\'eb\'e5\'f2\'e8\'f2 \'e2 Hardware. \'c7\'e0\'e2\'e8\'f1\'e8\'f2 \'ee\'f2 \'e7\'e0\'e3\'f0\'f3\'e6\'e5\'ed\'ed\'ee\'f1\'f2\'e8 \'ee\'f7\'e5\'f0\'e5\'e4\'e8. \'cd\'c5 \'e2\'f0\'e5\'ec\'ff, \'ea\'ee\'f2\'ee\'f0\'ee\'e5 \'ef\'ee\'ed\'e0\'e4\'ee\'e1\'e8\'f2\'f1\'ff, \'f7\'f2\'ee\'e1\'fb \'ef\'e5\'f0\'e5\'e4\'e0\'f2\'fc \'ef\'e0\'ea\'e5\'f2! \'d5\'e8\'f2\'f0\'e0\'ff \'f4\'ee\'f0\'ec\'f3\'eb\'e0. \'d2\'e0\'ea\'e6\'e5 FT \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'ee\'e3\'ee \'ef\'e0\'ea\'e5\'f2\'e0 ~ 32384/(1+ip precedence), \'f2.\'e5. \'f7\'e5\'ec \'e2\'fb\'f8\'e5 ip precedence, \'f2\'e5\'ec \'ec\'e5\'ed\'fc\'f8\'e5 FT \'ef\'e0\'ea\'e5\'f2\'e0, \'f2\'e5\'ec \'e2\'fb\'f8\'e5 \'f3 \'ed\'e5\'e3\'ee \'ef\'f0\'e8\'ee\'f0\'e8\'f2\'e5\'f2 \'e4\'eb\'ff \'e2\'fb\'f5\'ee\'e4\'e0.\par
+\par
+\'d1\'e0\'ec\'fb\'e9 \'e2\'fb\'f1\'ee\'ea\'e8\'e9 \'ef\'f0\'e8\'ee\'f0\'e8\'f2\'e5\'f2 \'f3 "reservable-queues" \'e2 \'ea\'ee\'f2\'ee\'f0\'ee\'e9 \'f5\'ee\'e4\'ff\'f2 System packets (\'ef\'ee \'ed\'e5\'ea\'ee\'f2\'ee\'f0\'ee\'e9 \'f8\'ea\'e0\'eb\'e5 128), \'f3 \'ef\'e0\'ea\'e5\'f2\'ee\'e2 RSVP \'ef\'f0\'e8\'ee\'f0\'e8\'f2\'e5\'f2 \'e5\'f9\'b8 \'e2\'fb\'f8\'e5 = 4.\par
+\par
+Router(config-if)#\b fair-queue\b0  [\i cdt\i0  [\i dynamic-queues\i0  [\i reservable-queues\i0 ]]]\par
+\pard\li568\sl240\slmult1 cdt - \'e2\'fb\'f1\'f2\'e0\'e2\'eb\'e5\'ed\'e8\'e5 \'ef\'ee\'f0\'ee\'e3\'e0 1..4096 (default = 64)\par
+dynamic-queues - \'ea\'ee\'eb\'e8\'f7\'e5\'f1\'f2\'e2\'ee \'e4\'e8\'ed\'e0\'ec\'e8\'f7\'e5\'f1\'ea\'e8\'f5 \'ee\'f7\'e5\'f0\'e5\'e4\'e5\'e9 16, 32, 64, 128, 256, 512, 1024, 2048, 4096\par
+\pard\fi-284\li852\sl240\slmult1 reservable-queues - \'ef\'ee default-\'f3 = 0, \'cd\'e0\'e4\'ee \'e2\'fb\'f1\'f2\'e0\'e2\'eb\'ff\'f2\'fc >0, \'e5\'f1\'eb\'e8 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'ec RSVP, \'e8\'e7\'ec\'e5\'ed\'ff\'e5\'f2\'f1\'ff \'ee\'f2 1..1000\par
+\pard\sl240\slmult1\par
+WFQ \'e2\'fb\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2\'f1\'ff \'e0\'e2\'f2\'ee\'ec\'e0\'f2\'e8\'f7\'e5\'f1\'ea\'e8, \'e5\'f1\'eb\'e8 bandwidth \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0 \'ec\'e5\'ed\'fc\'f8\'e5 2 \'cc\'e1\'e8\'f2\\\'f1\'e5\'ea \'e8 \'ed\'e0 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0\'f5 \'f1\'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'fb\'f5 \'ea\'e0\'ea Multilink PPP.\par
+WFQ \'ee\'f2\'ea\'eb\'fe\'f7\'e0\'e5\'f2\'f1\'ff, \'e5\'f1\'eb\'e8 \'e2\'ea\'eb\'fe\'f7\'e5\'ed autonomous \'e8\'eb\'e8 silicon switching engine mechanism. \'d7\'f2\'ee-\'f2\'ee \'f1\'e2\'ff\'e7\'e0\'ed\'ed\'ee\'e5 \'f1 \'e7\'e0\'ef\'f0\'e5\'f2\'ee\'ec reordering \'f4\'f0\'e5\'e9\'ec\'ee\'e2 \'ed\'e0 Layer 2 \'f3\'f0\'ee\'e2\'ed\'e5.\'c2 \'f1\'eb\'f3\'f7\'e0\'ff\'f5, \'e5\'f1\'eb\'e8 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e8\'ed\'ea\'e0\'ef\'f1\'f3\'eb\'ff\'f6\'e8\'ff X.25, SDLC, LAPB, reliable PPP.\par
+\par
+Router(config-if)#\b hold-queue \b0\i max-limit\i0  \b out\b0  - \'e2\'fb\'f1\'f2\'e0\'e2\'eb\'e5\'ed\'e8\'e5 HQO, \'ef\'ee default-\'f3 = 1000\par
+\par
+\ul CBWFQ\ulnone\par
+\'c4\'e0\'ed\'ed\'e0\'ff \'e2\'e5\'f9\'fc \'ef\'ee\'e7\'e2\'ee\'eb\'ff\'e5\'f2 \'e3\'e0\'f0\'e0\'ed\'f2\'e8\'f0\'ee\'e2\'e0\'f2\'fc Bandwidth \'e4\'eb\'ff \'ea\'eb\'e0\'f1\'f1\'ee\'e2.\par
+\'d1\'ed\'e0\'f7\'e0\'eb\'e0 \'e2\'f1\'e5 \'ef\'f0\'e8\'f5\'ee\'e4\'ff\'f9\'e8\'e5 \'ef\'e0\'ea\'e5\'f2\'fb \'ed\'e0 \'f4\'e8\'e7\'e8\'f7\'e5\'f1\'ea\'e8\'e9 \'e8\'f1\'f5\'ee\'e4\'ff\'f9\'e8\'e9 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1 \'f0\'e0\'e7\'e4\'e5\'eb\'ff\'fe\'f2\'f1\'ff \'ed\'e0 \'ea\'eb\'e0\'f1\'f1\'fb. \'c4\'eb\'ff \'ea\'e0\'e6\'e4\'ee\'e3\'ee \'ea\'eb\'e0\'f1\'f1\'e0 \'f1\'e2\'ee\'e8 \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'fb \'ef\'ee bandwidth / \'ef\'f0\'ee\'f6\'e5\'ed\'f2 \'ee\'f2 bandwidth / \'ef\'f0\'ee\'f6\'e5\'ed\'f2 \'ee\'f2 \'ee\'f1\'f2\'e0\'e2\'f8\'e5\'e3\'ee\'f1\'ff bandwidth. \'cf\'ee\'f1\'eb\'e5 \'f7\'e5\'e3\'ee \'e2\'f1\'b8 \'fd\'f2\'ee \'ef\'ee\'ef\'e0\'e4\'e0\'e5\'f2 \'e2 WFQ \'ec\'ff\'f1\'ee\'f0\'f3\'e1\'ea\'f3.\par
+\par
+\'cf\'ee\'e4 CBWFQ \'ef\'ee default-\'f3 max \'ec\'ee\'e6\'ed\'ee \'e7\'e0\'f0\'e5\'e7\'e5\'f0\'e2\'e8\'f0\'ee\'e2\'e0\'f2\'fc \'f2\'ee\'eb\'fc\'ea\'ee 75%\par
+Router(config-if)#\b max-reserved-bandwidth\b0  - \'ef\'ee default = 75% \'ee\'f2 \'e2\'f1\'e5\'e9 \'ef\'f0\'ee\'ef\'f3\'f1\'ea\'ed\'ee\'e9 \'f1\'ef\'ee\'f1\'ee\'e1\'ed\'ee\'f1\'f2\'e8 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0 = max \'e7\'e0\'f0\'e5\'e7\'e5\'f0\'e2\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'fb\'e9 bandwidth \'ef\'ee\'e4 RSVP + bandwidth \'ef\'ee\'e4 \'ea\'eb\'e0\'f1\'f1\'fb; \'ee\'f1\'f2\'e0\'e2\'f8\'e8\'e5\'f1\'ff 25% \'ed\'e0 \'f0\'e0\'e7\'eb\'e8\'f7\'ed\'fb\'e5 \'ed\'f3\'e6\'e4\'fb: L2 \'e7\'e0\'e3\'ee\'eb\'ee\'e2\'ea\'e8, keepalives \'e8 bandwidth \'e4\'eb\'ff class default \'f2\'f0\'e0\'f4\'e8\'ea\par
+\par
+Router(config-pmap-c)#\b bandwidth\b0  \i  bandwidth\i0  (kbps)\par
+Router(config-pmap-c)#\b bandwidth percent\b0  \i percent\i0  (1..100)\par
+\pard\fi-568\li568\sl240\slmult1 Router(config-pmap-c)#\b bandwidth remaining percent\b0\i  percent\i0  (1..100, \'ed\'ee \'ef\'ee default \'f2\'ee\'eb\'fc\'ea\'ee 75% \'e7\'e0\'f0\'e0\'e7\'e5\'f0\'e2\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'ee)\par
+Router(config-pmap-c)#\b queue-limit\b0  \i queue-limit\i0  - \'ec\'e0\'ea\'f1\'e8\'ec\'e0\'eb\'fc\'ed\'ee\'e5 \'ea\'ee\'eb\'e8\'f7\'e5\'f1\'f2\'e2\'ee \'ef\'e0\'ea\'e5\'f2\'ee\'e2 \'e2 \'ee\'f7\'e5\'f0\'e5\'e4\'e8, default = 64.\par
+Router(config-pmap-c)#\b fair-queue\b0  [\i cdt\i0  [\i number dynamic-queues\i0 ]]\par
+\par
+\pard\sl240\slmult1\par
+Class-default \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc \'e4\'e2\'f3\'f5 \'f2\'e8\'ef\'ee\'e2: FIFO \'e8\'eb\'e8 WFQ. \'cd\'e5 \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'e5\'f2 WRED. \'c2 \'f0\'e5\'e6\'e8\'ec\'e5 FIFO \'ee\'f7\'e5\'f0\'e5\'e4\'fc \'ec\'ee\'e6\'e5\'f2 \'e3\'e0\'f0\'e0\'ed\'f2\'e8\'f0\'ee\'e2\'e0\'f2\'fc bandwidth.\par
+\par
+#\b show policy-map interface\b0  - \'d5\'ce\'d0\'ce\'d8\'c0\'df \'ca\'ce\'cc\'c0\'cd\'c4\'c0 !\par
+\par
+\ul LLQ\ulnone\par
+\par
+LLQ = PQ + CBWFQ\par
+\par
+\'c7\'e0\'e4\'e0\'f7\'e0 WFQ \'f0\'e0\'e2\'ed\'ee\'ec\'e5\'f0\'ed\'ee \'f0\'e0\'f1\'ef\'f0\'e5\'e4\'e5\'eb\'e8\'f2\'fc bandwidth \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0 \'ec\'e5\'e6\'e4\'f3 \'e2\'f1\'e5\'ec\'e8 \'ee\'f7\'e5\'f0\'e5\'e4\'ff\'ec\'e8/flows, \'ed\'ee \'ec\'e5\'f5\'e0\'ed\'e8\'e7\'ec \'ed\'e5 \'e4\'e0\'b8\'f2 \'e3\'e0\'f0\'e0\'ed\'f2\'e8\'e8 \'ef\'ee bandwidth \'e8 delay \'f2\'ee\'e3\'ee \'e8\'eb\'e8 \'e8\'ed\'ee\'e3\'ee \'ef\'f0\'e8\'eb\'ee\'e6\'e5\'ed\'e8\'ff. \'cf\'ee\'fd\'f2\'ee\'ec\'f3 \'ef\'f0\'e8\'e4\'f3\'ec\'e0\'eb\'e8 LLQ, \'ea\'f3\'e4\'e0 \'ea CBWFQ \'e4\'ee\'e1\'e0\'e2\'e8\'eb\'e8 PQ.\par
+\par
+Router(config-pmap-c)#\b priority\b0  \i bandwidth\i0  [\i burst\i0 ]\par
+Router(config-pmap-c)#\b priority percent\b0  \i percentage\i0  [\i burst\i0 ]\par
+\par
+QoS 2.2 SG Vol2.pdf \'f1\'f2\'f0.77 \'e1\'ee\'eb\'e5\'e5 \'e4\'e5\'f2\'e0\'eb\'fc\'ed\'ee \'ef\'f0\'ee LLQ, \'ef\'f0\'ee show \'ea\'ee\'ec\'e0\'ed\'e4\'fb \'e8 \'f2.\'e4.\par
+\par
+\ul Tail-Drop\ulnone\par
+\par
+\'cc\'e8\'ed\'f3\'f1\'fb:\par
+\pard\fi-568\li568\sl240\slmult1 1. Globlal TCP Synchronization: \'f2.\'ea. tail-drop \'f0\'f3\'e1\'e8\'f2 \'ef\'e0\'ea\'e5\'f2\'fb \'ed\'e5 \'f1\'ec\'ee\'f2\'f0\'ff \'ed\'e0 \'f1\'e5\'f1\'f1\'e8\'e8, \'f2\'ee \'e2 \'eb\'fe\'e1\'ee\'e9 TCP \'f1\'e5\'f1\'f1\'e8\'e8, \'ef\'f0\'ee\'f5\'ee\'e4\'ff\'f9\'e5\'e9 \'f7\'e5\'f0\'e5\'e7 \'fd\'f2\'ee\'f2 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1 \'e1\'f3\'e4\'e5\'f2 \'e4\'f0\'ee\'ef\'ed\'f3\'f2\'fb\'e9 \'ef\'e0\'ea\'e5\'f2, \'e0 \'e7\'ed\'e0\'f7\'e8\'f2 TCP \'f1\'e5\'f1\'f1\'e8\'e8 \'e4\'f0\'f3\'e6\'ed\'ee \'e1\'f3\'e4\'f3\'f2 \'ed\'e0\'f7\'e8\'f2\'e0\'f2\'fc TCP slow-start (\'e8\'eb\'e8 \'f7\'f2\'ee-\'f2\'ee \'e2 \'fd\'f2\'ee\'ec \'f0\'ee\'e4\'e5).\par
+2. TCP \'e1\'f3\'f4\'e5\'f0 starvation (\'e3\'ee\'eb\'ee\'e4\'e0\'ed\'e8\'e5): \'ea\'ee\'e3\'e4\'e0 \'e0\'e3\'f0\'e5\'f1\'f1\'e8\'e2\'ed\'fb\'e5 flows \'e7\'e0\'e1\'e8\'e2\'e0\'fe\'f2 \'e2\'e5\'f1\'fc \'e1\'f3\'f4\'e5\'f0, \'ed\'e5 \'e4\'e0\'e2\'e0\'ff \'ee\'e1\'fb\'f7\'ed\'fb\'ec flow \'ec\'e5\'f1\'f2\'e0 \'e2 \'e1\'f3\'f4\'e5\'f0\'e5.\par
+3. \'ce\'f2\'f1\'f3\'f2\'f1\'f2\'e2\'e8\'e5 \'ec\'e5\'f5\'e0\'ed\'e8\'e7\'ec\'e0 \'e4\'e8\'f4\'f4\'e5\'f0\'e5\'ed\'f6\'e8\'e0\'f6\'e8\'e8 \'ef\'ee\'f2\'ee\'ea\'ee\'e2.\par
+\ul\par
+\pard\sl240\slmult1 RED\ulnone\par
+\par
+\'ca\'e0\'ea \'ef\'e8\'f8\'f3\'f2 \'e2 RED \'ed\'e5\'f2 per-flow intelligence.\par
+\par
+Minimum threshold - \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 \'f1\'f0\'e5\'e4\'ed\'e5\'e9 \'e4\'eb\'e8\'ed\'fb \'ee\'f7\'e5\'f0\'e5\'e4\'e8, \'ea\'ee\'e3\'e4\'e0 \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2 \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc RED\par
+Maximum threshold - \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 \'f1\'f0\'e5\'e4\'ed\'e5\'e9 \'e4\'eb\'e8\'ed\'fb \'ee\'f7\'e5\'f0\'e5\'e4\'e8, \'ea\'ee\'e3\'e4\'e0 \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2\'f1\'ff tail-drop\par
+Probability denominator - \'f0\'e0\'e2\'e5\'ed, \'ea \'ef\'f0\'e8\'ec\'e5\'f0\'f3, 512 - \'e7\'ed\'e0\'f7\'e8\'f2 \'ef\'f0\'e8 \'e4\'ee\'f1\'f2\'e8\'e6\'e5\'ed\'e8\'e8 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'ff \'e4\'eb\'e8\'ed\'fb \'ee\'f7\'e5\'f0\'e5\'e4\'e8 \'e2 maximum threshold \'e1\'f3\'e4\'e5\'f2 \'e4\'f0\'ee\'ef\'e0\'f2\'fc\'f1\'ff \'ee\'e4\'e8\'ed \'ef\'e0\'ea\'e5\'f2 \'e8\'e7 512.\par
+\par
+c\'f0\'e5\'e4\'ed\'ff\'ff \'e4\'eb\'e8\'ed\'e0 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 < minimum threshold - 0% \'e4\'f0\'ee\'ef\'e0.\par
+minimum threshold < c\'f0\'e5\'e4\'ed\'ff\'ff \'e4\'eb\'e8\'ed\'e0 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 < maximum threshold - Random \'e4\'f0\'ee\'ef \'f0\'e0\'f1\'f2\'b8\'f2 \'ee\'f2 0 \'e4\'ee probability denominator\par
+maximum threshold < c\'f0\'e5\'e4\'ed\'ff\'ff \'e4\'eb\'e8\'ed\'e0 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 - tail-drop\par
+\par
+\ul WRED\ulnone\par
+\par
+\'c5\'f1\'eb\'e8 \'ed\'e0 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0 \'ed\'e0\'f1\'f2\'f0\'ee\'e5\'ed RSVP, \'f2\'ee WRED \'e5\'e3\'ee \'f2\'f0\'ee\'e3\'e0\'f2\'fc \'ed\'e5 \'e1\'f3\'e4\'e5\'f2, \'e0 \'e1\'f3\'e4\'e5\'f2 \'f0\'e5\'e7\'e0\'f2\'fc \'e4\'f0\'f3\'e3\'e8\'e5 flows.\par
+\'d1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'fe\'f2 default-\'fb\'e5 profile-\'fb \'e4\'eb\'ff WRED:\par
+8 \'f8\'f2. default-\'fb\'f5 \'ef\'f0\'ee\'f4\'e0\'e9\'eb\'ee\'e2 \'e4\'eb\'ff precedence-based WRED \'e8 64 \'f8\'f2. default-\'fb\'f5 \'ef\'f0\'ee\'f4\'e0\'e9\'eb\'ee\'e2 \'e4\'eb\'ff DSCP-based WRED\par
+\'d2\'e8\'ef\'e0 \'e5\'f1\'eb\'e8 IP Precedence = 5 (101) -> CS5 (40) (101000), \'f2\'ee Default Minimum Threshold = 30 (QoS 2.2 SG Vol2.pdf \'f1\'f2\'f0. 137)\par
+\par
+\pard\fi-568\li568\sl240\slmult1 Router(config-pmap-c)#\b random-detect\b0  - \'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5, \'f7\'f2\'ee \'e8 \'f1\'eb\'e5\'e4\'f3\'fe\'f9\'e0\'ff \'ea\'ee\'ec\'e0\'ed\'e4\'e0. \'cf\'ee default-\'f3 \'e2\'ea\'eb\'fe\'f7\'e0\'e5\'f2\'f1\'ff precedence-based WRED.\b\par
+\pard\sl240\slmult1\b0 Router(config-pmap-c)#\b random-detect precedence-based\par
+\pard\fi-568\li568\sl240\slmult1\b0 Router(config-pmap-c)#\b random-detect precedence\b0  5 \i minimum_threshold maximum_threshold mark_probability_denominator\i0  - \'e1\'ee\'eb\'e5\'e5 \'f2\'ee\'ed\'ea\'e0\'ff \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e0 precedence-based WRED QoS 2.2 SG Vol2.pdf \'f1\'f2\'f0. 143\par
+Router(config-pmap-c)#\b random-detect dscp-based\b0  - \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc dscp-based WRED\par
+Router(config-pmap-c)#\b random-detect dscp\b0  af23 \i minimum_threshold maximum_threshold mark_probability_denominator\i0  - \'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5, \'f7\'f2\'ee \'e8 \'f1 precedence.\par
+\par
+\'cf\'e8\'f8\'f3\'f2, \'f7\'f2\'ee \b random-detect\b0  \'e8 \b queue-limit\b0  \'ea\'ee\'ec\'e0\'ed\'e4\'fb \'e2\'e7\'e0\'e8\'ec\'ed\'ee \'e8\'f1\'ea\'eb\'fe\'f7\'e0\'fe\'f9\'e8\'e5 \'e4\'f0\'f3\'e3 \'e4\'f0\'f3\'e3\'e0???\par
+\b\par
+\b0 Router(config-pmap-c)#\b random-detect exponential-weighting-constant\b0  \i n\i0  - \'e3\'e4\'e5 n=1..16, \'ef\'ee default n=9, \'ef\'f0\'e8 \'fd\'f2\'ee\'ec \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e8 Q avg (t+1) = Q avg (t) * 0.998 + Q t * 0.002 - \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0, \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'e5\'f2 \'f7\'f3\'e2\'f1\'f2\'e2\'e8\'f2\'e5\'eb\'fc\'ed\'ee\'f1\'f2\'fc \'ea burst-\'e0\'ec. \'d7\'e5\'ec n \'e1\'ee\'eb\'fc\'f8\'e5, \'f2\'e5\'ec WRED \'ec\'e5\'ed\'e5\'e5 \'f7\'f3\'e2\'f1\'f2\'e2\'e8\'f2\'e5\'eb\'e5\'ed \'ea burst.\par
+\par
+\'c7\'e0\'e4\'e0\'f7\'e0: \'c2\'ea\'eb\'fe\'f7\'e8\'f2\'fc CBWFQ \'e4\'eb\'ff \'ef\'f0\'e8\'ee\'f0\'e8\'f2\'e5\'e7\'e0\'f6\'e8\'e8 \'f2\'f0\'e0\'f4\'e8\'ea\'e0, \'f1\'ee\'e3\'eb\'e0\'f1\'ed\'ee \'f2\'f0\'e5\'e1\'ee\'e2\'e0\'ed\'e8\'ff\'ec\par
+\pard\li710\sl240\slmult1 - Class mission-critical, \'ec\'e0\'f0\'ea\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'fb\'e9 AF2 \'e4\'ee\'eb\'e6\'e5\'ed \'e7\'e0\'ed\'e8\'ec\'e0\'f2\'fc 30% \'ee\'f2 bandwidth \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0\par
+- Class bulk, \'ec\'e0\'f0\'ea\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'fb\'e9 IP precedence 1 (high-drop) \'e8 2 (low-drop) \'e4\'ee\'eb\'e6\'e5\'ed \'e7\'e0\'ed\'e8\'ec\'e0\'f2\'fc 20% \'ee\'f2 bandwidth \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0\par
+- \'c2\'e5\'f1\'fc \'ee\'f1\'f2\'e0\'eb\'fc\'ed\'ee\'e9 \'f2\'f0\'e0\'f4\'e8\'ea \'e4\'ee\'eb\'e6\'e5\'ed \'e1\'fb\'f2\'fc per-flow fair-queued\par
+\pard\sl240\slmult1\par
+\'d0\'e5\'f8\'e5\'ed\'e8\'e5:\par
+class-map mission-critical\par
+  match ip dcsp af21 af22 af23 cs2\par
+class-map bulk\par
+  match ip precedence 1 2\par
+policy-map Policy\par
+  class mission-critical\par
+    bandwidth percent 30\par
+    random-detect dscp-based\par
+\pard\fi-3408\li3408\sl240\slmult1     random-detect dscp af21 32 40 10 - 40=default hold queue size (\'f1\'ec. \'e2\'fb\'f8\'e5 \'e2 \'e2\'fb\'e2\'ee\'e4\'e5 show int f0/0), 32-\'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 queue average \'ef\'f0\'e8 \'ea\'ee\'f2\'ee\'f0\'ee\'ec \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2 \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc WRED, 10=default \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 - \'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2, \'f7\'f2\'ee 1 \'e8\'e7 10 \'ef\'e0\'ea\'e5\'f2\'ee\'e2 \'e1\'f3\'e4\'e5\'f2 \'e4\'f0\'ee\'ef\'e0\'f2\'fc\'f1\'ff \'ef\'f0\'e8 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e8 queue average = maximum threshold, \'e2 \'ed\'e0\'f8\'e5\'ec \'f1\'eb\'f3\'f7\'e0\'e5 =40\par
+\pard\sl240\slmult1     random-detect dscp af22 28 40 10\par
+    random-detect dscp af23 24 40 10\par
+    random-detect dscp cs2 24 40 10\par
+  class bulk\par
+    bandwidth percent 20\par
+    random-detect\par
+    random-detect precedence 1 22 36 10\par
+    random-detect precedence 2 24 36 10\par
+  class class-default\par
+    fair-queue\par
+    random-detect\par
+\par
+\pard\fi-1136\li1136\sl240\slmult1\ul ECN\ulnone\par
+Explicit Congestion Notification -\'ef\'ee\'eb\'e5 \'e2 IP \'ef\'e0\'ea\'e5\'f2\'e5, \'ea\'ee\'e3\'e4\'e0 \'e2 \'f1\'eb\'f3\'f7\'e0\'e5 congestion \'f0\'ee\'f3\'f2\'e5\'f0 \'e2\'fb\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2 \'fd\'f2\'ee\'f2 \'f4\'eb\'e0\'e3 ECN, \'e8 \'ef\'e0\'ea\'e5\'f2 \'e4\'ee\'f5\'ee\'e4\'e8\'f2 \'e4\'ee End-host, \'f5\'ee\'f1\'f2 \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2 \'ef\'e5\'f0\'e5\'e4\'e0\'e2\'e0\'f2\'fc \'e4\'e0\'ed\'ed\'fb\'e5 \'e1\'ee\'eb\'e5\'e5 \'ec\'e5\'e4\'eb\'e5\'ed\'ed\'e5\'e9. \'d4\'e8\'f7\'e0 \'e4\'ee\'eb\'e6\'ed\'e0 \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'f2\'fc\'f1\'ff \'ea\'e0\'ea \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'e8\'e7\'e0\'f2\'ee\'f0\'ee\'ec, \'f2\'e0\'ea \'e8 End-host-\'e0\'ec\'e8.\par
+\pard\sl240\slmult1 Router(config-pmap-c)#\b random-detect ecn\b0\par
+\par
+\ul Traffic-policing and Shaping\ulnone\par
+\par
+\pard\fi-568\li568\sl240\slmult1\'d0\'e5\'e7\'f3\'eb\'fc\'f2\'e0\'f2\'ee\'ec \'f2\'f0\'e0\'f4\'e8\'ea Policing \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc: transmit, drop \'e8\'eb\'e8 mark - \'ef\'e5\'f0\'e5\'ec\'e0\'f0\'ea\'e8\'f0\'ee\'e2\'fb\'e2\'e0\'f2\'fc \'f2\'f0\'e0\'f4\'e8\'ea, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'ef\'f0\'e5\'e2\'fb\'f1\'e8\'eb \'ef\'f0\'e5\'e4\'e5\'eb \'ed\'e0 \'e1\'ee\'eb\'e5\'e5 \'ed\'e8\'e7\'ea\'e8\'e9 \'ef\'f0\'e8\'ee\'f0\'e8\'f2\'e5\'f2 \'e8 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'f2\'fc \'e5\'e3\'ee \'e4\'e0\'eb\'fc\'f8\'e5\par
+Shaping \'e6\'e5 \'ed\'e5 \'ef\'e5\'f0\'e5\'ec\'e0\'f0\'ea\'e8\'f0\'ee\'e2\'fb\'e2\'e0\'e5\'f2 \'f2\'f0\'e0\'f4\'e8\'ea, \'e0 \'f2\'ee\'eb\'fc\'ea\'ee \'e7\'e0\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'e5\'f2 burst \'f2\'f0\'e0\'f4\'e8\'ea \'e2 \'ea\'ee\'f0\'e7\'e8\'ed\'e5, \'f7\'f2\'ee \'f1\'ee\'ee\'f2\'e2\'e5\'f2\'f1\'f2\'e2\'e5\'ed\'ed\'ee \b\'ef\'ee\'e2\'fb\'f8\'e0\'e5\'f2 delay !!!\b0\par
+Shaping \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'d2\'ce\'cb\'dc\'ca\'ce \'ed\'e0 \'e8\'f1\'f5\'ee\'e4\'ff\'f9\'e5\'ec \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e5. Policing \'ec\'ee\'e6\'e5\'f2 \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc \'e8 \'ed\'e0 \'e2\'f5\'ee\'e4\'ff\'f9\'e5\'ec \'e8 \'ed\'e0 \'e8\'f1\'f5\'ee\'e4\'ff\'f9\'e5\'ec.\par
+\'cf\'f0\'e8 \'f0\'e0\'e1\'ee\'f2\'e5 policing \'ef\'ee\'e2\'fb\'f8\'e0\'e5\'f2\'f1\'ff \'ea\'ee\'eb\'e8\'f7\'e5\'f1\'f2\'e2\'ee TCP retransmit. \'c2 shaping \'f2\'e0\'ea\'ee\'e3\'ee \'ed\'e5\'f2.\par
+Shaping \'ec\'ee\'e6\'e5\'f2 \'e2\'e7\'e0\'e8\'ec\'ee\'e4\'e5\'e9\'f1\'f2\'e2\'ee\'e2\'e0\'f2\'fc c Frame-Relay congestion indicator \'f2\'e0\'ea\'e8\'ec\'e8 \'ea\'e0\'ea BECN. \'cf\'f0\'e8 \'ef\'ee\'eb\'f3\'f7\'e5\'ed\'e8\'e8 BECN \'f0\'ee\'f3\'f2\'e5\'f0 \'ec\'ee\'e6\'e5\'f2 \'ef\'ee\'ed\'e8\'e7\'e8\'f2\'fc \'ef\'ee\'f0\'ee\'e3 \'e2 shaping-\'e5.\par
+\pard\sl240\slmult1\par
+\ul\'ce\'e4\'ed\'ee \'e2\'e5\'e4\'f0\'ee\par
+\ulnone\par
+Token Bucket - \'ea\'e0\'ea \'e8\'e7\'ec\'e5\'f0\'ff\'e5\'f2\'f1\'ff \'ef\'ee\'eb\'ee\'f1\'e0 \'e2 policing \'e8 shaping. \'c4\'eb\'ff \'f0\'e0\'e1\'ee\'f2\'fb \'e0\'eb\'e3\'ee\'f0\'e8\'f2\'ec\'e0 \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee 2-\'e0 \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'e0: \'ee\'e1\'fa\'b8\'ec \'e2\'e5\'e4\'f0\'e0 (\b Bc\b0  - burst committed \'e2 \'e1\'e0\'e9\'f2\'e0\'f5) \'e8 \'f0\'e0\'e7\'f0\'e5\'f8\'b8\'ed\'ed\'e0\'ff \'f1\'ea\'ee\'f0\'ee\'f1\'f2\'fc \b CIR\b0  (commited information rate \'e2 \'e1\'e0\'e9\'f2/\'f1). \'c4\'ee\'ef\'f3\'f1\'f2\'e8\'ec CIR=3000 \'e1\'e0\'e9\'f2/\'f1 \'e8 \'e2 \'ec\'ee\'ec\'e5\'ed\'f2 \'e2\'f0\'e5\'ec\'e5\'ed\'e8 t1 bucket \'f1\'ee\'e4\'e5\'f0\'e6\'e8\'f2 3500 \'ec\'e0\'f0\'ea\'e5\'f0\'ee\'e2 (token). \'c2 \'f2\'ee\'f2 \'e6\'e5 \'ec\'ee\'ec\'e5\'ed\'f2 \'ef\'f0\'e8\'f8\'b8\'eb \'ef\'e0\'ea\'e5\'f2 \'e2 1500 \'e1\'e0\'e9\'f2. \'cf\'e0\'ea\'e5\'f2 \'e1\'f3\'e4\'e5\'f2 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'e5\'ed, \'f2\'e0\'ea \'ea\'e0\'ea 1500<3500. \'c8\'e7 bucket \'e1\'f3\'e4\'e5\'f2 \'e2\'fb\'f7\'f2\'e5\'ed\'ee 1500 \'ec\'e0\'f0\'ea\'e5\'f2\'ee\'e2 \'e8 \'e2 \'ed\'b8\'ec \'ee\'f1\'f2\'e0\'ed\'e5\'f2\'f1\'ff 2000 \'ec\'e0\'f0\'ea\'e5\'f0\'ee\'e2. \'c2 \'ec\'ee\'ec\'e5\'ed\'f2 \'e2\'f0\'e5\'ec\'e5\'ed\'e8 t2 = t1 + 100 \'ec\'f1 \'e2 bucket \'e4\'ee\'e1\'e0\'e2\'e8\'f2\'f1\'ff 3000 \'e1\'e0\'e9\'f2/\'f1*0.1\'f1= 300 \'ec\'e0\'f0\'ea\'e5\'f0\'ee\'e2, \'f2.\'e5. \'e2 bucket \'e1\'f3\'e4\'e5\'f2 2300 \'ec\'e0\'f0\'ea\'e5\'f0\'ee\'e2. \'c2 \'f2\'ee\'f2 \'e6\'e5 \'ec\'ee\'ec\'e5\'ed\'f2 \'e2\'f0\'e5\'ec\'e5\'ed\'e8 \'ef\'f0\'e8\'f8\'b8\'eb \'ef\'e0\'ea\'e5\'f2 \'e2 1500 \'e1\'e0\'e9\'f2 -> \'ee\'f2\'ef\'f0\'e0\'e2\'e8\'f2\'f1\'ff \'f2.\'ea. 1500<2300 -> token bucket = 800 \'ec\'e0\'f0\'ea\'e5\'f0\'ee\'e2. \'c5\'f9\'b8 \'f7\'e5\'f0\'e5\'e7 100 \'ec\'f1 token bucket = 1100 \'ec\'e0\'f0\'ea\'e5\'f0\'ee\'e2 \'e8 \'e5\'f1\'eb\'e8 \'ef\'f0\'e8\'e4\'b8\'f2 \'ef\'e0\'ea\'e5\'f2 \'e2 1500 \'e1\'e0\'e9\'f2, \'ee\'ed \'e1\'f3\'e4\'e5\'f2 \'ee\'f2\'e1\'f0\'ee\'f8\'e5\'ed, \'e0 \'e5\'f1\'eb\'e8 \'ef\'f0\'e8\'e4\'b8\'f2 \'ef\'e0\'ea\'e5\'f2 >1100 \'e1\'e0\'e9\'f2, \'f2\'ee \'ef\'f0\'ee\'e9\'e4\'b8\'f2. \'c5\'f1\'eb\'e8 token bucket \'ef\'ee\'eb\'ed\'e0 \'ec\'e0\'f0\'ea\'e5\'f0\'ee\'e2, \'e0 \'ef\'e0\'ea\'e5\'f2\'ee\'e2 \'ed\'e5 \'ef\'f0\'e8\'f5\'ee\'e4\'e8\'f2, \'f2\'ee \'ed\'ee\'e2\'fb\'e5 \'ec\'e0\'f0\'ea\'e5\'f0\'fb \'e1\'f3\'e4\'f3\'f2 \'ef\'f0\'ee\'f1\'f2\'ee \'ee\'f2\'e1\'f0\'e0\'f1\'fb\'e2\'e0\'f2\'fc\'f1\'ff.\par
+\par
+\pard\fi-568\li568\sl240\slmult1\b CIR\b0  (\'e1\'e0\'e9\'f2/\'f1\'e5\'ea) = \b Bc\b0  (\'e1\'e0\'e9\'f2) / \b Tc\b0  (\'f1\'e5\'ea) - token bucket \'ec\'e0\'f0\'ea\'e5\'f0\'e0\'ec\'e8 \'e7\'e0\'ef\'ee\'eb\'ed\'ff\'e5\'f2\'f1\'ff \'ed\'e5 \'ef\'ee\'f1\'f2\'ee\'ff\'ed\'ed\'ee, \'e0 \'f7\'e5\'f0\'e5\'e7 \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'b8\'ed\'ed\'fb\'e5 \'e8\'ed\'f2\'e5\'f0\'e2\'e0\'eb\'fb \'e2\'f0\'e5\'ec\'e5\'ed\'e8 \'ef\'ee \'ea\'e0\'ea\'ee\'ec\'f3-\'f2\'ee \'f4\'e8\'ea\'f1\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'ee\'ec\'f3 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'fe. Tc - \'fd\'f2\'ee \'ea\'e0\'ea \'f0\'e0\'e7 \'f2\'ee\'f2 \'f1\'e0\'ec\'fb\'e9 \'e8\'ed\'f2\'e5\'f0\'e2\'e0\'eb. Tc \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e2 shaping. \b Tc = 0.25 \'f1\'e5\'ea \'ef\'ee default Cisco IOS\b0\par
+\par
+\pard\sl240\slmult1\ul\'c4\'e2\'e0 \'e2\'e5\'e4\'f0\'e0\par
+\ulnone\par
+QoS 2.2 SG Vol2.pdf \'f1\'f2\'f0. 187 \'c5\'f1\'eb\'e8 \'e2 \'ef\'e5\'f0\'e2\'ee\'ec token bucket \'ed\'e5\'f2 \'ec\'e5\'f1\'f2\'e0 \'e4\'eb\'ff token, \'f2\'ee \'e2 \'ef\'f0\'e8\'ec\'e5\'f0\'e5 \'f1 \'ee\'e4\'ed\'e8\'ec \'e2\'e5\'e4\'f0\'ee\'ec, \'ed\'ee\'e2\'fb\'e9 token \'e1\'f3\'e4\'e5\'f2 \'ee\'f2\'e1\'f0\'ee\'f8\'e5\'ed. \'c2 \'e4\'e0\'ed\'ed\'ee\'ec \'ef\'f0\'e8\'ec\'e5\'f0\'e5 \'ee\'ed \'ef\'e5\'f0\'e5\'e9\'e4\'b8\'f2 \'e2\'ee \'e2\'f2\'ee\'f0\'ee\'e5 \'e2\'e5\'e4\'f0\'ee. \'c8 \'f2\'ee\'eb\'fc\'ea\'ee \'f2\'ee\'e3\'e4\'e0, \'ea\'ee\'e3\'e4\'e0 2-\'e5 \'e2\'e5\'e4\'f0\'ee \'e1\'f3\'e4\'e5\'f2 \'e7\'e0\'ef\'ee\'eb\'ed\'e5\'ed\'ee, \'ed\'ee\'e2\'fb\'e9 token \'e1\'f3\'e4\'e5\'f2 \'ee\'f2\'e1\'f0\'ee\'f8\'e5\'ed. \b Be\b0  - burst excess - \'ee\'e1\'fa\'b8\'ec \'e2\'f2\'ee\'f0\'ee\'e3\'ee \'e2\'e5\'e4\'f0\'e0.\par
+\pard\li568\sl240\slmult1 - \'c5\'f1\'eb\'e8 \'e4\'eb\'e8\'ed\'e0 \'ef\'e0\'ea\'e5\'f2\'e0 < \'ea\'ee\'eb\'e8\'f7\'e5\'f1\'f2\'e2\'e0 token \'e2 1-\'ee\'ec \'e2\'e5\'e4\'f0\'e5 -> \'ef\'e0\'ea\'e5\'f2 \'ef\'f0\'ee\'f5\'ee\'e4\'e8\'f2 \'e8 \'e4\'e5\'e9\'f1\'f2\'e2\'e8\'e5 \'ed\'e0\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff CONFORM\par
+- \'c5\'f1\'eb\'e8 \'e4\'eb\'e8\'ed\'e0 \'ef\'e0\'ea\'e5\'f2\'e0 > \'ea\'ee\'eb\'e8\'f7\'e5\'f1\'f2\'e2\'e0 token \'e2 1-\'ee\'ec \'e2\'e5\'e4\'f0\'e5, \'ed\'ee < token 1-\'e5 \'e2\'e5\'e4\'f0\'ee + token 2-\'e5 \'e2\'e5\'e4\'f0\'ee -> \'ef\'e0\'ea\'e5\'f2 \'ef\'f0\'ee\'f5\'ee\'e4\'e8\'f2 + \'ef\'e5\'f0\'e5\'ec\'e0\'f0\'ea\'e8\'f0\'ee\'e2\'fb\'e2\'e0\'e5\'f2\'f1\'ff \'e8 \'e4\'e5\'e9\'f1\'f2\'e2\'e8\'e5 \'ed\'e0\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff EXCEED\par
+- \'c5\'f1\'eb\'e8 \'e4\'eb\'e8\'ed\'e0 \'ef\'e0\'ea\'e5\'f2\'e0 > token 1-\'e5 \'e2\'e5\'e4\'f0\'ee + token 2-\'e5 \'e2\'e5\'e4\'f0\'ee -> \'ef\'e0\'ea\'e5\'f2 \'ee\'f2\'e1\'f0\'e0\'f1\'fb\'e2\'e0\'e5\'f2\'f1\'ff - VIOLATE\par
+\pard\sl240\slmult1\par
+\'c5\'f1\'f2\'fc \'e5\'f9\'b8 \'f1\'f5\'e5\'ec\'e0 \'f1 \'f0\'e0\'e7\'ed\'ee\'e9 \'f1\'ea\'ee\'f0\'ee\'f1\'f2\'fc\'fe \'ed\'e0\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'ff \'e2\'b8\'e4\'e5\'f0 \b PIR\b0  (peak information rate) - \'f1\'ea\'ee\'f0\'ee\'f1\'f2\'fc \'ed\'e0\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'ff \'ef\'e5\'f0\'e2\'ee\'e3\'ee \'e2\'e5\'e4\'f0\'e0, CIR - \'f1\'ea\'ee\'f0\'ee\'f1\'f2\'fc \'ed\'e0\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'ff \'e2\'f2\'ee\'f0\'ee\'e3\'ee \'e2\'e5\'e4\'f0\'e0.\par
+\par
+Router(config-pmap-c)#\b police cir \b0\i cir \b\i0 pir \b0\i pir Bc \i0 [\i Be\i0 ] \b conform-action\b0  ... \b exceed-action\b0  ... \b violate-action\b0  ...\par
+\'c5\'f1\'eb\'e8 \'ed\'e5 \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'eb\'e5\'ed\'ed\'ee \'c2\'f1, \'f2\'ee \'f0\'e0\'f1\'f1\'f7\'e8\'f2\'fb\'e2\'e0\'e5\'f2\'f1\'ff, \'f7\'f2\'ee \b\'c2\'f1 = CIR / 32\b0 , \'ef\'e8\'f8\'f3\'f2, \'f7\'f2\'ee \'fd\'f2\'ee \'ea\'e0\'ea-\'f2\'ee \'f1\'e2\'ff\'e7\'e0\'ed\'ed\'ee \'f1 \'f2\'e5\'ec, \'f7\'f2\'ee Tc = 0.25 \'f1\'e5\'ea.\par
+\'c5\'f1\'eb\'e8 \'e2 \'ea\'ee\'ec\'e0\'ed\'e4\'e5 police \'ed\'e5 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff violate-action, \'e7\'ed\'e0\'f7\'e8\'f2 \'e1\'f3\'e4\'e5\'f2 \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc \'f1\'f5\'e5\'ec\'e0 \'f1 \'ee\'e4\'ed\'ee\'e9 bucket. \'c5\'f1\'eb\'e8 violate-action \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff, \'f2\'ee\'e3\'e4\'e0 \'f1\'f5\'e5\'ec\'e0 \'f1 2-\'ff bucket.\par
+\'c5\'f1\'eb\'e8 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'f1\'f5\'e5\'ec\'e0 \'f1 2-\'ff bucket \'e8 Be \'ed\'e5 \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'eb\'e5\'ed\'ee, \'f2\'ee \b Be=Bc\b0 .\par
+\'c5\'f1\'eb\'e8 \'e2 \'ea\'ee\'ec\'e0\'ed\'e4\'e5 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \b PIR\b0 , \'f2\'ee \'e1\'f3\'e4\'e5\'f2 \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc \'f1\'f5\'e5\'ec\'e0 Dual-Rate \'e8\'eb\'e8 \'f1 2-\'ff \'e2\'b8\'e4\'f0\'e0\'ec\'e8 \'e8 \'f0\'e0\'e7\'ed\'ee\'e9 \'f1\'ea\'ee\'f0\'ee\'f1\'f2\'fc\'fe \'ed\'e0\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'ff.\par
+\'cc\'ee\'e6\'ed\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee action, \'ea \'ef\'f0\'e8\'ec\'e5\'f0\'f3, \'e4\'eb\'ff exceed-action \'ec\'ee\'e6\'ed\'ee \'ee\'e4\'ed\'ee\'e2\'f0\'e5\'ec\'e5\'ed\'ed\'ee \'e2\'fb\'f1\'f2\'e0\'e2\'e8\'f2\'fc \'e8 set-dscp-transmit 0 \'e8 set-clp transmit\par
+\'c5\'f1\'eb\'e8 \'ee\'e4\'ed\'f3 \'e8 \'f2\'f3\'e6\'e5 policy-map \'e2\'e5\'f8\'e0\'f2\'fc \'ed\'e0 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'fb \'f1 \'f0\'e0\'e7\'ed\'fb\'ec Bandwidth, \'f2\'ee \'f0\'e5\'ea\'ee\'ec\'e5\'ed\'e4\'f3\'fe\'f2 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'e2 \'ea\'ee\'ec\'e0\'ed\'e4\'e5 policy \'ed\'e5 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'ff \'e2 \'e1\'e0\'e9\'f2\'e0\'f5, \'e0 % \'ee\'f2 Bandwidth.\par
+\par
+\'c2\'f1\'b8 \'ec\'ee\'e6\'ed\'ee \'e2\'e8\'e4\'e5\'f2\'fc \'e2 #show policy-map asd\par
+\par
+Shaping \'ec\'ee\'e6\'ed\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'e2\'ec\'e5\'f1\'f2\'e5 \'f1 CBWFQ. \'c2 \'f2\'ee \'e2\'f0\'e5\'ec\'ff \'ea\'e0\'ea shaping \'e2\'fb\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2 \'e2\'e5\'f0\'f5\'ed\'fe\'fe \'e3\'f0\'e0\'ed\'e8\'f6\'f3 \'ef\'ee \'f2\'f0\'e0\'f4\'e8\'ea\'f3 (\'f2\'f0\'e0\'f4\'e8\'ea \'ed\'e5 \'ec\'ee\'e6\'e5\'f2 \'ef\'f0\'e5\'e2\'fb\'f1\'e8\'f2\'fc...), \'f2\'ee CBWFQ \'e2\'fb\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2 \'e3\'e0\'f0\'e0\'ed\'f2\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'f3\'fe \'ec\'e8\'ed\'e8\'ec\'e0\'eb\'fc\'ed\'f3\'fe \'ef\'ee\'eb\'ee\'f1\'f3 \'ef\'f0\'ee\'ef\'f3\'f1\'ea\'e0\'ed\'e8\'ff.\b\par
+\b0\par
+shape average - \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'ed\'e0 \'f3\'f0\'ee\'e2\'ed\'e5 CIR\par
+shape peak - \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'ed\'f3 \'f3\'f0\'ee\'e2\'ed\'e5 CIR*(1+Be/Bc) - \'e2 \'ee\'e1\'f9\'e5\'ec \'ea\'e0\'ea\'e0\'ff-\'f2\'ee \'f2\'e0\'ec \'ec\'f3\'f2\'fc !\par
+\par
+\ul\'c8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'ed\'e8\'e5 Shaping \'e8 CBWFQ\ulnone\par
+\par
+policy-map shape-cbwfq\par
+  class cust1\par
+    shape average 384000\par
+    bandwidth 256\par
+\par
+\'c2\'eb\'ee\'e6\'e5\'ed\'ed\'fb\'e5 policy-maps\par
+\par
+policy-map child-cbwfq\par
+  class 1\par
+    bandwidth percent 50\par
+  class 2\par
+    bandwidth percent 20\par
+  class 3\par
+    bandwidth percent 10\par
+policy-map shape-all\par
+  class class-default\par
+    shape average 384000\par
+    servise-policy child-cbwfq\par
+\par
+\'c4\'e0\'eb\'fc\'f8\'e5 \'e8\'e4\'b8\'f2 \'ee\'ef\'e8\'f1\'e0\'ed\'e8\'e5 \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e8 QoS \'ed\'e0 Frame-Relay: QoS 2.2 SG Vol2.pdf - \'ed\'e0 223 \'f1\'f2\'f0.\par
+\par
+Router(config)# class-map match-all class3\par
+Router(config-cmap)# match protocol ip\par
+Router(config-cmap)# match qos-group 4\par
+Router(config)# class-map match-any class4\par
+Router(config-cmap)# match class-map class3\par
+Router(config-cmap)# match destination-address mac 1.1.1\par
+Router(config-cmap)# match access-group2\par
+Router(config)# policy-map policy1\par
+Router(config-pmap)# class class4\par
+Router(config-pmap-c)# police 8100 1500 2504 conform-action transmit exceed-action set-qos-transmit 4\par
+\par
+#\b show class-map\b0\par
+\par
+Policy maps \'ec\'ee\'e6\'ed\'ee \'e2\'f1\'f2\'e0\'e2\'eb\'ff\'f2\'fc \'e4\'f0\'f3\'e3 \'e2 \'e4\'f0\'f3\'e6\'ea\'f3.\par
+class-map HTTP\par
+ match protocol http\par
+!\par
+class-map AllTraffic\par
+ match any\par
+!\par
+policy-map \b QueueAll\b0\par
+ class HTTP\par
+  bandwidth 1000\par
+!\par
+policy-map ShapeAll\par
+ class AllTraffic\par
+  shape 2000000\par
+  service-policy \b QueueAll\b0\par
+!\par
+interface FastEthernet0/0\par
+ service-policy output ShapeAll\par
+\par
+Router#show policy-map ShapeAll\par
+Router#show policy-map interface FastEthernet0/0\par
+QoS 2.2 SG Vol1.pdf \'f1\'f2\'f0.96\par
+\par
+\par
+\par
+\ul TOS Byte\ulnone :\par
+\ul\par
+\ulnone |---------------------------------------------------|\par
+|  7  |  6  |  5  |  4  |  3  |  2  |  1  |  0  |\par
+|---------------------------------------------------|\par
+| IP Precede |        Unused             | = IP Precedence\par
+|---------------------------------------------------|\par
+|\tab     DSCP\tab    |FlowCon| = \'ef\'ee\'eb\'e5 DiffServ\par
+|---------------------------------------------------|\par
+|      CoS       | - CoS = 5, \'fd\'f2\'ee IP Prec = 5 \'e8\'eb\'e8 DSCP = 40 = 5x8\par
+|-------------------|\par
+|  2  |  1  |  0  |\par
+\par
+DSCP:\par
+000xxx - Default\par
+101xxx - \b EF\b0  (Expedited Forwarding) \'cf\'f0\'e8\'ee\'f0\'e8\'f2\'e5\'f2\'ed\'fb\'e9\par
+------\par
+001xxx - af1\par
+010xxx - af2\par
+011xxx - \b AF\b0 3\b  \b0 (Assured Forwarding) \'c3\'e0\'f0\'e0\'ed\'f2\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'fb\'e9\par
+100xxx - af4\par
+------\par
+xxx000 - \b CS\b0  (Class-Selector)\par
+\par
+\'ca\'e0\'e6\'e4\'fb\'e9 \'e8\'e7 4-\'f5 \'ea\'eb\'e0\'f1\'f1\'ee\'e2 AF \'f0\'e0\'e7\'e4\'e5\'eb\'ff\'e5\'f2\'f1\'ff \'ed\'e0 3-\'e8 \'ea\'eb\'e0\'f1\'f1\'e0 \'ef\'ee \'e2\'e5\'f0\'ee\'ff\'f2\'ed\'ee\'f1\'f2\'e8 Drop. AF11 - \'cd\'e8\'e7\'ea\'e8\'e9, AF12 - \'d1\'f0\'e5\'e4\'ed\'e8\'e9, AF13 - \'c2\'fb\'f1\'ee\'ea\'e8\'e9\par
+\par
+\'ce\'f1\'ed\'ee\'e2\'ed\'fb\'e5 \'ea\'f0\'e8\'f2\'e5\'f0\'e8\'e8 \'f3\'f0\'ee\'e2\'ed\'ff \'f1\'e5\'f0\'e2\'e8\'f1\'e0 \'f3 \'ee\'ef\'e5\'f0\'e0\'f2\'ee\'f0\'ee\'e2 \'f1\'e2\'ff\'e7\'e8:\par
+- Low Latancy\par
+- \'c3\'e0\'f0\'e0\'ed\'f2\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'e0\'ff Latancy \'e8 \'e4\'ee\'f1\'f2\'e0\'e2\'ea\'e0\par
+- \'d2\'ee\'eb\'fc\'ea\'ee \'e3\'e0\'f0\'e0\'ed\'f2\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'e0\'ff \'e4\'ee\'f1\'f2\'e0\'e2\'ea\'e0\par
+ -\'cd\'e5\'f2 \'e3\'e0\'f0\'e0\'ed\'f2\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'ee\'e9 \'e4\'ee\'f1\'f2\'e0\'e2\'ea\'e8\par
+\par
+\lang1033\f1 Real-Time - \lang1049\f0\'fd\'f2\'ee\'f2 \'f2\'e5\'f0\'ec\'e8\'ed \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'ef\'f0\'e8 \'e2\'e7\'e0\'e8\'ec\'ee\'e4\'e5\'e9\'f1\'f2\'e2\'e8\'e8 \'f7\'e5\'eb\'ee\'e2\'e5\'ea-\'f7\'e5\'eb\'ee\'e2\'e5\'ea \'e8\'eb\'e8 \'ef\'f0\'e8 \'f1\'f2\'fb\'ea\'ee\'e2\'ea\'e5 \'f1\'ef\'f3\'f2\'ed\'e8\'ea\'ee\'e2. \'dd\'f4\'e8\'f0\'ed\'ee\'e5 \'d2\'c2 - \'ed\'e5 \lang1033\f1 Real-Time.\lang1049\f0\par
+\par
+\ul QoS Baseline\ulnone :\par
+\tab  \tab Voice\tab\tab\tab Voice\par
+Realtime\tab\tab\tab\tab Interactive-Video\par
+\tab\tab Video\tab\tab\tab Streaming Video\par
+-------------------------------------------------------------------------------------------\par
+Call Signaling\tab Call Signaling\tab\tab Call Signaling\par
+\par
+\tab\tab Network Control\tab\tab IP Routing\par
+\tab\tab\tab\tab\tab Network Management\par
+\par
+Critical Data\tab Critical Data\tab\tab Mission-Critical Data\par
+\tab\tab\tab\tab\tab Transactional Data\i\par
+\i0\par
+\tab\tab Bulk Data\tab\tab Bulk Data\par
+-------------------------------------------------------------------------------------------\par
+Best Effort\tab Best Effort\tab\tab Best Effort\par
+-------------------------------------------------------------------------------------------\par
+Scavenger\tab Scavenger\tab\tab Scavenger\par
+\par
+\tab\tab Cos/MPLS EXP\tab DSCP\tab PHB\tab\'cf\'f0\'e8\'eb\'ee\'e6\'e5\'ed\'e8\'ff\tab\tab\tab\'d0\'e5\'ea\'ee\'ec\'e5\'ed\'e4\'e0\'f6\'e8\'e8\par
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\par
+IP Routing\tab\tab 6\tab 48\tab CS6\tab OSPF, BGP,PIM, IGMP, RIP\tab Rate-Based Queuing + RED\par
+Voice\tab\tab\tab 5\tab 46\tab EF\tab RTP\tab\tab\tab\tab RSVP Admission Control + Priority Queuing\par
+Video Conferencing\tab 4\tab 34\tab AF41\tab Bidirectional \'e2\'e8\'e4\'e5\'ee(\'d1 \'e2\'ee\'e7\'ec\'ee\'e6\'ed\'ee\'f1\'f2\'fc\'fe \'ef\'e5\'f0\'e5\'ec\'ee\'f2\'ea\'e8)\tab\tab RSVP + Rate-Based Queuing + DSCP-WRED\par
+Streaming Video\tab 4\tab 32\tab CS4\tab Unidirectional(\'c1\'e5\'e7 \'ef\'e5\'f0\'e5\'ec\'ee\'f2\'ea\'e8)\tab RSVP + Rate-Based Queuing + RED\par
+Mission-Critical Data\tab 3\tab 26\tab AF31\tab SAP, LOTUS\tab\tab\tab Rate-Based Queuing + DSCP-WRED\par
+Call Signaling\tab\tab 3\tab 24\tab CS3\tab SIP, H.323\tab\tab\tab Rate-Based Queuing + RED\par
+Transactional Data\tab 2\tab 18\tab AF21\tab DNS, WINS, LDAP, SQL\tab Rate-Based Queuing + DSCP-WRED\par
+Network Management\tab 2\tab 16\tab CS2\tab SSH, TFTP, SNMP,Syslog\tab Rate-Based Queuing + RED\par
+Bulk Data\tab\tab 1\tab 10\tab AF11\tab HTTP, FTP, SMTP, IMAP, SMB\tab Rate-Based Queuing + DSCP-WRED\par
+Scavenger\tab\tab 1\tab 8\tab CS1\tab ICQ, AIM, Torrent\tab\tab\'cd\'e5\'f2 \'e3\'e0\'f0\'e0\'ed\'f2\'e8\'e8 bandwidth + RED\par
+Best Effort\tab\tab 0\tab 0\tab 0\tab\'ce\'f1\'f2\'e0\'eb\'fc\'ed\'ee\'e9 \'f2\'f0\'e0\'f4\'e8\'ea\tab\tab Bandwidth \'e3\'e0\'f0\'e0\'ed\'f2\'e8\'f0\'f3\'e5\'f2\'f1\'ff Rate-Based Queuing + RED\par
+\par
+\'c2\'e1\'e8\'f2\'fc \'e2 google: QoS Baseline At-a-Glance !\par
+\par
+\ul WRR-QUEUEING\ulnone :\tab\tab\tab\tab\ul\b\'cf\'ee default-\'f3 \'ed\'e0 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e5 \'f1\'f2\'ee\'e8\'f2 FIFO\b0\par
+\ulnone\'e1\'fb\'e2\'e0\'e5\'f2 \'f1 \'ef\'f0\'e8\'ee\'f0\'e8\'f2\'e5\'f2\'ed\'ee\'e9 \'ee\'f7\'e5\'f0\'e5\'e4\'fc\'fe \'e8 \'e1\'e5\'e7.\par
+\par
+\pard\fi-1136\li1136\sl240\slmult1 Switch(config-if)#\b priority-queue out\b0  - \'e2\'ea\'eb\'fe\'f7\'e5\'ed\'e8\'e5 \'ef\'f0\'e8\'ee\'f0\'e8\'f2\'e5\'f2\'ed\'ee\'e9 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 \'ed\'e0 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e5\b . \b0\'cf\'ee\'ea\'e0 \'e5\'f1\'f2\'fc \'ef\'e0\'ea\'e5\'f2\'fb \'e2 PQ, \'ee\'f1\'f2\'e0\'eb\'fc\'ed\'fb\'e5 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 \'e1\'f3\'e4\'f3\'f2 \'ea\'f3\'f0\'e8\'f2\'fc.\par
+Switch(config-if)#\b wrr-queue bandwidth\b0  \i 1 2 3 4\i0  - \'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2, \'f7\'f2\'ee \'e4\'eb\'ff \'ef\'e5\'f0\'e2\'ee\'e9 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 \'e2\'fb\'e4\'e5\'eb\'ff\'e5\'f2\'f1\'ff \b\'cc\'c8\'cd\'c8\'cc\'d3\'cc\b0  1/(1+2+3+4)=1/10 \'ef\'ee\'eb\'ee\'f1\'fb \'ef\'f0\'ee\'ef\'f3\'f1\'ea\'e0\'ed\'e8\'ff, \'e4\'eb\'ff \'e2\'f2\'ee\'f0\'ee\'e9 2/(1+2+3+4)=2/10 \'ef\'ee\'eb\'ee\'f1\'fb, 3-\'e5\'e9 = 3/10, 4-\'ee\'e9 = 4/10 \'cf\'d0\'c8 \'d3\'d1\'cb\'ce\'c2\'c8\'c8 \'ce\'d2\'ca\'cb\'de\'d7\'c5\'cd\'cd\'ce\'c9 PQ ! \'d2.\'e5. \'e8\'e7 \'e1\'f3\'f4\'e5\'f0\'e0 (bucket) \'e1\'f3\'e4\'f3\'f2 \'e2\'fb\'f2\'e0\'f1\'ea\'e8\'e2\'e0\'f2\'fc\'f1\'ff \'ef\'e0\'ea\'e5\'f2\'fb \'e2 \'f2\'e0\'ea\'ee\'e9 \'ef\'f0\'ee\'ef\'ee\'f0\'f6\'e8\'e8.\par
+\pard\sl240\slmult1\par
+\'c5\'f1\'eb\'e8 PQ \'e2\'ea\'eb\'fe\'f7\'e5\'ed\'ee (\'e0 \'ee\'ed\'ee \'e2\'ea\'eb\'fe\'f7\'e0\'e5\'f2\'f1\'ff \'f2\'ee\'eb\'fc\'ea\'ee \'e4\'eb\'ff 4-\'ee\'e9 \'ee\'f7\'e5\'f0\'e5\'e4\'e8), \'f2\'ee \'f0\'e0\'f1\'ef\'f0\'e5\'e4\'e5\'eb\'e5\'ed\'e8\'e5 \'e1\'f3\'e4\'e5\'f2 \'f2\'e0\'ea\'ee\'e5: 1-\'ee\'e9 = 1/(1+2+3) = 1/6, 2-\'ee\'e9 = 2/6, 3-\'e5\'e9 = 3/6; \'f2.\'e5. \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 \'e4\'eb\'ff 4-\'ee\'e9 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 \'ef\'f0\'e8 \'f0\'e0\'f1\'f7\'b8\'f2\'e5 \'f3\'f7\'e8\'f2\'fb\'e2\'e0\'f2\'fc\'f1\'ff \'ed\'e5 \'e1\'f3\'e4\'e5\'f2.\par
+\par
+\pard\fi-1136\li1136\sl240\slmult1 Switch(config-if)#\b wrr-queue cos-map\b0  \i 1 5 6 7\i0  - \'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2, \'f7\'f2\'ee \'e2 \'ee\'f7\'e5\'f0\'e5\'e4\'fc \'b91 \'ef\'ee\'ef\'e0\'e4\'f3\'f2 \'ef\'e0\'ea\'e5\'f2\'fb \'f1\'ee \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5\'ec \'e2 \'ef\'ee\'eb\'e5 CoS = 5, 6 \'e8 7. \'c8 \'ef\'ee\'e4\'ee\'e1\'ed\'fb\'f5 \'e7\'e0\'ef\'e8\'f1\'e5\'e9 \'e4\'ee\'eb\'e6\'ed\'ee \'e1\'fb\'f2\'fc \'e2\'f1\'e5\'e3\'ee 4, \'e4\'eb\'ff \'ea\'e0\'e6\'e4\'ee\'e9 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 + \'e4\'ee\'eb\'e6\'ed\'fb \'e1\'fb\'f2\'fc \'e2\'fb\'e1\'f0\'e0\'ed\'fb \'e2\'f1\'e5 \'e2\'ee\'e7\'ec\'ee\'e6\'ed\'fb\'e5 \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'fb \'ef\'ee\'eb\'ff CoS.\par
+Switch(config-if)#\b wrr-queue queue-limit \b0  \i 4 5 6 7\i0  - \'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2 \'e2 \'ea\'e0\'ea\'ee\'e9 \'ef\'f0\'ee\'ef\'ee\'f0\'f6\'e8\'e8 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 \'ec\'ee\'e6\'e5\'f2 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'e1\'f3\'f4\'e5\'f0 (bucket). \'ca \'ef\'f0\'e8\'ec\'e5\'f0\'f3, \'e1\'f3\'f4\'e5\'f0 \'ed\'e0 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e5 = 2000 \'e1\'e0\'e9\'f2. \'c2 \'e4\'e0\'ed\'ed\'ee\'ec \'ef\'f0\'e8\'ec\'e5\'f0\'e5 1-\'e0\'ff \'ee\'f7\'e5\'f0\'e5\'e4\'fc \'e2 \'e1\'f3\'f4\'e5\'f0\'e5 \'ec\'ee\'e6\'e5\'f2 \'e7\'e0\'ed\'e8\'ec\'e0\'f2\'fc 4/(4+5+6+7)=4/22 \'e8\'eb\'e8 2000*4/22 = 91 \'e1\'e0\'e9\'f2, 2-\'e0\'ff = 5/(4+5+6+7) = ....\par
+Switch(config-if)#\b wrr-queue dscp-map\b0  \i 1 40 41 42 43\i0  - \'e2 \'ea\'e0\'e6\'e4\'ee\'e9 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 \'e2 \'e7\'e0\'e2\'e8\'f1\'e8\'ec\'ee\'f1\'f2\'e8 \'ee\'f2 \'ef\'eb\'e0\'f2\'f4\'ee\'f0\'ec\'fb \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee threshold \'e8\'ec\'e5\'ed\'ed\'ee \'e4\'eb\'ff \ul tail-drop\ulnone  (\'ed\'e5 \'e7\'e0\'e1\'fb\'e2\'e0\'f2\'fc, \'f7\'f2\'ee \'ed\'e0 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc \'e2\'ea\'eb\'fe\'f7\'b8\'ed \'e8\'eb\'e8 tail-drop \'e8\'eb\'e8 WRED). \'d2\'f3\'f2 \'ec\'e0\'ef\'ff\'f2\'f1\'ff \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'ff DSCP \'ea \'f2\'ee\'ec\'f3 \'e8\'eb\'e8 \'e8\'ed\'ee\'ec\'f3 threshold (\'ef\'e5\'f0\'e2\'ee\'e5 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 \'e2 \'ea\'ee\'ec\'e0\'ed\'e4\'e5 - \'fd\'f2\'ee \'ed\'ee\'ec\'e5\'f0 threshold)\par
+Switch(config-if)#\b wrr-queue random-detect\b0  - \'e7\'e0\'e4\'e0\'b8\'f2 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'ff threshold \'e4\'eb\'ff WRED. \'cf\'f0\'e8 \'ea\'e0\'ea\'ee\'ec % \'e7\'e0\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'ff \'ee\'f7\'e5\'f0\'e5\'e4\'e8 \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2 \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc WRED - \i min-threshold\i0  \'e8 \'ea\'ee\'e3\'e4\'e0 WRED \'f0\'e0\'e7\'e3\'ee\'ed\'ff\'e5\'f2\'f1\'ff \'ef\'ee \'ef\'ee\'eb\'ed\'ee\'e9 \'e8 \'e4\'f0\'ee\'ef\'e8\'f2 100% \'ef\'e0\'ea\'e5\'f2\'ee\'e2 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 \i max-threshold\i0 .\par
+Switch(config-if)#\b wrr-queue threshold\b0  \i 1 10 10 10 \i0 - \'e2\'fb\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2 \'f1\'ee\'e1\'f1\'f2\'e2\'e5\'ed\'ed\'ee threshold \'e4\'eb\'ff Tail-Drop (\'ef\'e5\'f0\'e2\'ee\'e5 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 \'e2 \'ea\'ee\'ec\'e0\'ed\'e4\'e5 - \'fd\'f2\'ee \'ed\'ee\'ec\'e5\'f0 \'ee\'f7\'e5\'f0\'e5\'e4\'e8).\b\par
+\pard\sl240\slmult1\b0\par
+\'cf\'ee\'eb\'e5\'e7\'ed\'fb\'e5 \'ea\'ee\'ec\'e0\'ed\'e4\'fb \'ed\'e0 \'f1\'e2\'e8\'f2\'f7\'e5:\par
+\pard\fi-1136\li1136\sl240\slmult1 Switch(config-if)#switchport voice vlan 100 - \'ea\'ee\'ec\'ec\'f3\'f2\'e0\'f2\'ee\'f0 \'ef\'ee \'ef\'f0\'ee\'f2\'ee\'ea\'ee\'eb\'f3 CDP \'e3\'ee\'e2\'ee\'f0\'e8\'f2 \'f2\'e5\'eb\'e5\'f4\'ee\'ed\'f3 \'ea\'e0\'ea\'ee\'e9 Vlan \'e2\'fb\'f1\'f2\'e0\'e2\'eb\'ff\'f2\'fc \'e4\'eb\'ff \'e3\'ee\'eb\'ee\'f1\'e0. \'d1\'e0\'ec \'f2\'e5\'eb\'e5\'f4\'ee\'ed \'e1\'f3\'e4\'e5\'f2 \'f1\'f2\'e0\'e2\'e8\'f2\'fc CoS = 5, DSCP = 46 = EF\par
+Switch(config-if)#mls qos trust cos \'e8 Switch(config-if)#mls cos trust device cisco-phone - \'e2 \'f2\'f0\'e0\'f4\'e8\'ea\'e5 \'ee\'f2 \'cf\'ca \'f2\'e5\'eb\'e5\'f4\'ee\'ed CoS \'f1\'e1\'f0\'e0\'f1\'fb\'e2\'e0\'e5\'f2 \'e2 0, \'ed\'ee \'ee\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2 DCSP \'e1\'e5\'e7 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'e9. \'d2.\'e5. \'fd\'f2\'e8\'ec\'e8 \'ea\'ee\'ec\'e0\'ed\'e4\'e0\'ec\'e8 \'ec\'fb \'e4\'ee\'e2\'e5\'f0\'ff\'e5\'ec CoS, \'f2\'ee\'eb\'fc\'ea\'ee \'e5\'f1\'eb\'e8 \'ee\'ed \'ef\'f0\'e8\'f8\'b8\'eb \'ee\'f2 cisco-phone.\par
+Switch(config-if)#switchport priority extend cos 6 - \'f2\'f0\'e0\'f4\'e8\'ea \'ee\'f2 \'cf\'ca \'ec\'e0\'f0\'ea\'e8\'f0\'ee\'e2\'e0\'f2\'fc CoS = 6\par
+Switch(config-if)#switchport priority extend cos trust - \'e4\'ee\'e2\'e5\'f0\'ff\'f2\'fc CoS \'f2\'f0\'e0\'f4\'e8\'ea\'f3 \'ee\'f2 \'cf\'ca\par
+\par
+\'ce\'f2\'ed\'ee\'f8\'e5\'ed\'e8\'e5 \'ea \'ef\'f0\'e8\'f8\'e5\'e4\'f8\'e5\'ec\'f3 \'f2\'f0\'e0\'f4\'e8\'ea\'f3 \'ed\'e0 \'f1\'e2\'e8\'f2\'f7:\par
+1. \'c4\'ee\'e2\'e5\'f0\'e8\'e5 CoS + \'ef\'e5\'f0\'e5\'ec\'e0\'f0\'ea\'e8\'f0\'ee\'e2\'e0\'f2\'fc DSCP \'f1\'ee\'e3\'eb\'e0\'f1\'ed\'ee \'e2\'ed\'f3\'f2\'f0\'e5\'ed\'ed\'e5\'e9 \'f2\'e0\'e1\'eb\'e8\'f6\'e5\par
+2. \'c4\'ee\'e2\'e5\'f0\'e8\'e5 CoS + \'e1\'e5\'e7 \'ef\'e5\'f0\'e5\'ec\'e0\'f0\'ea\'e8\'f0\'ee\'e2\'ea\'e8 DSCP\par
+3. \'c4\'ee\'e2\'e5\'f0\'e8\'e5 DSCP\par
+4. \'cd\'e5\'e4\'ee\'e2\'e5\'f0\'e8\'e5\par
+\par
+\ul\'c4\'ee\'e2\'e5\'f0\'e8\'e5 CoS + \'ef\'e5\'f0\'e5\'ec\'e0\'f0\'ea\'e8\'f0\'ee\'e2\'e0\'f2\'fc DSCP\ulnone :\par
+Switch(config-if)#mls qos trust cos - \'e4\'ee\'e2\'e5\'f0\'ff\'e5\'f2 \'e2\'f5\'ee\'e4\'ff\'f9\'e5\'ec\'f3 CoS, \'ed\'e0 \'ee\'f1\'ed\'ee\'e2\'e0\'ed\'e8\'e8 \'f2\'e0\'e1\'eb\'e8\'f6\'fb CoS-DSCP \'ef\'e5\'f0\'e5\'ef\'e8\'f1\'fb\'e2\'e0\'e5\'f2 DSCP, \'ee\'e1\'f0\'e0\'e1\'e0\'f2\'fb\'e2\'e0\'e5\'f2 \'ef\'e0\'ea\'e5\'f2, \'ed\'e0 \'ee\'f1\'ed\'ee\'e2\'e0\'ed\'e8\'e8 \'f2\'e0\'e1\'eb\'e8\'f6\'fb DSCP-CoS \'e2 \'e8\'f1\'f5\'ee\'e4\'ff\'f9\'e5\'ec \'ef\'e0\'ea\'e5\'f2\'e5 \'ef\'f0\'ee\'ef\'e8\'f1\'fb\'e2\'e0\'e5\'f2 CoS, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'e2\'eb\'e8\'ff\'e5\'f2 \'ed\'e0 \'e2\'fb\'e1\'ee\'f0 ergress \'ee\'f7\'e5\'f0\'e5\'e4\'e8\par
+\par
+\ul\'c4\'ee\'e2\'e5\'f0\'e8\'e5 CoS + \'e1\'e5\'e7 \'ef\'e5\'f0\'e5\'ec\'e0\'f0\'ea\'e8\'f0\'ee\'e2\'ea\'e8 DSCP\ulnone :\par
+Switch(config-if)#mls qos trust cos pass-through dscp - \'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5 \'f7\'f2\'ee \'e8 \'e2 \'ef\'f0\'e5\'e4\'fb\'e4\'f3\'f9\'e5\'ec \'f1\'eb\'f3\'f7\'e0\'e5, \'ed\'ee \'f2\'ee\'eb\'fc\'ea\'ee \'e1\'e5\'e7 \'ef\'e5\'f0\'e5\'ec\'e0\'f0\'ea\'e8\'f0\'ee\'e2\'ea\'e8 \'e2\'f5\'ee\'e4\'ff\'f9\'e5\'e3\'ee DSCP\par
+\par
+\ul\'c4\'ee\'e2\'e5\'f0\'e8\'e5 DSCP\ulnone :\par
+Switch(config-if)#mls qos trust dscp - \'e4\'ee\'e2\'e5\'f0\'ff\'e5\'f2 DSCP\par
+\par
+\pard\sl240\slmult1\ul SRR-QUEUEING\par
+\ulnone{\field{\*\fldinst{HYPERLINK "http://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3750/software/release/12-2_55_se/commmand/reference/3750cr/cli3.html#wp1947391"}}{\fldrslt{\ul\cf1 http://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3750/software/release/12-2_55_se/commmand/reference/3750cr/cli3.html#wp1947391}}}\f0\fs22\par
+Shaped Round Robin \'e1\'fb\'e2\'e0\'e5\'f2 \'ea\'e0\'ea ergress \'f2\'e0\'ea \'e8 ingress. \'ce\'f7\'e5\'f0\'e5\'e4\'fc ingress \'ed\'e0\'f5\'ee\'e4\'e8\'f2\'f1\'ff \'ec\'e5\'e6\'e4\'f3 \'f4\'e8\'e7\'e8\'f7\'e5\'f1\'ea\'e8\'ec \'ef\'ee\'f0\'f2\'ee\'ec, \'ea\'f3\'e4\'e0 \'ef\'e0\'ea\'e5\'f2\'fb \'ef\'f0\'e8\'f5\'ee\'e4\'ff\'f2 \'e8 \'ef\'f0\'ee\'f6\'e5\'f1\'f1\'ee\'f0\'ee\'ec \'ea\'ee\'ec\'ec\'f3\'f2\'e0\'f2\'ee\'f0\'e0 (stack ring). \'c8\'e7 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 ergress \'ef\'e0\'ea\'e5\'f2\'fb \'ef\'ee\'ef\'e0\'e4\'e0\'fe\'f2 \'f1\'f0\'e0\'e7\'f3 \'e2 \'f4\'e8\'e7\'e8\'f7\'e5\'f1\'ea\'e8\'e9 \'ef\'ee\'f0\'f2. \'cd\'e0 ergress \'ec\'ee\'e6\'ed\'ee \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e8\'f0\'ee\'e2\'e0\'f2\'fc sharing \'e8 shaping. Ingress \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'f2\'ee\'eb\'fc\'ea\'ee \'e2 \'f0\'e5\'e6\'e8\'ec\'e5 sharing.\par
+\par
+\pard\fi-1136\li1136\sl240\slmult1 Switch(config-if)#\b srr-queue bandwidth limit\b0  \i 80\i0  - \'ea \'ef\'f0\'e8\'ec\'e5\'f0\'f3, \'e7\'e0\'ed\'e8\'e6\'e0\'e5\'f2 Bandwidth \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0 \'e4\'ee 80% \'ee\'f2 \'f0\'e5\'e0\'eb\'fc\'ed\'ee\'e9 \'ef\'f0\'ee\'ef\'f3\'f1\'ea\'ed\'ee\'e9 \'f1\'ef\'ee\'f1\'ee\'e1\'ed\'ee\'f1\'f2\'e8. \'cf\'e8\'f8\'f3\'f2, \'f7\'f2\'ee \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1 20% \'e2\'f0\'e5\'ec\'e5\'ed\'e8 \'e1\'f3\'e4\'e5\'f2 \'ef\'f0\'ee\'f1\'f2\'ee \'ef\'f0\'ee\'f1\'f2\'e0\'e8\'e2\'e0\'f2\'fc. \'cd\'e5 \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'ed\'e0 10G \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0\'f5.\par
+\par
+Switch(config-if)#\b srr-queue bandwidth shape\b0  \i 25 0 0 0\i0  - \'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2, \'f7\'f2\'ee \'ef\'e5\'f0\'e2\'ee\'e9 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 \'e2\'fb\'e4\'e5\'eb\'ff\'e5\'f2\'f1\'ff \'ef\'ee\'eb\'ee\'f1\'e0 1/(25+0+0+0) = 4% \'ee\'f2 \'f1\'ea\'ee\'f0\'ee\'f1\'f2\'e8 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0 (\'e8\'ec\'e5\'ed\'ed\'ee \b 1\b0 /25, \'e0 \'ed\'e5 \'ea\'e0\'ea \'e2 srr-queue bandwidth share 25 0 0 0, \'e3\'e4\'e5 \'f2\'e0\'ea\'e0\'ff \'ea\'ee\'ed\'f1\'f2\'f0\'f3\'ea\'f6\'e8\'ff \'ee\'e7\'ed\'e0\'f7\'e0\'eb\'e0 \'e1\'fb \'e2\'fb\'e4\'e5\'eb\'e5\'ed\'e8\'e5 1-\'ee\'e9 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 \b 25\b0 /(25+0+0+0) = 100% \'f1\'ea\'ee\'f0\'ee\'f1\'f2\'e8 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0). \'c2\'f1\'b8 \'f7\'f2\'ee \'e1\'ee\'eb\'fc\'f8\'e5 4% -  rate-limited. \'c8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e4\'eb\'ff \'f1\'e3\'eb\'e0\'e6\'e8\'e2\'e0\'ed\'e8\'ff burst \'f2\'f0\'e0\'f4\'e8\'ea\'e0.\par
+\pard\li1136\sl240\slmult1 Shape \'ef\'e5\'f0\'e5\'ef\'e8\'f1\'fb\'e2\'e0\'f2 Share \'f2.\'e5. \'e2 \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e0\'f6\'e8\'e8\par
+srr-queue bandwidth shape 10 0 0 0\par
+srr-queue bandwidth share \b 25\b0  26 27 28 - \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 25 \'e4\'eb\'ff 1-\'ee\'e9 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 \'ed\'e5 \'e1\'f3\'e4\'e5\'f2 \'f3\'f7\'e8\'f2\'fb\'e2\'e0\'f2\'fc\'f1\'ff, \'f2.\'ea. 1-\'e0\'ff \'ee\'f7\'e5\'f0\'e5\'e4\'fc \'e1\'f3\'e4\'e5\'f2 \'f8\'fd\'e9\'ef\'e8\'f2\'fc\'f1\'ff \'f1 \'ea\'ee\'fd\'f4\'f4\'e8\'f6\'e8\'e5\'ed\'f2\'ee\'ec 10 \'f1\'ee\'ee\'f2\'e2\'e5\'f2\'f1\'f2\'e2\'f3\'fe\'f9\'e8\'ec 10% \'f1\'ea\'ee\'f0\'ee\'f1\'f2\'e8 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0. \'c0 2, 3, 4-\'fb\'e5 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 \'e1\'f3\'e4\'f3\'f2 share c \'ea\'ee\'fd\'f4\'f4\'f6\'e8\'e5\'ed\'f2\'e0\'ec\'e8 \'f1\'ee\'ee\'f2\'e2\'e5\'f2\'f1\'f2\'e2\'e5\'ed\'ed\'ee 26/(26+27+28), 27/(26+27+28), 28/(26+27+28)\par
+\'cd\'e5 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'ed\'e0 10G \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0\'f5.\par
+\pard\fi-1136\li1136\sl240\slmult1\par
+Switch(config-if)#\b srr-queue bandwidth share\b0  \i 25 25 25 25\i0  - \'ef\'f0\'e8 \'f3\'f1\'eb\'ee\'e2\'e8\'e8, \'f7\'f2\'ee srr-queue bandwidth shape 0 0 0 0, \'e4\'eb\'ff \'ee\'f7\'e5\'f0\'e5\'e4\'e8 \'e3\'e0\'f0\'e0\'ed\'f2\'e8\'f0\'f3\'e5\'f2\'f1\'ff, \'e2 \'ed\'e0\'f8\'e5\'ec \'f1\'eb\'f3\'f7\'e0\'e5 25/(25+25+25+25) = 25% \'f1\'ea\'ee\'f0\'ee\'f1\'f2\'e8 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0. \'cd\'ee \'e5\'f1\'eb\'e8 \'ee\'f1\'f2\'e0\'eb\'fc\'ed\'fb\'e5 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 \'ef\'f3\'f1\'f2\'fb\'e5, \'f2\'ee \'f2\'f0\'e0\'f4\'e8\'ea \'ef\'e5\'f0\'e2\'ee\'e9 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 \'ec\'ee\'e6\'e5\'f2 \'e7\'e0\'ed\'ff\'f2\'fc \'e8 \'e1\'ee\'eb\'e5\'e5 25% \'f1\'ea\'ee\'f0\'ee\'f1\'f2\'e8 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0.\par
+#show mls qos interface FastEthernet0/1 queueing\par
+\par
+\ul STORM-CONTROL\ulnone  \par
+Switch(config-if)#\b storm-control broadcast level\b0  \i 10.00 5.00 \i0 - \'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2, \'f7\'f2\'ee \'e5\'f1\'eb\'e8 \'ed\'e0 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e5 \'ea\'ee\'eb-\'e2\'ee broadcast \'ef\'f0\'e5\'e2\'fb\'f1\'e8\'f2 10.00% (Rising suppression level) \'ee\'f2 \'f1\'ea\'ee\'f0\'ee\'f1\'f2\'e8 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0, \'f2\'ee \'ef\'e0\'ea\'e5\'f2\'fb \'ed\'e0\'f7\'ed\'f3\'f2 \'f4\'e8\'eb\'fc\'f2\'f0\'ee\'e2\'e0\'f2\'fc\'f1\'ff/\'e4\'f0\'ee\'ef\'e0\'f2\'fc\'f1\'ff \'e4\'ee \'f2\'e5\'f5 \'ef\'ee\'f0 \'ef\'ee\'ea\'e0 \'ea\'ee\'eb-\'e2\'ee broadcast \'ed\'e5 \'e4\'ee\'f1\'f2\'e8\'e3\'ed\'e5\'f2 5.00% (Falling suppression level) \'ee\'f2 \'f1\'ea\'ee\'f0\'ee\'f1\'f2\'e8 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0. \'cc\'ee\'e6\'ed\'ee Falling suppression level \'ed\'e5 \'e7\'e0\'e4\'e0\'e2\'e0\'f2\'fc, \'f2\'ee\'e3\'e4\'e0 \'ef\'e0\'ea\'e5\'f2\'fb \'e1\'f3\'e4\'f3\'f2 \'f4\'e8\'eb\'fc\'f2\'f0\'ee\'e2\'e0\'f2\'fc\'f1\'ff \'e4\'ee \'f2\'e5\'f5 \'ef\'ee\'f0 \'ef\'ee\'ea\'e0 \'ea\'ee\'eb-\'e2\'ee broadcast \'ed\'e5 \'e4\'ee\'f1\'f2\'e8\'e3\'ed\'e5\'f2 Rising suppression level. Storm-control \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2 \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc \'ea\'ee\'e3\'e4\'e0 Rising suppression level <100%\par
+\pard\li1136\sl240\slmult1\'d3\'f0\'ee\'e2\'ed\'e8 \'ec\'ee\'e6\'ed\'ee \'e7\'e0\'e4\'e0\'e2\'e0\'f2\'fc \'ea\'e0\'ea \'e2 % \'f2\'e0\'ea \'e8 \'e2 bps \'e8\'eb\'e8 pps\par
+\pard\fi-1136\li1136\sl240\slmult1\par
+Switch(config-if)#\b storm-control action\b0  \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc shutdown \'e8\'eb\'e8 trap. \'cf\'f0\'e8 \'e4\'ee\'f1\'f2\'e8\'e6\'e5\'ed\'e8\'e8 Rising suppression level \'e8 \'ed\'e0\'f7\'e0\'eb\'e5 \'f0\'e0\'e1\'ee\'f2\'fb \'f4\'e8\'eb\'fc\'f2\'f0\'e0\'f6\'e8\'e8, \'f1\'e8\'f1\'f2\'e5\'ec\'e0 \'e5\'f9\'b8 \'ec\'ee\'e6\'e5\'f2 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'f2\'fc trap \'ef\'ee SNMP \'e8\'eb\'e8 \'ea\'eb\'e0\'f1\'f2\'fc \'ef\'ee\'f0\'f2 \'e2 err-disable ~ shutdown.\b\par
+}
+ 

@@ -1,0 +1,71 @@
+BookInline		2 iso		3.14 √б
+Books			3 iso		4.34 √б
+DoscInline		10 iso		19 √б
+NVision			8 iso		16 √б + 13 iso-шников в облаке asd
+Oracle11g		4 iso		6.68 √б
+ProofPoint		4 iso		2.96 √б
+ орп.”н.NVision		5 iso		9.38 √б
+Ёнцикл—амостѕутеш	3 iso		4.17 √б
+
+01.01.2020.vcf
+15955_raptor-...iso
+ACS_4.2_SW1.iso
+Artezio.zip
+Cloud.txt
+Configs.zip
+ContentKeeper-1.26.iso
+FGT_VM64-v5-build1486-FORTINET.ovf.zip
+Films.txt
+Helios.iso				1.36 √б
+IELTS.iso				187 ћб
+Install.iso				723 ћб
+jdk-8u241-linux-x64.tar.gz		186 ћб
+Music.txt
+Notes.zip
+Pictures.iso				1.04 √б
+Questions_marked.xlsx
+“юленев.ѕ.¬.mp4
+
+Linux	удалил	Ћекции ¬иктор јшик	4.02 √б
+
+Cisco					668 ћб
+ |----	ASA_8.2_keygen.exe
+ |----	vpnclient-winx64-msi-5.0.07.0440-k9.exe
+ |----	vpnclient-win-msi-5.0.07.0410-k9.exe
+ |----	+ 20 образов IOS
+
+VmWare					10.2 √б
+ |----	VMware-vCenter-Server-Appliance-6.5.0.5100-4602587_OVF10.ova
+ |----	VMware-VCSA-all-6.5.0-4602587.iso
+ |----	VMware-VIMSetup-all-5.1.0-947939.iso
+ |----	VMware-VMvisor-Installer-5.1.0-799733.x86_64.iso
+ |----	VMware-VMvisor-Installer-6.5.0-4564106.x86_64.iso
+ |----	VMware-workstation-full-15.5.2-15785246.exe
+ |----	VmWare_keygen.exe
+
+Microsoft				7.64 √б
+ |----	ru-en_office_2016_x86-x64_vl_advanced_vol2.iso
+ |----	ru-en_win7_sp1_x86-x64_dvd_18in1_activated.iso
+ |----	Win_XP_Pro_sp3+keygen.iso
+
+——ћ					6.51 √б
+ |----	CiscoIPCommunicatorSetup_8.6.1.exe
+ |----	Bootable_UCSInstall_UCOS_UNRST_8.6.2.10000-15.sgn.iso
+ |----	CCM6.0_100000DL.iso
+
+IOU					186 ћб
+ |----	CiscoIOUKeygen.py
+ |----	i86bi-linux-l2-adventerprise-15.1b
+ |----	i86bi_linux-adventerprisek9-ms.152-2.15.T
+ |----	NETMAP
+
+JunOS					2.16 √б
+ |----	jinstall-ex-3200-12.3R12.4-domestic-signed.tgz
+ |----	jinstall-ex-4200-12.3R12.4-domestic-signed.tgz
+ |----	junos-srxsme-12.1X46-D65.4-domestic.tgz
+ |----	vmx-esxi-15.1F4.15.tgz
+ |----	Olive12.1R1.9.pdf
+ |----	Olive12.1R1.9.vmdk
+
+ћама-флешка				728 ћб
+ |----	ћо€ будуща€ професси€
