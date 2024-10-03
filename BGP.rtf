@@ -1,0 +1,474 @@
+{\rtf1\ansi\ansicpg1251\deff0\deflang1049{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}{\f1\fnil\fcharset0 Courier New;}}
+{\colortbl ;\red0\green0\blue255;}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\f0\fs22 Router(config-router)#\b bgp log-neighbor-changes\b0  - \'eb\'ee\'e3\'e8\'f0\'f3\'e5\'f2 \'e5\'f1\'eb\'e8 \'ef\'f0\'ee\'ef\'e0\'eb \'f1\'ee\'f1\'e5\'e4\par
+Router(config-router)#\b neighbor \b0\i IP-address\i0  \b maximum-prefix\b0  \i number\i0  - \'ec\'e0\'ea\'f1\'e8\'ec\'e0\'eb\'fc\'ed\'ee\'e5 \'ea\'ee\'eb-\'e2\'ee \'ef\'f0\'e5\'f4\'e8\'ea\'f1\'ee\'e2 \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'ec\'ee\'e5 \'ee\'f2 \'f1\'ee\'f1\'e5\'e4\'e0\ul\par
+\par
+\ulnone\'cc\'e5\'f5\'e0\'ed\'e8\'e7\'ec \'ef\'ee\'e7\'e2\'ee\'eb\'ff\'e5\'f2 \'e2\'e5\'f1\'f2\'e8 \'ef\'ee\'e4\'f1\'f7\'b8\'f2 \'f2\'f0\'e0\'f4\'e8\'ea\'e0 \'f2\'e8\'ef\'e0: \'ec\'e5\'e6\'e4\'f3\'ed\'e0\'f0\'ee\'e4\'ed\'fb\'e9, \'f7\'e5\'f0\'e5\'e7 \'f1\'ef\'f3\'f2\'ed\'e8\'ea \'e8\'eb\'e8 \'ef\'ee \'e7\'e5\'ec\'eb\'e5:\par
+\par
+ip community-list 30 permit 100:190\par
+!\par
+route-map set_bucket permit 10\par
+ match community 30\par
+ set traffic-index 2\par
+!\par
+router bgp 100\par
+ table-map set_bucket\par
+!\par
+interface POS7/2\par
+ bgp-policy accounting\par
+!\ul\par
+\ulnone Router#sh ip cef 196.240.5.0 detail\par
+196.240.5.0/24, version 21, cached adjacency to POS7/2\par
+0 packets, 0 bytes, \b traffic_index 2\b0\par
+   via 14.1.1.1, 0 dependencies, recursive\par
+      next hop 14.1.1.1, POS7/2 via 14.1.1.0/30\par
+      valid cached adjacency\par
+\par
+\ul Private AS\ulnone  64512-65535\par
+\par
+\ul Updates default\ulnone :\par
+iBGP  - 0 \'f1\'e5\'ea, \'ed\'ee \'e2 \'ea\'ed\'e8\'e6\'ea\'e5 \'ed\'e0\'ef\'e8\'f1\'e0\'ed\'ee =5 \'f1\'e5\'ea.\par
+eBGP - 30 \'f1\'e5\'ea\par
+eBGP, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'e2 VRF - 0 \'f1\'e5\'ea\par
+\par
+\'cc\'ee\'e6\'ed\'ee \'f3\'e2\'e8\'e4\'e5\'f2\'fc \'e2 show ip bgp neighbor \'e2 \'f1\'f2\'f0\'ee\'ea\'e5 Default minimum time between advertisement\par
+\pard\fi-568\li568 Router(config-router)#\b neighbor\b0  \i IP-address\i0  \b advertisement-interval\b0  \i seconds\i0  - \'e5\'f1\'eb\'e8 \'f0\'ee\'f3\'f2\'e5\'f0 \'ee\'f2\'ef\'f0\'e0\'e2\'e8\'eb update \'f1\'ee\'f1\'e5\'e4\'f3, \'f2\'ee \'f1\'eb\'e5\'e4\'f3\'fe\'f9\'e8\'e9 update \'f3\'e9\'e4\'b8\'f2 \'ec\'e8\'ed\'e8\'ec\'f3\'ec \'f7\'e5\'f0\'e5\'e7 (\'e4\'eb\'ff eBGP) 30 \'f1\'e5\'ea. \'cd\'e5\'ea\'e0\'ff \'e7\'e0\'f9\'e8\'f2\'e0 \'ee\'f2 flaps.\par
+\pard\par
+\'c0\'f2\'f0\'e8\'e1\'f3\'f2\'fb:\par
+\pard\fi-568\li1136 Well-known: \'f3\'f1\'f2\'f0\'ee\'e9\'f1\'f2\'e2\'e0 \'eb\'fe\'e1\'fb\'f5 \'e2\'e5\'ed\'e4\'ee\'f0\'ee\'e2 \'e8\'f5 \'ef\'ee\'ed\'e8\'ec\'e0\'e5\'f2. \'c4\'e5\'eb\'ff\'f2\'f1\'ff \'ed\'e0 \par
+\tab Mandatory - \'ee\'e1\'ff\'e7\'e0\'f2\'e5\'eb\'fc\'ed\'fb\'e5, \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'e4\'ee\'eb\'e6\'ed\'fb \'e1\'fb\'f2\'fc \'e2 \'ea\'e0\'e6\'e4\'ee\'ec update: ORIGIN, AS_PATH, NEXT_HOP\par
+\tab Discretionary - \'ed\'e5\'ee\'e1\'ff\'e7\'e0\'f2\'e5\'eb\'fc\'ed\'fb\'e5: LOCAL_PREF, ATOMIC_AGGREGATE\par
+Optional: \'ef\'ee\'ed\'e8\'ec\'e0\'fe\'f2\'f1\'ff \'ed\'e5 \'e2\'f1\'e5\'ec\'e8 \'e2\'e5\'ed\'e4\'ee\'f0\'e0\'ec\'e8\par
+\tab Transitive - \'e5\'f1\'eb\'e8 \'e4\'e0\'e6\'e5 \'f0\'ee\'f3\'f2\'e5\'f0 \'ed\'e5 \'e7\'ed\'e0\'e5\'f2 \'f7\'f2\'ee \'fd\'f2\'ee \'e7\'e0 \'e0\'f2\'f0\'e8\'e1\'f3\'f2, \'f0\'ee\'f3\'f2\'e5\'f0 \'e2\'f1\'b8 \'f0\'e0\'e2\'ed\'ee \'e4\'ee\'eb\'e6\'e5\'ed \'ef\'e5\'f0\'e5\'e4\'e0\'f2\'fc \'e5\'e3\'ee \'f1\'e2\'ee\'e5\'ec\'f3 \'f1\'ee\'f1\'e5\'e4\'f3. \'c5\'f1\'eb\'e8 \'f0\'ee\'f3\'f2\'e5\'f0 \'ed\'e5 \'e7\'ed\'e0\'e5\'f2 \'fd\'f2\'ee\'f2 \'e0\'f2\'f0\'e8\'e1\'f3\'f2, \'f2\'ee \'ef\'f0\'e8 \'e5\'e3\'ee \'ef\'e5\'f0\'e5\'e4\'e0\'f7\'e5 \'ee\'ed \'e2\'fb\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2 \'f4\'eb\'e0\'e3: Partial bit. \'ce\'e1\'fb\'f7\'ed\'ee \'f1\'f2\'ee\'e8\'f2 \'f4\'eb\'e0\'e3: Complete. \'cf\'f0\'e8\'ec\'e5\'f0: AGGREGATOR, COMMUNITY\par
+\tab Non-transitive - \'e5\'f1\'eb\'e8 \'f0\'ee\'f3\'f2\'e5\'f0 \'ed\'e5 \'e7\'ed\'e0\'e5\'f2 \'fd\'f2\'ee\'f2 \'e0\'f2\'f0\'e8\'e1\'f3\'f2, \'ee\'ed \'e5\'e3\'ee \'f3\'e4\'e0\'eb\'ff\'e5\'f2 \'e8 \'e4\'e0\'eb\'fc\'f8\'e5 \'ed\'e5 \'ef\'e5\'f0\'e5\'e4\'e0\'b8\'f2. \'cf\'f0\'e8\'ec\'e5\'f0: MULTI_EXIT_DISC\par
+\pard\par
+Path Attribut - ORIGIN: IGP\par
+Path Attribut - AS_PATH: 65000 65001\par
+Path Attribut - NEXT_HOP: 10.0.0.1\par
+\tab Flag: 010 00000: Well-known, Transitive, Complete\par
+\tab Type Code: NEXT_HOP (3)\par
+\tab Length: 4\par
+\tab Next hop: 10.0.0.1\par
+Path Attribut - MULTI_EXIT_DISC: 100\par
+\tab Flag: 101 00000: Optional, Non-transitive, Partial\par
+\tab Type Code: MULTI_EXIT_DISC (4)\par
+\tab Length: 4\par
+\tab Multiple exit discriminator: 100\par
+\par
+\ul\'d3\'f1\'f2\'e0\'ed\'ee\'e2\'ea\'e0 \'f1\'e5\'f1\'f1\'e8\'e8\ulnone\par
+\b show ip bgp summary\b0  \'ef\'ee\'eb\'e5 State\par
+\tab\tab Idle - router \'ed\'e5 \'ef\'f0\'e5\'e4\'ef\'f0\'e8\'ed\'e8\'ec\'e0\'eb \'ed\'e8\'ea\'e0\'ea\'e8\'f5 \'e4\'e5\'e9\'f1\'f2\'e2\'e8\'e9 \'ef\'ee \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'ea\'e5 \'f1\'e5\'f1\'f1\'e8\'e8\par
+\pard\fi-1420\li1420\tab Active - TCP \'f1\'e5\'f1\'f1\'e8\'ff \'ef\'ee \'ef\'ee\'f0\'f2\'f3 179 \'ec\'e5\'e6\'e4\'f3 peer-\'e0\'ec\'e8 \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'e8\'eb\'e0\'f1\'fc (\'e2\'e8\'e4\'ed\'ee \'e2 debug ip tcp transactions \'e8 debug  ip bgp events)\par
+\pard\tab\tab OpenSent - \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \'ef\'e0\'ea\'e5\'f2 \'ed\'e0 \'f1\'ee\'e3\'eb\'e0\'f1\'ee\'e2\'e0\'ed\'e8\'e5 (Open message)\par
+\tab\tab\tab BGP version - \'ed\'e0\'e8\'e2\'fb\'f1\'f8\'e0\'ff \'b9 \'e2\'e5\'f0\'f1\'e8\'e8 \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'e5\'ec\'e0\'ff routers \'e1\'f3\'e4\'e5\'f2 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc\'f1\'ff\par
+\tab\tab\tab AS \'e4\'e0\'ed\'ed\'ee\'e3\'ee \'f0\'ee\'f3\'f2\'e5\'f0\'e0\par
+\pard\fi-1420\li1420\tab\tab\tab Hold time - \'ee\'e1\'e0 router \'e1\'f3\'e4\'f3\'f2 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'ed\'e0\'e8\'ec\'e5\'ed\'fc\'f8\'e5\'e9 hold time. \'c5\'f1\'eb\'e8 hold time = 0 -> keepalives \'ed\'e5 \'e1\'f3\'e4\'f3\'f2 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'f2\'fc\'f1\'ff\par
+\pard\tab\tab\tab BGP router identifier ~ router-ID - \'ed\'e0\'e8\'e2\'fb\'f1\'f8\'e8\'e9 Loopback \'e8\'eb\'e8 \'ed\'e0\'e8\'e2\'fb\'f1\'f8\'e8\'e9 IP address\par
+\tab\tab\tab Optional parameters - type, length, TVL, \'e0 \'f2\'e0\'ea \'e6\'e5 authentication\par
+\tab\tab OpenConfirm - \'ea\'ee\'e3\'e4\'e0 \'ee\'f2 \'f1\'ee\'f1\'e5\'e4\'e0 \'ef\'f0\'e8\'f8\'b8\'eb Open message\par
+\tab\tab Extablished - \'ef\'f0\'ee\'e2\'e5\'f0\'e8\'eb Open message, \'e2\'f1\'b8 \'ef\'ee\'ed\'f0\'e0\'e2\'e8\'eb\'ee\'f1\'fc, keepalive \'ed\'e0\'f7\'e0\'eb\'e8 \'f5\'ee\'e4\'e8\'f2\'fc\par
+\par
+\'d2\'ce\'cb\'dc\'ca\'ce \'cf\'ce\'d1\'cb\'c5 \'f2\'ee\'e3\'ee \'ea\'e0\'ea \'ef\'f0\'ee\'f8\'b8\'eb Established !!! \'e8\'e4\'b8\'f2 \'ee\'e1\'ec\'e5\'ed routing information\par
+\par
+\b show ip bgp summary\b0  (\'ef\'ee\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2 \'f1\'ea\'ee\'eb\'fc\'ea\'ee \'ef\'e0\'ec\'ff\'f2\'e8 \'ee\'f2\'e6\'e8\'f0\'e0\'e5\'f2) \'ef\'ee\'eb\'ff\par
+\pard\fi-710\li1420 InQ - \'f1\'ea\'ee\'eb\'fc\'ea\'ee messages \'ef\'ee\'eb\'f3\'f7\'e5\'ed\'ee \'ee\'f2 \'f1\'ee\'f1\'e5\'e4\'e0, \'ed\'ee \'ef\'ee\'ea\'e0 \'ed\'e5 \'ee\'e1\'f0\'e0\'e1\'ee\'f2\'e0\'ed\'ee - \'f1\'f2\'ee\'e8\'f2 \'e2 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 (\'ec\'ee\'e6\'ed\'ee \'f1\'f3\'e4\'e8\'f2\'fc \'ee \'e7\'e0\'e3\'f0\'f3\'e7\'ea\'e5 CPU)\par
+OutQ - \'f1\'ea\'ee\'eb\'fc\'ea\'ee messages \'f1\'f2\'ee\'e8\'f2 \'e2 \'ee\'f7\'e5\'f0\'e5\'e4\'e8 \'ed\'e0 \'ee\'f2\'ef\'f0\'e0\'e2\'ea\'f3 (\'ec\'ee\'e6\'ed\'ee \'f1\'f3\'e4\'e8\'f2\'fc \'ee \'e7\'e0\'e3\'f0\'f3\'e7\'ea\'e5 bandwidth \'e8\'eb\'e8 CPU overload)\par
+TblVer(Table Version) \'ea\'ee\'e3\'e4\'e0 \'ef\'f0\'ee\'e8\'f1\'f5\'ee\'e4\'e8\'f2 \'ea\'e0\'ea\'ee\'e5-\'ed\'e8\'e1\'f3\'e4\'fc route change, TblVer is incremented \'e8 \'ed\'ee\'e2\'ee\'ec\'f3 route \'ef\'f0\'e8\'f1\'e2\'e0\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'fd\'f2\'ee\'f2 \'ed\'ee\'ec\'e5\'f0. \'ca\'ee\'e3\'e4\'e0 \'ef\'f0\'e8\'f5\'ee\'e4\'e8\'f2 \'e2\'f0\'e5\'ec\'ff update \'e4\'e0\'ed\'ed\'ee\'e3\'ee \'f1\'ee\'f1\'e5\'e4\'e0, router \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \'e2\'f1\'e5 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff, \'ed\'ee\'ec\'e5\'f0\'e0 \'ea\'ee\'f2\'ee\'f0\'fb\'f5 > current TblVer.\par
+\pard\par
+\ul Table Version\ulnone\par
+1. BGP Table Version - \'b9 \'e2\'e5\'f0\'f1\'e8\'e8 \'f2\'e0\'e1\'eb\'e8\'f6\'fb BGP - \'fd\'f2\'ee \'ee\'f1\'ed\'ee\'e2\'ed\'ee\'e9 \'ed\'ee\'ec\'e5\'f0\par
+\pard\li568 Router#show bgp summary\par
+BGP router identifier 1.1.1.1, local AS number 1\par
+\b BGP table version is 20\b0 , main routing table version 20\par
+\pard\fi-284\li284 2. RIB Table Version - \'b9 \'e2\'e5\'f0\'f1\'e8\'e8 \'e2\'ed\'f3\'f2\'f0\'e5\'ed\'ed\'e5\'e9 \'f2\'e0\'e1\'eb\'e8\'f6\'fb \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'e8\'e7\'e0\'f6\'e8\'e8, \'e5\'f1\'eb\'e8 \'b9 RIB < \'b9 BGP \'e7\'ed\'e0\'f7\'e8\'f2 \'ed\'e5 \'e2\'f1\'e5 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff \'e2 \'f2\'e0\'e1\'eb\'e8\'f6\'e5 BGP \'ef\'f0\'e8\'ec\'e5\'ed\'e8\'eb\'e8\'f1\'fc \'ea \'e2\'ed\'f3\'f2\'f0\'e5\'ed\'ed\'e5\'e9 \'f2\'e0\'e1\'eb\'e8\'f6\'e5 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'e8\'e7\'e0\'f6\'e8\'e8\par
+\pard\li568 Router#show bgp summary\par
+BGP router identifier 1.1.1.1, local AS number 1\par
+BGP table version is 20, \b main routing table version 20\par
+\pard\b0 3. Peer Table Version - \'b9 \'e2\'e5\'f0\'f1\'e8\'e8 \'f2\'e0\'e1\'eb\'e8\'f6\'fb \'f1\'ee\'f1\'e5\'e4\'e0, \'e5\'f1\'eb\'e8 \'b9 Peer < \'b9 BGP \'e7\'ed\'e0\'f7\'e8\'f2 \'ed\'e5 \'e2\'f1\'e5 update-\'fb \'ef\'ee\'eb\'f3\'f7\'e8\'eb Peer.\par
+\pard\li568 Router#show bgp summary\par
+BGP router identifier 1.1.1.1, local AS number 1\par
+BGP table version is 20, main routing table version 20\par
+Neighbor        V    AS MsgRcvd MsgSent   \b TblVer\b0   InQ OutQ Up/Down  State/PfxRcd\par
+10.0.12.2       4     2     115     113       \b 20\b0     0    0 00:51:38        3\par
+\pard\fi-284\li284 4. Prefix Table Version - \'b9 \'e2\'e5\'f0\'f1\'e8\'e8 \'ef\'f0\'e5\'f4\'e8\'ea\'f1\'e0. \'cd\'e0\'e8\'e2\'fb\'f1\'f8\'e8\'e9 \'b9 Prefix \'e8\'e7 \'ef\'ff\'f2\'e8 \'e8\'e7 Address-family = BGP Table Version. \'c2 \'e4\'e0\'ed\'ed\'ee\'ec \'ef\'f0\'e8\'ec\'e5\'f0\'e5: BGP Table Version = 3. \'ca\'e0\'ea \'f2\'ee\'eb\'fc\'ea\'ee \'ef\'f0\'e8\'f5\'ee\'e4\'e8\'f2 update, \'ea \'ef\'f0\'e8\'ec\'e5\'f0\'f3, \'ef\'ee Address-family IPv6 Unicast -> \'b9 Table Version \'e4\'eb\'ff Address-family IPv6 Unicast \'e8\'e7\'ec\'e5\'ed\'e8\'f2\'f1\'ff \'f1 1 \'ed\'e0 4 -> BGP Table Version = 4\par
+\pard\li568 Router#show bgp internal\par
+BGP Start time : 00:02:31.368 Time elapsed 00:08:12.268\par
+Time left for bestpath timer: 122 secs\par
+Address-family IPv4 Unicast, Mode : RW\par
+    \b Table Versions : Current 3, RIB 3\b0\par
+    Start time : 00:02:31.348    Time elapsed 00:08:12.296\par
+    First Peer up in : 00:00:42    Exited Read-Only in : 00:01:12\par
+    Done with Install in : 00:01:12    Last Update-done in : 00:01:12\par
+    0 updates expanded\par
+    BGP Nexthop scan:-\par
+        penalty: 0, Time since last run: never,  Next due in: none\par
+        Max runtime : 0 ms Latest runtime : 0 ms Scan count: 0\par
+    BGP General Scan:-\par
+        Max runtime : 20 ms Latest runtime : 0 ms Scan count: 7\par
+\par
+    BGP future scanner version: 8\par
+    BGP scanner version: 0\par
+Address-family IPv6 Unicast, Mode : RW\par
+    \b Table Versions : Current 1, RIB 1\b0\par
+    Start time : 00:02:31.348    Time elapsed 00:08:12.304\par
+    First Peer up in : never    Exited Read-Only in : 00:00:01\par
+    Done with Install in : 00:00:01    Last Update-done in : never\par
+    0 updates expanded\par
+    BGP Nexthop scan:-\par
+        penalty: 0, Time since last run: never,  Next due in: none\par
+        Max runtime : 0 ms Latest runtime : 0 ms Scan count: 0\par
+    BGP General Scan:-\par
+        Max runtime : 4 ms Latest runtime : 0 ms Scan count: 8\par
+\par
+    BGP future scanner version: 9\par
+    BGP scanner version: 0\par
+Address-family VPNv4 Unicast, Mode : RW\par
+    \b Table Versions : Current 1, RIB 1\b0\par
+    Start time : 00:02:31.348    Time elapsed 00:08:13.368\par
+    First Peer up in : never    Exited Read-Only in : 00:00:01\par
+    Done with Install in : 00:00:01    Last Update-done in : never\par
+    0 updates expanded\par
+    BGP Nexthop scan:-\par
+        penalty: 0, Time since last run: never,  Next due in: none\par
+        Max runtime : 0 ms Latest runtime : 0 ms Scan count: 0\par
+    BGP General Scan:-\par
+        Max runtime : 4 ms Latest runtime : 0 ms Scan count: 8\par
+\par
+    BGP future scanner version: 9\par
+Address-family IPv4 Multicast, Mode : RW\par
+    \b Table Versions : Current 1, RIB 1\b0\par
+    Start time : 00:02:31.348    Time elapsed 00:08:13.376\par
+    First Peer up in : never    Exited Read-Only in : 00:00:01\par
+    Done with Install in : 00:00:01    Last Update-done in : never\par
+    0 updates expanded\par
+    BGP Nexthop scan:-\par
+        penalty: 0, Time since last run: never,  Next due in: none\par
+        Max runtime : 0 ms Latest runtime : 0 ms Scan count: 0\par
+    BGP General Scan:-\par
+        Max runtime : 0 ms Latest runtime : 0 ms Scan count: 8\par
+\par
+    BGP future scanner version: 9\par
+    BGP scanner version: 0\par
+Address-family IPv6 Multicast, Mode : RW\par
+    \b Table Versions : Current 1, RIB 1\b0\par
+    Start time : 00:02:31.348    Time elapsed 00:08:13.776\par
+    First Peer up in : never    Exited Read-Only in : 00:00:01\par
+    Done with Install in : 00:00:01    Last Update-done in : never\par
+    0 updates expanded\par
+    BGP Nexthop scan:-\par
+        penalty: 0, Time since last run: never,  Next due in: none\par
+        Max runtime : 0 ms Latest runtime : 0 ms Scan count: 0\par
+    BGP General Scan:-\par
+        Max runtime : 4 ms Latest runtime : 4 ms Scan count: 8\par
+\par
+    BGP future scanner version: 9\par
+    BGP scanner version: 0\par
+\pard\li284\'ca\'e0\'e6\'e4\'fb\'e9 \'e8\'e7 Address-family \'f1\'ee\'f1\'f2\'ee\'e8\'f2 \'e5\'f9\'b8 \'e8\'e7 \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'fb\'f5 Prefix-\'ee\'e2. \'b9 Prefix Table Version \'e4\'eb\'ff \'ea\'e0\'e6\'e4\'ee\'e3\'ee Address-family = \'ed\'e0\'e8\'e2\'fb\'f1\'f8\'e8\'e9 \'b9 version \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'ee\'e3\'ee \'ef\'f0\'e5\'f4\'e8\'ea\'f1\'e0, \'ee\'f2\'ed\'ee\'f1\'ff\'f9\'e5\'e3\'ee\'f1\'ff \'ea \'fd\'f2\'ee\'e9 Address-family:\par
+\pard\li568 R2#show bgp \b ipv4 unicast\b0  1.1.1.1\par
+BGP routing table entry for 1.1.1.1/32, \b version 3\b0\par
+Paths: (1 available, best #1, table Default-IP-Routing-Table)\par
+  Not advertised to any peer\par
+  1\par
+    10.0.12.1 from 10.0.12.1 (10.0.12.1)\par
+      Origin IGP, metric 0, localpref 100, valid, external, best\par
+R2#show bgp \b ipv4 unicast\b0  2.2.2.2\par
+BGP routing table entry for 2.2.2.2/32, \b version 2\b0\par
+Paths: (1 available, best #1, table Default-IP-Routing-Table)\par
+  Advertised to update-groups:\par
+     1\par
+  Local\par
+    0.0.0.0 from 0.0.0.0 (2.2.2.2)\par
+      Origin IGP, metric 0, localpref 100, weight 32768, valid, sourced, local, best\par
+\par
+\pard\par
+Keepalive = 30 \'f1\'e5\'ea, Holdtime = 180 \'f1\'e5\'ea\par
+1. \'c5\'f1\'eb\'e8 \'e8\'e7 2-\'f5 \'f1\'ee\'f1\'e5\'e4\'e5\'e9 \'e2\'fb\'e1\'e8\'f0\'e0\'e5\'f2\'f1\'ff \'ec\'ee\'e9 holdtime -> \'ff \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'fe \'f1\'e2\'ee\'e9 \'ed\'e0\'f1\'f2\'f0\'ee\'e5\'ed\'ed\'fb\'e9 keepalive\par
+2. \'c5\'f1\'eb\'e8 \'e2\'fb\'e1\'e8\'f0\'e0\'e5\'f2\'f1\'ff \'f1\'ee\'f1\'e5\'e4\'f1\'ea\'e8\'e9 holdtime + \'ec\'ee\'e9 \'ed\'e0\'f1\'f2\'f0\'ee\'e5\'ed\'ed\'fb\'e9 keepalive < \'f1\'ee\'f1\'e5\'e4\'f1\'ea\'ee\'e3\'ee holdtime/3 - > \'ff \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'fe \'f1\'e2\'ee\'e9 \'ed\'e0\'f1\'f2\'f0\'ee\'e5\'ed\'ed\'fb\'e9 keepalive\par
+3. \'c5\'f1\'eb\'e8 \'e2\'fb\'e1\'e8\'f0\'e0\'e5\'f2\'f1\'ff \'f1\'ee\'f1\'e5\'e4\'f1\'ea\'e8\'e9 holdtime + \'ec\'ee\'e9 \'ed\'e0\'f1\'f2\'f0\'ee\'e5\'ed\'ed\'fb\'e9 keepalive > \'f1\'ee\'f1\'e5\'e4\'f1\'ea\'ee\'e3\'ee holdtime/3 - > \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'ec Integer(holdtime/3)\par
+\par
+\'cc\'ee\'e6\'ed\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc MD5 Authentication - \'e2\'ee\'e8\'e7\'e1\'e5\'e6\'e0\'ed\'e8\'e5 DoS \'e0\'f2\'e0\'ea\par
+\par
+\ul Routing Updates\ulnone\par
+\'cd\'e0\'f7\'e8\'ed\'e0\'fe\'f2 \'f5\'ee\'e4\'e8\'f2\'fc \'ef\'ee\'f1\'eb\'e5 \'f2\'ee\'e3\'ee \'ea\'e0\'ea \'f1\'e5\'f1\'f1\'e8\'ff Established\par
+\b debug ip bgp update\b0  \i access-list\i0\par
+\b debug ip bgp\b0  \i address\i0  \b update\b0  \i access-list\i0\par
+\b debug ip route\b0\par
+\b debug ip bgp keepalive\b0\par
+\'ca\'e0\'e6\'e4\'fb\'e9 update \'ec\'ee\'e6\'e5\'f2 \'f1\'ee\'e4\'e5\'f0\'e6\'e0\'f2\'fc 1<= routes\par
+\'ca\'e0\'e6\'e4\'fb\'e9 route - \'fd\'f2\'ee IP address, Mask, next-hop, AS-path, origin attributes + optionally attributes\par
+\b show ip bgp\b0\par
+\par
+\ul Selection Criteria\par
+\ulnone 1. \'cd\'e0\'e8\'e1\'ee\'eb\'fc\'f8\'e8\'e9 Weight (default = 32768) - \'ef\'ee\'eb\'e8\'f2\'e8\'ea\'e0 \'f2\'ee\'eb\'fc\'ea\'ee \'e4\'eb\'ff \'e4\'e0\'ed\'ed\'ee\'e3\'ee router, \'ed\'e5 \'f0\'e0\'f1\'ef\'f0\'ee\'f1\'f2\'f0\'e0\'ed\'ff\'e5\'f2\'f1\'ff \'ed\'e0 \'e4\'f0\'f3\'e3\'e8\'e5 router.\par
+2. \'cd\'e0\'e8\'e1\'ee\'eb\'fc\'f8\'e8\'e9 Local Preference (default = 100) - \'ef\'ee\'eb\'e8\'f2\'e8\'ea\'e0 \'e4\'eb\'ff \'e2\'f1\'e5\'f5 router \'e2\'ed\'f3\'f2\'f0\'e8 AS\par
+3. \'df originated \'ec\'e0\'f0\'f8\'f0\'f3\'f2\par
+4. \'cc\'e5\'ed\'fc\'f8\'e5 AS path\par
+5. \'d1\'ec\'ee\'f2\'f0\'e8\'f2 \'ed\'e0 \'f2\'e8\'ef \'e8\'f1\'f2\'ee\'f7\'ed\'e8\'ea\'e0 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'e0 IGP(inject \'ea\'ee\'ec\'e0\'ed\'e4\'ee\'e9 network)>EGP(\'ef\'f0\'e8\'f8\'b8\'eb \'ee\'f2 eBGP \'f1\'ee\'f1\'e5\'e4\'e0)>Incomplete(inject redistribute \'e8 summary)\par
+6. \'cd\'e0\'e8\'ec\'e5\'ed\'fc\'f8\'e8\'e9 MED (default = 0), \'ed\'ee \'f2\'ee\'eb\'fc\'ea\'ee \'e5\'f1\'eb\'e8 \'ec\'e0\'f0\'f8\'f0\'f3\'f2 \'ef\'ee\'eb\'f3\'f7\'e8\'eb \'e8\'e7 \'f2\'ee\'e9 \'e6\'e5 \'f1\'e0\'ec\'ee\'e9 AS\par
+7. external(eBGP) > internal(iBGP)\par
+8. \'cd\'e0\'e8\'e1\'ee\'eb\'e5\'e5 \'e1\'fb\'f1\'f2\'f0\'fb\'e9 \'e2\'fb\'f5\'ee\'e4 \'e8\'e7 AS, \'ee\'f1\'ed\'ee\'e2\'e0\'ed\'ed\'fb\'e9 \'ed\'e0 OSPF, EIGRP, RIP\par
+9. \'c4\'eb\'ff eBGP \'ef\'f0\'e5\'e4\'ef\'ee\'f7\'f2\'e8\'f2\'e5\'eb\'e5\'ed oldest (most stable) path\par
+10. \'cd\'e0\'e8\'ec\'e5\'ed\'fc\'f8\'e8\'e9 BGP router-id\par
+\par
+Router \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \'f1\'ee\'f1\'e5\'e4\'f3 \'f2\'ee\'eb\'fc\'ea\'ee \'cd\'c0\'c8\'cb\'d3\'d7\'d8\'c8\'c9 \'cc\'c0\'d0\'d8\'d0\'d3\'d2.\par
+Router \'cd\'c5 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \'ec\'e0\'f0\'f8\'f0\'f3\'f2 \'ee\'e1\'f0\'e0\'f2\'ed\'ee \'f1\'ee\'f1\'e5\'e4\'f3, \'ee\'f2 \'ea\'ee\'f2\'ee\'f0\'ee\'e3\'ee \'ee\'ed \'e5\'e3\'ee \'e8 \'ef\'ee\'eb\'f3\'f7\'e8\'eb = split horizon\par
+\par
+\ul Inject routes\par
+\ulnone 1. \'d1 \'ef\'ee\'ec\'ee\'f9\'fc\'fe \'ea\'ee\'ec\'e0\'ed\'e4\'fb network, \'e5\'f1\'eb\'e8 route \'e5\'f1\'f2\'fc \'e2 \'f2\'e0\'e1\'eb\'e8\'f6\'e5 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'e8\'e7\'e0\'f6\'e8\'e8\par
+2. Redistribute\par
+3. Aggregate\par
+\par
+\'c8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc\par
+\pard\fi-568\li568 router(config)#\b ip route \b0\i address mask\i0  \b Null 0 - \b0\'e4\'eb\'ff advertise \'ef\'ee\'e4\'f1\'e5\'f2\'e8, \'ea\'ee\'f2\'ee\'f0\'ee\'e9 \'ed\'e5\'f2 \'e2 \'f2\'e0\'e1\'eb\'e8\'f6\'e5 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'e8\'e7\'e0\'f6\'e8\'e8\par
+\par
+router(config-router)#\b neighbor \b0\i address\i0  \b default-information\b0  - \'e4\'eb\'ff \'e0\'ed\'ee\'ed\'f1\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'ff default \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'e0, \'e4\'e0\'e6\'e5 \'e5\'f1\'eb\'e8 \'e5\'e3\'ee \'ed\'e5\'f2 \'e2 \'f2\'e0\'e1\'eb.\'ec\'e0\'f0\'f8\'f0. \'c1\'f3\'e4\'e5\'f2 \'e0\'ed\'ee\'ed\'f1\'e8\'f0\'ee\'e2\'e0\'f2\'fc\'f1\'ff \'e4\'e0\'e6\'e5 \'e5\'f1\'eb\'e8 \'e7\'e0\'ea\'f0\'fb\'f2 filter-list, prefix-list, route-map\par
+\pard\par
+\ul\'c8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'ed\'e8\'e5 auto-summary\ulnone\par
+router(config-router)#\b auto-summary\par
+\b0 router(config-router)#\b network \b0\i 10.0.0.0\b\i0\par
+\b0\'c4\'ee\'eb\'e6\'e5\'ed \'e1\'fb\'f2\'fc \'ea\'e0\'ea\'ee\'e9-\'ed\'e8\'e1\'f3\'e4\'fc \'ec\'e0\'f0\'f8\'f0\'f3\'f2 \'e8\'e7 10.0.0.0/8 \'e2 \'f2\'e0\'e1\'eb\'e8\'f6\'e5 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'e8\'e7\'e0\'f6\'e8\'e8\par
+\par
+\par
+router(config-router)#\b neighbor\b0  \i address\i0  \b description ...\b0\par
+router(config-router)#\b neighbor\b0  \i address\i0  \b shutdown\b0\par
+\par
+router(config-router)#\b timers bgp\b0  \i keepalive holdtime minimum_hold_time\i0\par
+router(config-router)#\b neighbor\b0  \i address\i0  \b timers\b0  \i keepalive holdtime minimum_hold_time\i0  - \'ea\'f0\'f3\'f7\'e5 \'f7\'e5\'ec \'ef\'f0\'e5\'e4\'fb\'e4\'f3\'f9\'e0\'ff \'e7\'e0\'ef\'e8\'f1\'fc\par
+\pard\li568 holdtime minimum_hold_time - \'ec\'e8\'ed\'e8\'ec\'e0\'eb\'fc\'ed\'fb\'e9 hold time, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc \'ed\'e0\'f1\'f2\'f0\'ee\'e5\'ed \'f3 \'f1\'ee\'f1\'e5\'e4\'e0 \'e8\'eb\'e8 \'f1\'e5\'f1\'f1\'e8\'ff \'ed\'e5 \'ef\'ee\'e4\'ed\'e8\'ec\'e5\'f2\'f1\'ff ! \'cc\'ee\'e6\'ed\'ee \'e2\'e8\'e4\'e5\'f2\'fc \'e2 show ip bgp neighbors \'e2 \'f1\'f2\'f0\'ee\'ea\'e5 Configured hold time\par
+\pard\par
+router(config-router)#\b neighbor\b0  \i address\i0  \b password\b0  \i string\i0\par
+\par
+\'d1 \'ef\'ee\'ec\'ee\'f9\'fc\'fe \b route-map\b0  \'ec\'ee\'e6\'ed\'ee \'ec\'e5\'ed\'ff\'f2\'fc: weight, communities, origin, next-hop, ...\par
+\par
+router(config-router)#\b redistribute\b0  \i OSPF\i0\par
+router(config-router)#\b distribute-list \b0\i access-list\i0  \b out\b0  \i OSPF\i0\par
+router(config)#\b access-list\b0  \i value\i0  \b permit\b0  ....\par
+\par
+\par
+router(config-router)#\b aggregate-address\b0  \i address\i0  \i mask\i0  \b summmary-only\b0\par
+\'e0\'ed\'ee\'ed\'f1\'e8\'f0\'f3\'e5\'f2 \'f2\'ee\'eb\'fc\'ea\'ee \'f1\'f3\'ec\'ec\'e0\'f0\'e8\'e7\'ee\'e2\'e0\'ed\'ed\'fb\'e9 \'ec\'e0\'f0\'f8\'f0\'f3\'f2, \'ef\'f0\'e8 \'f3\'f1\'eb\'ee\'e2\'e8\'e8, \'f7\'f2\'ee \'e2 \'f2\'e0\'e1\'eb\'e8\'f6\'e5 BGP \'f3\'e6\'e5 \'e5\'f1\'f2\'fc \'ea\'e0\'ea\'ee\'e9-\'eb\'e8\'e1\'ee \'f1\'ef\'e5\'f6\'e8\'f4\'e8\'f7\'ed\'fb\'e9 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\par
+\par
+\ul Monitoring\ulnone\par
+\b show ip bgp neighbors\b0  \i address\i0\tab\'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'fb TCP \'f1\'e5\'f1\'f1\'e8\'e8\par
+\b show ip bgp\b0  \i prefix\i0\tab\tab\tab\'e2\'f1\'e5 \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'fb \'ef\'f0\'e5\'f4\'e8\'ea\'f1\'e0\par
+\par
+\ul Peer Groups\par
+\ulnone\'c3\'eb\'e0\'e2\'ed\'fb\'e9 \'e1\'e5\'ed\'e8\'f4\'e8\'f2 \'e2 \'f3\'ec\'e5\'ed\'fc\'f8\'e5\'ed\'e8\'e8 \'ed\'e0\'e3\'f0\'f3\'e7\'ea\'e8 \'ed\'e0 CPU. \'d0\'e0\'e7\'eb\'e8\'f7\'ed\'ee\'e3\'ee \'f0\'ee\'e4\'e0 update \'ee\'e4\'e8\'ed \'f0\'e0\'e7 \'f4\'ee\'f0\'ec\'e8\'f0\'f3\'fe\'f2\'f1\'ff \'e4\'eb\'ff Peer Group (\'ed\'e0\'e3\'f0\'f3\'e7\'ea\'e0 \'ed\'e0 CPU), \'e0 \'ef\'ee\'f2\'ee\'ec \'f0\'e0\'f1\'f1\'fb\'eb\'e0\'fe\'f2\'f1\'ff \'e2\'f1\'e5\'ec \'f1\'ee\'f1\'e5\'e4\'ff\'ec, \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'ed\'e0\'f5\'ee\'e4\'ff\'f2\'f1\'ff \'e2 \'fd\'f2\'ee\'e9 \'e3\'f0\'f3\'ef\'ef\'e5.\par
+\par
+\ul AS-path filter\par
+\ulnone [1 2 3 4 5] \'e8\'eb\'e8 [1-5] - \'f1\'ee\'e2\'ef\'e0\'e4\'e5\'ed\'e8\'e5 \'f1 \'ee\'e4\'ed\'e8\'ec \'e8\'e7 \'f1\'e8\'ec\'e2\'ee\'eb\'ee\'e2 \'e2 \'e4\'e8\'e0\'ef\'e0\'e7\'ee\'ed\'e5\par
+12|23\tab\'ef\'f0\'e8\'f1\'f3\'f2\'f1\'f2\'e2\'f3\'e5\'f2 \'e8\'eb\'e8 12 \'e8\'eb\'e8 23\par
+.\tab\'eb\'fe\'e1\'ee\'e9 \'f1\'e8\'ec\'e2\'ee\'eb \'e2 \'f2\'ee\'ec \'f7\'e8\'f1\'eb\'e5 \'e8 \'ef\'f0\'ee\'e1\'e5\'eb\par
+^\tab\'ed\'e0\'f7\'e0\'eb\'ee \'f1\'f2\'f0\'ee\'ea\'e8 (\'f7\'e5\'f0\'e5\'e7 \'ea\'e0\'ea\'ee\'e3\'ee \'f1\'ee\'f1\'e5\'e4\'e0)\par
+$\tab\'ea\'ee\'ed\'e5\'f6 \'f1\'f2\'f0\'ee\'ea\'e8 (\'ea\'f2\'ee originates)\par
+_\tab\'eb\'fe\'e1\'ee\'e9 \'f0\'e0\'e7\'e4\'e5\'eb\'e8\'f2\'e5\'eb\'fc - \'ed\'e0\'f7\'e0\'eb\'ee \'f1\'f2\'f0\'ee\'ea\'e8, \'ea\'ee\'ed\'e5\'f6 \'f1\'f2\'f0\'ee\'ea\'e8, tab, \'ef\'f0\'ee\'e1\'e5\'eb\par
+\\\tab\'f3\'e4\'e0\'eb\'ff\'e5\'f2 \'f1\'e8\'ec\'e2\'ee\'eb, \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e2 \'ea\'ee\'ed\'f4\'e5\'e4\'e5\'f0\'e0\'f6\'e8\'ff\'f5\par
+*\tab\'ef\'ee\'e2\'f2\'ee\'f0\'ff\'e5\'f2\'f1\'ff 0<= \'f0\'e0\'e7\par
+?\tab\'ef\'ee\'e2\'f2\'ee\'f0\'ff\'e5\'f2\'f1\'ff 0 \'e8\'eb\'e8 1 \'f0\'e0\'e7\par
++\tab\'ef\'ee\'e2\'f2\'ee\'f0\'ff\'e5\'f2\'f1\'ff 1<= \'f0\'e0\'e7\par
+\par
+\ul Example\ulnone\par
+_100_\tab\tab\'ec\'e0\'f0\'f8\'f0\'f3\'f2\'fb \'ef\'f0\'ee\'f5\'ee\'e4\'ff\'f9\'e8\'e5 \'f7\'e5\'f0\'e5\'e7 AS100\par
+^100$\tab\tab\'ec\'e0\'f0\'f8\'f0\'f3\'f2 \'f1\'ee\'e7\'e4\'e0\'ed \'e2 \ul\'f1\'ee\'f1\'e5\'e4\'ed\'e5\'e9\ulnone  AS100\par
+_100$\tab\tab\'ec\'e0\'f0\'f8\'f0\'f3\'f2 \'f1\'ee\'e7\'e4\'e0\'ed \'e2 \'ea\'e0\'ea\'ee\'e9-\'f2\'ee \'e4\'e0\'eb\'b8\'ea\'ee\'e9 \'e2 AS100\par
+^100_.\tab\'f1\'e5\'f2\'e8, \'ed\'e0\'f5\'ee\'e4\'ff\'f9\'e8\'e5\'f1\'ff \'e7\'e0 \'f1\'ee\'f1\'e5\'e4\'ed\'e5\'e9 AS100\par
+^[0-9]+$\tab as-path one AS long\par
+^$\tab\tab originated in local AS\par
+.*\tab\tab match everything\par
+\par
+\'cc\'ee\'e6\'ed\'ee \'ef\'f0\'ee\'e2\'e5\'f0\'e8\'f2\'fc \'ea\'e0\'ea\'e8\'e5 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'fb \'ef\'ee\'ef\'e0\'e4\'f3\'f2 \'ef\'ee\'e4 RegExp:\par
+router#\b show ip bgp regexp\b0  ^8_\par
+\par
+router(config-router)#\b neighbor\b0  \i address\i0  \b filter-list\b0  \i as-path_access-list\i0  \b in\b0\par
+router(config)#\b ip as-path access-list\b0  \i 10\i0  \b permit ....\b0\par
+\par
+\ul Example\ulnone\par
+router# \b show ip as-path-access-list\par
+\b0 AS path access list 10\par
+\tab permit ^$\par
+AS path access list 20\par
+\tab deny _312_\par
+\tab permit .*\par
+AS path access list 30\par
+\tab deny _22_|_51$\par
+\tab permit .*\par
+router#\par
+\par
+\ul Prefix-list\ulnone\par
+\b ip prefix-list\b0  \i 1\i0  \b permit\b0  \i 0.0.0.0/0\i0  \b ge\b0  \i 32\i0\tab\tab all host routers\par
+\b ip prefix-list\b0  \i 2\i0  \b permit\b0  \i 128.0.0.0/2\i0  \b ge\b0  \i 17\i0\tab\tab any subnet in class B\par
+\b ip prefix-list\b0  \i 3\i0  \b permit\b0  \i 0.0.0.0/0\i0  \b le\b0  \i 32\i0\tab\tab all routers\par
+\b ip prefix-list\b0  \i 4\i0  \b permit\b0  \i 0.0.0.0/0\i0\tab\tab\tab just the default route\par
+\b ip prefix-list\b0  \i 5\i0  \b permit\b0  \i 0.0.0.0/1\i0  \b le\b0  \i 24\i0\tab\tab any prefix in class A covering at least 256 addr\par
+\par
+\pard\fi-5680\li5680\tx5680 ip prefix-list 1 permit 10.0.0.0/8\tab\'f2\'ee\'eb\'fc\'ea\'ee \'f1\'e5\'f2\'fc 10.0.0.0/8,\par
+ip prefix-list 1 permit 10.0.0.0/8 le 11\tab\'ec\'e0\'f0\'f8\'f0\'f3\'f2\'fb \'f3 \'ea\'ee\'f2\'ee\'f0\'fb\'f5 \'ef\'e5\'f0\'e2\'fb\'e9 \'ee\'ea\'f2\'e5\'f2 10, \'e8 \'ef\'f0\'e5\'f4\'e8\'ea\'f1 \'ee\'f2 8 \'e4\'ee 11,\par
+ip prefix-list 1 permit 10.0.0.0/8 ge 11\tab\'ec\'e0\'f0\'f8\'f0\'f3\'f2\'fb \'f3 \'ea\'ee\'f2\'ee\'f0\'fb\'f5 \'ef\'e5\'f0\'e2\'fb\'e9 \'ee\'ea\'f2\'e5\'f2 10, \'e8 \'ef\'f0\'e5\'f4\'e8\'ea\'f1 \'ee\'f2 11 \'e4\'ee 32,\par
+ip prefix-list 1 permit 10.0.0.0/8 ge 11 le 13\tab\'ec\'e0\'f0\'f8\'f0\'f3\'f2\'fb \'f3 \'ea\'ee\'f2\'ee\'f0\'fb\'f5 \'ef\'e5\'f0\'e2\'fb\'e9 \'ee\'ea\'f2\'e5\'f2 10, \'e8 \'ef\'f0\'e5\'f4\'e8\'ea\'f1 \'ee\'f2 11 \'e4\'ee 13.\par
+\pard  \par
+---------------------------------------------\par
+\b ip prefix-list\b0  \i prefix-list\i0  \b permit\b0  \i 192.168.0.0/16\i0  \b le\b0  \i 20\i0\par
+\tab 192.168.0.0/16\tab\'c4\'c0\par
+\tab 192.168.17.0/20\tab\'c4\'c0\par
+\tab 192.16.2.0/24\tab\'cd\'c5\'d2\par
+\par
+\b ip prefix-list\b0  \i prefix-list\i0  \b permit\b0  \i 192.168.0.0/16\i0  \b ge\b0  \i 18\i0\par
+\tab 192.168.0.0/16\tab\'cd\'c5\'d2\par
+\tab 192.168.17.0/20\tab\'c4\'c0\par
+\tab 192.16.2.0/24\tab\'c4\'c0\par
+---------------------------------------------\par
+\b show ip prefix-list detail\tab\b0\'f5\'e8\'f2\'fb \'ef\'ee \'ef\'f0\'e5\'f4\'e8\'ea\'f1 \'eb\'e8\'f1\'f2\'f3\par
+\b show ip bgp prefix-list\b0  \i 10\i0\tab\'f4\'e8\'eb\'fc\'f2\'f0\'f3\'e5\'f2 \b show ip bgp\b0  \'ef\'ee \'ef\'f0\'e5\'f4\'e8\'ea\'f1 \'eb\'e8\'f1\'f2\'f3\par
+\par
+\ul Outbound Route Filtering (ORF)\ulnone\par
+router(config-router)#\b neighbor\b0  \i address\i0  \b capability orf\b0  \i prefix-list\i0  \b both\b0\par
+\'cf\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'eb\'e8 \'f4\'f3\'ed\'ea\'f6\'e8\'ee\'ed\'e0\'eb \'ec\'ee\'e6\'ed\'ee \'f3\'e2\'e8\'e4\'e5\'f2\'fc \'e2 \b show ip bgp neighbors\par
+\b0\'ce\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \'f1\'ee\'f1\'e5\'e4\'f3 \'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'fe \'ee \'f2\'ee\'ec, \'ea\'e0\'ea\'e8\'e5 \'f4\'e8\'eb\'fc\'f2\'f0\'fb \'f3 \'ec\'e5\'ed\'ff \'ed\'e0\'f1\'f2\'f0\'ee\'e5\'ed\'fb \'ed\'e0 \b in\b0 . \'d2\'e5\'ec \'f1\'e0\'ec\'fb\'ec \'f3\'ec\'e5\'ed\'fc\'f8\'e0\'e5\'f2 \'ea\'ee\'eb-\'e2\'ee \'e2\'f5\'ee\'e4\'ff\'f9\'e8\'f5 updates.\par
+\par
+\'cd\'ee\'e2\'fb\'e5 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff \'e2 \'ef\'ee\'eb\'e8\'f2\'e8\'ea\'e0\'f5 \'f4\'e8\'eb\'fc\'f2\'f0\'e0\'f6\'e8\'e8 \'ef\'f0\'e8\'ec\'e5\'ed\'ff\'fe\'f2\'f1\'ff \'f2\'ee\'eb\'fc\'ea\'ee \'ea \'ed\'ee\'e2\'fb\'ec update-\'e0\'ec. \'c4\'eb\'ff \'f2\'ee\'e3\'ee, \'f7\'f2\'ee \'ef\'f0\'e8\'ec\'e5\'ed\'e8\'f2\'fc \'ed\'ee\'e2\'fb\'e5 \'ef\'ee\'eb\'e8\'f2\'e8\'ea\'e8 \'ea \'f1\'f2\'e0\'f0\'fb\'ec update-\'e0\'ec \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee\par
+\b clear ip bgp\b0  \i address\i0\par
+\par
+router(config-router)#\b neighbor\b0  \i address\i0  \b soft-reconfiguration inbound\par
+clear ip bgp\b0  \i address\i0  \b soft in\par
+clear ip bgp \b0\i address \b\i0 soft outbound\par
+\par
+\ul\b0 Route Refresh Capability\par
+\ulnone\'d2\'e0 \'e6\'e5 \'f1\'e0\'ec\'e0\'ff \'e7\'e0\'e4\'e0\'f7\'e0, \'f7\'f2\'ee \'e8 soft-reconfiguration. \'cf\'ee\'f1\'eb\'e5 \'ee\'e1\'ed\'ee\'e2\'eb\'e5\'ed\'e8\'ff inbound \'ef\'ee\'eb\'e8\'f2\'e8\'ea\'e8 \'ed\'e0 \'f0\'ee\'f3\'f2\'e5\'f0\'e5 \'ef\'e8\'f8\'e5\'ec\par
+\b clear ip bgp\b0  \i neighbor\i0  \b in\b0\par
+BGP \'f8\'eb\'b8\'f2 ROUTE-REFRESH MESSAGE \'f1\'ee\'f1\'e5\'e4\'f3, \'e8 \'f2\'ee\'f2 \'ee\'f2\'e2\'e5\'f7\'e0\'e5\'f2 \'e2\'f1\'e5\'e9 \'f1\'e2\'ee\'e5\'e9 \'f2\'e0\'e1\'eb\'e8\'f6\'e5\'e9 BGP. \'c8 \'f2\'fb \'e8 \'f1\'ee\'f1\'e5\'e4 \'e4\'ee\'eb\'e6\'ed\'fb \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'f2\'fc \'fd\'f2\'f3 \'f4\'e8\'f7\'f3. \'cc\'ee\'e6\'ed\'ee \'ef\'ee\'f1\'ec\'ee\'f2\'f0\'e5\'f2\'fc \'e2 router#show ip bgp neighbor 1.1.1.1 \'f1\'f2\'f0\'ee\'ea\'e0 Neighbor capabilities: \'cd\'e0 \'fd\'f2\'e0\'ef\'e5 \'f1\'ee\'e7\'e4\'e0\'ed\'e8\'ff \'f1\'e5\'f1\'f1\'e8\'e8 OPEN message \'f0\'ee\'f3\'f2\'e5\'f0\'fb \'ee\'e1\'fa\'ff\'e2\'eb\'ff\'fe\'f2 \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'fe\'f2 \'eb\'e8 \'ee\'ed\'e8 \'e4\'e0\'ed\'ed\'f3\'fe \'f4\'e8\'f7\'f3.\par
+\par
+\pard\fi-568\li568\b show ip bgp neighbor\b0  \i address\i0  \b advertised\b0  - \'f7\'f2\'ee \'ec\'fb \'ee\'f2\'e4\'e0\'b8\'ec \'f1\'ee\'f1\'e5\'e4\'f3, \'ef\'f0\'ee\'f8\'e5\'e4\'f8\'e5\'e5 \'f7\'e5\'f0\'e5\'e7 \'f4\'e8\'eb\'fc\'f2\'f0\'fb\par
+\b show ip bgp neighbor\b0  \i address\i0  \b route\b0  - \'f7\'f2\'ee \'ec\'fb \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'ec \'ee\'f2 \'f1\'ee\'f1\'e5\'e4\'e0, \'ef\'f0\'ee\'f8\'e5\'e4\'f8\'e5\'e5 \'f7\'e5\'f0\'e5\'e7 \'f4\'e8\'eb\'fc\'f2\'f0\'fb\par
+\b show ip bgp neighbor\b0  \i address\i0  \b received - \b0\'f7\'f2\'ee \'ec\'fb \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'ec \'ee\'f2 \'f1\'ee\'f1\'e5\'e4\'e0 \'e1\'e5\'e7 \'f4\'e8\'eb\'fc\'f2\'f0\'ee\'e2, \'ed\'e0\'e4\'ee \'e2\'ea\'eb\'fe\'f7\'e8\'f2\'fc soft-reconfiguration\par
+\par
+\b show ip bgp neighbor\b0  \'e5\'f1\'f2\'fc \'ef\'ee\'eb\'ff:\par
+\pard\fi-568\li1136 Prefixes Current - \'f1\'ea\'ee\'eb\'fc\'ea\'ee \'f1\'e5\'e9\'f7\'e0\'f1 \'ef\'f0\'e5\'f4\'e8\'ea\'f1\'ee\'e2 \'f3 \'e4\'e0\'ed\'ed\'ee\'e3\'ee peer \'e2 \'e4\'e0\'ed\'ed\'ee\'ec address-fam\lang1033\f1 i\lang1049\f0 ly\par
+Implicit Withdraw - \'f1\'ea\'ee\'eb\'fc\'ea\'ee \'f0\'e0\'e7 \'ec\'fb \'ef\'ee\'eb\'f3\'f7\'e0\'eb\'e8 \'ef\'f0\'e5\'f4\'e8\'ea\'f1, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'e5\'f1\'f2\'fc \'f3 \'ed\'e0\'f1 \'e2 \'f2\'e0\'e1\'eb\'e8\'f6\'e5 BGP, \'ed\'ee \'f1 \'e8\'e7\'ec\'e5\'ed\'b8\'ed\'ed\'fb\'ec\'e8 \'e0\'f2\'f0\'e8\'e1\'f3\'f2\'e0\'ec\'e8\par
+Explicit Withdraw - \'f1\'ea\'ee\'eb\'fc\'ea\'ee \'f0\'e0\'e7 \'ec\'fb \'ef\'ee\'eb\'f3\'f7\'e0\'eb\'e8 \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'e5, \'f7\'f2\'ee \'ea\'e0\'ea\'ee\'e3\'ee-\'f2\'ee \'ef\'f0\'e5\'f4\'e8\'ea\'f1\'e0 \'e1\'ee\'eb\'fc\'f8\'e5 \'ed\'e5 \'f1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'e5\'f2\par
+Prefixes Total = Prefixes Current + Implicit Withdraw + Explicit Withdraw\par
+Used as bestpath - \'f1\'ea\'ee\'eb\'fc\'ea\'ee \'ef\'f0\'e5\'f4\'e8\'ea\'f1\'ee\'e2 \'e2\'fb\'e1\'f0\'e0\'ed\'ee \'ea\'e0\'ea bestpath\par
+Used as multipath - \'f1\'ea\'ee\'eb\'fc\'ea\'ee \'ef\'f0\'e5\'f4\'e8\'ea\'f1\'ee\'e2 \'e2\'fb\'e1\'f0\'e0\'ed\'ee \'ea\'e0\'ea multipath\par
+Local Policy Denied Prefixes - \'f1\'ea\'ee\'eb\'fc\'ea\'ee \'ef\'f0\'e5\'f4\'e8\'ea\'f1\'ee\'e2 \'e7\'e0\'f0\'e5\'e7\'e0\'ed\'ee \'eb\'ee\'ea\'e0\'eb\'fc\'ed\'fb\'ec\'e8 \'ef\'ee\'eb\'e8\'f2\'e8\'ea\'e0\'ec\'e8\par
+\pard{\field{\*\fldinst{HYPERLINK "http://www.cisco.com/c/en/us/td/docs/ios/12_2/iproute/command/reference/fiprrp_r/1rfbgp2.html#wp1174920"}}{\fldrslt{\ul\cf1 http://www.cisco.com/c/en/us/td/docs/ios/12_2/iproute/command/reference/fiprrp_r/1rfbgp2.html#wp1174920}}}\f0\fs22\par
+\par
+\'ca\'ee\'e3\'e4\'e0 route first time originate - AS-path is empty.\par
+\'ca\'e0\'e6\'e4\'fb\'e9 \'f0\'e0\'e7 \'ea\'ee\'e3\'e4\'e0 route \'ef\'f0\'ee\'f5\'ee\'e4\'e8\'f2 \'f7\'e5\'f0\'e5\'e7 \'ef\'e5\'f0\'e5\'e8\'ec\'e5\'f2\'f0 \'ed\'ee\'e2\'ee\'e9 AS \'f0\'f3\'f2\'b8\'f0 prepend-\'e8\'f2 \'e2 as-path \'f1\'e2\'ee\'fe AS.\par
+\'d2\'e0\'ea\'e6\'e5 \'e8\'e7\'ec\'e5\'ed\'ff\'e5\'f2\'f1\'ff next-hop.\par
+Next-hop \'e0\'f2\'f0\'e8\'e1\'f3\'f2 \'f5\'e8\'f2\'f0\'ee \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'e2 shared media. AS1 \'e8\'ec\'e5\'e5\'f2 10.0.0.1, AS2 - 10.0.0.2, AS3 - 10.0.0.3\par
+\'c5\'f9\'b8 \'f5\'e8\'f2\'f0\'e5\'e5, \'e5\'f1\'eb\'e8 \'fd\'f2\'e8 IP \'e0\'e4\'f0\'e5\'f1\'e0 \'e2 Frame-Relay - \'f0\'e5\'ea\'ee\'ec\'e5\'ed\'e4\'f3\'fe\'f2 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc sub-interface \'e8\'eb\'e8 disable BGP next-hop\par
+\par
+\ul Weight\ulnone\par
+router(config-router)#\b neighbor\b0  \i address\i0  \b weight\b0  \i value\i0\par
+router(config-router)#\b neighbor\b0  \i address\i0  \b filter-list\b0  \i access-list\i0  \b weight\b0  \i value\i0\par
+\'c7\'e0\'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'f2\'ee\'eb\'fc\'ea\'ee \'ef\'ee\'f1\'eb\'e5: \b clear ip bgp\b0  \i address\i0\par
+\par
+router(config-router)#\b bgp default local-preference\b0  \i value\i0\par
+\par
+\pard\fi-568\li568 router(config-route-map)#\b set as-path prepend\b0  \i 34 43 54\i0\tab - \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'f2 AS-\'ea\'e8 \'e2 \'ea\'ee\'ed\'e5\'f6 as-path\par
+\pard\par
+\ul MED\par
+\ulnone\'cf\'ee default-\'f3 MED \'ed\'e5 \'ef\'f0\'e8\'f1\'ee\'e5\'e4\'e8\'ed\'ff\'e5\'f2\'f1\'ff \'ea \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'f3. \'cd\'ce !!! \'c5\'f1\'eb\'e8 \'f0\'f3\'f2\'b8\'f0 originate \'ec\'e0\'f0\'f8\'f0\'f3\'f2, \'f1 \'ef\'ee\'ec\'ee\'f9\'fc\'fe router(config-router)#\b network\b0  \'e8\'eb\'e8 router(config-router)#\b redistribute\b0 , \'f2\'ee MED = \'ec\'e5\'f2\'f0\'e8\'ea\'e5 IGP \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'e0.\par
+\par
+\'cf\'ee default-\'f3 MED cann't be propagated across several AS.\par
+\par
+\'c8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'ff router(config-router)#\b default-metric\b0  \i number\i0  - \'e2\'f1\'e5 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'fb redistribute by router \'e1\'f3\'e4\'f3\'f2 \'e8\'ec\'e5\'f2\'fc \'fd\'f2\'ee\'f2 MED.\par
+\par
+MED \'ec\'ee\'e6\'ed\'ee \'ec\'e5\'ed\'ff\'f2\'fc \'f1 \'ef\'ee\'ec\'ee\'f9\'fc\'fe router(config-route-map)#\b set metric\b0  \i value\i0\par
+\par
+MED \'f1\'f0\'e0\'e2\'ed\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'f3 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'ee\'e2 \'ef\'f0\'e8\'f8\'e5\'e4\'f8\'e8\'f5 \'ee\'f2 \'ee\'e4\'ed\'ee\'e9 \'e8 \'f2\'ee\'e9 \'e6\'e5 AS.\par
+\pard\fi-568\li568 router(config-router)#\b bgp always-compare-med - \b0\'e1\'f3\'e4\'e5\'f2 \'f1\'f0\'e0\'e2\'ed\'e8\'e2\'e0\'f2\'fc MED \'f3 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'ee\'e2, \'ef\'f0\'e8\'f8\'e5\'e4\'f8\'e8\'f5 \'e8\'e7 \'f0\'e0\'e7\'ed\'fb\'f5 AS-\'ee\'ea\par
+\pard\par
+\'d3 CISCO !!!!! \'cc\'e0\'f0\'f8\'f0\'f3\'f2 \'e1\'e5\'e7 MED \'f1\'f7\'e8\'f2\'e0\'e5\'f2\'f1\'ff, \'f7\'f2\'ee MED = 0 -> \'eb\'f3\'f7\'f8\'e0\'ff \'ec\'e5\'f2\'f0\'e8\'ea\'e0\par
+\pard\fi-568\li568 router(config-router)#\b bgp bestpath med missing-med-worst\b0\tab\'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2 \'ec\'e0\'f0\'f8\'f0\'f3\'f2 \'e1\'e5\'e7 MED -> \'ed\'e0\'e8\'f5\'f3\'e4\'f8\'e8\'e9 (\'ef\'f0\'e8 \'f0\'e0\'e1\'ee\'f2\'e5 \'f1 \'e4\'f0\'f3\'e3\'e8\'ec\'e8 \'e2\'e5\'ed\'e4\'ee\'f0\'e0\'ec\'e8)\par
+\pard\par
+\pard\fi-568\li568 router(config-router)#\b bgp bestpath med confed - \b0\'f1\'f0\'e0\'e2\'ed\'e8\'e2\'e0\'e5\'f2 MED \'ef\'ee\'eb\'f3\'f7\'e5\'ed\'ed\'fb\'e9 \'ee\'f2 \'f0\'e0\'e7\'ed\'fb\'f5 \'ea\'ee\'ed\'f4\'e5\'e4\'e5\'f0\'e0\'f6\'e8\'e9\par
+\pard\par
+\pard\fi-568\li568 router(config-router)#\b bgp deterministic-med - \b0\'f1\'ed\'e0\'f7\'e0\'eb\'e0 \'f1\'f0\'e0\'e2\'ed\'e8\'e2\'e0\'e5\'f2\'f1\'ff MED \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'ee\'e2, \'ef\'f0\'e8\'f8\'e5\'e4\'f8\'e8\'f5 \'e8\'e7 \'ee\'e4\'ed\'ee\'e9 \'e8 \'f2\'ee\'e9 \'e6\'e5 AS - \'e2\'e8\'e4\'ed\'ee \'e2 \'f1\'eb\'e5\'e4\'f3\'fe\'f9\'e5\'ec \'ef\'f0\'e8\'ec\'e5\'f0\'e5\par
+\pard\par
+\ul Example:\ulnone\par
+\par
+\tab path\tab\tab\tab metric\tab type\tab\tab router-id \par
+1.\tab 65500 65200\tab\tab 150\tab\tab external\tab 192.168.13.1\par
+2.\tab 65100 65300\tab\tab 200\tab\tab external\tab 1.1.1.1\par
+3.\tab 65500\tab 65300\tab\tab 100\tab\tab internal\tab 192.168.8.4\par
+\par
+bgp deterministic-med = \b disable\b0\tab bgp always-compare-med = \b disable\b0\par
+\pard\li710\'d1\'f0\'e0\'e2\'ed\'e8\'e2\'e0\'e5\'ec 1 \'e8 2 -> \'e2\'fb\'e1\'e8\'f0\'e0\'e5\'ec 2, \'f2.\'ea. \'ed\'e0\'e8\'ec\'e5\'ed\'fc\'f8\'e8\'e9 router-id. MED \'ed\'e5 \'ef\'f0\'ee\'e2\'e5\'f0\'ff\'e5\'ec, \'f2.\'ea. \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'fb \'ef\'f0\'e8\'f8\'eb\'e8 \'e8\'e7 \'f0\'e0\'e7\'ed\'fb\'f5 AS. \'d1\'f0\'e0\'e2\'ed\'e8\'e2\'e0\'e5\'ec 2 \'e8 3 -> \'e2\'fb\'e1\'e8\'f0\'e0\'e5\'ec 2, \'f2.\'ea. external.\par
+\pard\par
+bgp deterministic-med = \b disable\b0\tab bgp always-compare-med = \b enable\par
+\pard\li710\b0 1 \'e8 2 -> 1, \'f2.\'ea. \'ed\'e0\'e8\'ec\'e5\'ed\'fc\'f8\'e8\'e9 MED. 1 \'e8 3 -> 3, \'f2.\'ea. \'ed\'e0\'e8\'ec\'e5\'ed\'fc\'f8\'e8\'e9 MED.\par
+\pard\par
+bgp deterministic-med = \b enable\b0\tab bgp always-compare-med = \b disable\b0\par
+\pard\li710 BGP \'f0\'e0\'e7\'e1\'e8\'e2\'e0\'e5\'f2 \'ed\'e0 \'e3\'f0\'f3\'ef\'ef\'fb \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'fb, \'ef\'f0\'e8\'f8\'e5\'e4\'f8\'e8\'e5 \'e8\'e7 \'f0\'e0\'e7\'ed\'fb\'f5 AS-\'ee\'ea, \'f2.\'e5. \'ef\'e5\'f0\'e2\'e0\'ff \'e3\'f0\'f3\'ef\'ef\'e0 = 1 \'e8 3, \'e2\'f2\'ee\'f0\'e0\'ff = 2. \'c2 \'ef\'e5\'f0\'e2\'ee\'e9 \'e3\'f0\'f3\'ef\'ef\'e5 \'ed\'e0\'e8\'eb\'f3\'f7\'f8\'e8\'e9 = 3 (\'eb\'f3\'f7\'f8\'e8\'e9 MED). \'c2\'ee \'e2\'f2\'ee\'f0\'ee\'e9 = 2. \'d1\'f0\'e0\'e2\'ed\'e8\'e2\'e0\'e5\'ec 3 \'e8 2 -> 2 \'f2.\'ea. external. MED \'ed\'e5 \'f3\'f7\'e8\'f2\'fb\'e2\'e0\'e5\'ec, \'ef\'ee\'f2\'ee\'ec\'f3 \'f7\'f2\'ee \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'fb \'e8\'e7 \'f0\'e0\'e7\'ed\'fb\'f5 AS-\'ee\'ea\par
+\pard\par
+bgp deterministic-med = \b enable\b0\tab bgp always-compare-med = \b enable\par
+\pard\li710\b0\'c2\'fb\'e1\'e8\'f0\'e0\'e5\'f2\'f1\'ff 3, \'f2.\'ea. \'ec\'e8\'ed\'e8\'ec\'e0\'eb\'fc\'ed\'fb\'e9 MED \'e8\'e7 \'e2\'f1\'e5\'f5.\par
+\pard\par
+\'cf\'ee\'f1\'ec\'ee\'f2\'f0\'e5\'f2\'fc \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'ec\'fb\'e9 MED \'f1\'ee\'f1\'e5\'e4\'f3 \'ec\'ee\'e6\'ed\'ee:\par
+router#\b debug ip bgp \b0\i neighbor\b\i0  update\b0\par
+router#\b debug ip bgp event\par
+\par
+\ul\b0 Communities\par
+\ulnone [AS number]:[low-order-16 bit]\par
+\'cf\'ee default-\'f3 communities \'f3\'e4\'e0\'eb\'ff\'fe\'f2\'f1\'ff \'e8\'e7 BGP update\par
+\par
+\'d0\'ee\'f3\'f2\'e5\'f0, \'ef\'ee\'eb\'f3\'f7\'e8\'e2 community c \'e0\'f2\'f0\'e8\'e1\'f3\'f2\'ee\'ec:\par
+no-export (0xFFFFFF01 \'e8\'eb\'e8 65535:65281) - \'f2\'f0\'e0\'ed\'f1\'eb\'e8\'f0\'f3\'e5\'f2 \b\'cf\'d0\'c5\'d4\'c8\'ca\'d1\b0  \'f2\'ee\'eb\'fc\'ea\'ee iBGP \'f1\'ee\'f1\'e5\'e4\'ff\'ec \'e8 eBGP \'f1\'ee\'f1\'e5\'e4\'ff\'ec \'e2\'ed\'f3\'f2\'f0\'e8 \'ea\'ee\'ed\'f4\'e5\'e4\'e5\'f0\'e0\'f6\'e8\'e8\par
+no-advertise (0xFFFFFF02 \'e8\'eb\'e8 65535:65282) - \'ed\'e5 \'f2\'f0\'e0\'ed\'f1\'eb\'e8\'f0\'f3\'e5\'f2 \b\'cf\'d0\'c5\'d4\'c8\'ca\'d1 \b0\'ed\'e8\'ea\'ee\'ec\'f3\par
+local-as (0xFFFFFF03 \'e8\'eb\'e8 65535:65283)- \'f2\'f0\'e0\'ed\'f1\'eb\'e8\'f0\'f3\'e5\'f2\'f1\'ff \b\'cf\'d0\'c5\'d4\'c8\'ca\'d1 \b0\'f2\'ee\'eb\'fc\'ea\'ee iBGP \'f1\'ee\'f1\'e5\'e4\'ff\'ec\par
+internet - \'f2\'f0\'e0\'ed\'f1\'eb\'e8\'f0\'f3\'e5\'f2 \b\'cf\'d0\'c5\'d4\'c8\'ca\'d1 \b0\'e2\'f1\'e5\'ec\par
+\par
+\'d0\'f3\'f2\'b8\'f0\'fb, \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'ed\'e5 \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'fe\'f2 \'f4\'e8\'f7\'f3 communities, \'ef\'f0\'ee\'ef\'f3\'f1\'ea\'e0\'fe\'f2 \'e8\'f5 \'e1\'e5\'e7 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'e9.\par
+\par
+\ul Example\ulnone\par
+\par
+\'c2\'e0\'f0\'e8\'e0\'ed\'f2 \'f2\'e0\'e1\'eb\'e8\'f6\'fb, \'f0\'e0\'f1\'ef\'f0\'ee\'f1\'f2\'f0\'e0\'ed\'ff\'e5\'ec\'ee\'e9 \'ef\'f0\'ee\'e2\'e0\'e9\'e4\'e5\'f0\'ee\'ec:\par
+\par
+65000:17\tab\'d3\'f1\'f2\'e0\'ed\'ee\'e2\'e8\'f2\'fc local-preference = 50\par
+65000:18\tab\'d3\'f1\'f2\'e0\'ed\'ee\'e2\'e8\'f2\'fc local-preference = 150\par
+65000:21\tab Prepend +1\par
+65000:22\tab Prepend +2\par
+65000:23\tab Prepend +3\par
+\par
+\pard\fi-568\li568 router(config-route-map)#\b set community \b0\i value \b\i0 addative\tab  - \b0 addative - \'cf\'cb\'de\'d1\'d3\'c5\'d2 \'f3\'e6\'e5 \'ea \'e8\'ec\'e5\'fe\'f9\'e8\'ec\'f1\'ff community (\'ef\'ee default-\'f3 \'e7\'e0\'f2\'e8\'f0\'e0\'e5\'f2)\par
+router(config)#\b ip bgp-community new-format - \b0\'ef\'f0\'e5\'ee\'e1\'f0\'e0\'e7\'ee\'e2\'fb\'e2\'e0\'e5\'f2 community = 6553620 \'ea \'e2\'e8\'e4\'f3 100:20\par
+router(config-router)#\b neighbor \b0\i address \b\i0 send-community\b0  - \'cf\'c5\'d0\'c5\'d1\'db\'cb\'c0\'c5\'d2 community \'f1\'ee\'f1\'e5\'e4\'f3\par
+router(config)#\b ip community-list \b0\i 1-99 \b\i0 permit \b0\i value\i0  - \'e5\'f1\'eb\'e8 \i value\i0  = internet - \'e7\'ed\'e0\'f7\'e8\'f2 \'ef\'ee\'e4\'f5\'ee\'e4\'ff\'f2 \'e2\'f1\'e5\par
+router(config)#\b ip community-list \b0\i 100-500 \b\i0 permit \b0\i\'f0\'e5\'e3\'f3\'eb\'ff\'f0\'ed\'ee\'e5 \'e2\'fb\'f0\'e0\'e6\'e5\'ed\'e8\'e5   \i0 (_10:.0[1-5]_)\par
+router(config-router)#\b match community \b0\i community-list\i0  [\b exact\b0 ] - exact - \'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2, \'f7\'f2\'ee \'e2\'f1\'e5 community \'f3 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'e0 \'e4\'ee\'eb\'e6\'ed\'fb \'f1\'ee\'ee\'f2\'e2\'e5\'f2\'f1\'f2\'e2\'ee\'e2\'e0\'f2\'fc commynity-list\par
+\pard router#\b show ip bgp community\par
+\pard\fi-568\li568\b0 router(config-router)#\b neighbor\b0  \i address\i0  \b remove-private-as - \b0\'f3\'e4\'e0\'eb\'ff\'e5\'f2 \'e8\'e7 as-path Private AS\par
+router(config-router)#\b maximum-paths\b0  \i number\i0  - \'f1\'ea\'ee\'eb\'fc\'ea\'ee \'ee\'e4\'e8\'ed\'e0\'ea\'ee\'e2\'fb\'f5 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'ee\'e2 \'e2\'f1\'f2\'e0\'e2\'eb\'ff\'f2\'fc \'e2 \'f2\'e0\'e1\'eb.\'ec\'e0\'f0\'f8. \'e4\'eb\'ff load-sharing (\'ec\'ee\'e6\'ed\'ee \'e4\'ee 6 \'f8\'f2.)\par
+router(config-router)#\b neighbor\b0  \i address\i0  \b local-as\b0  \i private-AS\i0  - \'e7\'e0\'ec\'ee\'f0\'ee\'f7\'ea\'e8 \'f1 private AS\par
+\pard\par
+\'cd\'c8\'d7\'c5\'c3\'ce \'ed\'e5 \'e8\'e7\'ec\'e5\'ed\'ff\'e5\'f2\'f1\'ff \'e2 iBGP update-\'e0\'f5.\par
+\'d0\'e5\'ea\'ee\'ec\'e5\'ed\'e4\'f3\'fe\'f2 iBGP \'ed\'e0 Loopback-\'e0\'f5, eBGP \'ed\'e0 interface ip address-\'e0\'f5.\par
+\par
+router(config-router)#\b distance bgp\b0  \i external internal local\i0\par
+\par
+\ul Route Reflectors\ulnone\par
+\pard\fi-1988\li1988 Split-horizon - \'fd\'f2\'ee \'ea\'ee\'e3\'e4\'e0 update, \'ef\'ee\'eb\'f3\'f7\'e0\'ec\'fb\'e5 \'ee\'f2 eBGP - \'f0\'e0\'f1\'f1\'fb\'eb\'e0\'fe\'f2\'f1\'ff \'e2\'f1\'e5\'ec \'e8 eBGP \'e8 iBGP \'f1\'ee\'f1\'e5\'e4\'ff\'ec. Update-\'fb, \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'ec\'fb\'e5\'f2 \'ee\'f2 iBGP \'ed\'e5 \'f0\'e0\'f1\'f1\'fb\'eb\'e0\'fe\'f2\'f1\'ff iBGP \'f1\'ee\'f1\'e5\'e4\'ff\'ec, \'e0 \'d2\'ce\'cb\'dc\'ca\'ce eBGP \'f1\'ee\'f1\'e5\'e4\'ff\'ec\par
+\par
+\ul Synchronization\ulnone\par
+\pard router(config-router)#no synchronization\par
+R1 - R2 - R3\par
+\'cc\'e5\'e6\'e4\'f3 R1 \'e8 R3 \'ed\'e0\'f1\'f2\'f0\'ee\'e5\'ed iBGP. \'cd\'e0 R2 BGP \'ed\'e5\'f2. \'cc\'e5\'e6\'e4\'f3 \'e2\'f1\'e5\'ec\'e8 \'e5\'f1\'f2\'fc OSPF. \'ca R1 \'ef\'f0\'e8\'eb\'e5\'f2\'e5\'eb \'ed\'ee\'e2\'fb\'e9 \'e2\'ed\'e5\'f8\'ed\'e8\'e9 \'ef\'f0\'e5\'f4\'e8\'ea\'f1. \'cf\'ee iBGP R1 \'ef\'e5\'f0\'e5\'e4\'e0\'eb \'ef\'f0\'e5\'f4\'e8\'ea\'f1 R3. \'cd\'ee \'e5\'f1\'eb\'e8 R3 \'ed\'e0\'f7\'ed\'b8\'f2 \'e0\'ed\'ee\'ed\'f1\'e8\'f0\'ee\'e2\'e0\'f2\'fc \'fd\'f2\'ee\'f2 \'ef\'f0\'e5\'f4\'e8\'ea\'f1 \'e4\'e0\'eb\'fc\'f8\'e5, \'f2\'ee \'e1\'f3\'e4\'e5\'f2 \'ef\'eb\'ee\'f5\'ee, \'f2.\'ea. \'ef\'e0\'ea\'e5\'f2\'fb \'ef\'f0\'e8\'f8\'e5\'e4\'f8\'e8\'e5 \'ea R3 \'e8 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'e5\'ed\'ed\'fb\'e5 \'ed\'e0 R2 \'e1\'f3\'e4\'f3\'f2 \'e4\'f0\'ee\'ef\'e0\'f2\'fc\'f1\'ff, \'f2.\'ea. R2 \'ed\'e5 \'e7\'ed\'e0\'e5\'f2 \'ee\'e1 \'fd\'f2\'ee\'ec \'ef\'f0\'e5\'f4\'e8\'ea\'f1\'e5. \'c4\'eb\'ff \'e8\'e7\'e1\'e5\'e3\'e0\'ed\'e8\'ff \'f2\'e0\'ea\'e8\'f5 \'f1\'e8\'f2\'f3\'e0\'f6\'e8\'e9 \'ed\'e0\'f1\'f2\'f0\'e0\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'f1\'e8\'ed\'f5\'f0\'ee\'ed\'e8\'e7\'e0\'f6\'e8\'ff. R3 \'ed\'e5 \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2 \'e0\'ed\'ee\'ed\'f1\'e8\'f0\'ee\'e2\'e0\'f2\'fc \'ed\'ee\'e2\'fb\'e9 \'ef\'f0\'e5\'f4\'e8\'ea\'f1 \'e4\'e0\'eb\'fc\'f8\'e5, \'e4\'ee \'f2\'e5\'f5 \'ef\'ee\'f0 \'ef\'ee\'ea\'e0 \'fd\'f2\'ee\'f2 \'e6\'e5 \'ef\'f0\'e5\'f4\'e8\'ea\'f1 \'ed\'e5 \'ef\'f0\'e8\'e4\'b8\'f2 \'ea \'ed\'e5\'ec\'f3 \'ef\'ee OSPF.\ul\par
+\ulnone\b\par
+\b0 Router(config-router)#\b bgp scan-time \b0\i interval\i0  - \'ef\'ee default-\'f3 \'ea\'e0\'e6\'e4\'fb\'e5 60 \'f1\'e5\'ea BGP \'f1\'ea\'e0\'ed\'e8\'f0\'f3\'e5\'f2 \'f1\'e2\'ee\'fe \'f2\'e0\'e1\'eb\'e8\'f6\'f3, \'e4\'eb\'ff \'ef\'ee\'e4\'f2\'e2\'e5\'f0\'e6\'e4\'e5\'ed\'e8\'ff \'e4\'ee\'f1\'f2\'f3\'ef\'ed\'ee\'f1\'f2\'e8 next-hop. \'c5\'f1\'eb\'e8 \'f3\'e2\'e5\'eb\'e8\'f7\'e8\'f2\'fc \'f2\'e0\'e9\'ec\'e5\'f0, \'f2\'ee \'ec\'ee\'e6\'ed\'ee \'f3\'ec\'e5\'ed\'fc\'f8\'e8\'f2\'fc \'ed\'e0\'e3\'f0\'f3\'e7\'ea\'f3 \'ed\'e0 CPU.\par
+\par
+Router(config-router)#\b bgp nexthop trigger\b0  - \'f2\'ee\'e6\'e5 \'f1\'e2\'ff\'e7\'e0\'ed\'ee \'f1 \'f0\'e0\'e1\'ee\'f2\'ee\'e9 \'f1\'ea\'e0\'ed\'e5\'f0\'e0\par
+\par
+\'cf\'f0\'ee\'e1\'f0\'ee\'f1\'e8\'f2\'fc QoS \'f7\'e5\'f0\'e5\'e7 BGP:\par
+\'e5\'f1\'eb\'e8 \'f2\'e0\'ea\'ee\'e5 community \'e8\'eb\'e8 IP-prefix \'e8\'eb\'e8 as-path, \'f2\'ee \'e2\'fb\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2\'f1\'ff \'f2\'e0\'ea\'ee\'e9-\'f2\'ee IP Precedence \'e8\'eb\'e8 QoS group (QoS 2.2 SG Vol1.pdf \'f1\'f2\'f0. 305)\par
+\par
+interface FastEthernet 0/0\par
+  bgp-policy source ip-prec-map\par
+!\par
+router bgp 65000\par
+  table-map tasman\par
+  neighbor 217.217.217.2 remote-as 65001\par
+!\par
+route-map tasman\par
+  set ip precedence 5\b\par
+}
+ 

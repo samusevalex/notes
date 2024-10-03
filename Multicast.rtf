@@ -1,0 +1,264 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1049{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}{\f1\fnil\fcharset0 Courier New;}{\f2\froman\fprq2\fcharset204{\*\fname Courier New;}Courier New CYR;}}
+{\colortbl ;\red0\green0\blue0;}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sl240\slmult1\f0\fs22\'d1\'f2\'f0\'e0\'ed\'e8\'f6\'e0 117\par
+\par
+\'c4\'e5\'f0\'e5\'e2\'fc\'ff:\par
+Source tree - \'fd\'f2\'ee \'e4\'eb\'ff DM \'e8 \'e3\'f0\'f3\'ef\'ef (S,G)\par
+Shared tree - \'fd\'f2\'ee \'e4\'eb\'ff SM \'e8 \'e3\'f0\'f3\'ef\'ef (*,G) \'ea\'e0\'ea \'ef\'f0\'e0\'e2\'e8\'eb\'ee \'ee\'f2 \'ef\'ee\'eb\'f3\'f7\'e0\'f2\'e5\'eb\'ff \'e4\'ee RP\par
+\par
+\ul Reverse Path Forwarding\ulnone  - \'ef\'f0\'e8\'f5\'ee\'e4\'e8\'f2 multicast \'ed\'e0 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1 Fa0/0(192.168.0.1; 224.0.0.1) \'f0\'ee\'f3\'f2\'e5\'f0 \'ef\'f0\'ee\'e2\'e5\'f0\'ff\'f2 \'e2 \'f2\'e0\'e1\'eb\'e8\'f6\'e5 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'e8\'e7\'e0\'f6\'e8\'e8 IP \'e0\'e4\'f0\'e5\'f1 192.168.0.1 \'e4\'e5\'e9\'f1\'f2\'e2\'e8\'f2\'e5\'eb\'fc\'ed\'ee \'eb\'e8 \'ed\'e0\'f5\'ee\'e4\'e8\'f2\'f1\'ff \'e7\'e0 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'ee\'ec Fa0/0\par
+\par
+\ul TTL Thresholds\ulnone  - \'ef\'ee\'e7\'e2\'ee\'eb\'ff\'e5\'f2 \'ed\'e5 \'f0\'e0\'e7\'e4\'e0\'e2\'e0\'f2\'fc multicast \'e4\'e0\'eb\'fc\'f8\'e5 \'e3\'f0\'e0\'ed\'e8\'f6 \'f1\'e2\'ee\'e5\'e9 \'f1\'e5\'f2\'e8. \'dd\'f2\'ee \'ea\'ee\'ec\'e0\'ed\'e4\'e0 \'ed\'e0 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e5.\par
+Administratively Scoped Boundaries - \'e0\'ed\'e0\'eb\'ee\'e3\'e8\'f7\'ed\'ee \'ef\'f0\'e5\'e4\'fb\'e4\'f3\'f9\'e5\'ec\'f3. \'d2\'ee\'eb\'fc\'ea\'ee \'e7\'e0\'ea\'f0\'fb\'e2\'e0\'e5\'f2 \'f2\'e8\'ef\'e0 acl-\'e5\'ec.\par
+\par
+\ul IGMP snooping\ulnone  - \'f1\'e2\'e8\'f2\'f7\'e8 \'ed\'e0 \'ee\'f1\'ed\'ee\'e2\'e0\'ed\'e8\'e8 \'ef\'e0\'ea\'e5\'f2\'ee\'e2 IGMP Membership Report \'ee\'f2 \'f5\'ee\'f1\'f2\'ee\'e2 \'f4\'ee\'f0\'ec\'e8\'f0\'f3\'fe\'f2 \'f2\'e0\'e1\'eb\'e8\'f6\'f3 \'ea\'e0\'ea\'f3\'fe \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2\'ed\'f3\'fe \'e3\'f0\'f3\'ef\'ef\'f3 \'e2 \'ea\'e0\'ea\'ee\'e9 \'ef\'ee\'f0\'f2 \'e3\'ed\'e0\'f2\'fc. \'c4\'eb\'ff \'f0\'e0\'e1\'ee\'f2\'fb IGMP snooping \'e2 LAN \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e5 \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec Querier \'e8\'ed\'e0\'f7\'e5 \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2 \'e1\'f3\'e4\'e5\'f2 \'e8\'e4\'f2\'e8 \'e2\'ee \'e2\'f1\'e5 \'ef\'ee\'f0\'f2\'fb (\'ea\'e0\'ea \'ef\'ee\'ea\'e0\'e7\'e0\'eb\'e0 \'eb\'e0\'e1\'e0 \'ed\'e0 IOU). \'ca\'e0\'ea\'e8\'ec-\'f2\'ee \'ee\'e1\'f0\'e0\'e7\'ee\'ec \'e2\'fb\'f8\'e5\'f1\'f2\'ee\'ff\'f9\'e8\'e9 \'f1\'e2\'e8\'f2\'f7 \'f2\'ee\'e6\'e5 \'e2\'e8\'e4\'e8\'f2 IGMP Membership Report \'e8 \'f1\'ee\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2 \'f1\'e2\'ee\'fe \'f2\'e0\'e1\'eb\'e8\'f6\'f3 IGMP snooping. Querier \'ed\'e5 \'ee\'e1\'ff\'e7\'e0\'f2\'e5\'eb\'fc\'ed\'ee \'e4\'ee\'eb\'e6\'e5\'ed \'e1\'fb\'f2\'fc \'e8\'f1\'f2\'ee\'f7\'ed\'e8\'ea\'ee\'ec multicast.\par
+\par
+Switch# \b show ip igmp snooping querier\par
+\b0 Vlan      IP Address               IGMP Version   Port\par
+---------------------------------------------------------\par
+19        11.11.11.1               v2            Gi1/0/52\par
+\b\par
+\b0 Switch# \b show ip igmp snooping groups\par
+\b0 Vlan      Group                    Type        Version     Port List\par
+-----------------------------------------------------------------------------\par
+19        225.2.1.11               igmp        v2          Gi1/0/49, Gi1/0/52\par
+19        225.2.1.12               igmp        v2          Gi1/0/52\par
+19        225.2.1.33               igmp        v2          Gi1/0/52, Gi2/0/5\par
+19        225.2.2.2                igmp        v2          Gi1/0/52, Gi2/0/12\par
+\par
+\'cf\'ee default-\'f3 igmp snooping \'e2\'ea\'eb\'fe\'f7\'e5\'ed \'e3\'eb\'ee\'e1\'e0\'eb\'fc\'ed\'ee \'ed\'e0 \'e2\'f1\'e5\'f5 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0\'f5.\par
+\par
+switch(config)# ip igmp snooping\par
+switch(config-vlan)# ip igmp snooping\par
+\par
+\b PIM snooping\b0\par
+\'ca\'ee\'e3\'e4\'e0 \'ed\'e0 \'eb\'e8\'ed\'ea\'e5 \'ec\'e5\'e6\'e4\'f3 2-\'ff router-\'e0\'ec\'e8 \'ed\'e0\'f5\'ee\'e4\'ff\'f2\'f1\'ff \'f1\'e2\'e8\'f2\'f7\'e8 \'e8 \'ed\'e0\'e4\'ee \'ef\'f0\'ee\'ea\'e8\'ed\'f3\'f2\'fc PIM \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2. \'c2 \'ee\'e1\'fb\'f7\'ed\'ee\'ec \'f0\'e5\'e6\'e8\'ec\'e5 \'f1\'e2\'e8\'f2\'f7\'e8 \'fd\'f2\'ee\'f2 \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2 \'e1\'f3\'e4\'f3\'f2 \'f1\'eb\'e0\'f2\'fc \'e2\'ee \'e2\'f1\'e5 \'f1\'e2\'ee\'e8 \'ef\'ee\'f0\'f2\'fb. \'c5\'f1\'eb\'e8 \'e2\'ea\'fe\'f7\'e8\'f2\'fc PIM snooping \'f2\'ee \'ef\'ee \'e0\'ed\'e0\'eb\'ee\'e3\'e8\'e8 \'f1 IGMP snooping \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2 \'e2 Layer 2 \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e5 \'e1\'f3\'e4\'e5\'f2 \'e1\'e5\'e3\'e0\'f2\'fc \'f2\'ee\'eb\'fc\'ea\'ee \'ec\'e5\'e6\'e4\'f3 router \'e8\'f1\'f2\'ee\'f7\'ed\'e8\'ea \'e8 router, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'ee\'f2\'ef\'f0\'e0\'e2\'e8\'eb join.\par
+Best practices - \'ec\'e5\'e6\'e4\'f3 \'f2\'e0\'ea\'e8\'ec\'e8 router-\'e0\'ec\'e8 \'ef\'f0\'ee\'e1\'f0\'e0\'f1\'fb\'e2\'e0\'f2\'fc point-to-point \'eb\'e8\'ed\'ea\lang1033\f1 /Vlan\lang1049\f0 , \'e1\'e5\'e7 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'ed\'e8\'ff PIM snooping.\par
+\par
+\b Dense Mode\b0\par
+\'cf\'f0\'e8\'ed\'f6\'e8\'ef \i Push\i0  - \'ed\'e0\'f1\'e8\'eb\'fc\'ed\'ee \'ef\'e8\'f5\'e0\'f2\'fc\par
+\'ca\'ee\'ec\'ef\'fc\'fe\'f2\'e5\'f0 \'e8\'eb\'e8 \'f0\'ee\'f3\'f2\'e5\'f0 \'f8\'eb\'b8\'f2 \'e2\'e2\'e5\'f0\'f5 \'ef\'ee \'e4\'e5\'f0\'e5\'e2\'f3 \'ee\'f2\'ea\'e0\'e7 (\i Prune\i0 ) \'ee\'f2 \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2\'e0. \'cd\'e0 \'ea\'e0\'ea\'ee\'e5-\'f2\'ee \'e2\'f0\'e5\'ec\'ff \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2 \'ef\'e5\'f0\'e5\'f1\'f2\'e0\'b8\'f2 \'ef\'ee\'f1\'f2\'f3\'ef\'e0\'f2\'fc. \'cf\'ee\'f2\'ee\'ec \'ee\'ef\'ff\'f2\'fc \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2. \'ca\'ee\'ec\'ef\'fc\'fe\'f2\'e5\'f0 \'ee\'ef\'ff\'f2\'fc \'f8\'eb\'b8\'f2 \'ee\'f2\'ea\'e0\'e7.\par
+\'c5\'f1\'eb\'e8 \'e2\'ee \'e2\'f0\'e5\'ec\'ff \'ec\'ee\'eb\'f7\'e0\'ed\'e8\'ff \'e2\'e4\'f0\'f3\'e3 \'e2 \'f1\'e5\'f2\'e8 \'ef\'ee\'ff\'e2\'e8\'eb\'f1\'ff \'ef\'ee\'f2\'f0\'e5\'e1\'e8\'f2\'e5\'eb\'fc \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2\'e0, \'ec\'ee\'e6\'ed\'ee \'ee\'f2\'ef\'f0\'e0\'e2\'e8\'f2\'fc \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'e5 (\i Graft\i0 ) \'e4\'eb\'ff \'e1\'fb\'f1\'f2\'f0\'ee\'e9 \'ef\'ee\'e4\'ef\'e8\'f1\'ea\'e8 \'ed\'e0 \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2.\par
+\par
+\b Sparse Mode\b0\par
+\'cf\'f0\'e8\'ed\'f6\'e8\'ef \i Pull\i0  - \'e2\'fb\'f2\'ff\'e3\'e8\'e2\'e0\'f2\'fc\par
+\'d8\'eb\'b8\'f2 Join \'e4\'eb\'ff \'f2\'ee\'e3\'ee, \'f7\'f2\'ee\'e1\'fb \'ef\'ee\'e4\'ef\'e8\'f1\'e0\'f2\'fc\'f1\'ff \'ed\'e0 \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2\par
+\par
+\b IGMPv1\b0\par
+\par
+\'d4\'ee\'f0\'ec\'e0\'f2 \'ef\'e0\'ea\'e5\'f2\'e0: \'cd\'e0\'f1\'e0\'e6\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'ed\'e0 IP c TTL=1, \'f2.\'e5. \'f5\'ee\'e4\'e8\'f2 \'f2\'ee\'eb\'fc\'ea\'ee \'e2\'ed\'f3\'f2\'f0\'e8 \'eb\'ee\'ea\'e0\'eb\'fc\'ed\'ee\'e3\'ee \lang1033\f1 L2 \lang1049\f0\'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e0.\par
+\par
+--------------------------------------\par
+| Version | Type | Unused | Checksum |\par
+--------------------------------------\par
+|\tab\tab Group Address\tab\tab  |\par
+--------------------------------------\par
+0\tab     4\tab      7\tab   15\tab\tab 31\par
+\par
+Version -\tab 1 = IGMPv1\par
+\tab\tab 2 = IGMPv2\par
+Type -\tab Membership Query\par
+\tab\tab Membership Report\par
+Group Address - \'e3\'f0\'f3\'ef\'ef\'e0 \'ed\'e0 \'ea\'ee\'f2\'ee\'f0\'f3\'fe \'ef\'ee\'e4\'ef\'e8\'f1\'fb\'e2\'e0\'e5\'ec\'f1\'ff \'e2 Membership Report. \'c2 Membership Query  =0.\par
+\par
+IGMPv1 \'ee\'f2\'e2\'e5\'f2\'ed\'ee-\'e7\'e0\'ef\'f0\'ee\'f1\'ed\'e0\'ff \'ec\'ee\'e4\'e5\'eb\'fc.\par
+\par
+Host1\tab\tab Host2\tab\tab Host3\par
+  |\tab\tab   |\tab\tab   |\par
+  |\tab\tab   |\tab\tab   |\par
+  -------------------------\par
+\tab   |\tab\tab   |\par
+\tab   |\tab\tab   |\par
+\tab RouterA\tab RouterB\par
+   IGMP Querier  Non-Querier\par
+\par
+1. RouterA, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 "IGMP Querier" \'ea\'e0\'e6\'e4\'fb\'e5 60 \'f1\'e5\'ea. (\'ef\'ee default) \'f8\'eb\'b8\'f2 "IGMPv1 Membership Query" \'ed\'e0 Dest IP: 224.0.0.1 \'e4\'eb\'ff \'ef\'ee\'ed\'e8\'ec\'e0\'ed\'e8\'ff \'ea\'e0\'ea\'e8\'e5 \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2 \'e3\'f0\'f3\'ef\'ef\'fb \'f1\'f2\'ee\'e8\'f2 \'ef\'e5\'f0\'e5\'e4\'e0\'e2\'e0\'f2\'fc \'e2 \'e4\'e0\'ed\'fb\'e9 \'f1\'e5\'e3\'ec\'e5\'ed\'f2. \'d3 \'f5\'ee\'f1\'f2\'ee\'e2 \'e4\'ee\'eb\'e6\'ed\'ee \'e1\'fb\'f2\'fc \'e2\'ea\'eb\'fe\'f7\'e5\'ed\'ee \'ef\'f0\'ee\'f1\'eb\'f3\'f8\'e8\'e2\'e0\'ed\'e8\'e5 224.0.0.1 \'c2 \'ee\'f2\'e2\'e5\'f2 \'ed\'e0 \'fd\'f2\'ee\'f2 \'e7\'e0\'ef\'f0\'ee\'f1 \'f5\'ee\'f1\'f2 \'e4\'ee\'eb\'e6\'e5\'ed \'f1\'ee\'ee\'e1\'f9\'e8\'f2\'fc \'ee\'e1\'ee \'e2\'f1\'e5\'f5 \'e3\'f0\'f3\'ef\'ef\'e0\'f5, \'e2 \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'ee\'ed \'f5\'ee\'f7\'e5\'f2 \'ef\'ee\'eb\'f3\'f7\'e0\'f2\'fc.\par
+2. \'c2\'f1\'e5 \'f5\'ee\'f1\'f2\'fb \'ef\'ee\'eb\'f3\'f7\'e8\'eb\'e8 224.0.0.1 \'e8, \'ea \'ef\'f0\'e8\'ec\'e5\'f0\'f3, Host2 \'ef\'e5\'f0\'e2\'fb\'ec \'ee\'f2\'e2\'e5\'f2\'e8\'eb \'ef\'e0\'ea\'e5\'f2\'ee\'ec (IP Src: Host2; IP Dst: 224.1.1.1) "IGMPv2 Membership Report" \'f1 \'e6\'e5\'eb\'e0\'ed\'e8\'e5\'ec \'ef\'ee\'e4\'ef\'e8\'f1\'e0\'f2\'fc\'f1\'ff \'ed\'e0 \'e3\'f0\'f3\'ef\'ef\'f3 224.1.1.1\par
+3. Host1 \'f2\'ee\'e6\'e5 \'f5\'ee\'f7\'e5\'f2 \'ef\'ee\'eb\'f3\'f7\'e0\'f2\'fc 224.1.1.1 Host1 \'f3\'f1\'eb\'fb\'f8\'e0\'eb "IGMPv2 Membership Report" \'ee\'f2 Host2 \'f1 \'e6\'e5\'eb\'e0\'ed\'e8\'e5\'ec \'ef\'ee\'e4\'ef\'e8\'f1\'e0\'f2\'fc\'f1\'ff \'ed\'e0 224.1.1.1, \'ef\'ee\'fd\'f2\'ee\'ec\'f3 Host1 \'e4\'e0\'eb\'fc\'f8\'e5 \'ed\'e5 \'ef\'f0\'e5\'e4\'ef\'f0\'e8\'ed\'e8\'ec\'e0\'e5\'f2 \'ed\'e8\'ea\'e0\'ea\'e8\'f5 \'e4\'e5\'e9\'f1\'f2\'e2\'e8\'e9. \'cc\'e5\'f5\'e0\'ed\'e8\'e7\'ec \'ed\'e0\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff \b Report Suppression\b0 .\par
+4. Host3 \'f5\'ee\'f7\'e5\'f2 \'ef\'ee\'eb\'f3\'f7\'e0\'f2\'fc 224.2.2.2, \'ef\'ee\'fd\'f2\'ee\'ec\'f3 \'f8\'eb\'b8\'f2 "IGMPv2 Membership Report" \'ed\'e0 \'e3\'f0\'f3\'ef\'ef\'f3 224.2.2.2\par
+\par
+Report Suppression \'ec\'e5\'f5\'e0\'ed\'e8\'e7\'ec:\par
+\'ca\'e0\'ea \'f2\'ee\'eb\'fc\'ea\'ee \'f5\'ee\'f1\'f2 \'ef\'ee\'eb\'f3\'f7\'e8\'eb "IGMPv1 Membership Query", \'ee\'ed \'e3\'e5\'ed\'e5\'f0\'e8\'f2 \'f7\'e8\'f1\'eb\'ee \'ee\'f2 0 \'e4\'ee 10. \'c8 \'e2\'ea\'eb\'fe\'f7\'e0\'e5\'f2 \'f2\'e0\'e9\'ec\'e5\'f0 \'ed\'e0 \'ee\'e1\'f0\'e0\'f2\'ed\'fb\'e9 \'ee\'f2\'f1\'f7\'b8\'f2. \'c5\'f1\'eb\'e8 \'ee\'e1\'f0\'e0\'f2\'ed\'fb\'e9 \'ee\'f2\'f1\'f7\'b8\'f2 \'ed\'e5 \'e7\'e0\'ea\'ee\'ed\'f7\'e8\'eb\'f1\'ff, \'e0 \'f5\'ee\'f1\'f2 \'f3\'f1\'eb\'fb\'f8\'e0\'eb \'ee\'f2 \'e4\'f0\'f3\'e3\'ee\'e3\'ee \'f5\'ee\'f1\'f2\'e0 "IGMPv2 Membership Report" \'ed\'e0 \'e8\'ed\'f2\'e5\'f0\'e5\'f1\'f3\'fe\'f9\'f3\'fe \'e5\'e3\'ee \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2\'ed\'f3\'fe \'e3\'f0\'f3\'ef\'ef\'f3 - \'f2\'ee \'e2\'f1\'b8 ok. \'c5\'f1\'eb\'e8 \'e6\'e5 \'f2\'e0\'e9\'ec\'e5\'f0 \'e7\'e0\'ea\'ee\'ed\'f7\'e8\'eb\'f1\'ff, \'e0 \'ed\'e8\'ea\'f2\'ee "IGMPv2 Membership Report" \'ed\'e5 \'ef\'ee\'f1\'eb\'e0\'eb, \'f1\'e0\'ec \'f5\'ee\'f1\'f2 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \'fd\'f2\'ee\'f2 \'e7\'e0\'ef\'f0\'ee\'f1.\par
+\par
+\'cc\'e5\'f5\'e0\'ed\'e8\'e7\'ec\'e0 \'ef\'ee\'ea\'e8\'e4\'e0\'ed\'e8\'ff \'e3\'f0\'f3\'ef\'ef\'fb \'cd\'c5\'d2. \'c5\'f1\'eb\'e8 \'f0\'ee\'f3\'f2\'e5\'f0 3-\'e8 \'f0\'e0\'e7\'e0 \'ef\'ee\'e4\'f0\'ff\'f2 \'ed\'e0 \'e7\'e0\'ef\'f0\'ee\'f1\'fb IGMPv1 Membership Query \'ed\'e5 \'ef\'ee\'eb\'f3\'f7\'e8\'eb IGMP Membership Report, \'f2\'ee \'f0\'ee\'f3\'f2\'e5\'f0 \'ef\'e5\'f0\'e5\'f1\'f2\'e0\'b8\'f2 \'ef\'e5\'f0\'e5\'e4\'e0\'e2\'e0\'f2\'fc \'e2 \'e4\'e0\'ed\'ed\'fb\'e9 \'f1\'e5\'e3\'ec\'e5\'ed\'f2 \'fd\'f2\'ee\'f2 \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2. \'d2.\'e5. \'f7\'e5\'f0\'e5\'e7 3 \'ec\'e8\'ed.\par
+\par
+\b IGMPv2\b0\par
+Membership Report \'e8 Query \'f2\'e0\'ea\'e8\'e5 \'e6\'e5 \'ea\'e0\'ea \'e8 \'e2 IGMPv1, \'f2\'ee\'eb\'fc\'ea\'ee Query \'e2 IGMPv2 \'e4\'e5\'eb\'ff\'f2\'f1\'ff \'ed\'e0 2-\'e0 \'f2\'e8\'ef\'e0: General Query = Query IGMPv1 (\'ef\'ee\'eb\'e5 Group Adderss = 0.0.0.0) \'e8 Group-Specific\par
+\'cd\'ee\'e2\'fb\'e5 \'f4\'e8\'f7\'e8:\par
+1. \'c2\'fb\'e1\'ee\'f0 Querier-\'e0\par
+2. Maximum Response Time - \'ef\'ee\'e7\'e2\'ee\'eb\'ff\'e5\'f2 \'f2\'fe\'ed\'e8\'ed\'e3\'ee\'e2\'e0\'f2\'fc \'ef\'ee \'f2\'e0\'e9\'ec\'e5\'f0\'e0\'ec \'ee\'f2\'e2\'e5\'f2\'ed\'ee-\'e7\'e0\'ef\'f0\'ee\'f1\'ed\'f3\'fe \'ec\'ee\'e4\'e5\'eb\'fc\par
+3. Group-Specific Query - \'ef\'ee\'e7\'e2\'ee\'eb\'ff\'e5\'f2 \'f0\'ee\'f3\'f2\'e5\'f0\'e0\'ec \'e4\'e5\'eb\'e0\'f2\'fc Query \'ed\'e0 \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'f3\'fe \'e3\'f0\'f3\'ef\'ef\'f3, \'e0 \'ed\'e5 \'ed\'e0 \'e2\'f1\'e5 \'e3\'f0\'f3\'ef\'ef\'fb \'f1\'f0\'e0\'e7\'f3 \'ea\'e0\'ea \'fd\'f2\'ee \'e1\'fb\'eb\'ee \'e2 IGMPv1\par
+4. Leave Group Message - \'f5\'ee\'f1\'f2\'fb \'ec\'ee\'e3\'f3\'f2 \'f1\'ee\'ee\'e1\'f9\'e0\'f2\'fc \'f0\'ee\'f3\'f2\'e5\'f0\'f3 \'ee \'f2\'ee\'ec, \'f7\'f2\'ee \'ee\'ed\'e8 \'ef\'ee\'ea\'e8\'e4\'e0\'fe\'f2 \'e4\'e0\'ed\'ed\'f3\'fe \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2\'ed\'f3\'fe \'e3\'f0\'f3\'ef\'ef\'f3\par
+\par
+\b\'d4\'ee\'f0\'ec\'e0\'f2 \'ef\'e0\'ea\'e5\'f2\'e0 IGMPv2\b0\par
+\par
+-----------------------------------\par
+| Type | Max.Resp.Time | Checksum |\par
+-----------------------------------\par
+|\tab      Group Address\tab     |\par
+-----------------------------------\par
+0\tab  7\tab\tab      15\tab     31\par
+\par
+Type:\par
+0x11 - Memebership Query\par
+\tab General Query - \'ea\'e0\'ea \'e8 \'e2 IGMPv1 \'ed\'e0 224.0.0.1 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2\'f1\'ff \'e7\'e0\'ef\'f0\'ee\'f1, \'e3\'e4\'e5 Group Address = 0\par
+\tab Group-Specific Query - \'e7\'e0\'ef\'f0\'ee\'f1 \'ed\'e0, \'ea \'ef\'f0\'e8\'ec\'e5\'f0\'f3, \'e0\'e4\'f0\'e5\'f1 224.0.10.100, \'f1 Group Address = 224.0.10.100\par
+0x12 - Membership Report v1\par
+0x13 - DVMRP Message\par
+0x14 - PIMv1 Message\par
+0x16 - Membership Report v2\par
+0x17 - Leave Group\par
+0x1E - Mtrace Response\par
+0x1F - Mtrace Request\par
+\par
+\'d1\'ee\'e2\'ec\'e5\'f1\'f2\'e8\'ec\'ee \'f1 IGMPv1\par
+Max.Resp.Time - \'f1\'ea\'ee\'eb\'fc\'ea\'ee \'e2\'f0\'e5\'ec\'e5\'ed\'e8 \'f5\'ee\'f1\'f2 \'ec\'ee\'e6\'e5\'f2 \'ef\'ee\'e4\'ee\'e6\'e4\'e0\'f2\'fc \'ef\'f0\'e5\'e6\'e4\'e5 \'f7\'e5\'ec \'ee\'f2\'e2\'e5\'f2\'e8\'f2\'fc \'ed\'e0 query. \'d0\'e0\'e7\'ec\'e5\'f0\'ed\'ee\'f1\'f2\'fc 1/10 \'f1\'e5\'ea. Default = 100. \'c2\'f1\'b8 \'e4\'eb\'ff Report Suppression \'ec\'e5\'f5\'e0\'ed\'e8\'e7\'ec\'e0.\par
+\par
+\ul Leave Process\ulnone :\par
+1. \'d5\'ee\'f1\'f2 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 IGMPv2 Leave \'ef\'e0\'ea\'e5\'f2 \'ed\'e0 \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2\'ed\'f3\'fe \'e3\'f0\'f3\'ef\'ef\'f3 224.0.0.2 \'f1 Group Address = 224.0.10.100\par
+2. \'dd\'f2\'ee\'f2 \'ef\'e0\'ea\'e5\'f2 \'ef\'f0\'e8\'ed\'e8\'ec\'e0\'e5\'f2 \'f0\'ee\'f3\'f2\'e5\'f0 \'e8 \'f8\'eb\'b8\'f2 Group-Specific \'e7\'e0\'ef\'f0\'ee\'f1, \'f3\'e7\'ed\'e0\'f2\'fc \'ee\'f1\'f2\'e0\'eb\'f1\'ff \'eb\'e8 \'e2 \'fd\'f2\'ee\'ec \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e5 \'ea\'e0\'ea\'ee\'e9-\'ed\'e8\'e1\'f3\'e4\'fc \'ef\'ee\'f2\'f0\'e5\'e1\'e8\'f2\'e5\'eb\'fc \'fd\'f2\'ee\'e9 \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2\'ed\'ee\'e9 \'e3\'f0\'f3\'ef\'ef\'fb. \'c5\'f1\'eb\'e8 \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'f2 Report \cf1\kerning1\f2\u8594?\cf0\kerning0\f0  \'ef\'f0\'ee\'e4\'ee\'eb\'e6\'e0\'e5\'f2 \'f2\'f0\'e0\'ed\'f1\'eb\'e8\'f0\'ee\'e2\'e0\'f2\'fc \'fd\'f2\'f3 \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2\'ed\'f3\'fe \'e3\'f0\'f3\'ef\'ef\'f3.\par
+\par
+\ul\'c2\'fb\'e1\'ee\'f0 Querier\ulnone :\par
+\'c2\'f1\'e5 \'f0\'ee\'f3\'f2\'e5\'f0\'fb \'e2 \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e5 \'f8\'eb\'fe\'f2 IGMPv2 Query \'ed\'e0 224.0.0.1. \'cf\'e0\'ea\'e5\'f2\'fb IP. Source IP - \'e0\'e4\'f0\'e5\'f1 \'f0\'ee\'f3\'f2\'e5\'f0\'e0. \'d3 \'ea\'ee\'e3\'ee IP \'e0\'e4\'f0\'e5\'f1 \'ec\'e5\'ed\'fc\'f8\'e5, \'f2\'ee\'f2 \'e8 Querier. \'c5\'f1\'eb\'e8 \'e2 \'f2\'e5\'f7\'e5\'ed\'e8\'e8 120 \'f1\'e5\'ea. (2\'f5Query \'e8\'ed\'f2\'e5\'f0\'e2\'e0\'eb) \'ee\'f1\'f2\'e0\'e2\'f8\'e8\'e5\'f1\'ff \'f0\'ee\'f3\'f2\'e5\'f0\'fb \'ed\'e5 \'f1\'eb\'fb\'f8\'e0\'f2 Query \cf1\kerning1\f2\u8594?\cf0\kerning0\f0  \'ee\'f1\'ed\'ee\'e2\'ed\'ee\'e9 Querier \'f1\'e4\'ee\'f5, \'ef\'f0\'ee\'f6\'e5\'f1\'f1 \'e2\'fb\'e1\'ee\'f0\'e0 \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2\'f1\'ff \'e7\'e0\'ed\'ee\'e2\'ee.\par
+\par
+\'c2 IGMPv1 \'ed\'e5\'f2 \'e2\'fb\'e1\'ee\'f0\'e0 Querier-\'e0. \'c2 IGMPv1 Querier \'f2\'ee\'f2, \'ea\'f2\'ee DR !\par
+\'c5\'f1\'eb\'e8 \'f0\'ee\'f3\'f2\'e5\'f0 Querier - \'fd\'f2\'ee \'e2\'ee\'e2\'f1\'e5 \'ed\'e5 \'e7\'ed\'e0\'f7\'e8\'f2, \'f7\'f2\'ee \'f7\'e5\'f0\'e5\'e7 \'ed\'e5\'e3\'ee \'ef\'ee\'e9\'e4\'b8\'f2 \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2 !!!!\par
+\par
+\'c7\'e0\'e4\'e0\'f7\'e0 IGMP: \'d2\'ce\'cb\'dc\'ca\'ce \'f1\'ee\'e7\'e4\'e0\'f2\'fc \'ed\'e0 \'e2\'f1\'e5\'f5 \'f0\'ee\'f3\'f2\'e5\'f0\'e0\'f5 \'e2 \'e4\'e0\'ed\'ed\'ee\'ec LAN \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e5 \'f2\'e0\'e1\'eb\'e8\'f6\'f3 IGMP. \'d2.\'e5. \'ea\'e0\'ea\'e8\'e5 \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2 \'e3\'f0\'f3\'ef\'ef\'fb \'f2\'f0\'e5\'e1\'f3\'fe\'f2\'f1\'ff \'e2 \'e4\'e0\'ed\'ed\'ee\'ec LAN \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e5. \'d2\'e0\'e1\'eb\'e8\'f6\'e0 IGMP \'ec\'ee\'e6\'e5\'f2 \'ed\'e0 \'f0\'ee\'f3\'f2\'e5\'f0\'e5 \'e1\'fb\'f2\'fc, \'e0 \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2 \'f7\'e5\'f0\'e5\'e7 \'f0\'ee\'f3\'f2\'e5\'f0 \'ed\'e5 \'e8\'e4\'f2\'e8! \'d2\'e0\'ea \'ea\'e0\'ea \'eb\'e8\'e1\'ee \'ee\'ed \'e2\'ee\'ee\'e1\'f9\'e5 \'ed\'e5 \'e7\'e0\'e2\'e5\'e4\'b8\'ed PIM-\'ee\'ec \'e2 \'fd\'f2\'ee\'f2 LAN, \'eb\'e8\'e1\'ee \'e2 LAN \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e5 2-\'e0 \'f0\'ee\'f3\'f2\'e5\'f0\'e0, \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'ec\'ee\'e3\'f3\'f2 \'ef\'ee\'f1\'f2\'e0\'e2\'eb\'ff\'f2\'fc \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2 \'e8 \'fd\'f2\'ee \'ed\'e5 \'f2\'fb.\par
+\par
+\'cf\'ee\'e8\'f1\'ea \'f1\'ee\'f1\'e5\'e4\'e5\'e9:\par
+1. Router 1 \'ef\'ee\'f1\'fb\'eb\'e0\'e5\'f2 probe. Neighbor List \'e2 probe \'ef\'f3\'f1\'f2\'ee\'e9, \'f2\'e0\'ea \'ea\'e0\'ea Router 1 \'ef\'ee\'ea\'e0 \'ed\'e5 \'e7\'ed\'e0\'e5\'f2 \'ed\'e8 \'ee\'e4\'ed\'ee\'e3\'ee \'f1\'ee\'f1\'e5\'e4\'e0.\par
+2. Router 2 \'f1\'eb\'fb\'f8\'e8\'f2 probe \'ee\'f2 Router 1 \'e8 \'e7\'e0\'ed\'ee\'f1\'e8\'f2 IP \'e0\'e4\'f0\'e5\'f1 Router 1 \'e2 \'f1\'e2\'ee\'fe \'f2\'e0\'e1\'eb\'e8\'f6\'f3 \'ef\'f0\'e8\'ed\'e0\'e4\'eb\'e5\'e6\'e0\'f9\'e5\'ec\'f3 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'f3, \'ed\'e0 \'ea\'ee\'f2\'ee\'f0\'ee\'ec \'e1\'fb\'eb \'f3\'e2\'e8\'e4\'e5\'ed probe\par
+3. Router 2 \'ef\'ee\'f1\'fb\'eb\'e0\'e5\'f2 \'f1\'e2\'ee\'e9 probe \'e2 Neighbor List \'f1\'f2\'ee\'e8\'f2 Router 1.\par
+4. Router 1 \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'f2 probe, \'e7\'e0\'ed\'ee\'f1\'e8\'f2 \'ea \'f1\'e5\'e1\'e5 \'e2 \'f2\'e0\'e1\'eb\'e8\'f6\'f3 \'ed\'e0 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e5.\par
+\par
+\b PIM-DM\b0  - Flood-and-Prune \'ec\'e5\'f5\'e0\'ed\'e8\'e7\'ec.\par
+\par
+\'c8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2 \'e2\'ed\'f3\'f2\'f0\'e5\'ed\'ed\'fe\'fe \'f2\'e0\'e1\'eb\'e8\'f6\'f3 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'e8\'e7\'e0\'f6\'e8\'e8 \'e4\'eb\'ff Reverse Path Forwarding. \'c5\'f1\'eb\'e8 \'e2 \'f2\'e0\'e1\'eb\'e8\'f6\'e5 >1 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'ee\'e2 \'ed\'e0 \'ee\'e4\'e8\'ed \'e8 \'f2\'ee\'f2 \'e6\'e5 Src (\'e1\'fb\'e2\'e0\'e5\'f2 \'ef\'f0\'e8 equal cost path), \'f2\'ee \'e2\'fb\'e1\'e8\'f0\'e0\'e5\'f2\'f1\'ff \'f1 \'ed\'e0\'e8\'e1\'ee\'eb\'fc\'f8\'e8\'ec next-hop.\par
+\b\par
+show ip rpf \b0 192.168.0.1\par
+\b show ip rpf events\b0\par
+\par
+\'c5\'f1\'eb\'e8 \'e2 \'f2\'e0\'e1\'eb\'e8\'f6\'e5 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'e8\'e7\'e0\'f6\'e8\'e8 \'ef\'f0\'ee\'e8\'e7\'ee\'f8\'eb\'e8 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff, \'f2\'ee \'ed\'e0\'e4\'ee \'ef\'e5\'f0\'e5\'f1\'f7\'e8\'f2\'e0\'f2\'fc RPF - \'f1\'f5\'ee\'e4\'e8\'ec\'ee\'f1\'f2\'fc. \'cf\'ee default-\'f3 RPF \'ef\'e5\'f0\'e5\'f1\'f7\'e8\'f2\'fb\'e2\'e0\'e5\'f2\'f1\'ff \'ea\'e0\'e6\'e4\'fb\'e5 \'f2\'ee\'eb\'e8 5 \'f1\'e5\'ea. (\'ec\'ee\'e6\'ed\'ee \'ef\'ee\'f1\'ec\'ee\'f2\'f0\'e5\'f2\'fc \'e2 show ip rpf events), \'f2\'ee\'eb\'e8 10 \'f1\'e5\'ea. (\'ea\'e0\'ea \'ed\'e0\'ef\'e8\'f1\'e0\'ed\'ee \'e2 \'e4\'ee\'ea\'f3\'ec\'e5\'ed\'f2\'e0\'f6\'e8\'e8), \'ed\'ee \'ec\'ee\'e6\'ed\'ee \'e8\'e7\'ec\'e5\'ed\'e8\'f2\'fc\par
+\par
+Router(config)#\b ip multicast rpf interval\b0  20\par
+\par
+\'c5\'f1\'eb\'e8 \'eb\'e8\'ed\'ea flap-\'e5\'f2\'f1\'ff, \'f2\'ee \'f7\'f2\'ee-\'f2\'ee \'f1\'e2\'ff\'e7\'e0\'ed\'ed\'ee\'e5 \'f1 Router(config)#ip multicast rpf backoff ...\par
+\par
+\b show ip pim neighbor\par
+show ip pim interface details\par
+\par
+show ip mroute\par
+\b0\'c2\'fb\'e2\'ee\'e4\'e5 \'ea\'ee\'ec\'e0\'ed\'e4\'fb \'ed\'e0 \'ea\'e0\'e6\'e4\'ee\'ec \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e8 \'ec\'ee\'e3\'f3\'f2 \'e1\'fb\'f2\'fc \'f4\'eb\'e0\'e3\'e8:\par
+D - \'e7\'ed\'e0\'f7\'e8\'f2 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e5 (*,G) \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'e2 \'f0\'e5\'e6\'e8\'ec\'e5 dense-mode, \'e2 \'f0\'e5\'e6\'e8\'ec\'e5 dense-mode \'ed\'e5 \'e1\'fb\'e2\'e0\'e5\'f2 RP \'ef\'ee\'fd\'f2\'ee\'ec\'f3 RP=0.0.0.0 \'d4\'eb\'e0\'e3 D \'e1\'fb\'e2\'e0\'e5\'f2 \'f2\'ee\'eb\'fc\'ea\'ee \'f3 (*,G)\par
+C - \'e7\'ed\'e0\'f7\'e8\'f2\'fc \'e5\'f1\'f2\'fc directly connected \'cf\'ee\'eb\'f3\'f7\'e0\'f2\'e5\'eb\'fc. \'d4\'eb\'e0\'e3 \'ea\'e0\'ea \'f3 (*,G) \'f2\'e0\'ea \'e8 \'f3 (S,G)\par
+L - \'f0\'ee\'f3\'f2\'e5\'f0 \'f1\'e0\'ec \'e4\'eb\'ff \'f1\'e5\'e1\'ff \'f5\'ee\'f7\'e5\'f2 \'ef\'ee\'eb\'f3\'f7\'e0\'f2\'fc \'fd\'f2\'ee\'f2 \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1. \'cf\'f0\'e8\'ec\'e5\'f0: PIM RP-Discovery (224.0.1.40)\par
+P - Prune, \'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2, \'f7\'f2\'ee \'e8 \'ef\'ee\'eb\'f3\'f7\'e0\'f2\'e5\'eb\'e5\'e9 \'ed\'e5\'f2 \'e8 \'e2\'f1\'e5 \'ef\'f0\'e8\'f1\'eb\'e0\'eb\'e8 Prune, \'f2.\'e5. \'ed\'e0\'e2\'e5\'f0\'f5 \'ed\'e0\'e4\'ee \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'f2\'fc Prune\par
+T - \'e7\'ed\'e0\'f7\'e8\'f2 \'ef\'ee\'f1\'f2\'f0\'ee\'e8\'eb\'ee\'f1\'fc SPT \'e4\'e5\'f0\'e5\'e2\'ee \'e8 \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2 \'f5\'ee\'e4\'e8\'f2 \'ed\'e0 \'ef\'f0\'ff\'ec\'f3\'fe \'ee\'f2 \'e8\'f1\'f2\'ee\'f7\'ed\'e8\'ea\'e0. \'c1\'fb\'e2\'e0\'e5\'f2 \'f2\'ee\'eb\'fc\'ea\'ee \'f3 (S,G)\par
+\par
+\'c4\'eb\'ff static multicast route \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2: \i ip mroute 10.0.0.0 255.255.255.0 192.168.0.1\i0\par
+\par
+\'cf\'ee\'e8\'f1\'ea \'f1\'ee\'f1\'e5\'e4\'e5\'e9 + \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'ea\'e0 addjacency: \'ea\'e0\'e6\'e4\'fb\'e5 30 \'f1\'e5\'ea. \'f4\'eb\'f3\'e4\'e8\'f2 Hello Message \'ed\'e0 \'e0\'e4\'f0\'e5\'f1 224.0.0.13 \'e2\'ee \'e2\'f1\'e5 multicast enabled \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'fb.\par
+\par
+PIM Hello \'ef\'e0\'ea\'e5\'f2\'fb \'f1\'ee\'e4\'e5\'f0\'e6\'e0\'f2 Holdtimer = 3 x Hello = 90 \'f1\'e5\'ea. (\'f3 \'ec\'e5\'ed\'ff \'ef\'ee\'f7\'e5\'ec\'f3-\'f2\'ee \'fd\'f2\'ee\'f2 Holdtimer = 105 \'f1\'e5\'ea)\par
+\par
+Router(config-if)#\b ip pim query-interval\b0  20\par
+\par
+\'c8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'fe\'f2 Designated Router (DR) \'e2 multi-access \'f1\'e5\'f2\'ff\'f5. \'cf\'ee defaul\lang1033\f1 t\lang1049\f0 -\'f3 DR-\'ee\'ec \'f1\'f2\'e0\'ed\'ee\'e2\'e8\'f2\'f1\'ff \'f0\'ee\'f3\'f2\'e5\'f0 \'f1 \'ed\'e0\'e8\'e1\'ee\'eb\'fc\'f8\'e8\'ec IP \'e0\'e4\'f0\'e5\'f1\'ee\'ec.\par
+Router(config-if)#\b ip pim dr-priority\b0  10 - \'fd\'f2\'ee\'f2 \'ef\'e5\'f0\'e5\'ec\'e5\'f2\'f0 \'e2\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2\'f1\'ff \'e2 Hello \'ef\'e0\'ea\'e5\'f2\par
+\'c2 \'f0\'e5\'e6\'e8\'ec\'e5 dense-mode DR \'e8\'e3\'f0\'e0\'e5\'f2 \'f0\'ee\'eb\'fc, \'f2\'ee\'eb\'fc\'ea\'ee \'e5\'f1\'eb\'e8 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff IGMPv1. \'d2\'e0\'ea \'ea\'e0\'ea \'e2 IGMPv1 \'ed\'e5\'f2 \'e2\'fb\'e1\'ee\'f0\'e0 Querier, \'fd\'f2\'f3 \'f4\'f3\'ed\'ea\'f6\'e8\'fe \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'e5\'f2 DR.\par
+\par
+\'c2\'fb\'f1\'f2\'f0\'e0\'e8\'e2\'e0\'e5\'f2\'f1\'ff SPT (Shortest Path Trees).\par
+\'ca\'e0\'ea\'ee\'e9-\'ed\'e8\'e1\'f3\'e4\'fc \'f0\'ee\'f3\'f2\'e5\'f0 \'f1\'eb\'f3\'f7\'e0\'e9\'ed\'ee \'ef\'ee\'eb\'f3\'f7\'e8\'eb multicast \cf1\kerning1\f2\u8594?\cf0\kerning0\f0  \'ef\'f0\'ee\'e2\'e5\'f0\'e8\'eb \'e5\'e3\'ee \'ed\'e0 RPF \cf1\kerning1\f2\u8594?\cf0\kerning0\f0  \'f1\'ee\'e7\'e4\'e0\'eb \'f1\'ed\'e0\'f7\'e0\'eb\'e0 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e5 (S,G) c incoming interface (\b\'e2\'f5\'ee\'e4\'ff\'f9\'e8\'e9 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1 \'e4\'ee\'eb\'e6\'e5\'ed \'e1\'fb\'f2\'fc \'f2\'ee\'eb\'fc\'ea\'ee \'ee\'e4\'e8\'ed\b0 ) \cf1\kerning1\f2\u8594?\cf0\kerning0\f0  \'ef\'ee\'f2\'ee\'ec (*,G) \cf1\kerning1\f2\u8594?\cf0\kerning0\f0  \'ef\'ee\'f1\'ec\'ee\'f2\'f0\'e5\'eb \'e7\'e0 \'ea\'e0\'ea\'e8\'ec\'e8 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0\'ec\'e8 \'f1\'ee\'f1\'e5\'e4\'e8 \'e8\'eb\'e8 \'ed\'e0 \'ea\'e0\'ea\'ee\'ec \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e5 \'ef\'ee\'eb\'f3\'f7\'e8\'eb IGMP Report \'ed\'e0 \'fd\'f2\'f3 \'e3\'f0\'f3\'ef\'ef\'f3 \'e2 \'fd\'f2\'e8 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'fb \'ee\'f2\'ef\'f0\'e0\'e2\'e8\'eb multicast \cf1\kerning1\f2\u8594?\cf0\kerning0\f0  \'e5\'f1\'eb\'e8 \'ed\'e5\'f2 IGMP Report \'e8 \'ef\'ee\'eb\'f3\'f7\'e8\'eb Prune, \'f2\'ee \'e6\'e4\'b8\'f2 3 \'ec\'e8\'ed. \'e8 \'ef\'ee\'e2\'f2\'ee\'f0\'ed\'ee \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2 \'e2 \'fd\'f2\'ee\'f2 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1 \'e8 \'f2.\'e4.\par
+\par
+\'f1\'f2\'f0. 220 \'d1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e5 (*,224.0.10.10) \'ed\'e5 \'f1\'ee\'e7\'e4\'e0\'b8\'f2\'f1\'ff \'e4\'ee \'f2\'e5\'f5 \'ef\'ee\'f0 \'ef\'ee\'ea\'e0 \'ed\'e5 \'ef\'f0\'e8\'f8\'b8\'eb \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2\'ed\'fb\'e9 \'ef\'e0\'ea\'e5\'f2 !!! \'cf\'ee\'fd\'f2\'ee\'ec\'f3 \'ea\'e0\'ea \'f2\'ee\'eb\'fc\'ea\'ee \'f0\'ee\'f3\'f2\'e5\'f0 \'f3\'e2\'e8\'e4\'e5\'eb \'ed\'ee\'e2\'ee\'e3\'ee \'f1\'ee\'f1\'e5\'e4\'e0, \'ee\'ed \'f1\'f0\'e0\'e7\'f3 \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'e5\'f2 \'f2\'f0\'e0\'f4\'e8\'ea \'e8 \'e2 \'f1\'eb\'f3\'f7\'e0\'e5 \'f7\'e5\'e3\'ee \'e6\'e4\'b8\'f2 Prune.\par
+\par
+\'d0\'ee\'f3\'f2\'e5\'f0 \'f8\'eb\'b8\'f2 Prune,\'e5\'f1\'eb\'e8:\par
+1. Multicast \'ed\'e5 \'ef\'f0\'ee\'f8\'b8\'eb RFP \'ed\'e0 point-to-point \'eb\'e8\'ed\'ea\'e5\par
+2. \'d3 \'f0\'ee\'f3\'f2\'e5\'f0\'e0 \'e1\'ee\'eb\'fc\'f8\'e5 \'ed\'e5\'f2 \'f1\'ee\'f1\'e5\'e4\'e5\'e9 \'e8 \'f2\'e0\'e1\'eb\'e8\'f6\'e0 IGMP \'ef\'f3\'f1\'f2\'e0.\par
+3. \'c5\'f1\'f2\'fc \'f1\'ee\'f1\'e5\'e4 \'ed\'e0 point-to-point \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e5 \'e8 \'ee\'f2 \'ed\'e5\'e3\'ee \'ef\'ee\'eb\'f3\'f7\'e8\'eb Prune\par
+4. \'c5\'f1\'eb\'e8 \'e2 Ethernet \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e5 \'f2\'e0\'e1\'eb\'e8\'f6\'e0 IGMP \'ef\'f3\'f1\'f2\'e0 + \'ef\'ee\'eb\'f3\'f7\'e8\'eb Prune \'ee\'f2 \'f1\'ee\'f1\'e5\'e4\'e0, \'e0 \'ee\'f2 \'e4\'f0\'f3\'e3\'ee\'e3\'ee \'f1\'ee\'f1\'e5\'e4\'e0 \'ed\'e5 \'ef\'ee\'eb\'f3\'f7\'e8\'eb Override.\par
+\par
+\'c2 LAN \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e5 5 \'f0\'ee\'f3\'f2\'e5\'f0\'ee\'e2. \'ce\'e4\'e8\'ed \'f0\'ee\'f3\'f2\'e5\'f0 \'ee\'f2\'ef\'f0\'e0\'e2\'e8\'eb \'e2 LAN \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2\'ed\'fb\'e9 \'ef\'e0\'ea\'e5\'f2. \'cf\'ee\'eb\'f3\'f7\'e8\'eb Prune. \'dd\'f2\'ee\'f2 Prune \'f1\'ee\'ee\'f2\'e2\'e5\'f2\'f1\'f2\'e2\'e5\'ed\'ed\'ee \'f3\'e2\'e8\'e4\'e5\'eb\'e8 \'e2\'f1\'e5 \'ee\'f1\'f2\'e0\'eb\'fc\'ed\'fb\'e5 \'f0\'ee\'f3\'f2\'e5\'f0\'fb. \'c4\'e0\'eb\'fc\'f8\'e5 \'f0\'ee\'f3\'f2\'e5\'f0 \'e6\'e4\'b8\'f2 3 \'f1\'e5\'ea. \'f2\'e8\'ef\'e0 \'ec\'ee\'e6\'e5\'f2 \'ea\'f2\'ee-\'ed\'e8\'e1\'f3\'e4\'fc \'ef\'ee\'e4\'f3\'ec\'e0\'e5\'f2 \'e8 \'ef\'f0\'e8\'f8\'eb\'b8\'f2 Join \'ed\'e0 \'fd\'f2\'f3 \'e3\'f0\'f3\'ef\'ef\'f3. \'c5\'f1\'eb\'e8 \'e7\'e0 3 \'f1\'e5\'ea. Join \'ed\'e5 \'ef\'f0\'e8\'f8\'eb\'ee, \'f2\'ee \'f1\'eb\'e5\'e4\'f3\'fe\'f9\'e8\'e9 \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2 \'e2 \'fd\'f2\'ee\'f2 LAN \'ef\'ee\'e9\'e4\'b8\'f2 \'f7\'e5\'f0\'e5\'e7 3 \'ec\'e8\'ed.\par
+\par
+Prune \'ed\'e0\'e2\'e5\'f8\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'ed\'e0 \b\'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\b0  \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'ee\'e9 \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2 \'e3\'f0\'f3\'ef\'ef\'fb, \'e0 \'ed\'e5 \'ed\'e0 \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'ee\'e3\'ee \'f1\'ee\'f1\'e5\'e4\'e0. PIM \'ed\'e5 \'ee\'f2\'f1\'eb\'e5\'e6\'e8\'e2\'e0\'e5\'f2 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e5 \'f1\'ee\'f1\'e5\'e4\'e5\'e9 !\par
+\par
+PIM-DM Assert\par
+\'d0\'e5\'f8\'e0\'e5\'f2 \'ef\'f0\'ee\'e1\'eb\'e5\'ec, \'ea\'ee\'e3\'e4\'e0 2-\'e0 \'f0\'ee\'f3\'f2\'e5\'f0\'e0 \'ef\'fb\'f2\'e0\'fe\'f2\'f1\'ff \'e2 \'ee\'e4\'e8\'ed \'e8 \'f2\'ee\'f2 \'e6\'e5 LAN \'e7\'e0\'f1\'f3\'ed\'f3\'f2\'fc \'ee\'e4\'e8\'ed \'e8 \'f2\'ee\'f2 \'e6\'e5 \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2.\par
+\'ca\'ee\'e3\'e4\'e0 \'f0\'ee\'f3\'f2\'e5\'f0 \'e2\'e8\'e4\'e8\'f2 \'ed\'e0 Outgoing interface \'e3\'f0\'f3\'ef\'ef\'fb (10.0.0.1, 225.0.0.10) \'ef\'f0\'e8\'f8\'b8\'eb \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2 \'ef\'e0\'ea\'e5\'f2 Src: 10.0.0.1 Dst: 225.0.0.10 \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2\'f1\'ff \'ef\'f0\'ee\'f6\'e5\'f1\'f1 \'e2\'fb\'e1\'ee\'f0\'e0, \'ea\'f2\'ee \'e1\'f3\'e4\'e5\'f2 \'e3\'ed\'e0\'f2\'fc \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2 \'e2 \'e4\'e0\'ed\'ed\'fb\'e9 \'f1\'e5\'e3\'ec\'e5\'ed\'f2. \'ce\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'fe\'f2\'f1\'ff \'ef\'e0\'ea\'e5\'f2\'fb Assert \'f1 \'ec\'e5\'f2\'f0\'e8\'ea\'e0\'ec\'e8 \'e4\'ee 10.0.0.1 \'d3 \'ea\'ee\'e3\'ee \'eb\'f3\'f7\'f8\'e5 \'ec\'e5\'f2\'f0\'e8\'ea\'e0, \'f2\'ee\'f2 \'e8 \'e2\'fb\'e9\'e3\'f0\'e0\'eb. \'c5\'f1\'eb\'e8 \'ec\'e5\'f2\'f0\'e8\'ea\'e0 \'ee\'e4\'e8\'ed\'e0\'ea\'ee\'e2\'fb\'ff, \'f2\'ee \'e2\'fb\'e9\'e3\'f0\'e0\'eb \'f2\'ee\'f2 \'f3 \'ea\'ee\'e3\'ee \'ed\'e0\'e8\'e1\'ee\'eb\'fc\'f8\'e8\'e9 IP.\par
+\par
+PIM-DM Grafting\par
+\'c5\'f1\'eb\'e8 \'ef\'ee\'ff\'e2\'e8\'eb\'f1\'ff \'ef\'ee\'eb\'f3\'f7\'e0\'f2\'e5\'eb\'fc \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2\'e0, \'f2\'ee \'f0\'ee\'f3\'f2\'e5\'f0 \'f8\'eb\'b8\'f2 Graft \'ed\'e0\'e2\'e5\'f0\'f5. \'d1\'e2\'e5\'f0\'f5\'f3 \'e5\'ec\'f3 \'ef\'f0\'e8\'eb\'e5\'f2\'e0\'e5\'f2 Graft-Ack. \'c5\'f1\'eb\'e8 \'f7\'e5\'f0\'e5\'e7 3 \'f1\'e5\'ea. \'ed\'e5 \'ef\'f0\'e8\'f8\'b8\'eb Graft-Ack, \'f0\'ee\'f3\'f2\'e5\'f0 \'ef\'ee\'e2\'f2\'ee\'f0\'ed\'ee \'f8\'eb\'b8\'f2 Graft.\par
+\par
+PIM-DM State-Refresh\par
+\'df \'f2\'e0\'ea \'ef\'ee\'ed\'ff\'eb, \'ed\'ee\'e2\'e0\'ff \'f4\'e8\'f7\'e0 \'ee\'f2 IETF, \'e2\'ec\'e5\'f1\'f2\'ee \'f2\'ee\'e3\'ee, \'f7\'f2\'ee\'e1\'fb \'ea\'e0\'e6\'e4\'fb\'e5 3 \'ec\'e8\'ed. \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'f2\'fc \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2 \'f1 \'e1\'ee\'e5\'e2\'fb\'ec \'f2\'f0\'e0\'f4\'e8\'ea\'ee\'ec, \'e2 \'ec\'e5\'f1\'f2\'e0, \'e3\'e4\'e5 \'f1\'ea\'ee\'f0\'e5\'e9 \'e2\'f1\'e5\'e3\'ee \'e1\'f3\'e4\'e5\'f2 Prune, \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'fe\'f2\'f1\'ff State-Refresh \'ef\'e0\'ea\'e5\'f2\'fb.\par
+\par
+\b PIM-SM\par
+\b0\par
+\'cc\'e5\'f5\'e0\'ed\'e8\'e7\'ec\'fb \'ee\'e1\'ec\'e5\'ed\'e0 Hello \'e8 Assert \'f2\'e0\'ea\'e8\'e5 \'e6\'e5 \'ea\'e0\'ea \'e8 \'e2 PIM-DM\par
+\'d0\'ee\'f3\'f2\'e5\'f0 \'ef\'ee\'eb\'f3\'f7\'e8\'eb IGMP Report \'ed\'e0 (*,229.0.0.100) \cf1\kerning1\f2\u8594?\cf0\kerning0\f0  \'f1\'ee\'e7\'e4\'e0\'b8\'f2 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e5 (*, 229.0.0.100) \cf1\kerning1\f2\u8594?\cf0\kerning0\f0  \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 Join(*, 229.0.0.100) \'e2 \'f1\'f2\'ee\'f0\'ee\'ed\'f3 RP \cf1\kerning1\f2\u8594?\cf0\kerning0\f0  RP \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'f2 Join \cf1\kerning1\f2\u8594?\cf0\kerning0\f0  \'e5\'f1\'eb\'e8 \'f3 RP \'f3\'e6\'e5 \'e5\'f1\'f2\'fc \'f2\'e0\'ea\'ee\'e5 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e5, \'e4\'ee \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'f2 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1, \'ef\'ee \'ea\'ee\'f2\'ee\'f0\'ee\'ec\'f3 \'ef\'ee\'eb\'f3\'f7\'e8\'eb Join \'e2 \'f2\'e0\'e1\'eb\'e8\'f6\'f3 outgoing interface\b\par
+\b0\par
+\'c8\'f1\'f2\'ee\'f7\'ed\'e8\'ea (10.0.10.1) - \lang1033\f1 Router1\lang1049\f0  - ... - RP - ... - \lang1033\f1 Router2\lang1049\f0  - \'cf\'ee\'eb\'f3\'f7\'e0\'f2\'e5\'eb\'fc. \lang1033\f1 Router\lang1049\f0 2 \'e2\'e8\'e4\'e8\'f2 \'ef\'f0\'ee\'f5\'ee\'e4\'ff\'f9\'e8\'e5 \'f7\'e5\'f0\'e5\'e7 \'ed\'e5\'e3\'ee \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2\'ed\'fb\'e5 \'ef\'e0\'ea\'e5\'f2\'fb \'e8 \'e2 \'e4\'ee\'e1\'e0\'e2\'ee\'ea \'ea (*,229.0.0.100) \'f1\'ee\'e7\'e4\'e0\'b8\'f2 \'f3 \'f1\'e5\'e1\'ff (10.0.10.1, 229.0.0.100) \cf1\kerning1\f2\u8594?\cf0\kerning0\f0  \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 Join \'e2 \'f1\'f2\'ee\'f0\'ee\'ed\'f3 10.0.10.1 \'ec\'e8\'ed\'f3\'ff RP \cf1\kerning1\f2\u8594?\cf0\kerning0\f0  \'f2\'e0\'ea\'e6\'e5 \'f1\'ee\'e7\'e4\'e0\'b8\'f2 \'ed\'ee\'e2\'ee\'e5 \'e4\'e5\'f0\'e5\'e2\'ee \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2\'e0 Shortest Path Tree (SPT) \cf1\kerning1\f2\u8594?\cf0\kerning0\f0  \'ea\'e0\'ea \'f2\'ee\'eb\'fc\'ea\'ee \'ef\'ee\'f1\'f2\'f0\'ee\'e8\'eb\'ee\'f1\'fc SPT, \lang1033\f1 Router\lang1049\f0 2 \'ee\'f2\'ef\'f0\'f2\'e0\'e2\'eb\'ff\'e5\'f2 Prune \'ed\'e0 (10.0.10.1, 229.0.0.100) \'e2 \'f1\'f2\'ee\'f0\'ee\'ed\'f3 RP, \'e2\'fb\'f1\'f2\'e0\'e2\'eb\'ff\'ff \'f4\'eb\'e0\'e3 RP-bit, \'e3\'ee\'e2\'ee\'f0\'ff\'f9\'e8\'e9 \'ee \'f2\'ee\'ec, \'f7\'f2\'ee \'f5\'ee\'f2\'ff \'e2 \'ea\'e0\'f7\'e5\'f1\'f2\'e2\'e5 Src \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff 10.0.0.1, \'ed\'ee \'ef\'e0\'ea\'e5\'f2 \'ed\'e0\'e4\'ee \'f1\'eb\'e0\'f2\'fc \'e2\'e4\'ee\'eb\'fc shared tree \'ea RP\par
+\par
+Prune\par
+\'d0\'ee\'f3\'f2\'e5\'f0 \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'f2 IGMP Leave \'ed\'e0 (*,229.0.0.100) \cf1\kerning1\f2\u8594?\cf0\kerning0\f0  \'f3\'e4\'e0\'eb\'ff\'e5\'f2 \'e8\'e7 outgoing interface \'e3\'f0\'f3\'ef\'ef\'fb (*, 229.0.0.100) \cf1\kerning1\f2\u8594?\cf0\kerning0\f0  \'e2\'e8\'e4\'e8\'f2, \'f7\'f2\'ee \'f2\'e5\'ef\'e5\'f0\'fc \'e3\'f0\'f3\'ef\'ef\'e0 \'ef\'f3\'f1\'f2\'e0 \cf1\kerning1\f2\u8594?\cf0\kerning0\f0  \'f8\'eb\'b8\'f2 RP Prune (*,229.0.0.100) \cf1\kerning1\f2\u8594?\cf0\kerning0\f0  RP \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'f2 Prune \'e8 \'f3\'e4\'e0\'eb\'ff\'e5\'f2 \'e8\'e7 outgoing interface\par
+\par
+\'c4\'e5\'f0\'e5\'e2\'ee \'ef\'ee\'f1\'f2\'ee\'ff\'ed\'ed\'ee \'ed\'e0\'e4\'ee \'ee\'e1\'ed\'ee\'e2\'eb\'ff\'f2\'fc. \'cd\'e0 \'ea\'e0\'e6\'e4\'ee\'e9 \'e7\'e0\'ef\'e8\'f1\'e8 \'f2\'e8\'ef\'e0 (*,229.0.0.100) \'f1\'f2\'ee\'e8\'f2 \'f2\'e0\'e9\'ec\'e5\'f0 = 3 \'ec\'e8\'ed. \'c5\'f1\'f2\'fc \'e2 \'f2\'e5\'f7\'e5\'ed\'e8\'e8 3 \'ec\'e8\'ed. \'ed\'e5 \'ef\'f0\'e8\'e4\'b8\'f2 \'ee\'f7\'e5\'f0\'e5\'e4\'ed\'ee\'e9 Join, \'f2\'ee \'e7\'e0\'ef\'e8\'f1\'fc \'f3\'e4\'e0\'eb\'ff\'e5\'f2\'f1\'ff. \'cf\'ee\'fd\'f2\'ee\'ec\'f3 \'f0\'ee\'f3\'f2\'e5\'f0\'fb \'ea\'e0\'e6\'e4\'fb\'e5 60 \'f1\'e5\'ea. \'ed\'e0\'e2\'e5\'f0\'f5 \'ea RP \'f8\'eb\'fe\'f2 Join. Join \'ea \'e7\'e0\'ef\'e8\'f1\'e8 (10.0.10.1,229.0.0.100) \'f8\'eb\'fe\'f2 \'c8\'f1\'f2\'ee\'f7\'ed\'e8\'ea\'f3.\par
+\par
+\'c8\'f1\'f2\'ee\'f7\'ed\'e8\'ea \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2 \'ef\'e5\'f0\'e5\'e4\'e0\'e2\'e0\'f2\'fc \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2 \cf1\kerning1\f2\u8594?\cf0\kerning0\f0  \'e1\'eb\'e8\'e6\'e0\'e9\'f8\'e8\'e9 \'ea \'ed\'e5\'ec\'f3 \'f0\'ee\'f3\'f2\'e5\'f0 \'ef\'ee\'eb\'f3\'f7\'e8\'e2 \'fd\'f2\'ee\'f2 \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2 \'e8\'ed\'ea\'e0\'ef\'f1\'f3\'eb\'e8\'f0\'f3\'e5\'f2 \'e5\'e3\'ee \'e2 PIM Register \'e8 unicast-\'ee\'ec \'f8\'eb\'b8\'f2 \'ed\'e0 RP \cf1\kerning1\f2\u8594?\cf0\kerning0\f0  RP \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'f2 PIM Register, \'f0\'e0\'f1\'ef\'e0\'ea\'ee\'e2\'fb\'e2\'e0\'e5\'f2 \'e8 \'f1\'ec\'ee\'f2\'f0\'e8\'f2 \'ed\'e0 \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2 \cf1\kerning1\f2\u8594?\cf0\kerning0\f0  \'e5\'f1\'eb\'e8 \'f3 RP \'e5\'f1\'f2\'fc \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e5 (*,228.0.0.10), \'f2\'ee \'ee\'ed \'f8\'eb\'b8\'f2 \'e2\'ed\'e8\'e7 \'ef\'ee \'e4\'e5\'f0\'e5\'e2\'f3 \'fd\'f2\'ee\'f2 \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2 + \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2 \'f1\'f2\'f0\'ee\'e8\'f2\'fc SPT \'ea \'e8\'f1\'f2\'ee\'f7\'ed\'e8\'ea\'f3, \'e4\'eb\'ff \'f2\'ee\'e3\'ee, \'f7\'f2\'ee\'e1\'fb \'ef\'ee\'eb\'f3\'f7\'e0\'f2\'fc \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2 \'e2 \'f7\'e8\'f1\'f2\'ee\'ec \'e2\'e8\'e4\'e5, \'e0 \'ed\'e5 \'f7\'e5\'f0\'e5\'e7 PIM Register, \'ea\'e0\'ea \'f2\'ee\'eb\'fc\'ea\'ee SPT \'ea \'e8\'f1\'f2\'ee\'f7\'ed\'e8\'ea\'f3 \'ef\'ee\'f1\'f2\'f0\'ee\'e8\'eb\'ee\'f1\'fc, RP \'f8\'eb\'b8\'f2 \'e1\'eb\'e8\'e6\'e0\'e9\'f8\'e5\'ec\'f3 \'ea \'e8\'f1\'f2\'ee\'f7\'ed\'e8\'ea\'f3 \'f0\'ee\'f3\'f2\'e5\'f0\'f3 PIM Register-Stop; \'e5\'f1\'eb\'e8 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'ff (*,228.0.0.10) \'ed\'e0 RP \'ed\'e5\'f2, \'f2\'ee \'ef\'f0\'ee\'f1\'f2\'ee \'f3\'e4\'e0\'eb\'ff\'e5\'f2 \'fd\'f2\'ee\'f2 \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2 + \'f8\'eb\'b8\'f2 \'e1\'eb\'e8\'e6\'e0\'e9\'f8\'e5\'ec\'f3 \'ea \'e8\'f1\'f2\'ee\'f7\'ed\'e8\'ea\'f3 \'f0\'ee\'f3\'f2\'e5\'f0\'f3 PIM Register-Stop\par
+\par
+\'c2 LAN \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e5, \'e3\'e4\'e5 2 \'f0\'ee\'f3\'f2\'e5\'f0\'e0 \'e2\'fb\'e1\'e8\'f0\'e0\'e5\'f2\'f1\'ff DR. \'c5\'f1\'eb\'e8 \'e2 LAN \'e5\'f1\'f2\'fc \'ef\'ee\'eb\'f3\'f7\'e0\'f2\'e5\'eb\'fc, \'f2\'ee \'f2\'ee\'eb\'fc\'ea\'ee DR \'e1\'f3\'e4\'e5\'f2 \'f1\'f2\'f0\'ee\'e8\'f2\'fc shared tree \'e2 \'f1\'f2\'ee\'f0\'ee\'ed\'f3 RP. \'c2\'f2\'ee\'f0\'ee\'e9 \'f0\'ee\'f3\'f2\'e5\'f0 \'e1\'f3\'e4\'e5\'f2 \'ea\'f3\'f0\'e8\'f2\'fc. \'ca\'e0\'ea \'f2\'ee\'eb\'fc\'ea\'ee \'ee\'ed \'f3\'e2\'e8\'e4\'e8\'f2, \'f7\'f2\'ee \'ef\'e5\'f0\'e5\'f1\'f2\'e0\'eb \'ef\'ee\'eb\'f3\'f7\'e0\'f2\'fc Hello \'ee\'f2 \'ef\'e5\'f0\'e2\'ee\'e3\'ee \'f0\'ee\'f3\'f2\'e5\'f0\'e0, \'f2.\'e5. \'ef\'e5\'f0\'e2\'fb\'e9 \'f0\'ee\'f3\'f2\'e5\'f0 \'ef\'ee\'ec\'e5\'f0 - \'f1\'f0\'e0\'e7\'f3 \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2 \'f1\'f2\'f0\'ee\'e8\'f2\'fc \'f1\'e2\'ee\'b8 shared tree \'ea RP \'e8 \'f3\'e6\'e5 \'f7\'e5\'f0\'e5\'e7 \'f1\'e5\'e1\'ff \'e3\'ed\'e0\'f2\'fc \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2.\par
+\'d2\'e0\'ea \'e6\'e5 \'ef\'f0\'ee\'e8\'f1\'f5\'ee\'e4\'e8\'f2, \'e5\'f1\'eb\'e8 \'e2 LAN \'e5\'f1\'f2\'fc \'e8\'f1\'f2\'ee\'f7\'ed\'e8\'ea. \'ca\'e0\'ea \'f2\'ee\'eb\'fc\'ea\'ee \'e2\'f2\'ee\'f0\'ee\'e9 \'f0\'ee\'f3\'f2\'e5\'f0 \'ef\'e5\'f0\'e5\'f1\'f2\'e0\'b8\'f2 \'ef\'ee\'eb\'f3\'f7\'e0\'f2\'fc \'ee\'f2 \'ef\'e5\'f0\'e2\'ee\'e3\'ee Hello - \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 PIM Register \'ed\'e0 RP.\par
+\par
+\'c2 PIM-SM \'ed\'e5\'eb\'fc\'e7\'ff \'f3\'e2\'e8\'e4\'e5\'f2\'fc \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e5 \'f3 outgoing interface - Prune/Sparse\par
+\par
+\'c5\'f1\'eb\'e8 \'ed\'e0 \'f0\'ee\'f3\'f2\'e5\'f0\'e5 \'ef\'ee\'ff\'e2\'e8\'eb\'f1\'ff \'ed\'ee\'e2\'fb\'e9 outgoing interface \'ed\'e0 \'e3\'f0\'f3\'ef\'ef\'e5 (*,G) \'e8\'eb\'e8 (S,G), \'ed\'e0 \'ed\'e5\'e3\'ee \'e2\'e5\'f8\'e0\'e5\'f2\'f1\'ff \'f2\'e0\'e9\'ec\'e5\'f0 =3 \'ec\'e8\'ed. \'c5\'f1\'eb\'e8 \'f7\'e5\'f0\'e5\'e7 3 \'ec\'e8\'ed \'ed\'e5 \'ef\'f0\'e8\'e4\'b8\'f2 \'ee\'ef\'ff\'f2\'fc Join - \'f2\'ee \'fd\'f2\'ee\'f2 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1 \'f3\'e4\'e0\'eb\'ff\'e5\'f2\'f1\'ff \'e8\'e7 outgoing interface \'e3\'f0\'f3\'ef\'ef\'fb.\par
+\par
+\b PIM-SSM\b0  (Source-Specific Multicast)\par
+\par
+\'ce\'f1\'ed\'ee\'e2\'e0\'ed \'ed\'e0 IGMPv3, \'f2.\'e5. IGMP \'f1\'f0\'e0\'e7\'f3  \'e7\'e0\'ef\'f0\'e0\'f8\'e8\'e2\'e0\'e5\'f2: "\'d5\'ee\'f7\'f3 224.0.0.100 c \'e8\'f1\'f2\'ee\'f7\'ed\'e8\'ea\'e0 10.0.0.1"\par
+\par
+Router(config)# \b ip pim ssm default\par
+\b0 Router(config-if)# \b ip igmp version 3\par
+\par
+Bidir-PIM\par
+\par
+\b0\'c2\'e5\'f1\'fc \'f2\'f0\'e0\'f4\'e8\'ea \'f5\'ee\'e4\'e8\'f2 \'f7\'e5\'f0\'e5\'e7 RP \'ea\'e0\'ea \'ea \'ef\'ee\'f2\'f0\'e5\'e1\'e8\'f2\'e5\'eb\'fe \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2\'e0 \'f2\'e0\'ec \'e8 \'ee\'f2 \'e8\'f1\'f2\'ee\'f7\'ed\'e8\'ea\'e0. \'cd\'e5 \'f1\'f2\'f0\'ee\'ff\'f2\'f1\'ff SPT \'e4\'e5\'f0\'e5\'e2\'fc\'ff. \b\par
+\par
+Anycast RP\b0\par
+\par
+\'ca\'ee\'e3\'e4\'e0 \'f3\'f1\'eb\'ee\'e2\'ed\'ee \'ed\'e0 \'e4\'e2\'f3\'f5 \'f0\'ee\'f3\'f2\'e5\'f0\'e0\'f5 \'ef\'ee\'e4\'ed\'e8\'ec\'e0\'e5\'f8\'fc Loopback \'f1 \'ee\'e4\'ed\'e8\'ec \'e8 \'f2\'e5\'ec \'e6\'e5 \'e0\'e4\'f0\'e5\'f1\'ee\'ec 1.0.0.0, \'e8 \'ed\'e0 \'f0\'ee\'f3\'f2\'e5\'f0\'e0\'f5 \'ef\'f0\'ee\'ef\'e8\'f1\'fb\'e2\'e0\'e5\'f8\'fc RP=1.0.0.0 ~ Redunancy\par
+\par
+Router(config)# \b ip pim rp-address 20.0.0.1\b0  \'f0\'f3\'f7\'ea\'e0\'ec\'e8 \'ef\'f0\'ee\'ef\'e8\'f1\'fb\'e2\'e0\'e5\'ec RP \'ed\'e0 \'ea\'e0\'e6\'e4\'ee\'ec \'f0\'ee\'f3\'f2\'e5\'f0\'e5 + \'ed\'e0 \'f2\'ee\'ec \'e6\'e5 \'f0\'ee\'f3\'f2\'e5\'f0\'e5 \'e3\'e4\'e5 \'e8 \'e2\'e5\'f1\'e8\'f2 \'e0\'e4\'f0\'e5\'f1 20.0.0.1\b\par
+\b0\par
+\b Auto-RP\b0\par
+\par
+Cisco.Press.CCIE.Developing.Ip.Multicast.Networks.pdf \'f1\'f2\'f0.320\par
+\'c4\'eb\'ff \'e0\'e2\'f2\'ee\'ec\'e0\'f2\'e8\'f7\'e5\'f1\'ea\'ee\'e9 \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e8 RP \'ef\'f0\'e8\'e4\'f3\'ec\'e0\'eb\'e8 \'f0\'e0\'f1\'ef\'f0\'ee\'f1\'f2\'f0\'e0\'ed\'ff\'f2\'fc IP \'e0\'e4\'f0\'e5\'f1 RP \'f7\'e5\'f0\'e5\'e7 \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2\'ed\'f3\'fe \'e3\'f0\'f3\'ef\'ef\'f3 Cisco-RP-Discovery (224.0.1.40). \'cf\'eb\'fe\'f1 \'fd\'f2\'ee \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'f2 \'ee\'f2\'ea\'e0\'e7\'ee\'f3\'f1\'f2\'ee\'e9\'f7\'e8\'e2\'ee\'f1\'f2\'fc, \'f2\'e8\'ef\'e0 RP \'ef\'ee\'ec\'e5\'f0, \'f1\'f0\'e0\'e7\'f3 \'e8\'e4\'b8\'f2 \'e0\'ed\'ee\'ed\'f1 \'ed\'ee\'e2\'ee\'e3\'ee RP.\par
+\'c2\'fb\'e1\'e8\'f0\'e0\'e5\'f2\'f1\'ff \'f0\'ee\'f3\'f2\'e5\'f0, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'e1\'f3\'e4\'e5\'f2 \'ed\'e0\'e7\'fb\'e2\'e0\'f2\'fc\'f1\'ff Mapping Agent. \'c4\'f0\'f3\'e3\'e8\'e5 \'f0\'ee\'f3\'f2\'e5\'f0\'fb, \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'ef\'f0\'e5\'f2\'e5\'ed\'e4\'f3\'fe\'f2 \'f1\'f2\'e0\'f2\'fc RP \'f8\'eb\'fe\'f2 \'e5\'ec\'f3 Cisco-RP-Announce (224.0.1.39) - \'f2\'e8\'ef\'e0 \'f5\'ee\'f7\'f3 \'f1\'f2\'e0\'f2\'fc RP. \'c2 \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'e8 \'e2\'f0\'ee\'e4\'e5 \'ea\'e0\'ea \'e5\'f1\'f2\'fc \'e4\'e0\'e6\'e5: "\'d5\'ee\'f7\'f3 \'f1\'f2\'e0\'f2\'fc RP \'ed\'e0 \'f2\'e0\'ea\'e8\'e5-\'f2\'ee \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2\'ed\'fb\'e5 \'e3\'f0\'f3\'ef\'ef\'fb". \'c5\'f1\'f2\'fc \'f1\'e2\'ee\'e8 \'f2\'e0\'e9\'ec\'e5\'f0\'fb, \'ed\'e0\'e4\'ee \'f7\'e8\'f2\'e0\'f2\'fc \'ea\'ed\'e8\'e6\'ea\'f3. Mapping Agent \'e2\'fb\'e1\'e8\'f0\'e0\'e5\'f2 \'ed\'e0 \'ee\'f1\'ed\'ee\'e2\'e0\'ed\'e8\'e8 "\'ed\'e0\'e8\'e1\'ee\'eb\'fc\'f8\'e8\'e9 IP" \'ea\'f2\'ee \'e1\'f3\'e4\'e5\'f2 RP \'e8 \'f3\'e6\'e5 \'f1\'e0\'ec \'f8\'eb\'b8\'f2 (\'ea\'e0\'e6\'e4\'fb\'e5 60 \'f1\'e5\'ea.) \'ef\'ee 224.0.1.40 \'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'fe \'ee\'e1 \'fd\'f2\'ee\'ec.\par
+\par
+Router(config)# \b ip pim send-rp-announce \b0\i address\b\i0  scope \b0\i ttl\b\i0  [group-list \b0\i acl\b\i0 ]\b0  - \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e0 \'ed\'e0 \'ea\'e0\'ed\'e4\'e8\'e4\'e0\'f2\'e5. Address - \'ea\'e0\'ea\'ee\'e9 \'e0\'e4\'f0\'e5\'f1 \'ed\'e0 \'fd\'f2\'ee\'ec \'f0\'ee\'f3\'f2\'e5\'f0\'e5 \'e1\'f3\'e4\'e5\'f2 \'e0\'ed\'ee\'ed\'f1\'e8\'f0\'ee\'e2\'e0\'f2\'fc\'f1\'ff \'ea\'e0\'ea RP.\b\par
+\par
+\b0 Router(config)# \b ip pim send-rp-discovery scope \b0\i ttl\i0  - \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e0 Mapping Agent\par
+\b\par
+show ip pim rp mapping\b0\par
+\par
+\'c5\'f1\'f2\'fc \'ef\'f0\'ee\'e1\'eb\'e5\'ec\'e0 "\'ea\'f3\'f0\'e8\'f6\'fb \'e8 \'ff\'e9\'f6\'e0". \'c5\'f1\'eb\'e8 \'f0\'ee\'f3\'f2\'e5\'f0\'fb \'f0\'e0\'e1\'ee\'f2\'e0\'fe\'f2 \'e2 sparse mode, \'f2\'ee \'e4\'eb\'ff \'ef\'ee\'eb\'f3\'f7\'e5\'ed\'e8\'ff 224.0.1.40 \'ee\'ed\'e8 \'e4\'eb\'ff \'ed\'e0\'f7\'e0\'eb\'e0 \'e4\'ee\'eb\'e6\'ed\'fb \'f1\'e4\'e5\'eb\'e0\'f2\'fc join \'ea shared tree, \'e5\'f1\'eb\'e8 \'ee\'ed\'e8 \'ed\'e5 \'e7\'ed\'e0\'fe\'f2 \'e0\'e4\'f0\'e5\'f1 RP (\'e0 \'ee\'ed\'e8 \'ed\'e0 \'ef\'e5\'f0\'e2\'ee\'ec \'fd\'f2\'e0\'ef\'e5 \'ed\'e5 \'e7\'ed\'e0\'fe\'f2!) \'c5\'f1\'f2\'fc 2-\'e0 \'f0\'e5\'f8\'e5\'ed\'e8\'ff:\par
+1. \'d1\'ee\'e7\'e4\'e0\'f2\'fc static RP \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'ee \'e4\'eb\'ff \'e3\'f0\'f3\'ef\'ef\'fb 224.0.1.40\par
+\tab ip pim rp-address x.x.x.x group-list 10\par
+\tab access-list 10 permit 224.0.1.40\par
+2. \'c2\'f0\'f3\'e1\'e8\'f2\'fc Dense Mode\par
+\'c2 \'e8\'f2\'ee\'e3\'e5 \'ef\'ee\'eb\'f3\'f7\'e8\'eb\'e8 \'ec\'e5\'f5\'e0\'ed\'e8\'e7\'ec \b sparse-dense mode\b0 , \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'e2 \'ee\'f1\'ed\'ee\'e2\'ed\'ee\'ec \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'e2 \'f0\'e5\'e6\'e8\'ec\'e5 Sparse, \'e0 \'e5\'f1\'eb\'e8 \'ed\'e5 \'e7\'ed\'e0\'e5\'f2 RP \'f2\'ee \'e2 \'f0\'e5\'e6\'e8\'ec\'e5 Dense\par
+\par
+\b PIMv2 Bootstrap\b0\par
+\par
+\'dd\'f2\'ee \'f4\'e8\'f7\'e0 \'ef\'ee Default-\'f3 \'e8\'e4\'b8\'f2 \'e2 \'ea\'ee\'ec\'ef\'eb\'e5\'ea\'f2\'e5 \'f1 PIMv2. \'cf\'f0\'e8\'ed\'f6\'e8\'ef \'f2\'ee\'f2 \'e6\'e5 \'f7\'f2\'ee \'e8 \'e2 Auto RP. \'c5\'f1\'f2\'fc "\'f0\'ee\'eb\'e8": candidate RP (C-RP), candidate bootstrap router (C-BSR).\par
+\'c2\'fb\'e1\'ee\'f0 BSR \'ef\'f0\'ee\'f5\'ee\'e4\'e8\'f2 \'ea\'e0\'ea \'e8 \'e2 STP \'e2\'fb\'e1\'e8\'f0\'e0\'fe\'f2 Root Bridge - \'e2\'f1\'e5 \'f0\'ee\'f3\'f2\'e5\'f0\'fb \'ef\'ee \'ed\'e0\'f7\'e0\'eb\'f3 \'f8\'eb\'fe\'f2 \'f1\'e2\'ee\'e8 \'ef\'e0\'ea\'e5\'f2\'fb (224.0.0.13 \'f1 TTL=1) \'f2\'e8\'ef\'e0 \'ff BSR, \'ed\'ee \'e5\'f1\'eb\'e8 \'ef\'ee\'eb\'f3\'f7\'e0\'fe\'f2 \'ef\'e0\'ea\'e5\'f2 \'f1 \'e1\'ee\'eb\'e5\'e5 \'e2\'fb\'f1\'ee\'ea\'e8\'ec \'ef\'f0\'e8\'ee\'f0\'e8\'f2\'e5\'f2\'ee\'ec - \'e7\'e0\'f2\'fb\'ea\'e0\'fe\'f2\'f1\'ff \'e8 \'ed\'e0\'f7\'e8\'ed\'e0\'fe\'f2 \'ef\'e5\'f0\'e5\'f1\'fb\'eb\'e0\'f2\'fc \'fd\'f2\'e8 \'eb\'f3\'f7\'f8\'e8\'e5 \'ef\'e0\'ea\'e5\'f2\'fb. \'cf\'e0\'ea\'e5\'f2\'fb BSR \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'fe\'f2\'f1\'ff \'e2\'ee \'e2\'f1\'e5 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'fb \'ed\'e0 \'ea\'ee\'f2\'ee\'f0\'fb\'f5 \'ed\'e0\'f1\'f2\'f0\'ee\'e5\'ed PIMv2.\par
+Candidate RP \'f1\'eb\'f3\'f8\'e0\'e5\'f2, \'ea\'ee\'e3\'e4\'e0 \'ea \'ed\'e5\'ec\'f3 \'ef\'f0\'e8\'e4\'b8\'f2 BSR \'ef\'e0\'ea\'e5\'f2. \'cd\'e0 \'ee\'f1\'ed\'ee\'e2\'e0\'ed\'e8\'e8 \'ef\'e0\'ea\'e5\'f2\'e0 \'ee\'ed \'ef\'ee\'ed\'e8\'ec\'e0\'e5\'f2 \'ea\'f3\'e4\'e0 \'f1\'eb\'e0\'f2\'fc unicast-\'ee\'ec \'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'fe, \'f7\'f2\'ee "\'df \'f5\'ee\'f7\'f3 \'e1\'fb\'f2\'fc RP". \'c4\'e0\'eb\'e5\'e5 BSR \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'f2 unicast \'ef\'e0\'ea\'e5\'f2\'fb \'ee\'f2 \'ea\'e0\'ed\'e4\'e8\'e4\'e0\'f2\'ee\'e2 \'e2 RP. \'c8 \'ea\'e0\'ea-\'f2\'ee \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc, \'f7\'f2\'ee \'ed\'e0 \'ee\'e4\'ed\'f3 \'e8 \'f2\'f3 \'e6\'e5 \'e3\'f0\'f3\'ef\'ef\'f3 \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc >1 RP ????\par
+\par
+\b ip pim bsr-candidate \b0\i interface hash-mask-length [priority]\i0  - \'ed\'e0 \'f0\'ee\'f3\'f2\'e5, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'f5\'ee\'f7\'e5\'f2 \'e1\'fb\'f2\'fc BSR\par
+\b ip pim rp-candidate\b0  \i interface\i0  \b [group-list\b0  \i acl\b\i0 ]\b0  - \'ed\'ee \'f0\'ee\'f3\'f2\'e5\'f0\'e5, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'f5\'ee\'f7\'e5\'f2 \'f1\'f2\'e0\'f2\'fc RP\par
+\par
+\'c5\'f1\'f2\'fc \'ec\'ed\'ee\'e3\'ee \'e7\'e0\'ec\'ee\'f0\'ee\'f7\'e5\'ea \'ef\'ee \'f2\'fe\'ed\'e8\'ed\'e3\'f3: \'f2\'e0\'e9\'ec\'e5\'f0\'ee\'e2, \'ee\'e3\'f0\'e0\'ed\'e8\'f7\'e5\'ed\'e8\'e5 \'e4\'ee\'ec\'e5\'ed\'e0 \'f0\'e0\'f1\'ef\'f0\'ee\'f1\'f2\'f0\'e0\'ed\'e5\'ed\'e8\'ff BSR \'e8\'eb\'e8 RP, \'ee\'e3\'f0\'e0\'ed\'e8\'f7\'e5\'ed\'e8\'ff \'ed\'e0 flood, load-balancing\par
+}
+ 

@@ -1,0 +1,165 @@
+{\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}{\f1\fnil\fcharset0 Courier New;}}
+{\colortbl ;\red0\green0\blue0;\red0\green176\blue80;\red155\green0\blue211;\red0\green0\blue255;\red204\green180\blue0;\red247\green150\blue70;}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\nowidctlpar\hyphpar0\sl240\slmult1\lang1049\kerning1\f0\fs22 EMC_\'f2\'e5\'ee\'f0\'e8\'ff.pdf\par
+\'c2\'e8\'f2\'e0\'eb\'e8\'ea \'e2 \'ea\'ee\'ed\'f2\'e5\'ea\'f1\'f2\'e5 \'d1\'d5\'c4 \'ef\'f0\'ee\'e8\'e7\'ed\'b8\'f1 \'f1\'eb\'ee\'e2\'ee "\'fd\'ea\'ef\'e0\'ed\'e4\'e5\'f0". \'d0\'e0\'f1\'f8\'e8\'f0\'e8\'f2\'e5\'eb\'fc \'e4\'e8\'f1\'ea\'ee\'e2\'ee\'e9 \'ef\'ee\'eb\'ea\'e8. \'d2\'e8\'ef\'e0 \'ea \'e4\'e8\'f1\'ea\'ee\'e2\'ee\'e9 \'ef\'ee\'eb\'ea\'e5 \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e0\'e5\'ec \'fd\'ea\'ef\'e0\'ed\'e4\'e5\'f0, \'e0 \'ea \'fd\'ea\'ef\'e0\'ed\'e4\'e5\'f0\'f3 \'ec\'ee\'e6\'ed\'ee \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e8\'f2\'fc \'e5\'f9\'b8 \'ee\'e4\'e8\'ed \'fd\'ea\'ef\'e0\'ed\'e4\'e5\'f0.\par
+\par
+\'d3 \'d1\'d5\'c4 max \'f0\'e0\'e7\'ec\'e5\'f0 LUN = 16Tb\par
+\par
+\'c2\'fb\'ea\'eb\'fe\'f7\'e5\'ed\'e8\'e5 \lang1033\f1 SYSCALL \b fsync\b0  - \lang1049\f0\'f1\'e8\'f1\'f2\'e5\'ec\'e0\lang1033\f1  \lang1049\f0\'ef\'f0\'e8\'eb\'ee\'e6\'e5\'ed\'e8\'fe \'f1\'ee\'ee\'e1\'f9\'e0\'e5\'f2 \'ee\'e1 \'f3\'f1\'ef\'e5\'f8\'ed\'ee\'e9 \'e7\'e0\'ef\'e8\'f1\'e8 \'ea\'ee\'e3\'e4\'e0 \'e4\'e0\'ed\'ed\'fb\'e5 \'ef\'ee\'ef\'e0\'eb\'e8 \'e2 \'e1\'f3\'f4\'e5\'f0, \'e0 \'ed\'e5 \'ea\'ee\'e3\'e4\'e0 \'e7\'e0\'ef\'e8\'f1\'e0\'eb\'e8\'f1\'fc \'ed\'e0 \'e4\'e8\'f1\'ea.\par
+\par
+\cf1\b Write-Through\b0  - \'f1\'f0\'e0\'e7\'f3 \'ef\'e8\'f8\'e5\'ec \'ed\'e0 \'e4\'e8\'f1\'ea. \'c7\'e0\'ef\'e8\'f1\'e0\'eb\'e8, \'ee\'f2\'ef\'f0\'e0\'e2\'e8\'eb\'e8 OS - "\'ce\'ef\'e5\'f0\'e0\'f6\'e8\'ff \'e7\'e0\'e2\'e5\'f0\'f8\'e5\'ed\'e0". \i\'cc\'c5\'c4\'cb\'c5\'cd\'cd\'ce\i0 .\cf0\par
+\pard\nowidctlpar\hyphpar0\fi-1104\li1104\sl240\slmult1\cf1\b Write-Back\b0  - \'f1\'ed\'e0\'f7\'e0\'eb\'e0 \'ef\'e8\'f8\'e5\'ec \'e2 \lang1033\f1 C\lang1049\f0 ache. \'ce\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'ec OS - "\'ce\'ef\'e5\'f0\'e0\'f6\'e8\'ff \'e7\'e0\'e2\'e5\'f0\'f8\'e5\'ed\'e0". \'c8 \'f2\'ee\'eb\'fc\'ea\'ee \'ef\'ee\'f2\'ee\'ec (\'eb\'e8\'e1\'ee \'ef\'ee \'ec\'e5\'f0\'e5 \'e7\'e0\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'ff \lang1033\f1 C\lang1049\f0 ache, \'eb\'e8\'e1\'ee \'e2 \'ec\'ee\'ec\'e5\'ed\'f2\'fb \'ec\'e8\'ed\'e8\'ec\'e0\'eb\'fc\'ed\'ee\'e9 \'e7\'e0\'e3\'f0\'f3\'e7\'ea\'e8 \'e4\'e8\'f1\'ea\'ee\'e2\'ee\'e9 \'f1\'e8\'f1\'f2\'e5\'ec\'fb) \'ef\'e8\'f8\'e5\'ec \'e8\'e7 \lang1033\f1 C\lang1049\f0 ache-\'e0 \'ed\'e0 \'e4\'e8\'f1\'ea\'e8. \i\'c1\'db\'d1\'d2\'d0\'ce\i0 . \'c4\'eb\'ff \'e7\'e0\'f9\'e8\'f2\'fb \'ee\'f2 "\'e4\'b8\'f0\'ed\'f3\'eb\'e8 \'ef\'e8\'f2\'e0\'ed\'e8\'e5" \'ee\'e1\'ff\'e7\'e0\'f2\'e5\'eb\'fc\'ed\'ee \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e0\'f2\'fc BBU (Battery Backup Unit), \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'ec\'ee\'e6\'e5\'f2 \'e0\'e2\'f2\'ee\'ed\'ee\'ec\'ed\'ee \'ef\'e8\'f2\'e0\'f2\'fc RAID Controller \'e8 \'e4\'e8\'f1\'ea\'e8.\par
+\par
+\lang1033\b\f1 Read-ahead\b0  - \lang1049\f0\'ef\'f0\'e8\'f8\'eb\'e0 \'ea\'ee\'ec\'e0\'ed\'e4\'e0 "\lang1033\f1 Read\lang1049\f0  \'e1\'eb\'ee\'ea 601", \'ef\'ee\'f2\'ee\'ec "\lang1033\f1 Read\lang1049\f0  \'e1\'eb\'ee\'ea 602". \'c2\'e8\'e4\'ff \'e4\'e8\'ed\'e0\'ec\'e8\'ea\'f3, \'ed\'e5 \'e4\'ee\'e6\'e8\'e4\'e0\'ff\'f1\'fc \'f1\'eb\'e5\'e4\'f3\'fe\'f9\'e5\'e9 \'ea\'ee\'ec\'e0\'ed\'e4\'fb, \'e1\'eb\'ee\'ea\'e8 603-607 \'e1\'f3\'e4\'f3\'f2 \'f1\'f7\'e8\'f2\'e0\'ed\'fb \'e2 \lang1033\f1 buffer/cache.\cf0\lang1049\f0\par
+\cf1\par
+\b HotSwap\b0  - \'ed\'e0 \'e3\'ee\'f0\'ff\'f7\'f3\'fe \'e7\'e0\'ec\'e5\'ed\'ff\'f2\'fc \'e2\'fb\'eb\'e5\'f2\'e5\'e2\'f8\'e8\'e9 \'e4\'e8\'f1\'ea \'e8 \'e4\'e0\'f2\'fc RAID Controller-\'f3 \'ea\'ee\'ec\'e0\'ed\'e4\'f3 "\'c2\'ee\'f1\'f1\'f2\'e0\'ed\'ee\'e2\'e8\'f2\'fc".\cf0\par
+\cf1\b HotSpare\b0  - \'e8\'ec\'e5\'e5\'ec RAID 1, RAID 3, RAID 5 \'e8\'eb\'e8 RAID 10 - \'f2\'e0\'ec \'e3\'e4\'e5 \'e5\'f1\'f2\'fc \'e8\'e7\'e1\'fb\'f2\'ee\'f7\'ed\'ee\'f1\'f2\'fc, \'f2\'e0\'ec \'e3\'e4\'e5 \'ed\'e8\'f7\'e5\'e3\'ee \'ed\'e5 \'f1\'eb\'ee\'ec\'e0\'e5\'f2\'f1\'ff \'e5\'f1\'eb\'e8 \'e2\'fb\'eb\'e5\'f2\'e8\'f2 \'ee\'e4\'e8\'ed \'e4\'e8\'f1\'ea. \'ca RAID Controller-\'f3 \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e5\'ed \'e5\'f9\'b8 \'ee\'e4\'e8\'ed \ul\'ed\'e5\'f0\'e0\'e7\'ec\'e5\'f7\'e5\'ed\'ed\'fb\'e9\ulnone  \'e4\'e8\'f1\'ea = \cf2\b spare\cf1\b0  (\'e7\'e0\'ec\'e5\'ed\'e0). \'c2 RAID \'e2\'fb\'eb\'e5\'f2\'e0\'e5\'f2 \'e4\'e8\'f1\'ea, Controller \'f1\'f0\'e0\'e7\'f3 \'ef\'ee\'e4\'f5\'e2\'e0\'f2\'fb\'e2\'e0\'e5\'f2 spare \'e4\'e8\'f1\'ea, \'ef\'ee\'e4\'f6\'e5\'ef\'eb\'ff\'e5\'f2 \'e5\'e3\'ee \'ea RAID-\'f3 \'e8 \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'e5\'f2 \'ee\'ef\'e5\'f0\'e0\'f6\'e8\'fe "\'c2\'ee\'f1\'f1\'f2\'e0\'ed\'ee\'e2\'e8\'f2\'fc".\cf0\par
+\cf1\'c2\'ee\'ee\'e1\'f9\'e5 \'e5\'f1\'eb\'e8 \'e2\'ee\'e7\'ec\'b8\'ec \'e4\'e8\'f1\'ea\'ee\'e2\'f3\'fe \'ef\'ee\'eb\'ea\'f3, \'f2\'ee \cf2\b spare\cf1\b0  \'e4\'e8\'f1\'ea\'e8 - \'fd\'f2\'ee \'e4\'e8\'f1\'ea\'e8, \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'ed\'e5 \'e2\'f5\'ee\'e4\'ff\'f2 \'ed\'e8 \'e2 \'ea\'e0\'ea\'ee\'e9 RAID. \'cd\'e0 \'ee\'e4\'ed\'ee\'e9 \'ef\'ee\'eb\'ea\'e5 \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc \'ef\'ee\'e4\'ed\'ff\'f2\'ee \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee RAID-\'ee\'e2.\cf0\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\kerning0\par
+\b Host Bus Adapter\b0  (HBA) = NIC \'f2\'ee\'eb\'fc\'ea\'ee \'e4\'eb\'ff \'d1\'d5\'c4. \'d1\'e5\'f0\'e2\'e0\'ea \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e0\'e5\'ec 2-\'ff "\'ed\'ee\'e3\'e0\'ec\'e8" \'ea \'d1\'d5\'c4. 2 \'f0\'e5\'e6\'e8\'ec\'e0 "\'ed\'ee\'e3": Active-Active \'e8 Active-Passive.\kerning1\par
+\kerning0\'c2 \'ea\'e0\'f7\'e5\'f1\'f2\'e2\'e5 MAC \'e0\'e4\'f0\'e5\'f1\'e0 \'f3 HBA \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff WWN (World Wide Name) 64 \'e1\'e8\'f2\'e0. \'cd\'e0 \'ee\'f1\'ed\'ee\'e2\'e0\'ed\'e8\'e8 WWN, FC name server \'e2\'fb\'e4\'e0\'b8\'f2 FC\lang1033\f1 -\lang1049\f0\'e0\'e4\'f0\'e5\'f1.\kerning1\par
+\kerning0\par
+\'cf\'f0\'ee\'f2\'ee\'ea\'ee\'eb\'fb:\kerning1\par
+\kerning0\tab - \'ef\'e0\'f0\'e0\'eb\'eb\'e5\'eb\'fc\'ed\'fb\'e5 IDE/ATA = Parallel ATA (PATA) \'e8 Serial \'e2\'e5\'f0\'f1\'e8\'ff SATA. \'d3 SATA \'f1\'ea\'ee\'f0\'ee\'f1\'f2\'fc ~ 6\'c3\'e1/\'f1\kerning1\par
+\kerning0\tab - \'ef\'e0\'f0\'e0\'eb\'eb\'e5\'eb\'fc\'ed\'fb\'e9 SCSI \'e8 serial \'e2\'e5\'f0\'f1\'e8\'ff Serial Attached SCSI (SAS). \'d3 SAS \'f1\'ea\'ee\'f0\'ee\'f1\'f2\'fc \'f2\'ee\'e6\'e5 ~ 6\'c3\'e1/\'f1, \'ed\'ee \'e1\'ee\'eb\'e5\'e5 \'e4\'ee\'f0\'ee\'e3\'ee\'e9 \'f7\'e5\'ec SATA\kerning1\par
+\kerning0\tab - Fiber Channel \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'e8 \'ef\'ee \'ec\'e5\'e4\'e8 \'e8 \'ef\'ee \'ee\'ef\'f2\'e8\'ea\'e5. 16\'c3\'e1/\'f1\kerning1\par
+\kerning0\tab - Over IP: iSCSI \'e8 FCIP\kerning1\par
+\kerning0\par
+\'cf\'f0\'ee \'e4\'e8\'f1\'ea\'e8.\kerning1\par
+\cf3\kerning0\b Service Time\cf0\b0  = \cf3\b Seek Time\cf0\lang1033\b0\f1  + \cf3\lang1049\b\f0 Rotational Time\cf0\lang1033\b0\f1  + \cf3\lang1049\b\f0 Data Transfer Time\cf0\kerning1\b0\par
+\kerning0\tab Seek Time - \'e2\'f0\'e5\'ec\'ff \'ef\'e5\'f0\'e5\'ec\'e5\'f9\'e5\'ed\'e8\'ff \'e3\'ee\'eb\'ee\'e2\'ea\'e8 \'e4\'e8\'f1\'ea\'e0 \'e2\'e4\'ee\'eb\'fc \'e4\'e8\'e0\'ec\'e5\'f2\'f0\'e0. \'d1\'f0\'e5\'e4\'ed\'e5\'e5 \'e2\'f0\'e5\'ec\'ff 3-15 \'ec\'f1.\kerning1\par
+\kerning0\tab Rotational Time - \'e2\'f0\'e5\'ec\'ff \'ed\'e0 \'ea\'f0\'f3\'f7\'e5\'ed\'e8\'e5 \'e4\'e8\'f1\'ea\'e0. \'cd\'e0\'ef\'f0\'ff\'ec\'f3\'fe \'e7\'e0\'e2\'e8\'f1\'e8\'f2 \'ee\'f2 rpm: 5400 = 5 \'ec\'f1, 7200, 15000 = 2 \'ec\'f1.\kerning1\par
+\kerning0\tab Data Transfer Time - \'e2\'f0\'e5\'ec\'ff \'ed\'e0 \'ef\'f0\'ee\'f5\'ee\'e6\'e4\'e5\'ed\'e8\'e5 \'f1\'e8\'e3\'ed\'e0\'eb\'e0 \'ef\'ee \'ef\'f0\'ee\'e2\'ee\'e4\'e0\'ec + \'e2\'f0\'e5\'ec\'ff, \'ef\'f0\'ee\'e2\'e5\'e4\'b8\'ed\'ed\'ee\'e5 \'e2 \lang1033\f1 buffer\lang1049\f0 /cache \'ed\'e0 \'e4\'e8\'f1\'ea\'e5 \'e8 \'f2.\'e4.\kerning1\par
+\kerning0\par
+\par
+JBOD - \'e4\'e8\'f1\'ea\'e8 \'e2\'fb\'f1\'f2\'f0\'ee\'e5\'ed\'fb \'e2 \'ef\'ee\'f1\'eb\'e5\'e4\'ee\'e2\'e0\'f2\'e5\'eb\'fc\'ed\'ee\'f1\'f2\'fc. \'cc\'e5\'f1\'f2\'ee \'ed\'e0 \'ee\'e4\'ed\'ee\'ec \'e7\'e0\'ea\'ee\'ed\'f7\'e8\'eb\'ee\'f1\'fc, \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'ec \'ef\'e8\'f1\'e0\'f2\'fc \'e2 \'f1\'eb\'e5\'e4\'f3\'fe\'f9\'e8\'e9.\kerning1\par
+\kerning0 RAID 0 (Stripe) - "\'f7\'e5\'f0\'e5\'e4\'ee\'e2\'e0\'ed\'e8\'e5". \'c2\'ee\'e7\'f0\'e0\'f1\'f2\'e0\'e5\'f2 performance. \'cd\'e5\'f2 \'f0\'e5\'e7\'e5\'f0\'e2\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'ff.\par
+RAID \lang1033\f1 1 (Mirror) - \lang1049\f0\'e7\'e5\'f0\'ea\'e0\'eb\'ee.\kerning1\par
+\kerning0 RAID 3 - 15 \'e4\'e8\'f1\'ea\'ee\'e2 \'e2 RAID-\'e5. XOR \'f0\'e0\'f1\'ef\'ee\'eb\'e0\'e3\'e0\'e5\'f2\'f1\'ff \'ed\'e0 \'ee\'f2\'e4\'e5\'eb\'fc\'ed\'ee\'ec \'e4\'e8\'f1\'ea\'e5. \'c2 \'f2\'e0\'ea\'ee\'ec RAID \'f2\'ee\'eb\'fc\'ea\'ee \'ee\'e4\'e8\'ed \'e4\'e8\'f1\'ea \'f1 XOR. \'c2 \'ee\'f2\'eb\'e8\'f7\'e8\'e8 \'ee\'f2 RAID 5, \'e7\'e4\'e5\'f1\'fc \'ef\'f0\'e8 \'f7\'f2\'e5\'ed\'e8\'e8 \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 14 \'e4\'e8\'f1\'ea\'ee\'e2, \'e0 \'ef\'f0\'e8 \'e7\'e0\'ef\'e8\'f1\'e8 \'ef\'ee\'f1\'f2\'ee\'ff\'ed\'ed\'ee \'e3\'f0\'f3\'e7\'e8\'ec "XOR \'e4\'e8\'f1\'ea". \'d0\'e5\'ea\'ee\'ec\'e5\'ed\'e4\'ee\'e2\'e0\'ed \'e4\'eb\'ff data backup, multimedia streaming.\kerning1\par
+\kerning0 RAID 5 - 15 \'e4\'e8\'f1\'ea\'ee\'e2 \'e2 RAID-\'e5. \'ce\'f2 \'e7\'e0\'ef\'e8\'f1\'e8 \'ea \'e7\'e0\'ef\'e8\'f1\'e8, XOR "\'ef\'eb\'e0\'e2\'e0\'e5\'f2" \'ef\'ee \'e4\'e8\'f1\'ea\'e0\'ec. \'c2 \'f2\'e0\'ea\'ee\'ec RAID \'e4\'eb\'ff \'ea\'e0\'e6\'e4\'ee\'e9 \'e7\'e0\'ef\'e8\'f1\'e8 \'f2\'ee\'eb\'fc\'ea\'ee \'ee\'e4\'e8\'ed XOR \cf1\kerning1\u8594? \'f3\'f1\'f2\'ee\'e9\'f7\'e8\'e2 \'ea \'e2\'fb\'eb\'e5\'f2\'f3 \'ee\'e4\'ed\'ee\'e3\'ee \'e4\'e8\'f1\'ea\'e0.\cf0\par
+\kerning0 RAID 6 - 15 \'e4\'e8\'f1\'ea\'ee\'e2 \'e2 RAID-\'e5. \'ce\'f2 \'e7\'e0\'ef\'e8\'f1\'e8 \'ea \'e7\'e0\'ef\'e8\'f1\'e8, XOR "\'ef\'eb\'e0\'e2\'e0\'e5\'f2" \'ef\'ee \'e4\'e8\'f1\'ea\'e0\'ec. \'c2 \'f2\'e0\'ea\'ee\'ec RAID \'e4\'eb\'ff \'ea\'e0\'e6\'e4\'ee\'e9 \'e7\'e0\'ef\'e8\'f1\'e8 2-\'e0 XOR \cf1\kerning1\u8594? \'f3\'f1\'f2\'ee\'e9\'f7\'e8\'e2 \'ea \'e2\'fb\'eb\'e5\'f2\'f3 2-\'f5 \'e4\'e8\'f1\'ea\'ee\'e2.\cf0\par
+\cf1 RAID 10 ~ RAID 01, \'ed\'ee \'f3 RAID 01 \'e2\'f1\'b8 \'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5 \'ef\'ee \cf0\kerning0 performance, \'ed\'ee \'f5\'f3\'e6\'e5 \'ef\'ee\'ea\'e0\'e7\'e0\'f2\'e5\'eb\'fc \'ef\'ee \'f0\'e5\'e7\'e5\'f0\'e2\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'fe, \'ef\'ee\'fd\'f2\'ee\'ec\'f3 \'ed\'e8\'e3\'e4\'e5 \'ed\'e5 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff.\kerning1\par
+\cf1\par
+\par
+\'c8\'ec\'e5\'e5\'ec \'e4\'e8\'f1\'ea\'ee\'e2\'f3\'fe \'ef\'ee\'eb\'ea\'f3. \'c7\'e0\'f1\'ee\'e2\'fb\'e2\'e0\'e5\'ec \'e4\'e8\'f1\'ea - \'ee\'ed \'f1\'f0\'e0\'e7\'f3 \'ef\'e5\'f0\'e5\'f5\'ee\'e4\'e8\'f2 \'e2 state: \cf2\b spare\cf1\b0 . \'c2\'fb\'e1\'e8\'f0\'e0\'e5\'ec \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee \'e4\'e8\'f1\'ea\'ee\'e2 \'e8 \'e8\'e7 \'ed\'e8\'f5 \'f1\'ee\'e1\'e8\'f0\'e0\'e5\'ec RAID set. \cf0\kerning0\'c2\'f1\'b8 \'fd\'f2\'ee \'e4\'e5\'eb\'ee \'f0\'e0\'e7\'e1\'e8\'e2\'e0\'e5\'ec \'ed\'e0 Partitions (Volumes) \'e8 \'ea\'e0\'e6\'e4\'ee\'e9 \'ef\'f0\'e8\'f1\'e2\'e0\'e8\'e2\'e0\'e5\'ec \'f3\'ed\'e8\'ea\'e0\'eb\'fc\'ed\'fb\'e9 \'ed\'ee\'ec\'e5\'f0 - LUN ID 239. \kerning1\par
+\kerning0\par
+\b LUN = Partition\kerning1\b0\par
+\kerning0\par
+\'cf\'ee\'f1\'eb\'e5 \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e5\'ed\'ed\'e8\'ff LUN \'ea \'f1\'e5\'f0\'e2\'e5\'f0\'f3, \'ed\'e0\'e4\'ee \'e5\'e3\'ee \'f4\'ee\'f0\'ec\'e0\'f2\'ed\'f3\'f2\'fc \'ef\'ee\'e4 \lang1033\f1 E\lang1049\f0 xt4. \'dd\'f2\'e8\'ec \'e8 \'ee\'f2\'eb\'e8\'f7\'e0\'e5\'f2\'f1\'ff mount NFS. NFS \'ed\'e5 \'ed\'e0\'e4\'ee \'f4\'ee\'f0\'ec\'e0\'f2\'e8\'f0\'ee\'e2\'e0\'f2\'fc.\kerning1\par
+\kerning0\'cf\'ee\'eb\'ea\'e0 \'ec\'ee\'e6\'e5\'f2 \'ee\'f2\'e4\'e0\'e2\'e0\'f2\'fc LUN-\'fb, \'e0 \'ec\'ee\'e6\'e5\'f2 \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc \'ea\'e0\'ea \'ef\'ee\'eb\'ed\'ee\'f6\'e5\'ed\'ed\'ee\'e5 CIFS \'e8\'eb\'e8 NFS \'f5\'f0\'e0\'ed\'e8\'eb\'e8\'f9\'e5.\kerning1\par
+\kerning0\par
+\'ce\'e4\'e8\'ed LUN \'ec\'ee\'e6\'ed\'ee \'ef\'ee\'e4\'e0\'f2\'fc \'ed\'e0 \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee \'f1\'e5\'f0\'e2\'e5\'f0\'ee\'e2\lang1033\f1 .\lang1049\f0  \'cd\'ee \'f2\'ee\'e3\'e4\'e0 \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee \'f4\'ee\'f0\'ec\'e0\'f2\'e8\'f0\'ee\'e2\'e0\'f2\'fc/\'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'f2\'ee\'eb\'fc\'ea\'ee \lang1033\f1 "Cluster FS" \lang1049\f0\'f2\'e8\'ef\'e0 \lang1033\f1 VMFS/GFS2. \lang1049\f0\'c5\'f1\'eb\'e8 \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e8\'ec \lang1033\f1 LUN \lang1049\f0\'ea \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'e8\'ec \'f1\'e5\'f0\'e2\'e5\'f0\'e0\'ec \'e8 \'ee\'f2\'f4\'ee\'f0\'ec\'e0\'f2\'e8\'f0\'f3\'e5\'ec \'e5\'e3\'ee \lang1033\f1 Ext4/NTFS\lang1049\f0 ,\lang1033\f1  \lang1049\f0\'f2\'ee \'ef\'ee\'eb\'f3\'f7\'e8\'ec data corruption.\kerning1\par
+\kerning0\par
+{\field{\*\fldinst{HYPERLINK "https://www.youtube.com/c/storagefreak/videos"}}{\fldrslt{\ul\cf4 https://www.youtube.com/c/storagefreak/videos}}}\kerning1\f0\fs22\par
+\kerning0\'d7\'f3\'e2\'e0\'ea \'ef\'ee\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2 \'ea\'e0\'ea \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e8\'f2\'fc\'f1\'ff \'ea \'ef\'ee\'eb\'ea\'e5 \'ef\'ee iSCSI: \'c7\'e0\'f5\'ee\'e4\'e8\'ec \'e2 \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e8 iSCSI \'e2 Windows. \'d2\'e0\'ec \'e5\'f1\'f2\'fc iSCSI \'e0\'e4\'f0\'e5\'f1 \'ed\'e0\'f8\'e5\'e9 \'ec\'e0\'f8\'e8\'ed\'fb: qn.1991-05.com.microsoft:storage.net\kerning1\par
+\kerning0\'cd\'e0 \'ef\'ee\'eb\'ea\'e5 \'f1\'ee\'e7\'e4\'e0\'b8\'ec (\'e2 \'f2\'e5\'f0\'ec\'e8\'ed\'e0\'f5 NetApp) \cf5\b Initiator Group\cf0\b0 , \'e3\'e4\'e5 \'f3\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'ec \'f1 \'ea\'e0\'ea\'e8\'f5 iSCSI \'e0\'e4\'f0\'e5\'f1\'ee\'e2 \'ec\'ee\'e6\'ed\'ee \'ef\'ee\'eb\'f3\'f7\'e8\'f2\'fc \'e4\'ee\'f1\'f2\'f3\'ef \'ea LUN, \'ea \'ea\'ee\'f2\'ee\'f0\'ee\'ec\'f3 \'ef\'f0\'e8\'f1\'f2\'b8\'e3\'ed\'f3\'f2\'e0 \'fd\'f2\'e0 Initiator Group. \'cd\'e0 Windows \'ec\'e0\'f8\'e8\'ed\'e5 \'ef\'f0\'ee\'ef\'e8\'f1\'fb\'e2\'e0\'e5\'ec IP:Port \'ef\'ee\'eb\'ea\'e8 \'e8 \'ea\'eb\'e8\'ea\'e0\'e5\'ec ~ "\'cf\'ee\'e4\'f1\'ee\'e5\'e4\'e8\'ed\'e8\'f2\'fc\'f1\'ff \'ef\'ee iSCSI".\par
+\par
+\'d1\'e5\'f0\'e2\'e5\'f0\'ed\'e0\'ff \'f7\'e0\'f1\'f2\'fc \'e2 iSCSI \'ed\'e0\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff \'cf\'ee\'f0\'f2\'e0\'eb\'ee\'ec. \'cf\'ee\'f0\'f2\'e0\'eb \'f1\'ee\'e4\'e5\'f0\'e6\'e8\'f2 Targets, \'ea\'e0\'e6\'e4\'fb\'e9 \'e8\'e7 \'ea\'ee\'f2\'ee\'f0\'fb\'f5 \'ef\'f0\'e5\'e4\'ee\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2 \'ea\'eb\'e8\'e5\'ed\'f2\'f3 - Initiator \'e4\'ee\'f1\'f2\'f3\'ef \'ea \'ee\'e4\'ed\'ee\'ec\'f3 \'e8\'eb\'e8 \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'e8\'ec \'e1\'eb\'ee\'f7\'ed\'fb\'ec \'f3\'f1\'f2\'f0\'ee\'e9\'f1\'f2\'e2\'e0\'ec = \'f4\'e8\'e7\'e8\'f7\'e5\'f1\'ea\'e8\'ec \'e4\'e8\'f1\'ea\'e0\'ec, \'eb\'ee\'e3\'e8\'f7\'e5\'f1\'ea\'e8\'ec \'f2\'ee\'ec\'e0\'ec, \'f4\'e0\'e9\'eb\'e0\'ec.\par
+\par
+{\field{\*\fldinst{HYPERLINK "https://interface31.ru/tech_it/2020/04/nastroyka-iscsi-hranilishha-v-debian-ili-ubuntu.html"}}{\fldrslt{\ul\cf4 https://interface31.ru/tech_it/2020/04/nastroyka-iscsi-hranilishha-v-debian-ili-ubuntu.html}}}\f0\fs22\par
+\'cf\'ee\'e4\'ed\'e8\'ec\'e0\'e5\'ec \b iSCSI \'f1\'e5\'f0\'e2\'e5\'f0\b0  \'ed\'e0 Linux.\par
+#apt install tgt\par
+#dd if=/dev/zero of=/storage/lun0.img bs=1 count=0 seek=200G\tab\'f1\'ee\'e7\'e4\'e0\'b8\'ec "\kerning1\'f0\'e0\'e7\'f0\'e5\'e6\'e5\'ed\'ed\'fb\'e9" \cf1\'f4\'e0\'e9\'eb ~ Thin provisioning (\'f1\'ec.Linux.rtf)\par
+#touch /etc/tgt/conf.d/first.conf\par
+\par
+<target iqn.2009-02.ru.nvg:first-target>\tab\'e8\'ec\'ff \'e2 \'f4\'ee\'f0\'ec\'e0\'f2\'e5 iqn.<year>.<reversed_domain_name>:<unique_name>\par
+   backing-store /storage/lun1.img\tab\tab\'ea\'e0\'ea\'e8\'e5 \'e4\'e8\'f1\'ea\'e8/LUN \'ee\'f2\'e4\'e0\'b8\'ec \'ef\'ee \'e4\'e0\'ed\'ed\'ee\'ec\'f3 target\par
+   backing-store /storage/lun2.img\par
+   initiator-address 192.168.111.150\tab\tab (\'ee\'ef\'f6\'e8\'ee\'ed\'e0\'eb\'fc\'ed\'ee) \'e5\'f1\'eb\'e8 \'ed\'e5 \'f3\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'ec, \'f2\'ee \'e4\'ee\'f1\'f2\'f3\'ef \'ef\'ee\'eb\'f3\'f7\'e0\'f2 \'e2\'f1\'e5\par
+   incominguser vasya pass12\tab\tab\tab (\'ee\'ef\'f6\'e8\'ee\'ed\'e0\'eb\'fc\'ed\'ee) login/password\par
+</target>\par
+\cf0\kerning0\par
+#systemctl restart tgt\par
+#tgtadm --mode target --op show\par
+Target 1: iqn.\cf1\kerning1 2009-02.ru.nvg:first-target\par
+  System information:\par
+    Driver: iscsi\par
+    State: ready\par
+  I_T nexus information:\par
+    I_T nexus: 1\par
+      Initiator: iqn.1993-08.ru.nvg:01:864e56d\par
+      Connection: 0\par
+        IP Address: 10.0.0.154\par
+  LUN information:\par
+    LUN: 0\par
+      Type: controller\par
+      SCSI ID: IET 00010000\par
+      SCSI SN: beaf10\par
+      Size: 0 Mb, Block size: 1\par
+      Online: yes\par
+      Removable media: No\par
+      Prevent removal: No\par
+      Readonly: No\par
+      SWP: No\par
+      Thin-provivioning: No\par
+      Backing store type: null\par
+      Backing store path: None\par
+      Backing store flags:\par
+    LUN: 1\par
+      Type: disk\par
+      SCSI ID: IET 00010001\par
+      SCSI SN: beaf11\par
+      Size: 2147 Mb, Block size: 512\par
+      Online: yes\par
+      Removable media: No\par
+      Prevent removal: No\par
+      Readonly: No\par
+      SWP: No\par
+      Thin-provivioning: No\par
+      Backing store type: rdwr\par
+      Backing store path: /storage/lun1.img\par
+      Backing store flags:\par
+\par
+\cf0{\field{\*\fldinst{HYPERLINK "https://interface31.ru/tech_it/2020/04/nastroyka-iscsi-iniciatora-v-debian-ili-ubuntu.html"}}{\fldrslt{\ul\cf4 https://interface31.ru/tech_it/2020/04/nastroyka-iscsi-iniciatora-v-debian-ili-ubuntu.html}}}\cf1\f0\fs22\par
+\cf0\kerning0\'cf\'ee\'e4\'ed\'e8\'ec\'e0\'e5\'ec \b iSCSI \'ea\'eb\'e8\'e5\'ed\'f2\b0  \'ed\'e0 Linux.\par
+#apt install open-iscsi\par
+#nano /etc/iscsi/iscsid.conf\par
+\tab node.startup = automatic\tab\'e2\'f1\'f2\'e0\'e2\'e8\'f2\'fc\par
+\tab node.startup = manual\tab\tab\'f3\'e4\'e0\'eb\'e8\'f2\'fc\par
+\tab node.session.auth...\tab\tab\'e5\'f1\'eb\'e8 \'f5\'ee\'f2\'e8\'ec \'ed\'e0\'f1\'f2\'f0\'ee\'e8\'f2\'fc auth\par
+#systemctl restart open-iscsi\par
+#iscsiadm --mode discovery --portal 192.168.111.153 --type sendtargets\tab\tab\'ef\'f0\'ee\'e1\'f3\'e5\'ec \'ef\'ee\'eb\'f3\'f7\'e8\'f2\'fc \'f1\'ef\'e8\'f1\'ee\'ea \'e4\'ee\'f1\'f2\'f3\'ef\'ed\'fb\'f5 targets \'ee\'f2 iSCSI \'f1\'e5\'f0\'e2\'e5\'f0\'e0 -> \'ef\'ee\'ff\'e2\'e8\'f2\'f1\'ff \'ea\'e0\'f2\'e0\'eb\'ee\'e3 /etc/iscsi\par
+#iscsiadm --mode node --login\tab\tab\'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e8\'ec\'f1\'ff \'ea\'ee \'e2\'f1\'e5\'ec targets \'e8\'e7 \'ea\'e0\'f2\'e0\'eb\'ee\'e3\'e0 /etc/iscsi. \'d2\'ee\'e6\'e5 \'e8 \'e4\'eb\'ff \'ee\'ef\'f6\'e8\'e8 --logout\par
+#iscsiadm --mode node --targetname "iqn.2009-02.lab.interface31:deban-test-target" --login\tab\tab\'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e8\'ec\'f1\'ff \'ea \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'ee\'ec\'f3 target\par
+#iscsiadm --mode session\tab\tab\tab\'ef\'ee\'f1\'ec\'ee\'f2\'f0\'e5\'f2\'fc \'f2\'e5\'ea\'f3\'f9\'e8\'e5 \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e5\'ed\'e8\'ff\par
+#iscsiadm --mode discovery -p 192.168.111.153 -o delete\tab\'f3\'e4\'e0\'eb\'e5\'ed\'e8\'ff \'ed\'e5\'ed\'f3\'e6\'ed\'fb\'f5 targets\par
+\kerning1\par
+\kerning0\par
+\'d2\'e0 \'e6\'e5 \'ef\'f0\'ee\'f6\'e5\'e4\'f3\'f0\'e0 \'e8 \'f1 FC: \'cd\'e0 \'ef\'ee\'eb\'ea\'e5 \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee \'f1\'ee\'e7\'e4\'e0\'f2\'fc \cf5\b Initiator Group\cf0\b0  \'f1 \'e0\'e4\'f0\'e5\'f1\'ee\'ec WWN \'f1\'e5\'f0\'e2\'e5\'f0\'e0 (5C:01:43:8D:F3:0E:6A:8B), \'f1 \'ea\'ee\'f2\'ee\'f0\'ee\'e3\'ee \'f0\'e0\'e7\'f0\'e5\'f8\'b8\'ed \'e4\'ee\'f1\'f2\'f3\'ef \'ea \'e4\'e0\'ed\'ed\'ee\'ec\'f3 LUN.\kerning1\par
+\kerning0\par
+LUN \'ec\'ee\'e6\'ed\'ee \'ee\'e1\'fa\'e5\'e4\'e8\'ed\'ff\'f2\'fc (\cf6\b Expansion\cf0\b0 ):\kerning1\par
+\pard\nowidctlpar\hyphpar0\fi-584\li1169\sl240\slmult1\kerning0 Concatenate - \'ea\'ee\'e3\'e4\'e0 \'ef\'f0\'ee\'f1\'f2\'ee "\'ef\'f0\'e8\'f1\'f2\'f0\'e0\'e8\'e2\'e0\'e5\'ec \'f1\'e1\'ee\'ea\'f3" \'ed\'ee\'e2\'fb\'e9 LUN \'ef\'ee \'ef\'f0\'e8\'ed\'f6\'e8\'ef\'f3 JBOD. \'cf\'f0\'ee\'f1\'f2\'ee \'f3\'e2\'e5\'eb\'e8\'f7\'e8\'e2\'e0\'e5\'ec \cf1\kerning1 capacity.\cf0\kerning0  \'cd\'e5\'f2 \'ef\'f0\'e8\'f0\'ee\'f1\'f2\'e0 \'e2 performance. \'ce\'ef\'e5\'f0\'e0\'f6\'e8\'ff "\'ef\'f0\'e8\'e1\'e0\'e2\'eb\'e5\'ed\'e8\'ff" \'ef\'f0\'ee\'e8\'f1\'f5\'ee\'e4\'e8\'f2 \'ec\'ee\'ec\'e5\'ed\'f2\'e0\'eb\'fc\'ed\'ee, \'ed\'e5 \'f2\'f0\'e5\'e1\'f3\'e5\'f2 \'ed\'e8\'ea\'e0\'ea\'e8\'f5 \'ef\'e5\'f0\'e5\'f1\'f2\'f0\'ee\'e5\'ed\'e8\'e9 RAID-\'e0.\kerning1\par
+\kerning0 Stripe - \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'ec \'ed\'ee\'e2\'fb\'e9 LUN \'ea\'e0\'ea RAID 0. \'d3\'e2\'e5\'eb\'e8\'f7\'e8\'e2\'e0\'e5\'ec \cf1\kerning1 capacity \'e8 \cf0\kerning0 performance. \'cd\'ee \'ef\'f0\'ee\'f6\'e5\'f1\'f1 \'e4\'ee\'eb\'e3\'e8\'e9, \'f2\'f0\'e5\'e1\'f3\'e5\'f2 \'ef\'e5\'f0\'e5\'f1\'f2\'f0\'ee\'e5\'ed\'e8\'ff \'e4\'e0\'ed\'ed\'fb\'f5.\kerning1\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\kerning0\par
+\pard\nowidctlpar\hyphpar0\fi-585\li585\sl240\slmult1 Thin Provisioning - \'ea\'ee\'e3\'e4\'e0 \'f1\'e5\'f0\'e2\'e0\'ea\'f3 \'e3\'ee\'e2\'ee\'f0\'e8\'ec, \'f7\'f2\'ee \'ff\'ea\'ee\'e1\'fb \'e4\'e0\'eb\'e8 LUN \'ed\'e0 2Tb, \'e0 \'f0\'e5\'e0\'eb\'fc\'ed\'ee \'e4\'e8\'f1\'ea\'ee\'e2 \'e7\'e0\'e4\'e5\'e9\'f1\'f2\'e2\'ee\'e2\'e0\'eb\'e8 200Gb. \'c5\'f1\'eb\'e8 \'ef\'ee\'f2\'f0\'e5\'e1\'f3\'e5\'f2\'f1\'ff \'ec\'e5\'f1\'f2\'e0 > 200Gb, \'f2\'ee \'e8\'e7 Shared Pool \'f1 \'f4\'e8\'e7\'e8\'f7\'e5\'f1\'ea\'e8\'ec\'e8 \'e4\'e8\'f1\'ea\'e0\'ec\'e8, \'ef\'ee \'f2\'f0\'e5\'e1\'ee\'e2\'e0\'ed\'e8\'fe \'e1\'fb\'f1\'f2\'f0\'ee \'f1\'e4\'e5\'eb\'e0\'e5\'f2 LUN \cf6\b Expansion\cf0\b0 .\par
+Thi\lang1033\f1 ck\lang1049\f0  Provisioning\lang1033\f1  - \lang1049\f0\'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'ed\'e0\'ec\'ed\'ee\'e3\'ee \'e1\'fb\'f1\'f2\'f0\'e5\'e5 Thin Provisioning.\kerning1\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\kerning0\par
+\par
+\par
+SAN (Storage Area Network)\kerning1\par
+\kerning0 FC - \'fd\'f2\'ee \'ea\'e0\'ea IP. \'d1\'e0\'ec \'ef\'ee \'f1\'e5\'e1\'e5 \'ed\'e8\'f7\'f2\'ee. "\'cf\'e5\'f0\'e5\'e2\'ee\'e7\'e8\'f2" SCSI \'ea\'ee\'ec\'e0\'ed\'e4\'fb \'ee\'f2 HBA \'f1\'e5\'f0\'e2\'e5\'f0\'e0 \'e4\'ee HBA \'d1\'d5\'c4.\kerning1\par
+\kerning0\tab FC-4\tab\'c7\'e4\'e5\'f1\'fc \'e5\'e7\'e4\'e8\'f2 SCSI\kerning1\par
+\kerning0\tab FC-3\tab\'cd\'e5 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff\kerning1\par
+\kerning0\tab FC-2\tab FC addressing, flow control, frame structure\kerning1\par
+\kerning0\tab FC-1\tab 8b/10b \'e8\'eb\'e8 64b/66b\kerning1\par
+\kerning0\tab FC-0\tab\'ec\'e5\'e4\'fc \'ee\'ef\'f2\'e8\'ea\'e0\kerning1\par
+\kerning0\par
+\par
+\par
+\'c0\'e4\'f0\'e5\'f1\'e0\'f6\'e8\'ff FC. \tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab EMC_\'f2\'e5\'ee\'f0\'e8\'ff.pdf \'f1\'f2\'f0.160\kerning1\par
+\kerning0\'cd\'e0\'ef\'ee\'ec\'e8\'ed\'e0\'e5\'f2 \'e0\'e4\'f0\'e5\'f1\'e0\'f6\'e8\'fe IPv6. \'c2\'ed\'f3\'f2\'f0\'e8 \'e0\'e4\'f0\'e5\'f1\'e0 \'e7\'e0\'eb\'ee\'e6\'e5\'ed\'e0 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'e8\'e7\'e0\'f6\'e8\'ff, \'ef\'ee\'fd\'f2\'ee\'ec\'f3 \'e8 \'ed\'e5\'f2 \'f3\'f0\'ee\'e2\'ed\'fb FC-3.\kerning1\par
+\kerning0\par
+\tab |  23 - 16\tab |  15 - 8\tab |  7 - 0\tab |\kerning1\par
+\kerning0\tab |-----------------------------------|\kerning1\par
+\kerning0\tab | Domain ID\tab |  Area ID\tab | Port ID\tab |\kerning1\par
+\kerning0\par
+Domain ID - \'f3\'ed\'e8\'ea\'e0\'eb\'fc\'ed\'fb\'e9 \'ed\'ee\'ec\'e5\'f0 SAN Switch. \'c0\'e4\'f0\'e5\'f1 FFFFFC \'e7\'e0\'f0\'e5\'e7\'e5\'f0\'e2\'e8\'f0\'ee\'e2\'e0\'ed \'ef\'ee\'e4 FC name server, \'e0 FFFFFE \'ef\'ee\'e4 fabric login service.\kerning1\par
+\kerning0 Area ID - \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'e5\'f2 group of switch ports.\kerning1\par
+\kerning0 Port ID - \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'e5\'f2 \'ef\'ee\'f0\'f2 \'e2\'ed\'f3\'f2\'f0\'e8 Area ID.\kerning1\par
+\kerning0\par
+\par
+Zoning.\kerning1\par
+\kerning0\'cf\'ee\'f0\'f2\'fb \'ec\'ee\'e3\'f3\'f2 \'ee\'e1\'f9\'e0\'f2\'fc\'f1\'ff \'f2\'ee\'eb\'fc\'ea\'ee \'f1 \'ef\'ee\'f0\'f2\'e0\'ec\'e8 \'e8\'e7 \'f1\'e2\'ee\'e5\'e9 \'e7\'ee\'ed\'fb.\kerning1\par
+\par
+}
+ 

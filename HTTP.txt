@@ -1,0 +1,56 @@
+CORS - механизм регулирования: заходим на сайт aaa.ru, скачиваем страницу, а в ней помимо основного контента 20 ссылок на картинки с сайта mail.ru. На сайт aaa.ru зашло 10 человек - породило 200 скачек с mail.ru ~ аля DDoS.
+
+Клиент отправил запрос – скачивает только один файл и разрывает соединение. Это проблема HTTP 1.1 и решается cache-ированием.
+Если в html написано вот сайт, а вот ссылка на картинку, то браузер создаст отдельный GET и скачает эту картинку.
+
+	Request
+GET /wiki/Сигнал_(Unix) HTTP/1.1			Starting line или Стартовая строка
+Host: ru.wikipedia.org					дальше идёт Header заголовок HTTP запроса
+User-Agent: Mozilla/5.0 (Windows NT 6.1) Firefox/68.0
+Accept: image/jpeg, image/gif
+Connection: close или keep-alive			что делать после создания connection
+
+	Response
+HTTP/1.1 200 OK
+Server: Apache
+Accept-Ranges: bytes
+Content-Type: text/html; charset=utf-8 (MIME бывает text/plain или image/gif https://stackoverflow.com/questions/23714383/what-are-all-the-possible-values-for-http-content-type-header) 
+Content-Length: 254
+(заголовок окончен, далее 2-а символа CR(Carriage Return) и LF(Line Feed) = \r\n, после идёт тело – сам html)
+<html>
+...
+</html>
+
+Если клиент отправил запрос с методом, который сервер не знает, то 501 (Not Implemented). Если сервер метод знает, но этот метод неприменим к данному ресурсу, то 405 (Method Not Allowed) + в ответе клиенту перечень поддерживаемых методов в заголовоке Allow: GET, POST, PUT
+
+
+Methods:
+
+OPTION
+Запрос, какие методы поддерживает сервер. В ответ сервер отправляет Allow: GET, POST, PUT
+Пинговалка для HTTP - отправлять запросы типа OPTIONS * HTTP/1.1
+Сообщения ответов сервера не cache-ируется.
+
+HEAD
+Тоже что и GET, только сервер в ответе не отправляет тело. Используется для получения метаданных, проверка наличия ресурса.
+
+GET
+http://example.com/index.html?name=Vasya&age=10
+
+POST
+name=Vasya и age=10 будут переданы в теле запроса
+
+PUT
+В отличии от POST, тут семантика - создать новый URI ресурс или перезаписать существующий.
+	PUT /forums/<new_thread> HTTP/1.1
+	Host: htps://yourwebsite.com
+Здесь сервер создаст новый URL, куда положит тело пришедшее от PUT.
+
+
+Status Code:
+
+1хх - Информационные	100 Continue
+2хх - Success		200 ОК
+3хх - Redirection	302 редирект
+4хх - Client Error	404 Not Found
+5хх - Server Error	503 Service Unavailable

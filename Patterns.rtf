@@ -1,0 +1,512 @@
+{\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}}
+{\colortbl ;\red0\green0\blue0;\red0\green0\blue255;\red127\green0\blue85;\red255\green0\blue0;\red0\green120\blue38;\red0\green0\blue128;\red102\green14\blue122;\red128\green128\blue0;}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf1\lang1049\kerning1\f0\fs22 GOF\cf0\par
+\cf1\tab\'cf\'ce\'d0\'ce\'c6\'c4\'c0\'de\'d9\'c8\'c5 \'d8\'c0\'c1\'cb\'ce\'cd\'db\cf0\par
+\cf1\tab\tab Factory Method\cf0\par
+\cf1\tab\tab Abstract Factory\cf0\par
+\cf1\tab\tab\cf0\par
+\cf1\par
+\par
+Books.iso - \'cf\'e0\'f2\'f2\'e5\'f0\'ed\'fb \'ef\'f0\'ee\'e5\'ea\'f2\'e8\'f0\'ee\'e2\'e0\'ed\'e8. \'cf\'f0\'e8\'b8\'ec\'fb \'ce\'ce\'cf.pdf\cf0\par
+\cf1\par
+\'c5\'f0\'ec\'e0\'ea\'ee\'e2 \'c8\'eb\'fc\'ff \'ef\'f0\'ee Oberon \'f1\'ee\'e2\'e5\'f2\'ee\'e2\'e0\'eb patterns \'ce\'ce\'cf:\cf0\par
+\cf1   \'d4\'e0\'f3\'eb\'e5\'f0 "\'c0\'f0\'f5\'e8\'f2\'e5\'ea\'f2\'f3\'f0\'e0 \'ea\'ee\'f0\'ef\'ee\'f0\'e0\'f2\'e8\'e2\'ed\'fb\'f5 \'ef\'f0\'e8\'eb\'ee\'e6\'e5\'ed\'e8\'e9"\cf0\par
+\cf1   \'dd\'e2\'e0\'ed\'f1 "\'cf\'f0\'e5\'e4\'ec\'e5\'f2\'ed\'ee-\'ee\'f0\'e8\'e5\'ed\'f2\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'ee\'e5 \'ef\'f0\'ee\'e5\'ea\'f2\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'e5"\cf0\par
+\cf1\par
+\cf0{\field{\*\fldinst{HYPERLINK "https://www.youtube.com/watch?v=Ho31lsqzIV4"}}{\fldrslt{\ul\cf2 https://www.youtube.com/watch?v=Ho31lsqzIV4}}}\cf1\f0\fs22   \'cd\'e5\'ec\'f7\'e8\'ed\'f1\'ea\'e8\'e9 \'d8\'e0\'e1\'eb\'ee\'ed\'fb GoF. \'d7\'e0\'f1\'f2\'fc 1\cf0\par
+\cf1\par
+\b Pattern\cf0\b0\par
+\cf1\par
+\cf0{\field{\*\fldinst{HYPERLINK "https://habr.com/ru/post/210288/"}}{\fldrslt{\ul\cf2 https://habr.com/ru/post/210288/}}}\cf1\f0\fs22\tab\'d8\'ef\'e0\'f0\'e3\'e0\'eb\'ea\'e0 \'ef\'ee \'f8\'e0\'e1\'eb\'ee\'ed\'e0\'ec \'ef\'f0\'ee\'e5\'ea\'f2\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'ff\cf0\par
+\cf1\'d0\'e0\'e7\'eb\'e8\'f7\'ed\'fb\'e5 "\'f8\'e0\'e1\'eb\'ee\'ed\'fb"/\'f1\'f5\'e5\'ec\'fb - \'ea\'e0\'ea \'f1\'ef\'f0\'ee\'e5\'ea\'f2\'e8\'f0\'ee\'e2\'e0\'f2\'fc \'ea\'eb\'e0\'f1\'f1\'fb \'e8 \'e2\'e7\'e0\'e8\'ec\'ee\'e4\'e5\'e9\'f1\'f2\'e2\'e8\'ff \'ec\'e5\'e4\'e6\'f3 \'ed\'e8\'ec\'e8 \'f7\'f2\'ee\'e1\'fb \'e1\'fb\'eb\'ee \'f1\'f7\'e0\'f1\'f2\'fc\'e5\cf0\par
+\cf1\par
+\cf0{\field{\*\fldinst{HYPERLINK "https://refactoring.guru/ru/design-patterns"}}{\fldrslt{\ul\cf2 https://refactoring.guru/ru/design-patterns}}}\cf1\f0\fs22  \'e2\'f0\'ee\'e4\'e5 \'ea\'f0\'e0\'f1\'e8\'e2\'ee \'ee\'ef\'e8\'f1\'fb\'ed\'fb pattern-\'fb\cf0\par
+\cf1\par
+\'c4\'e2\'e0 \'ee\'f1\'ed\'ee\'e2\'ed\'fb\'f5 \'ef\'ee\'e4\'f5\'ee\'e4\'e0:\cf0\par
+\cf1\tab GRASP - \'ee\'e1\'ee\'e1\'f9\'b8\'ed\'ed\'fb\'e9 \'e2\'e7\'e3\'eb\'ff\'e4 \'ed\'e0 \'ee\'f0\'e3\'e0\'ed\'e8\'e7\'e0\'f6\'e8\'fe \'ea\'eb\'e0\'f1\'f1\'ee\'e2 \'e2\'ed\'e5 \'e7\'e0\'e2\'e8\'f1\'e8\'ec\'ee\'f1\'f2\'e8 \'ee\'f2 \'ef\'ee\'f1\'f2\'e0\'e2\'eb\'e5\'ed\'ed\'ee\'e9 \'e7\'e0\'e4\'e0\'f7\'e8.\cf0\par
+\cf1\tab GoF - \'f0\'e5\'f6\'e5\'ef\'f2\'fb \'f0\'e5\'f8\'e5\'ed\'e8\'ff \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'fb\'f5 \'ef\'f0\'ee\'e1\'eb\'e5\'ec\cf0\par
+\cf1\par
+\b GRASP\cf0\b0\par
+\cf1\par
+\ul Expert\cf0\ulnone\par
+\cf1\'ca\'eb\'e0\'f1\'f1\'fb \'e4\'e5\'eb\'e8\'ec \'ed\'e0 2-\'e5 \'e3\'f0\'f3\'ef\'ef\'fb: \'ee\'e4\'ed\'e8 \'f1\'ee\'e4\'e5\'f0\'e6\'e0\'f2 \'f2\'ee\'eb\'fc\'ea\'ee \'e4\'e0\'ed\'ed\'fb\'e5, \'e4\'f0\'f3\'e3\'e8\'e5 \'f2\'ee\'eb\'fc\'ea\'ee \'ec\'e5\'f2\'ee\'e4\'fb\cf0\par
+\cf1 Expert - \'fd\'f2\'ee \'ca\'eb\'e0\'f1\'f1\'fb-\'e4\'e0\'ed\'ed\'fb\'e5 \emdash  \'e4\'ee\'eb\'e6\'ed\'fb \'e1\'fb\'f2\'fc \'f1\'f3\'f9\'ed\'ee\'f1\'f2\'fc\'fe Java Beans. \'c8\'ec\'e5\'fe\'f2 \'f2\'ee\'eb\'fc\'ea\'ee \'ec\'e5\'f2\'ee\'e4\'fb get(), set() \'e8 \'f2\'e5 \'ec\'e5\'f2\'ee\'e4\'fb, \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'e4\'ee\'f1\'f2\'e0\'eb\'e8\'f1\'fc \'ee\'f2 class Object\cf0\par
+\cf1\'d0\'e0\'e7\'e1\'e8\'e2\'e0\'e5\'ec \'f1\'e2\'ee\'fe \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'f3 \'ed\'e0 \'f2\'e0\'ea\'e8\'e5 Expert \'ea\'eb\'e0\'f1\'f1\'fb - Student (name, age, ...), Test (question, answer, ...) \'e8 \'f2.\'ef.\cf0\par
+\cf1\par
+\ul Creator\cf0\ulnone\par
+\cf1\'ca\'eb\'e0\'f1\'f1-creator \'c0 \'ee\'f2\'e2\'e5\'f2\'f1\'f2\'e2\'e5\'ed\'ed\'fb\'e9 \'e7\'e0 \'f1\'ee\'e7\'e4\'e0\'ed\'e8\'e5 \'fd\'ea\'e7\'e5\'ec\'ef\'eb\'ff\'f0\'ee\'e2 \'ca\'eb\'e0\'f1\'f1\'e0 \'c2, \'e5\'f1\'eb\'e8\cf0\par
+\cf1 - class \'c0 \'f1\'ee\'e4\'e5\'f0\'e6\'e8\'f2 \'e8\'eb\'e8 \'ee\'f2\'ea\'f3\'e4\'e0-\'f2\'ee \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'f2 \'e4\'e0\'ed\'ed\'fb\'e5 x, y, z \'e4\'eb\'ff \'e2\'fb\'e7\'ee\'e2\'e0 \'ea\'ee\'ed\'f1\'f2\'f0\'f3\'ea\'f2\'ee\'f0\'e0 \'c2(int x, char y, String z)\cf0\par
+\cf1 - class \'c0 \'e0\'ea\'f2\'e8\'e2\'ed\'ee \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'f1 \'ee\'e1\'fa\'e5\'ea\'f2\'e0\'ec\'e8 class \'c2\cf0\par
+\cf1 - \'c0 \'e0\'e3\'f0\'e5\'e3\'e8\'f0\'f3\'e5\'f2 \'ee\'e1\'fa\'e5\'ea\'f2\'fb \'c2, \'f3\'f1\'eb\'ee\'e2\'ed\'ee class "\'d8\'ea\'ee\'eb\'fc\'ed\'fb\'e9 \'e6\'f3\'f0\'ed\'e0\'eb" \'e1\'f3\'e4\'e5\'f2 \'e2 \'ec\'e0\'f1\'f1\'e8\'e2 \'f1\'ea\'eb\'e0\'e4\'fb\'e2\'e0\'f2\'fc \'fd\'ea\'e7\'e5\'ec\'ef\'eb\'ff\'f0\'fb class Student\cf0\par
+\cf1 - \'c0 \'f1\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'f2 (contains) \'c2\cf0\par
+\cf1 - \'c0 \'e8 \'c2 \'ee\'f2\'ed\'ee\'f1\'ff\'f2\'f1\'ff \'ea \'ee\'e4\'ed\'ee\'ec\'f3 \'f2\'e8\'ef\'f3\cf0\par
+\cf1\par
+\ul Low Coupling\cf0\ulnone\par
+\cf1\'cd\'e8\'e7\'ea\'e0\'ff \'c2\'cd\'c5\'d8\'cd\'df\'df \'f1\'e2\'ff\'e7\'e0\'ed\'ed\'ee\'f1\'f2\'fc.\cf0\par
+\cf1\'c8\'ec\'e5\'e5\'ec \'ea\'eb\'e0\'f1\'f1\'fb: \'d3\'f7\'e5\'e1\'ed\'fb\'e9 "\'ca\'f3\'f0\'f1" \'f1\'ee\'e4\'e5\'f0\'e6\'e8\'f2 "\'d2\'e5\'f1\'f2\'fb", \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'f1\'ee\'f1\'f2\'ee\'ff\'f2 \'e8\'e7 "\'c2\'ee\'ef\'ee\'f1\'ee\'e2"\cf0\par
+\cf1\'c2\'e0\'f0\'e8\'e0\'ed\'f2 \'ef\'eb\'ee\'f5\'ee\'e9:\cf0\par
+\cf3\b class\cf1\b0  Test\cf0\par
+\cf1\tab\cf3\b void\cf1\b0  addQuestion(Question quest)\tab\cf4\b Low Coupling \'e8 High Cohesion \'f0\'e0\'f1\'f1\'ec\'e0\'f2\'f0\'e8\'e2\'e0\'fe\'f2\'f1\'ff \'e2 \'f0\'e0\'e7\'f0\'e5\'e7\'e5 \'f0\'e0\'e7\'e4\'e5\'eb\'e5\'ed\'e8\'ff \'ed\'e0 \'ea\'eb\'e0\'f1\'f1\'fb/\'ec\'ee\'e4\'f3\'eb\'e8.\cf0\b0\par
+\cf3\b class\cf1\b0  Course\cf0\par
+\cf1\tab\cf3\b void\cf1\b0  createTest ()\cf0\par
+\cf1\tab\tab Test test = \cf3\b new\cf1\b0  Test()\cf0\par
+\cf1\tab\tab\cf3\b while\cf1\b0  (...)\cf0\par
+\cf1\tab\tab\tab Question quest = \cf3\b new\cf1\b0  Question()\cf0\par
+\cf1\tab\tab\tab test.addQuestion(quest)\tab\tab Course \'f1\'ee\'e7\'e4\'e0\'b8\'f2 \'ee\'e1\'fa\'e5\'ea\'f2 class Test, \'e7\'e4\'e5\'f1\'fc \'e6\'e5 \'f1\'ee\'e7\'e4\'e0\'b8\'f2 \'ee\'e1\'fa\'e5\'ea\'f2 class Question, \'e7\'e4\'e5\'f1\'fc \'e6\'e5 \'f3 \'ee\'e1\'fa\'e5\'ea\'f2\'e0 class Test \'e2\'fb\'e7\'fb\'e2\'e0\'e5\'f2 \'ec\'e5\'f2\'ee\'e4 addQuestion(quest), \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'ef\'e5\'f0\'e5\'e4\'e0\'b8\'f2 test-\'f3 \'f1\'f1\'fb\'eb\'ea\'f3 \'ed\'e0 \'ee\'e1\'fa\'e5\'ea\'f2 quest. \'d2.\'e5. class Course \'f1\'e2\'ff\'e7\'e0\'ed \'f1 class Question.\cf0\par
+\cf1\par
+\'c2\'e0\'f0\'e8\'e0\'ed\'f2 \'f5\'ee\'f0\'ee\'f8\'e8\'e9:\cf0\par
+\cf3\b class\cf1\b0  Test\cf0\par
+\cf1\tab\cf3\b void\cf1\b0  addQuestion()\cf0\par
+\cf1\tab\tab\cf3\b while\cf1\b0  (...)\cf0\par
+\cf1\tab\tab\tab Question quest = \cf3\b new\cf1\b0  Question()\cf0\par
+\cf3\b class\cf1\b0  Course\cf0\par
+\cf1\tab\cf3\b void\cf1\b0  createTest ()\cf0\par
+\cf1\tab\tab Test test = \cf3\b new\cf1\b0  Test()\cf0\par
+\cf1\tab\tab test.addQuestion()\tab\tab Course \'f1\'ee\'e7\'e4\'e0\'b8\'f2 test, \'e2\'fb\'e7\'fb\'e2\'e0\'e5\'f2 \'f3 \'ed\'e5\'e3\'ee \'ec\'e5\'f2\'ee\'e4 "\'e8\'ed\'e8\'f6\'e8\'e0\'eb\'e8\'e7\'e0\'f2\'ee\'f0" \'e8 \'f3\'e6\'e5 \'f1\'e0\'ec test \'f1\'ee\'e7\'e4\'e0\'b8\'f2 quest. \'d2.\'e5. class Course \'f1\'e2\'ff\'e7\'e0\'ed \'f1 class Test, \'e0 class Test \'f1\'e2\'ff\'e7\'e0\'ed \'f1 class Question.\cf0\par
+\cf1\par
+\'d1\'ef\'ee\'f1\'ee\'e1\'fb \'f1\'e2\'ff\'e7\'fb\'e2\'e0\'ed\'e8\'ff \'ea\'eb\'e0\'f1\'f1\'ee\'e2:\cf0\par
+\cf1 - \'ea\'eb\'e0\'f1\'f1 \'c0 \'e8\'ec\'e5\'e5\'f2 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'f3\'fe \'f1\'f1\'fb\'eb\'ea\'f3 \'ed\'e0 \'ee\'e1\'fa\'e5\'ea\'f2 \'ea\'eb\'e0\'f1\'f1\'e0 \'c2\cf0\par
+\cf1 - \'ea\'eb\'e0\'f1\'f1 \'c0 \'e8\'ec\'e5\'e5\'f2 \'ec\'e5\'f2\'ee\'e4, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 \'f1\'f1\'fb\'eb\'ea\'f3 \'ed\'e0 \'ee\'e1\'fa\'e5\'ea\'f2 \'ea\'eb\'e0\'f1\'f1\'e0 \'c2\cf0\par
+\cf1 - class \'c0 extends \'c2\cf0\par
+\cf1 - class \'c0 implements \'c2\cf0\par
+\cf1\par
+\ul High Cohesion\cf0\ulnone\par
+\cf1\'c2\'fb\'f1\'ee\'ea\'e0\'ff \'c2\'cd\'d3\'d2\'d0\'c5\'cd\'cd\'df\'df \'f1\'e2\'ff\'e7\'e0\'ed\'ed\'ee\'f1\'f2\'fc.\cf0\par
+\cf1\'c8\'e4\'e5\'ff \'e2 \'f2\'ee\'ec, \'f7\'f2\'ee \'ef\'eb\'ee\'f5\'ee \'ed\'e0 \'ee\'e4\'e8\'ed \'ea\'eb\'e0\'f1\'f1 \'ed\'e0\'e2\'e5\'f8\'e8\'e2\'e0\'f2\'fc \'ea\'f3\'f7\'f3 \'f0\'e0\'e7\'ed\'fb\'f5 \'f4\'f3\'ed\'ea\'f6\'e8\'e9\cf0\par
+\cf3\b\tab class\cf1\b0  TCPServer\cf0\par
+\cf1\tab\tab\cf3\b void\cf1\b0  createTCPServer()\cf0\par
+\cf3\b\tab\tab void\cf1\b0  sendData()\cf0\par
+\cf1\tab\tab\cf3\b void\cf1\b0  receiveData()\cf0\par
+\cf1\tab\tab\cf3\b void\cf1\b0  compression()\cf0\par
+\cf1\tab\tab\cf3\b void\cf1\b0  decompression()\cf0\par
+\cf1\'cb\'f3\'f7\'f8\'e5 \'e2\'f1\'b8 \'fd\'f2\'ee \'f0\'e0\'e7\'e1\'e8\'f2\'fc \'ed\'e0 3 \'f0\'e0\'e7\'ed\'fb\'e9 \'ea\'eb\'e0\'f1\'f1\'e0\cf0\par
+\cf3\b\tab class\cf1\b0  TCPServerCreator\cf0\par
+\cf1\tab\tab\cf3\b void\cf1\b0  createTCPServer()\cf0\par
+\cf3\b\tab class\cf1\b0  DataTransmission\cf0\par
+\cf3\b\tab\tab void\cf1\b0  sendData()\cf0\par
+\cf1\tab\tab\cf3\b void\cf1\b0  receiveData()\cf0\par
+\cf3\b\tab class\cf1\b0  CodingData\cf0\par
+\cf1\tab\tab\cf3\b void\cf1\b0  compression()\cf0\par
+\cf1\tab\tab\cf3\b void\cf1\b0  decompression()\cf0\par
+\cf1\par
+\ul Controller\cf0\ulnone\par
+\cf1\'cf\'e5\'f0\'e5\'e4\'e0\'e2\'e0\'f2\'fc \'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'fe/\'f1\'ee\'e1\'fb\'f2\'e8\'ff \'ec\'e5\'e6\'e4\'f3 \'e4\'e2\'f3\'ec\'ff \'ea\'eb\'e0\'f1\'f1\'e0\'ec\'e8 \'ed\'e5 \'ed\'e0\'ef\'f0\'ff\'ec\'f3\'fe: class Course \'e2\'fb\'e7\'fb\'e2\'e0\'e5\'f2 \'ec\'e5\'f2\'ee\'e4 test.addQuestion(), \'e0 \'ef\'f0\'e8\'e1\'e5\'e3\'e0\'ff \'ea \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0\'ec. \'c8\'eb\'e8 \'e2\'ee\'ee\'e1\'f9\'e5 \'f1\'ee\'e7\'e4\'e0\'f2\'fc 3-\'e8\'e9 \'ea\'eb\'e0\'f1\'f1, \'e7\'e0\'e4\'e0\'f7\'e0 \'ea\'ee\'f2\'ee\'f0\'ee\'e3\'ee \'ef\'e5\'f0\'e5\'e4\'e0\'e2\'e0\'f2\'fc \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'ff \'ec\'e5\'e6\'e4\'f3 \'e2\'ed\'e5\'f8\'ed\'e8\'ec \'e8\'f1\'f2\'ee\'f7\'ed\'e8\'ea\'ee\'ec \'f1\'ee\'e1\'fb\'f2\'e8\'e9 \'e8 \'e2\'ed\'f3\'f2\'f0\'e5\'ed\'ed\'e8\'ec \'ee\'e1\'f0\'e0\'e1\'ee\'f2\'f7\'e8\'ea\'ee\'ec \'f1\'ee\'e1\'fb\'f2\'e8\'e9.\cf0\par
+\cf1\'c3\'eb\'e0\'e2\'ed\'ee\'e5 \'ed\'e5 \'ef\'e5\'f0\'e5\'e1\'ee\'f0\'f9\'e8\'f2\'fc - \b Antipattern\b0  - \'f0\'e0\'e7\'e4\'f3\'f2\'fb\'e9 \'ea\'ee\'ed\'f2\'f0\'ee\'eb\'eb\'e5\'f0.\cf0\par
+\cf1\par
+\par
+\b GOF\cf0\b0\par
+\cf1\'ca\'eb\'e0\'f1\'f1\'e8\'f4\'e8\'f6\'e8\'f0\'f3\'e5\'f2 Pattern \'ed\'e0 3-\'e8 \'f2\'e8\'ef\'e0:\cf0\par
+\cf1\tab\'ef\'ee\'f0\'ee\'e6\'e4\'e0\'fe\'f9\'e8\'e5 \'f8\'e0\'e1\'eb\'ee\'ed\'fb - \'ee\'f0\'e3\'e0\'ed\'e8\'e7\'e0\'f6\'e8\'ff \'ef\'f0\'ee\'f6\'e5\'f1\'f1\'e0 \'f1\'ee\'e7\'e4\'e0\'ed\'e8\'ff \'ee\'e1\'fa\'e5\'ea\'f2\'e0 = Creator \'e8\'e7 GRASP\cf0\par
+\cf1\tab\'f1\'f2\'f0\'f3\'ea\'f2\'f3\'f0\'ed\'fb\'e5 \'f8\'e0\'e1\'eb\'ee\'ed\'fb\cf0\par
+\cf1\tab\'f8\'e0\'e1\'eb\'ee\'ed\'fb \'ef\'ee\'e2\'e5\'e4\'e5\'ed\'e8\'ff\cf0\par
+\cf1\par
+\b\'cf\'ce\'d0\'ce\'c6\'c4\'c0\'de\'d9\'c8\'c5 \'d8\'c0\'c1\'cb\'ce\'cd\'db.\cf0\b0\par
+\cf1\par
+\ul Factory Method\cf0\ulnone\par
+\cf1\tab Constructor vs Factory Method\cf0\par
+\cf1 Factory Method \'ec\'ee\'e6\'e5\'f2 \'f1\'ee\'e7\'e4\'e0\'f2\'fc \'ed\'ee\'e2\'fb\'e9 \'ee\'e1\'fa\'e5\'ea\'f2, \'e0 \'ec\'ee\'e6\'e5\'f2 \'ef\'ee\'f1\'ea\'f0\'e5\'f1\'f2\'e8 \'ef\'ee \'f1\'f3\'f1\'e5\'ea\'e0\'ec \'e8 \'e2\'fb\'e4\'e0\'f2\'fc \'f3\'e6\'e5 \'f1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'fe\'f9\'e8\'e9 \'ee\'e1\'fa\'e5\'ea\'f2. \'cd\'e0\'ef\'f0\'e8\'ec\'e5\'f0 \'ea\'e0\'ea Singleton.getInstance() \'ed\'e5 \'f1\'ee\'e7\'e4\'e0\'b8\'f2 \'ea\'e0\'e6\'e4\'fb\'e9 \'f0\'e0\'e7 \'ed\'ee\'e2\'fb\'e9 \'ee\'e1\'fa\'e5\'ea\'f2, \'e0 \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 \'f1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'fe\'f9\'e8\'e9.\cf0\par
+\cf1\'c8\'eb\'e8 \'f1\'ee\'e7\'e4\'e0\'ed\'e8\'e5 pool \'ea\'ee\'ed\'ed\'e5\'ea\'f8\'e5\'ed\'ee\'e2 \'ea \'c1\'c4. \'ca\'ee\'ed\'ed\'e5\'ea\'f8\'ed \'f1\'ee\'e7\'e4\'e0\'b8\'f2\'f1\'ff \'ee\'f7\'e5\'ed\'fc \'e4\'ee\'eb\'e3\'ee. \'cb\'f3\'f7\'f8\'e5 \'e8\'f5 \'f1\'ee\'e7\'e4\'e0\'e2\'e0\'f2\'fc \'ea\'f3\'f7\'e5\'e9 \'ef\'f0\'e8 \'e7\'e0\'ef\'f3\'f1\'ea\'e5 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'fb \'e8 \'ee\'e1\'fa\'e5\'e4\'e8\'ed\'e8\'f2\'fc \'e2 pool. \'c4\'eb\'ff \'ef\'ee\'eb\'f3\'f7\'e5\'ed\'e8\'ff \'ea\'ee\'ed\'ed\'e5\'ea\'f8\'e5\'ed\'e0 \'e2\'fb\'e7\'fb\'e2\'e0\'e5\'ec Factory Method - createEntityManager().\cf0\par
+\cf1\par
+\tab EntityManagerFactory entityManagerFactory\cf0\par
+\cf1\tab EntityManager entityManager = entityManagerFactory.createEntityManager()\cf0\par
+\cf1\par
+\'cf\'f0\'e8 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'ed\'e8\'e8 Factory Method \'eb\'f3\'f7\'f8\'e5 \cf4\b\'ca\'ce\'cd\'d1\'d2\'d0\'d3\'ca\'d2\'ce\'d0 \'cf\'ce \'d3\'cc\'ce\'cb\'d7\'c0\'cd\'c8\'de \'c4\'c5\'cb\'c0\'d2\'dc PRIVATE\cf1\b0 .\cf0\par
+\cf1\par
+\'c8\'eb\'e8 Factory Method \'f1\'ee\'e7\'e4\'e0\'b8\'f2 \'ed\'e5 \'ee\'e1\'fa\'e5\'ea\'f2 Car, \'e0 \'ee\'e1\'fa\'e5\'ea\'f2 subclass-\'e0 \'f2\'e8\'ef\'e0\cf0\par
+\cf1\tab class Toyota extends Car\cf0\par
+\cf1\tab class BMW extends Car\cf0\par
+\cf1\tab Car c = Car.createCar(Toyota)\tab\tab\'f2\'ee \'f7\'f2\'ee \'ec\'fb \'f5\'ee\'f2\'e8\'ec \'f1\'ee\'e7\'e4\'e0\'e2\'e0\'f2\'fc \'ec\'ee\'e6\'ed\'ee \'ef\'e5\'f0\'e5\'e4\'e0\'e2\'e0\'f2\'fc \'e2 \'ea\'e0\'f7\'e5\'f1\'f2\'e2\'e5 \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'e0\cf0\par
+\cf1\tab Car c = Car.createCar(BMW)\cf0\par
+\cf1\tab Car c = Car.createToyota()\tab\tab\'e0 \'ec\'ee\'e6\'e5\'ec \'f1\'ee\'e7\'e4\'e0\'e2\'e0\'f2\'fc \'ea\'f0\'e0\'f1\'e8\'e2\'fb\'e5 \'e8\'ec\'e5\'ed\'e0 \'e4\'eb\'ff Factory Method-\'ee\'e2\cf0\par
+\cf1\tab Car c = Car.createBMW()\cf0\par
+\cf1\par
+\ul Abstract Factory\cf0\ulnone\par
+\cf1\'ce\'f1\'ed\'ee\'e2\'ed\'ee\'e5 \'f0\'e0\'e7\'eb\'e8\'f7\'e8\'e5 Factory Method \'ee\'f2 Abstract Factory \'e2 \'f2\'ee\'ec, \'f7\'f2\'ee\cf0\par
+\cf1\tab Factory Method - \'fd\'f2\'ee \'cc\'c5\'d2\'ce\'c4. \'ce\'ed \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc \cf5\b @Override\cf1\b0  \'e2 \'ed\'e0\'f1\'eb\'e5\'e4\'ed\'e8\'ea\'e0\'f5.\cf0\par
+\cf1\tab Abstract Factory - \'fd\'f2\'ee \'ce\'c1\'da\'c5\'ca\'d2, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'f1\'ee\'f1\'f2\'ee\'e8\'f2 \'e8\'e7 \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'e8\'f5 Factory Method.\cf0\par
+\cf1\'cd\'e0\'e4\'ee \'f1\'ee\'e7\'e4\'e0\'f2\'fc \'f1\'f0\'e0\'e7\'f3 \'ee\'ea\'ed\'ee \'ed\'e5 \'f1 \'ee\'e4\'ed\'ee\'e9 \'ea\'ed\'ee\'ef\'ea\'ee\'e9, \'e0 \'e5\'f9\'b8 \'e8 \'f1 checkbox\cf0\par
+\cf1\par
+\ul Prototype\cf0\ulnone\par
+\cf1\'c8\'e7 \'dd\'e2\'e0\'ed\'f1\'e0: "... \'e4\'eb\'ff \'ed\'ee\'e2\'ee\'e3\'ee \'ee\'e1\'fa\'e5\'ea\'f2\'e0 \'c3\'f0\'f3\'e7 \'e2 \'ea\'e0\'f7\'e5\'f1\'f2\'e2\'e5 \'d4\'c0\'c1\'d0\'c8\'ca\'c8 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'e4\'f0\'f3\'e3\'ee\'e9 \'ee\'e1\'fa\'e5\'ea\'f2 \'c3\'f0\'f3\'e7..."\cf0\par
+\cf1\'c0\'ed\'e0\'eb\'ee\'e3 \'ec\'e5\'f2\'ee\'e4\'e0 clone() \'e8\'eb\'e8 interface Clonable. \'c2 \'d1\'e8 \'fd\'f2\'ee \'ea\'ee\'ed\'f1\'f2\'f0\'f3\'ea\'f2\'ee\'f0 \'ea\'ee\'ef\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'ff.\cf0\par
+\cf1\'ce\'e4\'e8\'ed \'e8 \'f2\'ee\'f2 \'e6\'e5 \'ea\'eb\'e8\'e5\'ed\'f2 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \'e0\'ed\'e0\'eb\'ee\'e3\'e8\'f7\'ed\'fb\'e9 \'e3\'f0\'f3\'e7 \'e8\'e7 \'c0 \'e2 \'c1. \'c4\'eb\'ff \'f3\'e4\'ee\'e1\'f1\'f2\'e2\'e0, \'e7\'e0\'ea\'e0\'e7 \'e4\'e0\'ed\'ed\'ee\'e3\'ee \'ea\'eb\'e8\'e5\'ed\'f2\'e0 \'f1\'e4\'e5\'eb\'e0\'f2\'fc clone(). \'cd\'ee \'ea\'ee\'ef\'e8\'f0\'ee\'e2\'e0\'f2\'fc \'ed\'e0\'e4\'ee \'ee\'f1\'f2\'ee\'f0\'ee\'e6\'ed\'ee. \'d1\'e0\'ec \'ee\'e1\'fa\'e5\'ea\'f2 \'c7\'e0\'ea\'e0\'e7 \'e1\'f3\'e4\'e5\'f2 \'ed\'ee\'e2\'fb\'e9. \'ce\'e1\'fa\'e5\'ea\'f2 \'c3\'f0\'f3\'e7 \'e1\'f3\'e4\'e5\'f2 \'ed\'ee\'e2\'fb\'e9. \'d1\'f1\'fb\'eb\'ea\'e0 \'ed\'e0 ID \'ea\'eb\'e8\'e5\'ed\'f2\'e0 \'ed\'e5 \'e8\'e7\'ec\'e5\'ed\'e8\'f2\'f1\'ff. \'d1\'f1\'fb\'eb\'ea\'e8 \'ed\'e0 \'c0 \'e8 \'c1 \'ed\'e5 \'e8\'e7\'ec\'e5\'ed\'ff\'f2\'f1\'ff.\cf0\par
+\cf1 Prototype \emdash  \'fd\'f2\'ee \'ef\'ee\'f0\'ee\'e6\'e4\'e0\'fe\'f9\'e8\'e9 \'f8\'e0\'e1\'eb\'ee\'ed. \'d2.\'ea. \'e8\'e7 \'f1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'fe\'f9\'e5\'e3\'ee \'ee\'e1\'fa\'e5\'ea\'f2\'e0 \'f1\'ee\'e7\'e4\'e0\'b8\'f2 \'ed\'ee\'e2\'fb\'e9 \'ee\'e1\'fa\'e5\'ea\'f2.\cf0\par
+\cf1\par
+\ul Singleton\cf0\ulnone\par
+\cf1\'c2\'ee\'ee\'e1\'f9\'e5 \'ef\'e8\'f8\'f3\'f2, \'f7\'f2\'ee Singleton - \'fd\'f2\'ee \'ea\'eb\'e0\'f1\'f1 \'f1 \cf6\b private\cf1\b0  \'ea\'ee\'ed\'f1\'f2\'f0\'f3\'ea\'f2\'ee\'f0\'ee\'ec.\cf0\par
+\cf1\'c5\'f1\'f2\'fc \'ec\'ed\'ee\'e3\'ee \'ea\'eb\'e0\'f1\'f1\'ee\'e2 \'e8 \'e2\'f1\'e5 \'ee\'ed\'e8 \'f5\'ee\'f2\'ff\'f2 \'ef\'ee\'eb\'f3\'f7\'e0\'f2\'fc \'e4\'e0\'ed\'ed\'fb\'e5 \'e8\'e7 \'ee\'e4\'ed\'ee\'e3\'ee \'f5\'f0\'e0\'ed\'e8\'eb\'e8\'f9\'e0(\'ea\'eb\'e0\'f1\'f1\'e0). \'d2.\'e5. \'fd\'f2\'ee \'ea\'eb\'e0\'f1\'f1 \'e4\'eb\'ff \'e2\'f1\'e5\'f5 \'ff\'e2\'eb\'ff\'e5\'f2\'f1\'ff \'e2 "global scope".\cf0\par
+\cf6\b public final class \cf1\b0 Singleton \{\cf0\line\cf1\tab\cf6\b private static \cf1\b0 Singleton \cf7\i instance \cf1\i0 = \cf6\b null\cf1\b0 ;\cf0\line\cf1\tab\cf6\b private \cf1\b0 Singleton() \{\}\cf0\line\cf1\tab\cf6\b public static \cf1\b0 Singleton getInstance() \{\cf0\line\cf1\tab\tab\cf6\b if \cf1\b0 (\cf7\i instance \cf1\i0 == \cf6\b null\cf1\b0 ) \cf7\i instance \cf1\i0 = \cf6\b new \cf1\b0 Singleton();\cf0\line\cf1\tab\tab\cf6\b return \cf7\b0\i instance\cf1\i0 ;\}\cf0\line\cf1\}\cf0\line\cf1 main()\cf0\line\cf1\tab Singleton singleton = Singleton.getInstance();\cf0\par
+\cf1\tab singleton. ...\cf0\line\line\cf1\ul Builder\cf0\ulnone\par
+\cf1\'c5\'f1\'f2\'fc \'ea\'eb\'e0\'f1\'f1 \'f1\'ee 100 \'ef\'ee\'eb\'ff\'ec\'e8. \'d2\'ee\'e3\'e4\'e0 \'ed\'e0\'e4\'ee \'f1\'ee\'e7\'e4\'e0\'e2\'e0\'f2\'fc \'ea\'ee\'ed\'f1\'f2\'f0\'f3\'ea\'f2\'ee\'f0\'fb Constructor(Field 1) +  Constructor(Field 1, Field 2) + Constructor(Field 1, Field 2, Field 3) \'e8 \'f2.\'e4. - \'ef\'eb\'ee\'f5\'ee. \'ca\'ee \'e2\'f1\'e5\'ec\'f3 \'ef\'f0\'ee\'f7\'e5\'ec\'f3, \'ef\'f0\'e8 \'e2\'fb\'e7\'ee\'e2\'e5 \'ea\'ee\'ed\'f1\'f2\'f0\'f3\'ea\'f2\'ee\'f0\'e0 \'ec\'ee\'e6\'e5\'f2 \'ef\'e5\'f0\'e5\'ef\'f3\'f2\'e0\'f2\'fc \'ef\'ee\'eb\'ff, \'f5\'ee\'f2\'e8\'ec \'ed\'e0\'e7\'ed\'e0\'f7\'e8\'f2\'fc Field 1 = "asd", Field 2 = "qwe", \'e0 \'ef\'e5\'f0\'e5\'e4\'e0\'eb\'e8 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'ff Constructor("qwe", "asd")\cf0\par
+\cf6\b public class \cf1\b0 Account \{\cf0\line\cf1\tab\cf6\b private \cf1\b0 String \cf7\b field1\cf1\b0 ;\cf0\par
+\cf1\tab\cf6\b private \cf1\b0 String \cf7\b field2\cf1\b0 ;\cf0\line\cf1\tab\cf6\b private \cf1\b0 Account()\{\}\cf0\line\cf1\tab\cf6\b public \cf1\b0 String getField1()\{\cf0\line\cf1\tab\tab\cf6\b return \cf7 field1\cf1\b0 ;\cf0\line\cf1\tab\}\cf0\par
+\cf1\tab\cf6\b public \cf1\b0 String getField2()\{\cf0\line\cf1\tab\tab\cf6\b return \cf7 field2\cf1\b0 ;\cf0\line\cf1\tab\}\cf0\line\cf1\tab\cf6\b public static \cf1\b0 Build Builder()\{\cf0\line\cf1\tab\tab\cf6\b return new \cf1\b0 Account().\cf6\b new \cf1\b0 Build();\cf0\line\cf1\tab\}\cf0\line\cf1\tab\cf6\b public class \cf1\b0 Build\{\cf0\line\cf1\tab\tab\cf6\b private \cf1\b0 Build()\{\}\cf0\line\cf1\tab\tab\cf6\b public \cf1\b0 Build setField1(String field1)\{\cf0\line\cf1\tab\tab\tab Account.\cf6\b this\cf1\b0 .\cf7\b field1\cf1\b0 =field1;\cf0\line\cf1\tab\tab\tab\cf6\b return this\cf1\b0 ;\cf0\line\cf1\tab\tab\}\cf0\par
+\cf1\tab\tab\cf6\b public \cf1\b0 Build setField2(String field2)\{\cf0\line\cf1\tab\tab\tab Account.\cf6\b this\cf1\b0 .\cf7\b field2\cf1\b0 =field2;\cf0\line\cf1\tab\tab\tab\cf6\b return this\cf1\b0 ;\cf0\line\cf1\tab\tab\}\cf0\line\cf1\tab\tab\cf6\b public \cf1\b0 Account build()\{\cf0\line\cf1\tab\tab\tab\cf6\b return \cf1\b0 Account.\cf6\b this\cf1\b0 ;\cf0\line\cf1\tab\tab\}\cf0\line\cf1 main()\cf0\line\cf1\tab Account account = Account.\i Builder\i0 ()\cf0\par
+\cf1\tab\tab\tab .setField1("asd")\cf0\par
+\cf1\tab\tab\tab .setField2("qwe");\cf0\par
+\cf1\tab account.getField1;\cf0\par
+\cf1\par
+\par
+\par
+\b\'cf\'ce\'c2\'c5\'c4\'c5\'cd\'d7\'c5\'d1\'ca\'c8\'c5 \'d8\'c0\'c1\'cb\'ce\'cd\'db.\cf0\b0\par
+\cf1\par
+\ul Chain of Responsibility\cf0\ulnone\par
+\cf1\'d6\'e5\'ef\'ee\'f7\'ea\'e0 \'ee\'e1\'ff\'e7\'e0\'ed\'ed\'ee\'f1\'f2\'e5\'e9\cf0\par
+\cf1\'cf\'f0\'ee\'e4\'e2\'e8\'ed\'f3\'f2\'fb\'e9 switch \emdash  case.\cf0\par
+\cf1\'cd\'e0 \'ef\'f0\'e8\'ec\'e5\'f0\'e5 \'fe\'f0\'e8\'e4\'e8\'f7\'e5\'f1\'ea\'ee\'e9 \'ea\'ee\'ed\'f2\'ee\'f0\'fb. \'c5\'f1\'f2\'fc \'fe\'f0\'e8\'f1\'f2\'fb \'ee\'f2\'e4\'e5\'eb\'fc\'ed\'ee \'ef\'ee \'e3\'f0\'e0\'e6\'e4\'e0\'ed\'f1\'ea\'ee\'ec\'f3 \'ef\'f0\'e0\'e2\'f3, \'ef\'ee \'f3\'e3\'ee\'eb\'ee\'e2\'ed\'ee\'ec\'f3, \'ef\'ee \'e0\'f0\'e1\'e8\'f2\'f0\'e0\'e6\'ed\'ee\'ec\'f3. \'cf\'f0\'e8\'f5\'ee\'e4\'e8\'f2 \'ea\'eb\'e8\'e5\'ed\'f2 \'e8 \'ed\'e0\'e4\'ee \'ef\'ee\'ed\'ff\'f2\'fc \'ea \'ea\'e0\'ea\'ee\'ec\'f3 \'fe\'f0\'e8\'f1\'f2\'f3 \'e5\'e3\'ee \'ef\'ee\'f1\'eb\'e0\'f2\'fc. \'c5\'f1\'eb\'e8 \'f3 \'ed\'e0\'f1 \'ef\'ee\'ff\'e2\'e8\'f2\'f1\'ff \'fe\'f0\'e8\'f1\'f2 \'ef\'ee \'e7\'e5\'ec\'e5\'eb\'fc\'ed\'ee\'ec\'f3 \'ef\'f0\'e0\'e2\'f3, \'f2\'ee \'e5\'e3\'ee \'ef\'f0\'ee\'f1\'f2\'ee \'e4\'ee\'e1\'e0\'e2\'e8\'ec \'e2 \'f1\'ef\'e8\'f1\'ee\'ea.\cf0\par
+\cf1\par
+\cf6\b class\cf1\b0  HandlerA \cf6\b implements\cf1\b0  Handler\tab\tab\tab\cf6\b interface\cf1\b0  Handler\cf0\par
+\cf1\tab\cf6\b private\cf1\b0  Handler next\tab\tab\tab\tab\tab\cf6\b void\cf1\b0  setNext(Handler next)\cf0\par
+\cf1\tab\cf6\b public void \cf1\b0 setNext(Handler next)\tab\tab\tab\cf6\b void \cf1\b0 handle(Request request)\cf0\par
+\cf1\tab\tab\cf6\b this\cf1\b0 .next = next\cf0\par
+\cf1\tab\cf6\b public void \cf1\b0 handle(Request request)\cf0\par
+\cf1\tab\tab\cf6\b if \cf1\b0 (\'f1\'ec\'ee\'e6\'e5\'ec\'ce\'e1\'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc\'c7\'e0\'ef\'f0\'ee\'f1?(request))\cf0\par
+\cf1\tab\tab\tab ...\cf0\par
+\cf1\tab\tab\cf6\b else\cf0\b0\par
+\cf1\tab\tab\tab next.handle(request)\cf0\par
+\cf1 main()\cf0\par
+\cf1\tab Request request = \cf6\b new\cf1\b0  Request()\cf0\par
+\cf1\tab Handler handlerA = \cf6\b new\cf1\b0  HandlerA()\cf0\par
+\cf1\tab Handler handlerB = \cf6\b new\cf1\b0  HandlerB()\cf0\par
+\cf1\tab Handler handlerC = \cf6\b new\cf1\b0  HandlerC()\cf0\par
+\cf1\tab handlerA.setNext(handlerB)\cf0\par
+\cf1\tab handlerB.setNext(handlerC)\cf0\par
+\cf1\tab handlerA.handle(request)\cf0\par
+\cf1\par
+\ul Command\cf0\ulnone\par
+\cf1\'ca\'ee\'ec\'e0\'ed\'e4\'e0\cf0\par
+\cf1\'cc\'e5\'f2\'ee\'e4 \emdash  \'fd\'f2\'ee \'ea\'ee\'e4. \'d5\'ee\'f2\'e8\'ec \'f1 \'ec\'e5\'f2\'ee\'e4\'e0\'ec\'e8 \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc \'ea\'e0\'ea \'f1 \'ce\'e1\'fa\'e5\'ea\'f2\'e0\'ec\'e8. \'c8\'f5 \'e3\'e4\'e5-\'f2\'ee \'f1\'ee\'f5\'f0\'e0\'ed\'ff\'f2\'fc, \'ec\'e5\'ed\'ff\'f2\'fc \'ef\'ee\'f0\'ff\'e4\'ee\'ea \'e8 \'f2.\'ef.\cf0\par
+\cf6\b interface\cf1\b0  Command\cf0\par
+\cf1\tab\cf6\b void\cf1\b0  execute()\cf0\par
+\cf1 main()\cf0\par
+\cf1\tab List <Command> commands = \cf6\b new\cf1\b0  ArrayList<>()\cf0\par
+\cf1\tab commands.add( () \u8594? System.out.println(\'abhello\'bb) )\cf0\par
+\cf1\tab commands.add( () \u8594? System.out.println(\'abworld\'bb) )\cf0\par
+\cf1\tab command.descendingIterator().forEachRemaining(Command::execute)\cf0\par
+\cf1\par
+\pard\keepn\nowidctlpar\hyphpar0\sb60\sa60\sl240\slmult1\ul Interpreter\cf0\ulnone\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf1\'c8\'ed\'f2\'e5\'f0\'ef\'f0\'e5\'f2\'e0\'f2\'ee\'f0\cf0\par
+\cf1\'c4\'e0\'e6\'e5 \'f0\'e0\'e7\'e1\'e8\'f0\'e0\'f2\'fc\'f1\'ff \'ed\'e5 \'f1\'f2\'e0\'eb.\tab\cf0\par
+{\field{\*\fldinst{HYPERLINK "https://metanit.com/sharp/patterns/3.8.php"}}{\fldrslt{\ul\cf2 https://metanit.com/sharp/patterns/3.8.php}}}\f0\fs22\par
+\cf1 IExpression ::= NumberExpression | Constant | AddExpression | SubtractExpression\cf0\par
+\pard\nowidctlpar\hyphpar0\cf1 AddExpression ::= IExpression + IExpression\cf0\par
+\cf1 SubtractExpression ::= IExpression - IExpression\cf0\par
+\cf1 NumberExpression ::= [A-Z,a-z]+\cf0\par
+\pard\nowidctlpar\hyphpar0\sa283\cf1 Constant ::= [1-9]+\cf0\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf1\par
+\par
+\ul Iterator\cf0\ulnone\par
+\cf1\'cf\'f0\'ee\'e2\'ee\'e4\'ed\'e8\'ea\cf0\par
+\cf1\'ce\'e1\'fa\'e5\'ea\'f2, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'ec\'ee\'e6\'e5\'f2 \'ef\'e5\'f0\'e5\'ec\'e5\'f9\'e0\'f2\'fc\'f1\'ff \'ef\'ee \'ea\'e0\'ea\'ee\'e9-\'eb\'e8\'e1\'ee \'f1\'eb\'ee\'e6\'ed\'ee\'e9 \'f1\'f2\'f0\'f3\'ea\'f2\'f3\'f0\'e5/\'ea\'ee\'eb\'eb\'e5\'ea\'f6\'e8\'e8. List (\'ea\'ee\'f2\'ee\'f0\'fb\'e9 extends Itarable) - \'ee\'e1\'fa\'e5\'ea\'f2, \'ef\'ee \'ea\'ee\'f2\'ee\'f0\'ee\'ec\'f3 \'ec\'ee\'e6\'e5\'f2 \'e1\'e5\'e3\'e0\'f2\'fc \'c8\'f2\'e5\'f0\'e0\'f2\'ee\'f0.\cf0\par
+\cf1\par
+\ul Mediator\cf0\ulnone\par
+\cf1\'cf\'ee\'f1\'f0\'e5\'e4\'ed\'e8\'ea.\cf0\par
+\cf1\'d0\'e0\'ed\'fc\'f8\'e5 \'e1\'fb\'eb\'ee 10 \'ea\'eb\'e0\'f1\'f1\'ee\'e2 \'e8 \'e2\'f1\'e5 \'e4\'f0\'f3\'e3 \'f3 \'e4\'f0\'f3\'e3\'e0 \'f7\'f2\'ee-\'f2\'ee \'e2\'fb\'e7\'fb\'e2\'e0\'eb\'e8, \'f2.\'e5. \'e1\'fb\'eb\'e0 \'f1\'e8\'eb\'fc\'ed\'e0\'ff \'f1\'e2\'ff\'e7\'e0\'ed\'ed\'ee\'f1\'f2\'fc \'ec\'e5\'e6\'e4\'f3 \'ea\'eb\'e0\'f1\'f1\'e0\'ec\'e8. \'d2\'e5\'ef\'e5\'f0\'fc \'ea\'e0\'e6\'e4\'fb\'e9 \'ea\'eb\'e0\'f1\'f1 \'f1 \'e2\'ed\'e5\'f8\'ed\'e8\'ec \'ec\'e8\'f0\'ee\'ec \'f1\'e2\'ff\'e7\'e0\'ed \'f7\'e5\'f0\'e5\'e7 Mediator. \'c4\'eb\'ff \'ee\'f2\'ef\'f0\'e0\'e2\'ea\'e8 \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'ff \'e2\'fb\'e7\'fb\'e2\'e0\'e5\'ec Component.notify(\'cd\'e5\'ea\'ee\'e5 \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'e5). \'d0\'e5\'e0\'ea\'f6\'e8\'ff \'e2\'f1\'e5\'e9 \'f1\'e8\'f1\'f2\'e5\'ec\'fb \'ed\'e0 notify \'ee\'f2 \'ea\'e0\'ea\'ee\'e3\'ee-\'eb\'e8\'e1\'ee Component \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'e5\'f2\'f1\'ff \'e2 \'ec\'e5\'f2\'ee\'e4\'e5 send() Controller-\'e0. \'ca \'ef\'f0\'e8\'ec\'e5\'f0\'f3, Controller, \'e2 \'e7\'e0\'e2\'e8\'f1\'e8\'ec\'ee\'f1\'f2\'e8 \'ee\'f2 notify, \'ec\'ee\'e6\'e5\'f2 \'e4\'b8\'f0\'e3\'e0\'f2\'fc \'ec\'e5\'f2\'ee\'e4\'fb Component.whatToDo()\cf0\par
+\cf1\par
+\cf6\b abstract class\cf1\b0  Component\tab\tab\tab\cf6\b class\cf1\b0  ComponentA \cf6\b extends\cf1\b0  Component\tab\tab\tab\cf6\b class\cf1\b0  ComponentB \cf6\b extends\cf1\b0  Component\cf0\par
+\cf1\tab\cf6\b public void\cf1\b0  notify(String message)\tab\cf6\b public void\cf1\b0  notify(String message)\tab\tab\tab\cf6\b public void\cf1\b0  notify(String message)\cf0\par
+\cf1\tab\cf6\b private\cf1\b0  Mediator mediator\tab\tab\tab\tab System.\i out\i0 .println("ComponentA" + message)\tab System.\i out\i0 .println("ComponentB" + message)\cf0\par
+\cf1\tab\cf6\b public\cf1\b0  Component(Mediator mediator)\cf0\par
+\cf1\tab\tab\cf6\b this\cf1\b0 .mediator = mediator\cf0\par
+\cf1\tab\cf6\b public void\cf1\b0  send(String message)\cf0\par
+\cf1\tab\tab mediator.send(message, \cf6\b this\cf1\b0 )\cf0\par
+\cf1\par
+\cf6\b class\cf1\b0  Controller \cf6\b implements \cf1\b0 Mediator\tab\tab\tab\tab\tab\cf6\b interface\cf1\b0  Mediator\cf0\par
+\cf1\tab\cf6\b private\cf1\b0  List<Component> components = \cf6\b new\cf1\b0  ArrayLsit<>()\tab\tab\cf6\b void\cf1\b0  send(String message, Component component)\cf0\par
+\cf1\tab\cf6\b public void\cf1\b0  addComponent(Component component)\cf0\par
+\cf1\tab\tab components.add(component)\cf0\par
+\cf1\par
+\tab\cf6\b public void\cf1\b0  send(String message, Component originator)\cf0\par
+\cf1\tab\tab\cf6\b for \cf1\b0 (Component component : \cf6\b  \cf1\b0 components)\cf0\par
+\cf1\tab\tab\tab\cf6\b if \cf1\b0 (component != originator)\cf0\par
+\cf1\tab\tab\tab\tab  component.notify(message)\cf0\par
+\cf1\par
+main()\cf0\par
+\cf1\tab Mediator mediator = \cf6\b new\cf1\b0  Controller()\cf0\par
+\cf1\tab Component componentA = \cf6\b new\cf1\b0  ComponentA(mediator)\cf0\par
+\cf1\tab Component componentB = \cf6\b new\cf1\b0  ComponentB(mediator)\cf0\par
+\cf1\tab mediator.addComponent(componentA)\cf0\par
+\cf1\tab mediator.addComponent(componentB)\cf0\par
+\cf1\tab componentA.notify(message)\cf0\par
+\cf1\tab\cf0\par
+\cf1\tab\cf0\par
+\cf1\par
+\ul Memento\cf0\ulnone\par
+\cf1\'d5\'f0\'e0\'ed\'e8\'f2\'e5\'eb\'fc\cf0\par
+\cf1\'cf\'e0\'f2\'f2\'e5\'f0\'ed \'ef\'ee \'f1\'ee\'e7\'e4\'e0\'ed\'e8\'fe Snapshot-\'ee\'e2. \'d2\'e8\'ef\'e0 \'e5\'f1\'f2\'fc \'ea\'eb\'e0\'f1\'f1 \'f1 10 \'ef\'ee\'eb\'ff\'ec\'e8. \'c7\'e0\'f7\'e5\'ec-\'f2\'ee \'f1\'ee\'e7\'e4\'e0\'b8\'f2\'f1\'ff \'ed\'ee\'e2\'fb\'e9 \'ea\'eb\'e0\'f1\'f1 \'f1 \'ed\'e0\'e7\'e2\'e0\'ed\'e8\'e5\'ec Snapshot \'e8 \'e2 \'ed\'e5\'e3\'ee \'e2\'ed\'ee\'f1\'ff\'f2\'f1\'ff \'e2\'f1\'e5 \'ef\'ee\'eb\'ff. \'cf\'ee\'f2\'ee\'ec \'f1\'ee\'e7\'e4\'e0\'b8\'f2\'f1\'ff \'ea\'ee\'eb\'eb\'e5\'ea\'f6\'e8\'ff \'e8\'e7 \'fd\'f2\'e8\'f5 Snapshot-\'ee\'e2... \'c4\'e8\'f7 !\cf0\par
+\cf1\par
+\ul Observer\cf0\ulnone\par
+\cf1\'cd\'e0\'e1\'eb\'fe\'e4\'e0\'f2\'e5\'eb\'fc\cf0\par
+\cf1\'ca\'eb\'e0\'f1\'f1 \'ed\'e0\'f5\'ee\'e4\'e8\'f2\'f1\'ff \'ed\'e0 \'e1\'ee\'eb\'e5\'e5 \'ed\'e8\'e7\'ea\'ee\'ec \'f3\'f0\'ee\'e2\'ed\'e5 \'ef\'ee \'e0\'f0\'f5\'e8\'f2\'e5\'ea\'f2\'f3\'f0\'e5 \'ef\'f0\'e8\'eb\'ee\'e6\'e5\'ed\'e8\'ff. \'d1\'e4\'e5\'eb\'e0\'f2\'fc \'e7\'e0\'ef\'f0\'ee\'f1 \'ea \'e2\'fb\'f8\'e5\'f1\'f2\'ee\'ff\'f9\'e5\'ec\'f3 \'ea\'eb\'e0\'f1\'f1\'f3 \emdash  \'ed\'e5 \'ec\'ee\'e6\'e5\'f2.\cf0\par
+\cf1\'c4\'f0\'f3\'e3\'e0\'ff \'e8\'ed\'f2\'e5\'f0\'ef\'f0\'e5\'f2\'e0\'f6\'e8\'ff: \'d1\'ee\'f6\'f1\'e5\'f2\'fc. \'ca\'f2\'ee-\'f2\'ee \'f1\'ee\'e7\'e4\'e0\'eb \'ed\'ee\'e2\'fb\'e9 \'ef\'ee\'f1\'f2. \'cd\'e5\'ef\'f0\'e0\'e2\'e8\'eb\'fc\'ed\'ee \'ef\'f0\'ee\'e1\'e5\'e6\'e0\'f2\'fc\'f1\'ff \'e0\'e1\'f1\'ee\'eb\'fe\'f2\'ed\'ee \'ef\'ee \'e2\'f1\'e5\'ec \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'ff\'ec \'e8 \'f1\'ef\'f0\'ee\'f1\'e8\'f2\'fc: \'c0 \'e2\'e0\'ec \'e8\'ed\'f2\'e5\'f0\'e5\'f1\'e5\'ed \'fd\'f2\'ee\'f2 \'ef\'ee\'f1\'f2. \'cf\'f0\'e0\'e2\'e8\'eb\'fc\'ed\'ee, \'f2\'e5\'ec \'ea\'ee\'ec\'f3 \'e8\'ed\'f2\'e5\'f0\'e5\'f1\'ed\'ee \'f7\'f2\'ee \'ef\'ee\'f1\'f2\'e8\'f2 \'e4\'e0\'ed\'ed\'fb\'e9 \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'fc, \'f1\'e0\'ec\'e8 \'e4\'e5\'eb\'e0\'eb\'e8 \'e7\'e0\'ef\'f0\'ee\'f1 \'ec\'ee\'eb: \'c5\'f1\'f2\'fc \'f7\'f2\'ee-\'ed\'e8\'e1\'f3\'e4\'fc \'ed\'ee\'e2\'e5\'ed\'fc\'ea\'ee\'e5?\cf0\par
+\cf1\par
+\cf6\b class\cf1\b0  NewsAgency\cf0\par
+\cf1\tab\cf6\b private\cf1\b0  List<Subscriber> subscribers = \cf6\b new\cf1\b0  ArrayList<>()\cf0\par
+\cf1\par
+\cf6\b\tab public void\cf1\b0  addObserver(Subscriber subscriber)\cf0\par
+\cf1\tab\tab subscribers.add(subscriber)\cf0\par
+\cf1\par
+\cf6\b\tab public void\cf1\b0  removeObserver(Subscriber subscriber)\cf0\par
+\cf1\tab\tab subscribers.remove(subscriber)\cf0\par
+\cf1\par
+\cf6\b\tab public void\cf1\b0  setContext(String message)\cf0\par
+\cf1\tab\tab\cf6\b for \cf1\b0 (Subscriber subscriber : subscribers)\cf0\par
+\cf1\tab\tab\tab  subscriber.update(message)\cf0\par
+\cf1\tab\cf0\par
+\cf6\b class\cf1\b0  NewsChannel \cf6\b implements\cf1\b0  Subscriber\tab\tab\cf6\b interface\cf1\b0  Subscriber\cf0\par
+\cf1\tab\cf6\b private\cf1\b0  String message\tab\tab\tab\tab\tab\cf6\b void\cf1\b0  update(String message)\cf0\par
+\cf1\tab\cf6\b public void\cf1\b0  update(String message)\cf0\par
+\cf1\tab\tab\cf6\b this\cf1\b0 .message = message\cf0\par
+\cf1\tab\cf6\b public \cf1\b0 String getMessage()\cf0\par
+\cf1\tab\tab\cf6\b return\cf1\b0  message\cf0\par
+\cf1\par
+main()\cf0\par
+\cf1\tab NewsChannel newsChannel = \cf6\b new\cf1\b0  NewsChannel()\cf0\par
+\cf1\tab NewsAgency newsAgency = \cf6\b new\cf1\b0  NewsAgency()\cf0\par
+\cf1\tab newsAgency.add(newsChannel)\cf0\par
+\cf1\tab String message = "Some news"\cf0\par
+\cf1\tab newsAgency.setContext(message)\cf0\par
+\cf1\tab System.\i out\i0 .println( newsChannel.getMessage() )\cf0\par
+\cf1\tab\cf0\par
+\cf1\tab\cf0\par
+\cf1\par
+\par
+\ul State\cf0\ulnone\par
+\cf1\'d1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e5\cf0\par
+\cf1\'d3 \'e2\'e8\'e4\'e5\'ee\'ec\'e0\'e3\'ed\'e8\'f2\'ee\'f4\'ee\'ed\'e0 5 \'ea\'ed\'ee\'ef\'ee\'ea. \'c2 \'e7\'e0\'e2\'e8\'f1\'e8\'ec\'ee\'f1\'f2\'e8 \'ee\'f2 \'f2\'ee\'e3\'ee \'e2 \'ea\'e0\'ea\'ee\'ec \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e8 \'ed\'e0\'f5\'ee\'e4\'e8\'f2\'f1\'ff \'e2\'e8\'e4\'e8\'ea (Idle, Playing, Recoding) \'e5\'e3\'ee \'ea\'ed\'ee\'ef\'ea\'e8 \'e1\'f3\'e4\'f3\'f2 \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'f2\'fc \'f0\'e0\'e7\'ed\'fb\'e5 \'f4\'f3\'ed\'ea\'f6\'e8\'e8 (State: Idle \'e8 \'ed\'e0\'e6\'e8\'ec\'e5\'ec REW \u8594? \'e1\'f3\'e4\'e5\'f2 \'ee\'e4\'ed\'ee. State: Playing \'e8 \'ed\'e0\'e6\'e8\'ec\'e0\'e5\'ec REW \u8594? \'e1\'f3\'e4\'e5\'f2 \'e4\'f0\'f3\'e3\'ee\'e5). \'d2.\'e5. \'e2 \'e7\'e0\'e2\'e8\'f1\'e8\'ec\'ee\'f1\'f2\'e8 \'ee\'f2 State \'e2\'fb\'e7\'fb\'e2\'e0\'e5\'ec\'fb\'e5 \'ec\'e5\'f2\'ee\'e4\'fb \'e2\'e5\'e4\'f3\'f2 \'f1\'e5\'e1\'ff \'ef\'ee \'f0\'e0\'e7\'ed\'ee\'ec\'f3.\cf0\par
+\cf1\par
+\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab //\'ca\'ed\'ee\'ef\'ea\'e8, \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'e2\'e5\'e4\'f3\'f2 \'f1\'e5\'e1\'ff \'ef\'ee \'f0\'e0\'e7\'ed\'ee\'ec\'f3 \'e2 \'e7\'e0\'e2\'e8\'f1\'e8\'ec\'ee\'f1\'f2\'e8 \'ee\'f2 State\cf0\par
+\cf6\b class\cf1\b0  Idle \cf6\b implements\cf1\b0  State\tab\tab\tab\tab\cf6\b class\cf1\b0  Playing \cf6\b implements\cf1\b0  State\tab\tab\tab\tab\cf6\b interface\cf1\b0  State\cf0\par
+\cf1\tab\cf6\b public void \cf1\b0 rew()\{\tab\tab\tab\tab\tab\tab\cf6\b public void \cf1\b0 rew()\{\tab\tab\tab\tab\tab\tab\cf6\b void\cf1\b0  rew()\cf0\par
+\cf1\tab\tab System.\i out\i0 .println("Idle .rew")\tab\tab\tab\tab System.\i out\i0 .println("Paying .rew")\tab\tab\cf6\b void\cf1\b0  fwd()\cf0\par
+\cf1\tab\cf6\b public void\cf1\b0  fwd()\{\tab\tab\tab\tab\tab\tab\cf6\b public void\cf1\b0  fwd()\{\cf0\par
+\cf1\tab\tab System.\i out\i0 .println("Idle .fwd")\tab\tab\tab\tab System.\i out\i0 .println("Paying .fwd")\cf0\par
+\cf1\tab\tab\tab\cf0\par
+\cf6\b class\cf1\b0  VideoPlayer \cf6\b implements\cf1\b0  State\cf0\par
+\cf1\tab\cf6\b private \cf1\b0 State state\cf0\par
+\cf1\tab\cf6\b public void \cf1\b0 setState(State state)\cf0\par
+\cf1\tab\tab\cf6\b this\cf1\b0 .state = state\cf0\par
+\cf1\tab\cf6\b public void \cf1\b0 rew()\{\cf0\par
+\cf1\tab\tab state.rew()\cf0\par
+\cf1\tab\cf6\b public void\cf1\b0  fwd()\cf0\par
+\cf1\tab\tab state.fwd()\cf0\par
+\cf1 main()\cf0\par
+\cf1\tab State idle = \cf6\b new\cf1\b0  Idle()\cf0\par
+\cf1\tab State playing = \cf6\b new\cf1\b0  Playing()\cf0\par
+\cf1\tab VideoPlayer videoPlayer = \cf6\b new\cf1\b0  VideoPlayer()\cf0\par
+\cf1\tab videoPlayer.setState(idle)\cf0\par
+\cf1\tab videoPlayer.rew()\cf0\par
+\cf1\tab videoPlayer.setState(playing)\cf0\par
+\cf1\tab videoPlayer.fwd()\cf0\par
+\cf1\par
+\ul Strategy\cf0\ulnone\par
+\cf1\'d1\'f2\'f0\'e0\'f2\'e5\'e3\'e8\'ff\cf0\par
+\cf1\'cf\'f0\'e8\'ec\'e5\'f0 \'ed\'e0 \'ef\'f0\'e8\'eb\'ee\'e6\'e5\'ed\'e8\'e8 \'ed\'e0\'e2\'e8\'e3\'e0\'f2\'ee\'f0. \'cf\'f0\'ee\'eb\'ee\'e6\'e8\'f2\'fc \'eb\'f3\'f7\'f8\'e8\'e9 \'ec\'e0\'f0\'f8\'f0\'f3\'f2 \'ec\'e5\'e6\'e4\'f3 2-\'ff \'ef\'f3\'ed\'ea\'f2\'e0\'ec\'e8 \'e5\'f1\'eb\'e8 \'ec\'fb \'ed\'e0 \'ec\'e0\'f8\'e8\'ed\'e5. \'c0 \'f2\'e5\'ef\'e5\'f0\'fc \'ef\'e5\'f8\'ea\'ee\'ec. \'d1\'f3\'e4\'ff \'ef\'ee UML \'e4\'e8\'e0\'e3\'f0\'e0\'ec\'ec\'e5 \'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5, \'f7\'f2\'ee \'e8 = \ul State\ulnone .\cf0\par
+\cf1\par
+\par
+\ul Template method\cf0\ulnone\par
+\cf1\'d8\'e0\'e1\'eb\'ee\'ed\'ed\'fb\'e9 \'ec\'e5\'f2\'ee\'e4\cf0\par
+\cf1\'cd\'e0 \'ef\'f0\'e8\'ec\'e5\'f0\'e5 \'f1\'e1\'ee\'f0\'ea\'e8 \'e8\'e3\'f0\'f3\'f8\'e5\'f7\'ed\'ee\'e3\'ee \'e4\'ee\'ec\'e8\'ea\'e0. \'ce\'f2\'e4\'e5\'eb\'fc\'ed\'ee \'f1\'ee\'e1\'e8\'f0\'e0\'e5\'ec \'ea\'f0\'fb\'f8\'f3. \'ce\'f2\'e4\'e5\'eb\'fc\'ed\'ee \'ea\'e0\'f0\'ea\'e0\'f1. \'ce\'f2\'e4\'e5\'eb\'fc\'ed\'ee \'f4\'f3\'ed\'e4\'e0\'ec\'e5\'ed\'f2. \'c0 \'ef\'ee\'f2\'ee\'ec \'e2\'f1\'b8 \'e2\'ec\'e5\'f1\'f2\'e5 \'f1\'ee\'e5\'e4\'e8\'ed\'ff\'e5\'ec (assemblyAll). \'cd\'ee \'e5\'f1\'eb\'e8 \'f1\'ee\'e1\'e8\'f0\'e0\'e5\'ec \'e1\'ee\'eb\'fc\'f8\'ee\'e9 \'e4\'ee\'ec, \'f2\'ee \'ea\'e0\'f0\'ea\'e0\'f1 \'ee\'e4\'e8\'ed, \'e0 \'e5\'f1\'eb\'e8 \'ec\'e0\'eb\'e5\'ed\'e8\'ea\'e8\'e9, \'f2\'ee \'e4\'f0\'f3\'e3\'ee\'e9. \'c0 \'ec\'e5\'f2\'ee\'e4 (assemblyAll) \'ee\'f1\'f2\'e0\'ed\'e5\'f2\'f1\'ff \'f2\'e5\'ec \'e6\'e5.\cf0\par
+\cf6\b abstract class\cf1\b0  BuildHouse\cf0\par
+\cf1\tab\cf6\b void\cf1\b0  buildRoof()\cf0\par
+\cf1\tab\tab ...\cf0\par
+\cf1\tab\cf6\b void\cf1\b0  buildCarcase()\cf0\par
+\cf1\tab\tab ...\cf0\par
+\cf1\tab\cf6\b void\cf1\b0  step3()\cf0\par
+\cf1\tab\tab ...\cf0\par
+\cf1\tab\cf6\b final void\cf1\b0  assemblyAll()\tab - \'fd\'f2\'ee \'ec\'e5\'f2\'ee\'e4 \'e2\'ee\'ee\'e1\'f9\'e5 \'ed\'e5 \'f2\'f0\'ee\'e3\'e0\'e5\'ec. \'c5\'e3\'ee \'ed\'e5 \'ec\'ee\'e6\'e5\'ec \cf5\b @Override\cf1\b0 .\cf0\par
+\cf1\tab\tab ...\cf0\par
+\cf1\tab\cf0\par
+\cf6\b class\cf1\b0  \'d1\'f2\'f0\'ee\'e8\'ec\'c1\'ee\'eb\'fc\'f8\'ee\'e9\'c4\'ee\'ec \cf6\b extends\cf1\b0  BuildHouse\cf0\par
+\cf1\tab\cf6\b void\cf1\b0  buildCarcase()\tab - \'e8\'e7\'ec\'e5\'ed\'ff\'e5\'ec \'f2\'ee\'eb\'fc\'ea\'ee \'ee\'e4\'e8\'ed \'ec\'e5\'f2\'ee\'e4. \'c2\'f1\'b8 \'ee\'f1\'f2\'e0\'eb\'fc\'ed\'ee\'e5 \'ee\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'ec \'ea\'e0\'ea \'e5\'f1\'f2\'fc.\cf0\par
+\cf1\par
+\cf6\b class\cf1\b0  \'d1\'f2\'f0\'ee\'e8\'ec\'d5\'e8\'e1\'e0\'f0\'f3 \cf6\b extends\cf1\b0  BuildHouse\cf0\par
+\cf1\tab\cf6\b void\cf1\b0  buildRoof()\tab\tab - \'e8\'e7\'ec\'e5\'ed\'ff\'e5\'ec \'e4\'f0\'f3\'e3\'ee\'e9 \'ec\'e5\'f2\'ee\'e4.\cf0\par
+\cf1\par
+\ul Visitor\cf0\ulnone\par
+\cf1\'cf\'ee\'f1\'e5\'f2\'e8\'f2\'e5\'eb\'fc\cf0\par
+\cf1\'d5\'ee\'f2\'e8\'ec \'e2 \'ea\'eb\'e0\'f1\'f1/\'e3\'f0\'f3\'ef\'ef\'f3 \'ea\'eb\'e0\'f1\'f1\'ee\'e2 \'e2\'ed\'e5\'e4\'f0\'e8\'f2\'fc \'ed\'ee\'e2\'fb\'e9 \'ec\'e5\'f2\'ee\'e4 ExportToXML, \'ed\'ee \'e0\'f0\'f5\'e8\'f2\'e5\'ea\'f2\'ee\'f0 \'e7\'e0\'ef\'f0\'e5\'f9\'e0\'e5\'f2 \'fd\'f2\'ee \'e4\'e5\'eb\'e0\'f2\'fc. \'cc\'ee\'e6\'ed\'ee \'ee\'f2\'ed\'e0\'f1\'eb\'e5\'e4\'ee\'e2\'e0\'f2\'fc\'f1\'ff \'ee\'f2 \'ea\'e0\'e6\'e4\'ee\'e3\'ee \'e8\'ed\'f2\'e5\'f0\'e5\'f1\'f3\'fe\'f9\'e5\'e3\'ee \'ea\'eb\'e0\'f1\'f1\'e0 \'e8 \'e4\'ee\'e1\'e0\'e2\'e8\'f2\'fc \'ed\'ee\'e2\'fb\'e9 \'ec\'e5\'f2\'ee\'e4. \'cd\'ee \'fd\'f2\'ee \'e1\'f3\'e4\'e5\'f2 \'ef\'ee\'f0\'ee\'e6\'e4\'e5\'ed\'e8\'e5 \'ed\'ee\'e2\'fb\'f5 100 \'ea\'eb\'e0\'f1\'f1\'ee\'e2. \'c0 \'e7\'e0\'e2\'f2\'f0\'e0 \'e7\'e0\'f5\'ee\'f2\'e8\'ec \'e4\'ee\'e1\'e0\'e2\'e8\'f2\'fc ExportToPDF. \'cf\'f0\'e5\'e4\'eb\'e0\'e3\'e0\'fe\'f2 \'e2 \'ea\'e0\'e6\'e4\'ee\'ec \'ea\'eb\'e0\'f1\'f1\'e5 \'f1\'ee\'e7\'e4\'e0\'f2\'fc \'ec\'e5\'f2\'ee\'e4-\'ab\'e7\'e0\'e3\'eb\'f3\'f8\'ea\'f3\'bb: void accept(Visitor visitor). \'c8 \'e2 \'e7\'e0\'e2\'e8\'f1\'e8\'ec\'ee\'f1\'f2\'e8 \'ee\'f2 \'f2\'ee\'e3\'ee, \'e2\'ee \'f7\'f2\'ee \'e1\'f3\'e4\'e5\'ec \'e4\'e5\'eb\'e0\'f2\'fc export, \'e2\'fb\'e7\'fb\'e2\'e0\'f2\'fc \'f2\'e8\'ef\'e0 element1.accept(ExportToPDF)\cf0\par
+\par
+\cf6\b class\cf1\b0  Element1 \cf6\b implements \cf1\b0 Element\tab\tab\cf6\b class\cf1\b0  Element2 \cf6\b implements \cf1\b0 Element\tab\tab\cf6\b interface\cf1\b0  Element\cf0\par
+\cf1\tab ...\tab\tab\tab\tab\tab\tab\tab\tab ...\tab\tab\tab\tab\tab\tab\tab\tab ...\cf0\par
+\cf6\b\tab void\cf1\b0  accept(Visitor visitor)\cf6\b\tab\tab\tab void\cf1\b0  accept(Visitor visitor)\tab\tab\tab\cf6\b void\cf1\b0  accept(Visitor visitor)\cf0\par
+\cf1\tab\tab visitor.visit(\cf6\b this\cf1\b0 )\tab\tab\tab\tab\tab visitor.visit(\cf6\b this\cf1\b0 )\cf0\par
+\cf1\par
+\cf6\b class\cf1\b0  ExportToXML \cf6\b implements \cf1\b0 Visitor\tab\tab\cf6\b class\cf1\b0  ExportToPDF \cf6\b implements \cf1\b0 Visitor\tab\tab\cf6\b interface\cf1\b0  Visitor\cf0\par
+\cf1\tab\cf6\b void\cf1\b0  visit(Element1 element)\tab\tab\tab\cf6\b void\cf1\b0  visit(Element1 element)\tab\tab\tab\cf6\b void\cf1\b0  visit(Element1 element)\cf0\par
+\cf1\tab\tab element. ...\tab\tab\tab\tab\tab\tab element. ...\tab\tab\tab\tab\tab\cf6\b void\cf1\b0  visit(Element2 element)\cf0\par
+\cf1\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\cf6\b void\cf1\b0  visit(Element3 element)\cf0\par
+\cf1 main()\cf0\par
+\cf1\tab Visitor visitor = \cf6\b new\cf1\b0  ExportToXML()\cf0\par
+\cf1\tab Element el1 = \cf6\b new\cf1\b0  Element1()\cf0\par
+\cf1\tab Element el2 = \cf6\b new\cf1\b0  Element2()\cf0\par
+\cf1\tab el1.accept(visitor)\cf0\par
+\cf1\par
+\par
+\b\'d1\'d2\'d0\'d3\'ca\'d2\'d3\'d0\'cd\'db\'c5 \'d8\'c0\'c1\'cb\'ce\'cd\'db.\cf0\b0\par
+\cf1\'ca\'e0\'ea \'ef\'f0\'e0\'e2\'e8\'eb\'fc\'ed\'ee \'f1\'ee\'e7\'e4\'e0\'e2\'e0\'f2\'fc \'f1\'f2\'f0\'f3\'ea\'f2\'f3\'f0\'fb \'ee\'e1\'fa\'e5\'ea\'f2\'ee\'e2. \cf0\par
+\cf1\par
+\ul Adapter\cf0\ulnone\par
+\cf1\'c0\'e4\'e0\'ef\'f2\'e5\'f0 (\'ea\'e0\'ea \'e2\'e8\'eb\'ea\'e0 \'e4\'eb\'ff \'e1\'fb\'f2\'ee\'e2\'fb\'f5 \'f0\'ee\'e7\'e5\'f2\'ee\'ea)\cf0\par
+\cf1\'c8\'ec\'e5\'e5\'ec\cf0\par
+\cf6\b interface\cf1\b0  IStore\tab\tab\tab - \'f1\'f3\'f9\'ed\'ee\'f1\'f2\'fc, \'ea\'ee\'f2\'ee\'f0\'e0\'ff \'f3\'ec\'e5\'e5\'f2 \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'f2\'fc \'e2 \'f1\'e5\'e1\'ff \'f1\'f2\'f0\'ee\'ea\'f3 (\'ed\'e0\'ef\'f0\'e8\'ec\'e5\'f0, \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'f2\'fc \'f1\'f2\'f0\'ee\'ea\'f3 \'e2 \'ea\'ee\'ed\'e5\'f6 \'f4\'e0\'e9\'eb\'e0)\cf0\par
+\cf1\tab\cf6\b void\cf1\b0  append(String s)\cf0\par
+\cf6\b class\cf1\b0  Logger\cf0\par
+\cf1\tab Logger (IStore storage) \emdash  \'f1\'ee\'e7\'e4\'e0\'b8\'ec Logger, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'ef\'f0\'e8\'ed\'e8\'ec\'e0\'e5\'f2 \'ed\'e5\'ea\'f3\'fe \'f1\'f3\'f9\'ed\'ee\'f1\'f2\'fc, \'ea\'ee\'f2\'ee\'f0\'e0\'ff \'f3\'ec\'e5\'e5\'f2 \'e2 \'f1\'e5\'e1\'ff \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'f2\'fc \'f1\'f2\'f0\'ee\'ea\'f3\cf0\par
+\cf1\'d5\'ee\'f2\'e8\'ec \'e2 \'ea\'eb\'e0\'f1\'f1 Logger, \'ef\'e5\'f0\'e5\'e4\'e0\'f2\'fc \'f7\'f2\'ee-\'f2\'ee, \'f7\'f2\'ee \'ed\'e5 implements IStore, \'ed\'e0\'ef\'f0\'e8\'ec\'e5\'f0 List. List \'f2\'ee\'e6\'e5 \'f3\'ec\'e5\'e5\'f2 \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'f2\'fc \'e2 \'f1\'e5\'e1\'ff \'f1\'f2\'f0\'ee\'ea\'e8, \'ed\'ee \'f3 \'ed\'e5\'e3\'ee \'ed\'e5\'f2 \'ec\'e5\'f2\'ee\'e4\'e0 append(String s), \'e0 \'e5\'f1\'f2\'fc add(String s) \'cf\'ee\'fd\'f2\'ee\'ec\'f3:\cf0\par
+\cf1\par
+\cf6\b class\cf1\b0  AdapterForList \cf6\b implements\cf1\b0  IStore\cf0\par
+\cf1\tab\cf6\b protected \cf1\b0 List<String> list\cf0\par
+\cf1\tab\cf6\b public\cf1\b0  AdapterForList (List<String> list)\cf0\par
+\cf1\tab\tab\cf6\b this\cf1\b0 .list = list\cf0\par
+\cf1\tab\cf6\b public void\cf1\b0  append(String s)\cf0\par
+\cf1\tab\tab list.add(s)\cf0\par
+\cf1\par
+\ul Bridge\cf0\ulnone\par
+\cf1\'cc\'ee\'f1\'f2\cf0\par
+\cf1\'cd\'e0 \'ef\'f0\'e8\'ec\'e5\'f0\'e5 Gnome, KDE, Xfce \'e8 Linux, Windows (\'ef\'f0\'e5\'e4\'f1\'f2\'e0\'e2\'e8\'ec, \'f7\'f2\'ee \'ed\'e0 Windows \'f2\'ee\'e6\'e5 \'ec\'ee\'e6\'ed\'ee \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'f2\'fc Gnome, KDE, Xfce).\cf0\par
+\cf6\b class\cf1\b0  KDE \cf6\b implements\cf1\b0  Abstraction\tab\tab\cf6\b class\cf1\b0  Gnome \cf6\b implements\cf1\b0  Abstraction\tab\tab\cf6\b interface\cf1\b0  Abstraction\cf0\par
+\cf1\tab\cf6\b private \cf1\b0 Impl impl\tab\tab\tab\tab\tab\cf6\b private \cf1\b0 Impl impl\tab\tab\tab\tab\tab\cf6\b void\cf1\b0  feature1()\cf0\par
+\cf1\tab\cf6\b void\cf1\b0  feature2()\tab\tab\tab\tab\tab\tab\cf6\b void\cf1\b0  feature2()\tab\tab\tab\tab\tab\tab\cf6\b void\cf1\b0  feature2()\cf0\par
+\cf1\tab\tab impl.method2()\tab\tab\tab\tab\tab\tab impl.method2()\tab\tab\tab\tab\tab\cf6\b void\cf1\b0  feature3()\cf0\par
+\cf1\tab\cf6\b void\cf1\b0  setImplementation(Impl impl)\tab\tab\cf6\b void\cf1\b0  setImplementation(Impl impl)\cf0\par
+\cf1\par
+\cf6\b class\cf1\b0  Linux \cf6\b implements\cf1\b0  Implementation\tab\tab\cf6\b class\cf1\b0  Windows \cf6\b implements\cf1\b0  Implementation\tab\cf6\b interface\cf1\b0  Implementation\cf0\par
+\cf1\tab\cf6\b void\cf1\b0  method1()\tab\tab\tab\tab\tab\tab\tab\cf6\b void\cf1\b0  method1()\tab\tab\tab\tab\tab\tab\cf6\b void\cf1\b0  method1()\cf0\par
+\cf1\tab\tab\'f1\'ee\'ee\'f2\'e2\'e5\'f2\'f1\'f2\'e2\'f3\'fe\'f9\'e0\'ff \'f0\'e5\'e0\'eb\'e8\'e7\'e0\'f6\'e8\'ff \'ec\'e5\'f2\'ee\'e4\'e0 \'e4\'eb\'ff \'e4\'e0\'ed\'ed\'ee\'e9 \'ce\'d1\tab\tab\tab\tab\tab\tab\tab\tab\cf6\b void\cf1\b0  method2()\cf0\par
+\cf1 main()\cf0\par
+\cf1\tab Implementation impl = \cf6\b new\cf1\b0  Linux()\cf0\par
+\cf1\tab Abstraction kde = \cf6\b new\cf1\b0  KDE()\cf0\par
+\cf1\tab kde.setImplementation(impl)\cf0\par
+\cf1\tab kde.feature3()\cf0\par
+\cf1\tab\cf0\par
+\cf1\par
+\ul Composite\cf0\ulnone\par
+\cf1\'ca\'ee\'ec\'ef\'e0\'ed\'ee\'e2\'f9\'e8\'ea\cf0\par
+\cf1\'d0\'e0\'e1\'ee\'f2\'e0 \'f1 \'e4\'e5\'f0\'e5\'e2\'fc\'ff\'ec\'e8.\cf0\par
+\cf1\'cf\'f0\'e8\'ec\'e5\'f0: \'c5\'f1\'f2\'fc \'e1\'ee\'eb\'fc\'f8\'e0\'ff \'ea\'ee\'f0\'ee\'e1\'ea\'e0. \'c2 \'ed\'e5\'e9 3-\'e8 \'ef\'ee\'ec\'e5\'ed\'fc\'f8\'e5 \'e8 2 \'e2\'e5\'f9\'e8 (1 \'ea\'e3 \'e8 2 \'ea\'e3). \'c2 \'ef\'e5\'f0\'e2\'ee\'e9 \'e5\'f9\'b8 2-\'e5 \'e5\'f9\'b8 \'ef\'ee\'ec\'e5\'ed\'fc\'f8\'e5 \'e8 \'ee\'e4\'ed\'e0 \'e2\'e5\'f9\'fc (1 \'ea\'e3). \'c8 \'f2.\'e4. \'c7\'e0\'e4\'e0\'f7\'e0: \'ef\'ee\'f1\'f7\'e8\'f2\'e0\'f2\'fc (execute) \'e2\'e5\'f1 \'e1\'ee\'eb\'fc\'f8\'ee\'e9 \'ea\'ee\'f0\'ee\'e1\'ea\'e8. \'d2.\'e5. \'ea\'ee\'f0\'ee\'e1\'ea\'e8 (Node) \'ec\'ee\'e3\'f3\'f2 \'e1\'fb\'f2\'fc \'e2\'eb\'ee\'e6\'e5\'ed\'fb \'e4\'f0\'f3\'e3 \'e2 \'e4\'f0\'f3\'e3\'e0. \'c2 \'ea\'ee\'f0\'ee\'e1\'ea\'e5 \'ea\'f0\'ee\'ec\'e5 \'ea\'ee\'f0\'ee\'e1\'ee\'ea \'ec\'ee\'e3\'f3\'f2 \'e1\'fb\'f2\'fc \'e2\'e5\'f9\'e8.\cf0\par
+\cf6\b interface\cf1\b0  Node\tab\tab\cf6\b class\cf1\b0  \'ca\'ee\'f0\'ee\'e1\'ea\'e0 \cf6\b implements\cf1\b0  Node\tab\tab\cf6\b class\cf1\b0  Leaf \cf6\b implements\cf1\b0  Node\tab - \'f2\'ee, \'e2\'ee \'f7\'f2\'ee \'f3\'e6\'e5 \'ed\'e5\'eb\'fc\'e7\'ff \'e2\'eb\'ee\'e6\'e8\'f2\'fc \'ea\'e0\'ea\'ee\'e9-\'eb\'e8\'e1\'ee Node\cf0\par
+\cf1\tab\cf6\b void\cf1\b0  execute()\tab\tab Node [] children\tab\tab\tab\tab\cf6\b void\cf1\b0  execute()\cf0\par
+\cf1\tab\tab\tab\tab\tab\cf6\b void\cf1\b0  addNode (Node node)\cf0\par
+\cf1\tab\tab\tab\tab\tab\cf6\b void\cf1\b0  execute()\cf0\par
+\cf1\par
+\ul Facade\cf0\ulnone\par
+\cf1\'d4\'e0\'f1\'e0\'e4\cf0\par
+\cf1\'c1\'e0\'e1\'f3\'f8\'ea\'e0 \'f1 \'ea\'ee\'ec\'ef\'fc\'fe\'f2\'e5\'f0\'ee\'ec. \'ce\'f2 \'ea\'ee\'ec\'ef\'fc\'fe\'f2\'e5\'f0\'e0 \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee \'f2\'ee\'eb\'fc\'ea\'ee 3-\'e8 \'ea\'ed\'ee\'ef\'ea\'e8.\cf0\par
+\cf1\'c5\'f1\'f2\'fc \'e1\'e8\'e1\'eb\'e8\'ee\'f2\'e5\'ea\'e0 Logger. \'d1\'eb\'ee\'e6\'ed\'fb\'e5 \'ec\'e5\'f2\'ee\'e4\'fb, \'f0\'e0\'e7\'eb\'e8\'f7\'ed\'fb\'e5 \'f3\'f0\'ee\'e2\'ed\'e8 \'eb\'ee\'e3\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'ff, \'f0\'e0\'e7\'eb\'e8\'f7\'ed\'fb\'e5 \'ea\'ee\'e4\'e8\'f0\'ee\'e2\'ea\'e8, \'f3\'ec\'e5\'e5\'f2 \'ef\'e8\'f1\'e0\'f2\'fc \'e2 \'f4\'e0\'e9\'eb \'e8\'eb\'e8 Array \'e8 \'f2.\'ef. \'d1\'ee\'e7\'e4\'e0\'b8\'ec \'ea\'eb\'e0\'f1\'f1 SimpleLogger \'f1 \'ef\'f3\'f1\'f2\'fb\'ec \'ea\'ee\'ed\'f1\'f2\'f0\'f3\'ea\'f2\'ee\'f0\'ee\'ec \'e8 \'e5\'e4\'e8\'ed\'f1\'f2\'e2\'e5\'ed\'ed\'fb\'ec \'ec\'e5\'f2\'ee\'e4\'ee\'ec. \'c2\'f1\'e5 \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e8 \'ef\'ee \'f3\'f0\'ee\'e2\'ed\'fe \'eb\'ee\'e3\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'ff, \'ea\'ee\'e4\'e8\'f0\'ee\'e2\'ea\'e0\'ec \'ec\'fb \'e4\'e5\'eb\'e0\'e5\'ec \'e7\'e0 \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'ff, \'ee\'e1\'eb\'e5\'e3\'f7\'e0\'ff \'f0\'e0\'e1\'ee\'f2\'f3 \'f1 \'e1\'e8\'e1\'eb\'e8\'ee\'f2\'e5\'ea\'ee\'e9.\cf0\par
+\cf1\par
+\cf6\b class\cf1\b0  SimpleLogger\cf0\par
+\cf1\tab\cf6\b protected final\cf1\b0  Logger logger\cf0\par
+\cf1\tab\cf6\b public\cf1\b0  SimpleLogger()\tab\tab\tab\tab\tab\tab\'f1\'ef\'f0\'ff\'f2\'e0\'eb\'e8 \'e2\'f1\'e5 \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e8\cf0\par
+\cf1\tab\tab logger = \cf6\b new\cf1\b0  Logger(ERROR, CONSOLE, UTF-8)\cf0\par
+\cf1\tab\cf6\b public void\cf1\b0  log(String message)\cf0\par
+\cf1\tab\tab logger.log(message, NONE, Vasya)\cf0\par
+\cf1\par
+\ul Flyweight\cf0\ulnone\par
+\cf1\'cb\'e5\'e3\'ea\'ee\'e2\'e5\'f1\cf0\par
+\cf1\'cf\'f0\'ee\'e5\'ea\'f2\'e8\'f0\'f3\'e5\'ec \'e4\'ee\'ec. \'ca\'e0\'e6\'e4\'fb\'e9 \'fd\'eb\'e5\'ea\'f2\'f0\'e8\'f7\'e5\'f1\'ea\'e8\'e9 \'ef\'f0\'ee\'e2\'ee\'e4 - \'ee\'f2\'e4\'e5\'eb\'fc\'ed\'fb\'e9 \'ee\'e1\'fa\'e5\'ea\'f2. \'c2 \'e4\'ee\'ec\'e5 \'e8\'f5 \'f2\'fb\'f1\'ff\'f7\'e8. \'cd\'ee \'e5\'f1\'eb\'e8 \'ef\'f0\'e5\'e4\'ef\'ee\'eb\'ee\'e6\'e8\'f2\'fc, \'f7\'f2\'ee \'e2\'f1\'e5 \'ef\'f0\'ee\'e2\'ee\'e4\'e0 \'e2\'e7\'e0\'e8\'ec\'ee\'e7\'e0\'ec\'e5\'ed\'ff\'e5\'ec\'fb\'e5, \'f2\'ee \'ec\'ee\'e6\'ed\'ee \'f1\'ee\'e2\'ec\'e5\'f1\'f2\'ed\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'e2\'f1\'e5\'e3\'ee \'ee\'e4\'e8\'ed \'ee\'e1\'fa\'e5\'ea\'f2 "\'ef\'f0\'ee\'e2\'ee\'e4", \'f3\'ea\'e0\'e7\'fb\'e2\'e0\'ff \'ed\'e0 \'ed\'e5\'e3\'ee 1000 \'f0\'e0\'e7.\cf0\par
+\cf1\'c2 \'f2\'e5\'ea\'f1\'f2\'e5 1000 \'e1\'f3\'ea\'e2. \'cc\'ee\'e6\'ed\'ee \'ea\'e0\'e6\'e4\'f3\'fe \'e1\'f3\'ea\'e2\'f3 \'e2\'ee\'f1\'ef\'f0\'e8\'ed\'e8\'ec\'e0\'f2\'fc \'ea\'e0\'ea \'e8\'ed\'e4\'e8\'e2\'e8\'e4\'f3\'e0\'eb\'fc\'ed\'ee\'f1\'f2\'fc, \'e0 \'ec\'ee\'e6\'ed\'ee \'ea\'e0\'e6\'e4\'f3\'fe \'e1\'f3\'ea\'e2\'f3 \'ea\'e0\'ea \'f1\'f1\'fb\'eb\'ea\'f3 \'ed\'e0 \'e0\'eb\'f4\'e0\'e2\'e8\'f2 \'e8\'e7 33 \'e1\'f3\'ea\'e2\'fb.\cf0\par
+\cf6\b class\cf1\b0  LetterInText\cf0\par
+\cf1\tab\cf6\b protected char\cf1\b0  c\cf0\par
+\cf1\tab\cf6\b protected \cf1\b0 Pic pic\cf0\par
+\cf1\tab\cf6\b public\cf1\b0  LetterInText(\cf6\b char\cf1\b0  c, Pic pic)\cf0\par
+\cf1\tab\tab\cf6\b this\cf1\b0 .c = c\cf0\par
+\cf1\tab\tab\cf6\b this\cf1\b0 .pic = pic\cf0\par
+\cf6\b class\cf1\b0  Pic\cf0\par
+\cf1\tab\cf6\b protected byte\cf1\b0 [] picture\tab\'ed\'e5\'ef\'ee\'f1\'f0\'e5\'e4\'f1\'f2\'e2\'e5\'ed\'ed\'ee \'ea\'e0\'f0\'f2\'e8\'ed\'ea\'e0 \'e2 \'e2\'e8\'e4\'e5 \'ec\'e0\'f1\'f1\'e8\'e2\'e0 \'e1\'e0\'e9\'f2 = \b\'d1\'c0\'cc\'db\'c9 \'d2\'df\'c6\'c5\'cb\'db\'c9 \'ce\'c1\'da\'c5\'ca\'d2\b0  - \'e5\'e3\'ee \'e8 \'ed\'e0\'e4\'ee \'ee\'e1\'eb\'e5\'e3\'f7\'e8\'f2\'fc.\cf0\par
+\cf1\tab\cf6\b void\cf1\b0  draw()\tab\tab\tab\tab\'ec\'e5\'f2\'ee\'e4, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'ee\'f2\'f0\'e8\'f1\'ee\'e2\'fb\'e2\'e0\'e5\'f2 \'ea\'e0\'f0\'f2\'e8\'ed\'ea\'f3\cf0\par
+\cf1\tab\cf6\b protected \cf1\b0 Pic(\cf6\b byte\cf1\b0 [] picture)\cf0\par
+\cf1\tab\tab\cf6\b this\cf1\b0 .picture = picture\cf0\par
+\cf6\b class\cf1\b0  MyText\cf0\par
+\cf1\tab\cf6\b protected \cf1\b0 Map<Character, Pic> \'e1\'f3\'ea\'e2\'fb\'ca\'ee\'f2\'ee\'f0\'fb\'e5\'c5\'f1\'f2\'fc\'c2\'cd\'e0\'f8\'e5\'ec\'d2\'e5\'ea\'f1\'f2\'e5 = \cf6\b new\cf1\b0  HashMap<>()\tab\'f0\'e0\'e7\'ec\'e5\'f0 \'fd\'f2\'ee\'e9 Map <= 33\cf0\par
+\cf1\tab\cf6\b protected \cf1\b0 List<LetterInText>\tab\'f5\'f0\'e0\'ed\'e8\'ec\'d1\'e0\'ec\'d2\'e5\'ea\'f1\'f2 = \cf6\b new\cf1\b0  ArrayList<>()\cf0\par
+\cf1\tab\cf6\b public void\cf1\b0  append(\cf6\b char\cf1\b0  c)\cf0\par
+\cf1\tab\tab\cf6\b if \cf1\b0 (!\'e1\'f3\'ea\'e2\'fb\'ca\'ee\'f2\'ee\'f0\'fb\'e5\'c5\'f1\'f2\'fc\'c2\'cd\'e0\'f8\'e5\'ec\'d2\'e5\'ea\'f1\'f2\'e5.containsKey(c))\cf0\par
+\cf1\tab\tab\tab Pic pic = \cf0\par
+\cf1\tab\tab\tab\'e1\'f3\'ea\'e2\'fb\'ca\'ee\'f2\'ee\'f0\'fb\'e5\'c5\'f1\'f2\'fc\'c2\'cd\'e0\'f8\'e5\'ec\'d2\'e5\'ea\'f1\'f2\'e5.put(c, pic)\cf0\par
+\cf1\tab\tab  \'f5\'f0\'e0\'ed\'e8\'ec\'d1\'e0\'ec\'d2\'e5\'ea\'f1\'f2.add(\cf6\b new\cf1\b0  LettersInText(c, pics.get(c)))\cf0\par
+\cf1\par
+\ul Proxy\cf0\ulnone\par
+\cf1\'cf\'ee\'f1\'f0\'e5\'e4\'ed\'e8\'ea. \'cd\'e5 Logger \'ef\'e8\'f8\'e5\'f2 \'e2 StringAppend (\'eb\'ee\'e3\'e8 \'f5\'f0\'e0\'ed\'e8\'ec \'e2 \'e2\'e8\'e4\'e5 String), \'e0 Logger \u8594? Proxy \u8594? StringAppend.\cf0\par
+\cf1\'cf\'ee \'e0\'ed\'e0\'eb\'ee\'e3\'e8\'e8 \'f1 Adapter:\cf0\par
+\cf1\par
+\cf6\b class\cf1\b0  Logger\cf0\par
+\cf1\tab\cf6\b protected final\cf1\b0  IStore storage\cf0\par
+\cf1\tab Logger (IStore storage)\cf0\par
+\cf1\tab\tab\cf0\par
+\cf6\b class\cf1\b0  StringAppend \cf6\b implements\cf1\b0  IStore\tab\cf6\b interface\cf1\b0  IStore\cf0\par
+\cf1\tab\cf6\b void\cf1\b0  append(String s)\tab\tab\tab\tab\cf6\b void\cf1\b0  append(String s)\cf0\par
+\cf1\tab\tab ...\cf0\par
+\cf1 StringAppend \'f3\'ec\'e5\'e5\'f2 \'e4\'e5\'eb\'e0\'f2\'fc append(). \'d5\'ee\'f2\'e8\'ec Logger-\'f3 \'f1\'ea\'ee\'f0\'ec\'e8\'f2\'fc StringAppend \'ed\'e5 \'ed\'e0\'ef\'f0\'ff\'ec\'f3\'fe, \'e0 \'f7\'e5\'f0\'e5\'e7 Proxy.\cf0\par
+\cf1\par
+\cf6\b class\cf1\b0  Proxy \cf6\b implements\cf1\b0  IStore\cf0\par
+\cf1\tab\cf6\b protected final\cf1\b0  IStore storage\cf0\par
+\cf1\tab Proxy (IStore storage)\cf0\par
+\cf1\tab\tab\cf6\b this\cf1\b0 .storage = storage\cf0\par
+\cf1\tab\cf6\b void\cf1\b0  append(String s)\cf0\par
+\cf1\tab\tab System.out..\tab - \'ef\'e5\'f0\'e5\'e4 \'f2\'e5\'ec, \'ea\'e0\'ea \'e2\'fb\'e7\'e2\'e0\'f2\'fc append(), \'e4\'e5\'eb\'e0\'e5\'ec \'ef\'f0\'ee\'ec\'e5\'e6\'f3\'f2\'ee\'f7\'ed\'ee\'e5 Proxy \'e4\'e5\'e9\'f1\'f2\'e2\'e8\'e5\cf0\par
+\cf1\tab\tab storage.append(s)\cf0\par
+\cf1\par
+\ul Decorator\cf0\ulnone\par
+\cf1\'c4\'e5\'ea\'ee\'f0\'e0\'f2\'ee\'f0\cf0\par
+\cf1\'c5\'f1\'f2\'fc:\cf0\par
+\cf6\b interface\cf1\b0  IStore\cf0\par
+\cf1\tab\cf6\b void\cf1\b0  append(String s)\cf0\par
+\cf1\par
+\'e8 10 \'ea\'eb\'e0\'f1\'f1\'ee\'e2 \'e8\'f5 \'f0\'e5\'e0\'eb\'e8\'e7\'e0\'f6\'e8\'e9:\cf0\par
+\cf6\b class\cf1\b0  StringAppend \cf6\b implements\cf1\b0  IStore\cf0\par
+\cf1\tab\cf6\b void\cf1\b0  append(String s)\cf0\par
+\cf1\tab\tab ...\cf0\par
+\cf1\'cf\'e5\'f0\'e2\'e0\'ff \'f0\'e5\'e0\'eb\'e8\'e7\'e0\'f6\'e8\'ff \'f1\'ee\'f5\'f0\'e0\'ed\'ff\'e5\'f2 \'f1\'f2\'f0\'ee\'ea\'f3 \'e2 \'f4\'e0\'e9\'eb, \'e2\'f2\'ee\'f0\'e0\'ff \'e2 ArrayList, \'f2\'f0\'e5\'f2\'fc\'ff \'e5\'f9\'b8 \'ea\'f3\'e4\'e0-\'ed\'e8\'e1\'f3\'e4\'fc. \'d5\'ee\'f2\'e8\'ec \'e4\'ee\'e1\'e0\'e2\'e8\'f2\'fc \'f4\'f3\'ed\'ea\'f6\'e8\'ee\'ed\'e0\'eb\'fc\'ed\'ee\'f1\'f2\'fc: \'f7\'f2\'ee\'e1\'fb \'e1\'fb\'eb\'e0 \'e2\'ee\'e7\'ec\'ee\'e6\'ed\'ee\'f1\'f2\'fc \'f1\'ee\'f5\'f0\'e0\'ed\'ff\'f2\'fc \'e2 \'f4\'e0\'e9\'eb, \'e2 ArrayList \'ed\'ee \'f3\'e6\'e5 \'e2 UPPERCASE. \'cf\'e5\'f0\'e2\'ee\'e5, \'f7\'f2\'ee \'ef\'f0\'e8\'f5\'ee\'e4\'e8\'f2 \'e2 \'e3\'ee\'eb\'ee\'e2\'f3 \u8594? \'f1\'ee\'e7\'e4\'e0\'f2\'fc \'e5\'f9\'b8 10 \'ea\'eb\'e0\'f1\'f1\'ee\'e2 \'f2\'e8\'ef\'e0 StringUpperCase. \'cd\'ee \'ec\'ee\'e6\'ed\'ee \'f1\'e4\'e5\'eb\'e0\'f2\'fc \'f5\'e8\'f2\'f0\'e5\'e5:\cf0\par
+\cf6\b class\cf1\b0  UpperCase \cf6\b implements\cf1\b0  IStore\cf0\par
+\cf1\tab\cf6\b protected final\cf1\b0  IStore storage\cf0\par
+\cf1\tab\cf6\b public\cf1\b0  UpperCase (IStore storage)\tab\tab\tab "\'ee\'e1\'ee\'f0\'e0\'f7\'e8\'e2\'e0\'e5\'ec" IStore \'ed\'ee\'e2\'fb\'ec \'f4\'f3\'ed\'ea\'f6\'e8\'ee\'ed\'e0\'eb\'ee\'ec\cf0\par
+\cf1\tab\tab\cf6\b this\cf1\b0 .storage = storage\cf0\par
+\cf1\tab\cf6\b public void\cf1\b0  append(String str)\cf0\par
+\cf1\tab\tab storage.append(str)\cf0\par
+\cf1\tab\cf6\b public void\cf1\b0  appendUpperCase(String str)\cf0\par
+\cf1\tab\tab append(str.toUpperCase)\tab\tab\tab\tab StringAppend \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'ec \'ea\'e0\'ea \'f7\'b8\'f0\'ed\'fb\'e9 \'ff\'f9\'e8\'ea. \'cc\'fb \'ef\'f0\'ee \'ed\'e5\'e3\'ee \'ed\'e8\'f7\'e5\'e3\'ee \'ed\'e5 \'e7\'ed\'e0\'e5\'ec, \'ea\'f0\'ee\'ec\'e5 \'f2\'ee\'e3\'ee, \'f7\'f2\'ee \'e2 \'ed\'b8\'ec \'e5\'f1\'f2\'fc \'ec\'e5\'f2\'ee\'e4 append(). \'c8 \'e2\'ee\'ea\'f0\'f3\'e3 \'fd\'f2\'ee\'e3\'ee \'ec\'e5\'f2\'ee\'e4\'e0 \'e2\'f1\'b8 \'e2\'e5\'f0\'f2\'e8\'f2\'f1\'ff.\cf0\par
+\cf1\par
+\cf6\b public static void\cf1\b0  main(String [] args)\cf0\par
+\cf1\tab IStore st = \cf6\b new\cf1\b0  StringAppend ()\cf0\par
+\cf1\tab UpperCase stPlusUpper = \cf6\b new\cf1\b0  UpperCase(st)\tab\tab\'ef\'ee\'eb\'f3\'f7\'e8\'eb\'e8 \'f2\'ee\'f2 \'e6\'e5 StringAppend, \'ed\'ee "\'ed\'e0\'e2\'e5\'f1\'e8\'eb\'e8" \'ed\'ee\'e2\'fb\'e9 \'f4\'f3\'ed\'ea\'f6\'e8\'ee\'ed\'e0\'eb\cf0\par
+\cf1\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\'ca\'ee\'e3\'e4\'e0 \'ed\'e0\'e4\'ee \'f1\'e4\'e5\'eb\'e0\'f2\'fc \'f6\'e5\'ef\'ee\'f7\'ea\'e8 \'ee\'e1\'f0\'e0\'e1\'ee\'f2\'ea\'e8 \'e7\'e0\'ef\'f0\'ee\'f1\'ee\'e2. \'cf\'f0\'e8 \'fd\'f2\'ee\'ec \'e1\'eb\'ee\'ea\'e8 \'e2 \'f6\'e5\'ef\'ee\'f7\'ea\'e5 \'ec\'ee\'e6\'ed\'ee \'e1\'fb\'eb\'ee \'e1\'fb \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'f2\'fc, \'f3\'e4\'e0\'eb\'ff\'f2\'fc, \'ec\'e5\'ed\'ff\'f2\'fc \'ec\'e5\'f1\'f2\'e0\'ec\'e8.\cf0\par
+\cf6\b public class \cf1\b0 Client\cf0\line\cf1\tab\cf6\b public static void \cf1\b0 main(String [] args)\cf0\par
+\cf1\tab\tab Request request =\cf6\b  new\cf1\b0  Request();\tab\tab //\'d1\'ee\'e7\'e4\'e0\'b8\'ec Request, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'f3 \'ed\'e0\'f1 \'e1\'f3\'e4\'e5\'f2 \'f5\'ee\'e4\'e8\'f2\'fc \'ef\'ee Handler-\'e0\'ec \'e8 \'e8\'e7\'ec\'e5\'ed\'ff\'f2\'fc\'f1\'ff\cf0\line\cf1\tab\tab Handler h1 =\cf6\b  new\cf1\b0  ConcreteHandlerA();\cf0\par
+\cf1\tab\tab Handler h2 =\cf6\b  new\cf1\b0  ConcreteHandlerB();\tab //\'d1\'ee\'e7\'e4\'e0\'b8\'ec \'f1\'e0\'ec\'e8 \'ee\'e1\'f0\'e0\'e1\'ee\'f2\'f7\'e8\'ea\'e8 \'ed\'e0\'f8\'e5\'e3\'ee Request-\'e0\cf0\par
+\cf1\tab\tab Handler h3 =\cf6\b  new\cf1\b0  ConcreteHandlerC();\cf0\par
+\cf1\tab\tab h1.setNext(h2);\tab\tab\tab\tab\tab //\'d1\'ee\'e7\'e4\'e0\'b8\'ec \'f1\'f5\'e5\'ec\'f3, \'ea\'e0\'ea\'ee\'e9 Handler \'e7\'e0 \'ea\'e0\'ea\'e8\'ec \'e4\'ee\'eb\'e6\'e5\'ed \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'f2\'fc\'f1\'ff\cf0\par
+\cf1\tab\tab h2.setNext(h3);\cf0\par
+\cf1\tab\tab h1.handle(request);\tab\tab\tab\tab //\'c7\'e0\'ef\'f3\'f1\'ea\'e0\'e5\'ec \'f1\'f5\'e5\'ec\'f3\cf0\par
+\cf1\par
+\cf6\b public interface \cf1\b0 Handler\tab\tab\tab\tab\tab //\'c1\'e0\'e7\'ee\'e2\'fb\'e5 \'ec\'e5\'f2\'ee\'e4\'fb, \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'e4\'ee\'eb\'e6\'ed\'fb \'e1\'fb\'f2\'fc \'e2 \'ea\'e0\'e6\'e4\'ee\'ec Handler-\'e5\cf0\par
+\cf1\tab\cf6\b void\cf1\b0  setNext(Handler handler);\tab\tab\tab //setNext() - \'e4\'eb\'ff \'f1\'ee\'e7\'e4\'e0\'ed\'e8\'ff \'f1\'f5\'e5\'ec\cf0\par
+\cf1\tab\cf6\b void\cf1\b0  handle(Request request);\tab\tab\tab\tab //handler() - \'e4\'eb\'ff \'e7\'e0\'ef\'f3\'f1\'ea\'e0 \'f1\'f5\'e5\'ec\'fb \'e8 \'ef\'e5\'f0\'e5\'e4\'e0\'f7\'e8 request \'ee\'f2 \'ee\'e4\'ed\'ee\'e3\'ee \'ea \'e4\'f0\'f3\'e3\'ee\'ec\'f3 \'ef\'ee \'f6\'e5\'ef\'ee\'f7\'ea\'e5\cf0\par
+\cf1\par
+\cf6\b public abstract class \cf1\b0 BaseHandler \cf6\b implements\cf1\b0  Handler\cf0\par
+\cf1\tab Handler \cf7\b next\cf1\b0  = \cf6\b null\cf1\b0 ;\cf0\line\cf1\tab Request \cf7\b request\cf1\b0  = \cf6\b null\cf1\b0 ;\tab\tab\tab\tab\tab //default-\'fb\'e5 \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e8 \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'fb\'f5 \'e4\'eb\'ff \'f0\'e0\'e1\'ee\'f2\'fb \'f1\'f5\'e5\'ec\'fb \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'f5\cf0\line\line\cf1\tab\cf8 @Override\cf0\line\cf1\tab\cf6\b public\cf1\b0  \cf6\b void\cf1\b0  setNext(Handler next)\tab\tab\tab //default-\'e0\'ff \'f0\'e5\'e0\'eb\'e8\'e7\'e0\'f6\'e8\'ff\cf0\line\cf1\tab\tab\cf6\b this\cf1\b0 .\cf7\b next\cf1\b0  = next;\cf0\par
+\cf1\par
+\tab\cf8 @Override\cf0\line\cf1\tab\cf6\b public\cf1\b0  \cf6\b void\cf1\b0  handle(Request request)\{\cf0\line\cf1\tab\tab\cf6\b if\cf1\b0  (\cf7\b next\cf1\b0  !=\cf6\b null\cf1\b0 )\cf0\line\cf1\tab\tab\tab\cf7\b next\cf1\b0 .handle(\cf7\b request\cf1\b0 );\cf0\par
+\cf1\par
+\cf6\b public class \cf1\b0 ConcreteHandlerA \cf6\b extends \cf1\b0 BaseHandler\{\cf0\line\cf1\tab\cf6\b public void \cf1\b0 handle(Request request)\{\cf0\line\cf1\tab\tab\cf6\b this\cf1\b0 .\cf7\b request\cf1\b0  =request;\cf0\line\cf1\tab\tab checkHandler();\cf0\par
+\cf1\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\cf0\par
+}
+ 

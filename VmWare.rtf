@@ -1,0 +1,200 @@
+{\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\fnil\fcharset0 Courier New;}{\f1\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}}
+{\colortbl ;\red0\green0\blue255;\red0\green0\blue0;\red255\green0\blue0;}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\nowidctlpar\hyphpar0\lang1033\kerning1\f0\fs22 VMware vSAN {\field{\*\fldinst{HYPERLINK "https://www.youtube.com/watch?v=-kYo-QFf8Ok"}}{\fldrslt{\ul\cf1 https://www.youtube.com/watch?v=-kYo-QFf8Ok}}}\lang1049\f1\fs22\par
+\'ce\'f2\'ea\'e0\'e7\'e0\'eb\'e8\'f1\'fc \'ee\'f2 \'f6\'e5\'ed\'f2\'f0\'e0\'eb\'e8\'e7\'ee\'e2\'e0\'ed\'ed\'fb\'f5 \'e4\'e8\'f1\'ea\'ee\'e2\'fb\'f5 \'ef\'ee\'eb\'ee\'ea \'e2 \'ef\'ee\'eb\'fc\'e7\'f3 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'ed\'e8\'ff \'e4\'e8\'f1\'ea\'ee\'e2 \'e2 \'f1\'e5\'f0\'e2\'e5\'f0\'e0\'f5 + \'ee\'f2\'ea\'e0\'e7\'e0\'eb\'e8\'f1\'fc \'ee\'f2 \lang1033\f0 VMFS\lang1049\f1  \'e8 \'e7\'e0\'ec\'e5\'ed\'e8\'eb\'e8 \'ed\'e0 \lang1033\f0 Object Database, \lang1049\f1\'e2 \'ea\'ee\'f2\'ee\'f0\'ee\'e9 \'e5\'f1\'f2\'fc \lang1033\f0 Replication Factor,\lang1049\f1  \'ee\'ef\'f2\'e8\'ec\'e8\'e7\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'ee\'e9 \'e4\'eb\'ff \'f5\'f0\'e0\'ed\'e5\'ed\'e8\'ff \lang1033\f0 .vmdk \lang1049\f1\'f4\'e0\'e9\'eb\'ee\'e2.\par
+\par
+\tab\tab\tab\lang1033\f0 IaaS\lang1049\f1\tab\lang1033\f0 PaaS\tab SaaS\tab\tab * - \lang1049\f1\'e7\'ed\'e0\'f7\'e8\'f2 \'ec\'fb \'f3\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'ec\lang1033\f0  \lang1049\f1\'fd\'f2\'e8\'ec \'ea\'ee\'ec\'ef\'ee\'ed\'e5\'ed\'f2\'ee\'ec\lang1033\f0\par
+--------------------------------\lang1049\f1\par
+\lang1033\f0 Application\lang1049\f1\tab\tab *\lang1033\f0\tab *\lang1049\f1\par
+\lang1033\f0 Data ~ Backup\lang1049\f1\tab *\lang1033\f0\tab *\lang1049\f1\par
+\lang1033\f0 OS/Runtime\tab\lang1049\f1\tab *\lang1033\f0\par
+\lang1049\f1\'c2\'e8\'f0\'f2\'f3\'e0\'eb\'e8\'e7\'e0\'f6\'e8\'ff\par
+\lang1033\f0 Servers\lang1049\f1\par
+\lang1033\f0 Storage\lang1049\f1\par
+\lang1033\f0 Networking\lang1049\f1\par
+\par
+IaaS (Infrastructure as a Service) \endash  \'e0\'f0\'e5\'ed\'e4\'f3\'e5\'ec \'eb\'e8\'e1\'ee \'e6\'e5\'eb\'e5\'e7\'ed\'fb\'e5 \'f1\'e5\'f0\'e2\'e5\'f0\'e0, \'eb\'e8\'e1\'ee VM\lang1033\f0 s\lang1049\f1  \'f1 \'f5\'e0\'f0\'e0\'ea\'f2\'e5\'f0\'e8\'f1\'f2\'e8\'ea\'e0\'ec\'e8 \'ef\'ee CPU, Mem, HDD. \'c5\'f1\'eb\'e8 \'e2\'fb\'eb\'e5\'f2\'e8\'f2 \'e4\'e8\'f1\'ea, \'ee\'f2\'ea\'eb\'fe\'f7\'e8\'f2\'f1\'ff \'ef\'e8\'f2\'e0\'ed\'e8\'e5 \'e8 \'f2.\'ef., \'f2\'ee \'fd\'f2\'ee \'e3\'ee\'eb\'ee\'e2\'ed\'e0\'ff \'e1\'ee\'eb\'fc \'ef\'f0\'ee\'e2\'e0\'e9\'e4\'e5\'f0\'e0 SLA.\par
+PaaS (Platform) - \'e4\'e0\'fe\'f2 \'e4\'ee\'f1\'f2\'f3\'ef \'ea Oracle \'ea\'ee\'ed\'f1\'ee\'eb\'e8, \'f2\'ee\'eb\'fc\'ea\'ee \'e4\'e0\'ed\'ed\'fb\'e5 \'e7\'e0\'eb\'e8\'e2\'e0\'e9\lang1033\f0  \lang1049\f1\'e8\'eb\'e8 \'ea \'e3\'ee\'f2\'ee\'e2\'ee\'ec\'f3 \'ea\'eb\'e0\'f1\'f2\'e5\'f0\'f3 Kubernetes. \'cd\'e5 \'e7\'e0\'e1\'ee\'f2\'e8\'ec\'f1\'ff \'ee \'f2\'ee\'ed\'ea\'ee\'ec \'f2\'fe\'ed\'e8\'ed\'e3\'e5, \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e0\'f5 \'f0\'e5\'ef\'eb\'e8\'ea\'e0\'f6\'e8\'e8, \'ee\'f2\'ea\'e0\'e7\'ee\'f3\'f1\'f2\'ee\'e9\'f7\'e8\'e2\'ee\'f1\'f2\'e8.\par
+SaaS (Software) = gmail, uCoz - \'e0\'f0\'e5\'ed\'e4\'f3\'e5\'f8\'fc \'ef\'ee\'eb\'ed\'ee\'f1\'f2\'fc\'fe \'e3\'ee\'f2\'ee\'e2\'fb\'e9, \'f0\'e0\'e1\'ee\'f2\'e0\'fe\'f9\'e8\'e9 \'f1\'e5\'f0\'e2\'e8\'f1. \'ca\'e0\'ea \'ef\'f0\'e0\'e2\'e8\'eb\'ee \'e2\'f1\'b8 \'e2\'e7\'e0\'e8\'ec\'ee\'e4\'e5\'e9\'f1\'f2\'e2\'e8\'e5 \'f7\'e5\'f0\'e5\'e7 \'c1\'f0\'e0\'f3\'e7\'e5\'f0.\par
+IaC (Infrastructure as Code) - \'e2\'ee\'e7\'ec\'ee\'e6\'ed\'ee\'f1\'f2\'fc \'f0\'e0\'e7\'e2\'e5\'f0\'ed\'f3\'f2\'fc \'f1\'e2\'ee\'e9 \'e1\'e8\'e7\'ed\'e5\'f1 \'e8\'ec\'e5\'ff \'ed\'e0 \'f0\'f3\'ea\'e0\'f5 Source Code \'e2 \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'ee\'f0\'e8\'e8, Backup \'e4\'e0\'ed\'ed\'fb\'f5  (\'f1\'ef\'e8\'f1\'ee\'ea \'ea\'eb\'e8\'e5\'ed\'f2\'ee\'e2, \'f2\'ee \'f7\'f2\'ee \'ed\'e5\'eb\'fc\'e7\'ff \'e2\'e7\'ff\'f2\'fc \'e8\'e7 Source Code) \'e8 \'e0\'f0\'e5\'ed\'e4\'f3\'e5\'ec\'ee\'e5 \'e2 \'ee\'e1\'eb\'e0\'ea\'e5 \'e6\'e5\'eb\'e5\'e7\'ee. \'ca\'ee\'ed\'f4\'e8\'e3\'e8 \kerning0 Prometheus \'e2 .yaml \'f4\'e0\'e9\'eb\'e0\'f5, \'ef\'ee\'fd\'f2\'ee\'ec\'f3 \'e5\'e3\'ee \'eb\'e5\'e3\'ea\'ee \'ec\'ee\'e6\'ed\'ee \'f0\'e0\'e7\'e2\'e5\'f0\'ed\'f3\'f2\'fc \'e2 \'ee\'e1\'eb\'e0\'ea\'e5, \'f1\'ea\'e0\'f7\'e0\'eb \'ea\'ee\'ed\'f4\'e8\'e3\'e8 \'e8\'e7 Git. \'c2 \'ee\'f2\'eb\'e8\'f7\'e8\'e8 \'ee\'f2 Zabbix, \'e3\'e4\'e5 \'e2\'f1\'b8 \'ef\'ee\'ea\'e0 \'ed\'e0\'f1\'f2\'f0\'e0\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'f7\'e5\'f0\'e5\'e7 \'ec\'e5\'ed\'fe\'f8\'ea\'e8 \'e8 \'ea\'ee\'ed\'f4\'e8\'e3\'e8 \'eb\'e5\'e6\'e0\'f2 \'e2 \'c1\'c4.\kerning1\par
+\pard\nowidctlpar\hyphpar0\tx7366\par
+\pard\nowidctlpar\hyphpar0 Hyper-Treading - \'ea\'ee\'eb\'e8\'f7\'e5\'f1\'f2\'e2\'ee Threads * 2 = \'ea\'ee\'eb-\'e2\'ee \lang1033\f0 Cores\lang1049\f1\par
+vSphere Management Assistant (vMA) - \'f6\'e5\'ed\'f2\'f0\'e0\'eb\'e8\'e7\'ee\'e2\'e0\'ed\'ed\'e0\'ff \'ea\'ee\'ed\'f1\'ee\'eb\'fc\par
+RDM - Raw Device Mapping\par
+DPM - Distributed Power Management - \'fd\'ea\'ee\'ed\'ee\'ec\'e8\'ff \'fd\'eb\'e5\'ea\'f2\'f0\'e8\'f7\'e5\'f1\'f2\'e2\'e0. \'c5\'f1\'eb\'e8 \'f0\'e5\'f1\'f3\'f0\'f1\'ee\'e2 \'f5\'e2\'e0\'f2\'e0\'e5\'f2, \'f2\'ee \'ee\'e4\'e8\'ed ESX \'ee\'f1\'e2\'ee\'e1\'ee\'e6\'e4\'e0\'e5\'f2\'f1\'ff \'ee\'f2 VM \'e8 \'f3\'f5\'ee\'e4\'e8\'f2 \'e2 standby power mode.\par
+CPU Affinity - \'e6\'b8\'f1\'f2\'ea\'ee \'ef\'f0\'e8\'e2\'ff\'e7\'fb\'e2\'e0\'e5\'ec, \'ed\'e0 \'ea\'e0\'ea\'ee\'ec CPU \'e4\'ee\'eb\'e6\'ed\'e0 \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc VM - \'ed\'e5\'ef\'f0\'e8\'e5\'ec\'eb\'e5\'ec\'ee \'e4\'eb\'ff vMotion\par
+Maintenance mode - \'f1\'e5\'f0\'e2\'e5\'f0 \'e2 \'f0\'e5\'e6\'e8\'ec\'e5 \'ee\'e1\'f1\'eb\'f3\'e6\'e8\'e2\'e0\'ed\'e8\'ff, \'f2.\'e5. \'f1\'e0\'ec ESXi \'ed\'e0\'e4\'ee \'ef\'f0\'ee-update-\'e8\'f2\'fc \'e8\'eb\'e8 \'e5\'f9\'b8 \'f7\'f2\'ee-\'ed\'e8\'e1\'f3\'e4\'fc.\par
+Single Sign-On (SSO) - \'f0\'e5\'f8\'e8\'eb\'e8 \'ee\'f2\'ea\'e0\'e7\'e0\'f2\'fc\'f1\'ff \'ee\'f2 AD \'e8 \'f1\'ee\'e7\'e4\'e0\'eb\'e8 \'f1\'e2\'ee\'fe \'e1\'e0\'e7\'f3 \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'e5\'e9 \'f1 \'ef\'f0\'e0\'e2\'e0\'ec\'e8 \'e8 \'f2.\'ef., \'ed\'ee \'f1 \'e2\'ee\'e7\'ec\'ee\'e6\'ed\'ee\'f1\'f2\'fc\'fe \'e8\'ed\'f2\'e5\'e3\'f0\'e0\'f6\'e8\'e8 \'f1 AD \'ef\'ee LDAP (\'e5\'f1\'eb\'e8 SSO \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'eb\'e5\'ed \'ed\'e0 Linux) \'e8\'eb\'e8 \'ed\'e0\'ef\'f0\'ff\'ec\'f3\'fe (\'e5\'f1\'eb\'e8 SSO \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'eb\'e5\'ed \'ed\'e0 Windows \'ec\'e0\'f8\'e8\'ed\'f3, \'ea\'ee\'f2\'ee\'f0\'e0 \'e2 \'e4\'ee\'ec\'e5\'ed\'e5).\par
+\par
+vCLI (\'e4\'eb\'ff Linux) \'e8 PowerCLI (\'e4\'eb\'ff Windows) ~ \'ed\'e5 \'f0\'e5\'ea\'ee\'ec\'e5\'ed\'e4\'f3\'fe\'f2 \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e0\'f2\'fc\'f1\'ff \'ea ESXi \'ef\'ee ssh, \'e2 \'ea\'e0\'f7\'e5\'f1\'f2\'e2\'e5 \'e0\'ed\'e0\'eb\'ee\'e3\'e0 \'ef\'f0\'e5\'e4\'eb\'e0\'e3\'e0\'fe\'f2 \'f7\'e5\'f0\'e5\'e7 \'fd\'f2\'e8 \'e8\'ed\'f1\'f2\'f0\'f3\'ec\'e5\'ed\'f2\'fb. \'c5\'f1\'eb\'e8 \'f7\'e5\'f0\'e5\'e7 vCLI \'ed\'e5 \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'f2\'f1\'ff \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e8\'f2\'fc\'f1\'ff, \'f2\'ee \'e7\'e0\'f5\'ee\'e4\'e8\'ec \'f7\'e5\'f0\'e5\'e7 iLo, \'e2 \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e0\'f5 \'e5\'f1\'f2\'fc \'ee\'ef\'f6\'e8\'ff Enable/Disable ESXi shell. \'c4\'e5\'eb\'e0\'e5\'ec Enable \'e8 \'ed\'e0\'e6\'ec\'b8\'ec ALT + F1 \cf2\u8594?\cf0  \'ef\'ee\'ef\'e0\'e4\'b8\'ec \'f7\'f2\'ee-\'f2\'ee \'ef\'ee\'e4\'ee\'e1\'ed\'ee\'e5 Linux shell \'e2 ESXi. \'cd\'e0\'e6\'e8\'ec\'e0\'e5\'ec ALT + F2 \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'ec\'f1\'ff \'ed\'e0\'e7\'e0\'e4. \'cc\'ee\'e6\'ed\'ee \'f1\'ec\'ee\'f2\'f0\'e5\'f2\'fc logs.\par
+\tab\'ce\'f1\'ed\'ee\'e2\'ed\'fb\'e5 \'ea\'ee\'ec\'e0\'ed\'e4\'fb \'e2 \'ea\'ee\'ed\'f1\'ee\'eb\'e8:\par
+# \b esxcli\b0  \i command\i0\par
+# \b esxcfg\b0\par
+\par
+Veeam - backup-\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'e5.\par
+VMware Horizon - \'e2\'e8\'f0\'f2\'f3\'e0\'eb\'fc\'ed\'fb\'e5 \'f0\'e0\'e1\'ee\'f7\'e8\'e5 \'f1\'f2\'ee\'eb\'fb\par
+VMware Fusion = Workstation \'f2\'ee\'eb\'fc\'ea\'ee \'e4\'eb\'ff Mac\par
+VMware NSX - \'e2\'e8\'f0\'f2\'f3\'e0\'eb\'e8\'e7\'e0\'f6\'e8\'ff \'f1\'e5\'f2\'e8 SDN\par
+VMware Cloud Directo\lang1033\f0 r - \lang1049\f1\'f3\'ef\'f0\'e0\'e2\'eb\'ff\'eb\'ea\'e0 \'ed\'e0\'e4 \ul\'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'e8\'ec\'e8\ulnone  \lang1033\f0 vSphere \lang1049\f1\'e4\'eb\'ff \'f1\'ee\'e7\'e4\'e0\'ed\'e8\'ff \lang1033\f0 v\lang1049\f1\'d6\'ce\'c4-\'ee\'e2\lang1033\f0  =\lang1049\f1  \lang1033\f0 vD\lang1049\f1\'d1\lang1033\f0 (DataCenter)\lang1049\f1 .\par
+\par
+\'ca\'ee\'e3\'e4\'e0 \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee \'ef\'ee\'e4\'ed\'e8\'ec\'e0\'f2\'fc \'e2\'f2\'ee\'f0\'ee\'e9 vCenter? \'c4\'eb\'ff v5.5 \'ed\'e0 \'ee\'e4\'e8\'ed vCenter \'ec\'ee\'e6\'ed\'ee \'ef\'ee\'e2\'e5\'f1\'f2\'e8\'f2\'fc < 1 \'f2\'fb\'f1. ESXi \'e8\'eb\'e8 10 \'f2\'fb\'f1. \'e2\'ea\'eb\'fe\'f7\'e5\'ed\'ed\'fb\'f5 VM.\par
+\par
+\ul DataCenter\ulnone\par
+\'e4\'eb\'ff \'ed\'e5\'ea\'ee\'f2\'ee\'f0\'fb\'f5 \'ee\'ef\'e5\'f0\'e0\'f6\'e8\'e8, DataCenter \'ff\'e2\'eb\'ff\'e5\'f2\'f1\'ff \'e3\'f0\'e0\'ed\'e8\'f6\'e5\'e9 (scope-\'ee\'ec). \'cd\'e0\'ef\'f0\'e8\'ec\'e5\'f0 Cluster \'ec\'ee\'e6\'ed\'ee \'ef\'ee\'f1\'f2\'f0\'ee\'e8\'f2\'fc \'f2\'ee\'eb\'fc\'ea\'ee \'e2\'ed\'f3\'f2\'f0\'e8 DataCenter, \'ec\'e5\'e6\'e4\'f3 \'ed\'e5\'eb\'fc\'e7\'ff. \'c4\'eb\'ff \'f1\'f3\'f9\'ed\'ee\'f1\'f2\'e8 Template, DataCenter \'e3\'f0\'e0\'ed\'e8\'f6\'e5\'e9 \'ed\'e5 \'ff\'e2\'eb\'ff\'e5\'f2\'f1\'ff. DataCenter \'ee\'e3\'f0\'e0\'ed\'e8\'f7\'e8\'f2\'e5\'eb\'fc \'e4\'eb\'ff vSwitch \'e8 \'e2\'ee\'ee\'e1\'f9\'e5 \'f0\'e0\'f1\'ef\'f0\'e5\'e4\'e5\'eb\'b8\'ed\'ed\'fb\'f5 \'ea\'ee\'ec\'ec\'f3\'f2\'e0\'f2\'ee\'f0\'ee\'e2. \'c4\'eb\'ff vMotion \'e4\'ee\'f1\'f2\'e0\'f2\'ee\'f7\'ed\'ee \'f1\'ee\'e7\'e4\'e0\'f2\'fc DataCenter \'e1\'e5\'e7 \'f1\'f3\'f9\'ed\'ee\'f1\'f2\'e8 Cluster.\par
+\par
+\ul Cluster\ulnone\par
+DRS \'e8 HA \'ec\'ee\'e6\'ed\'ee \'e4\'e5\'eb\'e0\'f2\'fc \'f2\'ee\'eb\'fc\'ea\'ee \'ec\'e5\'e6\'e4\'f3 \'f5\'ee\'f1\'f2\'e0\'ec\'e8, \'e2\'f5\'ee\'e4\'ff\'f9\'e8\'ec\'e8 \'e2 Cluster. FT-\'ed\'e0\'f1\'f2\'f0\'e0\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'e8\'ed\'e4\'e8\'e2\'e8\'e4\'f3\'e0\'eb\'fc\'ed\'ee \'e4\'eb\'ff \'ea\'e0\'e6\'e4\'ee\'e9 VM.\par
+\par
+\ul Snapshot\ulnone\par
+\'cf\'ee\'f1\'eb\'e5 snapshot \'f4\'e0\'e9\'eb .vmdk \'ed\'e5 \'e8\'e7\'ec\'e5\'ed\'ff\'e5\'f2\'f1\'ff, \'e0 \'e2\'f1\'e5 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff \'e7\'e0\'ef\'e8\'f1\'fb\'e2\'e0\'fe\'f2\'f1\'ff \'e2 delta.vmdk\par
+\par
+\ul vMotion\ulnone\par
+\tab Storage vMotion \'ec\'e8\'e3\'f0\'e8\'f0\'f3\'e5\'ec \'f2\'ee\'eb\'fc\'ea\'ee \'f5\'f0\'e0\'ed\'e8\'eb\'e8\'f9\'e0 - \'f4\'e0\'e9\'eb\'fb \'f1 \'ee\'e4\'ed\'ee\'e3\'ee \'f5\'f0\'e0\'ed\'e8\'eb\'e8\'f9\'e0 \'ef\'e5\'f0\'e5\'e5\'e7\'e6\'e0\'fe\'f2 \'ed\'e0 \'e4\'f0\'f3\'e3\'ee\'e5. VM \'ea\'e0\'ea \'f0\'e0\'e1\'ee\'f2\'e0\'eb\'ee \'ed\'e0 \'fd\'f2\'ee\'ec ESXi \'f2\'e0\'ea \'e8 \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2. \'cf\'f0\'ee\'e1\'eb\'e5\'ec\'e0 - \'e2 \'ef\'f0\'ee\'f6\'e5\'f1\'f1\'e5 \'ea\'ee\'ef\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'ff \'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'ff \'ed\'e0 \'e4\'e8\'f1\'ea\'e0\'f5 \'e8\'e7\'ec\'e5\'ed\'ff\'e5\'f2\'f1\'ff. \'d0\'e5\'f8\'e5\'ed\'e8\'e5 - \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff \'ef\'e8\'f8\'f3\'f2\'f1\'ff \'ea\'e0\'ea \'ed\'e0 \'f0\'e0\'e1\'ee\'f7\'e8\'e9 \'e4\'e8\'f1\'ea, \'f2\'e0\'ea \'e8 \'ed\'e0 \'f2\'ee\'f2 \'f7\'f2\'ee \'ea\'ee\'ef\'e8\'f0\'f3\'e5\'f2\'f1\'ff\par
+\par
+\tab\'ce\'e1\'fb\'f7\'ed\'fb\'e9 vMotion \'ec\'e8\'e3\'f0\'e8\'f0\'f3\'e5\'ec \'f2\'ee\'eb\'fc\'ea\'ee \'f1\'e5\'f0\'e2\'e5\'f0\'e0 - \'f2.\'e5. \'ed\'ee\'e2\'fb\'e9 \'f1\'e5\'f0\'e2\'e5\'f0 \'e1\'f3\'e4\'e5\'f2 \'e1\'f0\'e0\'f2\'fc \'e8\'ed\'f4\'f3 \'e8\'e7 \'f2\'ee\'e3\'ee \'e6\'e5 LUN. \'cd\'e0\'e4\'ee \'f1\'ea\'ee\'ef\'e8\'f0\'ee\'e2\'e0\'f2\'fc \'ce\'c7\'d3. \'cf\'ee\'ea\'e0 \'ce\'c7\'d3 \'ea\'ee\'ef\'e8\'f0\'f3\'e5\'f2\'f1\'ff \'ef\'f0\'ee\'e8\'f1\'f5\'ee\'e4\'ff\'f2 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff. Vmware \'e8\'f5 \'e7\'e0\'ef\'ee\'ec\'e8\'ed\'e0\'e5\'f2. \'cf\'ee\'f1\'eb\'e5 \'f2\'ee\'e3\'ee, \'ea\'e0\'ea \'ea\'ee\'ef\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'e5 \'e7\'e0\'e2\'e5\'f0\'f8\'e8\'eb\'ee\'f1\'fc, \'f1\'f2\'e0\'f0\'e0\'ff VM stop, \'e2 \'ce\'c7\'d3 \'ed\'ee\'e2\'ee\'e9 VM apply \'e4\'ee\'ef.\'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff \'e8 \'e5\'b8 \'e7\'e0\'ef\'f3\'f1\'ea. \'d2\'f3\'f2 \'e2\'e0\'e6\'ed\'ee \'f7\'f2\'ee\'e1\'fb CPU \'e1\'fb\'eb\'e8 \'ee\'e4\'e8\'ed\'e0\'ea\'ee\'e2\'fb\'e5.\par
+\par
+\par
+\ul DRS\ulnone .\par
+Distributed Resource Scheduler - \'e5\'f1\'eb\'e8 vCenter \'e2\'e8\'e4\'e8\'f2 \'f7\'f2\'ee \'ed\'e0 \'ee\'e4\'ed\'ee\'ec ESXi \'ea\'f0\'f3\'f2\'e8\'f2\'f1\'ff 5 VM, \'e0 \'ed\'e0 \'e4\'f0\'f3\'e3\'ee\'ec 0, \'f2\'ee \'ef\'f0\'ee\'e8\'f1\'f5\'ee\'e4\'e8\'f2 vMotion (\'f1\'e5\'f0\'e2\'e5\'f0-\'f1\'e5\'f0\'e2\'e5\'f0).\par
+DRS \'ec\'ee\'ed\'e8\'f2\'ee\'f0\'e8\'f2 \'f2\'ee\'eb\'fc\'ea\'ee CPU \'e8 \'ce\'c7\'d3.\par
+\'cf\'f0\'e8 \'e2\'ea\'eb\'fe\'f7\'e5\'ed\'e8\'e8 VM, DRS \'e2\'fb\'e1\'e8\'f0\'e0\'e5\'f2 \'ed\'e0 \'ea\'e0\'ea\'ee\'ec \'f1\'e5\'f0\'e2\'e0\'ea\'e5 \'e5\'b8 \'e7\'e0\'ef\'f3\'f1\'f2\'e8\'f2\'fc - \'ed\'e0\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff Initial Placement.\par
+\'cf\'f0\'e8 \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e5 DRS \'f1\'ef\'f0\'e0\'f8\'e8\'e2\'e0\'fe\'f2:\par
+\pard\nowidctlpar\hyphpar0\li568 Manual = DRS \'e2\'fb\'ea\'eb\'fe\'f7\'e5\'ed\'ee - \'f1\'e8\'f1\'f2\'e5\'ec\'e0 \'e1\'f3\'e4\'e5\'f2 \'f1\'ef\'f0\'e0\'f8\'e8\'e2\'e0\'f2\'fc \'e3\'e4\'e5 \'e7\'e0\'ef\'f3\'f1\'f2\'e8\'f2\'fc VM (\'f0\'f3\'f7\'ea\'e0\'ec\'e8 \'e5\'e9 \'f3\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'ec) \'e8 \'e1\'f3\'e4\'e5\'f2 \'f1\'ef\'f0\'e0\'f8\'e8\'e2\'e0\'f2\'fc \'f1\'f2\'ee\'e8\'f2 \'eb\'e8 \'e4\'e5\'eb\'e0\'f2\'fc vMotion\par
+Partially automated - DRS \'f1\'e0\'ec \'e1\'f3\'e4\'e5\'f2 \'e2\'fb\'e1\'e8\'f0\'e0\'f2\'fc \'e3\'e4\'e5 \'e7\'e0\'ef\'f3\'f1\'f2\'e8\'f2\'fc VM, \'e0 \'ef\'f0\'ee vMotion \'e1\'f3\'e4\'e5\'f2 \'f1\'ef\'f0\'e0\'f8\'e8\'e2\'e0\'f2\'fc\par
+Fully automated - \'e8 \'f2\'ee \'e8 \'e4\'f0\'f3\'e3\'ee\'e5 \'e1\'f3\'e4\'e5\'f2 \'e4\'e5\'eb\'e0\'f2\'fc \'e0\'e2\'f2\'ee\'ec\'e0\'f2\'e8\'f7\'e5\'f1\'ea\'e8\par
+\pard\nowidctlpar\hyphpar0\par
+\'ce\'f2\'ea\'eb\'fe\'f7\'e5\'ed\'e8\'e5 DRS ~ \'ef\'e5\'f0\'e5\'e2\'ee\'e4 \'ea\'eb\'e0\'f1\'f2\'e5\'f0\'e0 \'e2 \'f0\'e5\'e6\'e8\'ec Manual.\par
+\par
+\par
+\par
+\tab\tab\cf3\b\'d1\'e0\'ec\'f3\'fe \'e2\'fb\'f1\'ee\'ea\'f3\'fe \'e4\'ee\'f1\'f2\'f3\'ef\'ed\'ee\'f1\'f2\'fc \'ee\'e1\'e5\'f1\'ef\'e5\'f7\'e8\'e2\'e0\'fe\'f2 \'f0\'e5\'f8\'e5\'ed\'e8\'ff, \'e2\'f1\'f2\'f0\'ee\'e5\'ed\'ed\'fb\'e5 \'e2 \'f1\'e0\'ec\'ee \'ef\'f0\'e8\'eb\'ee\'e6\'e5\'ed\'e8\'e5 !!!!\cf0\b0\par
+\par
+DRS \'e8 \'cd\'c0 \'f0\'e5\'ea\'ee\'ec\'e5\'ed\'e4\'f3\'fe\'f2 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'e2\'ec\'e5\'f1\'f2\'e5, \'f2.\'ea. \'f4\'f3\'ed\'ea\'f6\'e8\'ee\'ed\'e0\'eb \'ed\'e5 \'ef\'e5\'f0\'e5\'f1\'e5\'ea\'e0\'e5\'f2\'f1\'ff, \'e0 \'e4\'e0\'e6\'e5 \'e4\'ee\'ef\'ee\'eb\'ed\'ff\'e5\'f2 \'e4\'f0\'f3\'e3 \'e4\'f0\'f3\'e3\'e0.\par
+\par
+\par
+\ul High Availability\ulnone\par
+- \'d1\'e4\'ee\'f5 \'f1\'e5\'f0\'e2\'e5\'f0 ESXi \u8594? \'e2\'f1\'e5 VM, \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'e1\'fb\'eb\'e8 \'ed\'e0 \'ed\'b8\'ec \'e7\'e0\'ef\'f3\'f9\'e5\'ed\'fb, \'ef\'e5\'f0\'e5\'e7\'e0\'ef\'f3\'f1\'ea\'e0\'fe\'f2\'f1\'ff \'ed\'e0 \'ee\'f1\'f2\'e0\'e2\'f8\'e8\'f5\'f1\'ff \'f1\'e5\'f0\'e2\'e5\'f0\'e0\'f5 ESXi, \'e2\'f5\'ee\'e4\'ff\'f9\'e8\'f5 \'e2 HA Cluster.\par
+- \'cf\'e5\'f0\'e5\'f1\'f2\'e0\'fe\'f2 \'ef\'f0\'e8\'f5\'ee\'e4\'e8\'f2\'fc Heartbeat \'ee\'f2 VM, \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'ec\'fb\'e5 Vmware Tools \u8594? VM \'e2 \'ef\'f0\'e8\'ed\'f3\'e4\'e8\'f2\'e5\'eb\'fc\'ed\'fb\'e9 reboot - \'e2\'f0\'e5\'ec\'ff recovery ~ \'ec\'e8\'ed\'f3\'f2\'fb.\par
+\par
+VM Monitoring - \'ed\'e0 \'e3\'ee\'f1\'f2\'e5\'e2\'f3\'fe Windows \'f3\'f1\'f2\'e0\'ed\'e0\'e2\'eb\'e8\'e2\'e0\'e5\'ec Vmware Tools, \'ea\'ee\'f2\'ee\'f0\'e0\'ff \'f8\'eb\'b8\'f2 Heartbeat, \'f2\'e0\'ea\'e8\'ec \'ee\'e1\'f0\'e0\'e7\'ee\'ec \'ec\'ee\'ed\'e8\'f2\'ee\'f0\'e8\'ec Guest OS.\par
+\par
+\'d3\'f1\'eb\'ee\'e2\'e8\'ff:\par
+\tab LUN \'ee\'f2 VM \'e4\'ee\'eb\'e6\'e5\'ed \'e1\'fb\'f2\'fc \'e4\'ee\'f1\'f2\'f3\'ef\'e5\'ed \'f1\'ee \'e2\'f1\'e5\'f5 \'f4\'e8\'e7\'e8\'f7\'e5\'f1\'ea\'e8\'f5 \'f1\'e5\'f0\'e2\'e5\'f0\'ee\'e2, \'e2\'f5\'ee\'e4\'ff\'f9\'e8\'f5 \'e2 HA Cluster\par
+\tab VM \'e4\'ee\'eb\'e6\'ed\'fb \'e1\'fb\'f2\'fc \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e5\'ed\'fb \'ea \'e3\'f0\'f3\'ef\'ef\'e0\'ec \'ef\'ee\'f0\'f2\'ee\'e2\par
+\tab\'ca VM \'ed\'e5 \'e4\'ee\'eb\'e6\'ed\'ee \'e1\'fb\'f2\'fc \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e5\'ed\'ee \'ed\'e8\'ea\'e0\'ea\'e8\'f5 CD \'e4\'e8\'f1\'ea\'ee\'e2, COM \'ef\'ee\'f0\'f2\'ee\'e2 \'e8 \'f2.\'ef.\par
+\par
+\'d1\'ee\'e7\'e4\'e0\'b8\'ec \'cd\'c0 Cluster. \'c2 \'ed\'b8\'ec \'e2\'fb\'e1\'e8\'f0\'e0\'e5\'f2\'f1\'ff Master = Failover Coordinator, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'e1\'f3\'e4\'e5\'f2 \'ef\'f0\'e8\'ed\'e8\'ec\'e0\'f2\'fc \'f0\'e5\'f8\'e5\'ed\'e8\'e5 \'ee restart VM/ESXi. \'c5\'f1\'eb\'e8 Master \'ed\'e5 \'ee\'f2\'e2\'e5\'f7\'e0\'e5\'f2 \'ed\'e0 Heartbeat \'e2 \'f2\'e5\'f7\'e5\'ed\'e8\'e8 10 \'f1\'e5\'ea ~ \'f2\'e8\'ef\'e0 \'f3\'ec\'e5\'f0, \'f2\'ee \'ee\'f1\'f2\'e0\'eb\'fc\'ed\'fb\'e5 \'e1\'fb\'f1\'f2\'f0\'e5\'ed\'fc\'ea\'ee \'e2\'fb\'e1\'e8\'f0\'e0\'fe\'f2 \'ed\'ee\'e2\'ee\'e3\'ee Master.\par
+\par
+\'cd\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e8:\par
+\pard\nowidctlpar\hyphpar0\li568\'cd\'eest Monitoring Status - \'f0\'e0\'e2\'ed\'ee\'f1\'e8\'eb\'fc\'ed\'ee \'ee\'f2\'ea\'eb\'fe\'f7\'e5\'ed\'e8\'fe \'cd\'c0. \'cd\'ee \'ee\'f2\'ea\'eb\'fe\'f7\'e5\'ed\'e8\'e5 \'cd\'c0 \'f3\'e4\'e0\'eb\'ff\'e5\'f2 \'e0\'e3\'e5\'ed\'f2\'fb (FDM - Fault Domain Manager), \'f1\'e1\'f0\'e0\'f1\'fb\'e2\'e0\'e5\'f2 \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e8 \'e8 \'f2.\'ef.\par
+Admission Control - enable/disable \'e1\'f3\'e4\'f3\'f2 \'eb\'e8 \'f1\'e5\'f0\'e2\'e0\'ea\'e8 \'e4\'e5\'f0\'e6\'e0\'f2\'fc \'f0\'e5\'e7\'e5\'f0\'e2 CPU \'e8 \'ce\'c7\'d3 \'e4\'eb\'ff \'f1\'eb\'f3\'f7\'e0\'ff "\'d1\'e4\'ee\'f5 \'f1\'e5\'f0\'e2\'e5\'f0 ESXi"\par
+Admission Control Policy - \'ee\'e4\'e8\'ed \'e8\'e7 \'e2\'e0\'f0\'e8\'e0\'ed\'f2\'ee\'e2 Specify a failover hosts - \'e4\'e0\'ed\'ed\'fb\'e9 \'f1\'e5\'f0\'e2\'e5\'f0 \'e1\'f3\'e4\'e5\'f2 "\'e7\'e0\'ef\'e0\'f1\'ea\'ee\'e9", \'ed\'e0 \'ed\'b8\'ec \'ed\'e5\'eb\'fc\'e7\'ff \'e1\'f3\'e4\'e5\'f2 \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'f2\'fc VM-\'fb\par
+VM restart priority - \'e5\'f1\'eb\'e8 \'f1\'e4\'ee\'f5 ESXi, \'f2\'ee \'ef\'f0\'e8 \'cd\'c0 \'f1\'ed\'e0\'f7\'e0\'eb\'e0 \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'e5\'ec \'e1\'e0\'e7\'f3 \'e4\'e0\'ed\'ed\'fb\'f5, \'ef\'ee\'f2\'ee\'ec \'e4\'ee\'ec\'e5\'ed, \'e0 \'f2\'ee\'eb\'fc\'ea\'ee \'ef\'ee\'f2\'ee\'ec \'c0\'f0\'f0 \'f1\'e5\'f0\'e2\'e5\'f0\'e0.\par
+Host Isolation Response - \'e5\'f1\'eb\'e8 \'f3 \'ec\'e5\'ed\'ff, \'ed\'e0\'ef\'f0\'e8\'ec\'e5\'f0, \'ef\'f0\'ee\'ef\'e0\'eb\'e0 \'f1\'e5\'f2\'fc, \'f7\'f2\'ee \'ff \'e4\'ee\'eb\'e6\'e5\'ed \'e4\'e5\'eb\'e0\'f2\'fc? Leave powered on \'e8\'eb\'e8 Shutdown. \'c5\'f1\'f2\'fc \'e5\'f9\'b8 \'e2\'e0\'f0\'e8\'e0\'ed\'f2 Heartbeat \'f7\'e5\'f0\'e5\'e7 \'d1\'d5\'c4. \'d2.\'e5. \'f1\'e5\'f2\'fc \'ed\'e5 \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2, \'e0 \'ed\'e0 \'d1\'d5\'c4 \'ff \'ef\'ee\'f1\'f2\'ee\'ff\'ed\'ed\'ee \'ee\'e1\'ed\'ee\'e2\'eb\'ff\'fe \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'b8\'ed\'ed\'fb\'e9 \'f4\'e0\'e9\'eb\'e8\'ea.\par
+\par
+\pard\nowidctlpar\hyphpar0\par
+\ul Fault Tolerance\ulnone\par
+\'ca\'e0\'ea \'e2 Oracle - Active/Standby, \'f2.\'e5. Active \'ef\'ee\'f1\'f2\'ee\'ff\'ed\'ed\'ee \'f8\'eb\'b8\'f2 \'f0\'e5\'ef\'eb\'e8\'ea\'e0\'f6\'e8\'e8 \'ce\'c7\'d3 \'ed\'e0 Standby, \'ef\'ee\'fd\'f2\'ee\'ec\'f3 \'ec\'e5\'e6\'e4\'f3 \'f2\'e0\'ea\'e8\'ec\'e8 \'f1\'e5\'f0\'e2\'e5\'f0\'e0\'ec\'e8 \'e2\'fb\'e4\'e5\'eb\'e5\'ed\'ed\'fb\'e9 10G - \'e2\'f0\'e5\'ec\'ff recovery ~ \'f1\'e5\'ea\'f3\'ed\'e4\'fb.\par
+FT - \'ef\'ee\'e4\'f4\'f3\'ed\'ea\'f6\'e8\'ff \'cd\'c0.\par
+\'c5\'f1\'eb\'e8 \'cd\'c0 \'e2\'ea\'eb\'fe\'f7\'e0\'e5\'f2\'f1\'ff \'e4\'eb\'ff Cluster of ESXi, \'f2\'ee FT \'ed\'e5\'ef\'ee\'f1\'f0\'e5\'e4\'f1\'f2\'e2\'e5\'ed\'ed\'ee \'e4\'eb\'ff \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'ee\'e9 VM.\par
+\'c4\'ee\'eb\'e6\'e5\'ed \'e1\'fb\'f2\'fc \'e2\'ea\'eb\'fe\'f7\'e5\'ed FT Logging \'e2 \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e0\'f5 VMkernel.\par
+\'cc\'ed\'ee\'e3\'ee \'f3\'f1\'eb\'ee\'e2\'e8\'e9 \'ef\'f0\'e5\'e4\'fa\'ff\'e2\'eb\'ff\'e5\'f2\'f1\'ff \'ea Guest OS. \'f1\'f2\'f0.460\par
+\'ce\'e1\'ff\'e7\'e0\'f2\'e5\'eb\'fc\'ed\'ee \'e4\'ee\'eb\'e6\'ed\'e0 \'e1\'fb\'f2\'fc \'e2\'ea\'eb\'fe\'f7\'e5\'ed\'e0 \'ef\'f0\'ee\'e2\'e5\'f0\'ea\'e0 \'f1\'e5\'f0\'f2\'e8\'f4\'e8\'ea\'e0\'f2\'ee\'e2 \'f1\'e5\'f0\'e2\'e5\'f0\'ee\'e2 (\'ef\'ee default \'ee\'ed\'e0 \'e2\'ea\'eb\'fe\'f7\'e5\'ed\'e0).\par
+\par
+\'c2 \'ea\'e0\'f7\'e5\'f1\'f2\'e2\'e5 \'e4\'e8\'f1\'ea\'e0 \'ec\'ee\'e6\'ed\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc USB Flash \'e8\'eb\'e8 \'e3\'f0\'f3\'e7\'e8\'f2\'fc\'f1\'ff \'f7\'e5\'f0\'e5\'e7 PXE\par
+\par
+\'c4\'eb\'ff \'ed\'e0\'f7\'e0\'eb\'e0 \'ed\'e0\'e4\'ee \'e2\'fb\'ff\'f1\'ed\'e8\'f2\'fc {\field{\*\fldinst{HYPERLINK "http://vmware.com/go/hcl"}}{\fldrslt{\ul\cf1 http://vmware.com/go/hcl}}}\f1\fs22  Hardware Compatibility Guides\par
+1. \'cf\'e5\'f0\'e5\'f7\'e5\'ed\'fc \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'e5\'ec\'fb\'f5 \'f1\'e5\'f0\'e2\'e5\'f0\'ee\'e2\par
+2. \'d1\'ef\'e8\'f1\'ee\'ea \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'e5\'ec\'fb\'f5 \'ea\'ee\'ed\'f2\'f0\'ee\'eb\'eb\'e5\'f0\'ee\'e2\par
+3. \'d1\'e8\'f1\'f2\'e5\'ec \'f5\'f0\'e0\'ed\'e5\'ed\'e8\'ff\par
+\par
+\'c0\'ef\'ef\'e0\'f0\'e0\'f2\'ed\'e0\'ff \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'ea\'e0 Intel-VT \'e8\'eb\'e8 AMD-V - \'f1\'ee\'e7\'e4\'e0\'ed\'e8\'e5 -1 \'ea\'ee\'eb\'fc\'f6\'e0 \'e4\'eb\'ff \'e3\'e8\'ef\'e5\'f0\'e2\'e8\'e7\'ee\'f0\'e0. \'c2\'ee\'e7\'ec\'ee\'e6\'ed\'ee \'ef\'ee\'ed\'e0\'e4\'ee\'e1\'e8\'f2\'f1\'ff \'eb\'e5\'e7\'f2\'fc \'e2 BIOS. \'cc\'ed\'ee\'e3\'e8\'e5 \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'fe\'f2.\par
+\par
+\'c4\'eb\'ff VMware Fault Tolerance \'e8 vMotion \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee \'f1\'ee\'ee\'f2\'e2\'e5\'f2\'f1\'f2\'e2\'e8\'e5 CPUs: {\field{\*\fldinst{HYPERLINK "http://kb.vmware.com/kb/1008027"}}{\fldrslt{\ul\cf1 http://kb.vmware.com/kb/1008027}}}\f1\fs22\par
+{\field{\*\fldinst{HYPERLINK "http://kb.vmware.com/kb/1003212"}}{\fldrslt{\ul\cf1 http://kb.vmware.com/kb/1003212}}}\f1\fs22\par
+\par
+\'ce\'f2\'e4\'e5\'eb\'fc\'ed\'ee \'f1\'e5\'f2\'fc \'e4\'eb\'ff Management, FT \'e8 HA, iSCSI\par
+\par
+Linked Mode - \'ee\'e1\'fa\'e5\'e4\'e8\'ed\'e5\'ed\'e8\'e5 vCenter \'e2 \'ee\'e4\'e8\'ed.\par
+\par
+\'c5\'f1\'f2\'fc \'ef\'f3\'ed\'ea\'f2 \'e2 Configuration \u8594? Security Profile\par
+1. Local Tech Support - \'e2\'ea\'eb\'fe\'f7\'e8\'f2\'fc \'ea\'ee\'ec\'e0\'ed\'e4\'ed\'f3\'fe \'f1\'f2\'f0\'ee\'ea\'f3 \'e2 \'ea\'ee\'ed\'f1\'ee\'eb\'e8 \'f1\'e5\'f0\'e2\'e5\'f0\'e0\par
+2. Remote Tech Support - \'e2\'ea\'eb\'fe\'f7\'e8\'f2\'fc \'e4\'ee\'f1\'f2\'f3\'ef \'ef\'ee SSH\par
+3. Direct Console UI - \'e2\'ea\'eb\'fe\'f7\'e5\'ed\'e8\'e5 BIOS \'ef\'ee\'e4\'ee\'e1\'ed\'ee\'e3\'ee \'ec\'e5\'ed\'fe \'e2 \'ea\'ee\'ed\'f1\'ee\'eb\'e8 \'f1\'e5\'f0\'e2\'e5\'f0\'e0\par
+\par
+\'d1\'e0\'e9\'e7\'e8\'ed\'e3 \'e8 \'ef\'eb\'e0\'ed\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'e5:\par
+CPU - \'e5\'f1\'eb\'e8 \'ee\'e4\'e8\'ed \'ef\'f0\'ee\'f6\'e5\'f1\'f1\'ee\'f0 \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'e5\'f2 \'e8\'ed\'f1\'f2\'f0\'f3\'ea\'f6\'e8\'e8 SSE4.2, \'e0 \'e4\'f0\'f3\'e3\'ee\'e9 \'ed\'e5\'f2 \u8594? \b vMotion \'ed\'e5 \'ee\'f2\'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2\b0\par
+\'d4\'f3\'ed\'ea\'f6\'e8\'ff EVC \endash  Enhanced vMotion Compatibility - \'f1\'f3\'f2\'fc \'f4\'f3\'ed\'ea\'f6\'e8\'e8 \'ef\'f0\'e8\'e2\'e5\'f1\'f2\'e8 \'ef\'f0\'ee\'f6\'e5\'f1\'f1\'ee\'f0\'fb \'ea \'e5\'e4\'e8\'ed\'ee\'ec\'f3 \'e7\'ed\'e0\'ec\'e5\'ed\'e0\'f2\'e5\'eb\'fe, \'f2.\'e5. \'ed\'e0\'e1\'ee\'f0 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'ec\'fb\'f5 \'e8\'f1\'f2\'f0\'f3\'ea\'f6\'e8\'e9 \'f3 \'e2\'f1\'e5\'f5 CPU \'e1\'f3\'e4\'e5\'f2 = \'ed\'e0\'e1\'ee\'f0\'f3 \'f1\'e0\'ec\'ee\'ec\'f3 "\'f1\'eb\'e0\'e1\'ee\'ec\'f3" CPU. \'d3 "\'f1\'e8\'eb\'fc\'ed\'fb\'f5" \'e2\'f1\'b8 \'ef\'ee\'ee\'f2\'ea\'eb\'fe\'f7\'e0\'fe\'f2. \'c3\'f0\'f3\'ef\'ef\'fb \'f1\'ee\'e2\'ec\'e5\'f1\'f2\'e8\'ec\'ee\'f1\'f2\'e8 {\field{\*\fldinst{HYPERLINK "https://kb.vmware.com/s/article/1003212"}}{\fldrslt{\ul\cf1 https://kb.vmware.com/s/article/1003212}}}\f1\fs22  \'e8 {\field{\*\fldinst{HYPERLINK "https://kb.vmware.com/s/article/1005764"}}{\fldrslt{\ul\cf1 https://kb.vmware.com/s/article/1005764}}}\f1\fs22\par
+\'cc\'ee\'e6\'ed\'ee \'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5 \'f1\'e4\'e5\'eb\'e0\'f2\'fc \'f0\'f3\'ea\'e0\'ec\'e8: Options -> CPUID Mask -> Advanced\par
+\'d1\'ee\'e2\'ec\'e5\'f1\'f2\'e8\'ec\'ee\'f1\'f2\'fc \'ef\'f0\'ee\'f6\'e5\'f1\'f1\'ee\'f0\'ee\'e2 \'f0\'e0\'e7\'ed\'fb\'f5 \'e2\'e5\'ed\'e4\'ee\'f0\'ee\'e2 \'ed\'e5\'e2\'ee\'e7\'ec\'ee\'e6\'ed\'ee \'ed\'e8 \'ef\'f0\'e8 \'ea\'e0\'ea\'e8\'f5 \'f3\'f1\'eb\'ee\'e2\'e8\'ff\'f5.\par
+Fault Tolerance - \'e5\'f9\'b8 \'e6\'e5\'f1\'f2\'f7\'e5 \'f2\'f0\'e5\'e1\'ee\'e2\'e0\'ed\'e8\'ff - \'f7\'e0\'f1\'f2\'ee\'f2\'fb \'ef\'f0\'ee\'f6\'e5\'f1\'f1\'ee\'f0\'ee\'e2 \'ed\'e5 \'e4\'ee\'eb\'e6\'ed\'fb \'ee\'f2\'eb\'e8\'f7\'e0\'f2\'fc\'f1\'ff \'e1\'ee\'eb\'e5\'e5 \'f7\'e5\'ec \'ed\'e0 300 \'cc\'c3\'f6\par
+\par
+\'d3\'f7\'b8\'f2 \ul\'ec\'e0\'f1\'f8\'f2\'e0\'e1\'e8\'f0\'f3\'e5\'ec\'ee\'f1\'f2\'e8\ulnone  \'ef\'f0\'e8 \'ef\'eb\'e0\'ed\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'e8:\par
+\'d1\'ea\'ee\'eb\'fc\'ea\'ee \'f1\'e4\'e5\'eb\'e0\'f2\'fc \'f4\'e8\'e7\'e8\'f7\'e5\'f1\'ea\'e8\'f5 \'f1\'e5\'f0\'e2\'e5\'f0\'ee\'e2, \'f7\'f2\'ee\'e1\'fb \'e2 \cf2\u931? \'ef\'ee\'eb\'f3\'f7\'e8\'eb\'ee\'f1\'fc \cf0 16 CPU \'e8 256 \'c3\'e1 \'ce\'c7\'d3?\par
+\'c2\'e0\'f0\'e8\'e0\'ed\'f2 1: \'c2\'e7\'ff\'f2\'fc 4 "\'ec\'ee\'f9\'ed\'fb\'f5" \'f1\'e5\'f0\'e2\'e5\'f0\'e0 \'ef\'ee 4 CPU \'e8 64 \'c3\'e1 \'ea\'e0\'e6\'e4\'fb\'e9.\par
+\tab\'ef\'eb\'fe\'f1\'fb: \'ec\'ee\'e6\'e5\'ec \'ef\'ee\'e4\'ed\'e8\'ec\'e0\'f2\'fc "\'f2\'ee\'eb\'f1\'f2\'fb\'e5" VM, \'f2\'f0\'e5\'e1\'f3\'fe\'f9\'e8\'e5 \'f1\'e5\'e1\'e5 4 CPU \'e8 64 \'c3\'e1\par
+\tab\'ec\'e8\'ed\'f3\'f1\'fb: \'ee\'e4\'e8\'ed ESXi \'ef\'e0\'e4\'e0\'e5\'f2, \'f1\'f0\'e0\'e7\'f3 \'f2\'e5\'f0\'ff\'e5\'ec 1\\4 \'e2\'f1\'e5\'f5 \'f0\'e5\'f1\'f3\'f0\'f1\'ee\'e2\par
+\'c2\'e0\'f0\'e8\'e0\'ed\'f2 2: \'c2\'e7\'ff\'f2\'fc 8 \'f1\'e5\'f0\'e2\'e5\'f0\'ee\'e2 \'ef\'ee 2 CPU \'e8 32 \'c3\'e1 \'ea\'e0\'e6\'e4\'fb\'e9. \'cf\'eb\'fe\'f1\'fb/\'ec\'e8\'ed\'f3\'f1\'fb \'ee\'e1\'f0\'e0\'f2\'ed\'fb\'e5 \'c2\'e0\'f0\'e8\'e0\'ed\'f2\'f3 1.\par
+\par
+Distributed Switch - \'e6\'e8\'e2\'b8\'f2 \'ed\'e0 vCenter \'e8 \'ef\'f0\'ee\'f4\'e8\'eb\'fc \'ee\'e1\'fb\'f7\'ed\'fb\'f5 VmWare \'f1\'e2\'e8\'f7\'e5\'e9\par
+\par
+\'cc\'ee\'e6\'ed\'ee trunk \'ef\'f0\'e8\'e3\'ed\'e0\'f2\'fc \'ed\'e0 VM. \'c4\'eb\'ff \'fd\'f2\'ee\'e3\'ee \'e2\'fb\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'ec VLAN ID: All (4095) + \'f1\'e5\'f2\'e5\'e2\'fb\'e5 \'ea\'e0\'f0\'f2\'fb e1000 \'e8\'eb\'e8 vmxnet3 + \'ed\'e0\'e4\'ee \'ed\'e0\'f1\'f2\'f0\'ee\'e8\'f2\'fc \'f1\'e5\'f2\'e5\'e2\'ee\'e9 \'e4\'f0\'e0\'e9\'e2\'e5\'f0 \'ed\'e0 VM\par
+\par
+Security:\par
+Promiscuous Mode = SPAN port \'e2 Cisco\par
+MAC Address Changes - \'e5\'f1\'eb\'e8 Dest MAC \'ed\'e5\'f2 \'ed\'e8 \'e2 \'ee\'e4\'ed\'ee\'ec \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e0\'f6\'e8\'ee\'ed\'ed\'ee\'ec \'f4\'e0\'e9\'eb\'e5 .vmx, \'ee\'ef\'e8\'f1\'fb\'e2\'e0\'fe\'f9\'e5\'ec VM \u8594? drop \'ef\'e0\'ea\'e5\'f2\'e0\par
+Forged Transmits - \'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5 \'f2\'ee\'eb\'fc\'ea\'ee \'e4\'eb\'ff Src MAC\par
+\par
+Traffic Shaping:\par
+Burst Size - \'f0\'e0\'e7\'ec\'e5\'f0 \'e1\'f3\'f4\'e5\'f0\'e0, \'ea\'f3\'e4\'e0 \'f1\'ea\'eb\'e0\'e4\'fb\'e2\'e0\'fe\'f2\'f1\'ff \'ef\'e0\'ea\'e5\'f2\'fb \'ef\'f0\'e5\'e2\'fb\'f8\'e0\'fe\'f9\'e8\'e5 Average Bandwidth\par
+Peak Bandwidth - \'ea\'e0\'ea\'e0\'ff max \'f1\'ea\'ee\'f0\'ee\'f1\'f2\'fc \'f0\'e0\'e7\'f0\'e5\'f8\'e5\'ed\'e0, \'e5\'f1\'eb\'e8 \'ef\'ee\'eb\'ee\'f1\'e0 \'ef\'f0\'ee\'ef\'f3\'f1\'ea\'e0\'ed\'e8\'ff \'f1\'e2\'ee\'e1\'ee\'e4\'ed\'e0\par
+\par
+NIC Teaming:\par
+Beacon Probing - \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \'ea\'e0\'ea\'ee\'e9-\'f2\'ee \'ef\'f0\'ee\'e1\'ed\'fb\'e9 \'ef\'e0\'ea\'e5\'f2 \'e2 \'ee\'e4\'e8\'ed \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1, \'f1 Dest MAC 2-\'ee\'e3\'ee \'f1\'e2\'ee\'e5\'e3\'ee \'e6\'e5 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0\par
+\par
+\'cc\'ee\'e6\'ed\'ee \'ed\'e0\'ea\'f0\'f3\'f2\'e8\'f2\'fc VM DirectPath I/O - \'ec\'ee\'e6\'ed\'ee \'ef\'f0\'ee\'e1\'f0\'ee\'f1\'e8\'f2\'fc \'eb\'fe\'e1\'ee\'e5 PCI \'f3\'f1\'f2\'f0\'ee\'e9\'f1\'f2\'e2\'ee \'ed\'e0 VM, \'ed\'e0\'ef\'f0\'e8\'ec\'e5\'f0 GPU.\par
+\par
+HBA - Host Bus Adapter - \'ea\'ee\'ed\'f2\'f0\'ee\'eb\'eb\'e5\'f0\par
+\'d2\'e8\'ef\'fb \'d1\'d5\'c4:\par
+1. SAN, Storage Area Network - \'e1\'eb\'ee\'f7\'ed\'fb\'e9 \'e4\'ee\'f1\'f2\'f3\'ef, \'e2\'ee\'e7\'ec\'ee\'e6\'e5\'ed \'e4\'ee\'f1\'f2\'f3\'ef \'ea \'f0\'e5\'f1\'f3\'f0\'f1\'f3 \'ee\'e4\'ed\'ee\'e2\'f0\'e5\'ec\'e5\'ed\'ed\'ee \'f1\'f0\'e0\'e7\'f3 \'ea \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee\'eb\'fc\'ea\'e8\'f5 \'f1\'e5\'f0\'e2\'e5\'f0\'ee\'e2\par
+2. NAS, Network Attach Storage - \'e4\'ee\'f1\'f2\'f3\'ef \'ed\'e0 \'f3\'f0\'ee\'e2\'ed\'e5 \'f4\'e0\'e9\'eb\'ee\'e2, \'e2\'ee\'e7\'ec\'ee\'e6\'e5\'ed \'e4\'ee\'f1\'f2\'f3\'ef \'ea \'f0\'e5\'f1\'f3\'f0\'f1\'f3 \'ee\'e4\'ed\'ee\'e2\'f0\'e5\'ec\'e5\'ed\'ed\'ee \'f1\'f0\'e0\'e7\'f3 \'ea \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee\'eb\'fc\'ea\'e8\'f5 \'f1\'e5\'f0\'e2\'e5\'f0\'ee\'e2 (CIFS)\par
+3. DAS, Direct Attach Storage - \'e1\'eb\'ee\'f7\'ed\'fb\'e9 \'e4\'ee\'f1\'f2\'f3\'ef, \'ed\'e5\'e2\'ee\'e7\'ec\'ee\'e6\'e5\'f2 \'ee\'e4\'ed\'ee\'e2\'f0\'e5\'ec\'e5\'ed\'ed\'ee (\'ef\'f0\'e8\'ec\'e5\'f0: \'eb\'ee\'ea\'e0\'eb\'fc\'ed\'fb\'e9 \'e4\'e8\'f1\'ea \'e2 \'ea\'ee\'ec\'ef\'e5)\par
+\par
+HBA - Host Bus Adapter\par
+\par
+vmhba2:C0:T1:L0 \'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2\par
+vmhba# - \'ed\'ee\'ec\'e5\'f0 \'ea\'ee\'ed\'f2\'f0\'ee\'eb\'eb\'e5\'f0\'e0 \'ed\'e0 \'f1\'e5\'f0\'e2\'e5\'f0\'e5\par
+\'d1# - \'ed\'ee\'ec\'e5\'f0 \'ea\'e0\'ed\'e0\'eb\'e0 \'e2 SCSI\par
+T# - \'ed\'ee\'ec\'e5\'f0 \'ea\'ee\'ed\'f2\'f0\'ee\'eb\'eb\'e5\'f0\'e0 \'ed\'e0 \'d1\'d5\'c4 (\'f0\'e0\'e7\'ed\'fb\'e5 ESXi \'ec\'ee\'e3\'f3\'f2 \'ed\'f3\'ec\'e5\'f0\'ee\'e2\'e0\'f2\'fc \'ee\'e4\'ed\'e8 \'e8 \'f2\'e5 \'e6\'e5 \'ea\'ee\'ed\'f2\'f0\'ee\'eb\'eb\'e5\'f0\'fb \'f0\'e0\'e7\'ed\'fb\'ec\'e8 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'ff\'ec\'e8)\par
+L# - \'ed\'ee\'ec\'e5\'f0 LUN, \'e7\'e0\'e4\'e0\'b8\'f2\'f1\'ff \'e0\'e2\'f2\'ee\'ec\'e0\'f2\'e8\'f7\'e5\'f1\'ea\'e8 \'e8\'eb\'e8 \'ed\'e0\'f1\'f2\'f0\'e0\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'ed\'e0 \'d1\'d5\'c4\par
+\par
+\'d0\'e0\'e7\'ed\'fb\'e5 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'fb \'e4\'eb\'ff \'f2\'ee\'e3\'ee \'f7\'f2\'ee\'e1\'fb \'e4\'ee\'e1\'f0\'e0\'f2\'fc\'f1\'ff \'e4\'ee LUN. \'ce\'f2\'ea\'e0\'e7\'ee\'f3\'f1\'f2\'ee\'e9\'f7\'e8\'e2\'ee\'f1\'f2\'fc:\par
+1. Fixed - \'e2\'fb\'e1\'e8\'f0\'e0\'e5\'f2\'f1\'ff \'eb\'f3\'f7\'f8\'e8\'e9 \'ec\'e0\'f0\'f8\'f0\'f3\'f2, \'ec\'e0\'f0\'f8\'f0\'f3\'f2 \'ef\'f0\'ee\'ef\'e0\'e4\'e0\'e5\'f2, \'ef\'f0\'ee\'e8\'f1\'f5\'ee\'e4\'e8\'f2 \'ef\'e5\'f0\'e5\'ea\'eb\'fe\'f7\'e5\'ed\'e8\'e5 \'ed\'e0 \'e4\'f3\'e1\'eb\'e8\'f0\'f3\'fe\'f9\'e8\'e9, \'ec\'e0\'f0\'f8\'f0\'f3\'f2  \'ef\'ee\'ff\'e2\'eb\'ff\'e5\'f2\'f1\'ff, \'ee\'e1\'f0\'e0\'f2\'ed\'ee \'ef\'e5\'f0\'e5\'ea\'eb\'fe\'f7\'e0\'e5\'f2\'f1\'ff \'ed\'e0 \'eb\'f3\'f7\'f8\'e8\'e9\par
+2. Most Recently Used - \'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5, \'f7\'f2\'ee \'e8 Fixed, \'ed\'ee \'ef\'f0\'e8 \'ef\'ee\'ff\'e2\'eb\'e5\'ed\'e8\'e8 \'eb\'f3\'f7\'f8\'e5\'e3\'ee, \'ef\'e5\'f0\'e5\'ea\'eb\'fe\'f7\'e5\'ed\'e8\'ff \'ed\'e5 \'ef\'f0\'ee\'e8\'e7\'ee\'e9\'e4\'b8\'f2\par
+3. Round Robin - \'f7\'f2\'ee-\'f2\'ee \'e0\'eb\'ff load-balabcing\par
+\par
+\'cf\'f0\'ee\'e3\'ee\'ed \'ef\'f0\'ee \par
+PSA (\'ed\'e0\'e7\'e2\'e0\'ed\'e8\'e5 \'e0\'f0\'f5\'e8\'f2\'e5\'ea\'f2\'f3\'f0\'fb)\par
+ |\par
+NMP\par
+ |\par
+SATR (\'f3\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \'ef\'e5\'f0\'e5\'ea\'eb\'fe\'f7\'e5\'ed\'e8\'e5\'ec \'ef\'f3\'f2\'e5\'e9, \'e4\'ee\'f1\'f2\'f3\'ef\'ed\'ee\'f1\'f2\'fc, \'ee\'e1\'ed\'e0\'f0\'f3\'e6\'e5\'ed\'e8\'e5 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'e9)\par
+\'e8 PSP (\'ee\'f2\'e2\'e5\'f7\'e0\'e5\'f2 \'e7\'e0 \'e2\'fb\'e1\'ee\'f0 \'eb\'f3\'f7\'f8\'e5\'e3\'ee \'ef\'f3\'f2\'e8)\par
+\par
+\'c4\'eb\'ff \'f0\'e0\'e1\'ee\'f2\'fb \'f1 \'ed\'e5\'ea\'ee\'f2\'ee\'f0\'fb\'ec\'e8 \'ef\'f0\'ee\'e8\'e7\'e2\'ee\'e4\'e8\'f2\'e5\'eb\'ff\'ec\'e8 \'d1\'d5\'c4 \'f2\'f0\'e5\'e1\'f3\'e5\'f2\'f1\'ff \'e2\'f1\'f2\'f0\'e0\'e8\'e2\'e0\'f2\'fc \'f1\'f2\'ee\'f0\'ee\'ed\'ed\'e8\'e5 \'ec\'ee\'e4\'f3\'eb\'e8 \'ed\'e0 \'f3\'f0\'ee\'e2\'e5\'ed\'fc NMP \'e8\'eb\'e8 SATR \'e8\'eb\'e8 PSP\par
+\'d1\'ec\'ee\'f2\'f0\'e5\'f2\'fc \'e2 \'f4\'e0\'e9\'eb esx.conf\par
+\par
+\'f1\'f2\'f0.164\par
+\par
+\'c4\'ee\'ec\'e0\'f8\'ed\'e8\'e5 Hard Disk - \'f1\'e0\'ec\'ee\'e5 \'e4\'e5\'f8\'e5\'e2\'ee\'e5 \'ef\'ee \'f1\'f0\'e0\'e2\'ed\'e5\'ed\'e8\'fe \'f1 \'d1\'e5\'f0\'e2\'e5\'f0\'ed\'fb\'ec\'e8 \'e4\'e8\'f1\'ea\'e0\'ec\'e8.\par
+\par
+\pard\nowidctlpar\hyphpar0\fi568 SCSI - \'e8\'e7\'ed\'e0\'f7\'e0\'eb\'fc\'ed\'ee \'ed\'e0 \'ee\'e4\'e8\'ed \'f8\'ed\'f3\'f0 \'ec\'ee\'e6\'ed\'ee \'ef\'ee\'e2\'e5\'f1\'e8\'f2\'fc \'ec\'ed\'ee\'e3\'ee \'e4\'e8\'f1\'ea\'ee\'e2, \'ea\'e0\'ea Ethernet \'ea\'ee\'e0\'ea\'f1\'e8\'e0\'eb + \'e5\'f1\'f2\'fc \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'ea\'e0 multipath, \'f2.\'e5. \'ee\'e4\'e8\'ed \'e4\'e8\'f1\'ea \'ec\'ee\'e6\'ed\'ee \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e8\'f2\'fc \'ea 2-\'ec \'ea\'ee\'ed\'f2\'f0\'ee\'eb\'eb\'e5\'f0\'e0\'ec. \'cd\'e0 FC \'ea\'ee\'ec\'ec\'f3\'f2\'e0\'f2\'ee\'f0\'e5 \'f1\'ee\'e7\'e4\'e0\'b8\'ec zone-\'fb, \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'f1\'ee\'e7\'e4\'e0\'fe\'f2 \'f2\'f0\'e0\'ed\'f1\'ef\'ee\'f0\'f2 \'ec\'e5\'e6\'e4\'f3 2-\'ff WWN (World Wide Name). \'c0 \'e4\'e0\'eb\'fc\'f8\'e5 \'f1\'e0\'ec\'ee SCSI \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'e5\'f2 \'ea\'e0\'ea\'ee\'e9 \'f1\'e5\'f0\'e2\'e5\'f0 \'f1 \'ea\'e0\'ea\'e8\'ec \'e4\'e8\'f1\'ea\'ee\'ec (LUN - Logical Unit Number) \'ef\'ee\'e4\'f0\'f3\'e6\'e8\'f2\'fc.\par
+\'ca\'e0\'ea \'f2\'ee\'eb\'fc\'ea\'ee \'f1\'ee\'e5\'e4\'e8\'ed\'e8\'eb\'e8 \'f1\'e5\'f0\'e2\'e5\'f0 \'f1 \'d1\'d5\'c4, \'e4\'e5\'eb\'e0\'e5\'ec \b RESCAN\b0  (Configuration -> Storage Adapters -> \'ea\'ed\'ee\'ef\'ea\'e0 \'f1\'e2\'e5\'f0\'f5\'f3).\par
+\'ce\'e4\'e8\'ed \'ea\'ee\'ed\'f2\'f0\'ee\'eb\'eb\'e5\'f0 FC \'ed\'e0 \'f1\'e5\'f0\'e2\'e5\'f0\'e5 ESXi - \'ee\'e4\'e8\'ed WWN. \'cd\'ee \'ec\'ee\'e6\'ed\'ee \'f1\'e4\'e5\'eb\'e0\'f2\'fc, \'f7\'f2\'ee\'e1\'fb \'ea\'ee\'ed\'f2\'f0\'ee\'eb\'eb\'e5\'f0 \'ef\'f0\'ee\'ea\'e8\'e4\'fb\'e2\'e0\'eb WWN \'ed\'e0\'ef\'f0\'ff\'ec\'f3\'fe \'ed\'e0 \'e2\'e8\'f0\'f2\'f3\'e0\'eb\'ea\'f3 - \'ed\'e0\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff NPIV (N-Port ID Virtualization).\par
+\'ce\'e3\'f0\'e0\'ed\'e8\'f7\'e5\'ed\'e8\'e5 \'e4\'ee\'f1\'f2\'f3\'ef\'e0 \'ea LUN \'eb\'e8\'e1\'ee \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'ee\'e9 zone \'ed\'e0 FC \'ea\'ee\'ec\'ec\'f3\'f2\'e0\'f2\'ee\'f0\'e5, \'eb\'e8\'e1\'ee masking \'ed\'e0 \'d1\'d5\'c4, \'f2\'e8\'ef\'e0 \'ea \'fd\'f2\'ee\'ec\'f3 LUN \'ec\'ee\'e6\'ed\'ee \'f2\'ee\'eb\'fc\'ea\'ee \'f2\'e0\'ea\'ee\'ec\'f3 WWN, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'ed\'e0\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff Vmware_Test (\'e8\'ec\'ff \'f1\'e5\'f0\'e2\'e5\'f0\'e0 \'ef\'f0\'e8\'eb\'e5\'f2\'e0\'fe\'f9\'e5\'e5 \'ef\'ee SCSI).\par
+\par
+\pard\nowidctlpar\hyphpar0\'d4\'e8\'e7\'e8\'f7\'e5\'f1\'ea\'e8\'e9 CPU - \'f1\'ee\'f1\'f2\'ee\'e8\'f2 \'e8\'e7 4-\'f5 \'ff\'e4\'e5\'f0 * 2 (Hyper-Treading) = 8 Logical LCPU. vCPU (virtual) - \'fd\'f2\'ee \'ef\'f0\'ee\'f6\'e5\'f1\'f1\'ee\'f0 \'e2\'e8\'f0\'f2\'f3\'e0\'eb\'fc\'ed\'ee\'e9 \'ec\'e0\'f8\'e8\'ed\'fb. \'cd\'e0 \'ed\'e0\'e3\'f0\'f3\'e6\'e5\'ed\'ed\'fb\'f5 App \'f1\'ee\'ee\'f2\'ed\'ee\'f8\'e5\'ed\'e8\'e5 LCPU : vCPU = 1:1, \'ed\'e0 \'ee\'e1\'fb\'f7\'ed\'fb\'f5 App \'e4\'ee\'ef\'f3\'f1\'ea\'e0\'e5\'f2\'f1\'ff 1:3 \'e4\'ee 1:5.\par
+\par
+\'d1\'f3\'ec\'ec\'e0\'f0\'ed\'e0\'ff \'ce\'c7\'d3 \'e2\'e8\'f0\'f2\'f3\'e0\'eb\'ee\'ea \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc > \'ce\'c7\'d3 \'ed\'e0 \'f5\'ee\'f1\'f2\'e5.\par
+}
+ 
