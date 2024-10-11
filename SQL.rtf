@@ -121,18 +121,26 @@ Apache Cassandra ... MongoDB - \cf3\b\'ed\'e5 \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'
 \'ce\'f1\'ed\'ee\'e2\'ed\'fb\'e5 \'ea\'ee\'ec\'e0\'ed\'e4\'fb:\tab\tab\lang255\f1{\field{\*\fldinst{HYPERLINK "https://www.oslogic.ru/knowledge/598/shpargalka-po-osnovnym-komandam-postgresql"}}{\fldrslt{\ul\cf1 https://www.oslogic.ru/knowledge/598/shpargalka-po-osnovnym-komandam-postgresql}}}\lang1049\f0\fs22\par
 # psql -U postgres -d dbname\par
 \par
-\\?\tab\tab\tab\'f1\'ef\'f0\'e0\'e2\'ee\'f7\'ed\'e8\'ea psql\par
-\\help\tab\tab\tab\'f1\'ef\'f0\'e0\'e2\'ee\'f7\'ed\'e8\'ea SQL\par
-\\q \'e8\'eb\'e8 CTRL+D\tab\'e2\'fb\'f5\'ee\'e4\par
-\\l\tab\tab\tab\'f1\'ef\'e8\'f1\'ee\'ea \'e2\'f1\'e5\'f5 \'e1\'e0\'e7 \'e4\'e0\'ed\'ed\'fb\'f5\par
+\\l\tab\tab\tab\'f1\'ef\'e8\'f1\'ee\'ea \'e2\'f1\'e5\'f5 DATABASE\par
 \\c dbname\tab\tab\'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e8\'f2\'fc\'f1\'ff \'ea \'e1\'e0\'e7\'e5 \'f1 \'e8\'ec\'e5\'ed\'e5\'ec dbname\par
-\\dt\tab\tab\tab\'f1\'ef\'e8\'f1\'ee\'ea \'f2\'e0\'e1\'eb\'e8\'f6\par
-\\dt+\tab\tab\tab\'f1\'ef\'e8\'f1\'ee\'ea \'e2\'f1\'e5\'f5 \'f2\'e0\'e1\'eb\'e8\'f6 \'f1 \'ee\'ef\'e8\'f1\'e0\'ed\'e8\'e5\'ec\par
-\\d "table_name"\tab\'ee\'ef\'e8\'f1\'e0\'ed\'e8\'e5 \'f2\'e0\'e1\'eb\'e8\'f6\'fb (\'ea\'ee\'eb\'ee\'ed\'ea\'e8, types, index \'e8 \'f2.\'ef.)\par
+\\dn\lang1033\f1\tab\tab\tab\lang1049\f0\'f1\'ef\'e8\'f1\'ee\'ea \lang1033\f1 SCHEMA\lang1049\f0\tab\lang1033\f1\tab\tab SET SCHEMA 'schema_name'; \lang1049\f0\'ef\'e5\'f0\'e5\'f5\'ee\'e4 \'e2 \'f1\'f5\'e5\'ec\'f3\par
+\\dn+\lang1033\f1\tab\tab\tab\lang1049\f0\'f1\'ef\'e8\'f1\'ee\'ea \'f1\'f5\'e5\'ec \'f1 \'ee\'ef\'e8\'f1\'e0\'ed\'e8\'e5\'ec\par
+\\dt\tab\tab\tab\'f1\'ef\'e8\'f1\'ee\'ea \lang1033\f1 TABLE\lang1049\f0\par
+\\dt+\tab\tab\tab\'f1\'ef\'e8\'f1\'ee\'ea \'f2\'e0\'e1\'eb\'e8\'f6 \'f1 \'ee\'ef\'e8\'f1\'e0\'ed\'e8\'e5\'ec\par
+\\dt schema_\lang1033\f1 name\lang1049\f0 .\lang1033\f1\tab\lang1049\f0\'f1\'ef\'e8\'f1\'ee\'ea \'f2\'e0\'e1\'eb\'e8\'f6\lang1033\f1  \lang1049\f0\'e2 \'f1\'f5\'e5\'ec\'e5 schema_\lang1033\f1 name. \lang1049\f0\'ce\'e1\'ff\'e7\'e0\'f2\'e5\'eb\'fc\'ed\'e0 "\'f2\'ee\'f7\'ea\'e0" \'e2\'ea\'ee\'ed\'f6\'e5.\par
 \\dS\tab\tab\tab\'f1\'e8\'f1\'f2\'e5\'ec\'ed\'fb\'e5 \'f2\'e0\'e1\'eb\'e8\'f6\'fb\par
-\\di\tab\tab\tab index\par
-\\dv\tab\tab\tab view-\'f8\'ea\'e8\par
+\\di\tab\tab\tab\'f1\'ef\'e8\'f1\'ee\'ea INDEX\par
+\\dv\tab\tab\tab\'f1\'ef\'e8\'f1\'ee\'ea VIEW\par
 \\du\tab\tab\tab\'f1\'ef\'e8\'f1\'ee\'ea \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'e5\'e9\par
+\\q \'e8\'eb\'e8 CTRL+D\tab\'e2\'fb\'f5\'ee\'e4\par
+\\help\tab\tab\tab\'f1\'ef\'f0\'e0\'e2\'ee\'f7\'ed\'e8\'ea SQL\par
+\\?\tab\tab\tab\'f1\'ef\'f0\'e0\'e2\'ee\'f7\'ed\'e8\'ea psql\par
+\par
+\\d schema\lang1033\f1 _name\lang1049\f0 .table\lang1033\f1 _name\tab\lang1049\f0\'ee\'ef\'e8\'f1\'e0\'ed\'e8\'e5 \'f2\'e0\'e1\'eb\'e8\'f6\'fb (\'ea\'ee\'eb\'ee\'ed\'ea\'e8, types, index \'e8 \'f2.\'ef.)\lang1033\f1\par
+Table "test_schema.test_table"\par
+ Column |  Type   | Modifiers \par
+--------+---------+-----------\par
+ id     | integer |\lang1049\f0\par
 \par
 #pg_activity\tab\'f3\'f2\'e8\'eb\'e8\'f2\'e0 \'e4\'eb\'ff \'ec\'ee\'ed\'e8\'f2\'ee\'f0\'e8\'ed\'e3\'e0 ~ top \'e4\'eb\'ff Postgres.\par
 \par
