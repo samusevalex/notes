@@ -1,0 +1,423 @@
+{\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}{\f1\fnil\fcharset0 Courier New;}}
+{\colortbl ;\red0\green0\blue0;\red0\green0\blue255;\red0\green255\blue0;\red0\green255\blue255;\red255\green0\blue255;\red255\green255\blue0;\red192\green192\blue192;}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\nowidctlpar\hyphpar0\cf1\lang1049\kerning1\f0\fs22 #\lang1033\f1  \lang1049\f0 git cat-file -p <\i object_hash\i0 > - \'ef\'ee\'ea\'e0\'e6\'e5\'f2 \'f7\'f2\'ee \'e2\'ed\'f3\'f2\'f0\'e8 Object-\'e0.\cf0\par
+\par
+\cf1 #\lang1033\f1  \lang1049\f0 git init --bare\tab\'f1\'ee\'e7\'e4\'e0\'b8\'ec \'d1\'c5\'d0\'c2\'c5\'d0\'cd\'db\'c9 \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'ee\'f0\'e8\'e9\par
+\par
+\lang1033\f1 # \lang1049\f0 git commit -am.\lang1033\f1\tab commit \lang1049\f0\'e1\'e5\'e7 \lang1033\f1 comments\cf0\lang1049\f0\par
+\par
+\cf1 Github:\cf0\par
+\cf1\tab Pull Requests - \'ec\'ee\'e6\'ed\'ee \'f1\'ee\'e7\'e4\'e0\'e2\'e0\'f2\'fc \'ed\'ee\'e2\'fb\'e9 \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'ee\'f0\'e8\'e9 \'eb\'e8\'e1\'ee \'ee\'f2\'e2\'e5\'f2\'e2\'e8\'f2\'fc\'f1\'ff (fork) \'ee\'f2 \'f3\'e6\'e5 \'f1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'fe\'f9\'e5\'e3\'ee \'f7\'f3\'e6\'ee\'e3\'ee \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'ee\'f0\'e8\'ff \'e8 \'e2\'e5\'f1\'f2\'e8 \'f1\'e2\'ee\'fe \'e2\'e5\'f2\'ea\'f3. \'c7\'e0\'f2\'e5\'ec \'f1\'e4\'e5\'eb\'e0\'f2\'fc Pull Request \'e2 \'ef\'e5\'f0\'e2\'ee\'ed\'e0\'f7\'e0\'eb\'fc\'ed\'fb\'e9 \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'ee\'f0\'e8\'e9.\cf0\par
+\cf1\tab Issues = Bug Tracker \'eb\'e0\'e9\'f2 \'e2\'e5\'f0\'f1\'e8\'ff.\cf0\par
+\cf1\tab\tab\'ca\'e0\'ea\'e8\'e5 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'fe\'f2\'f1\'ff default labels \'ef\'f0\'e8 \'ef\'ee\'e8\'f1\'ea\'e5 Issues: language:python label:"good first issue"\cf0\par
+\cf1\tab\tab\cf0{\field{\*\fldinst{HYPERLINK "http://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels"}}{\fldrslt{\ul\cf2 http://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels}}}\f0\fs22\par
+\cf1\tab Projects = Jira Dashboard. \'cc\'ee\'e6\'ed\'ee \'f1\'ee\'e7\'e4\'e0\'f2\'fc \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee \'f1\'f2\'ee\'eb\'e1\'f6\'ee\'e2 (\'ea\'e0\'f2\'e5\'e3\'ee\'f0\'e8\'e9) \'e8 \'ef\'e5\'f0\'e5\'ec\'e5\'f9\'e0\'f2\'fc \'e7\'e0\'ec\'e5\'f2\'ea\'e8 (Tickets) \'ec\'e5\'e6\'e4\'f3 \'fd\'f2\'e8\'ec\'e8 \'f1\'f2\'ee\'eb\'e1\'f6\'e0\'ec\'e8.\cf0\par
+\cf1\tab Marketplace - \'ec\'ee\'e6\'ed\'ee \'ea\'f3\'ef\'e8\'f2\'fc \'ea\'e0\'ea\'ee\'e9-\'ed\'e8\'e1\'f3\'e4\'fc \'ef\'f0\'ee\'e4\'f3\'ea\'f2.\cf0\par
+\par
+\cf1\par
+\'c7\'e0\'f7\'e5\'ec \'ed\'f3\'e6\'e5\'ed Staged (\'ef\'ee\'f1\'f2\'e0\'e2\'e8\'f2\'fc \'ed\'e0 \'f1\'f6\'e5\'ed\'f3)?\cf0\par
+\cf1\'d0\'e0\'e1\'ee\'f2\'e0\'e5\'ec \'f1 \'e4\'e8\'f0\'e5\'ea\'f2\'ee\'f0\'e8\'e5\'e9. \'c2 \'ed\'e5\'b8 10 \'f4\'e0\'e9\'eb\'ee\'e2. \'c8\'e7\'ec\'e5\'ed\'ff\'e5\'ec \'e2\'f1\'e5, \'ed\'ee \'e7\'e0\'ea\'ee\'ec\'ec\'e8\'f2\'e8\'f2\'fc \'f5\'ee\'f2\'e8\'ec \'f2\'ee\'eb\'fc\'ea\'ee 3. \'d2\'ee\'eb\'fc\'ea\'ee \'e8\'f5 \'ef\'e5\'f0\'e5\'e2\'ee\'e4\'e8\'ec \'e2 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e5 Staged \'e8 \'ea\'ee\'ec\'ec\'e8\'f2\'e8\'ec.\cf0\par
+\cf1\'cf\'f0\'e8 \'ef\'e5\'f0\'e5\'e2\'ee\'e4\'e5 \'f4\'e0\'e9\'eb\'e0 \'e2 Staged \'e2 \'e4\'e8\'f0\'e5\'ea\'f2\'ee\'f0\'e8\'e8 .git \'f1\'ee\'e7\'e4\'e0\'b8\'f2\'f1\'ff blob \'fd\'f2\'ee\'e3\'ee \'f4\'e0\'e9\'eb\'e0, \'ed\'ee \'fd\'f2\'ee\'f2 blob \'ef\'ee\'ea\'e0 \'ed\'e5 \'ef\'f0\'e8\'e2\'ff\'e7\'e0\'ed \'ed\'e8 \'ea \'ea\'e0\'ea\'ee\'ec\'f3 commit-\'f3.\cf0\par
+\cf1\par
+\'c2 Git \'e2\'f5\'ee\'e4\'e8\'f2 \'f3\'f2\'e8\'eb\'e8\'f2\'e0 git config\lang1033\f1 .\lang1049\f0  \'cd\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e8 \'eb\'e5\'e6\'e0\'f2 \'e2\cf0\par
+\cf1\tab /etc/gitconfig \'e5\'f1\'eb\'e8 \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'e5\'ec git config --system \emdash  \'e4\'eb\'ff \'e2\'f1\'e5\'f5 \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'e5\'e9 \'f1\'e8\'f1\'f2\'e5\'ec\'fb\cf0\par
+\cf1\tab ~/.gitconfig \'e8\'eb\'e8 ~/.config/git/config \'e5\'f1\'eb\'e8 \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'e5\'ec git config --global \emdash  \'e4\'eb\'ff \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'ee\'e3\'ee \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'ff\cf0\par
+\cf1\tab\'f4\'e0\'e9\'eb config \'e2 \'ef\'e0\'ef\'ea\'e5 .git/config \'e4\'e8\'f0\'e5\'ea\'f2\'ee\'f0\'e8\'e8, \'f1 \'ea\'ee\'f2\'ee\'f0\'ee\'e9 \'ec\'fb \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'ec\cf0\par
+\cf1\'cd\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e8 \'ed\'e0 \'ea\'e0\'e6\'e4\'ee\'ec \'f1\'eb\'e5\'e4\'f3\'fe\'f9\'e5\'ec \'f3\'f0\'ee\'e2\'ed\'e5 \'ef\'ee\'e4\'ec\'e5\'ed\'ff\'fe\'f2 \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e8 \'ef\'f0\'e5\'e4\'fb\'e4\'f3\'f9\'e8\'f5.\cf0\par
+\cf1\par
+\'d1\'ea\'e0\'f7\'e0\'f2\'fc \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'ee\'f0\'e8\'e9 \'f3 \'f1\'ee\'f1\'e5\'e4\'e0:\cf0\par
+\cf1\b git remote add origin\b0  \cf0{\field{\*\fldinst{HYPERLINK "mailto:user@10.0.0.1" }}{\fldrslt{\cf1\ul user@10.0.0.1}}}\cf0\ulnone\f0\fs22 :IdeaProjects/lunda-warehouse\par
+\cf1\b git fetch origin\cf0\b0\par
+\cf1\par
+\'cf\'f0\'e8 \'ef\'e5\'f0\'e2\'ee\'ec \'e7\'e0\'ef\'f3\'f1\'ea\'e5 \'ee\'e1\'ff\'e7\'e0\'f2\'e5\'eb\'fc\'ed\'ee \'ed\'e0\'e4\'ee \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'e8\'f2\'fc \'e8\'ec\'ff \'e8 \'ef\'ee\'f7\'f2\'f3. \'cd\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e8 \'e2\'e2\'ee\'e4\'ff\'f2\'f1\'ff \'ea\'e0\'ea key - value\cf0\par
+\cf1\b git config --global user.name "John Doe"\cf0\b0\par
+\cf1\b git config --global user.email "johndoe@example.com"\cf0\b0\par
+\cf1\b git config --global rebase.autosquash true\cf0\b0\par
+\cf1\b git config --global remote.origin.prune true\cf0\b0\par
+\cf1\b git config --global format.pretty oneline\cf0\b0\par
+\cf1\b git config --global log.abbrevCommit true\cf0\b0\par
+\par
+\cf1\b git config --list\b0  \emdash  \'ef\'f0\'ee\'e2\'e5\'f0\'ea\'e0 \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e0\'f6\'e8\'e8\cf0\par
+\cf1\par
+\b git branch\b0\tab\tab\tab\'ef\'ee\'ea\'e0\'e6\'e5\'f2 \'f1\'ef\'e8\'f1\'ee\'ea \'e2\'e5\'f2\'ee\'ea \'ed\'e0 \'ea\'ee\'ec\'ef\'e5\cf0\par
+\cf1\b git branch -r\b0\tab\tab\'ef\'ee\'ea\'e0\'e6\'e5\'f2 \'f1\'ef\'e8\'f1\'ee\'ea \'e2\'e5\'f2\'ee\'ea \'e2 remote repository\cf0\par
+\cf1\b git branch -t\b0  origin/test\tab pull \'e2\'fb\'ea\'e0\'f7\'e8\'e2\'e0\'e5\'f2 commit-\'fb \'e1\'e5\'e7 \'ed\'e0\'e7\'e2\'e0\'ed\'e8\'e9 branch-\'e5\'e9. \'cc\'ee\'e6\'e5\'f2 \'ef\'ee\'eb\'f3\'f7\'e8\'f2\'fc\'f1\'ff, \'ea\'ee\'e3\'e4\'e0 \'ed\'e0 \'ea\'ee\'ec\'ef\'e5 \'e2\'e5\'f2\'ea\'e8 test \'ed\'e5\'f2, \'e0 \'ed\'e0 remote \'e5\'f1\'f2\'fc. \'ca\'ee\'ec\'e0\'ed\'e4\'e0 \'f1\'ee\'e7\'e4\'e0\'b8\'f2 \'ed\'e0 \'ea\'ee\'ec\'ef\'e5 \'ed\'ee\'e2\'f3\'fe \'e2\'e5\'f2\'ea\'f3 test \'ed\'e0 \'f2\'ee\'ec \'e6\'e5 commit-\'e5, \'f7\'f2\'ee \'e8 test \'ed\'e0 remote.\cf0\par
+\cf1\b git branch\b0  test \i b33c\i0\tab\'f1\'ee\'e7\'e4\'e0\'b8\'ec \'ed\'ee\'e2\'f3\'fe \'e2\'e5\'f2\'ea\'f3 test \'ed\'e0 \'ef\'f0\'ee\'e8\'e7\'e2\'ee\'eb\'fc\'ed\'ee\'ec commit-\'e5\cf0\par
+\cf1\b git branch -f \b0 master \i b33c\i0\tab\'ef\'e5\'f0\'e5\'ed\'ee\'f1 \'e2\'e5\'f2\'ea\'e8 master \'ed\'e0 \'ef\'f0\'ee\'e8\'e7\'e2\'ee\'eb\'fc\'ed\'fb\'e9 commit. \'cf\'ee \'f4\'e0\'ea\'f2\'f3 \'f1\'ee\'e7\'e4\'e0\'b8\'ec "\'ed\'ee\'e2\'f3\'fe" \'e2\'e5\'f2\'ea\'f3 master \'ed\'e0 \'ef\'f0\'ee\'e8\'e7\'e2\'ee\'eb\'fc\'ed\'ee\'ec commit-\'e5, \'f2.\'ea. \'e2\'e5\'f2\'ea\'e0 master \'f3\'e6\'e5 \'f1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'e5\'f2, \'e1\'f3\'e4\'e5\'f2 error - \'ef\'ee\'fd\'f2\'ee\'ec\'f3 -f\cf0\par
+\cf1\b git branch -d\b0  testing\tab\'f3\'e4\'e0\'eb\'e8\'f2\'fc \'e2\'e5\'f2\'ea\'f3 testing\cf0\par
+\cf1\b git remote update origin\b0  --prune - \'ee\'e1\'ed\'ee\'e2\'e8\'f2\'fc \'eb\'e8\'f1\'f2 \'e2\'e5\'f2\'ee\'ea \'f1 \'f3\'e4\'e0\'eb\'b8\'ed\'ed\'ee\'e3\'ee \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'ee\'f0\'e8\'ff\cf0\par
+\par
+\cf1\par
+\b git switch\b0  ... = \b git checkout\b0  ...\cf0\par
+\cf1\b git checkout\b0  test\tab\tab\'ef\'e5\'f0\'e9\'f2\'e8 \'ed\'e0 \'e2\'e5\'f2\'ea\'f3 test\cf0\par
+\cf1\b git checkout -b\b0  test\tab\'f1\'ee\'e7\'e4\'e0\'b8\'ec \'ed\'ee\'e2\'f3\'fe \'e2\'e5\'f2\'ea\'f3 \'e8 \'f1\'f0\'e0\'e7\'f3 \'ed\'e0 \'ed\'e5\'b8 \'ef\'e5\'f0\'e5\'ea\'eb\'fe\'f7\'e0\'e5\'ec\'f1\'ff. git branch test + git checkout test\cf0\par
+\cf1\b git checkout -b\b0  test \i b33c\i0\tab\'f1\'ee\'e7\'e4\'e0\'b8\'ec \'ed\'ee\'e2\'f3\'fe \'e2\'e5\'f2\'ea\'f3 \'ed\'e0 \'ef\'f0\'ee\'e8\'e7\'e2\'ee\'eb\'fc\'ed\'fb\'e9 commit \'e8 \'f1\'f0\'e0\'e7\'f3 \'ed\'e0 \'ed\'e5\'b8 \'ef\'e5\'f0\'e5\'f5\'ee\'e4\'e8\'ec\cf0\par
+\cf1\b git checkout -B\b0  master \i b33c\i0\tab\'ef\'e5\'f0\'e5\'ed\'ee\'f1 \'e2\'e5\'f2\'ea\'e8 master \'ed\'e0 \'ef\'f0\'ee\'e8\'e7\'e2\'ee\'eb\'fc\'ed\'fb\'e9 commit \'e8 \'f1\'f0\'e0\'e7\'f3 \'ed\'e0 \'ed\'e5\'b8 \'ef\'e5\'f0\'e5\'f5\'ee\'e4\'e8\'ec\cf0\par
+\cf1\par
+\b git stage\b0  ... = \b git add \b0 ...\tab\'ef\'e5\'f0\'e5\'e2\'e5\'f1\'f2\'e8 \'f4\'e0\'e9\'eb\'fb \'e2 stage\cf0\par
+\cf1\b git restore *\tab\tab\b0\'e2\'f1\'e5 \'f4\'e0\'e9\'eb\'fb \'e2 Work Directory \'e2\'ee\'f1\'f1\'f2\'e0\'ed\'ee\'e2\'e8\'f2\'fc \'e4\'ee \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'ff stage. \'c5\'f1\'eb\'e8 \'e2 stage \'ef\'f3\'f1\'f2\'ee, \'f2\'ee \'e4\'ee \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'ff \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e5\'e3\'ee commit-\'e0.\cf0\par
+\cf1\b git restore\b0  1.txt\tab\tab 1.txt \'e2 Work Directory \'e2\'ee\'f1\'f1\'f2\'e0\'ed\'ee\'e2\'e8\'f2\'fc \'e4\'ee \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'ff stage. \'c5\'f1\'eb\'e8 \'e2 stage \'ef\'f3\'f1\'f2\'ee, \'f2\'ee \'e4\'ee \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'ff \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e5\'e3\'ee commit-\'e0\cf0\par
+\cf1\b git restore -s\b0  \i b33c\i0  *\tab\'e2\'f1\'e5 \'f4\'e0\'e9\'eb\'fb \'e2 Work Directory \'e2\'ee\'f1\'f1\'f2\'e0\'ed\'ee\'e2\'e8\'f2\'fc \'e4\'ee \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'ff commit-\'e0 \i b33c\cf0\i0\par
+\cf1\b git restore -s\b0  \i b33c\i0  1.txt\tab 1.txt \'e2 Work Directory \'e2\'ee\'f1\'f1\'f2\'e0\'ed\'ee\'e2\'e8\'f2\'fc \'e4\'ee \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'ff commit-\'e0 \i b33c\cf0\i0\par
+\cf1\b git restore --staged\b0  *\tab\'e2\'f1\'e5 \'f4\'e0\'e9\'eb\'fb \'e2 "\'e4\'e8\'f0\'e5\'ea\'f2\'ee\'f0\'e8\'e8" Stage \'e2\'ee\'f1\'f1\'f2\'e0\'ed\'ee\'e2\'e8\'f2\'fc \'e4\'ee \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'ff \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e5\'e3\'ee commit-\'e0. \'cf\'ee \'f4\'e0\'ea\'f2\'f3 \'f3\'e4\'e0\'eb\'e5\'ed\'e8\'e5 \'e2\'f1\'e5\'f5 \'f4\'e0\'e9\'eb\'ee\'e2 \'e8\'e7 "\'e4\'e8\'f0\'e5\'ea\'f2\'ee\'f0\'e8\'e8" Stage.\cf0\par
+\cf1\par
+\tab\tab\ul git show\ulnone\tab show various types of objects\cf0\par
+\cf1\b git show\b0  6f55:src/main/test.txt\tab\'ea\'e0\'ea\'e8\'ec \'e1\'fb\'eb \'f4\'e0\'e9\'eb test.txt \'e2 commit 6f55\cf0\par
+\cf1\b git show\b0\tab\tab\tab\'ef\'ee\'ea\'e0\'e6\'e5\'f2 last commit. \'cd\'ee\'ec\'e5\'f0 (hash) \'ea\'ee\'ec\'ec\'e8\'f2\'e0, \'ea\'f2\'ee \'f1\'ee\'e7\'e4\'e0\'eb, \'ea\'e0\'ea\'e8\'e5 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff \'ee\'f2 \'ef\'f0\'e5\'e4\'fb\'e4\'f3\'f9\'e5\'e3\'ee.\cf0\par
+\cf1\b git show\b0  v.14\tab\tab\'ea\'e0\'ea\'e8\'e5 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff \'e2\'ed\'ee\'f1\'e8\'eb\'e8 \'e2 commit c tag v.14\cf0\par
+\cf1\b git show\b0  6f55\tab\tab\'ea\'e0\'ea\'e8\'e5 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff \'e2\'ed\'ee\'f1\'e8\'eb\'e8 \'e2 commit 6f55\cf0\par
+\cf1\par
+\b git diff\b0\tab\tab\tab\tab\tab\tab\'f7\'f2\'ee \'ec\'fb \'f2\'f3\'f2 \'ed\'e0\'e8\'e7\'ec\'e5\'ed\'ff\'eb\'e8, \'ed\'ee \'e5\'f9\'b8 \'ed\'e5 \'e7\'e0-commit-\'eb\'e8. \'d1\'f0\'e0\'e2\'ed\'e8\'e2\'e0\'e5\'f2 workspace \'e8 index\cf0\par
+\cf1\b git diff\b0  HEAD~\tab\tab\tab\tab\tab\'f0\'e0\'e7\'eb\'e8\'f7\'e8\'ff \'ec\'e5\'e6\'e4\'f3 \'fd\'f2\'e8\'ec \'e8 \'ef\'f0\'e5\'e4\'fb\'e4\'f3\'f9\'e8\'ec commit-\'ee\'ec\cf0\par
+\cf1\b git diff\b0  \i b33c\i0  \i a43d\i0\tab\tab\tab\tab\'f0\'e0\'e7\'eb\'e8\'f7\'e8\'ff \'ec\'e5\'e6\'e4\'f3 2-\'ff commit-\'e0\'ec\'e8\cf0\par
+\cf1\b git diff\b0  \i b33c\i0  \i a43d\i0  \b src/main/java/My.java\b0\tab\'f0\'e0\'e7\'eb\'e8\'f7\'e8\'ff \'ec\'e5\'e6\'e4\'f3 2-\'ff commit-\'e0\'ec\'e8 \'f2\'ee\'eb\'fc\'ea\'ee \'ef\'ee \'f4\'e0\'e9\'eb\'f3 file.txt\cf0\par
+\cf1\b git diff master testing\tab\tab\tab\tab\b0\'f1\'f0\'e0\'e2\'ed\'e8\'e2\'e0\'e5\'f2 \'e4\'e2\'e5 \'e2\'e5\'f2\'ea\'e8\cf0\par
+\cf1\b git diff master testing\b0\tab\b src/main/java/My.java \b0\'ef\'ee\'ea\'e0\'e6\'e5\'f2 \'f0\'e0\'e7\'eb\'e8\'f7\'e8\'ff \'e2 \'f4\'e0\'e9\'eb\'e5 \'e8\'e7 \'e2\'e5\'f2\'ea\'e8 master \'e8 testing\cf0\par
+\cf1\b git diff \endash color-words\b0\tab\tab\tab\tab\'ea\'f0\'e0\'f1\'e8\'e2\'ee \'f1\'f0\'e0\'e2\'ed\'e8\'e2\'e0\'e5\'f2 workspace \'e8 index\cf0\par
+\cf1\b git diff --name-only\b0  master testing\tab\tab\'ef\'ee\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2 \'f2\'ee\'eb\'fc\'ea\'ee \'e8\'ec\'e5\'ed\'e0 \'f4\'e0\'e9\'eb\'ee\'e2, \'e2 \'ea\'ee\'f2\'ee\'f0\'fb\'f5 \'e5\'f1\'f2\'fc \'f0\'e0\'e7\'eb\'e8\'f7\'e8\'ff\cf0\par
+\cf1\par
+\b git blame\b0  a.txt\tab\tab\'ef\'ee\'ea\'e0\'e6\'e5\'f2 \'ea\'f2\'ee \'e8 \'e2 \'ea\'e0\'ea\'ee\'ec commit \'e8\'e7\'ec\'e5\'ed\'ff\'eb \'ea\'e0\'e6\'e4\'f3\'fe \'f1\'f2\'f0\'ee\'ea\'f3\cf0\par
+\cf1\par
+\b git log --graph --oneline --decorate --all\b0\tab decorate - \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'f2 \'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'fe \'ee branch\cf0\par
+\cf1\b git log -p\b0\tab\tab\tab\tab\'cf\'ee\'ea\'e0\'e6\'e5\'f2 \'f0\'e0\'e7\'ed\'e8\'f6\'f3, \'e2\'ed\'e5\'f1\'b8\'ed\'ed\'f3\'fe \'e2 \'ea\'e0\'e6\'e4\'fb\'e9 commit\cf0\par
+\cf1\b git log -p \b0 src/main/java/test.txt\tab\'cf\'ee\'ea\'e0\'e6\'e5\'f2 \'ea\'e0\'ea \'e8\'e7\'ec\'e5\'ed\'ff\'eb\'f1\'ff \'f4\'e0\'e9\'eb\cf0\par
+\cf1\b git log -10\b0\tab\tab\tab\tab\'d1\'ec\'ee\'f2\'f0\'e8\'ec \'e8\'f1\'f2\'ee\'f0\'e8\'fe. \'cf\'ee\'f1\'eb\'e5\'e4\'ed\'e8\'e5 10 \'ea\'ee\'ec\'ec\'e8\'f2\'ee\'e2\cf0\par
+\cf1\b git log -S\b0  "void foo()"\tab\tab\'cf\'ee\'ea\'e0\'e6\'e5\'f2 commit, \'e2 \'ea\'ee\'f2\'ee\'f0\'ee\'ec \'e1\'fb\'eb\'e0 \'e4\'ee\'e1\'e0\'e2\'eb\'e5\'ed\'e0/\'f3\'e4\'e0\'eb\'e5\'ed\'e0 \'fd\'f2\'e0 \'f4\'f3\'ed\'ea\'f6\'e8\'ff\cf0\par
+\cf1\b git log --stat\b0\tab\tab\tab\'cf\'ee\'ea\'e0\'e6\'e5\'f2 \'ea\'e0\'ea\'e8\'e5 \'f4\'e0\'e9\'eb\'fb \'e2 \'ea\'e0\'e6\'e4\'ee\'ec commit-\'e5 \'e1\'fb\'eb\'e8 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'fb \'d1\'ea\'ee\'eb\'fc\'ea\'ee \'f1\'f2\'f0\'ee\'ea \'e4\'ee\'e1\'e0\'e2\'eb\'e5\'ed\'ee, \'f1\'ea\'ee\'eb\'fc\'ea\'ee \'f3\'e4\'e0\'eb\'e5\'ed\'ee \'ef\'ee \'ea\'e0\'e6\'e4\'ee\'ec\'f3 \'f4\'e0\'e9\'eb\'f3.\cf0\par
+\cf1\b git log --pretty\b0 =format "%h - %an, %ae : %s"\tab\'d1\'e0\'ec\'e8 \'e7\'e0\'e4\'e0\'b8\'ec \'f4\'ee\'f0\'ec\'e0\'f2 \'e2\'fb\'e2\'ee\'e4\'e0 log-\'e0. %h - \'f1\'ee\'ea\'f0\'e0\'f9\'b8\'ed\'ed\'fb\'e9(7 \'f6\'e8\'f4\'f0) hash, %an - \'e8\'ec\'ff \'e0\'e2\'f2\'ee\'f0\'e0, %ae - \tab\'fd\'eb\'e5\'ea\'f2\'f0\'ee\'ed\'ed\'e0\'ff \'ef\'ee\'f7\'f2\'e0 \'e0\'e2\'f2\'ee\'f0\'e0, %s - \'ea\'ee\'ec\'ec\'e5\'ed\'f2\'e0\'f0\'e8\'e9\cf0\par
+\cf1 git log --grep "\'d7\'f2\'ee \'e8\'f9\'e5\'ec"\tab\'c8\'f9\'e5\'f2 \'f2\'ee\'eb\'fc\'ea\'ee \'e2 \'ea\'ee\'ec\'ec\'e5\'ed\'f2\'e0\'f0\'e8\'ff\'f5\cf0\par
+\cf1\'c8 \'e5\'f9\'b8 \'ec\'ed\'ee\'e3\'ee \emdash  \'ec\'ed\'ee\'e3\'ee \'ee\'ef\'f6\'e8\'e9 \cf0{\field{\*\fldinst{HYPERLINK "http://git-scm.com/book/ru/v2/\'ce\'f1\'ed\'ee\'e2\'fb-Git-\'cf\'f0\'ee\'f1\'ec\'ee\'f2\'f0-\'e8\'f1\'f2\'ee\'f0\'e8\'e8-\'ea\'ee\'ec\'ec\'e8\'f2\'ee\'e2"}}{\fldrslt{\ul\cf2 http://git-scm.com/book/ru/v2/\'ce\'f1\'ed\'ee\'e2\'fb-Git-\'cf\'f0\'ee\'f1\'ec\'ee\'f2\'f0-\'e8\'f1\'f2\'ee\'f0\'e8\'e8-\'ea\'ee\'ec\'ec\'e8\'f2\'ee\'e2}}}\f0\fs22\par
+\cf1\par
+\b git reflog\b0\tab\'e8\'f1\'f2\'ee\'f0\'e8\'ff \'ef\'e5\'f0\'e5\'ec\'e5\'f9\'e5\'ed\'e8\'ff ref-\'f1\'f1\'fb\'eb\'ee\'ea, \'e2 \'f2\'ee\'ec \'f7\'e8\'f1\'eb\'e5 HEAD, \'ec\'ee\'e6\'ed\'ee \'ed\'e0\'e9\'f2\'e8 "\'ef\'ee\'f2\'e5\'f0\'ff\'ed\'ed\'fb\'e9" \lang1033\f1 commit\cf0\lang1049\f0\par
+\cf1\par
+\b git stash\b0\tab\'e2\'f0\'e5\'ec\'e5\'ed\'ed\'ee \'f1\'ee\'f5\'f0\'e0\'ed\'e8\'f2\'fc \'ed\'e5\'e7\'e0\'ea\'ee\'ec\'ec\'e8\'f7\'e5\'ed\'ed\'fb\'e5 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff\cf0\par
+\cf1\b git stash pop\b0\tab\'e2\'e5\'f0\'ed\'f3\'f2\'fc \'e2\'f0\'e5\'ec\'e5\'ed\'ed\'ee \'f1\'ee\'f5\'f0\'e0\'ed\'e8\'f2\'fc \'ed\'e5\'e7\'e0\'ea\'ee\'ec\'ec\'e8\'f7\'e5\'ed\'ed\'fb\'e5 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff\cf0\par
+\cf1\par
+\b git remote -v\b0\tab\tab\'f1\'ef\'e8\'f1\'ee\'ea \'f3\'e4\'e0\'eb\'b8\'ed\'ed\'fb\'f5 \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'ee\'f0\'e8\'e5\'e2, \'e7\'e0\'ef\'e8\'f1\'e0\'ed\'ed\'fb\'f5 \'ed\'e0 \'ed\'e0\'f8\'e5\'ec \'ea\'ee\'ec\'ef\'e5: origin hxxp://github.com/samuseva/p1.git (fetch)\cf0\par
+\cf1\b git remote show \b0 origin\tab\'e4\'e5\'f2\'e0\'eb\'fc\'ed\'e0\'ff \'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'ff \'ef\'ee origin\cf0\par
+\cf1\b git fetch \b0 origin\tab\tab\'f1\'ec\'ee\'f2\'f0\'e8\'ec, \'f7\'e5\'ec \'ee\'f2\'eb\'e8\'f7\'e0\'e5\'f2\'f1\'ff \'ef\'e0\'ef\'ea\'e0 .git \'ed\'e0 \'f1\'e5\'f0\'e2\'e5\'f0\'e5, \'ee\'f2 \'ed\'e0\'f8\'e5\'e9 \'ef\'e0\'ef\'ea\'e8 \'e8 \'f1\'ea\'e0\'f7\'e8\'e2\'e0\'e5\'ec \'f0\'e0\'e7\'ed\'e8\'f6\'f3, \'ed\'ee \'cd\'c5 \'d1\'cb\'c8\'c2\'c0\'c5\'cc \'e8\'f5 \'f1 \'ed\'e0\'f8\'e8\'ec\'e8 \'f4\'e0\'e9\'eb\'e0\'ec\'e8 (\'ef\'f0\'e5\'e4\'e7\'e0\'e3\'f0\'f3\'e7\'ea\'e0 \'e4\'e0\'ed\'ed\'fb\'f5 \'e2 cache \'ed\'e0\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff pre fetch)\cf0\par
+\cf1\par
+\b git merge\b0  testing\cf0\par
+\cf1\b git merge\b0  master testing\cf0\par
+\cf1\b git merge -s resolve\b0  testing\tab\'e5\'f1\'f2\'fc \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee \'f1\'f2\'f0\'e0\'f2\'e5\'e3\'e8\'e9 \'f1\'eb\'e8\'ff\'ed\'e8\'ff (-s). resolve - \'f1\'e0\'ec\'ee\'e5 \'ef\'f0\'ee\'f1\'f2\'ee\'e5 \'f2\'f0\'b8\'f5\'f1\'f2\'ee\'f0\'ee\'ed\'ed\'e5\'e5 \'f1\'eb\'e8\'ff\'ed\'e8\'e5. \'c1\'ee\'eb\'e5\'e5 \'ef\'f0\'ee\'e4\'e2\'e8\'ed\'f3\'f2\'ee\'e5 recursive, \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'ef\'ee default.\cf0\par
+\cf1\par
+\tab\'ee\'e1\'f9\'e8\'e9 \'ef\'f0\'e5\'e4\'ee\'ea\tab\'ef\'e5\'f0\'e2\'e0\'ff \'e2\'e5\'f2\'ea\'e0\tab\'e2\'f2\'ee\'f0\'e0\'ff \'e2\'e5\'f2\'ea\'e0\tab\tab\'ef\'ee\'f1\'eb\'e5 \'f1\'eb\'e8\'ff\'ed\'e8\'ff\cf0\par
+\cf1\tab\tab aaa\tab\tab\tab aaa\highlight3 111\highlight0\tab\tab aaa\tab\tab\tab\tab aaa\highlight3 111\cf0\highlight0\par
+\cf1 1.txt\tab\tab bbb\tab\tab\tab bbb\tab\tab\tab bbb\tab\tab\tab\tab bbb\tab - \'ec\'e5\'e6\'e4\'f3 \'e5\'f1\'f2\'fc \'ed\'e5\'e8\'e7\'ec\'e5\'ed\'e8\'e2\'f8\'e8\'e9\'f1\'ff \'e1\'eb\'ee\'ea, \'ef\'ee\'fd\'f2\'ee\'ec\'f3 \'e2\'f1\'b8 ok.\cf0\par
+\cf1\tab\tab ccc\tab\tab\tab ccc\tab\tab\tab ccc\highlight4 222\highlight0\tab\b git merge\b0\tab ccc\highlight4 222\cf0\highlight0\par
+\cf1\par
+2.txt\tab\tab aaa\tab\tab\tab aaa\highlight3 111\highlight0\tab\tab aaa\cf0\par
+\cf1\tab\tab bbb\tab\tab\tab bbb\tab\tab\tab bbb\highlight4 222\highlight0\tab\tab\tab\'ea\'ee\'ed\'f4\'eb\'e8\'ea\'f2 !!!\cf0\par
+\cf1\par
+\par
+\ul Remote server\ulnone\tab master\tab\tab\tab\tab\tab master\tab\tab\tab\tab\tab\tab\tab\tab master\cf0\par
+\cf1\tab\tab\tab |\tab\tab\tab\tab\tab\tab |\tab\tab\tab\tab\tab\tab\tab\tab\tab |\cf0\par
+\cf1\tab\highlight5 98ca9\highlight0  \u8594? \highlight4 34ac2\highlight0\tab\tab\tab\highlight5 98ca9\highlight0  \u8594? \highlight4 34ac2\highlight0  \u8594? \highlight6 f30ab\highlight0  \tab\tab\tab\tab\tab\tab\highlight5 98ca9\highlight0  \u8594? \highlight4 34ac2\highlight0  \u8594? \highlight6 f30ab\highlight0\tab\cf0\par
+\cf1\par
+\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab origin/master\cf0\par
+\cf1\ul Local comp\ulnone\tab\tab origin/master\tab\tab\tab origin/master\tab $ \b git fetch\b0  origin\tab\tab\tab\tab |\cf0\par
+\cf1\tab\tab\tab |\tab\tab\tab\tab\tab |\tab\tab\tab\tab\tab\tab\tab\tab\tab |\u8594? \highlight6 f30ab\cf0\highlight0\par
+\cf1\tab\highlight5 98ca9\highlight0  \u8594? \highlight4 34ac2\highlight0\tab\tab\tab\highlight5 98ca9\highlight0  \u8594? \highlight4 34ac2\highlight0  \u8594? \highlight3 87ab2\highlight0  \u8594? \highlight7 66f29\highlight0\tab\tab\tab\tab\tab\highlight5 98ca9\highlight0  \u8594? \highlight4 34ac2\highlight0  \u8594? \highlight3 87ab2\highlight0  \u8594? \highlight7 66f29\cf0\highlight0\par
+\cf1\tab\tab\tab |\tab\tab\tab\tab\tab\tab\tab   |\tab\tab\tab\tab\tab\tab\tab\tab\tab   |\cf0\par
+\cf1\tab\tab\tab master\tab\tab\tab\tab\tab\tab master\tab\tab\tab\tab\tab\tab\tab\tab master\cf0\par
+\cf1\par
+\b git pull\b0  testing\tab\tab git fetch + git merge\cf0\par
+\cf1\b git pull --prune\b0\tab\tab\'f3\'e4\'e0\'eb\'ff\'e5\'ec \'f3 \'f1\'e5\'e1\'ff branch-\'e8, \'ea\'ee\'f2\'ee\'f0\'fb\'f5 \'ed\'e5\'f2 \'ed\'e0 remote rep\cf0\par
+\cf1\b git push\b0  origin master\tab\'e7\'e0\'ea\'e0\'f7\'e8\'e2\'e0\'e5\'ec \'ed\'e0 \'f1\'e5\'f0\'e2\'e5\'f0 \'f1\'e2\'ee\'e8 \'ed\'e0\'f0\'e0\'e1\'ee\'f2\'ea\'e8 \'e2 \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'ee\'f0\'e8\'e9 origin \'e2 \'e2\'e5\'f2\'ea\'f3 master\cf0\par
+\cf1\b git status -s\b0  \'e8\'eb\'e8 --short\tab\'f1\'ee\'ea\'f0\'e0\'f9\'b8\'ed\'ed\'fb\'e9 \'e2\'fb\'e2\'ee\'e4 \'ea\'ee\'ec\'e0\'ed\'e4\'fb git status\tab\tab\cf0\par
+\cf1\par
+\'cf\'ee\'f1\'eb\'e5 $ git commit\tab\'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e5 \'f1\'e8\'f1\'f2\'e5\'ec\'fb \'f2\'e0\'ea\'ee\'e5:\cf0\par
+\cf1\tab\tab\tab Workspace\tab\tab Index\tab\tab\tab Local Repository\cf0\par
+\cf1\tab\tab\tab file.txt(v.3)\tab file.txt(v.3)\tab file.txt(v.3)\cf0\par
+\cf1 HEAD~ - \'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2 \'f0\'ee\'e4\'e8\'f2\'e5\'eb\'ff HEAD, HEAD~2 - \'f0\'ee\'e4\'e8\'f2\'e5\'eb\'fc \'f0\'ee\'e4\'e8\'f2\'e5\'eb\'ff HEAD\cf0\par
+\cf1\b git reset\b0  --soft HEAD~\tab\tab\'ee\'f2\'ea\'e0\'f2\'fb\'e2\'e0\'e5\'f2 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff \'ed\'e0 \'ec\'ee\'ec\'e5\'ed\'f2, \'ea\'ee\'e3\'e4\'e0 \'ef\'ee\'ea\'e0 \'ed\'e5 \'e2\'e2\'b8\'eb $ git commit\cf0\par
+\cf1\tab\tab\tab Workspace\tab\tab Index\tab\tab\tab Local Repository\cf0\par
+\cf1\tab\tab\tab file.txt(v.3)\tab file.txt(v.3)\tab file.txt(\b v.2\b0 )\cf0\par
+\cf1\b git reset\b0  --mixed HEAD~\tab\tab\'ee\'f2\'ea\'e0\'f2\'fb\'e2\'e0\'e5\'f2 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff \'ed\'e0 \'ec\'ee\'ec\'e5\'ed\'f2, \'ea\'ee\'e3\'e4\'e0 \'ef\'ee\'ea\'e0 \'ed\'e5 \'e2\'e2\'b8\'eb $ git add\cf0\par
+\cf1\tab\tab\tab Workspace\tab\tab Index\tab\tab\tab Local Repository\cf0\par
+\cf1\tab\tab\tab file.txt(v.3)\tab file.txt(\b v.2\b0 )\tab file.txt(\b v.2\b0 )\cf0\par
+\cf1\b git reset\b0  --hard HEAD~\tab\tab\'ee\'f2\'ea\'e0\'f2\'fb\'e2\'e0\'e5\'f2 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff \'ed\'e0 \'ec\'ee\'ec\'e5\'ed\'f2, \'ea\'ee\'e3\'e4\'e0 \'f2\'ee\'eb\'fc\'ea\'ee \'e2\'e2\'e5\'eb\'e8 \'ef\'f0\'e5\'e4-\'ef\'f0\'e5\'e4\'fb\'e4\'f3\'f9\'e8\'e9 $ git commit\cf0\par
+\cf1\tab\tab\tab Workspace\tab\tab Index\tab\tab\tab Local Repository\cf0\par
+\cf1\tab\tab\tab file.txt(\b v.2\b0 )\tab file.txt(\b v.2\b0 )\tab file.txt(\b v.2\b0 )\cf0\par
+\cf1\par
+\par
+\par
+\tab\tab +----------+ <------------------------pull---------------------------\tab +----------+\cf0\par
+\cf1\tab\tab |\tab\tab |\tab\tab\tab\tab\tab\tab +----------+\tab\tab\tab |\tab\tab |\cf0\par
+\cf1\tab\tab |Workspace\tab | <----------checkout----------\tab |  Local\tab |<-fetch/clone-\tab |  Remote\tab |\cf0\par
+\cf1\tab\tab |\tab\tab |\tab\tab +----------+\tab\tab |Repositor\tab |\tab\tab\tab |Repositor\tab |\cf0\par
+\cf1\tab\tab |\tab\tab | --add-->\tab |  Index\tab |-commit->\tab |\tab\tab |-----push---->\tab |\tab\tab |\cf0\par
+\cf1\tab\tab +----------+\tab\tab +----------+\tab\tab +----------+\tab\tab\tab +----------+\cf0\par
+\cf1\par
+Untracked\tab   Modified\tab\tab\tab    Staged\tab\tab\tab  Unmodified\cf0\par
+\cf1 |------------ git stage * ---------->\tab |\tab\tab\tab\tab\tab\tab\'c4\'ee\'e1\'e0\'e2\'e8\'eb\'e8 \'f4\'e0\'e9\'eb\'fb \'e2 index (\'f4\'e0\'e9\'eb\'fb \'f1\'f2\'e0\'eb\'e8 Tracked). \'c2 .git \'f1\'ee\'e7\'e4\'e0\'eb\'e8\'f1\'fc \'e8\'f5 blob-\'fb.\cf0\par
+\cf1\tab\tab\tab\tab\tab\tab\tab |------git commit------->\tab |\tab\'d1\'ee\'f5\'f0\'e0\'ed\'e8\'eb\'e8 \'f1\'ed\'e8\'ec\'ee\'ea \'ed\'e0\'f8\'e5\'e3\'ee index. \'d1\'ee\'e7\'e4\'e0\'eb\'e8\'f1\'fc \'ee\'e1\'fa\'e5\'ea\'f2\'fb tree \'e8 commit, \'e2 \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'e2\'f5\'ee\'e4\'ff\'f2 \'fd\'f2\'e8 blob-\'fb.\cf0\par
+\cf1\tab\tab\tab |<---------------- nano 1.txt ----------------\tab |\tab\'c8\'e7\'ec\'e5\'ed\'e8\'eb\'e8 \'f4\'e0\'e9\'eb. git status \'e2\'e8\'e4\'e8\'f2, \'f7\'f2\'ee \'f4\'e0\'e9\'eb \'e8\'e7\'ec\'e5\'ed\'b8\'ed, \'ed\'ee \'ed\'e8\'f7\'e5\'e3\'ee \'e2 \'ef\'e0\'ef\'ea\'e5 .git \'ed\'e5 \'e8\'e7\'ec\'e5\'ed\'ff\'e5\'f2.\cf0\par
+\cf1\tab\tab\tab |------------- git restore 1.txt ------------>\tab |\tab\'d7\'f2\'ee-\'f2\'ee \'e2 \'f4\'e0\'e9\'eb\'e5 \'ef\'ee\'e8\'e7\'ec\'e5\'ed\'ff\'eb\'e8, \'ed\'e5 \'ef\'ee\'ed\'f0\'e0\'e2\'e8\'eb\'ee\'f1\'fc, \'f5\'ee\'f2\'e8\'ec, \'f7\'f2\'ee\'e1\'fb \'f4\'e0\'e9\'eb \'f1\'f2\'e0\'eb \'ea\'e0\'ea\'e8\'ec \'e1\'fb\'eb \'ef\'f0\'e8 \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e5\'ec commit-\'e5.\cf0\par
+\cf1\tab\tab\tab |--- git stage * --->\tab |\tab\tab\tab\tab\tab\tab\'cf\'f0\'ee\'e8\'ed\'e4\'e5\'ea\'f1\'e8\'f0\'ee\'e2\'e0\'eb\'e8. \'c2 .git \'f1\'ee\'e7\'e4\'e0\'eb\'e8\'f1\'fc \'ed\'ee\'e2\'fb\'e5 blob-\'fb \'f4\'e0\'e9\'eb\'ee\'e2.\cf0\par
+\cf1\tab\tab\tab |----------------- nano 1.txt ----------------\tab |\tab\'ce\'ef\'ff\'f2\'fc \'e8\'e7\'ec\'e5\'ed\'e8\'eb\'e8 \'f4\'e0\'e9\'eb. git status \'e2\'e8\'e4\'e8\'f2 1.txt \'e2 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e8 stage \'e8 \'e4\'f0\'f3\'e3\'ee\'e9 1.txt \'e2 Work Directory\cf0\par
+\cf1\tab\tab\tab |<-git restore 1.txt-\tab |\tab\tab\tab\tab\tab\tab\'d2\'e5\'ef\'e5\'f0\'fc 1.txt \'e2 Work Directory \'f1\'f2\'e0\'eb \'f2\'e0\'ea\'e8\'ec \'e6\'e5 \'ea\'e0\'ea \'e8 1.txt \'e2 stage\cf0\par
+\cf1\tab\tab\tab |--------- git restore --staged 1.txt --------\tab |\tab\'d3\'e4\'e0\'eb\'e8\'eb\'e8 1.txt \'e8\'e7 stage. \'c2 Work Directory 1.txt \'ee\'f1\'f2\'e0\'eb\'f1\'ff.\cf0\par
+\cf1\tab\tab\tab |<------------ git restore 1.txt -------------\tab |\tab\'d2\'e5\'ef\'e5\'f0\'fc 1.txt \'e2 Work Directory \'f1\'f2\'e0\'eb \'f2\'e0\'ea\'e8\'ec \'e6\'e5 \'ea\'e0\'ea \'e8 1.txt \'e2 \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e5\'ec commit-\'e5\cf0\par
+\cf1\tab\tab\tab |<----------------- rm 1.txt -----------------\tab |\tab git status \'e2\'e8\'e4\'e8\'f2, \'f7\'f2\'ee \'f4\'e0\'e9\'eb \'ef\'f0\'ee\'ef\'e0\'eb.\cf0\par
+\cf1 |<- git rm 1.txt ---------------------------------------------\tab |\tab\'c4\'e5\'eb\'e0\'e5\'f2 \'f4\'e0\'e9\'eb Untracked.\cf0\par
+\cf1\par
+\par
+\b\tab\tab\tab\tab\'ce\'e1\'f9\'e8\'e5 \'ef\'f0\'e8\'ed\'f6\'e8\'ef\'fb \'f0\'e0\'e1\'ee\'f2\'fb\cf0\b0\par
+\cf1\'d3\'f1\'f2\'e0\'ed\'e0\'e2\'eb\'e8\'e2\'e0\'e5\'ec git:\cf0\par
+\cf1\tab # apt install git\cf0\par
+\cf1\'d1\'ee\'e7\'e4\'e0\'b8\'ec \'ef\'e0\'ef\'ea\'f3 Test \'f1 \'f4\'e0\'e9\'eb\'e0\'ec\'e8 1.txt \'e8 2.txt. \'c7\'e0\'f5\'ee\'e4\'e8\'ec \'e2 \'ef\'e0\'ef\'ea\'f3, \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'e5\'ec git:\cf0\par
+\cf1\tab # git init\cf0\par
+\cf1\'d1\'ee\'e7\'e4\'e0\'f1\'f2\'f1\'ff \'ed\'ee\'e2\'e0\'ff \'ef\'e0\'ef\'ea\'e0:\cf0\par
+\cf1\tab Test/.git\cf0\par
+\cf1\tab\tab Branches\tab\'e4\'e8\'f0\'e5\'ea\'f2\'ee\'f0\'e8\'ff\cf0\par
+\cf1\tab\tab Hooks\tab\tab\'e4\'e8\'f0\'e5\'ea\'f2\'ee\'f0\'e8\'ff\cf0\par
+\cf1\tab\tab Info\tab\tab\'e4\'e8\'f0\'e5\'ea\'f2\'ee\'f0\'e8\'ff\cf0\par
+\cf1\tab\tab Objects\tab\'e4\'e8\'f0\'e5\'ea\'f2\'ee\'f0\'e8\'ff\cf0\par
+\cf1\tab\tab config\tab\'f4\'e0\'e9\'eb\cf0\par
+\cf1\tab\tab description\tab\'f4\'e0\'e9\'eb \'f1 \'e8\'ec\'e5\'ed\'e5\'ec/\'ee\'ef\'e8\'f1\'e0\'ed\'e8\'e5\'ec \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'ee\'f0\'e8\'ff\cf0\par
+\cf1\tab\tab index\tab\tab\'f4\'e0\'e9\'eb\cf0\par
+\cf1\tab\tab HEAD\tab\tab\'e2 \'f4\'e0\'e9\'eb\'e5 \'fd\'f2\'ee - ref: refs/heads/master\cf0\par
+\cf1\tab\tab refs\cf0\par
+\cf1\tab\tab  |-->\tab heads\cf0\par
+\cf1\tab\tab  |\tab  |-->\tab master\tab\'e2 \'f4\'e0\'e9\'eb\'e5 \'eb\'e5\'e6\'e8\'f2 SHA \'ed\'e0 commit\cf0\par
+\cf1\tab\tab  |\tab  |--> testing\cf0\par
+\cf1\tab\tab  |-->\tab tags\cf0\par
+\cf1\par
+Test/.git/objects: \'f3 \'ea\'e0\'e6\'e4\'ee\'e3\'ee \'ee\'e1\'fa\'e5\'ea\'f2\'e0 \'e5\'f1\'f2\'fc SHA1. \'cf\'e5\'f0\'e2\'fb\'e5 2-\'e0 \'f1\'e8\'ec\'e2\'ee\'eb\'e0 SHA - \'e8\'ec\'ff \'e4\'e8\'f0\'e5\'ea\'f2\'ee\'f0\'e8\'e8, \'ee\'f1\'f2\'e0\'eb\'fc\'ed\'fb\'e5 38 \'e8\'ec\'ff \'f4\'e0\'e9\'eb\'e0 \'e2 \'e4\'e8\'f0\'e5\'ea\'f2\'ee\'f0\'e8\'e8. \'d1\'e0\'ec \'f4\'e0\'e9\'eb - \'ee\'e1\'fa\'e5\'ea\'f2 \'f1\'e6\'e0\'f2\'fb\'e9 \'e0\'f0\'f5\'e8\'e2\'e0\'f2\'ee\'f0\'ee\'ec zlib.\cf0\par
+\cf1\par
+\'c2 git \'ea\'e0\'ea \'ec\'e8\'ed\'e8\'ec\'f3\'ec 4 \'f2\'e8\'ef\'e0 \'ee\'e1\'fa\'e5\'ea\'f2\'ee\'e2:\cf0\par
+\pard\nowidctlpar\hyphpar0\fi-360\li720\kerning0  \'b7\tab\cf1\kerning1 blob \emdash  \'ed\'e5\'ef\'ee\'f1\'f0\'e5\'e4\'f1\'f2\'e2\'e5\'ed\'ed\'ee \'f1\'e0\'ec\'e8 \'f4\'e0\'e9\'eb\'fb \'f1\'e6\'e0\'f2\'fb\'e5 zlib-\'ee\'ec 1.txt 2.txt\cf0\par
+\kerning0  \'b7\tab\cf1\kerning1 tree - \'ea\'e0\'e6\'e4\'e0\'ff \'e4\'e8\'f0\'e5\'ea\'f2\'ee\'f0\'e8\'ff = tree. \'ca\'ee\'e3\'e4\'e0 \'e4\'e5\'eb\'e0\'e5\'ec commit \'f1\'ee\'e7\'e4\'e0\'b8\'f2\'f1\'ff tree \emdash  \'f1\'ef\'e8\'f1\'ee\'ea \'e2\'f1\'e5\'f5 \'f4\'e0\'e9\'eb\'ee\'e2 \'e2 \'f0\'e0\'e1\'ee\'f7\'e5\'e9 \'ef\'e0\'ef\'ea\'e5. Tree \'f1\'ee\'e4\'e5\'f0\'e6\'e8\'f2 \'f1\'ef\'e8\'f1\'ee\'ea blob, \'e0 \'f2\'e0\'ea \'e6\'e5 \'f1\'ef\'e8\'f1\'ee\'ea \'e4\'e8\'f0\'e5\'ea\'f2\'ee\'f0\'e8\'e9 = \'f1\'ef\'e8\'f1\'ee\'ea tree.\cf0\par
+\kerning0  \'b7\tab\cf1\kerning1 commit \emdash  \'ed\'e0\'f8 commit \'f1 \'e0\'e2\'f2\'ee\'f0\'ee\'ec, \'ea\'ee\'ec\'ec\'e5\'ed\'f2\'e0\'f0\'e8\'e5\'ec \'e8 \'f2.\'ef. \'d1\'f1\'fb\'eb\'e0\'e5\'f2\'f1\'ff \'ed\'e0 tree\cf0\par
+\kerning0  \'b7\tab\cf1\kerning1 tag - \'e2 \'ef\'f0\'ee\'e5\'ea\'f2\'e5 5 \'f2\'fb\'f1. commit-\'ee\'e2. \'d5\'ee\'f2\'e8\'ec \'e2\'fb\'e4\'e5\'eb\'e8\'f2\'fc \'ea\'e0\'ea\'e8\'e5-\'ed\'e8\'e1\'f3\'e4\'fc \'e2\'e0\'e6\'ed\'fb\'e5 \'ec\'ee\'ec\'e5\'ed\'f2\'fb. \'c1\'fb\'e2\'e0\'fe\'f2 \'e4\'e2\'f3\'f5 \'e2\'e8\'e4\'ee\'e2: Lightweight (\'eb\'e5\'e3\'ea\'ee\'e2\'e5\'f1\'ed\'fb\'e9) Tag - \'ef\'f0\'ee\'f1\'f2\'ee \'f1\'f1\'fb\'eb\'ea\'e0(Ref) \'ed\'e0 commit. \'d4\'e0\'e9\'eb \'e2 \'ef\'e0\'ef\'ea\'e5 refs/tags, \'e2 \'ea\'ee\'f2\'ee\'f0\'ee\'ec \'eb\'e5\'e6\'e8\'f2 SHA commit-\'e0, \'ed\'e0 \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'f3\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2 tag. Annotated Tag - \'ee\'e1\'fa\'e5\'ea\'f2 \'f1\'ee\'e4\'e5\'f0\'e6\'e0\'f9\'e8\'e9 \'ea\'ee\'ed\'f2\'f0\'ee\'eb\'fc\'ed\'f3\'fe \'f1\'f3\'ec\'ec\'f3, \'e0\'e2\'f2\'ee\'f0\'e0, Email, \'e4\'e0\'f2\'f3, \'ea\'ee\'ec\'e5\'ed\'f2\'e0\'f0\'e8\'e9 \'e8 \'f2\'ee\'e6\'e5 \'f1\'f1\'fb\'eb\'ea\'e0 \'ed\'e0 commit. \'d1\'ee\'e7\'e4\'e0\'f2\'fc: git tag v1.4 (lightweight tag) \'e8\'eb\'e8 git tag -a v1.4 -m "my version 1.4" (annotated tag)\cf0\par
+\pard\nowidctlpar\hyphpar0\cf1\par
+Test/.git/HEAD, \'ed\'e0\'ef\'e8\'f1\'e0\'ed\'ee \'ed\'e0 \'ea\'e0\'ea\'ee\'e9 \'e2\'e5\'f2\'ea\'e5 \'ec\'fb \'f1\'e5\'e9\'f7\'e0\'f1 \'ed\'e0\'f5\'ee\'e4\'e8\'ec\'f1\'ff (ref: refs/heads/master \'eb\'e8\'e1\'ee \'ef\'ee\'e4\'ee\'e1\'ed\'e0\'ff \'f1\'f1\'fb\'eb\'ea\'e0 \'ed\'e0 \'f4\'e0\'e9\'eb \'f1 SHA commit-\'e0, \'eb\'e8\'e1\'ee \'ed\'e5\'ef\'ee\'f1\'f0\'e5\'e4\'f1\'f2\'e2\'e5\'ed\'ed\'ee SHA commit-\'e0). \'c2 \'ea\'e0\'ea\'ee\'e9-\'f2\'ee \'ec\'ee\'ec\'e5\'ed\'f2 \'e2 \'ef\'e0\'ef\'ea\'e5 Test \'ed\'e0\'f5\'ee\'e4\'ff\'f2\'f1\'ff 10 \'f4\'e0\'e9\'eb\'ee\'e2. \'cc\'fb \'ef\'e5\'f0\'e5\'ea\'eb\'fe\'f7\'e8\'eb\'e8\'f1\'fc \'ed\'e0 \'e4\'f0\'f3\'e3\'f3\'fe \'e2\'e5\'f2\'ea\'f3.\cf0\par
+\cf1\tab # git checkout testing\cf0\par
+\cf1\'c2 \'ef\'e0\'ef\'ea\'e5 \'f1\'f2\'e0\'eb\'ee 2 \'f4\'e0\'e9\'eb\'e0. \'cf\'e5\'f0\'e5\'ea\'eb\'fe\'f7\'e8\'eb\'e8\'f1\'fc \'ee\'e1\'f0\'e0\'f2\'ed\'ee \'ed\'e0 \'e2\'e5\'f2\'ea\'f3 master. \'ce\'ef\'ff\'f2\'fc \'f1\'f2\'e0\'eb\'ee 10 \'f4\'e0\'e9\'eb\'ee\'e2.\cf0\par
+\cf1\par
+.git/HEAD hash \highlight4 34ac2\cf0\highlight0\par
+\cf1\par
+\tab\ul Commit\ulnone\tab\tab\tab\tab\tab\tab\tab\ul Blob\cf0\ulnone\par
+\cf1 hash:\tab\tab\highlight4 34ac2\highlight0\tab\tab\ul Tree\ulnone\tab\tab\tab\tab\tab hash\tab\highlight6 5b71c\cf0\highlight0\par
+\cf1 tree:\tab\tab\highlight3 2ec69\highlight0\tab --->\tab hash\tab\highlight3 2ec69\highlight0\tab\tab\tab\tab size\tab 3Kb\cf0\par
+\cf1 parent:\tab\highlight5 98ca9\highlight0\tab\tab blob\tab\highlight6 5b71c\highlight0\tab README.txt\tab --->\tab\'f1\'e0\'ec \'f4\'e0\'e9\'eb \'e2 zip-\'e5\cf0\par
+\cf1 author:\tab Alex\tab\tab (\'e4\'e5\'f0\'e5\'e2\'ee \'ea\'e0\'f2\'e0\'eb\'ee\'e3\'e0)\cf0\par
+\cf1 commiter:\tab Paul\tab\tab blob\tab\highlight6 911e7\highlight0\tab LICENSE.txt\tab --->\tab\ul Blob\cf0\ulnone\par
+\cf1 comment:\tab initial\tab\tab\tab\tab\tab\tab hash\tab\highlight6 911e7\cf0\highlight0\par
+\cf1\tab\tab\tab\tab\tab\tab\tab\tab\tab size\tab 2Kb\cf0\par
+\cf1\tab\tab\tab\tab\tab\tab\tab\tab\tab\'f1\'e0\'ec \'f4\'e0\'e9\'eb \'e2 zip-\'e5\cf0\par
+\cf1\ul\'c2\'e5\'f2\'e2\'eb\'e5\'ed\'e8\'e5\ulnone .\cf0\par
+\cf1\par
+\b # git branch\b0  \i testing\i0\tab\tab\'ef\'f0\'ee\'f1\'f2\'ee \'f1\'ee\'e7\'e4\'e0\'b8\'ec \'ed\'ee\'e2\'f3\'fe \'e2\'e5\'f2\'ea\'f3 \'e1\'e5\'e7 \'ef\'e5\'f0\'e5\'ea\'eb\'fe\'f7\'e5\'ed\'e8\'ff \'ed\'e0 \'ed\'e5\'b8\cf0\par
+\cf1\b # git branch\b0  \i new\i0  \tab\highlight5 98ca9\highlight0\tab\tab\'f1\'ee\'e7\'e4\'e0\'b8\'ec \'ed\'ee\'e2\'f3\'fe \'e2\'e5\'f2\'ea\'f3 \'ed\'e0 \'ea\'ee\'ec\'ec\'e8\'f2\'e5 \highlight5 98ca9\highlight0\tab\tab\tab master <- HEAD\cf0\par
+\cf1\b # \b0 git log --oneline --decorate\tab\tab\tab\tab\tab\tab\tab\tab\tab |\cf0\par
+\cf1\highlight6 f30ab\highlight0  (HEAD, master, testing) comment: add feature\tab\tab\tab\highlight5 98ca9\highlight0  \u8594? \highlight4 34ac2\highlight0  \u8594? \highlight6 f30ab\cf0\highlight0\par
+\cf1\highlight4 34ac2\highlight0  comment: Fix bugs\tab\tab\tab\tab\tab\tab\tab\tab |\tab\tab\tab |\cf0\par
+\cf1\highlight5 98ca9\highlight0  comment: Initial commit\tab\tab\tab\tab\tab\tab\tab new\tab\tab\tab testing\cf0\par
+\cf1\par
+\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab master\cf0\par
+\cf1\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab |\cf0\par
+\cf1\b # git checkout\b0  \i testing\i0\tab\tab\'ef\'e5\'f0\'e5\'ea\'eb\'fe\'f7\'e0\'e5\'ec\'f1\'ff \'ed\'e0 \'e2\'e5\'f2\'ea\'f3 testing, HEAD \'f2\'e5\'ef\'e5\'f0\'fc \'e1\'f3\'e4\'e5\'f2 \'f3\'ea\'e0\'e7\'fb\'e2\'e0\'f2\'fc \'ed\'e0 testing\tab\tab\highlight5 98ca9\highlight0  \u8594? \highlight4 34ac2\highlight0  \u8594? \highlight6 f30ab\highlight0  \u8594? \highlight3 87ab2\cf0\highlight0\par
+\cf1\b # \b0 git commit\tab\tab\tab\'f1\'ee\'e7\'e4\'e0\'b8\'ec \'ed\'ee\'e2\'fb\'e9 commit (\highlight3 87ab2\highlight0 )\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab |\cf0\par
+\cf1\b # \b0 git checkout master\tab\tab\'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'ec\'f1\'ff \'e2 \'e2\'e5\'f2\'ea\'f3 master, \'e2\'f1\'e5 \'f4\'e0\'e9\'eb\'fb \'e2 \'f0\'e0\'e1\'ee\'f7\'e5\'ec \'ea\'e0\'f2\'e0\'eb\'ee\'e3\'e5 \'ee\'f2\'ea\'e0\'f2\'fb\'e2\'e0\'fe\'f2\'f1\'ff \'ed\'e0 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e5 \highlight6 f30ab\highlight0\tab\tab\tab testing <- HEAD\cf0\par
+\cf1\par
+\par
+\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab master <- HEAD (\'e4\'ee \'e2\'fb\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'ff \'ea\'ee\'ec\'e0\'ed\'e4\'fb)\cf0\par
+\cf1\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab |\cf0\par
+\cf1\b # git checkout -b\b0  \i testing\i0  \highlight5 98ca9\highlight0\tab\'f0\'e0\'e2\'ed\'ee\'f1\'e8\'eb\'fc\'ed\'ee git branch + git checkout\tab\highlight5 98ca9\highlight0  \u8594? \highlight4 34ac2\highlight0  \u8594? \highlight6 f30ab\cf0\highlight0\par
+\cf1\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab |\cf0\par
+\cf1\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab testing <- HEAD (\'ef\'ee\'f1\'eb\'e5 \'e2\'fb\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'ff \'ea\'ee\'ec\'e0\'ed\'e4\'fb)\cf0\par
+\cf1\par
+\ul\'d1\'eb\'e8\'ff\'ed\'e8\'e5\ulnone .\cf0\par
+\cf1\'c1\'fb\'e2\'e0\'e5\'f2 3-\'f5 \'e2\'e8\'e4\'ee\'e2:\cf0\par
+\cf1\tab - Fast-forward\cf0\par
+\cf1\tab - Merge made by the "recursive" strategy.\cf0\par
+\cf1\tab - CONFLICT: Merge conflict in index.html\cf0\par
+\cf1\par
+Rebase - \'ef\'ee\'ef\'fb\'f2\'ea\'e0 \'f1\'e4\'e5\'eb\'e0\'f2\'fc \'f2\'e0\'ea, \'f7\'f2\'ee\'e1\'fb merge \'e2\'f1\'e5\'e3\'e4\'e0 \'ef\'f0\'ee\'f5\'ee\'e4\'e8\'eb \'ea\'e0\'ea Fast-forward. \'d5\'ee\'f2\'ff \'cc\'e0\'f8\'e0 \'e8 \'cf\'e5\'f2\'ff \'ee\'e1\'e0 \'ee\'f2\'ef\'ee\'f7\'ea\'ee\'e2\'e0\'eb\'e8\'f1\'fc \'ee\'f2 master \highlight4 34ac2\highlight0 , \'f1\'e8\'f1\'f2\'e5\'ec\'e0 \'ef\'fb\'f2\'e0\'e5\'f2\'f1\'ff \'f1\'e4\'e5\'eb\'e0\'f2\'fc \'e8\'eb\'eb\'fe\'e7\'e8\'fe, \'f7\'f2\'ee \'e2\'e5\'f2\'ea\'e0 \'cc\'e0\'f8\'e8 \'ee\'f2\'ef\'ee\'f7\'ea\'ee\'e2\'e0\'eb\'e0\'f1\'fc \'ee\'f2 \highlight5 98ca9\highlight0 . \'c8 \'f2\'ee\'e3\'e4\'e0 merge \'ef\'f0\'ee\'f5\'ee\'e4\'e8\'f2 \'ea\'e0\'ea Fast-forward.\cf0\par
+\cf1\'d0\'e0\'e1\'ee\'f2\'e0 \'f1 Rebase:\cf0\par
+\cf1\tab\'cd\'e0\'f5\'ee\'e4\'e8\'ec\'f1\'ff \'e2 master \'ed\'e0 commit-\'e5 \highlight4 34ac2\cf0\highlight0\par
+\cf1\tab # git checkout -b feature\tab\'ef\'e5\'f0\'e5\'ea\'eb\'fe\'f7\'e0\'e5\'ec\'f1\'ff \'ed\'e0 \'e2\'e5\'f2\'ea\'f3 feature\cf0\par
+\cf1\tab # git commit -m "\'f1ommit in branch feature"\tab\'f1\'ee\'e7\'e4\'e0\'eb\'e8 commit \highlight3 87ab2\cf0\highlight0\par
+\cf1\tab # git commit --fixup 87ab2\cf0\par
+\cf1\tab # git commit --fixup 87ab2\tab\'e4\'e5\'eb\'e0\'e5\'ec \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee commit-\'ee\'e2 \'e2 \'e2\'e5\'f2\'ea\'e5 feature, \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'ee\'f2\'ef\'ee\'f7\'ea\'ee\'e2\'e0\'ed\'fb \'ee\'f2 \highlight4 34ac2\highlight0  c comment-\'e0\'ec\'e8 = "fixup! \'f1ommit in branch feature"\cf0\par
+\cf1\tab # git checkout master\cf0\par
+\cf1\tab # git commit -m "Commit in branch master"\tab\tab\'e4\'e5\'eb\'e0\'e5\'ec \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee commit-\'ee\'e2 \'e2 \'e2\'e5\'f2\'ea\'e5 master \'e8 \'ee\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'ec\'f1\'ff \'ed\'e0 commit-\'e5 \highlight5 98ca9\cf0\highlight0\par
+\cf1\tab\'d2\'e5\'ef\'e5\'f0\'fc \'f5\'ee\'f2\'e8\'ec \'f1\'e4\'e5\'eb\'e0\'f2\'fc \'f2\'e0\'ea, \'f7\'f2\'ee\'e1\'fb \'e2\'e5\'f2\'ea\'e0 feature \'ff\'ea\'ee\'e1\'fb \'ee\'f2\'ef\'ee\'f7\'ea\'ee\'e2\'fb\'e2\'e0\'eb\'e0\'f1\'fc \'ee\'f2 \highlight5 98ca9\highlight0  + squash (\'f1\'f5\'eb\'ee\'ef\'fb\'e2\'e0\'e5\'ec/\'f3\'e4\'e0\'eb\'ff\'e5\'ec) \'ee\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'ec \'f2\'ee\'eb\'fc\'ea\'ee \'f1ommit \'b91\cf0\par
+\cf1\tab # git checkout feature\cf0\par
+\cf1\tab # git rebase -i --autosquash master\tab\tab autosquash \'e1\'f3\'e4\'e5\'f2 \'e0\'e2\'f2\'ee\'ec\'e0\'f2\'e8\'f7\'e5\'f1\'ea\'e8 \'ef\'ee\'ec\'e5\'f7\'e0\'f2\'fc \'e4\'eb\'ff \'f3\'e4\'e0\'eb\'e5\'ed\'e8\'ff commit-\'fb \'f1 comment-\'e0\'ec\'e8 \'ed\'e0\'f7\'e8\'ed\'e0\'fe\'f9\'e8\'ec\'e8\'f1\'ff \'ed\'e0 "fixup! ..."\cf0\par
+\cf1\tab\'d0\'e5\'e4\'e0\'ea\'f2\'e8\'f0\'f3\'e5\'ec \'ef\'ee\'ff\'e2\'e8\'e2\'f8\'e8\'e9\'f1\'ff \'f4\'e0\'e9\'eb - \'ed\'e0\'ef\'f0\'ee\'f2\'e8\'e2 1-\'ee\'e3\'ee commit-\'e0 \'ee\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2 "pick", \'e0 \'ed\'e0\'ef\'f0\'ee\'f2\'e8\'e2 \'e2\'f1\'e5\'f5 \'ee\'f1\'f2\'e0\'eb\'fc\'ed\'fb\'f5 "fixup" \'e8\'eb\'e8 \'ef\'f0\'ee\'f1\'f2\'ee s. \'d1\'ee\'f5\'f0\'e0\'ed\'e8\'f2\'fc.\cf0\par
+\cf1\tab # git checkout master\cf0\par
+\cf1\tab # git merge feature\cf0\par
+\cf1\tab # git branch -d feature\cf0\par
+\cf1\par
+\tab\tab\tab\'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff \'ee\'f2 \'cc\'e0\'f8\'e8\cf0\par
+\cf1 HEAD -> master\tab\tab |\cf0\par
+\cf1\tab\tab |\tab\u8594? \highlight3 87ab2\highlight0  --------->\cf0\par
+\cf1\tab\tab\highlight4 34ac2\highlight0  \u8594? \highlight6 f30ab\highlight0  \u8594? \highlight5 98ca9\highlight0  \u8594? \highlight3 87ab2\cf0\highlight0\par
+\cf1\tab\tab\tab\tab\tab |\cf0\par
+\cf1\tab\tab\tab\tab\'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff \'ee\'f2 \'cf\'e5\'f2\'e8\cf0\par
+\cf1\b # git checkout\b0  \i master\i0\tab\tab master <- HEAD\tab\tab testing\cf0\par
+\cf1\b # git merge\b0  \i testing\i0\tab\tab   |\tab\tab\tab\tab |\cf0\par
+\cf1 Updating f42c576..3a0874c\tab\highlight5 98ca9\highlight0  \u8594? \highlight4 34ac2\highlight0  \u8594? \highlight6 f30ab\highlight0  \u8594? \highlight3 87ab2\highlight0\b\tab\tab\'cd\'ce\'c2\'db\'c9 COMIIT \'cd\'c5 \'d1\'ce\'c7\'c4\'c0\'a8\'d2\'d1\'df!!!\cf0\b0\par
+\cf1 Fast-forward\tab\tab\tab Fast-forward \'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2, \'f7\'f2\'ee \'ea\'ee\'ec\'ec\'e8\'f2 \highlight3 87ab2\highlight0  \'ef\'f0\'ff\'ec\'ee\'e9 \'ef\'ee\'f2\'ee\'ec\'ee\'ea \highlight5 98ca9\highlight0 , \'f1\'f1\'fb\'eb\'ea\'e0 HEAD \'ef\'f0\'ee\'f1\'f2\'ee \'ef\'e5\'f0\'e5\'ed\'ee\'f1\'e8\'f2\'f1\'ff \'ed\'e0 \'ea\'ee\'ec\'ec\'e8\'f2 \highlight3 87ab2\highlight0 .\cf0\par
+\cf1  index.html | 2 ++\cf0\par
+\cf1  1 file changed, 2 insertions(+)\cf0\par
+\cf1\b # git branch -d\b0  \i testing\i0\tab\tab\'f2\'e5\'ef\'e5\'f0\'fc \'ed\'e0 \'ea\'ee\'ec\'ec\'e8\'f2 \highlight3 87ab2\highlight0  \'f3\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2 \'e8 master \'e8 testing. Testing \'ec\'ee\'e6\'ed\'ee \'f3\'e4\'e0\'eb\'e8\'f2\'fc.\cf0\par
+\cf1\tab\tab\tab testing\cf0\par
+\cf1 HEAD -> master\tab\tab |\cf0\par
+\cf1\tab\tab |\tab\u8594? \highlight3 87ab2\highlight0  \u8594?\cf0\par
+\cf1\tab\tab\highlight4 34ac2\highlight0  \u8594? \highlight6 f30ab\highlight0  \u8594? \highlight5 98ca9\highlight0\tab\b\'d1\'ce\'c7\'c4\'c0\'a8\'d2\'d1\'df \'cd\'ce\'c2\'db\'c9 COMMIT \'d1\'cb\'c8\'df\'cd\'c8\'df\cf0\b0\par
+\cf1\b # git\tab merge\b0  testing\tab\tab\'e1\'fb\'eb commit \highlight4 34ac2\highlight0  \'e8\'e7 3-\'f5 \'f4\'e0\'e9\'eb\'ee\'e2. \'c2 \highlight6 f30ab\highlight0  \'e8\'e7\'ec\'e5\'ed\'e8\'eb\'e8 \'f4\'e0\'e9\'eb 1.txt, \'e2 \highlight3 87ab2\highlight0  \'e8\'e7\'ec\'e5\'ed\'e8\'eb\'e8 2.txt. 3.txt \'ee\'f1\'f2\'e0\'e2\'e8\'eb\'e8 \'e1\'e5\'e7 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'e9\cf0\par
+\cf1 Merge made by the 'recursive' strategy.\tab\tab\tab\tab 1.txt\tab\tab 2.txt\tab\tab 3.txt\tab\tab\tab\tab\tab\tab\tab\tab\cf0\par
+\cf1 index.html |    1 +\tab\tab\tab\tab\tab\tab\highlight4 34ac2\highlight0\tab\'cc\'e8\'f8\'e0\tab\tab\'e5\'e4\'e5\'f2\tab\tab\'e4\'ee\'ec\'ee\'e9\cf0\par
+\cf1 1 file changed, 1 insertion(+)\tab\tab\tab\tab\highlight6 f30ab\highlight0  \highlight6\'ca\'e0\'f2\'ff\highlight0\tab\tab\'e5\'e4\'e5\'f2\tab\tab\'e4\'ee\'ec\'ee\'e9\cf0\par
+\cf1\tab\tab\tab\tab\tab\tab\tab\tab\tab\highlight3 87ab2\highlight0  \'cc\'e8\'f8\'e0\tab\tab\highlight3\'e8\'e4\'b8\'f2\highlight0\tab\tab\'e4\'ee\'ec\'ee\'e9\cf0\par
+\cf1\tab\tab\tab\tab\tab\tab\tab\tab\tab -----------------------------------\cf0\par
+\cf1\'cf\'ee\'f1\'eb\'e5 merge \'ea\'ee\'e4 \'ec\'ee\'e6\'e5\'f2 \'ef\'e5\'f0\'e5\'f1\'f2\'e0\'f2\'fc \'ea\'ee\'ec\'ef\'e8\'eb\'e8\'f0\'ee\'e2\'e0\'f2\'fc\'f1\'ff\tab\highlight5 98ca9\highlight0\tab\highlight6\'ca\'e0\'f2\'ff\highlight0\tab\tab\highlight3\'e8\'e4\'b8\'f2\highlight0\tab\tab\'e4\'ee\'ec\'ee\'e9\cf0\par
+\line\cf1\b # git merge\b0  testing\tab\tab\'ef\'f0\'ee\'f6\'e5\'f1\'f1 \'ea\'ee\'ec\'ec\'e8\'f2 \'ed\'e5 \'ef\'f0\'ee\'f8\'b8\'eb \'e3\'eb\'e0\'e4\'ea\'ee. \'cd\'ee\'e2\'fb\'e9 \'ea\'ee\'ec\'ec\'e8\'f2 \'f1\'eb\'e8\'ff\'ed\'e8\'ff \'ed\'e5 \'f1\'ee\'e7\'e4\'e0\'eb\'f1\'ff.\cf0\par
+\cf1 Auto-merging index.html\cf0\par
+\cf1 CONFLICT (content): Merge conflict in index.html\cf0\par
+\cf1 Automatic merge failed; fix conflicts and then commit the result.\cf0\par
+\cf1\b # git status\cf0\b0\par
+\cf1 On branch master\cf0\par
+\cf1 You have unmerged paths.\cf0\par
+\cf1   (\highlight6 fix conflicts and run "git commit"\highlight0 )\tab\tab\tab\b GIT \'d1\'d0\'c0\'c2\'cd\'c8\'c2\'c0\'c5\'d2 \'cf\'ce\'d1\'d2\'d0\'ce\'d7\'cd\'ce\cf0\b0\par
+\cf1 Unmerged paths:\tab\tab\tab\tab\tab\tab\tab\'f1\'ec\'ee\'f2\'f0\'e8\'ec, \'f7\'f2\'ee \'ef\'ee\'f8\'eb\'ee \'ed\'e5 \'f2\'e0\'ea\cf0\par
+\cf1   (use "git add <file>..." to mark resolution)\cf0\par
+\cf1     both modified:      index.html\cf0\par
+\cf1 no changes added to commit (use "git add" and/or "git commit -a")\cf0\par
+\cf1\b # cat\b0  index.html\cf0\par
+\cf1 <<<<<<< HEAD\cf0\par
+\cf1\'d1\'ee\'e4\'e5\'f0\'e6\'e8\'ec\'ee\'e5 \'f4\'e0\'e9\'eb\'e0 \'e8\'e7 \'e2\'e5\'f2\'ea\'e8 master\cf0\par
+\cf1 =======\cf0\par
+\cf1\'d1\'ee\'e4\'e5\'f0\'e6\'e8\'ec\'ee\'e5 \'f4\'e0\'e9\'eb\'e0 \'e8\'e7 \'e2\'e5\'f2\'ea\'e8 testing\cf0\par
+\cf1 >>>>>>> testing\cf0\par
+\cf1\'cf\'ee\'f1\'eb\'e5 merge \'f1 \'ea\'ee\'ed\'f4\'eb\'e8\'ea\'f2\'e0\'ec\'e8 \'e2 \'ea\'ee\'ed\'f4\'eb\'e8\'ea\'f2\'ed\'fb\'f5 \'f4\'e0\'e9\'eb\'e0\'f5 \'ef\'ee\'ff\'e2\'ff\'f2\'f1\'ff \'f2\'e0\'ea\'e8\'e5 \'f1\'f2\'f0\'ee\'ea\'e8. \'d0\'e5\'e4\'e0\'ea\'f2\'e8\'f0\'f3\'e5\'ec \'fd\'f2\'e8 \'f4\'e0\'e9\'eb\'fb, \'f3\'e4\'e0\'eb\'ff\'e5\'ec >>>>>>>, <<<<<<<, =======. \'cf\'ee\'f1\'eb\'e5 \'fd\'f2\'ee\'e3\'ee\cf0\par
+\cf1\b # git commit\cf0\b0\par
+\cf1 [master \highlight5 98ca9\highlight0 ] Merge branch 'testing'\tab\b\'d1\'ce\'c7\'c4\'c0\'a8\'d2\'d1\'df \'cd\'ce\'c2\'db\'c9 COMMIT \'d1\'cb\'c8\'df\'cd\'c8\'df\cf0\b0\par
+\cf1\par
+\b # git merge\b0  testing\cf0\par
+\cf1 ... CONFLICT ...\tab\tab\'e8\'f1\'ef\'f3\'e3\'e0\'eb\'e8\'f1\'fc, \'e7\'e0\'f5\'ee\'f2\'e5\'eb\'e8 \'ee\'f2\'ea\'e0\'f2\'e8\'f2\'fc\'f1\'ff\cf0\par
+\cf1\b # git merge --abort\cf0\b0\par
+\cf1\par
+\par
+\ul\'d1\'ee\'e7\'e4\'e0\'ed\'e8\'e5 \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'ee\'f0\'e8\'ff\ulnone .\cf0\par
+\cf1\par
+\b git init\b0\tab\tab\tab\tab\'e2 \'f2\'e5\'ea\'f3\'f9\'e5\'e9 \'e4\'e8\'f0\'e5\'ea\'f2\'ee\'f0\'e8\'e8 \'f1\'ee\'e7\'e4\'e0\'b8\'f2\'f1\'ff ./.git\cf0\par
+\cf1\b git add\b0  *\tab\tab\tab\tab\'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'ec \'e2 \'e8\'ed\'e4\'e5\'ea\'f1 \'f4\'e0\'e9\'eb\'fb, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'f5\'ee\'f2\'e8\'ec tracked. \'c2 \'f0\'e0\'e1\'ee\'f7\'e5\'e9 \'e4\'e8\'f0\'e5\'ea\'f2\'ee\'f0\'e8\'e8 \'f4\'e0\'e9\'eb\'fb 2-\'f5 \'f2\'e8\'ef\'ee\'e2: tracked \'e8 \'ed\'e5\'f2. Tracked \'f4\'e0\'e9\'eb\'fb \'e1\'fb\'e2\'e0\'fe\'f2: Unmodified, Modified (\'e8\'e7\'ec\'e5\'ed\'b8\'ed\'ed\'fb\'ec\'e8) \'e8\'eb\'e8 Staged (\'ef\'ee\'e4\'e3\'ee\'f2\'ee\'e2\'eb\'e5\'ed\'ed\'fb\'ec\'e8 \'ea \'ea\'ee\'ec\'ec\'e8\'f2\'f3).\cf0\par
+\cf1 git commit -m 'Initial commit'\tab\'ea\'ee\'ec\'ec\'e8\'f2\'e8\'ec \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff \'f1 \'ee\'e1\'ff\'e7\'e0\'f2\'e5\'eb\'fc\'ed\'fb\'ec \'ea\'ee\'ec\'ec\'e5\'ed\'f2\'e0\'f0\'e8\'e5\'ec. \'d2\'e5\'ef\'e5\'f0\'fc \'f3 \'ed\'e0\'f1 \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'ee\'f0\'e8\'e9 \'f1 tracked \'f4\'e0\'e9\'eb\'e0\'ec\'e8 \'e8 \'ed\'e0\'f7\'e0\'eb\'fc\'ed\'fb\'ec \'ea\'ee\'ec\'ec\'e8\'f2\'ee\'ec\cf0\par
+\cf1 git commit -a\tab\tab\tab\tab\'f0\'e0\'e2\'ed\'ee\'f1\'e8\'eb\'fc\'ed\'ee git add + git commit\cf0\par
+\cf1\'c4\'f0\'f3\'e3\'ee\'e9 \'f1\'f6\'e5\'ed\'e0\'f0\'e8\'e9:\cf0\par
+\cf1 git commit -m 'Initial commit'\tab\'f1\'e4\'e5\'eb\'e0\'eb\'e8 commit\cf0\par
+\cf1 git add forgotten_file\tab\tab\tab\'ed\'ee \'e7\'e0\'e1\'fb\'eb\'e8 \'e2\'ed\'e5\'f1\'f2\'e8 \'f4\'e0\'e9\'eb. \'c4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'ec \'e5\'e3\'ee \'e2 index\cf0\par
+\cf1\b git commit --amend\b0\tab\tab\tab\'e8 \'ef\'ee-\'ed\'ee\'e2\'ee\'e9 commit-\'e8\'ec\cf0\par
+\cf1\b git commit --amend -m\b0  "\i New comm"\i0\tab\'e8\'e7\'ec\'e5\'ed\'ff\'e5\'ec Comment \'e2 \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e5\'ec commit-\'e5\cf0\par
+\cf1\par
+git clone hxxp://github.com/samusev/Project \emdash  \'e7\'e0\'e1\'f0\'e0\'f2\'fc \'f1 \'f1\'e5\'f0\'e2\'e5\'f0\'e0 (pulled) \'e8 \'ef\'ee\'eb\'ee\'e6\'e8\'f2\'fc \'e2 \'ed\'ee\'e2\'f3\'fe \'e4\'e8\'f0\'e5\'ea\'f2\'ee\'f0\'e8\'fe ./myProject \'c2 \'ea\'e0\'f7\'e5\'f1\'f2\'e2\'e5 \'f2\'f0\'e0\'ed\'f1\'ef\'ee\'f0\'f2\'e0 \'ec\'ee\'e6\'ed\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc git:// \'e8\'eb\'e8 user@server:path/repo.git (SSH)\cf0\par
+\cf1\'c2 .gitignore \'ea\'e0\'ea \'ef\'f0\'e0\'e2\'e8\'eb\'ee \'e7\'e0\'ed\'ee\'f1\'e8\'ec \'e0\'e2\'f2\'ee\'ec\'e0\'f2\'e8\'f7\'e5\'f1\'ea\'e8 \'e3\'e5\'ed\'e5\'f0\'e8\'f0\'f3\'e5\'ec\'fb\'e5 \'f4\'e0\'e9\'eb\'fb \emdash  \'eb\'ee\'e3\'e8, \'f1\'e1\'ee\'f0\'ea\'e8 \'e8 \'f2.\'ef.\cf0\par
+\cf1\par
+\par
+\ul\'c2 \'f6\'e5\'eb\'ee\'ec \'f0\'e0\'e1\'ee\'f2\'e0 \'f1 git\ulnone .\cf0\par
+\cf1\b # \b0 > README\tab\tab\tab\tab\tab\tab\tab\tab\'d1\'ee\'e7\'e4\'e0\'b8\'ec \'ed\'ee\'e2\'fb\'e9 \'f4\'e0\'e9\'eb README \'e2 \'ef\'e0\'ef\'ea\'e5, \'e3\'e4\'e5 \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 git\cf0\par
+\cf1\b # \b0 git status\tab\'e5\'f1\'f2\'fc \'e5\'f9\'b8 git status -s = git status --short\cf0\par
+\cf1 On branch master\cf0\par
+\cf1 Untracked files:\tab\tab\tab\tab\tab\tab\tab\'d4\'e0\'e9\'eb README \'e2 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e8 Untracked\cf0\par
+\cf1   (use "git add <file>..." to include in what will be committed)\cf0\par
+\cf1     README\cf0\par
+\cf1 nothing added to commit but untracked files present (use "git add" to track)\cf0\par
+\cf1\b # \b0 git add README\tab\tab\tab\tab\tab\tab\tab\'cf\'e5\'f0\'e5\'e2\'ee\'e4\'e8\'ec README \'e2 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e5 Staged\cf0\par
+\cf1\b # \b0 git status\cf0\par
+\cf1 On branch master\cf0\par
+\cf1 Changes to be committed\tab\tab\tab\tab\tab\tab\'d4\'e0\'e9\'eb README \'e2 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e8 Staged\cf0\par
+\cf1   (use "git reset HEAD <file>..." to unstage)\cf0\par
+\cf1   new file:  README\cf0\par
+\cf1\b # \b0 echo "asd" >> CONTRIBUTING.md\tab\tab\tab\tab\'c2 \'ef\'e0\'ef\'ea\'e5 \'e5\'f1\'f2\'fc \'f0\'e0\'ed\'e5\'e5 \'ef\'f0\'ee\'e8\'ed\'e4\'e5\'ea\'f1\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'fb\'e9 \'f4\'e0\'e9\'eb CONTRIBUTING.md. \'c8\'e7\'ec\'e5\'ed\'e8\'ec \'e5\'e3\'ee.\cf0\par
+\cf1\b # \b0 git status\cf0\par
+\cf1 On branch master\cf0\par
+\cf1 Changes to be committed:\tab\tab\tab\tab\tab\'d4\'e0\'e9\'eb README \'e2 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e8 Staged\cf0\par
+\cf1   (use "git reset HEAD <file>..." to unstage)\cf0\par
+\cf1     new file:   README\cf0\par
+\cf1 Changes not staged for commit:\tab\tab\tab\tab\'d4\'e0\'e9\'eb CONTRIBUTING.md \'e2 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e8 Modified\cf0\par
+\cf1   (use "git add <file>..." to update what will be committed)\cf0\par
+\cf1   (use "git checkout -- <file>..." to discard changes in working directory)\cf0\par
+\cf1     modified:   CONTRIBUTING.md\cf0\par
+\cf1\b # \b0 git add CONTRIBUTING.md\tab\tab\tab\tab\tab\'ca\'ee\'ec\'e0\'ed\'e4\'e0 add \'ed\'e5 \'f2\'ee\'eb\'fc\'ea\'ee \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'f2 \'f4\'e0\'e9\'eb\'fb, \'ed\'ee \'e8 \'e8\'ed\'e4\'e5\'ea\'f1\'e8\'f0\'f3\'e5\'f2, \'f2.\'e5. \'ef\'e5\'f0\'e5\'e2\'ee\'e4\'e8\'f2 \'e8\'e7 Modified \'e2 Stage\cf0\par
+\cf1\b # \b0 git status\cf0\par
+\cf1 On branch master\cf0\par
+\cf1 Changes to be committed:\tab\tab\tab\tab\tab\'d4\'e0\'e9\'eb\'fb README CONTRIBUTING.md \'e2 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e8 Staged\cf0\par
+\cf1   (use "git reset HEAD <file>..." to unstage)\cf0\par
+\cf1     new file:   README\cf0\par
+\cf1     modified:   CONTRIBUTING.md\cf0\par
+\cf1\b # \b0 echo "asd" >> CONTRIBUTING.md\tab\tab\tab\tab\'c5\'f9\'b8 \'f0\'e0\'e7 \'e8\'e7\'ec\'e5\'ed\'e8\'ec CONTRIBUTING.md\cf0\par
+\cf1\b # \b0 git status\cf0\par
+\cf1 On branch master\cf0\par
+\cf1 Changes to be committed:\cf0\par
+\cf1   (use "git reset HEAD <file>..." to unstage)\cf0\par
+\cf1     new file:   README\tab\tab\tab\tab\tab\tab\'d4\'e0\'e9\'eb\'fb README CONTRIBUTING.md \'e2 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e8 Staged.\cf0\par
+\cf1     modified:   CONTRIBUTING.md\tab\tab\tab\tab\'c5\'f1\'eb\'e8 \'f1\'e5\'e9\'f7\'e0\'f1 \'f1\'e4\'e5\'eb\'e0\'e5\'ec commit, \'f2\'ee \'e2 commit \'ef\'ee\'ef\'e0\'e4\'b8\'f2 \'e8\'ec\'e5\'ed\'ed\'ee \'ef\'e5\'f0\'e2\'ee\'e5 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'e5. \'c2\'f2\'ee\'f0\'ee\'e5 \'ed\'e5 \'ef\'ee\'ef\'e0\'e4\'b8\'f2.\cf0\par
+\cf1 Changes not staged for commit:\cf0\par
+\cf1   (use "git add <file>..." to update what will be committed)\cf0\par
+\cf1   (use "git checkout -- <file>..." to discard changes in working directory)\cf0\par
+\cf1     modified:   CONTRIBUTING.md\tab\tab\tab\tab\'d4\'e0\'e9\'eb CONTRIBUTING.md \'ef\'f0\'e8\'f1\'f3\'f2\'f1\'f2\'e2\'f3\'e5\'f2 \'f2\'e0\'ea\'e6\'e5 \'e2 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e8 Modified\cf0\par
+\cf1\par
+\par
+\ul\'d3\'e4\'e0\'eb\'e5\'ed\'e8\'e5 \'f4\'e0\'e9\'eb\'ee\'e2 \'e8\'e7 \'f0\'e5\'ef\'ee\'e7\'ee\'f2\'ee\'f0\'e8\'ff\ulnone .\cf0\par
+\cf1\b # \b0 rm PROJECTS.md\tab\tab\tab\tab\tab\tab\tab\'d3\'e4\'e0\'eb\'ff\'e5\'ec \'f4\'e0\'e9\'eb \'e8\'e7 \'e4\'e8\'f0\'e5\'ea\'f2\'ee\'f0\'e8\'e8\cf0\par
+\cf1\b # \b0 git status\cf0\par
+\cf1 On branch master\cf0\par
+\cf1 Your branch is up-to-date with 'origin/master'.\cf0\par
+\cf1 Changes not staged for commit:\cf0\par
+\cf1   (use "git add/rm <file>..." to update what will be committed)\cf0\par
+\cf1   (use "git checkout -- <file>..." to discard changes in working directory)\cf0\par
+\cf1         deleted:    PROJECTS.md\tab\tab\tab\tab\'d4\'e0\'e9\'eb \'f3\'e4\'e0\'eb\'e8\'eb\'e8, \'ed\'ee \'ed\'e5 \'f3\'e4\'e0\'eb\'e8\'eb\'e8 \'e8\'e7 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'ff Tracked.\cf0\par
+\cf1 no changes added to commit (use "git add" and/or "git commit -a")\cf0\par
+\cf1\par
+\b # git rm\b0  PROJECTS.md\tab\tab\tab\tab\tab\tab\'d2\'e5\'ef\'e5\'f0\'fc \'f3\'e4\'e0\'eb\'e8\'eb\'e8 \'e8\'e7 Tracked. git rm -f \'e5\'f1\'eb\'e8 \'f1 \'f4\'e0\'e9\'eb\'ee\'ec \'f3\'e6\'e5 \'f1\'e4\'e5\'eb\'e0\'eb\'e8 git add\cf0\par
+\cf1 rm 'PROJECTS.md'\cf0\par
+\cf1\b # \b0 git status\cf0\par
+\cf1 On branch master\cf0\par
+\cf1 Changes to be committed:\cf0\par
+\cf1   (use "git reset HEAD <file>..." to unstage)\cf0\par
+\cf1     deleted:    PROJECTS.md\cf0\par
+\cf1\b # \b0 git rm --cached README\tab\tab\tab\tab\tab\'d3\'e4\'e0\'eb\'ff\'e5\'ec \'f4\'e0\'e9\'eb \'e8\'e7 Tracked, \'e1\'e5\'e7 \'f0\'e5\'e0\'eb\'fc\'ed\'ee\'e3\'ee \'f3\'e4\'e0\'eb\'e5\'ed\'e8\'ff \'e8\'e7 \'ea\'e0\'f2\'e0\'eb\'ee\'e3\'e0. \'c1\'e5\'e7 --cached \'f4\'e0\'e9\'eb \'f3\'e4\'e0\'eb\'e8\'eb\'e8 \'e1\'fb \'e2 \'f2\'ee\'ec \'f7\'e8\'f1\'eb\'e5 \'e8 \'e8\'e7 \'ea\'e0\'f2\'e0\'eb\'ee\'e3\'e0.\cf0\par
+\cf1\b # \b0 git mv README EMDAER\tab\tab\tab\tab\tab\tab\'cf\'e5\'f0\'e5\'e8\'ec\'e5\'ed\'ee\'e2\'fb\'e2\'e0\'e5\'ec \'f4\'e0\'e9\'eb\cf0\par
+\cf1\par
+\par
+\ul\'d0\'e0\'e1\'ee\'f2\'e0 \'f1 \'f3\'e4\'e0\'eb\'b8\'ed\'ed\'fb\'ec\'e8 \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'ee\'f0\'e8\'ff\'ec\'e8\ulnone .\cf0\par
+\cf1\b # git clone\b0  hxxp://github.com/schacon/grit \i newDir\i0\tab git \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'f2 \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'ee\'f0\'e8\'e9 c \'e8\'ec\'e5\'ed\'e5\'ec \'ef\'ee default-\'f3: origin. \'cc\'ee\'e6\'ed\'ee \'ef\'e5\'f0\'e5\'e8\'ec\'e5\'ed\'ee\'e2\'e0\'f2\'fc.\cf0\par
+\cf1\b # git remote rename\b0  origin myrep\tab\tab\tab\tab\'ec\'e5\'ed\'ff\'e5\'ec \'f3 \'f1\'e5\'e1\'ff \'e8\'ec\'ff \'f3\'e4\'e0\'eb\'b8\'ed\'ed\'ee\'e3\'ee \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'ee\'f0\'e8\'ff\cf0\par
+\cf1\b # git remote\b0\tab\tab\tab\tab\tab\tab\tab\'f1\'ec\'ee\'f2\'f0\'e8\'ec \'f1\'ef\'e8\'f1\'ee\'ea \'ed\'e0\'f8\'e8\'f5 \'f3\'e4\'e0\'eb\'b8\'ed\'ed\'fb\'f5 \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'e0\'f0\'e8\'e5\'e2\cf0\par
+\cf1 origin\cf0\par
+\cf1\b # git remote show origin\b0\tab\tab\tab\tab\tab\'ef\'ee\'e4\'f0\'ee\'e1\'ed\'e0\'ff \'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'ff \'ee \'f3\'e4\'e0\'eb\'b8\'ed\'ee\'ec \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'ee\'f0\'e8\'e8\cf0\par
+\cf1 * remote origin\cf0\par
+\cf1   Fetch URL: hxxp://github.com/schacon/grit\cf0\par
+\cf1   Push  URL: hxxp://github.com/schacon/grit\cf0\par
+\cf1   HEAD branch: master\cf0\par
+\cf1   Remote branches:\cf0\par
+\cf1     master                               tracked\cf0\par
+\cf1     dev-branch                           tracked\cf0\par
+\cf1   Local branch configured for 'git pull':\tab\tab\tab\tab\'e7\'e4\'e5\'f1\'fc \'ed\'e0\'ec \'ef\'e8\'f8\'f3\'f2, \'f7\'f2\'ee \'f1\'ed\'e0\'f7\'e0\'eb\'e0 \'ed\'e0\'e4\'ee \'f1\'e4\'e5\'eb\'e0\'f2\'fc git pull, \'e0 \'f2\'ee\'eb\'fc\'ea\'ee \'ef\'ee\'f2\'ee\'ec git push\cf0\par
+\cf1     master merges with remote master\cf0\par
+\cf1   Local ref configured for 'git push':\cf0\par
+\cf1     master pushes to master (up to date)\cf0\par
+\cf1\b # git remote add backdoor\b0  hxxp://github.com/backdoor/grit\tab\'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'ec \'ed\'ee\'e2\'fb\'e9 \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'ee\'f0\'e8\'e9 \'e8 \'ed\'e0\'e7\'fb\'e2\'e0\'e5\'ec \'e5\'e3\'ee \'f3 \'f1\'e5\'e1\'ff \'ea\'e0\'ea backdoor\cf0\par
+\cf1\b # git remote -v\cf0\b0\par
+\cf1 backdoor\tab git://github.com/backdoor/grit.git (fetch)\cf0\par
+\cf1 backdoor\tab git://github.com/backdoor/grit.git (push)\cf0\par
+\cf1 origin\tab hxxp://github.com/schacon/grit (fetch)\cf0\par
+\cf1 origin\tab hxxp://github.com/schacon/grit (push)\cf0\par
+\cf1\b # git fetch\b0  backdoor\tab\tab\tab\tab\tab\tab\tab\'ef\'ee\'eb\'f3\'f7\'e0\'e5\'ec \'f1\'e2\'e5\'e6\'e8\'e5 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff \'e8\'e7 \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'e0\'f0\'e8\'ff, \'ed\'ee \'cd\'c5 \'d1\'cb\'c8\'c2\'c0\'c5\'cc \'e8\'f5 \'f1 \'ed\'e0\'f8\'e8\'ec\'e8 \'f4\'e0\'e9\'eb\'e0\'ec\'e8\cf0\par
+\cf1\b # git pull\b0  backdoor\tab\tab\tab\tab\tab\tab\tab\'f1\'ea\'e0\'f7\'e8\'e2\'e0\'e5\'f2 \'e8 \'e0\'e2\'f2\'ee\'ec\'e0\'f2\'e8\'f7\'e5\'f1\'ea\'e8 \'f1\'eb\'e8\'e2\'e0\'e5\'f2\cf0\par
+\cf1\b # git push -u\b0  origin master\tab\tab\'f1\'e5\'e9\'f7\'e0\'f1 \'ed\'e0\'f5\'ee\'e4\'e8\'ec\'f1\'ff \'ed\'e0 \'e2\'e5\'f2\'ea\'e5 backdoor. \'c7\'e0\'ea\'e0\'f7\'e8\'e2\'e0\'e5\'ec \'ed\'e0 \'f1\'e5\'f0\'e2\'e5\'f0 \'f1\'e2\'ee\'e8 \'ed\'e0\'f0\'e0\'e1\'ee\'f2\'ea\'e8 \'e2 \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'ee\'f0\'e8\'e9 origin \'e2 \'e2\'e5\'f2\'ea\'f3 master. \b -u\b0  \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec \'e4\'eb\'ff \'f1\'ee\'e7\'e4\'e0\'ed\'e8\'ff \'ed\'e0 \'e1\'f3\'e4\'f3\'f9\'e5\'e5 \'ec\'e0\'ef\'ef\'e8\'ed\'e3\'e0 backdoor(local rep) = master (remote rep). \'d1\'eb\'e5\'e4\'f3\'fe\'f9\'e8\'e9 \'f0\'e0\'e7 \'ec\'ee\'e6\'ed\'ee \'ef\'f0\'ee\'f1\'f2\'ee \'ef\'e8\'f1\'e0\'f2\'fc #git push origin master\cf0\par
+\cf1\b # git remote rm \b0 backdoor\tab\tab\tab\tab\tab\tab\'f3\'e4\'e0\'eb\'ff\'e5\'ec \'f3 \'f1\'e5\'e1\'ff \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'ee\'f0\'e8\'e9\cf0\par
+\cf1\par
+\cf0{\field{\*\fldinst{HYPERLINK "http://git-scm.com/book/ru/v2"}}{\fldrslt{\ul\cf2 http://git-scm.com/book/ru/v2}}}\f0\fs22\par
+\cf1\par
+\b git help\b0  <\'ea\'ee\'ec\'e0\'ed\'e4\'e0>\cf0\par
+\cf1 git <\'ea\'ee\'ec\'e0\'ed\'e4\'e0> --help\cf0\par
+\cf1\b man git\cf0\b0\par
+\pard\nowidctlpar\hyphpar0\sa200\sl276\slmult1\par
+}
+ 

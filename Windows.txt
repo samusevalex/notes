@@ -1,0 +1,144 @@
+Поиск в Yandex:
+	date:ГГГГММДД			точная дата
+	date:ГГГГММ*			в определённом месяце
+	date:ГГГГ*			в определённом году
+	date:2022*
+
+	date:>ГГГГММДД			раньше/позже, можно использовать символы <, <=, >, >=
+	date:>2021			за последний год
+	
+	lang:en				на английском
+	mime:pdf			поиск только PDF
+	site:mysite.ru
+
+%HOMEPATH%	%APPDATA%
+
+> touch.cmd *		@COPY /B %1+,, %1
+
+x230 - Break (FN + B), Pause(FN + P), SysRq (FN + S), ScrLK (FN + K)
+
+# pscp.exe my.txt user@192.168.1.150:		загрузить в linux
+# pscp.exe user@192.168.1.150:my.txt .		скачать с linux
+# pscp.exe -i ..\ssh\ssh_key.ppk			подсунуть ssh key
+
+# findstr -S asd .\*.*		поиск строки asd во всех файлах и subdirectories
+# netstat -n | findsrt 10.11.1.1
+# wmic bios get serialnumber		Серийный номер BIOS
+# wmic memorychip get partnumber
+# dir A > a.txt & dir B > b.txt
+# fc a.txt b.txt		сравнение файлов, по факту директорий
+
+# type		аналог vi
+# dir /adh		показывает скрытые файлы: All Directories Hidden
+# systeminfo	всякая инфа о Windows
+# slmgr -rearm	продление временной активации Windows 7 ещё на 30 дней. Или утилитка Windows Loader v2.2.2
+
+# powercfg /hibernate off или on
+
+# runas /user:Администратор cmd		или быстро запустить с правами Администратора: Ctrl+Shift + кликаем на иконку приложения
+
+HKEY_CLASSES_ROOT\*\shell\ShareWithSkype	полностью удалить
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation\RealTimeIsUniversal	REG_DWORD	1
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\PortNumber
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AppKey\15\ShellExecute	REG_SZ	wordpad.exe	 переназначить кнопку E-mail на клавиатуре
+
+HKEY_LOCAL_MACHINE\Software\Policies\Mozilla\Firefox\DisableAppUpdate	REG_DWORD	1
+
+https://isidore.co/opensearch/?shortname=Multitran+Search&searchaddr=https://www.multitran.com/?s=&attr=&favicon=https://www.multitran.com/favicon-64.png
+browser.cache.disk.enable = false
+browser.cache.offline.enable = false
+extensions.pocket.enabled = false
+browser.backspace_action = 0 - включает Backspace для Back
+security.enterprise_roots.enabled = true	работает только в Windows
+network.dnsCacheEntries = 400 записей
+network.dnsCacheExpiration = 60 сек
+
+about:about	about:profiles	about:networking
+
+- Ctrl+Tab переключает между вкладками в порядке недавнего использования
++ Открывать ссылки во вкладках вместо новых окон
+- Предупреждать при закрытии нескольких вкладок
++ Переключаться на открываемую вкладку
+- Отображать эскизы вкладок на панели задач Windows
+
++ Использовать автоматическую прокрутку
++ Использовать плавную прокрутку
+- Всегда использовать клавиши курсора для навигации по страницам
+- Искать текст на странице по мере его набора
++ Включить управление видео «Картинка в картинке»
+- Рекомендовать расширения при просмотре
+- Рекомендовать функции при просмотре
+
+- Автоматически подключать наиболее подходящие фильтры
+? Блокировка рекламы -> Базовый фильтр AdGuard
+Раздражители ->  Раздражители
+Другие -> DNS фильтр
+Языковые -> Русский фильтр
+
+Создание загрузочной флешки с Windows 7:
+	diskpart
+	list disk - вывести список дисков
+	select disk 2 (выбрать номер диска)
+	clean
+	create partition primary
+	select partition 1
+	format fs=ntfs quick
+	active
+	exit
+	E:/boot/bootsect /nt60 E: - создаём boot sector на флешке
+
+Обновить Windows Update Agent.
+http://docs.microsoft.com/ru-ru/troubleshoot/windows-client/deployment/update-windows-update-agent
+http://download.windowsupdate.com/windowsupdate/redist/standalone/7.6.7600.320/windowsupdateagent-7.6-x64.exe
+
+
+
+Отключенные службы:
+
+Агент политики IPsec
+Рабочая станция
+Браузер компьютеров
+Биометрическая служба
+Автонастройка wwan
+windows cardspace
+Веб клиент
+Вспомогательная служба ip
+Группировка сетевых участников
+Диспетчер печати
+Диспетчер подключений удаленного доступа
+Диспетчер удостоверения сетевых участников
+Изоляция ключей CNG
+Ловушка SNMP
+Модуль поддержки NetBIOS через TCP/IP
+Модули ключей IPsec для обмена ключами в
+Настройка сервера удаленных рабочих столов
+Телефония
+Служба шифрования дисков BitLocker
+Служба удаленного управления Windows (WS-Management)
+Служба поддержки Bluetooth
+Служба инициатора Майкрософт iSCSI
+Служба ввода планшетного ПК
+Служба базовой фильтрации
+Служба SSTP
+Parental Controls
+Немедленные подключения Windows - регистратор настройки
+Политика удаления смарт-карт
+Поставщик домашней группы
+Проводная автонастройка
+Прослушиватель домашней группы
+Протокол PNRP
+Расширяемый протокол проверки подлинности (EAP)
+Сетевой вход в систему
+Служба автоматического обнаружения веб-прокси WinHTTP
+Служба автонастройки WLAN
+Служба модуля архивации на уровне блоков
+Служба публикации имен компьютеров PNRP
+Хост поставщика функции обнаружения
+Фоновая интеллектуальная служба передачи (BITS)
+Тополог канального уровня
+Смарт-карта
+Обнаружение SSDP
+Перенаправитель портов пользовательского режима служб удаленных рабочих столов
+Службы удаленных рабочих столов
+Узел универсальных PNP-устройств
+Шифрованная файловая система (EFS)

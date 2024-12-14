@@ -1,0 +1,453 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1049{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}{\f1\fnil\fcharset0 Courier New;}{\f2\froman\fprq2\fcharset204{\*\fname Courier New;}Courier New CYR;}}
+{\colortbl ;\red0\green176\blue80;\red155\green0\blue211;\red0\green0\blue0;}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sl240\slmult1\f0\fs22 interface Loopback0\par
+ ip address \lang1033\f1 1.1.1.1\lang1049\f0  255.255.255.255\par
+ ip router isis\par
+!\par
+interface Ethernet0/\lang1033\f1 0\lang1049\f0 .\lang1033\f1 1\lang1049\f0 0\par
+ encapsulation dot1Q \lang1033\f1 1\lang1049\f0 0\par
+ ip unnumbered Loopback0\par
+ ip router isis\par
+!\par
+router isis\par
+ net \b 49\b0 .\cf1\b 0001\cf0\b0 .\cf2\b 0000.0000.000\lang1033\f1 1\cf0\lang1049\b0\f0 .00\lang1033\f1\tab\lang1049\f0\'e0\'e4\'f0\'e5\'f1 \'ed\'e0\'e7\'ed\'e0\'f7\'e0\'e5\'f2\'f1\'ff \'ed\'e0 \lang1033\f1 Router\lang1049\f0 , \'e0 \'ed\'e5 \'ed\'e0 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\par
+      \lang1033\f1 |\lang1049\f0\tab\lang1033\f1 |\tab\tab |\lang1049\f0\par
+\'e2\'f1\'e5\'e3\'e4\'e0 \b 49\lang1033\b0\f1  \cf1\b ~area OSPF \cf2 ~Router ID\cf0\b0\tab\lang1049\f0\'f1\'f2\'f0\'f3\'ea\'f2\'f3\'f0\'e0 \'e0\'e4\'f0\'e5\'f1\'e0\par
+\par
+\'ca\'e0\'e6\'e4\'fb\'e9 \'f0\'ee\'f3\'f2\'e5\'f0 \'e4\'ee\'eb\'e6\'e5\'ed \'e8\'ec\'e5\'f2\'fc ID. \'ce\'ed\'ee \'e2\'fb\'e1\'e8\'f0\'e0\'e5\'f2\'f1\'ff \'ea\'e0\'ea\par
+1. \'ca\'ee\'ec\'e0\'ed\'e4\'ee\'e9 Router(config-router)#\b router-id \b0\i address\i0\par
+2. \'c5\'f1\'eb\'e8 \'ed\'e5 \'e2\'e1\'e8\'f2\'e0 \'ea\'ee\'ec\'e0\'ed\'e4\'e0 \cf3\kerning1\f2\u8594?\cf0\kerning0\f0  \'ed\'e0\'e8\'e1\'ee\'eb\'fc\'f8\'e8\'e9 Loopback\par
+3. \'cd\'e0\'e8\'e1\'ee\'eb\'fc\'f8\'e8\'e9 IP \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0 (\'ed\'e5 \'ee\'e1\'ff\'e7\'e0\'f2\'e5\'eb\'fc\'ed\'ee \'ed\'e0 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e5 \'e4\'ee\'eb\'e6\'e5\'ed \'e1\'fb\'f2\'fc \'e7\'e0\'ef\'f3\'f9\'e5\'ed OSPF)\par
+\par
+\ul Hello \'ef\'e0\'ea\'e5\'f2\ulnone\par
+\par
+LSA \'ef\'e5\'f0\'e5\'ef\'ee\'f1\'fb\'eb\'e0\'fe\'f2\'ff \'ea\'e0\'e6\'e4\'fb\'e5 30 \'ec\'e8\'ed.\par
+\par
+\'d8\'eb\'b8\'f2 Hello \'ef\'e0\'ea\'e5\'f2\'fb \'f7\'e5\'f0\'e5\'e7 \i HelloInterval \i0 = 10 \'f1\'e5\'ea \'e2 broadcast \'f1\'e5\'f2\'ff\'f5 \'e8 30 \'f1\'e5\'ea \'e2 non-broadcast\par
+\par
+Router(config-if)#\b ip ospf hello-interval\b0  \i seconds\i0\par
+\par
+\'c5\'f1\'eb\'e8 \'f0\'ee\'f3\'f2\'e5\'f0 \'ed\'e5 \'f1\'eb\'fb\'f8\'e8\'f2 Hello \'e2 \'f2\'e5\'f7\'e5\'ed\'e8\'e8 \i RouterDeadInterval\i0  = 4*\i HelloInterval\i0  \cf3\kerning1\f2\u8594?\cf0\kerning0\f0  \'f1\'ee\'f1\'e5\'e4 DOWN\par
+\par
+Router(config-if)#\b ip ospf dead-interval\b0  \i seconds\i0\par
+\par
+Adjacency \'ed\'e5 \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'e8\'f2\'f1\'ff \'e5\'f1\'eb\'e8 \'ed\'e5 \'f1\'ee\'e2\'ef\'e0\'e4\'e0\'fe\'f2:\par
+\pard\fi-426\li852\sl240\slmult1 1. Area ID\par
+2. Authentication\par
+3. Network Mask\par
+4. HelloInterval\par
+5. RouterDeadInterval\par
+6. Options\par
+\pard\sl240\slmult1\par
+|\tab 8\tab |\tab 8\tab |\tab 8\tab |\tab 8\tab |\par
+|-----------------------------------------------| \lang1033\f1  -+\lang1049\f0\par
+|  Version\tab |  Type=1\tab |    Packet Length\tab |  \lang1033\f1  \lang1049\f0 |\par
+|-----------------------------------------------|\lang1033\f1  \lang1049\f0   |\par
+|\tab\tab\tab   Router ID\tab\tab\tab\tab | \lang1033\f1  \lang1049\f0  |\par
+|-----------------------------------------------|  \lang1033\f1  \lang1049\f0 |\par
+|\tab\tab\tab    Area ID\tab\tab\tab\tab |\lang1033\f1  \lang1049\f0   \lang1033\f1 |\lang1049\f0 ---> OSPF Header\par
+|-----------------------------------------------| \lang1033\f1  \lang1049\f0  |\par
+|\tab   Checksum\tab\tab |\tab   AuType\tab\tab |  \lang1033\f1  \lang1049\f0 |\par
+|-----------------------------------------------|\lang1033\f1  \lang1049\f0   |\par
+|\tab\tab\tab Authentication\tab\tab\tab | \lang1033\f1  \lang1049\f0  |\par
+|-----------------------------------------------|  \lang1033\f1  \lang1049\f0 |\par
+|\tab\tab\tab Authentication\tab\tab\tab | \lang1033\f1  \lang1049\f0  |\par
+\lang1033\f1 +\lang1049\f0 -----------------------------------------------\lang1033\f1 +  \lang1049\f0 -\lang1033\f1 +\lang1049\f0\par
+\par
+\par
+\lang1033\f1 +\lang1049\f0 -----------------------------------------------\lang1033\f1 +  \lang1049\f0 -\lang1033\f1 +\lang1049\f0\par
+|\tab\tab\tab  Network Mask\tab\tab\tab |  \lang1033\f1  \lang1049\f0 |\par
+|-----------------------------------------------|\lang1033\f1  \lang1049\f0   |\par
+|\tab Hello Interval\tab |  Options\tab |Router Prio| \lang1033\f1  \lang1049\f0  |\par
+|-----------------------------------------------|  \lang1033\f1  \lang1049\f0 |\par
+|\tab\tab    Router Dead Interval\tab\tab\tab |\lang1033\f1  \lang1049\f0   |\par
+|-----------------------------------------------| \lang1033\f1  \lang1049\f0  |\par
+|\tab\tab      Designated Router\tab\tab\tab |  \lang1033\f1  \lang1049\f0 |-\lang1033\f1 -\lang1049\f0 -> \'c7\'e0\'e3\'ee\'eb\'ee\'e2\'ee\'ea Hello\par
+|-----------------------------------------------|\lang1033\f1  \lang1049\f0   |\par
+|\tab\tab  Backup Designated Router\tab\tab | \lang1033\f1  \lang1049\f0  |\par
+|-----------------------------------------------|  \lang1033\f1  \lang1049\f0 |\par
+|\tab\tab\tab Active Neighbor\tab\tab\tab |\lang1033\f1  \lang1049\f0   |\par
+\lang1033\f1 +\lang1049\f0 -----------------------------------------------\lang1033\f1 +\lang1049\f0  \lang1033\f1  -+\lang1049\f0\par
+\tab\tab\tab\tab |\par
+\tab\tab\tab\tab |\par
+\lang1033\f1 +\lang1049\f0 -----------------------------------------------\lang1033\f1 +\lang1049\f0\par
+|\tab\tab\tab Active Neighbor\tab\tab\tab |\par
+\lang1033\f1 +\lang1049\f0 -----------------------------------------------\lang1033\f1 +\lang1049\f0\par
+\par
+Version\tab - \'e2\'e5\'f0\'f1\'e8\'ff OSPF - 2 (ipv4), \'e5\'f1\'f2\'fc v3 \'e4\'eb\'ff IPv6\par
+Type\tab\tab - \'f2\'e8\'ef \'ef\'e0\'ea\'e5\'f2\'e0\par
+\pard\li1278\sl240\slmult1 1\tab Hello\par
+2\tab Database Description\par
+3\tab Link State Request\par
+4\tab Link State Update\par
+5\tab Link State Acknowledgment\par
+\pard\fi-1420\li1420\sl240\slmult1 Area ID\tab - ID area, \'e2 \'ea\'ee\'f2\'ee\'f0\'ee\'e9 \'e1\'fb\'eb \'f1\'ee\'e7\'e4\'e0\'ed \'ef\'e0\'ea\'e5\'f2. \'c5\'f1\'eb\'e8 Virtual Link, \'f2\'ee =\lang1033\f1  \lang1049\f0 0.0.0.0, \'f2.\'ea. Virtual Link - \'fd\'f2\'ee \'f7\'e0\'f1\'f2\'fc Backbone\par
+\pard\fi-426\li426\sl240\slmult1 AuType \'e8 Authentication- \'f2\'e8\'ef \'e0\'f3\'f2\'e5\'ed\'f2\'e8\'f4\'e8\'ea\'e0\'f6\'e8\'e8\par
+\par
+\pard\li426\sl240\slmult1  AuType\tab | \'ce\'ef\'e8\'f1\'e0\'ed\'e8\'e5\tab |\'cf\'ee\'eb\'e5 Authentication\par
+--------\lang1033\f1 +\lang1049\f0 -----------\lang1033\f1 +---\lang1049\f0 ---------------------\par
+\tab 0\tab |   Null\tab |\'cf\'ee\'eb\'e5 \'f1\'ee\'e4\'e5\'f0\'e6\'e8\'f2 \'f7\'f2\'ee \'f3\'e3\'ee\'e4\'ed\'ee\par
+\tab 1\tab |Clear text\tab |64 bits password\par
+\tab 2\tab |   MD5\tab |\'c5\'f9\'b8 \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'fe\'f2\'f1\'ff \'ef\'ee\'eb\'ff\par
+\pard\sl240\slmult1\par
+Options\tab - \'ef\'e8\'f8\'e5\'f2 \'f7\'f2\'ee OSPF \'ed\'e0 \'f0\'ee\'f3\'f2\'e5\'f0\'e5 \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'e5\'f2 (MPLS, Multicast, \'ed\'e5\'ea\'e8\'e5 Opaque LSA (Type 9,10,11)\par
+\par
+\ul Network Types\ulnone\par
+\par
+\tab\tab\tab |  P-to-P\tab | Broadcast\tab |   NBMA\tab |P-to-Multipoint\lang1033\f1 (\lang1049\f0\'ea\'e0\'ea \'e1\'fb \'ed\'e5 \lang1033\f1 unidirection, \lang1049\f0\'f2.\'e5. \'f2\'ee\'eb\'fc\'ea\'ee \'e2 \'ee\'e4\'ed\'f3 \'f1\'f2\'ee\'f0\'ee\'ed\'f3 \lang1033\f1 multicast)\lang1049\f0\par
+------------------\lang1033\f1 +\lang1049\f0 -----------\lang1033\f1 +\lang1049\f0 -----------\lang1033\f1 +\lang1049\f0 -----------\lang1033\f1 +\lang1049\f0 -------------------\par
+\'c2\'fb\'e1\'ee\'f0 DR \'e8 BDR\tab |   \'ed\'e5\'f2\tab |   \'e5\'f1\'f2\'fc\tab |   \'e5\'f1\'f2\'fc\tab |    \'ed\'e5\'f2\par
+HelloInterval\tab |\tab\tab |  10 \'f1\'e5\'ea\tab |  30 \'f1\'e5\'ea\tab |\par
+\'ca\'e0\'ea \'ee\'e1\'f9\'e0\'fe\'f2\'f1\'ff\tab | 224.0.0.5\tab | 224.0.0.5\tab |  unicast\tab | only unicast\par
+\par
+\i AllSPFRouters\i0\tab 224.0.0.5\tab 0100.5E00.0005\tab TTL=1\tab\tab Hello \'ef\'e0\'ea\'e5\'f2\'fb\par
+\i AllDRouters\i0\tab\tab 224.0.0.6\tab 0100.5E00.0006\tab\tab\tab Updates\par
+\par
+\ul DR \'e8 BDR\ulnone\par
+\par
+\'ca\'e0\'e6\'e4\'fb\'e9 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1 \'e8\'ec\'e5\'e5\'f2 \i Router Priority\i0  (Default = 1). \'c5\'f1\'eb\'e8 priority = 0 \cf3\kerning1\f2\u8594?\cf0\kerning0\f0  \'f0\'ee\'f3\'f2\'e5\'f0 \'ed\'e8\'ea\'ee\'e3\'e4\'e0 \'ed\'e5 \'e1\'f3\'e4\'e5\'f2 DR \'e8\'eb\'e8 BDR.\par
+\par
+Router(config-if)#\b ip ospf priority\b0  \i 0-255\i0\par
+\par
+\'cf\'f0\'ee\'f6\'e5\'e4\'f3\'f0\'e0 \'e2\'fb\'e1\'ee\'f0\'e0 DR \'e8 BDR:\par
+1. \'cf\'ee Router Priority\par
+2. \'cf\'ee \'ed\'e0\'e8\'e1\'ee\'eb\'fc\'f8\'e5\'ec\'f3 Router ID\par
+\par
+\'c5\'f1\'eb\'e8 \'f3\'e6\'e5 \'e2\'fb\'e1\'f0\'e0\'ed DR \'e8 BDR, \'f2\'ee \'ed\'ee\'e2\'fb\'e9 \'f0\'ee\'f3\'f2\'e5\'f0 \'f1 \'ed\'e0\'e8\'e1\'ee\'eb\'fc\'f8\'e8\'ec Router Priority DR-\'ee\'ec \'ed\'e5 \'f1\'f2\'e0\'ed\'e5\'f2.\par
+\par
+\tab\tab\tab | 1&2 |  3  |  4  |  5  |  7 \par
+------------------\lang1033\f1 +\lang1049\f0 -----\lang1033\f1 +\lang1049\f0 -----\lang1033\f1 +\lang1049\f0 -----\lang1033\f1 +\lang1049\f0 -----\lang1033\f1 +\lang1049\f0 -----\par
+Backbone (area 0)\tab | Yes | Yes | Yes | Yes |  No\par
+Non-backbone\tab | Yes | Yes | Yes | Yes |  No\par
+Stub\tab\tab\tab | Yes | Yes |  No |  No |  No\par
+Totally stubby\tab | Yes |  No |  No |  No |  No\par
+Not-so-stubby\tab | Yes | Yes | Yes |  No | Yes\par
+\par
+Router#\b show ip ospf border-routers\par
+\b0 OSPF Process 1 internal Routing Table\par
+Codes: i - Intra-area route, I - Inter-area route\par
+i 192.168.30.10 [74] via 192.168.17.74, Ethernet0, ABR, Area 0, SPF 391\par
+I 192.168.30.12 [148] via 192.168.17.74, Ethernet0, ASBR, Area 0, SPF 391\par
+i 192.168.30.27 [781] via 192.168.21.6, Serial1.724, ASBR, Area 7, SPF 631\par
+i 192.168.30.30 [74] via 192.168.17.74, Ethernet0, ABR/ASBR, Area 0, SPF 391\par
+i 192.168.30.60 [790] via 192.168.21.10, Serial1.725, ABR/ASBR, Area 7, SPF 631\par
+\par
+\ul PATH TYPE\par
+\ulnone\par
+1. Intra-Area - \'ec\'e0\'f0\'f8\'f0\'f3\'f2 \'ec\'e5\'e6\'e4\'f3 \'f0\'ee\'f3\'f2\'e5\'f0\'e0\'ec\'e8 \'e2\'ed\'f3\'f2\'f0\'e8 \'ee\'e4\'ed\'ee\'e9 Area\par
+2. Inter-Area - \'ec\'e0\'f0\'f8\'f0\'f3\'f2 \'ec\'e5\'e6\'e4\'f3 Area, \'f2.\'e5. \'ef\'f0\'ee\'f5\'ee\'e4\'e8\'f2 \'f5\'ee\'f2\'ff \'e1\'fb \'f7\'e5\'f0\'e5\'e7 \'ee\'e4\'e8\'ed ABR. \'c2 show ip route \'ef\'ee\'ec\'e5\'f7\'e0\'e5\'f2\'f1\'ff \'ea\'e0\'ea IA\par
+3. Type 1 external - \'ec\'e0\'f0\'f8\'f0\'f3\'f2 \'ea \'e2\'ed\'e5\'f8\'ed\'e5\'e9 \'f1\'e5\'f2\'e8. Metric = cost \'ef\'f0\'e8 redistribution + cost \'e4\'ee ASBR\par
+4. Type 2 external - \'ec\'e0\'f0\'f8\'f0\'f3\'f2 \'ea \'e2\'ed\'e5\'f8\'ed\'e5\'e9 \'f1\'e5\'f2\'e8. Metric = cost \'ef\'f0\'e8 redistribution\par
+\par
+Router#\b show ip route\b0\par
+O E1 192.168.119.0/24 [110/94] via 192.168.17.74, 02:15:01, Ethernet0\par
+O E2 172.19.0.0/16 [110/21] via 192.168.32.2, 02:15:01, Ethernet1\par
+     172.21.0.0/16 is variably subnetted, 2 subnets, 2 masks\par
+O E2   172.21.0.0/16 [110/801] via 192.168.21.6, 02:15:01, Serial1.724\par
+O IA   172.16.30.61/32 [110/856] via 192.168.17.74, 02:15:19, Ethernet0\par
+C      172.16.32.0/24 is directly connected, Ethernet1\par
+\par
+Router#\b show ip ospf interface\b0\par
+\par
+\'cc\'e5\'f2\'f0\'e8\'ea\'e0 cost = 0..65535 = 100 000 000/Bandwith - \'f2.\'e5. \'ef\'f0\'e8 100\'cc\'e1\'e8\'f2/\'f1\'e5\'ea cost = 1. \'c4\'eb\'ff \'f2\'ee\'e3\'ee, \'f7\'f2\'ee\'e1\'fb \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc \'f1 \'eb\'e8\'ed\'ea\'e0\'ec\'e8 >100\'cc\'e1\'e8\'f2/\'f1\'e5\'ea Router(config-router)#\b auto-cost reference-bandwidth \b0\i\'f7\'e8\'f1\'eb\'ee\i0\par
+Router(config-if)#\b ip ospf cost\b0  \i metric\i0\par
+\b\par
+\b0 Router#\b show ip ospf interface fa0/0\b0\par
+FastEthernet0/0.12 is up, line protocol is up\par
+  Internet Address 10.0.12.2/24, Area 0\par
+  Process ID 567, Router ID 10.0.12.2, Network Type BROADCAST, Cost: 1\par
+  Transmit Delay is 1 sec, State BDR, Priority 1\par
+  Designated Router (ID) 10.0.12.1, Interface address 10.0.12.1\par
+  Backup Designated router (ID) 10.0.12.2, Interface address 10.0.12.2\par
+  Timer intervals configured, Hello 10, Dead 40, Wait 40, Retransmit 5\par
+    Hello due in 00:00:06  \par
+  Neighbor Count is 1, Adjacent neighbor count is 1\par
+    Adjacent with neighbor 10.0.12.1  (Designated Router)\par
+    Adjacent with neighbor 10.0.12.3\par
+  Suppress hello for 0 neighbor(s)\par
+\par
+Process ID 567\tab - \'f2\'e8\'ef\'e0 Router(config)#router ospf 567\par
+\pard\fi-2130\li2130\sl240\slmult1 Transmit Delay\tab - \i InfTransDelay \i0\'e2\'f0\'e5\'ec\'ff \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee\'e5 \'e4\'eb\'ff \'ef\'e5\'f0\'e5\'e4\'e0\'f7\'e8 LSA. R1 \'f1\'ee\'e7\'e4\'e0\'eb LSA (Age=0) \'e8 \'ee\'f2\'ef\'f0\'e0\'e2\'e8\'eb R2. R2 \'ef\'ee\'eb\'f3\'f7\'e8\'eb LSA \'e8 \'ef\'f0\'e8\'e1\'e0\'e2\'e8\'eb \'ea Age +1, \'f2\'e8\'ef\'e0 \'f1\'f2\'ee\'eb\'fc\'ea\'ee \'f1\'e5\'ea\'f3\'ed\'e4 \'ef\'ee\'ed\'e0\'e4\'ee\'e1\'e8\'eb\'ee\'f1\'fc \'e4\'eb\'ff \'ef\'e5\'f0\'e5\'e4\'e0\'f7\'e8. Router(config-if)#\b ip ospf transmit-delay \b0\i\'f1\'e5\'ea\'f3\'ed\'e4\'fb\par
+\i0 Retransmit\tab\tab - \i RxmtInterval\i0  \'e2\'f0\'e5\'ec\'ff \'ee\'e6\'e8\'e4\'e0\'ed\'e8\'ff LSA ack, \'ef\'ee\'f1\'eb\'e5 \'f7\'e5\'e3\'ee \'e1\'f3\'e4\'e5\'f2 retransmit Router(config-if)#\b ip ospf retransmit-interval \b0\i\'f1\'e5\'ea\'f3\'ed\'e4\'fb\i0\par
+\pard\sl240\slmult1 Hello due\tab\tab - \'f1\'ea\'ee\'eb\'fc\'ea\'ee \'e2\'f0\'e5\'ec\'e5\'ed\'e8 \'ee\'f1\'f2\'e0\'eb\'ee\'f1\'fc \'e4\'ee \'ef\'e5\'f0\'e5\'e4\'e0\'f7\'e8 \'ee\'f7\'e5\'f0\'e5\'e4\'ed\'ee\'e3\'ee Hello\par
+Wait\tab\tab\tab - \'e2\'f0\'e5\'ec\'ff, \'ea\'ee\'e3\'e4\'e0 \'f0\'ee\'f3\'f2\'e5\'f0 \'e6\'e4\'b8\'f2 Hello, \'e4\'eb\'ff \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'e5\'ed\'e8\'ff DR \'e8 BDR, \'ef\'ee\'f1\'eb\'e5 \'f7\'e5\'e3\'ee \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2 \'ef\'f0\'ee\'f6\'e5\'f1\'f1 \'e2\'fb\'e1\'ee\'f0\'e0\par
+\pard\fi-2130\li2130\sl240\slmult1 State\tab\tab - \'e1\'fb\'e2\'e0\'e5\'f2 DOWN, P-t-P, DR, BDR, DRother, Loopback \'e8 Wait (\'ea\'ee\'e3\'e4\'e0 \'f2\'e8\'ea\'e0\'e5\'f2 \'f2\'e0\'e9\'ec\'e5\'f0\'e8 \'e2\'fb\'e1\'e8\'f0\'e0\'e5\'f2\'f1\'ff DR\\BDR)\par
+PollInterval\tab - \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 \'e4\'eb\'ff Hello \'f2\'e0\'e9\'ec\'e5\'f0\'e0. \'c8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'f2\'ee\'eb\'fc\'ea\'ee \'e2 non-broadcast \'f1\'e5\'f2\'ff\'f5. \'c5\'f1\'eb\'e8 \'f1\'ee\'f1\'e5\'e4 \'e2 Down, \'f2\'ee \'e4\'eb\'ff \'f2\'ee\'e3\'ee \'f7\'f2\'ee\'e1\'fb \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'e8\'f2\'fc \'ed\'e5 \'ee\'f7\'f3\'f5\'e0\'eb\'f1\'ff \'eb\'e8 \'ee\'ed, \'f0\'ee\'f3\'f2\'e5\'f0 \'f8\'eb\'b8\'f2 \'e5\'ec\'f3 \'ef\'e5\'f0\'f1\'ee\'ed\'e0\'eb\'fc\'ed\'ee (\'f2.\'ea. \'f1\'e5\'f2\'fc non-broadcast) \'ef\'e0\'ea\'e5\'f2\'fb Hello \'ed\'e5 \'ea\'e0\'e6\'e4\'fb\'e5 30 \'f1\'e5\'ea. = \i HelloInterval\i0 , \'e0 \'ea\'e0\'e6\'e4\'fb\'e5 120 \'f1\'e5\'ea. = \i PollInterval\i0 .\par
+\pard\sl240\slmult1\par
+\ul Neighbor State Machine\ulnone\par
+\ul\par
+\ulnone Router#\b show ip ospf neighbor\ul\b0\par
+\par
+\ulnone Down\tab\tab - \'ee\'f2 \'e4\'e0\'ed\'ed\'ee\'e3\'ee \'f1\'ee\'f1\'e5\'e4\'e0 \'ed\'e5 \'ef\'f0\'e8\'f5\'ee\'e4\'e8\'eb\'ee Hello \'e2 \'ef\'f0\'ee\'ec\'e5\'e6\'f3\'f2\'ea\'e5 \'e2\'f0\'e5\'ec\'e5\'ed\'e8 \i RouterDead/PollInterval\i0\par
+\pard\fi-1420\li1420\sl240\slmult1 Attempt\tab - \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e2 non-broadcast \'f1\'e5\'f2\'ff\'f5 (\'ef\'ee \'ea\'e0\'ea\'e8\'ec-\'f2\'ee \'ed\'e5\'ef\'ee\'ed\'ff\'f2\'ed\'fb\'ec \'f1\'ee\'ee\'e1\'f0\'e0\'e6\'e5\'ed\'e8\'ff\'ec) \'ef\'ee\'f1\'eb\'e5 \'f2\'ee\'e3\'ee, \'ea\'e0\'ea \'ef\'f0\'e8\'f8\'b8\'eb \'ef\'e5\'f0\'e2\'fb\'e9 Hello \'ee\'f2 \'f1\'ee\'f1\'e5\'e4\'e0\par
+Init \tab - \'f0\'ee\'f3\'f2\'e5\'f0 \'f3\'e2\'e8\'e4\'e5\'eb Hello \'ee\'f2 \'f1\'ee\'f1\'e5\'e4\'e0, \'ed\'ee \'e2 \'fd\'f2\'ee\'ec Hello \'ef\'e0\'ea\'e5\'f2\'e5 \'e2 \'ef\'ee\'eb\'e5 "neighbors" \'ed\'e5\'f2 \'fd\'f2\'ee\'e3\'ee \'f1\'e0\'ec\'ee\'e3\'ee \'f0\'ee\'f3\'f2\'e5\'f0\'e0, \'f2.\'e5. \'e4\'e2\'f3\'f5\'f1\'f2\'ee\'f0\'ee\'ed\'ed\'e5\'e5 \'f1\'ee\'e5\'e4\'e8\'ed\'e5\'ed\'e8\'e5 \'ef\'ee\'ea\'e0 \'ed\'e5 \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'e8\'eb\'ee\'f1\'fc.\par
+2-Way\tab\tab - \'f0\'ee\'f3\'f2\'e5\'f0 \'f3\'e2\'e8\'e4\'e5\'eb \'f1\'e5\'e1\'ff \'e2 Hello \'ef\'e0\'ea\'e5\'f2\'e5 \'ee\'f2 \'f1\'ee\'f1\'e5\'e4\'e0. \'d3\'f1\'f2\'e0\'ed\'ee\'e2\'e8\'eb\'ee\'f1\'fc \'e4\'e2\'f3\'f5\'f1\'f2\'ee\'f0\'ee\'ed\'ed\'e5\'e5 \'f1\'ee\'e5\'e4\'e8\'ed\'e5\'ed\'e8\'e5. \'cd\'e0 \'fd\'f2\'ee\'ec \'fd\'f2\'e0\'ef\'e5 \'e2\'fb\'e1\'e8\'f0\'e0\'e5\'f2\'f1\'ff DR\\BDR. \'d2.\'e5. \'f0\'ee\'f3\'f2\'e5\'f0 \'e2\'ea\'eb\'fe\'f7\'e8\'eb\'f1\'ff, \'f3\'e2\'e8\'e4\'e5\'eb Hello \'ee\'f2 \'f1\'ee\'f1\'e5\'e4\'e0, \'e2 \'ea\'ee\'f2\'ee\'f0\'ee\'ec \'ed\'e0\'ef\'e8\'f1\'e0\'ed\'ee, \'ea\'f2\'ee \'e2 \'e4\'e0\'ed\'ed\'ee\'ec \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e5 DR\\BDR, \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'e8\'eb \'f1\'e2\'ff\'e7\'fc \'f1 DR (\'ec\'e5\'e6\'e4\'f3 DRother adjacency \'ed\'e5 \'f3\'f1\'f2\'e0\'ed\'e0\'e2\'eb\'e8\'e2\'e0\'e5\'f2\'f1\'ff) \'e4\'e0\'eb\'fc\'f8\'e5 \'ee\'e1\'ec\'e5\'ed LSA-\'ff\'ec\'e8.\par
+ExStart\tab - \'ee\'e1\'ec\'e5\'ed\'e8\'e2\'e0\'fe\'f2\'f1\'ff DD \'ef\'e0\'ea\'e5\'f2\'e0\'ec\'e8 \'f1 \'f4\'eb\'e0\'e3\'e0\'ec\'e8 I, M, MS. \'d3\'f1\'f2\'e0\'ed\'e0\'e2\'eb\'e8\'e2\'e0\'fe\'f2 Master\\Slave (\'f3 \'ea\'ee\'e3\'ee RouterID \'e1\'ee\'eb\'fc\'f8\'e5 \'f2\'ee\'f2 \'e8 Master), \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'fe\'f2 \'ed\'e0\'f7\'e0\'eb\'fc\'ed\'fb\'e9 DD seq. \par
+\pard\fi-568\li568\sl240\slmult1 Exchange\tab - \'ef\'f0\'ee\'e8\'f1\'f5\'ee\'e4\'e8\'f2 \'ee\'e1\'ec\'e5\'ed Database Description \'ef\'e0\'ea\'e5\'f2\'e0\'ec\'e8, \'f2.\'e5. \'f1\'f0\'e0\'e2\'ed\'e8\'e2\'e0\'fe\'f2 \'ea\'f2\'ee \'ea\'e0\'ea\'e8\'e5 LSA \'e7\'ed\'e0\'e5\'f2.\par
+Loading\tab - \'ef\'ee\'ed\'ff\'eb\'e8 \'f3 \'ea\'ee\'e3\'ee \'ea\'e0\'ea\'e8\'f5 LSA \'ed\'e5 \'f5\'e2\'e0\'f2\'e0\'e5\'f2 \'e8 \'ee\'e1\'ec\'e5\'ed\'e8\'e2\'e0\'fe\'f2\'f1\'ff \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'fb\'ec\'e8 LSA-\'e8\par
+\pard\fi-1420\li1420\sl240\slmult1\tx1278 FULL\tab\tab\tab - \'ee\'e1\'ec\'e5\'ed\'ff\'eb\'e8\'f1\'fc LSA-\'ff\'ec\'e8, \'f1\'e8\'ed\'f5\'f0\'ee\'ed\'e8\'e7\'ee\'e2\'e0\'eb\'e8 \'e1\'e0\'e7\'fb, \'ef\'ee\'f1\'eb\'e5 \'fd\'f2\'ee\'e3\'ee \'ef\'ee \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee\'f1\'f2\'e8 \'f0\'ee\'f3\'f2\'e5\'f0\'fb \'d2\'ce\'cb\'dc\'ca\'ce \'ee\'e1\'ec\'e5\'ed\'e8\'e2\'e0\'fe\'f2\'f1\'ff Link State Update-\'e0\'ec\'e8 !!!\ul\par
+\pard\sl240\slmult1\par
+\ulnone\'d4\'eb\'e0\'e3\'e8 \'e2 Database Description \'ef\'e0\'ea\'e5\'f2\'e0\'f5:\par
+\pard\fi-852\li852\sl240\slmult1 I = 1 - \'ee\'e1\'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2, \'f7\'f2\'ee \'fd\'f2\'ee\'f2 DD \'ef\'e0\'ea\'e5\'f2 \'ef\'e5\'f0\'e2\'fb\'e9, \'e0 \'e7\'ed\'e0\'f7\'e8\'f2: \'ef\'f3\'f1\'f2\'ee\'e9, \'e2 \'ed\'b8\'ec random DD seq. \'e8 \'ef\'f0\'e5\'e4\'ed\'e0\'e7\'ed\'e0\'f7\'e5\'ed \'e4\'eb\'ff \'e2\'fb\'e1\'ee\'f0\'e0 Master\\Slave. \'d2\'e0\'ea \'ea\'e0\'ea \'ee\'e1\'e0 \'f0\'ee\'f3\'f2\'e5\'f0\'e0 \'ef\'f0\'e5\'f2\'e5\'ed\'e4\'f3\'fe\'f2 \'ed\'e0 Master, \'ea\'e0\'e6\'e4\'fb\'e9 \'e4\'f0\'f3\'e3 \'e4\'f0\'f3\'e3\'f3 \'f8\'eb\'b8\'f2 \'fd\'f2\'ee\'f2 \'ef\'e0\'ea\'e5\'f2 \'f1 I=1 \'e8 MS=1, \'f3 \'ea\'ee\'e3\'ee \'e1\'ee\'eb\'fc\'f8\'e8\'e9 RouterID \'f2\'ee\'f2 \'e1\'f3\'e4\'e5\'f2 Master-\'ee\'ec \'e8 \'f1\'ee\'ee\'f2\'e2\'e5\'f2\'f1\'f2\'e2\'e5\'ed\'ed\'ee \'e5\'e3\'ee DD seq \'e1\'f3\'e4\'e5\'f2 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc\'f1\'ff.\par
+\pard\sl240\slmult1 M = 1 - \'e7\'ed\'e0\'f7\'e8\'f2 DD \'ef\'e0\'ea\'e5\'f2 \'cd\'c5 \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e8\'e9\par
+MS= 1 - \'ef\'e0\'ea\'e5\'f2 \'f1\'ee\'e7\'e4\'e0\'ed Master, \'e5\'f1\'eb\'e8 0 - \'ef\'e0\'ea\'e5\'f2 \'f1\'ee\'e7\'e4\'e0\'ed Slave\par
+\par
+\'ca\'e0\'e6\'e4\'fb\'e9 \'e8\'e7 \'f0\'ee\'f3\'f2\'e5\'f0\'ee\'e2 \'e7\'ed\'e0\'e5\'f2 \'f1\'e2\'ee\'fe \'f2\'e0\'e1\'eb\'e8\'f6\'f3 LSA-\'e5\'e2 (Database Summary List)\'e8 \'e2 \'f1\'ee\'ee\'f2\'e2\'e5\'f2\'f1\'f2\'e2\'e8\'e5 \'f1 \'fd\'f2\'ee\'e9 \'f2\'e0\'e1\'eb\'e8\'f6\'e5\'e9 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \'f1\'ee\'f1\'e5\'e4\'f3 LSA Headers. \'c4\'eb\'ff \'f2\'ee\'e3\'ee \'f7\'f2\'ee\'e1\'fb \'ef\'f0\'e8 \'ef\'e5\'f0\'e5\'e4\'e0\'f7\'e5 \'ef\'e0\'ea\'e5\'f2\'ee\'e2 \'ee\'e1\'e5\'f1\'ef\'e5\'f7\'e8\'f2\'fc "\'ed\'e0\'e4\'b8\'e6\'ed\'ee\'f1\'f2\'fc" - Master \'e7\'e0\'e4\'e0\'b8\'f2 DD seq. Slave, \'ef\'ee\'e4\'f2\'e2\'e5\'f0\'e6\'e4\'e0\'ff \'e4\'ee\'f1\'f2\'e0\'e2\'ea\'f3, \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \'e2 \'ee\'f2\'e2\'e5\'f2 \'ef\'e0\'ea\'e5\'f2 \'e2 \'f2\'e5\'ec \'e6\'e5 DD seq. \'c5\'f1\'eb\'e8 Master \'ee\'f2\'ef\'f0\'e0\'e2\'e8\'eb \'ef\'e0\'ea\'e5\'f2 \'e8 \'e2 \'f2\'e5\'f7\'e5\'ed\'e8\'e8 RxmtInterval \'ed\'e5 \'ef\'ee\'eb\'f3\'f7\'e8\'eb \'ee\'f2\'e2\'e5\'f2\'e0, \'f2\'ee \'ef\'ee\'e2\'f2\'ee\'f0\'ed\'ee \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \'ef\'e0\'ea\'e5\'f2. Slave \'ee\'f2\'e2\'e5\'f7\'e0\'e5\'f2 \'f2\'ee\'eb\'fc\'ea\'ee \'f2\'e5\'ec DD seq, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'ea \'ed\'e5\'ec\'f3 \'ef\'f0\'e8\'f8\'b8\'eb. \'c5\'f1\'eb\'e8 \'ef\'f0\'e8\'f8\'b8\'eb DD seq x+1, Slave \'ee\'f2\'e2\'e5\'f7\'e0\'e5\'f2 DD seq x+1. \'c5\'f1\'eb\'e8 \'ef\'f0\'e8\'f8\'b8\'eb \'f2\'e0\'ea\'ee\'e9 \'e6\'e5 \'ea\'e0\'ea\'ee\'e9 \'e8 \'e1\'fb\'eb DD seq x, \'f2\'ee \'ee\'f2\'e2\'e5\'f7\'e0\'e5\'f2 \'f2\'e5\'ec \'e6\'e5 DD seq x.\par
+\par
+\ul Database Description Packet\ulnone\tab\tab\tab\tab\tab\ul Link State Acknowledgment Packet\ulnone\par
+\par
+|\tab 8\tab |\tab 8\tab |\tab 8\tab |\tab 8\tab |\tab |\tab 8\tab |\tab 8\tab |\tab 8\tab |\tab 8\tab |\par
+|-----------------------------------------------|\tab |-----------------------------------------------|\par
+|  Version\tab |  Type=2\tab |    Packet Length\tab |\tab |  Version\tab |  Type=5\tab |    Packet Length\tab |\par
+|-----------------------------------------------|\tab |-----------------------------------------------|\par
+|\tab\tab\tab   Router ID\tab\tab\tab\tab |\tab |\tab\tab\tab   Router ID\tab\tab\tab\tab |\par
+|-----------------------------------------------|\tab |-----------------------------------------------|\par
+|\tab\tab\tab    Area ID\tab\tab\tab\tab |\tab |\tab\tab\tab    Area ID\tab\tab\tab\tab |\par
+|-----------------------------------------------|\tab |-----------------------------------------------|\par
+|\tab   Checksum\tab\tab |\tab   AuType\tab\tab |\tab |\tab   Checksum\tab\tab |\tab   AuType\tab\tab |\par
+|-----------------------------------------------|\tab |-----------------------------------------------|\par
+|\tab\tab\tab Authentication\tab\tab\tab |\tab |\tab\tab\tab Authentication\tab\tab\tab |\par
+|-----------------------------------------------|\tab |-----------------------------------------------|\par
+|\tab\tab\tab Authentication\tab\tab\tab |\tab |\tab\tab\tab Authentication\tab\tab\tab |\par
+|\b -----------------------------------------------\b0 |\tab |-----------------------------------------------|\par
+|\tab Interface MTU\tab |  Options |00000|I|M|MS|\tab |\tab\tab\tab  LSA Header\tab\tab\tab\tab |\par
+|\b -----------------------------------------------\b0 |\tab |-----------------------------------------------|\par
+|\tab\tab    DD Sequence Number\tab\tab\tab |\tab\tab\tab\tab\tab |\par
+|\b -----------------------------------------------\b0 |\tab\tab\tab\tab\tab |\par
+|\tab\tab    \tab  LSA Header\tab\tab\tab\tab |\tab\lang1033\f1 +\lang1049\f0 -----------------------------------------------\lang1033\f1 +\lang1049\f0\par
+\lang1033\b\f1 +\lang1049\f0 -----------------------------------------------\lang1033\f1 +\lang1049\b0\f0\tab |\tab\tab\tab  LSA Header\tab\tab\tab\tab |\par
+\tab\tab\tab\tab |\tab\tab\tab\tab\tab\lang1033\f1 +\lang1049\b\f0 -----------------------------------------------\lang1033\b0\f1 +\lang1049\f0\par
+\tab\tab\tab\tab |\par
+\lang1033\f1 +\lang1049\b\f0 -----------------------------------------------\lang1033\b0\f1 +\lang1049\f0\par
+|\tab\tab    \tab  LSA Header\tab\tab\tab\tab |\par
+\lang1033\b\f1 +\lang1049\f0 -----------------------------------------------\lang1033\b0\f1 +\lang1049\f0\par
+\par
+R1\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab R2\par
+DOWN\tab\tab -----------------------------------------------\tab DOWN\par
+DOWN\tab\tab ---Hello (DR = 0.0.0.0, Neighbors = \'ed\'e5\'f2)------>\tab INIT\par
+2-Way\tab\tab <--Hello (DR = R2, Neighbor = R1 )-------------\tab INIT\par
+ExStart\tab ---DD (RID=1.1.1.1, Seq=x, I=1, M=1, MS=1)---->\tab ExStart\tab\tab\tab\ul\par
+\ulnone Exchange\tab <--DD (RID=2.2.2.2, Seq=y, I=1, M=1, MS=1)-----\tab ExStart - \'df-\'cc\'e0\'f1\'f2\'e5\'f0!\par
+Exchange\tab ---DD (Seq = y, I=0, M=1, MS=0, LSA Header\b s\b0 )-->\tab Exchange\ul\par
+\ulnone Exchange\tab <--DD (Seq =y+1,I=0, M=1, MS=1, LSA Header\b s\b0 )---\tab Exchange\par
+Exchange\tab ---DD (Seq =y+1,I=0, M=1, MS=0, LSA Header\b s\b0 )-->\tab Exchange\ul\par
+\ulnone Exchange\tab <--DD (Seq =y+2,I=0, M=0, MS=1)----------------\tab Exchange\par
+Exchange\tab ---DD (Seq =y+2,I=0, M=0, MS=0)--------------->\tab Exchange\ul\par
+\ulnone\par
+\'c2 \'e8\'f2\'ee\'e3\'e5 \'ea\'e0\'e6\'e4\'fb\'e9 \'f0\'ee\'f3\'f2\'e5\'f0 \'f1\'f0\'e0\'e2\'ed\'e8\'eb \'f1\'e2\'ee\'e9 Database Summary List \'f1 \'ef\'ee\'eb\'f3\'f7\'e5\'ed\'ed\'ee\'e9, \'f1\'f4\'ee\'f0\'ec\'e8\'f0\'ee\'e2\'e0\'eb Link State Request List - \'f1\'ef\'e8\'f1\'ee\'ea \'f0\'e0\'f1\'f5\'ee\'e6\'e4\'e5\'ed\'e8\'e9, \'ef\'e5\'f0\'e5\'f8\'b8\'eb \'e2 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e5 Loading.\par
+\par
+Link State Request(\'e5\'f1\'eb\'e8 \'ed\'e0\'e4\'ee \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee \'f8\'f2.: Type LSA, Link State ID, Advertising Router, \'f2.\'e5. \'cd\'c5 LSA Header) \cf3\kerning1\f2\u8594?\cf0\kerning0\f0  \'e2 \'ee\'f2\'e2\'e5\'f2 Link State Update \'f1 \'ef\'ee\'eb\'ed\'fb\'ec\'e8 LSA \cf3\kerning1\f2\u8594?\cf0\kerning0\f0  \'ef\'ee\'e4\'f2\'e2\'e5\'f0\'e6\'e4\'e5\'ed\'e8\'e5, \'f7\'f2\'ee \'ef\'ee\'eb\'f3\'f7\'e8\'eb Link State Ack (LSA Header)\par
+\par
+\'cf\'ee\'f1\'eb\'e5 \'f2\'ee\'e3\'ee \'ea\'e0\'ea \'ee\'e1\'ec\'e5\'ed\'ff\'eb\'e8\'f1\'fc \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'fb\'ec\'e8 LSA - \'ef\'e5\'f0\'e5\'f5\'ee\'e4 \'e2 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e5 FULL.\par
+\par
+\ul Link State Request Packet\ulnone\tab\tab\tab\tab\tab\ul Link State Update Packet\ulnone\par
+\par
+|\tab 8\tab |\tab 8\tab |\tab 8\tab |\tab 8\tab |\tab |\tab 8\tab |\tab 8\tab |\tab 8\tab |\tab 8\tab |\par
+|-----------------------------------------------|\tab |-----------------------------------------------|\par
+|  Version\tab |  Type=3\tab |    Packet Length\tab |\tab |  Version\tab |  Type=4\tab |    Packet Length\tab |\par
+|-----------------------------------------------|\tab |-----------------------------------------------|\par
+|\tab\tab\tab   Router ID\tab\tab\tab\tab |\tab |\tab\tab\tab   Router ID\tab\tab\tab\tab |\par
+|-----------------------------------------------|\tab |-----------------------------------------------|\par
+|\tab\tab\tab    Area ID\tab\tab\tab\tab |\tab |\tab\tab\tab    Area ID\tab\tab\tab\tab |\par
+|-----------------------------------------------|\tab |-----------------------------------------------|\par
+|\tab   Checksum\tab\tab |\tab   AuType\tab\tab |\tab |\tab   Checksum\tab\tab |\tab   AuType\tab\tab |\par
+|-----------------------------------------------|\tab |-----------------------------------------------|\par
+|\tab\tab\tab Authentication\tab\tab\tab |\tab |\tab\tab\tab Authentication\tab\tab\tab |\par
+|-----------------------------------------------|\tab |-----------------------------------------------|\par
+|\tab\tab\tab Authentication\tab\tab\tab |\tab |\tab\tab\tab Authentication\tab\tab\tab |\par
+|\b -----------------------------------------------\b0 |\tab |-----------------------------------------------|\par
+|\tab\tab\tab Link State Type\tab\tab\tab |\tab |\tab\tab\tab Number of LSAa\tab\tab\tab |\par
+|\b -----------------------------------------------\b0 |\tab |-----------------------------------------------|\par
+|\tab\tab\tab Link State ID\tab\tab\tab |\tab |\tab\tab\tab\tab LSA\tab\tab\tab\tab |\par
+|\b -----------------------------------------------\b0 |\tab\lang1033\f1 +\lang1049\f0 -----------------------------------------------\lang1033\f1 +\lang1049\f0\par
+|\tab\tab     Advertising Router\tab\tab\tab |\tab\tab\tab\tab\tab |\par
+\lang1033\b\f1 +\lang1049\f0 -----------------------------------------------\lang1033\f1 +\lang1049\b0\f0\tab\tab\tab\tab\tab |\par
+\tab\tab\tab\tab |\tab\tab\tab\tab\tab\lang1033\f1 +\lang1049\f0 -----------------------------------------------\lang1033\f1 +\lang1049\f0\par
+\tab\tab\tab\tab |\tab\tab\tab\tab\tab |\tab\tab\tab\tab LSA\tab\tab\tab\tab |\par
+\lang1033\f1 +\lang1049\b\f0 -----------------------------------------------\lang1033\f1 +\lang1049\b0\f0\tab\lang1033\f1 +\lang1049\b\f0 -----------------------------------------------\lang1033\b0\f1 +\lang1049\f0\par
+|\tab\tab\tab Link State Type\tab\tab\tab |\par
+|\b -----------------------------------------------\b0 |\par
+|\tab\tab\tab Link State ID\tab\tab\tab |\par
+|\b -----------------------------------------------\b0 |\par
+|\tab\tab     Advertising Router\tab\tab\tab |\par
+\lang1033\b\f1 +\lang1049\f0 -----------------------------------------------\lang1033\f1 +\lang1049\b0\f0\par
+\par
+\'d0\'e0\'f1\'ef\'f0\'ee\'f1\'f2\'f0\'e0\'ed\'e5\'ed\'e8\'e5 Updates \'e2 Ethernet:\par
+Router1 \'f8\'eb\'b8\'f2 Update \'ed\'e0 \'e0\'e4\'f0\'e5\'f1 224.0.0.6, \'e5\'e3\'ee \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'f2 \'f2\'ee\'eb\'fc\'ea\'ee DR \'e8 BDR. DR \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \'ee\'e1\'f0\'e0\'f2\'ed\'ee \'e2 \'fd\'f2\'ee\'f2 \'e6\'e5 \'f1\'e5\'e3\'ec\'e5\'ed\'f2 \'f1\'e5\'f2\'e8 \'fd\'f2\'ee\'f2 \'e6\'e5 Update \'ed\'e0 \'e0\'e4\'f0\'e5\'f1 224.0.0.5 \'c5\'e3\'ee \'ef\'ee\'eb\'f3\'f7\'e0\'fe \'e2\'f1\'e5, \'e2 \'f2\'ee\'ec \'f7\'e8\'f1\'eb\'e5 \'e8 Router1. \'d2\'e5\'ec \'f1\'e0\'ec\'fb\'ec Router1 \'ee\'f2 DR \'ed\'e5 \'e6\'e4\'b8\'f2 Link State Ack !!!! \'ce\'f2 BDR \'e4\'ee\'eb\'e6\'e5\'ed \'ef\'f0\'e8\'e9\'f2\'e8 LS Ack \'ed\'e0 \'e0\'e4\'f0\'e5\'f1 224.0.0.5 \'c8 \'ea\'e0\'e6\'e4\'fb\'e9 DRother \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 LS Ack \'ed\'e0 \'e0\'e4\'f0\'e5\'f1 224.0.0.6\par
+\par
+DRother\tab\tab\tab\tab  |--> DR\par
+DRother ---Update (224.0.0.6)--|\par
+DRother\tab\tab\tab\tab  |--> BDR\par
+\par
+DRother <--|--Update(224.0.0.5)----\tab DR\par
+DRother <--|\par
+DRother <--|\tab\tab\tab\tab BDR\par
+\par
+DRother ---LS Ack (224.0.0.6)--|--> DR\par
+DRother \tab\tab\tab\tab  |\par
+DRother ---LS Ack (224.0.0.6)--|--> BDR\par
+\par
+LSA \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'fe\'f2\'f1\'ff \'f2\'f0\'e8\'ec\'ff \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'ff\'ec\'e8: Sequencing, Age, Checksum\par
+Checksum \'ef\'f0\'ee\'ef\'f3\'f1\'f2\'e8\'ec. Sequencing - \'ea\'ee\'e3\'e4\'e0 LSA \'ef\'ee\'ff\'e2\'eb\'ff\'e5\'f2\'f1\'ff \'f3 \'ed\'e5\'e3\'ee seq=0x80000000, \'ef\'f0\'e8 \'ea\'e0\'e6\'e4\'ee\'ec \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'e8 LSA \'ef\'f0\'e8\'e1\'e0\'e2\'eb\'ff\'e5\'f2\'f1\'ff 1. Age - \'e2\'f0\'e5\'ec\'ff \'e6\'e8\'e7\'ed\'e8 LSA \'e4\'ee\'eb\'e6\'ed\'ee \'e1\'fb\'f2\'fc < MaxAge = 3600 \'f1\'e5\'ea. \'d0\'ee\'f3\'f2\'e5\'f0, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'f1\'ee\'e7\'e4\'e0\'eb \'fd\'f2\'ee\'f2 LSA, \'e4\'e0\'e6\'e5 \'e5\'f1\'eb\'e8 \'e2 LSA \'ed\'e8\'f7\'e5\'e3\'ee \'ed\'e5 \'ef\'ee\'ec\'e5\'ed\'ff\'eb\'ee\'f1\'fc \'ea\'e0\'e6\'e4\'fb\'e5 30 \'ec\'e8\'ed \'ef\'e5\'f0\'e5\'f1\'fb\'eb\'e0\'e5\'f2 \'fd\'f2\'ee\'f2 LSA c seq+1.\par
+\par
+\ul\i Router LSA\ulnone\i0  - Type=\b 1 - \b0\'ee\'f1\'ed\'ee\'e2\'ed\'ee\'e9 \'f2\'e8\'ef LSA. \'c5\'f1\'eb\'e8 \'f0\'ee\'f3\'f2\'e5\'f0 ABR, \'f2\'ee \'e2 Area 0 \'ee\'ed \'e1\'f3\'e4\'e5\'f2 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'f2\'fc LSA Type 1 \'f1 \'e4\'e0\'ed\'ed\'fb\'ec\'e8 \'ee\'e1 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0\'f5, \'f1\'ec\'ee\'f2\'f0\'ff\'f9\'e8\'f5 \'e2 Area 0, \'e0 \'e2 Area 10 \'e1\'f3\'e4\'e5\'f2 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'f2\'fc \'e4\'e0\'ed\'ed\'fb\'e5 \'ee\'e1 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0\'f5, \'f1\'ec\'ee\'f2\'f0\'ff\'f9\'e8\'f5 \'e2 Area 10. LSA Type 1 \'ed\'e5 \'ef\'ee\'ea\'e8\'e4\'e0\'fe\'f2 Area, \'e3\'e4\'e5 \'ee\'ed\'e8 \'f1\'ee\'e7\'e4\'e0\'eb\'e8\'f1\'fc.\i\par
+\i0\par
+|\tab 8\tab |\tab 8\tab |\tab 8\tab |\tab 8\tab |  \lang1033\f1  \lang1049\f0\par
+|-----------------------------------------------|\lang1033\f1  \lang1049\f0  \lang1033\f1 -+\lang1049\f0\par
+|\tab\tab Age\tab\tab |  Options\tab |  Type=\b 1\b0\tab | \lang1033\f1  \lang1049\f0  |\par
+|-----------------------------------------------|  \lang1033\f1  \lang1049\f0 |\par
+|\tab\tab\tab Link State ID\tab\tab\tab |\lang1033\f1  \lang1049\f0   |\par
+|-----------------------------------------------| \lang1033\f1  \lang1049\f0  |--> LSA Header, \'f2\'ee\'eb\'fc\'ea\'ee \'ee\'ed \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2\'f1\'ff \'e2 DD\par
+|\tab\tab    Advertising Router\tab\tab\tab |  \lang1033\f1  \lang1049\f0 |\par
+|-----------------------------------------------|\lang1033\f1  \lang1049\f0   |\par
+|\tab\tab     Sequence Number\tab\tab\tab | \lang1033\f1  \lang1049\f0  |\par
+|-----------------------------------------------|  \lang1033\f1  \lang1049\f0 |\par
+|\tab   Checksum\tab\tab |\tab   Length\tab\tab |\lang1033\f1  \lang1049\f0   |\par
+|-----------------------------------------------|\lang1033\f1   \lang1049\f0 -\lang1033\f1 +\lang1049\f0\par
+|00000|V|E|B|   0x00\tab |   Number of Links\tab |\par
+|-----------------------------------------------|\par
+|\tab\tab\tab    Link ID\tab\tab\tab\tab |\par
+|-----------------------------------------------|\par
+|\tab\tab\tab   Link Data\tab\tab\tab\tab |\par
+|-----------------------------------------------|\par
+| Link Type | Number TOS|\tab   Metric\tab\tab |\par
+|-----------------------------------------------|\par
+|   TOS\tab |   0x00\tab |\tab TOS Metric\tab\tab |\par
+\lang1033\f1 +\lang1049\f0 -----------------------------------------------\lang1033\f1 +\lang1049\f0\par
+\tab\tab\tab\tab |\par
+\tab\tab\tab\tab |\par
+\lang1033\f1 +\lang1049\f0 -----------------------------------------------\lang1033\f1 +\lang1049\f0\par
+|\tab\tab\tab    Link ID\tab\tab\tab\tab |\par
+|-----------------------------------------------|\par
+|\tab\tab\tab   Link Data\tab\tab\tab\tab |\par
+|-----------------------------------------------|\par
+| Link Type | Number TOS|\tab   Metric\tab\tab |\par
+|-----------------------------------------------|\par
+|   TOS\tab |   0x00\tab |\tab TOS Metric\tab\tab |\par
+\lang1033\f1 +\lang1049\f0 -----------------------------------------------\lang1033\f1 +\lang1049\f0\par
+\par
+Link State ID\tab - Router ID \'f2\'ee\'e3\'ee, \'ea\'f2\'ee \'e8\'e7\'ed\'e0\'f7\'e0\'eb\'fc\'ed\'ee \'f1\'ee\'e7\'e4\'e0\'eb \'fd\'f2\'ee\'f2 LSA\par
+Advertising Router- \'e2 \'e4\'e0\'ed\'ed\'ee\'ec \'f2\'e8\'ef\'e5 LSA \'ef\'ee \'e2\'e8\'e4\'e8\'ec\'ee\'ec\'f3 \'f2\'e0\'ea\'ee\'e5 \'e6\'e5 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5, \'f7\'f2\'ee \'e8 \'e2 Link State ID\par
+Sequence Number\tab - \'ef\'ee\'f0\'ff\'e4\'ea\'ee\'e2\'fb\'e9 \'ed\'ee\'ec\'e5\'f0 LSA. \'d7\'f2\'ee\'e1\'fb \'ed\'e5 \'e7\'e0\'ef\'f3\'f2\'e0\'f2\'fc\'f1\'ff \'e2 \'ee\'e1\'ed\'ee\'e2\'eb\'e5\'ed\'e8\'ff\'f5\par
+V\tab\tab\tab - \'f1\'e0\'ec \'eb\'e8\'ed\'ea \'e2\'e8\'f0\'f2\'f3\'e0\'eb\'fc\'ed\'fb\'e9, \'ed\'ee Link Type = 2, \'f2.\'e5. transit network\par
+E\tab\tab\tab - \'e7\'ed\'e0\'f7\'e8\'f2 \'f1\'e0\'ec \'f0\'ee\'f3\'f2\'e5\'f0 ABR\par
+B\tab\tab\tab - \'e7\'ed\'e0\'f7\'e8\'f2 \'f1\'e0\'ec \'f0\'ee\'f3\'f2\'e5\'f0 ASBR\par
+Number of Links\tab - \'f1\'ea\'ee\'eb\'fc\'ea\'ee \'eb\'e8\'ed\'ea\'ee\'e2 \'e1\'f3\'e4\'e5\'f2 \'ee\'ef\'e8\'f1\'e0\'ed\'ee \'e2 LSA, \'f2.\'e5. \'f1\'ea\'ee\'eb\'fc\'ea\'ee \'eb\'e8\'ed\'ea\'ee\'e2 \'f3 \'f0\'ee\'f3\'f2\'e5\'f0\'e0 \'f1\'ec\'ee\'f2\'f0\'e8\'f2 \'c8\'cc\'c5\'cd\'cd\'ce \'e2 \'fd\'f2\'f3 area !!!\par
+Number TOS\tab\tab - \'ea\'e0\'ea \'ef\'f0\'e0\'e2\'e8\'eb\'ee \'ed\'e5 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e8 = 0x00\par
+Metric\tab\tab - OSPF cost \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0\par
+TOS \'e8 TOS Type\tab - \'ea\'e0\'ea\'e0\'ff-\'f2\'ee \'ec\'f3\'f2\'fc \'ef\'f0\'ee TOS \'ef\'ee\'eb\'e5 \'e2 IP Header \'ef\'e0\'ea\'e5\'f2\'ee\'e2...\par
+Link Type:\par
+1 Point-to-Point\tab - \'ed\'e0 \'e4\'f0\'f3\'e3\'ee\'ec \'ea\'ee\'ed\'f6\'e5 \'fd\'f2\'ee\'e3\'ee \'eb\'e8\'ed\'ea\'e0 \'ed\'e0\'f5\'ee\'e4\'e8\'f2\'f1\'ff \'f2\'ee\'eb\'fc\'ea\'ee \'ee\'e4\'e8\'ed \'f0\'ee\'f3\'f2\'e5\'f0\par
+\pard\li568\sl240\slmult1 Link ID\tab  = Router ID \'fd\'f2\'ee\'e3\'ee \'e5\'e4\'e8\'ed\'f1\'f2\'e2\'e5\'ed\'ed\'ee\'e3\'ee \'f1\'ee\'f1\'e5\'e4\'e0\par
+Link Data = IP \'e0\'e4\'f0\'e5\'f1 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0 \'ed\'e0 \'f0\'ee\'f3\'f2\'e5\'f0\'e5\par
+\pard\sl240\slmult1 2 Transit Network\tab - \'eb\'e8\'ed\'ea \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e5\'ed \'ea \'f1\'e5\'f2\'e8, \'e3\'e4\'e5 \'e5\'f1\'f2\'fc DR, \'f2.\'e5. \'ea Broadcast Network \'e8\'eb\'e8 NBMA\par
+\pard\li568\sl240\slmult1 Link ID = IP \'e0\'e4\'f0\'e5\'f1 DR\par
+Link Data = IP \'e0\'e4\'f0\'e5\'f1 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'f1\'ec\'ee\'f2\'f0\'e8\'f2 \'e2 \'fd\'f2\'f3 transit network\par
+\pard\sl240\slmult1 3 Stub Network\tab - \'e7\'e0 \'eb\'e8\'ed\'ea\'ee\'ec \'f0\'ee\'f3\'f2\'e5\'f0 \'ed\'e5 \'e2\'e8\'e4\'e8\'f2 OSPF \'f1\'ee\'f1\'e5\'e4\'e5\'e9\par
+\pard\li568\sl240\slmult1 Link ID = \'ef\'ee\'e4\'f1\'e5\'f2\'fc \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0, \'ed\'e0\'ef\'f0\'e8\'ec\'e5\'f0: 10.0.128.0\par
+Link Data = \'ec\'e0\'f1\'ea\'e0 \'ef\'ee\'e4\'f1\'e5\'f2\'e8, \'ed\'e0\'ef\'f0\'e8\'ec\'e5\'f0: 255.255.248.0\par
+\pard\sl240\slmult1 4 Virtual Link\par
+\pard\li568\sl240\slmult1 Link ID = Router ID \'f1\'ee\'f1\'e5\'e4\'e0\par
+Link Data = MIB-II ifIndex \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0\par
+\pard\sl240\slmult1\par
+\ul\i Network LSA\ulnone\i0  - Type=\b 2\b0  - \'e4\'e0\'ed\'ed\'fb\'e5 LSA \'e3\'e5\'ed\'e5\'f0\'e8\'f0\'f3\'e5\'f2 \'f2\'ee\'eb\'fc\'ea\'ee DR. \'d2\'e5\'ee\'f0\'e5\'f2\'e8\'f7\'e5\'f1\'ea\'e8 OSPF \'ec\'ee\'e3 \'e1\'fb \'ee\'e1\'ee\'e9\'f2\'e8\'f1\'fc \'e1\'e5\'e7 \'fd\'f2\'ee\'e3\'ee \'f2\'e8\'ef\'e0 LSA, \'ed\'ee \'f2\'ee\'e3\'e4\'e0 \'ea\'e0\'e6\'e4\'fb\'e9 \'f0\'ee\'f3\'f2\'e5\'f0, \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'ff LSA Type 1, \'f3\'ea\'e0\'e7\'fb\'e2\'e0\'eb \'c2\'d1\'c5\'d5 neighbor-\'ee\'e2, \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'ed\'e0\'f5\'ee\'e4\'ff\'f2\'f1\'ff \'f3 \'ed\'e5\'e3\'ee \'e7\'e0 \'fd\'f2\'e8\'ec \'eb\'e8\'ed\'ea\'ee\'ec.\par
+\par
+|\tab 8\tab |\tab 8\tab |\tab 8\tab |\tab 8\tab |\par
+|-----------------------------------------------|\par
+|\tab\tab Age\tab\tab |  Options\tab |  Type=\b 2\b0\tab |\par
+|-----------------------------------------------|\par
+|\tab\tab\tab Link State ID\tab\tab\tab |\par
+|-----------------------------------------------|\par
+|\tab\tab    Advertising Router\tab\tab\tab |\par
+|-----------------------------------------------|\par
+|\tab\tab     Sequence Number\tab\tab\tab |\par
+|-----------------------------------------------|\par
+|\tab   Checksum\tab\tab |\tab   Length\tab\tab |\par
+|-----------------------------------------------|\par
+|\tab\tab\tab Network Mask\tab\tab\tab |\par
+|-----------------------------------------------|\par
+|\tab\tab     Attached Router\tab\tab\tab |\par
+|-----------------------------------------------|\par
+|\tab\tab     Attached Router\tab\tab\tab |\par
+\lang1033\f1 +\lang1049\f0 -----------------------------------------------\lang1033\f1 +\lang1049\f0\par
+\tab\tab\tab\tab |\par
+\tab\tab\tab\tab |\par
+\lang1033\f1 +\lang1049\f0 -----------------------------------------------\lang1033\f1 +\lang1049\f0\par
+|\tab\tab     Attached Router\tab\tab\tab |\par
+\lang1033\f1 +\lang1049\f0 -----------------------------------------------\lang1033\f1 +\lang1049\f0\par
+\par
+Link State ID\tab - IP \'e0\'e4\'f0\'e5\'f1 DR \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0 \'ed\'e0 \'f0\'ee\'f3\'f2\'e5\'f0\'e5.\par
+Advertising Router- Router ID \'f2\'ee\'e3\'ee, \'ea\'f2\'ee \'e8\'e7\'ed\'e0\'f7\'e0\'eb\'fc\'ed\'ee \'f1\'ee\'e7\'e4\'e0\'eb \'fd\'f2\'ee\'f2 LSA, \'f2.\'e5. DR-\'e0.\par
+Sequence Number\tab - \'ef\'ee\'f0\'ff\'e4\'ea\'ee\'e2\'fb\'e9 \'ed\'ee\'ec\'e5\'f0 LSA. \'d7\'f2\'ee\'e1\'fb \'ed\'e5 \'e7\'e0\'ef\'f3\'f2\'e0\'f2\'fc\'f1\'ff \'e2 \'ee\'e1\'ed\'ee\'e2\'eb\'e5\'ed\'e8\'ff\'f5.\par
+Network Mask\tab - \'ec\'e0\'f1\'ea\'e0 \'ef\'ee\'e4\'f1\'e5\'f2\'e8, \'ed\'e0\'ef\'f0\'e8\'ec\'e5\'f0: 255.255.252.0\par
+Attached Router\tab - Router ID \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e5\'ed\'ed\'ee\'e3\'ee \'ea multi-access \'f1\'e5\'f2\'e8 \'f0\'ee\'f3\'f2\'e5\'f0\'e0\par
+\par
+\ul\i Network Summary LSA\ulnone\i0  - Type=\b 3\b0  - \'e3\'e5\'ed\'e5\'f0\'e8\'f0\'f3\'e5\'f2 ABR. \'d5\'ee\'e4\'ff\'f2 \'f2\'ee\'eb\'fc\'ea\'ee \'e2\'ed\'f3\'f2\'f0\'e8 \'f1\'e2\'ee\'e5\'e9 Area. \'ca\'e0\'e6\'e4\'e0\'ff \'ef\'ee\'e4\'f1\'e5\'f2\'fc \'ee\'ef\'e8\'f1\'fb\'e2\'e0\'e5\'f2\'f1\'ff \'ee\'f2\'e4\'e5\'eb\'fc\'ed\'fb\'ec LSA.\par
+\par
+|\tab 8\tab |\tab 8\tab |\tab 8\tab |\tab 8\tab |\par
+|-----------------------------------------------|\par
+|\tab\tab Age\tab\tab |  Options\tab |  Type=\b 3\b0\tab |\par
+|-----------------------------------------------|\par
+|\tab\tab\tab Link State ID\tab\tab\tab |\par
+|-----------------------------------------------|\par
+|\tab\tab    Advertising Router\tab\tab\tab |\par
+|-----------------------------------------------|\par
+|\tab\tab     Sequence Number\tab\tab\tab |\par
+|-----------------------------------------------|\par
+|\tab   Checksum\tab\tab |\tab   Length\tab\tab |\par
+|-----------------------------------------------|\par
+|\tab\tab\tab Network Mask\tab\tab\tab |\par
+|-----------------------------------------------|\par
+|   0x00\tab |\tab\tab   Metric\tab\tab\tab |\par
+\lang1033\f1 +\lang1049\f0 -----------------------------------------------\lang1033\f1 +\lang1049\f0\par
+\par
+Advertising Router- Router ID ABR, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'f1\'ee\'e7\'e4\'e0\'eb LSA\par
+Link State ID\tab - \'ef\'ee\'e4\'f1\'e5\'f2\'fc, \'ea\'ee\'f2\'ee\'f0\'e0\'ff \'ee\'e1\'fa\'ff\'e2\'eb\'ff\'e5\'f2\'f1\'ff, \'ed\'e0\'ef\'f0\'e8\'ec\'e5\'f0: 10.0.64.0\par
+Network Mask\tab - \'ec\'e0\'f1\'ea\'e0 \'ee\'e1\'fa\'ff\'e2\'eb\'ff\'e5\'ec\'ee\'e9 \'ef\'ee\'e4\'f1\'e5\'f2\'e8, \'ed\'e0\'ef\'f0\'e8\'ec\'e5\'f0: 255.255.252.0\par
+Metric\tab\tab - \'ec\'e5\'f2\'f0\'e8\'ea\'e0 \'ee\'f2 ABR \'e4\'ee destination.\par
+\par
+\ul\i ASBR Summary LSA\ulnone\i0  - Type=\b 4\b0  - \'e3\'e5\'ed\'e5\'f0\'e8\'f0\'f3\'e5\'f2 \'f2\'ee\'e6\'e5 ABR. \'d3\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2 "route" \'ed\'e0 ASBR. \'d2\'ee, \'f7\'f2\'ee \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee \'e3\'e5\'ed\'e5\'f0\'e8\'f0\'ee\'e2\'e0\'f2\'fc \'ef\'ee\'e4\'ee\'e1\'ed\'fb\'e9 LSA, ABR \'f3\'e7\'ed\'e0\'b8\'f2 \'ee\'f2 \'f0\'ee\'f3\'f2\'e5\'f0\'e0, \'ea\'ee\'e3\'e4\'e0 \'ee\'ed \'ef\'f0\'e8\'f1\'fb\'eb\'e0\'e5\'f2 Router LSA \'f1 \'f4\'eb\'e0\'e3\'ee\'ec B=1 (\'f2.\'e5. \'ff ASBR).\par
+\par
+\'d4\'ee\'f0\'ec\'e0\'f2 \'ef\'e0\'ea\'e5\'f2\'e0 LSA \'f2\'e0\'ea\'ee\'e9 \'e6\'e5 \'ea\'e0\'ea \'e8 Type=3, \'f2\'ee\'eb\'fc\'ea\'ee\par
+\par
+Advertising Router- Router ID ABR, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'f1\'ee\'e7\'e4\'e0\'eb LSA\par
+Link State ID\tab - IP \'e0\'e4\'f0\'e5\'f1 ASBR\par
+Network Mask\tab - =0\par
+Metric\tab\tab - \'ec\'e5\'f2\'f0\'e8\'ea\'e0 \'ee\'f2 ABR \'e4\'ee ASBR\par
+\par
+\ul\i Autonomous System External LSA\ulnone\i0  - Type=\b 5\b0  - \'e4\'e0\'ed\'ed\'fb\'e5 LSA \'f0\'e0\'f1\'ef\'f0\'ee\'f1\'f2\'e0\'ed\'ff\'fe\'f2\'f1\'ff \'e2\'ee \'e2\'f1\'e5\'f5 \'ed\'e5-Stub areas. \'c3\'e5\'ed\'e5\'f0\'e8\'f0\'f3\'fe\'f2\'f1\'ff ASBR. \'ca\'e0\'e6\'e4\'fb\'e9 route \'ee\'f2\'e4\'e5\'eb\'fc\'ed\'fb\'e9 LSA.\par
+\par
+|\tab 8\tab |\tab 8\tab |\tab 8\tab |\tab 8\tab |\par
+|-----------------------------------------------|\par
+|\tab\tab Age\tab\tab |  Options\tab |  Type=\b 5\b0\tab |\par
+|-----------------------------------------------|\par
+|\tab\tab\tab Link State ID\tab\tab\tab |\par
+|-----------------------------------------------|\par
+|\tab\tab    Advertising Router\tab\tab\tab |\par
+|-----------------------------------------------|\par
+|\tab\tab     Sequence Number\tab\tab\tab |\par
+|-----------------------------------------------|\par
+|\tab   Checksum\tab\tab |\tab   Length\tab\tab |\par
+|-----------------------------------------------|\par
+|\tab\tab\tab Network Mask\tab\tab\tab |\par
+|-----------------------------------------------|\par
+|E| 0000000\tab |\tab\tab    Metric\tab\tab\tab |\par
+|-----------------------------------------------|\par
+|\tab\tab    Forwarding Address\tab\tab\tab |\par
+|-----------------------------------------------|\par
+|\tab\tab    External Route Tag\tab\tab\tab |\par
+\lang1033\f1 +\lang1049\f0 -----------------------------------------------\lang1033\f1 +\lang1049\f0\par
+\par
+Link State ID\tab - IP \'e0\'e4\'f0\'e5\'f1 \'ee\'e1\'fa\'ff\'e2\'eb\'ff\'e5\'ec\'ee\'e9 \'e2\'ed\'e5\'f8\'ed\'e5\'e9 \'f1\'e5\'f2\'e8.\par
+Network Mask\tab - \'ec\'e0\'f1\'ea\'e0 \'ee\'e1\'fa\'ff\'e2\'eb\'ff\'e5\'ec\'ee\'e9 \'ef\'ee\'e4\'f1\'e5\'f2\'e8\par
+E\tab\tab\tab - \'c5\'f1\'eb\'e8 E=0 \cf3\kerning1\f2\u8594?\cf0\kerning0\f0  metric type E1, \'e5\'f1\'eb\'e8 E=1 \cf3\kerning1\f2\u8594?\cf0\kerning0\f0  metric type E2\par
+Metric\tab\tab - \'ec\'e5\'f2\'f0\'e8\'ea\'e0, \'ea\'ee\'f2\'ee\'f0\'f3\'fe \'e7\'e0\'e4\'e0\'b8\'f2 ASBR\par
+\pard\fi-568\li568\sl240\slmult1 Forwarding Address- \'f3\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2 \'ea\'f3\'e4\'e0 \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'f2\'fc \'ef\'e0\'ea\'e5\'f2\'fb. \'c5\'f1\'eb\'e8 \'ef\'ee\'eb\'e5 = 0.0.0.0, \'f2\'ee \'ef\'e0\'ea\'e5\'f2\'fb \'ed\'e0\'e4\'ee\'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'f2\'fc \'ed\'e0 ASBR\par
+External Route Tag - tag, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'ec\'ee\'e6\'ed\'ee \'ed\'e0\'e2\'e5\'f1\'e8\'f2\'fc \'ed\'e0 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\par
+\par
+\ul\i NSSA External LSA\ulnone\i0  - Type=\b 7\b0  - \'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5, \'f7\'f2\'ee \'e8 Type=5, \'ed\'ee \'f0\'e0\'f1\'ef\'f0\'ee\'f1\'f2\'f0\'e0\'ed\'ff\'fe\'f2\'f1\'ff \'f2\'ee\'eb\'fc\'ea\'ee \'e2 NSSA \'ee\'e1\'eb\'e0\'f1\'f2\'e8. \'d4\'ee\'f0\'ec\'e0\'f2 \'ef\'e0\'ea\'e5\'f2\'e0 LSA \'f2\'e0\'ea\'ee\'e9 \'e6\'e5, \'e7\'e0 \'e8\'f1\'ea\'eb\'fe\'f7\'e5\'ed\'e8\'e5\'ec \'f2\'ee\'e3\'ee, \'f7\'f2\'ee \'e5\'f1\'eb\'e8 \'f1\'e5\'f2\'fc \'ec\'e5\'e6\'e4\'f3 ASBR \'e8 \'e4\'f0\'f3\'e3\'ee\'e9 AS \'ee\'e1\'fa\'ff\'e2\'eb\'ff\'e5\'f2\'f1\'ff \'ea\'e0\'ea internal route \cf3\kerning1\f2\u8594?\cf0\kerning0\f0  Forwarding Address = next hop \'f1\'e5\'f2\'e8, \'e2 \'ee\'e1\'f0\'e0\'f2\'ed\'ee\'ec \'f1\'eb\'f3\'f7\'e0\'e5 Forwarding Address = Router ID ASBR\par
+\pard\li568\sl240\slmult1\'c2 \'ef\'e0\'ea\'e5\'f2\'e5 \'e5\'f1\'f2\'fc P \'f4\'eb\'e0\'e3. \'c5\'f1\'eb\'e8 P=1, \'f2\'ee LSA \'ed\'e0 ABR \'e8\'e7 7 \'f1\'f2\'e0\'ed\'e5\'f2 5. \'c5\'f1\'eb\'e8 P=0, \'f2\'ee \'ed\'e0 LSA \'ed\'e0 ABR \'e4\'f0\'ee\'ef\'ed\'e5\'f2\'f1\'ff.\par
+\par
+\pard\sl240\slmult1 ISPF - incremental SPF\par
+}
+ 

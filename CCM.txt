@@ -1,0 +1,40 @@
+http://ciscomaster.ru/ - Настройка Call Manager
+
+Asterisk.
+http://asterisk.ru/knowledgebase/Asterisk+administration
+http://wiki.asterisk.org/wiki/display/AST/Home
+http://asterisk-service.com/downloads/Asterisk- The Definitive Guide, 4th Edition.pdf
+http://asteriskguru.com
+
+AAR - Automated Alternate Routing - необходимо совершить звонок, а система каким-то образом определила, что для этого недостаточно bandwidth -> происходит reroute звонка через PSTN или другую сеть. Создаётся группа AAR Moscow и ей присваивается Prefix Digits 94957775566. Эта AAR группа вешается на телефон. Теперь если хотим позвонить на этот телефон и не хватает bandwidth, то к вызываемому номеру prepend-иться этот prefix и звонок улетает через PSTN. Для работы этой фичи необходимо в clusterwide service parameter выставить Automated Alternate Routing Enable = true (default = false).
+
+
+
+Route Filter - относится к North American Numbering Plan (NANP), в России не используем (типа номера начинающиеся с 555 - это не важно в каком штате, но OFFICE-CODE - для офисов.
+
+Gateway - трёх  типов.
+ 1.	MGCP QSIG gateway и QSIG-enabled intercluster trunks
+ 2.	MGCP non-QSIG, Skinny, T1-CAS gateways; non-QSIG intercluster trunks
+ 3.	H.225 и H.323 gateway и все остальные транки
+В Route Gruop нельзя микшировать gateway-и Type 1 и Type 3, но можно 1 со 2 и 2 с 3. Так и в Route List нельзя микшировать Route Group содержащие...
+
+Route Group - устанавливает очередь\порядок для выбора Gateway. Один RG может указывать на несколько Gateways)
+   |
+Route List - устанавливает очередь\порядок для выбора Route Group. Один RL может указывать на несколько RG)
+   |
+Parttern или Route Parttern - [123]XXX или 0.8[^1]ХХХХХХХХ Каждый Parttern принадлежит только одному Partition и одному Route List-у. Можно Parttern форварднуть минуя Route List срвзу на Gateway.
+   |
+Partition - просто название типа Moscow495. К одному partition может быть привязано несколько route parttern-ов.
+   |
+Calling Search Space - набор Partition-ов. При наборе номера 8888 с телефона, система смотрит к какому CSS привязан телефон и есть ли в этом CSS возможность звонить на 8888.
+
+
+OnNet и OffNet - Call Classification - привязывается к Route Parttern, Trunks, Gateways. Типа не позволяет звонить с девайса OffNet на OffNet.
+
+Directory Number - номер телефона. Может принадлежать нескольким Line Groups.
+   |
+Line Group = Hunt Group - набор несколькоких Directory Numbers. Звонок попав на группу, сначала звонит первый телефон, потом в зависимости от выбранного алгоритма. Как правило TOP DOWN. LG может одновременно принадлежать нескольким Hunt List-ам. В настройках Phone есть галочка: Logged Into Hunt Group - автоматически логинится в Line Group. В настройках SoftKeys можно сделать кнопочку Log Off Hunt Group. http://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/7_1_2/ccmsys/accm-712-cm/a03rp.html#wp1100559
+   |
+Hunt List - устанавливает очередь\порядок для выбора Line Groups.
+   |
+Hunt Pilot - Номер DN, который привязывается только к одному Hunt List-у.

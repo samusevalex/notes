@@ -1,0 +1,97 @@
+{\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}{\f1\fnil\fcharset0 Courier New;}}
+{\colortbl ;\red255\green0\blue0;\red0\green0\blue255;\red0\green176\blue80;}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\nowidctlpar\hyphpar0\sl240\slmult1\lang1049\kerning1\f0\fs22\'ca\'eb\'fe\'f7\'e5\'e2\'fb\'e5 \'f4\'e8\'f7\'e8 Mongo:\par
+\tab - \'e2\'f1\'f2\'f0\'ee\'e5\'ed\'ed\'fb\'e9 Sharding\par
+\tab - \'e0\'e4\'e0\'ef\'f2\'e8\'f0\'ee\'e2\'e0\'ed\'e0 \'ef\'ee\'e4 \'ed\'e0\'e3\'f0\'f3\'e7\'ea\'f3 "\'e2\'fb\'f1\'ee\'ea\'e8\'e9 \lang1033\f1 WRITE"\lang1049\f0 , \'f2.\'ea. \'ef\'ee\'e4 \'ea\'e0\'ef\'ee\'f2\'ee\'ec \lang1033\f1 LSM Tree\lang1049\f0 . \'ce\'f2 "\'e2\'fb\'f1\'ee\'ea\'ee\'e3\'ee \lang1033\f1 WRITE\lang1049\f0 "\lang1033\f1  Oracle \lang1049\f0\'eb\'e0\'f1\'f2\'fb \'f1\'ea\'eb\'e5\'e8\'f2.\par
+\tab - \lang1033\f1 Index-\lang1049\f0\'fb\lang1033\f1  \lang1049\f0\'e7\'e0\'f2\'ee\'f7\'e5\'ed\'fb \'e8\'f1\'ea\'e0\'f2\'fc \'e2 \lang1033\f1 unstructed \lang1049\f0\'e4\'e0\'ed\'ed\'fb\'f5\lang1033\f1  \lang1049\f0 (\lang1033\f1 ~JSON\lang1049\f0 ), \'e2 \'ee\'f2\'eb\'e8\'f7\'e8\'e8 \'ee\'f2 \lang1033\f1 Oracle.\lang1049\f0  \'d5\'ee\'f2\'ff \'e2 \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e5\'e5 \'e2\'f0\'e5\'ec\'ff \lang1033\f1 Oracle/P\lang1049\f0 ostgresql \'ed\'e0\'f3\'f7\'e8\'eb\'e8\'f1\'fc \'f5\'f0\'e0\'ed\'e8\'f2\'fc \'e8 \'e8\'ed\'e4\'e5\'ea\'f1\'e8\'f0\'ee\'e2\'e0\'f2\'fc \lang1033\f1 JSON-\lang1049\f0\'fb\lang1033\f1 .\lang1049\f0\par
+\par
+\lang1033\b\f1 NoSQLBooster\lang1049\b0\f0\par
+\par
+WiredTiger \'e4\'e2\'e8\'e6\'ee\'ea \'e4\'eb\'ff \'f5\'f0\'e0\'ed\'e5\'ed\'e8\'ff. \'d1\'e0\'ec\'e8 \'e4\'e0\'ed\'ed\'fb\'e5 \'ef\'ee \lang1033\f1 default \lang1049\f0\'eb\'e5\'e6\'e0\'f2 \'e2 dbPath: /var/lib/mongodb. \lang1033\f1 S\lang1049\f0 trongly recommended \'fd\'f2\'f3 \'ef\'e0\'ef\'ea\'f3 \'f1\'ee\'e7\'e4\'e0\'e2\'e0\'f2\'fc \'ed\'e0 \cf1\lang1033\b\f1 XFS\cf0\b0 .\lang1049\f0\par
+\par
+\'c5\'f1\'f2\'fc \'e2\'ee\'e7\'ec\'ee\'e6\'ed\'ee\'f1\'f2\'fc Validation - \'ef\'e5\'f0\'e5\'e4 \'e2\'f1\'f2\'e0\'e2\'ea\'ee\'e9 \'e4\'ee\'ea\'f3\'ec\'e5\'ed\'f2\'e0 \'ef\'f0\'ee\'e2\'e5\'f0\'ff\'ec \'ed\'e0 \'f1\'ee\'ee\'f2\'e2\'e5\'f2\'f1\'f2\'e2\'e8\'e5 \'f8\'e0\'e1\'eb\'ee\'ed\'f3.\par
+\par
+\'c2 \lang1033\f1 NoSQL \lang1049\f0\'e1\'e0\'e7\'e0\'f5 BASE \'e2\'ec\'e5\'f1\'f2\'ee ACID:\par
+\tab\b B\b0 asic \b A\b0 vailability - \'e1\'e0\'e7\'ee\'e2\'e0\'ff \'e4\'ee\'f1\'f2\'f3\'ef\'ed\'ee\'f1\'f2\'fc. \'ca\'e0\'e6\'e4\'fb\'e9 \'e7\'e0\'ef\'f0\'ee\'f1 \'e3\'e0\'f0\'e0\'ed\'f2\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'ee \'e7\'e0\'e2\'e5\'f0\'f8\'e0\'e5\'f2\'f1\'ff. \'cd\'e5 \'e1\'fb\'e2\'e0\'e5\'f2, \'f7\'f2\'ee \'e1\'e0\'e7\'e0 \'ed\'e5\'e4\'ee\'f1\'f2\'f3\'ef\'ed\'e0.\par
+\tab\b S\b0 oft State - \'e3\'e8\'e1\'ea\'ee\'e5 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e5. \'c4\'e5\'eb\'e0\'e5\'ec UPDATE \'e2 \'c1\'c4: x=100. \'d7\'e8\'f2\'e0\'e5\'ec \'e8\'e7 \'c1\'c4: \'f5=50 (\'f1\'f2\'e0\'f0\'ee\'e5 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5). \'cf\'f0\'ee\'f5\'ee\'e4\'e8\'f2 5 \'ec\'e8\'ed. \'ce\'ef\'ff\'f2\'fc \'f7\'e8\'f2\'e0\'e5\'ec \'e8\'e7 \'c1\'c4: x=100. \'cf\'f0\'ee\'f1\'f2\'ee \'ed\'ee\'e2\'ee\'e5 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 \'ed\'e5 \'f3\'f1\'ef\'e5\'eb\'ee \'f0\'e0\'e7\'eb\'e8\'f2\'fc\'f1\'ff \'ef\'ee \'e2\'f1\'e5\'ec \'f0\'e5\'ef\'eb\'e8\'ea\'e0\'ec. \'cf\'f0\'e5\'e4\'e5\'eb\'fc\'ed\'fb\'e9 \'f1\'eb\'f3\'f7\'e0\'e9, \'ea\'ee\'e3\'e4\'e0 \'ec\'fb \'ed\'e8\'f7\'e5\'e3\'ee \'ed\'e5 \'e4\'e5\'eb\'e0\'e5\'ec, \'e0 \'e1\'e0\'e7\'e0 \'f1\'e0\'ec\'e0 \'e8\'e7\'ec\'e5\'ed\'ff\'e5\'f2 \'f1\'e2\'ee\'b8 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e5, \'ef\'ee\'f2\'ee\'ec\'f3 \'f7\'f2\'ee 10 \'ec\'e8\'ed. \'ed\'e0\'e7\'e0\'e4, \'ec\'fb \'f7\'f2\'ee-\'f2\'ee \'ef\'f0\'ee-UPDATE-\'e8\'eb\'e8 \'e8 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff \'f2\'ee\'eb\'fc\'ea\'ee \'f1\'e5\'e9\'f7\'e0\'f1 \'ed\'e0\'ea\'e0\'f2\'fb\'e2\'e0\'fe\'f2\'f1\'ff.\par
+\tab\b E\b0 ventual Consistency - \'f1\'ee\'e3\'eb\'e0\'f1\'ee\'e2\'e0\'ed\'ed\'ee\'f1\'f2\'fc \'e2 \'ea\'ee\'ed\'e5\'f7\'ed\'ee\'ec \'f1\'f7\'b8\'f2\'e5. \'c5\'f1\'eb\'e8 \'ec\'fb \'f1\'e4\'e5\'eb\'e0\'eb\'e8 \'ea\'f3\'f7\'f3 UPDATE-\'ee\'e2, \'f2\'ee \'f7\'e5\'f0\'e5\'e7 \'ea\'e0\'ea\'ee\'e5-\'f2\'ee \'e2\'f0\'e5\'ec\'ff \'ef\'f0\'e8 READ \'ec\'fb \'ef\'ee\'eb\'f3\'f7\'e8\'ec \'ef\'f0\'e0\'e2\'e8\'eb\'fc\'ed\'fb\'e5 (\'ea\'ee\'ed\'f1\'e8\'f1\'f2\'e5\'ed\'f2\'ed\'fb\'e5) \'e4\'e0\'ed\'ed\'fb\'e5.\par
+\par
+\par
+Mongo \'f0\'e0\'e7\'f0\'e0\'e1\'e0\'f2\'fb\'e2\'e0\'eb\'e0\'f1\'fc \'e4\'eb\'ff \'ef\'f0\'ee\'f1\'f2\'fb\'f5 \'ef\'f0\'e8\'eb\'ee\'e6\'e5\'ed\'e8\'e9. \'d4\'ee\'ea\'f3\'f1\'e8\'f0\'ee\'e2\'e0\'eb\'e8\'f1\'fc \'ed\'e0 \'f0\'e0\'e7\'f0\'e0\'e1\'ee\'f2\'f7\'e8\'ea\'ee\'e2, \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'fe\'f9\'e8\'f5 MySQL.\par
+Mongo \'f5\'ee\'f0\'ee\'f8\'ee \'ef\'ee\'e4\'f5\'ee\'e4\'e8\'f2 \'e4\'eb\'ff \'e1\'fb\'f1\'f2\'f0\'ee\'e9 \'f0\'e0\'e7\'f0\'e0\'e1\'ee\'f2\'ea\'e8. \'cd\'e5 \'ef\'eb\'e0\'ed\'e8\'f0\'f3\'e5\'ec \'f1\'f5\'e5\'ec\'f3 \'f2\'e0\'e1\'eb\'e8\'f6, \'ee\'f7\'e5\'ed\'fc \'ef\'f0\'ee\'f1\'f2\'ee \'e8 \'e1\'fb\'f1\'f2\'f0\'ee \'ec\'ee\'e6\'ed\'ee \'e2\'f1\'b8 \'ef\'ee\'ec\'e5\'ed\'ff\'f2\'fc. \'cf\'f0\'e8\'e2\'ee\'e4\'e8\'eb\'f1\'ff \'ef\'f0\'e8\'ec\'e5\'f0, \'c1\'c4 \'e4\'eb\'ff \'e8\'e3\'f0 - \'e8\'e3\'f0\'e0 \'e2\'fb\'f1\'f2\'f0\'e5\'eb\'e8\'f2 \u8594? \'e1\'e0\'e7\'f3 \'ec\'ee\'e6\'ed\'ee \'e1\'fb\'f1\'f2\'f0\'ee \'ec\'e0\'f1\'f8\'f2\'e0\'e1\'e8\'f0\'ee\'e2\'e0\'f2\'fc. \'c8\'e3\'f0\'e0 \'f1\'e4\'f3\'e5\'f2\'f1\'ff \u8594? \'e1\'e0\'e7\'f3 \'f1\'e6\'e8\'ec\'e0\'e5\'ec \'ef\'ee \'ec\'e8\'ed\'e8\'ec\'f3\'ec\'f3.\par
+\par
+\'c2 SQL \'ec\'ee\'e6\'ed\'ee \'f1\'ee\'e7\'e4\'e0\'f2\'fc \'f1\'eb\'ee\'e6\'ed\'fb\'e9 \'e7\'e0\'ef\'f0\'ee\'f1, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 "\'ef\'ee\'e4\'e2\'e5\'f1\'e8\'f2" \'e1\'e0\'e7\'f3. \'c2 Mongo \'ed\'e5\'f2 \'f1\'eb\'ee\'e6\'ed\'fb\'f5 \'e7\'e0\'ef\'f0\'ee\'f1\'ee\'e2.\par
+\par
+\'d2\'f0\'e0\'ed\'e7\'e0\'ea\'f6\'e8\'e8 \'ed\'e5 \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'fe\'f2\'f1\'ff\lang1033\f1  -\lang1049\f0  \'ee\'e4\'ed\'e8\'ec \lang1033\f1 Query \lang1049\f0\'ed\'e5\'eb\'fc\'e7\'ff \'ea\'ee\'ed\'f1\'e8\'f1\'f2\'e5\'ed\'f2\'ed\'ee \'e8\'e7\'ec\'e5\'ed\'e8\'f2\'fc \'e4\'e0\'ed\'ed\'fb\'e5 \'e2 \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'e8\'f5 \'e4\'ee\'ea\'f3\'ec\'e5\'ed\'f2\'e0\'f5. Mongo \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'e5\'f2 \'e0\'f2\'ee\'ec\'e0\'f0\'ed\'ee\'f1\'f2\'fc \'ee\'e4\'ed\'ee\'e3\'ee \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'ee\'e3\'ee \'e4\'ee\'ea\'f3\'ec\'e5\'ed\'f2\'e0. \'d2.\'e5. \'e5\'f1\'eb\'e8 \'ed\'e0\'e4\'ee \'e8\'e7\'ec\'e5\'ed\'e8\'f2\'fc \'f7\'f2\'ee-\'f2\'ee \'e2 \'ee\'e4\'ed\'ee\'ec \'e4\'ee\'ea\'f3\'ec\'e5\'ed\'f2\'e5 - \'f2\'ee \'f2\'f3\'f2 \'f2\'f0\'e0\'ed\'e7\'e0\'ea\'f6\'e8\'ff \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2.\par
+\par
+\'c3\'e8\'e1\'ea\'e0\'ff \'ea\'ee\'ed\'f1\'e8\'f1\'f2\'e5\'ed\'f2\'ed\'ee\'f1\'f2\'fc (\'ea\'e0\'ea \'f1 Cassandra) - \'e3\'e0\'f0\'e0\'ed\'f2\'e8\'ff, \'f7\'f2\'ee \'e4\'e0\'ed\'ed\'fb\'e5 \'e7\'e0\'ef\'e8\'f1\'e0\'ed\'fb \'f2\'ee\'eb\'fc\'ea\'ee \'ed\'e0 \'ee\'e4\'e8\'ed \'f3\'e7\'e5\'eb \'ea\'eb\'e0\'f1\'f2\'e5\'f0\'e0 \'e8\'eb\'e8 \'e4\'e0\'ed\'ed\'fb\'e5 \'f0\'e5\'ef\'eb\'e8\'f6\'e8\'f0\'ee\'e2\'e0\'ed\'fb \'ed\'e0 \'e2\'f1\'e5 \'f3\'e7\'eb\'fb. \'c8\'eb\'e8 \'e2\'ee\'ee\'e1\'f9\'e5 \'ee\'f2\'ef\'f0\'e0\'e2\'e8\'eb UPDATE, \'e8 \'ee\'f2\'e2\'e5\'f2\'e0 \'ee\'f2 \'e1\'e0\'e7\'fb \'ed\'e5 \'e6\'e4\'b8\'ec.\par
+Write Concerns - \'e2 \'e7\'e0\'ef\'f0\'ee\'f1\'e5 \'ea Mongo \'ec\'ee\'e6\'e5\'ec \'f3\'ea\'e0\'e7\'fb\'e2\'e0\'f2\'fc \'f1\'ea\'ee\'eb\'fc\'ea\'ee Node \'e4\'ee\'eb\'e6\'ed\'ee \'ef\'ee\'e4\'f2\'e2\'e5\'f0\'e4\'e8\'f2\'fc, \'f7\'f2\'ee \'e4\'e0\'ed\'ed\'fb\'e5 \'e7\'e0\'ef\'e8\'f1\'e0\'eb\'e8\'f1\'fc. \{w: 2\} - \'e4\'ee\'eb\'e6\'ed\'ee \'e1\'fb\'f2\'fc \'e7\'e0\'ef\'e8\'f1\'e0\'ed\'ee \'ed\'e0 2-\'e5 Nodes. "majority" - \'ed\'e0 \'e1\'ee\'eb\'fc\'f8\'e8\'ed\'f1\'f2\'e2\'ee.\par
+Read Concerns - \'e2 Mongo \'ed\'e5 \'e2\'f1\'e5\'e3\'e4\'e0 \'ed\'e0 \'e2\'f1\'e5\'f5 Node \'e0\'ea\'f2\'f3\'e0\'eb\'fc\'ed\'e0\'ff \'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'ff, \'ef\'ee\'fd\'f2\'ee\'ec\'f3 \'f2\'f3\'f2 \'f2\'ee\'e6\'e5 \'ec\'ee\'e6\'ed\'ee \'f3\'f1\'f2\'e0\'ed\'e0\'e2\'eb\'e8\'e2\'e0\'f2\'fc \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'ff. \'cf\'ee deafult: "local".\par
+\par
+\i\'dd\'ea\'e7\'e5\'ec\'ef\'eb\'ff\'f0\i0  Mongo \'ec\'ee\'e6\'e5\'f2 \'f1\'ee\'e4\'e5\'f0\'e6\'e0\'f2\'fc\'f1\'ff \'e2 \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'e8\'f5 \i\'c1\'e0\'e7\'e0\'f5 \'e4\'e0\'ed\'ed\'fb\'f5\i0 .\par
+\'ca\'e0\'e6\'e4\'e0\'ff \i\'c1\'e0\'e7\'e0 \'e4\'e0\'ed\'ed\'fb\'f5\i0  \'f1\'ee\'e4\'e5\'f0\'e6\'e8\'f2 \'f1\'e2\'ee\'e8 \'f1\'ee\'e1\'f1\'f2\'e2\'e5\'ed\'ed\'fb\'e5 \i\'ca\'ee\'eb\'eb\'e5\'ea\'f6\'e8\'e8\i0  ~ "\'e4\'e8\'ed\'e0\'ec\'e8\'f7\'e5\'f1\'ea\'e8\'e5" \'f2\'e0\'e1\'eb\'e8\'f6\'fb \'e2 Oracle.\par
+\'d0\'e0\'e7\'e1\'e8\'e2\'e0\'e5\'ec \'ed\'e0 \i\'ca\'ee\'eb\'eb\'e5\'ea\'f6\'e8\'e8\i0 , \'e0 \'ed\'e5 \'ea\'eb\'e0\'e4\'b8\'ec \'e2\'f1\'b8 \'e2 \'ee\'e4\'ed\'f3 \'ea\'f3\'f7\'f3 \u8594? \'e4\'eb\'ff \'f3\'f1\'ea\'ee\'f0\'e5\'ed\'e8\'ff \'ef\'ee\'e8\'f1\'ea\'e0. \'c1\'fb\'f1\'f2\'f0\'e5\'e5 \'e8\'f1\'ea\'e0\'f2\'fc \'ef\'ee \'ea\'ee\'eb\'eb\'e5\'ea\'f6\'e8\'e8, \'f7\'e5\'ec \'ef\'ee \'e2\'f1\'e5\'e9 \'ea\'f3\'f7\'e5.\par
+\i\'c4\'ee\'ea\'f3\'ec\'e5\'ed\'f2\i0  \'ee\'f1\'ed\'ee\'e2\'ed\'e0\'ff \'e5\'e4\'e8\'ed\'e8\'f6\'e0 ~ \'f1\'f2\'f0\'ee\'ea\'e0 \'e2 Oracle. \'d3 \'ea\'e0\'e6\'e4\'ee\'e3\'ee \i\'c4\'ee\'ea\'f3\'ec\'e5\'ed\'f2\'e0\i0  \'f3\'ed\'e8\'ea\'e0\'eb\'fc\'ed\'fb\'e9 "_id" \'e2 \'f0\'e0\'ec\'ea\'e0\'f5 \i\'ca\'ee\'eb\'eb\'e5\'ea\'f6\'e8\'e8\i0 .\par
+\par
+\'c2 \'ea\'eb\'fe\'f7\'e5 \'ed\'e5\'eb\'fc\'e7\'ff \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'f1\'e8\'ec\'e2\'ee\'eb\'fb: . $\par
+\'c2 Mongo \'ea\'ee\'ed\'e5\'f6 \'f1\'f2\'f0\'ee\'ea\'e8 \'ee\'e1\'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2\'f1\'ff \\0.\par
+\{"count" : 5\}, \{"count" : "5"\}, \{"\'d1ount" : 5\} - \'fd\'f2\'ee \'e2\'f1\'b8 \'f0\'e0\'e7\'ed\'fb\'e5 \'e4\'ee\'ea\'f3\'ec\'e5\'ed\'f2\'fb\par
+\'cd\'e5\'eb\'fc\'e7\'ff \'e4\'e5\'eb\'e0\'f2\'fc \'f2\'e0\'ea: \{"\'f1ount" : 5, "\'f1ount" : 5\}\par
+\par
+\i\'d1\'f1\'fb\'eb\'ea\'e0\i0  - \'ea\'ee\'e3\'e4\'e0 \'e4\'ee\'ea\'f3\'ec\'e5\'ed\'f2 \'f1\'ee\'e4\'e5\'f0\'e6\'e8\'f2 id \'e4\'f0\'f3\'e3\'ee\'e3\'ee \'e4\'ee\'ea\'f3\'ec\'e5\'ed\'f2\'e0 ~ JOIN.\par
+\par
+\'d5\'f0\'e0\'ed\'e8\'f2 \'f6\'e5\'eb\'fb\'e5 \'e4\'ee\'ea\'f3\'ec\'e5\'ed\'f2\'fb (Document-Oriented DB) \'e2 \'e2\'e8\'e4\'e5 \lang1033\f1 B\lang1049\f0 SON\lang1033\f1  (Binary JSON)\lang1049\f0  \'e8\'eb\'e8 XML \'e2\'ed\'f3\'f2\'f0\'e8 chanks.\par
+\'cf\'f0\'e8 read/write \'e4\'ee\'ea\'f3\'ec\'e5\'ed\'f2 \'f1\'f7\'e8\'f2\'fb\'e2\'e0\'e5\'f2\'f1\'ff/\'ef\'e5\'f0\'e5\'e7\'e0\'ef\'e8\'f1\'fb\'e2\'e0\'e5\'f2\'f1\'ff \'ef\'ee\'eb\'ed\'ee\'f1\'f2\'fc\'fe. \'c5\'f1\'eb\'e8 "\'e4\'ee\'ea\'f3\'ec\'e5\'ed\'f2" \'e1\'ee\'eb\'fc\'f8\'ee\'e9, \'ef\'ee\'eb\'f3\'f7\'e8\'ec \'f2\'ee\'f0\'ec\'ee\'e7\'e0. \'d5\'ee\'f0\'ee\'f8\'ee \'e3\'ee\'f0\'e8\'e7\'ee\'ed\'f2\'e0\'eb\'fc\'ed\'ee \'ec\'e0\'f1\'f8\'f2\'e0\'e1\'e8\'f0\'f3\'e5\'f2\'f1\'ff. \'cf\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'e5\'f2 Sharding - Query \'ef\'f0\'e8\'eb\'e5\'f2\'e0\'e5\'f2 \'ed\'e0 Router-Mongos, \'e0 \'ee\'ed \'f3\'e6\'e5 \'ed\'e0 \'ee\'f1\'ed\'ee\'e2\'e0\'ed\'e8\'e8 \'e8\'ec\'e5\'ed\'e8 \'ea\'ee\'eb\'eb\'e5\'ea\'f6\'e8\'e8 \'e8 _id \'e7\'ed\'e0\'e5\'f2 \'ed\'e0 \'ea\'e0\'ea\'ee\'ec \'f1\'e5\'f0\'e2\'e5\'f0\'e5/chank \'f5\'f0\'e0\'ed\'ff\'f2\'f1\'ff \'e4\'e0\'ed\'ed\'fb\'e5. {\field{\*\fldinst{HYPERLINK "https://habr.com/en/post/217393/"}}{\fldrslt{\ul\cf2 https://habr.com/en/post/217393/}}}\f0\fs22\par
+JSON - \'fd\'f2\'ee \'e8\'e5\'f0\'e0\'f0\'f5\'e8\'f7\'e5\'f1\'ea\'e0\'ff \'ec\'ee\'e4\'e5\'eb\'fc \'ed\'e0\'ef\'ee\'e4\'ee\'e1\'e5 \'ea\'e0\'f2\'e0\'eb\'ee\'e3\'ee\'e2 Linux (\'ee\'e4\'e8\'ed \'f0\'ee\'e4\'e8\'f2\'e5\'eb\'fc, \'ec\'ed\'ee\'e3\'ee child). \'ce\'f2\'eb\'e8\'f7\'ed\'ee \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'f1 One-To-Many. \'cc\'ee\'e6\'ed\'ee \'f1\'f2\'f0\'ee\'e8\'f2\'fc \'f0\'e0\'e7\'eb\'e8\'f7\'ed\'fb\'e5 Index-\'fb.\par
+\par
+docker-compose.yml\par
+\tab version: '3.1'\par
+\tab services:\par
+\tab   mongo:\par
+\tab     image: mongo\par
+\tab     restart: always\par
+\tab     container_name: mongo\par
+\tab     environment:\par
+\tab       MONGO_INITDB_ROOT_USERNAME: root\par
+\tab       MONGO_INITDB_ROOT_PASSWORD: root\par
+#docker-compose up -d\par
+#docker exec -it mongo bash\par
+root@0e825a3a4f60:/# mongosh mongodb://localhost:27017 --username root --password root\tab\tab\'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e0\'e5\'ec\'f1\'ff \'ea \'e1\'e0\'e7\'e5.\par
+\par
+\'c2 \'e1\'e0\'e7\'e5 \'e8\'ec\'e5\'e5\'ec:\par
+\tab\{_id: ObjectId("5a93"), name: "Vasya", age: 15, lang: ["eng", "span"], "child": \{"name": "Kolya", "age": 5\}\}\par
+\tab\{_id: ObjectId("8\'e027"), name: "Petya", amount: 18, tel: [5763, 9886]\}\par
+\par
+> use \cf3\lang1033\b\f1 first\lang1049\f0 DB\cf0\b0\tab\tab\tab\tab\tab\'e2 \'ee\'e4\'ed\'ee\'e9 Mongo \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee \'e1\'e0\'e7. \'d2\'f3\'f2 \'e2\'fb\'e1\'e8\'f0\'e0\'e5\'ec \'f1 \'ea\'e0\'ea\'ee\'e9 \'e1\'f3\'e4\'e5\'f2 \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc.\par
+> db.\b someCollection\b0 .find(\{name:"Daha"\})\tab\'f2\'f3\'f2 \'e2\'fb\'e1\'e8\'f0\'e0\'e5\'ec \'f1 \'ea\'e0\'ea\'ee\'e9 \'ca\'ee\'eb\'eb\'e5\'ea\'f6\'e8\'e5\'e9 \'e1\'f3\'e4\'e5\'ec \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc\lang1033\f1 . db - \lang1049\f0\'f1\'f1\'fb\'eb\'ea\'e0 \'ed\'e0 \'f2\'e5\'ea\'f3\'f9\'f3\'fe \'e1\'e0\'e7\'f3 \'e4\'e0\'ed\'ed\'fb\'f5 \cf3\lang1033\b\f1 first\lang1049\f0 DB\cf0\b0\par
+\lang1033\f1 > use secondDB\tab\tab\tab\tab\tab\lang1049\f0\'f2\'e5\'ef\'e5\'f0\'fc \lang1033\f1 db \lang1049\f0\'e1\'f3\'e4\'e5\'f2 \'f3\'ea\'e0\'e7\'fb\'e2\'e0\'f2\'fc \'ed\'e0 \'e1\'e0\'e7\'f3 \lang1033\f1 secondDB\lang1049\f0\par
+\par
+\par
+\pard\kerning0\par
+\par
+\par
+\kerning1\ul Sharding\kerning0\ulnone\tab\tab\tab ID\tab First\tab\tab Last\tab\tab Color\par
+\tab\tab\tab\tab 1\tab\'c2\'e0\'f1\'ff\tab\tab\'c8\'e2\'e0\'ed\'ee\'e2\tab\'ca\'f0\'e0\'f1\'ed\'fb\'e9\par
+\tab\tab\tab\tab .....\par
+\tab\tab\tab\tab 99\tab\'cc\'e0\'f8\'e0\tab\tab\'cf\'e5\'f2\'f0\'ee\'e2\tab\'d1\'e8\'ed\'e8\'e9\par
+\tab\tab\tab\tab 100\tab\'ca\'e0\'f2\'ff\tab\tab\'d1\'e8\'e4\'ee\'f0\'ee\'e2\tab\'c6\'e5\'eb\'f2\'fb\'e9\par
+\tab\tab\tab\tab .....\par
+\tab\tab\tab\tab 199\tab\'cc\'e8\'f8\'e0\tab\tab\'cf\'ee\'ef\'ee\'e2\tab\tab\'c7\'e5\'eb\'b8\'ed\'fb\'e9\par
+\par
+\tab\'c3\'ee\'f0\'e8\'e7\'ee\'ed\'f2\'e0\'eb\'fc\'ed\'fb\'e9 \'e8\'eb\'e8 scaling out:\par
+\tab\tab\'cd\'e0 Host \'b91\tab\tab\tab\tab\tab\tab\tab\'cd\'e0 Host \'b92\par
+ID\tab First\tab\tab Last\tab\tab Color\tab\tab\tab ID\tab First\tab\tab Last\tab\tab Color\par
+1\tab\'c2\'e0\'f1\'ff\tab\tab\'c8\'e2\'e0\'ed\'ee\'e2\tab\'ca\'f0\'e0\'f1\'ed\'fb\'e9\tab\tab 100\tab\'ca\'e0\'f2\'ff\tab\tab\'d1\'e8\'e4\'ee\'f0\'ee\'e2\tab\'c6\'e5\'eb\'f2\'fb\'e9\par
+.....\tab\tab\tab\tab\tab\tab\tab\tab .....\par
+99\tab\'cc\'e0\'f8\'e0\tab\tab\'cf\'e5\'f2\'f0\'ee\'e2\tab\'d1\'e8\'ed\'e8\'e9\tab\tab\tab 199\tab\'cc\'e8\'f8\'e0\tab\tab\'cf\'ee\'ef\'ee\'e2\tab\tab\'c7\'e5\'eb\'b8\'ed\'fb\'e9\par
+\par
+\tab\'c2\'e5\'f0\'f2\'e8\'ea\'e0\'eb\'fc\'ed\'fb\'e9 \'e8\'eb\'e8 scaling up:\par
+\tab\tab\'cd\'e0 Host \'b91\tab\tab\tab\tab\tab\tab\tab\'cd\'e0 Host \'b92\par
+ID\tab First\tab\tab Last\tab\tab\tab\tab\tab ID\tab Color\tab\par
+1\tab\'c2\'e0\'f1\'ff\tab\tab\'c8\'e2\'e0\'ed\'ee\'e2\tab\tab\tab\tab 1\tab\'ca\'f0\'e0\'f1\'ed\'fb\'e9\par
+2\tab\'cc\'e0\'f8\'e0\tab\tab\'cf\'e5\'f2\'f0\'ee\'e2\tab\tab\tab\tab 2\tab\'d1\'e8\'ed\'e8\'e9\tab\par
+3\tab\'ca\'e0\'f2\'ff\tab\tab\'d1\'e8\'e4\'ee\'f0\'ee\'e2\tab\tab\tab\tab 3\tab\'c6\'e5\'eb\'f2\'fb\'e9\par
+4\tab\'cc\'e8\'f8\'e0\tab\tab\'cf\'ee\'ef\'ee\'e2\tab\tab\tab\tab\tab 4\tab\'c7\'e5\'eb\'b8\'ed\'fb\'e9\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\kerning1\par
+}
+ 

@@ -1,0 +1,59 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1049{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}}
+{\colortbl ;\red0\green0\blue255;\red0\green0\blue0;}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\nowidctlpar\hyphpar0\sl240\slmult1\kerning1\b\f0\fs22\'d0\'e0\'f1\'ef\'e0\'f0\'e0\'eb\'eb\'e5\'eb\'e8\'e2\'e0\'ed\'e8\'e5\par
+\par
+\b0{\field{\*\fldinst{HYPERLINK "http://onreader.mdl.ru/DatabaseInternals/content/Ch08.html"}}{\fldrslt{\ul\cf1 http://onreader.mdl.ru/DatabaseInternals/content/Ch08.html}}}\f0\fs22\par
+\par
+IoC - Inversion of Control - \'c8\'ed\'e2\'e5\'f0\'f1\'e8\'ff \'f3\'ef\'f0\'e0\'e2\'eb\'e5\'ed\'e8\'ff - \'ef\'f0\'e8\'ed\'f6\'e8\'ef\'fb\\\'f0\'e5\'ea\'ee\'ec\'e5\'ed\'e4\'e0\'f6\'e8\'e8 \'e4\'eb\'ff \'f1\'ee\'e7\'e4\'e0\'ed\'e8\'ff \'f1\'eb\'e0\'e1\'ee \'f1\'e2\'ff\'e7\'e0\'ed\'ed\'ee\'e3\'ee \'ea\'ee\'e4\'e0. \'ca\'e0\'e6\'e4\'fb\'e9 \'ea\'ee\'ec\'ef\'ee\'ed\'e5\'ed\'f2 \'e4\'ee\'eb\'e6\'e5\'ed \'e1\'fb\'f2\'fc \'ec\'e0\'ea\'f1\'e8\'ec\'e0\'eb\'fc\'ed\'ee "\'e8\'e7\'ee\'eb\'e8\'f0\'ee\'e2\'e0\'ed" \'ee\'f2 \'e4\'f0\'f3\'e3\'e8\'f5.\par
+\par
+\'d0\'e5\'e0\'eb\'e8\'e7\'e0\'f6\'e8\'e8 IoC:\par
+\tab FM - Factory Method\par
+\tab SL - Service Locator \'e2 Spring = JNDI\par
+\tab DI - Dependency Injection - \'c2\'ed\'e5\'e4\'f0\'e5\'ed\'e8\'e5 \'e7\'e0\'e2\'e8\'f1\'e8\'ec\'ee\'f1\'f2\'e5\'e9 - \'e2 \'ee\'e1\'fb\'f7\'ed\'ee\'ec \'d1++ \'f1\'ee\'e7\'e4\'e0\'b8\'f2\'f1\'ff \'ea\'eb\'e0\'f1\'f1 View (\'ef\'f0\'e5\'e4\'f1\'f2\'e0\'e2\'eb\'e5\'ed\'e8\'e5 \'e4\'eb\'ff \'f0\'e0\'e7\'ed\'fb\'f5 HTTP, Mobile \'e8 \'f2.\'e4.) + Model (\'f1\'e0\'ec \'e4\'e2\'e8\'e6\'ee\'ea). \'c2 \'ec\'ee\'e4\'e5\'eb\'e8 DI \'ec\'e5\'e6\'e4\'f3 \'fd\'f2\'e8\'ec\'e8 \'ea\'eb\'e0\'f1\'f1\'e0\'ec\'e8 \'e5\'f9\'b8 \'f1\'ee\'e7\'e4\'e0\'b8\'f2\'f1\'ff 3-\'e8\'e9 \'ea\'eb\'e0\'f1\'f1 - \'ea\'e0\'ea-\'f2\'ee \'fd\'f2\'ee \'ef\'ee\'e7\'e2\'ee\'eb\'ff\'e5\'f2 \'f0\'e0\'f1\'ef\'e0\'f0\'e0\'eb\'eb\'e5\'eb\'e8\'e2\'e0\'f2\'fc \'e7\'e0\'e4\'e0\'f7\'e8???\par
+\par
+\'cf\'f0\'ee\'e8\'e7\'e2\'ee\'e4\'e8\'f2\'e5\'eb\'fc\'ed\'ee\'f1\'f2\'fc\tab - 1000 \'ee\'ef\'e5\'f0\'e0\'f6\'e8\'e9\\\'f1\'e5\'ea.\par
+\'cb\'e0\'f2\'e5\'ed\'f2\'ed\'ee\'f1\'f2\'fc\tab\tab - 1000 \'ee\'ef\'e5\'f0\'e0\'f6\'e8\'e9\\\'f1\'e5\'ea, \'ed\'ee \'ea\'e0\'e6\'e4\'fb\'e9 \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'fc \'e6\'e4\'b8\'f2 \'ef\'ee 30 \'f1\'e5\'ea \'f0\'e5\'e7\'f3\'eb\'fc\'f2\'e0\'f2\'fb \'e7\'e0\'ef\'f0\'ee\'f1\'e0.\par
+\'cc\'e0\'f1\'f8\'f2\'e0\'e1\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'e5\tab - \'e2\'e5\'f0\'f2\'e8\'ea\'e0\'eb\'fc\'ed\'ee\'e5 (+RAM, +CPU, +Disk); \'e3\'ee\'f0\'e8\'e7\'ee\'ed\'f2\'e0\'eb\'fc\'ed\'ee\'e5 (\'ef\'ee\'f1\'f2\'e0\'e2\'e8\'f2\'fc \'f0\'ff\'e4\'ee\'ec \'e5\'f9\'b8 10 \'f2\'e0\'ea\'e8\'f5 \'e6\'e5 \'f1\'e5\'f0\'e2\'e5\'f0\'ee\'e2).\par
+\'ce\'f2\'ea\'e0\'e7\'ee\'f3\'f1\'f2\'ee\'e9\'f7\'e8\'e2\'ee\'f1\'f2\'fc - \'e8 \'e2\'f0\'e5\'ec\'ff \'e2\'ee\'f1\'f1\'f2\'e0\'ed\'ee\'e2\'eb\'e5\'ed\'e8\'ff.\par
+\'ca\'ee\'ed\'f1\'e8\'f1\'f2\'e5\'ed\'f2\'ed\'ee\'f1\'f2\'fc - \'e7\'e0\'f7\'e8\'f1\'eb\'e5\'ed\'e8\'e5 \'e4\'e5\'ed\'e5\'e3 \'ef\'f0\'ee\'e8\'e7\'ee\'f8\'eb\'ee, \'e0 \'f1\'ef\'e8\'f1\'e0\'ed\'e8\'e5 \'ed\'e5\'f2. \'c8\'eb\'e8 \'ed\'e0\'ee\'e1\'ee\'f0\'ee\'f2 \'f1\'ef\'e8\'f1\'e0\'eb\'ee\'f1\'fc \'e4\'e2\'e0 \'f0\'e0\'e7\'e0. \'c2 \'f0\'e0\'f1\'ef\'f0\'e5\'e4\'e5\'eb\'b8\'ed\'ed\'fb\'f5 \'f1\'e8\'f1\'f2\'e5\'ec\'e0\'f5 \'e7\'e0 \'fd\'f2\'e8\'ec \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee \'f1\'eb\'e5\'e4\'e8\'f2\'fc \'ee\'f7\'e5\'ed\'fc \'f2\'f9\'e0\'f2\'e5\'eb\'fc\'ed\'ee.\par
+\par
+\'dd\'f2\'e0\'ef 1.\par
+\'ce\'e4\'e8\'ed \'f1\'e5\'f0\'e2\'e5\'f0 DB. \'c2\'f1\'e5 \'ea\'eb\'e8\'e5\'ed\'f2\'fb \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e0\'fe\'f2\'f1\'ff \'ea DB \'e8 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'fe\'f2 SQL \'e7\'e0\'ef\'f0\'ee\'f1\'fb \'ed\'e0\'ef\'f0\'ff\'ec\'f3\'fe.\par
+\par
+\'dd\'f2\'e0\'ef 2.\par
+\'ca\'eb\'e8\'e5\'ed\'f2 - \'fd\'f2\'ee \'e1\'f0\'e0\'f3\'e7\'e5\'f0 JavaScript. \'d1\'e5\'f0\'e2\'e5\'f0 \'ef\'f0\'e8\'eb\'ee\'e6\'e5\'ed\'e8\'e9 - Application server \'ed\'e0 Java. \'c8 \'e2\'f1\'b8 \'f2\'e0 \'e6\'e5 DB.\par
+\par
+\'dd\'f2\'e0\'ef 3.\par
+\'cc\'e5\'e6\'e4\'f3 \'ea\'eb\'e8\'e5\'ed\'f2\'ee\'ec \'e8 App Ser \'f3\'f1\'f2\'e0\'ed\'e0\'e2\'eb\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'d1\'e5\'f0\'e2\'e5\'f0 \'ee\'f7\'e5\'f0\'e5\'e4\'e5\'e9 \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'e9 (load-balance).\par
+\par
+\par
+\b\'cc\'e0\'f1\'f8\'f2\'e0\'e1\'e8\'f0\'f3\'e5\'ec\'ee\'f1\'f2\'fc\b0\par
+{\field{\*\fldinst{HYPERLINK "https://dzone.com/articles/the-basics-of-scaling-java-ee-applications"}}{\fldrslt{\ul\cf1 https://dzone.com/articles/the-basics-of-scaling-java-ee-applications}}}\f0\fs22\par
+\par
+High Availability \cf2\u8800?\cf0  Scalability.\par
+Scalability - \'f3\'e2\'e5\'eb\'e8\'f7\'e8\'f2\'fc \'ea\'ee\'eb-\'e2\'ee \'ee\'e4\'ed\'ee\'e2\'f0\'e5\'ec\'e5\'ed\'ed\'ee \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e5\'ed\'ed\'fb\'f5 \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'e5\'e9 \'f1 \'ef\'ee\'ec\'ee\'f9\'fc\'fe \'ea\'eb\'e0\'f1\'f2\'e5\'f0\'e8\'e7\'e0\'f6\'e8\'e8. \'cd\'ee \'fd\'f2\'ee \'ed\'e5 \'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2, \'f7\'f2\'ee \'e5\'f1\'eb\'e8 \'ee\'e4\'e8\'ed \'f1\'e5\'f0\'e2\'e5\'f0 \'f1\'e4\'ee\'f5\'ed\'e5\'f2, \'e4\'f0\'f3\'e3\'ee\'e9 \'ef\'ee\'e4\'f2\'ff\'ed\'e5\'f2 \'f2\'e5\'f5 \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'e5\'e9.\par
+High Availability - \'e1\'fb\'f1\'f2\'f0\'ee \'ef\'ee\'e4\'ed\'ff\'f2\'fc \'ed\'ee\'e2\'f3\'fe node \'e8 \'ef\'f0\'ee\'e4\'ee\'eb\'e6\'e8\'f2\'fc \'f0\'e0\'e1\'ee\'f2\'f3. Active - Standby.\par
+\par
+\'cf\'f0\'e8\'eb\'ee\'e6\'e5\'ed\'e8\'e5 Stateless \'e8\'eb\'e8 Stateful? Stateless - \'ea\'e0\'e6\'e4\'fb\'e9 \'e7\'e0\'ef\'f0\'ee\'f1 \'ee\'f2 \'ea\'eb\'e8\'e5\'ed\'f2\'e0 \'ea \'f1\'e5\'f0\'e2\'e5\'f0\'f3 \'e4\'ee\'eb\'e6\'e5\'ed \'f1\'ee\'e4\'e5\'f0\'e6\'e0\'f2\'fc \'e2 \'f1\'e5\'e1\'e5 \'e2\'f1\'fe \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'f3\'fe \'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'fe \'e8 \'ed\'e5 \'ec\'ee\'e6\'e5\'f2 \'ef\'ee\'eb\'e0\'e3\'e0\'f2\'fc\'f1\'ff \'ed\'e0 \'ea\'e0\'ea\'ee\'e5-\'eb\'e8\'e1\'ee \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e5, \'f5\'f0\'e0\'ed\'ff\'f9\'e5\'e5\'f1\'ff \'ed\'e0 \'f1\'f2\'ee\'f0\'ee\'ed\'e5 \'f1\'e5\'f0\'e2\'e5\'f0\'e0. \'d2\'e0\'ea\'e8\'ec \'ee\'e1\'f0\'e0\'e7\'ee\'ec, \'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'ff \'ee \'f2\'e5\'ea\'f3\'f9\'e5\'e9 \'f1\'e5\'f1\'f1\'e8\'e8 \'e4\'ee\'eb\'e6\'ed\'e0 \'f6\'e5\'eb\'e8\'ea\'ee\'ec \'f5\'f0\'e0\'ed\'e8\'f2\'fc\'f1\'ff \'f3 \'ea\'eb\'e8\'e5\'ed\'f2\'e0.\par
+\tab\tab    Client\par
+\tab\tab\tab |\par
+\tab\tab Load Balancer\par
+\tab\tab\tab |\par
+Node1\tab\tab    Node2\tab\tab Node3\par
+\par
+\'c2\'f1\'b8 \'eb\'e8 \'e1\'f3\'e4\'e5\'f2 \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc \'e5\'f1\'eb\'e8 \'ea\'eb\'e8\'e5\'ed\'f2 \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'f7\'e5\'f0\'e5\'e7 Node2, \'ee\'ed\'e0 \'e2\'fb\'f5\'ee\'e4\'e8\'f2 \'e8\'e7 \'f1\'f2\'f0\'ee\'ff, \'e1\'e0\'eb\'e0\'ed\'f1\'e8\'f0\'ee\'e2\'f9\'e8\'ea \'ef\'e5\'f0\'e5\'ea\'eb\'fe\'f7\'e0\'e5\'f2 \'ed\'e0 Node1. \'c8\'eb\'e8 \'f1\'e0\'ec \'e1\'e0\'eb\'e0\'ed\'f1\'e8\'f0\'ee\'e2\'f9\'e8\'ea \'ea\'e0\'e6\'e4\'fb\'e9 \'ef\'e0\'ea\'e5\'f2 random \'f0\'e0\'f1\'ea\'e8\'e4\'fb\'e2\'e0\'e5\'f2 \'ed\'e0 Node-\'fb.\par
+HTTP \'f1\'e5\'f1\'f1\'e8\'e8 \'ea\'e0\'ea \'ef\'f0\'e0\'e2\'e8\'eb\'ee Stateful, \'f2.\'e5. \'ec\'ee\'e3\'f3\'f2 \'f5\'f0\'e0\'ed\'e8\'f2\'fc authentication, \'ed\'ee\'ec\'e5\'f0 \'ea\'f0\'e5\'e4\'e8\'f2\'ed\'ee\'e9 \'ea\'e0\'f0\'f2\'fb \'e8 \'f2.\'ef.\par
+\par
+Sticky Sessions.\par
+\'d0\'e5\'e6\'e8\'ec \'f0\'e0\'e1\'ee\'f2\'fb \'e1\'e0\'eb\'e0\'ed\'f1\'e8\'f0\'ee\'e2\'f9\'e8\'ea\'e0, \'ea\'ee\'e3\'e4\'e0 \'ee\'e4\'ed\'f3 \'e8 \'f2\'f3 \'e6\'e5 \'f1\'e5\'f1\'f1\'e8\'fe \'e2\'f1\'e5\'e3\'e4\'e0 \'ef\'e5\'f0\'e5\'ed\'e0\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \'ed\'e0 \'ee\'e4\'e8\'ed \'e8 \'f2\'ee\'f2 \'e6\'e5 Node.\par
+\par
+Replicated Cluster.\par
+\'cd\'e0 \'ea\'e0\'e6\'e4\'ee\'e9 Node \'e2 \'ef\'e0\'ec\'ff\'f2\'e8 \'eb\'e5\'e6\'e0\'f2 \'e4\'e0\'ed\'ed\'fb\'e5 \'ee \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'ee\'e9 \'f1\'e5\'f1\'f1\'e8\'e8 (HTTP session data, EJB, JMS \'ee\'f7\'e5\'f0\'e5\'e4\'e8) \'e8 \'e4\'e2\'e8\'e6\'ee\'ea JVM \'fd\'f2\'e8 \'e4\'e0\'ed\'ed\'fb\'e5 \'ef\'e5\'f0\'e5\'f1\'fb\'eb\'e0\'e5\'f2 \'ed\'e0 \'ea\'e0\'e6\'e4\'f3\'fe Node-\'f3. \'c2 \'e8\'f2\'ee\'e3\'e5 \'ed\'e0 \'ea\'e0\'e6\'e4\'ee\'e9 Node \'e5\'f1\'f2\'fc online \'e4\'e0\'ed\'ed\'fb\'e5 \'ee\'e1\'ee \'e2\'f1\'e5\'f5 \'f1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'fe\'f9\'e8\'f5 \'f1\'e5\'f1\'f1\'e8\'ff\'f5. \'c2 \'f1\'eb\'f3\'f7\'e0\'e5 \'e2\'fb\'f5\'ee\'e4\'e0 \'e8\'e7 \'f1\'f2\'f0\'ee\'ff \'ee\'e4\'ed\'ee\'e9 \'e8\'e7 Node, \'e1\'e0\'eb\'e0\'ed\'f1\'e8\'f0\'ee\'e2\'f9\'e8\'ea \'ef\'e5\'f0\'e5\'ea\'eb\'fe\'f7\'e8\'f2 \'f1\'e5\'f1\'f1\'e8\'fe \'ed\'e0 \'ef\'e5\'f0\'e2\'f3\'fe \'ef\'ee\'ef\'e0\'e2\'f8\'f3\'fe\'f1\'ff Node, \'e8 \'e2\'f1\'b8 \'e1\'f3\'e4\'e5\'f2 \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc.\par
+\par
+Distributed Cache \cf2\u8800?\cf0  Replicated.\par
+\'cc\'ee\'e6\'ed\'ee \'e4\'e0\'ed\'ed\'fb\'e5 \'ee \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'ee\'e9 \'f1\'e5\'f1\'f1\'e8\'e8 \'f1\'e5\'f1\'f1\'e8\'e8 \'ed\'e5 \'f0\'e0\'f1\'f1\'fb\'eb\'e0\'f2\'fc \'ef\'ee \'e2\'f1\'e5\'ec Node-\'e0\'ec, \'e0 \'ef\'e5\'f0\'e5\'e4\'e0\'f2\'fc \'f2\'ee\'eb\'fc\'ea\'ee \'ea\'e0\'ea\'ee\'e9-\'f2\'ee \'ee\'e4\'ed\'ee\'e9 \'e8\'eb\'e8 2-\'ec. - \'fd\'ea\'ee\'ed\'ee\'ec\'e8\'ff \'ef\'e0\'ec\'ff\'f2\'e8, \'ed\'ee \'f2\'f3\'f2 \'ef\'f0\'ee\'e1\'eb\'e5\'ec\'fb \'eb\'e8\'e1\'ee \'f1 \'e1\'e0\'eb\'e0\'ed\'f1\'e8\'f0\'ee\'e2\'f9\'e8\'ea\'ee\'ec, \'eb\'e8\'e1\'ee Node, \'ea\'ee\'f2\'ee\'f0\'e0\'ff \'ef\'ee\'e4\'f5\'e2\'e0\'f2\'e8\'f2 \'f1\'e5\'f1\'f1\'e8\'fe \'f1 \'f3\'ef\'e0\'e2\'f8\'e5\'e3\'ee \'f1\'e5\'f0\'e2\'e0\'ea\'e0, \'e4\'ee\'eb\'e6\'ed\'e0 \'ea\'e0\'ea-\'f2\'ee \'e2 \'fd\'f2\'ee\'ec Distributed Cache \'ed\'e0\'e9\'f2\'e8 \'ed\'f3\'e6\'ed\'f3\'fe \'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'fe.\par
+\par
+\'c2\'ed\'e5\'f8\'ed\'e8\'e5 \'f5\'f0\'e0\'ed\'e8\'eb\'e8\'f9\'e0 \'e4\'eb\'ff Stateful \'ea\'ee\'ec\'ef\'ee\'ed\'e5\'ed\'f2.\par
+\'c4\'e0\'ed\'ed\'fb\'e5 \'ee \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'ee\'e9 \'f1\'e5\'f1\'f1\'e8\'e8 (HTTP session data, EJB, JMS \'ee\'f7\'e5\'f0\'e5\'e4\'e8) \'ef\'f0\'ee\'f9\'e5 \'ed\'e5 \'f0\'e0\'e7\'ec\'e0\'e7\'fb\'e2\'e0\'f2\'fc \'ef\'ee \'e2\'f1\'e5\'ec Node-\'e0\'ec, \'e0 \'f5\'f0\'e0\'ed\'e8\'f2\'fc \'e2 \'ee\'e1\'f9\'e5\'e9 \'e4\'eb\'ff \'e2\'f1\'e5\'f5 \'e1\'e0\'e7\'e5. \'dd\'f2\'ee \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc \'e2\'fb\'e4\'e5\'eb\'e5\'ed\'ed\'e0\'ff Node-\'e0, \'ea\'ee\'f2\'ee\'f0\'e0\'ff \'f5\'f0\'e0\'ed\'e8\'f2 \'e4\'e0\'ed\'ed\'fb\'e5 \'ee \'e2\'f1\'e5\'f5 \'f1\'e5\'f1\'f1\'e8\'ff\'f5 \'e8\'eb\'e8 \'e2\'ed\'e5\'f8\'ed\'ff\'ff DB.\par
+}
+ 

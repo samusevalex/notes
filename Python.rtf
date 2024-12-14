@@ -1,0 +1,1303 @@
+{\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}{\f1\fnil\fcharset0 Courier New;}}
+{\colortbl ;\red0\green0\blue0;\red127\green0\blue85;\red0\green0\blue255;\red255\green0\blue0;\red192\green80\blue77;\red0\green77\blue187;\red155\green0\blue211;\red255\green192\blue0;\red0\green176\blue80;\red247\green150\blue70;\red0\green120\blue38;\red0\green153\blue0;\red209\green144\blue73;}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\nowidctlpar\hyphpar0\sl240\slmult1\lang1049\kerning1\f0\fs22 #!/usr/bin/env python\lang1033\f1 3\lang1049\f0\par
+\par
+\cf1\kerning0\'e2 Python \'ea\'e0\'e2\'fb\'f7\'ea\'e8 '\'ee\'e4\'e8\'ed\'e0\'f0\'ed\'fb\'e5' = "\'e4\'e2\'ee\'e9\'ed\'fb\'ec"\cf0\kerning1\par
+\par
+echo "Hello" | python3 -c "import sys; print(sys.stdin.readlines()[0])"\par
+\cf1\kerning0\par
+python spam.py > a.txt\tab\'e2\'e5\'f1\'fc \'e2\'fb\'e2\'ee\'e4 \'e1\'f3\'e4\'e5\'f2 \'e7\'e0\'ef\'e8\'f1\'e0\'ed \'e2 \'f4\'e0\'e9\'eb\cf0\kerning1\par
+\cf1\kerning0 python spam.py < a.txt\tab\'e5\'f1\'eb\'e8 \'e2 \'f1\'ea\'f0\'e8\'ef\'f2\'e5 \'e1\'f3\'e4\'e5\'f2 \'ea\'ee\'ec\'e0\'ed\'e4\'e0 input, \'f2\'ee \'e2\'f5\'ee\'e4 \'e1\'f3\'e4\'e5\'f2 \'e2\'e7\'ff\'f2 \'e8\'e7 \'f4\'e0\'e9\'eb\'e0\cf0\kerning1\par
+\par
+name = 'Chris'\par
+print(f'Hello \{name\}')\par
+\par
+async def foo() \'e8 await\tab\'e2\'ee\'ef\'f0\'ee\'f1 \'ed\'e0 \'f1\'ee\'e1\'e5\'f1\'e5. \'d3 Python \'e5\'f1\'f2\'fc global interpreter lock, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'ed\'e5 \'ef\'ee\'e7\'e2\'ee\'eb\'ff\'e5\'f2 \'ee\'e4\'ed\'ee\'e2\'f0\'e5\'ec\'e5\'ed\'ed\'ee \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'f2\'fc \'e1\'ee\'eb\'e5\'e5 \'ee\'e4\'ed\'ee\'e3\'ee \'ef\'ee\'f2\'ee\'ea\'e0. \'c3\'e4\'e5 \'e1\'ee\'eb\'fc\'f8\'ee\'e5 I/O \'ee\'e6\'e8\'e4\'e0\'ed\'e8\'e5, \'ea\'ee\'e4 \'ef\'e8\'f8\'f3\'f2 \'c0\'f1\'e8\'ed\'f5\'f0\'ee\'ed\'ed\'ee.\par
+\par
+\par
+\cf2\b with\cf0\b0  open('input.txt', 'r') \cf2\b as\cf0\b0  f:\tab\'ee\'f2\'ea\'f0\'fb\'e2\'e0\'e5\'f2 \'e8 \'ee\'f1\'e2\'ee\'e1\'ee\'e6\'e4\'e0\'e5\'f2 \'f0\'e5\'f1\'f3\'f0\'f1\'fb\par
+\tab f. ...\tab\tab\tab\tab\tab\'f0\'e0\'e1\'ee\'f2\'e0\'e5\'ec \'f1 \'f4\'e0\'e9\'eb\'ee\'ec\par
+print(\tab\tab\tab\tab\tab\tab\'f2\'f3\'f2 python \'f1\'e0\'ec \'f1\'e4\'e5\'eb\'e0\'e5\'f2 close(f)\par
+\par
+\cf2\b yield\cf0\b0  ~ \cf2\b return\cf0\b0  \'ef\'f0\'e8 \'ef\'ee\'e2\'f2\'ee\'f0\'ed\'ee\'ec \'e2\'fb\'e7\'ee\'e2\'e5, \'f4\'f3\'ed\'ea\'f6\'e8\'ff \'ed\'e0\'f7\'ed\'b8\'f2 \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'f2\'fc\'f1\'ff \'f1 \'e8\'ed\'f1\'f2\'f0\'f3\'ea\'f6\'e8\'e8 \'f1\'eb\'e5\'e4\'f3\'fe\'f9\'e5\'e9 \'e7\'e0 \cf2\b yield\cf0\b0 .\par
+\par
+\cf2\b try\cf0\b0 :\par
+\tab k = 1 / 0\par
+\cf2\b expect\cf0\b0  ZeroDivisionError:\par
+\tab k = 0\tab\tab\tab\'f1\'f5\'ee\'e6\'e0\'ff \'f1 Java \'e8\'e5\'f0\'e0\'f0\'f5\'e8\'ff \'e8\'f1\'ea\'eb\'fe\'f7\'e5\'ed\'e8\'e9: BaseException, Exception, ArithmeticError, BufferError, EOFError, ImportError, MemoryError, NameError, OSError, ConnectionError, FileExistsError \'e8 \'f2.\'e4.\par
+\cf2\b finally\cf0\b0 :\par
+{\field{\*\fldinst{HYPERLINK "https://pythonworld.ru/tipy-dannyx-v-python/isklyucheniya-v-python-konstrukciya-try-except-dlya-obrabotki-isklyuchenij.html"}}{\fldrslt{\ul\cf3 https://pythonworld.ru/tipy-dannyx-v-python/isklyucheniya-v-python-konstrukciya-try-except-dlya-obrabotki-isklyuchenij.html}}}\f0\fs22\par
+\par
+\par
+\'d4\'f3\'ed\'ea\'f6\'e8\'ff \'e2 Python - \'fd\'f2\'ee \'ee\'e1\'fa\'e5\'ea\'f2:\par
+\cf2\b\tab def\cf0\b0  func():\par
+\tab\tab print("Hello world")\par
+>>> func()\tab\tab\'ed\'e5\'ef\'ee\'f1\'f0\'e5\'e4\'f1\'f2\'e2\'e5\'ed\'ed\'fb\'e9 \'e2\'fb\'e7\'ee\'e2 \'f4\'f3\'ed\'ea\'f6\'e8\'e8\par
+Hello world\par
+>>> func\tab\tab "\'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'ff" \'ee\'e1 \'ee\'e1\'fa\'e5\'ea\'f2\'e5\par
+<function func at 0x7faa8c287820>\par
+\par
+\'c5\'f9\'b8 \'ef\'f0\'e8\'ec\'e5\'f0 \'ea\'e0\'ea \'ec\'ee\'e6\'ed\'ee \'e4\'e5\'eb\'e0\'f2\'fc \cf2\b return\cf0\b0  function\par
+\cf2\b\tab def\cf0\b0  foo():\par
+\tab\tab\cf2\b def\cf0\b0  func():\par
+\tab\tab\tab print("Hello world")\par
+\cf2\b\tab\tab return\cf0\b0  func\par
+>>> var = foo()\par
+>>> var()\par
+Hello world\par
+\par
+\par
+\par
+Walrus Operator := \'ef\'ee\'e7\'e2\'ee\'eb\'ff\'e5\'f2 \'ef\'f0\'e8\'f1\'e2\'ee\'e8\'f2\'fc \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'ee\'e9 \'e8 \'e2\'e5\'f0\'ed\'f3\'f2\'fc \'fd\'f2\'ee \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5.\par
+>>> print(num := 15)\par
+15\par
+>>> print(num = 15)\par
+\cf4\kerning0\b TypeError\cf0\kerning1\b0\par
+\par
+\cf2\b while\cf0\b0  line := f.readline().rstrip()\tab\tab\'f7\'e8\'f2\'e0\'e5\'ec \'f4\'e0\'e9\'eb f \'ef\'ee\'f1\'f2\'f0\'ee\'f7\'ed\'ee\par
+\cf2\b while\cf0\b0  (command := input("> ")) != "quit"\tab\'f7\'e8\'f2\'e0\'e5\'ec \'f2\'ee \'f7\'f2\'ee \'e2\'e2\'ee\'e4\'e8\'ec \'e2 \'ea\'ee\'ed\'f1\'ee\'eb\'e8 \'e4\'ee "quit"\par
+\cf2\b if\cf0\b0  (n := len(a)) > 10\par
+\par
+\cf1 Python IDLE:\cf0\par
+\cf1 CTRL+J \'f5\'ee\'f2\'e8\'ec \'ed\'e0\'ef\'e8\'f1\'e0\'f2\'fc \'ea\'ee\'ec\'e0\'ed\'e4\'f3 \'e2 \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee \'f1\'f2\'f0\'ee\'ea \'e2 Python shell \'e8\'eb\'e8 \'e7\'ed\'e0\'f7\'ee\'ea \\\cf0\par
+\cf1 TAB\tab autocompletion\cf0\par
+\cf1 F5\tab\'ee\'f2\'ea\'f0\'fb\'eb\'e8 \'ed\'ee\'e2\'fb\'e9 \'f4\'e0\'e9\'eb \'e8 Run\cf0\par
+\cf1\par
+\cf0\par
+\cf1\ul\'cd\'c5\'c8\'c7\'cc\'c5\'cd\'df\'c5\'cc\'db\'c5\ulnone\tab\tab\tab\tab\tab\tab\ul\'c8\'c7\'cc\'c5\'cd\'df\'c5\'cc\'db\'c5\cf0\ulnone\par
+\cf1\'d7\'c8\'d1\'cb\'c0\tab\tab x = 123\tab\tab\tab\tab\tab List\tab\tab x = ["aaa", 'b', 12], x[2]\u8594?12\cf0\par
+\cf1\kerning0 String\tab x = 'abc', x[2]\kerning1\u8594?'c'\kerning0\tab\tab\tab\kerning1 Set\tab\tab x = \{'a', 'b', 'c'\}\cf0\par
+\cf1\kerning0\'ca\'ce\'d0\'d2\'c5\'c6\'c8\tab x = ("aaa", 'b', 12), x[2]\kerning1\u8594?12\tab\kerning0\'d1\'cb\'ce\'c2\'c0\'d0\'c8\tab x = \{'a':1, 'b':2, 'c':3\}, x[2]\kerning1\u8594? \'f2\'f3\'f2 \'f2\'e0\'ea \'e4\'e5\'eb\'e0\'f2\'fc \'ed\'e5\'eb\'fc\'e7\'ff, \'ec\'ee\'e6\'ed\'ee \'e4\'e5\'eb\'e0\'f2\'fc \'f2\'e0\'ea x['b'] \u8594? 2\cf0\par
+\cf1\kerning0\par
+\'cf\'e5\'f0\'e5\'e4\'e0\'f7\'e0 \'ef\'ee \'f1\'f1\'fb\'eb\'ea\'e5 \'e8 \'ef\'ee \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'fe. \'c7\'e0\'e2\'e8\'f1\'e8\'f2 \'ee\'f2 \ul\'e8\'e7\'ec\'e5\'ed\'ff\'e5\'ec\'ee\'f1\'f2\'e8\ulnone  \'ee\'e1\'fa\'e5\'ea\'f2\'e0:\cf0\kerning1\par
+\cf1\kerning0\par
+\i\tab\'cf\'f0\'e8\'ec\'e5\'f0 \'b91\i0 :\cf0\kerning1\par
+\cf2\kerning0\b def\cf1\b0  foo(bar):\cf0\kerning1\par
+\cf1\kerning0   print(bar, id(bar)) \kerning1\u8594? \b bar \'f1\'f1\'fb\'eb\'e0\'e5\'f2\'f1\'ff \'ed\'e0 \'ee\'e1\'fa\'e5\'ea\'f2 c id=108612 \'e8 =10\cf0\b0\par
+\cf1\kerning0   bar=3 \kerning1\u8594? \'f2\'e5\'ef\'e5\'f0\'fc \kerning0 bar \'f1\'f1\'fb\'eb\'e0\'e5\'f2\'f1\'ff \'ed\'e0 \'ed\'ee\'e2\'fb\'e9 \'ee\'e1\'fa\'e5\'ea\'f2 \'f1\kerning1  id=\cf5\kerning0\b 237899\cf1\b0  \'e8 =3\cf0\kerning1\par
+\cf1\kerning0\par
+x=10 \kerning1\u8594? id=108612\cf0\par
+\cf1\kerning0 foo(x)\cf0\kerning1\par
+\cf1\kerning0 print(x, id(x)) \kerning1\u8594? x \'ea\'e0\'ea \'f1\'f1\'fb\'eb\'e0\'eb\'f1\'ff \'ed\'e0 \'ee\'e1\'fa\'e5\'ea\'f2 \'f1 id=108612 \'f2\'e0\'ea \'e8 \'f1\'f1\'fb\'eb\'e0\'e5\'f2\'f1\'ff. =10\cf0\par
+\cf1\par
+\kerning0\i\tab\'cf\'f0\'e8\'ec\'e5\'f0 \'b92\i0 :\cf0\kerning1\par
+\cf2\kerning0\b def\cf1\b0  foo(bar):\cf0\kerning1\par
+\cf1\kerning0   print(bar, id(bar)) \kerning1\u8594? id=108612 \'e8 =\kerning0 [1, 2, 3]\cf0\kerning1\par
+\cf1\kerning0   bar[0]=42 \kerning1\u8594? \'f2\'ee\'f2 \'e6\'e5 \'ee\'e1\'fa\'e5\'ea\'f2 \'f1 id=108612 \'e8 \'ed\'ee\'e2\'fb\'ec \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5\'ec \kerning0 [42, 2, 3]\cf0\kerning1\par
+\cf1\kerning0\par
+l=[1, 2, 3] \kerning1\u8594? id=108612\cf0\par
+\cf1\kerning0 foo(l)\cf0\kerning1\par
+\cf1\kerning0 print(l) \kerning1\u8594?\kerning0  \kerning1 id=108612 \'f1 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5\'ec \kerning0 [42, 2, 3]\cf0\kerning1\par
+\cf1\kerning0\par
+\i\tab\'cf\'f0\'e8\'ec\'e5\'f0 \'b93\i0 :\cf0\kerning1\par
+\cf2\kerning0\b def\cf1\b0  foo(bar):\cf0\kerning1\par
+\cf1\kerning0   bar=[42, 73] \kerning1\u8594? \'f2\'e5\'ef\'e5\'f0\'fc bar \'f1\'f1\'fb\'eb\'e0\'e5\'f2\'f1\'ff \'ed\'e0 \'ed\'ee\'e2\'fb\'e9 \'ee\'e1\'fa\'e5\'ea\'f2 id=\cf5\kerning0\b 237899\cf1\b0  \'e8 =[42, 73]\cf0\kerning1\par
+\cf1\kerning0\par
+l=[1, 2, 3] \kerning1\u8594? id=108612\cf0\par
+\cf1\kerning0 foo(l)\cf0\kerning1\par
+\cf1\kerning0 print(l) \kerning1\u8594? l \'ea\'e0\'ea \'f1\'f1\'fb\'eb\'e0\'eb\'f1\'ff \'ed\'e0 \'ee\'e1\'fa\'e5\'ea\'f2 \'f1 id=108612 \'f2\'e0\'ea \'e8 \'f1\'f1\'fb\'eb\'e0\'e5\'f2\'f1\'ff. =\kerning0 [1, 2, 3]\cf0\kerning1\par
+\cf1\kerning0\par
+\par
+\ul\'c0\'ed\'ed\'ee\'f2\'e0\'f6\'e8\'e8\cf0\kerning1\ulnone\par
+\cf2\kerning0\b def\cf1\b0  foo(x) -> \cf2\b float\cf1\b0 :\tab\'f1\'f2\'f0\'e5\'eb\'ea\'e0 \'f1\'ee\'ee\'e1\'f9\'e0\'e5\'f2, \'f7\'f2\'ee \'f4\'f3\'ed\'ea\'f6\'e8\'ff \'e2\'f0\'ee\'e4\'e5 \'ea\'e0\'ea \'e4\'ee\'eb\'e6\'ed\'e0\cf0\kerning1\par
+\cf1\kerning0\tab print "Hello"\tab\'e2\'e5\'f0\'ed\'f3\'f2\'fc \cf2\b float\cf1\b0 , \'ed\'ee \'f4\'f3\'ed\'ea\'f6\'e8\'ff \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'f2\'fc \cf2\b float\cf1\b0  \'ed\'e5 \'ee\'e1\'ff\'e7\'e0\'ed\'e0 !\cf0\kerning1\par
+\cf1\kerning0\par
+\'d4\'f3\'ed\'ea\'f6\'e8\'e8 \'ec\'ee\'e3\'f3\'f2 \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'f2\'fc \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee \'ee\'e1\'fa\'e5\'ea\'f2\'ee\'e2. \'c2 \'fd\'f2\'ee\'ec \'f1\'eb\'f3\'f7\'e0\'e5 type \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'ec\'ee\'e3\'ee \'ee\'e1\'fa\'e5\'ea\'f2\'e0 = \'ca\'ce\'d0\'d2\'c5\'c6 \cf6 <class 'tuple'>\cf0\kerning1\par
+\cf1\kerning0\tab\cf2\b def\cf1\b0  foo():\cf0\kerning1\par
+\cf1\kerning0\tab\tab str = "Hello"\cf0\kerning1\par
+\cf1\kerning0\tab\tab int = 20\cf0\kerning1\par
+\cf1\kerning0\tab\tab\cf2\b return\cf1\b0  str, int\cf0\kerning1\par
+\cf1\kerning0\tab ret = foo()\cf0\kerning1\par
+\cf1\kerning0\tab print(type(ret))\tab\'e2\'fb\'e4\'e0\'f1\'f2 \cf6 <class 'tuple'>\cf0\kerning1\par
+\cf1\kerning0\tab print(ret[0])\tab\cf6 <class 'str'>\cf0\kerning1\par
+\cf1\kerning0\tab print(ret[1])\tab\cf6 <class 'int'>\cf0\kerning1\par
+\cf1\kerning0\tab\tab\'e8\'eb\'e8\cf0\kerning1\par
+\cf1\kerning0\tab s, i = foo()\cf0\kerning1\par
+\cf1\kerning0\tab print (s)\cf0\kerning1\par
+\cf1\kerning0\tab print (i)\cf0\kerning1\par
+\cf1\kerning0\b\par
+\par
+\ul\b0 List Comprehensions\ulnone .\cf0\kerning1\par
+\cf1\kerning0\tab lis = [f(x) \cf2\kerning1\b for\cf1\kerning0\b0  x \cf2\kerning1\b in\cf1\kerning0\b0  range(5)]\cf0\kerning1\par
+\cf1\kerning0\'e8\'e7 seq \'e2\'fb\'e1\'e8\'f0\'e0\'e5\'ec \'ef\'ee \'ee\'e4\'ed\'ee\'ec\'f3 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'f3 x. \'c2\'fb\'ef\'ee\'eb\'ed\'ff\'e5\'ec f(x). \'d0\'e5\'e7\'f3\'eb\'fc\'f2\'e0\'f2 \'ea\'eb\'e0\'e4\'b8\'ec \'e2 lis. len(lis) \'e2\'f1\'e5\'e3\'e4\'e0 = len(seq)\cf0\kerning1\par
+\par
+\cf1\kerning0\tab lis = [f(x) \cf2\kerning1\b for\cf1\kerning0\b0  x \cf2\kerning1\b in\cf1\kerning0\b0  range(5) \cf2\kerning1\b if\cf1\kerning0\b0  x>10]\cf0\kerning1\par
+\cf1\kerning0\'e8\'e7 seq \'e2\'fb\'e1\'e8\'f0\'e0\'e5\'ec \'ef\'ee \'ee\'e4\'ed\'ee\'ec\'f3 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'f3 x. \'cf\'f0\'ee\'e2\'e5\'f0\'ff\'e5\'ec condition. \'c5\'f1\'eb\'e8 True, \'f2\'ee \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'e5\'ec f(x) \'e8 \'f0\'e5\'e7\'f3\'eb\'fc\'f2\'e0\'f2 \'ea\'eb\'e0\'e4\'b8\'ec \'e2 lis. \'c5\'f1\'eb\'e8 False, \'f2\'ee \'ed\'e8\'f7\'e5\'e3\'ee \'ed\'e5 \'e4\'e5\'eb\'e0\'e5\'ec, \'ef\'e5\'f0\'e5\'f5\'ee\'e4\'e8\'ec \'ea \'f1\'eb\'e5\'e4\'f3\'fe\'f9\'e5\'ec\'f3 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'f3 seq. len(lis) \'e2\'f1\'e5\'e3\'e4\'e0 <= len(seq)\cf0\kerning1\par
+\par
+\cf1\kerning0\tab lis = [f(x) \cf2\kerning1\b if\cf1\kerning0\b0  x>10 \cf2\kerning1\b else\cf1\kerning0\b0  g(x) \cf2\kerning1\b for\cf1\kerning0\b0  x \cf2\kerning1\b in\cf1\kerning0\b0  range(5)]\cf0\kerning1\par
+\cf1\kerning0\'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5. \'d2\'ee\'eb\'fc\'ea\'ee \'e5\'f1\'eb\'e8 True, \'f2\'ee f(x). \'c5\'f1\'eb\'e8 False, \'f2\'ee g(x). len(lis) \'e2\'f1\'e5\'e3\'e4\'e0 = len(seq).\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\fi-7685\li7685\sl240\slmult1\par
+\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf1\kerning0\ul\'d2\'e5\'f0\'ed\'e0\'f0\'ed\'fb\'e9 \'ee\'ef\'e5\'f0\'e0\'f2\'ee\'f0\ulnone .\cf0\kerning1\par
+\cf1\kerning0 print("good" \cf2\kerning1\b if\cf1\kerning0\b0  condition \cf2\kerning1\b else\cf1\kerning0\b0  "bad")\cf0\kerning1\par
+\cf1\kerning0 accessAllowed = True \cf2\b if\cf1\b0  age>18 \cf2\b else\cf1\b0  False\cf0\kerning1\par
+\cf1\kerning0\b\par
+\ul\b0\'d3\'f1\'f2\'e0\'ed\'ee\'e2\'ea\'e0 Python \'e8\'e7 \'e8\'f1\'f5\'ee\'e4\'ed\'e8\'ea\'ee\'e2\ulnone .\cf0\kerning1\par
+\cf1\kerning0 # apt install build-essential\cf0\kerning1\par
+\cf1\kerning0\'d1\'ea\'e0\'f7\'e8\'e2\'e0\'e5\'ec \'e8\'f1\'f5\'ee\'e4\'ed\'e8\'ea\'e8 \'f1 python.org. \'d0\'e0\'f1\'ef\'e0\'ea\'ee\'e2\'fb\'e2\'e0\'e5\'ec. \'d2\'e0\'ec \'e5\'f1\'f2\'fc \'ef\'e0\'ef\'ea\'e0 lib, \'e7\'e0\'f5\'ee\'e4\'e8\'ec \'e2 \'ed\'e5\'b8\cf0\kerning1\par
+\cf1\kerning0 # ./configure\cf0\kerning1\par
+\cf1\kerning0 # make\cf0\kerning1\par
+\cf1\kerning0 # make install\cf0\kerning1\par
+\cf1\kerning0\'c2 \'ef\'e0\'ef\'ea\'e5 \'ef\'ee\'ff\'e2\'eb\'ff\'e5\'f2\'f1\'ff \'f4\'e0\'e9\'eb python. \'c5\'e3\'ee \'ea\'ee\'ef\'e8\'f0\'f3\'e5\'ec \'e2 /bin. \'d1\'ec\'ee\'f2\'f0\'e8\'ec #ldd python. \'ca\'ee\'ef\'e8\'f0\'f3\'e5\'ec \'e2\'f1\'b8 \'e1\'e8\'e1\'eb\'e8\'ee\'f2\'e5\'ea\'e8 \'e8\'e7 \'ef\'e0\'ef\'ea\'e8 lib \'e2 /usr/lib/python3.9 (= sys.path).\cf0\kerning1\par
+\par
+\cf1\kerning0\ul\'d3\'f1\'f2\'e0\'ed\'ee\'e2\'ea\'e0 Python \'f7\'e5\'f0\'e5\'e7 pyenv\ulnone .\cf0\kerning1\par
+\cf1\kerning0\'c2\'ee\'ee\'e1\'f9\'e5 pyenv \'ef\'f0\'e5\'e4\'ed\'e0\'e7\'ed\'e0\'f7\'e5\'ed \'e4\'eb\'ff \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'ea\'e8 \'ed\'e0 \'ee\'e4\'ed\'ee\'e9 \'ec\'e0\'f8\'e8\'ed\'e5 \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'e8\'f5 \'e2\'e5\'f0\'f1\'e8\'e9 Python.\cf0\kerning1\par
+\cf1\kerning0\par
+pyenv\cf0\kerning1\par
+\cf1\kerning0\tab global\tab\'f3\'f1\'f2\'e0\'ed\'ee\'e2\'e8\'f2\'fc \'e2\'e5\'f0\'f1\'e8\'fe \'e3\'eb\'ee\'e1\'e0\'eb\'fc\'ed\'ee\cf0\kerning1\par
+\cf1\kerning0\tab shell\tab\tab\'f3\'f1\'f2\'e0\'ed\'ee\'e2\'e8\'f2\'fc \'e2\'e5\'f0\'f1\'e8\'fe \'f2\'ee\'eb\'fc\'ea\'ee \'e4\'eb\'ff \'e4\'e0\'ed\'ed\'ee\'e3\'ee shell\cf0\kerning1\par
+\cf1\kerning0\tab local\cf0\kerning1\par
+\cf1\kerning0\par
+# apt install build-essential curl git libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev\cf0\kerning1\par
+\cf1\kerning0 # curl \cf0{\field{\*\fldinst{HYPERLINK "https://pyenv.run"}}{\fldrslt{\ul\cf3 https://pyenv.run}}}\cf1\f0\fs22  | bash\tab\tab\'f1\'ea\'e0\'f7\'e8\'e2\'e0\'e5\'ec \'e8 \'f3\'f1\'f2\'e0\'ed\'e0\'e2\'eb\'e8\'e2\'e0\'e5\'ec pyenv\cf0\kerning1\par
+\cf1\kerning0\'c2 .bashrc \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'ec \'f1\'f2\'f0\'ee\'ea\'e8:\cf0\kerning1\par
+\cf1\kerning0\tab export PYENV_ROOT="$HOME/.pyenv"\cf0\kerning1\par
+\cf1\kerning0\tab command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"\cf0\kerning1\par
+\cf1\kerning0\tab eval "$(pyenv init -)"\cf0\kerning1\par
+\cf1\kerning0\'c2\'fb\'f5\'ee\'e4\'e8\'ec. \'c7\'e0\'f5\'ee\'e4\'e8\'ec \'e2 shell \'ef\'ee-\'ed\'ee\'e2\'ee\'e9.\cf0\kerning1\par
+\cf1\kerning0 # pyenv install --list\cf0\kerning1\par
+\cf1\kerning0 # pyenv install 3.8.18\tab\tab\'f3\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'ec \'e2\'e5\'f0\'f1\'e8\'fe\cf0\kerning1\par
+\cf1\kerning0 Installed Python-3.8.18 to ~/.pyenv/versions/3.8.18\cf0\kerning1\par
+\cf1\kerning0\par
+\ul PIP\ulnone\b .\cf0\kerning1\b0\par
+\cf1\kerning0 # apt install python3-pip\cf0\kerning1\par
+\cf1\kerning0\tab\'e8\'eb\'e8\cf0\kerning1\par
+\cf1\kerning0 # apt install python3-distutils\tab\tab distutils \'ed\'f3\'e6\'e5\'ed \'e4\'eb\'ff \'e7\'e0\'ef\'f3\'f1\'ea\'e0 get-pip.py\cf0\kerning1\par
+\cf1\kerning0 # python3 get-pip.py\tab\tab\tab\tab\cf0{\field{\*\fldinst{HYPERLINK "http://bootstrap.pypa.io/get-pip.py"}}{\fldrslt{\ul\cf3 http://bootstrap.pypa.io/get-pip.py}}}\kerning1\f0\fs22\par
+\par
+\cf1\kerning0 # pip install matplotlib\tab\tab\tab\'f3\'f1\'f2\'e0\'ed\'ee\'e2\'ea\'e0, \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e0 dependencies \'e1\'e8\'e1\'eb\'e8\'ee\'f2\'e5\'ea, \'ea\'ee\'f2\'ee\'f0\'fb\'f5 \'ed\'e5\'f2 \'e2 Standard Library. \'d0\'e5\'ef\'ee\'e7\'e8\'f2\'ee\'f0\'e8\'e9 \cf0{\field{\*\fldinst{HYPERLINK "https://pypi.org/"}}{\fldrslt{\ul\cf3 https://pypi.org/}}}\kerning1\f0\fs22\par
+\cf1\kerning0 # python -m pip install matplotlib\tab\'e1\'fb\'e2\'e0\'e5\'f2 /bin/pip, \'e0 \'e1\'fb\'e2\'e0\'e5\'f2 /usr/lib/python/pip.py \'d2\'f3\'f2 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'ec pip \'ea\'e0\'ea \'ec\'ee\'e4\'f3\'eb\'fc\cf0\kerning1\par
+\cf1\kerning0\par
+pip show matplotlib\tab\tab\tab\tab\'e4\'e5\'f2\'e0\'eb\'e8 \'ee \'ef\'e0\'ea\'e5\'f2\'e5\cf0\kerning1\par
+\cf1\kerning0 pip install matplotlib --upgrade\tab\'ee\'e1\'ed\'ee\'e2\'e8\'f2\'fc \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'eb\'e5\'ed\'ed\'fb\'e9 \'ef\'e0\'ea\'e5\'f2\cf0\kerning1\par
+\cf1\kerning0 pip uninstall matplotlib\tab\tab\tab\'f3\'e4\'e0\'eb\'e8\'f2\'fc \'ef\'e0\'ea\'e5\'f2\cf0\kerning1\par
+\cf1\kerning0 pip list\tab\tab\tab\tab\tab\tab\'f1\'ef\'e8\'f1\'ee\'ea \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'eb\'e5\'ed\'ed\'fb\'f5 \'ef\'e0\'ea\'e5\'f2\'ee\'e2\cf0\kerning1\par
+\cf1\kerning0 pip list --outdated\tab\tab\tab\tab\'f1\'ef\'e8\'f1\'ee\'ea \'f3\'f1\'f2\'e0\'f0\'e5\'e2\'f8\'e8\'f5 \'ef\'e0\'ea\'e5\'f2\'ee\'e2\cf0\kerning1\par
+\cf1\kerning0\par
+\par
+\par
+\ul\'d0\'e0\'e1\'ee\'f2\'e0 \'f1 \'ec\'ee\'e4\'f3\'eb\'ff\'ec\'e8\ulnone .\cf0\kerning1\par
+\cf1\kerning0 >>> help("modules")\tab\'ef\'ee\'f1\'ec\'ee\'f2\'f0\'e5\'f2\'fc \'f1\'ef\'e8\'f1\'ee\'ea \'e2\'f1\'e5\'f5 \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'eb\'e5\'ed\'ed\'fb\'f5 \'ec\'ee\'e4\'f3\'eb\'e5\'e9\cf0\kerning1\par
+\cf1\kerning0\tab\'e8\'eb\'e8\cf0\kerning1\par
+\cf1\kerning0 >>> \cf2\kerning1\b import\cf1\kerning0  \b0 sys\cf0\kerning1\par
+\cf1\kerning0 >>> sys.modules\tab\tab\'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'e0\'ff \'f5\'f0\'e0\'ed\'e8\'f2 \'f1\'ef\'e8\'f1\'ee\'ea \'e7\'e0\'e3\'f0\'f3\'e6\'e5\'ed\'ed\'fb\'f5 \'e2 RAM \'ec\'ee\'e4\'f3\'eb\'e5\'e9. \'cf\'ee default \'fd\'f2\'ee \'e2\'f1\'e5 \'ec\'ee\'e4\'f3\'eb\'e8 \'e8\'e7 Standard Library ~ \cf2\b import\cf1\b0  __builtin__. \'c8\'e4\'f3\'f2 \'e2 \'f1\'f2\'e0\'ed\'e4\'e0\'f0\'f2\'ed\'ee\'e9 \'ef\'ee\'f1\'f2\'e0\'e2\'ea\'e5 \'f1 Python \cf0{\field{\*\fldinst{HYPERLINK "https://docs.python.org/2.7/py-modindex.html"}}{\fldrslt{\ul\cf3 https://docs.python.org/2.7/py-modindex.html}}}\kerning1\f0\fs22\par
+\cf1\kerning0\par
+\cf2\kerning1\b import\cf1\kerning0  \b0 spam\cf0\kerning1\par
+\cf1\kerning0\tab - \'e8\'f9\'e5\'f2 \'e2 RAM - \'e2 \'f1\'ef\'e8\'f1\'ea\'e5 sys.modules\cf0\kerning1\par
+\cf1\kerning0\tab - \'e8\'f9\'e5\'f2 spam.py \'e2 \'e4\'ee\'ec\'e0\'f8\'ed\'e5\'ec \'ea\'e0\'f2\'e0\'eb\'ee\'e3\'e5 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'fb\cf0\kerning1\par
+\cf1\kerning0\tab - \'e8\'f9\'e5\'f2 \'e2 \'eb\'e5\'e2\'fb\'f5 \'ea\'e0\'f2\'e0\'eb\'ee\'e3\'e0\'f5, \'ef\'f0\'ee\'ef\'e8\'f1\'e0\'ed\'ed\'fb\'f5 \'e2 #echo $PYTHONPATH\cf0\kerning1\par
+\cf1\kerning0\tab - \'e2 \'ea\'e0\'f2\'e0\'eb\'ee\'e3\'e0\'f5 \'e8\'e7 sys.path. \'c8\'e7\'ed\'e0\'f7\'e0\'eb\'fc\'ed\'ee \'e4\'e0\'ed\'ed\'fb\'e5 \'e4\'eb\'ff sys.path \'e1\'e5\'f0\'f3\'f2\'f1\'ff \'e3\'e4\'e5-\'f2\'ee \'e2 \'ef\'ee\'f2\'f0\'ee\'f5\'e0\'f5 Python (~ \'f4\'e0\'e9\'eb site.py). \'c2 \'ee\'e1\'f9\'e5\'ec \'fd\'f2\'f3 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'f3\'fe \'ea\'e0\'ea-\'f2\'ee \'ed\'e5 \'ef\'f0\'ee\'f1\'f2\'ee \'ed\'e0\'f1\'f2\'f0\'ee\'e8\'f2\'fc.\cf0\kerning1\par
+\cf1\kerning0 >>> sys.path\cf0\kerning1\par
+\cf1\kerning0 ['/usr/lib/python3.11', ... , '/usr/local/lib/python3.11']\cf0\kerning1\par
+\cf1\kerning0\tab - \'f4\'e0\'e9\'eb\'fb \'f2\'e8\'ef\'e0 myconfig.pth \'e2\'ed\'f3\'f2\'f0\'e8 \'ea\'ee\'f2\'ee\'f0\'fb\'f5 \'f1\'ef\'e8\'f1\'ee\'ea \'ef\'e0\'ef\'ee\'ea /usr/local/myApp\cf0\kerning1\par
+\cf1\kerning0\tab - \'ef\'e0\'ef\'ea\'e0 site-packages\cf0\kerning1\par
+\cf1\kerning0\par
+\cf2\b import\cf1\b0  spam\cf0\kerning1\par
+\cf1\kerning0\'e8\'ec\'e5\'e5\'f2\'f1\'ff \'e2\'e2\'e8\'e4\'f3 \'e7\'e0\'e3\'f0\'f3\'e7\'e8\'f2\'fc \'ed\'e5 \'f2\'ee\'eb\'fc\'ea\'ee spam.py\cf0\kerning1 , \'ed\'ee \'e8\par
+\cf1\kerning0\tab - \'e1\'e0\'e9\'f2-\'ea\'ee\'e4 spam.pyc\cf0\kerning1\par
+\cf1\kerning0\tab - \'ea\'e0\'f2\'e0\'eb\'ee\'e3 ./spam \'fd\'f2\'ee \'e1\'f3\'e4\'e5\'f2 \'f3\'e6\'e5 \'ed\'e5 \'ec\'ee\'e4\'f3\'eb\'fc, \'e0 \'ef\'e0\'ea\'e5\'f2\cf0\kerning1\par
+\cf1\kerning0\tab - \'e1\'e8\'e1\'eb\'e8\'ee\'f2\'e5\'ea\'f3 \'d1\'e8 spam.so\cf0\kerning1\par
+\cf1\kerning0\tab - \'ea\'e0\'ea\'ee\'e9-\'f2\'ee .zip\cf0\kerning1\par
+\cf1\kerning0\tab - java \'ea\'eb\'e0\'f1\'f1 \'e2 \'e2\'e5\'f0\'f1\'e8\'e8 Jython\cf0\kerning1\par
+\cf1\kerning0\par
+\'cf\'ee default, Python \'ef\'ee\'e4\'e3\'f0\'f3\'e6\'e0\'e5\'f2 \'ec\'ee\'e4\'f3\'eb\'fc \cf2\b import\cf1\b0  __builtin__, \'e2 \'ea\'ee\'f2\'ee\'f0\'ee\'ec \'ef\'f0\'ee\'ef\'e8\'f1\'e0\'ed\'fb Built-in \cf7\b Functions\cf1\b0  \'e8 \cf6\b Classes\cf1\b0 : \cf0{\field{\*\fldinst{HYPERLINK "https://docs.python.org/3/library/index.html"}}{\fldrslt{\ul\cf3 https://docs.python.org/3/library/index.html}}}\kerning1\f0\fs22\par
+\cf1\kerning0\par
+\cf7\b abs()\cf0\b0\tab\tab\cf7\b chr()\cf0\b0\tab\tab\cf7\b exec()\cf0\b0\tab\cf7\b hex()\cf0\b0\tab\tab\cf6\b map\cf0\b0\tab\tab\cf7\b print()\cf0\b0\tab\cf6\b staticmethod\cf0\kerning1\b0\par
+\cf7\kerning0\b all()\cf0\b0\tab\tab\cf6\b classmetho\cf0\b0\tab\cf6\b filter\cf0\b0\tab\cf7\b id()\cf0\b0\tab\tab\cf7\b max()\cf0\b0\tab\tab\cf6\b property\cf0\b0\tab\cf6\b str\cf0\kerning1\b0\par
+\cf7\kerning0\b any()\cf0\b0\tab\tab\cf7\b compile()\cf0\b0\tab\cf6\b float\cf0\b0\tab\tab\cf7\b input()\cf0\b0\tab\cf6\b memoryview\cf0\b0\tab\cf6\b range\cf0\b0\tab\tab\cf7\b sum()\cf0\kerning1\b0\par
+\cf7\kerning0\b ascii()\cf0\b0\tab\cf6\b complex\cf0\b0\tab\cf7\b format()\cf0\b0\tab\cf6\b int\cf0\b0\tab\tab\cf7\b min()\cf0\b0\tab\tab\cf7\b repr()\cf0\b0\tab\cf6\b super\cf0\kerning1\b0\par
+\cf7\kerning0\b bin()\cf0\b0\tab\tab\cf7\b delattr()\cf0\b0\tab\cf6\b frozenset\cf0\b0\tab\cf7\b isinstance\cf0\b0\tab\cf7\b next()\cf0\b0\tab\cf6\b reversed\cf0\b0\tab\cf6\b tuple\cf0\kerning1\b0\par
+\cf6\kerning0\b bool\cf0\b0\tab\tab\cf6\b dict\cf0\b0\tab\tab\cf7\b getattr()\cf0\b0\tab\cf7\b issubclass\cf0\b0\tab\cf6\b object\cf0\b0\tab\cf7\b round()\cf0\b0\tab\cf6\b type\cf0\kerning1\b0\par
+\cf7\kerning0\b breakpoint\cf0\b0\tab\cf7\b dir()\cf0\b0\tab\tab\cf7\b globals()\cf0\b0\tab\cf7\b iter()\cf0\b0\tab\cf7\b oct()\cf0\b0\tab\tab\cf6\b set\cf0\b0\tab\tab\cf7\b vars()\cf0\kerning1\b0\par
+\cf6\kerning0\b bytearray\cf0\b0\tab\cf7\b divmod()\cf0\b0\tab\cf7\b hasattr()\cf0\b0\tab\cf7\b len()\cf0\b0\tab\tab\cf7\b open()\cf0\b0\tab\cf7\b setattr()\cf0\b0\tab\cf6\b zip\cf0\kerning1\b0\par
+\cf6\kerning0\b bytes\cf0\b0\tab\tab\cf6\b enumerate\cf0\b0\tab\cf7\b hash()\cf0\b0\tab\cf6\b list\cf0\b0\tab\tab\cf7\b ord()\cf0\b0\tab\tab\cf6\b slice\cf0\kerning1\b0\par
+\cf7\kerning0\b callable()\cf0\b0\tab\cf7\b eval()\cf0\b0\tab\cf6\b help\cf0\b0\tab\tab\cf7\b locals()\cf0\b0\tab\cf7\b pow()\cf0\b0\tab\tab\cf7\b sorted()\cf0\kerning1\b0\par
+\cf1\kerning0\par
+\tab\'c7\'e0\'f0\'e5\'e7\'e5\'f0\'e2\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'fb\'e5 \'f1\'eb\'ee\'e2\'e0:\cf0\kerning1\par
+\cf8\kerning0\b and\tab\tab def\tab\tab false\tab\tab in\tab\tab or\tab\tab with\cf0\kerning1\b0\par
+\cf8\kerning0\b as\tab\tab del\tab\tab for\tab\tab is\tab\tab pass\tab\tab while\cf0\kerning1\b0\par
+\cf8\kerning0\b assert\tab elif\tab\tab from\tab\tab lambda\tab raise\tab\tab yield\cf0\kerning1\b0\par
+\cf8\kerning0\b break\tab\tab else\tab\tab global\tab nonlocal\tab return\cf0\kerning1\b0\par
+\cf8\kerning0\b class\tab\tab except\tab if\tab\tab None\tab\tab True\cf0\kerning1\b0\par
+\cf8\kerning0\b continue\tab finally\tab import\tab not\tab\tab try\cf0\kerning1\b0\par
+\kerning0\par
+\par
+\cf1 #python3 -m compileall main.py\tab\'f1\'ea\'ee\'ec\'ef\'e8\'eb\'e8\'f0\'f3\'e5\'f2 main.py \'e2 __pycache__/main.cpython-39.pyc\cf0\kerning1\par
+\cf1\kerning0\tab\'e8 \'f2\'e5\'ef\'e5\'f0\'fc \'ec\'ee\'e6\'ed\'ee \'e7\'e0\'ef\'f3\'f1\'f2\'e8\'f2\'fc\cf0\kerning1\par
+\cf1\kerning0 #python3 __pycache__/main.cpython-39.pyc\cf0\kerning1\par
+\cf1\kerning0\par
+\'c5\'f1\'eb\'e8 \'ec\'fb \'f1\'ee\'e7\'e4\'e0\'b8\'ec spam.py, \'e0 \'ef\'ee\'f2\'ee\'ec \'e5\'e3\'ee \cf2\b import\cf1\b0  \'ea\'f3\'e4\'e0-\'ed\'e8\'e1\'f3\'e4\'fc, \'f2\'ee Python \'ea\'ee\'ec\'ef\'e8\'eb\'e8\'f0\'f3\'e5\'f2 \'e5\'e3\'ee \'e2 \'e1\'e0\'e9\'f2-\'ea\'ee\'e4 __pycache__ /spam.pyc. \'cf\'f0\'e8 \'f1\'eb\'e5\'e4\'f3\'fe\'f9\'e5\'ec \'e7\'e0\'ef\'f3\'f1\'ea\'e5 \'e8\'ed\'f2\'e5\'f0\'ef\'f0\'e5\'f2\'e0\'f2\'ee\'f0 \'f1\'e2\'e5\'f0\'e8\'f2 timestamp \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff spam.py \'e8 spam.pyc - \'e2 \'ee\'e1\'f9\'e5\'ec, \'f2\'e0\'ea\'e8\'ec \'ee\'e1\'f0\'e0\'e7\'ee\'ec \'f0\'e5\'f8\'e0\'e5\'f2 \'ed\'e0\'e4\'ee \'eb\'e8 \'ef\'e5\'f0\'e5\'ea\'ee\'ec\'ef\'e8\'eb\'e8\'f0\'ee\'e2\'e0\'f2\'fc \'e8\'f1\'f5\'ee\'e4\'ed\'e8\'ea.\cf0\kerning1\par
+\cf1\kerning0 PVM = JVM - Python Virtual Machine - \'f2\'ee \'f7\'f2\'ee \'e8\'f1\'ef\'ee\'eb\'ed\'ff\'e5\'f2 \'e1\'e0\'e9\'f2-\'ea\'ee\'e4.\cf0\kerning1\par
+\cf1\kerning0\par
+urllib2 - \'e1\'e8\'e1\'eb\'e8\'ee\'f2\'e5\'ea\'e0 \'e4\'eb\'ff HTTP request/response\cf0\kerning1\par
+\cf2\kerning0\b from\cf1\b0  urllib \cf2\b import\cf1\b0  request\tab\tab\'e8\'ec\'ef\'ee\'f0\'f2\'e8\'f0\'f3\'e5\'ec \'e8\'e7 \'ef\'e0\'ef\'ea\'e8 (=package) /usr/lib/python3.11/urllib \'f4\'e0\'e9\'eb request.py\cf0\kerning1\par
+\cf2\kerning0\b import\cf1\b0  urllib\tab\'e8\'eb\'e8\tab\cf2\b from\cf1\b0  urllib \cf2\b import\cf1\b0  *\tab\tab\'e7\'e0\'ef\'f3\'f1\'f2\'e8\'f2 \'f4\'e0\'e9\'eb urllib/__init__.py \'e8 \'e2\'f1\'b8\cf0\kerning1\par
+\cf2\kerning0\b import\cf1\b0  urllib.response\tab\tab\tab = \i package.package.module\i0  \'e8\'eb\'e8 \i folder\i0 .\i folder\i0 .file.py\cf0\kerning1\par
+\cf1\kerning0\par
+\par
+\ul Namespace\ulnone .\cf0\kerning1\par
+\cf1\kerning0\'d7\'f2\'ee\'e1\'fb \'ed\'e5 \'e2\'ee\'e7\'ed\'e8\'ea\'e0\'eb\'ee \'ef\'f3\'f2\'e0\'ed\'e8\'f6\'fb \'f1 \'e8\'ec\'e5\'ed\'e0\'ec\'e8 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'f5, \'f4\'f3\'ed\'ea\'f6\'e8\'e9 \'e8 \'f2.\'ef. \'d0\'e5\'ea\'ee\'ec\'e5\'e4\'f3\'fe\'f2 \'ef\'f0\'ee\'f1\'f2\'ee \cf2\b import\cf1\b0  \'e1\'e5\'e7 \cf2\b from\cf1\b0 .\cf0\kerning1\par
+\cf1\kerning0\b\tab\cf2 import\cf1\b0  somePackage\tab\tab\tab\tab\cf2\b from\cf1\b0  somePackage \cf2\b import\cf1\b0  foo, spam\cf0\kerning1\par
+\cf1\kerning0\tab somePackage.foo()\tab\'e0 \'ed\'e5 \'f2\'e0\'ea\tab\tab foo(spam)\cf0\kerning1\par
+\cf1\kerning0\par
+\cf2\b from\cf1\b0  biltolptam \cf2\b import\cf1\b0  \cf0 pyplot\cf1  \cf2\b as\cf1\b0  some\cf0\kerning1\par
+\cf2\kerning0\b from\cf1\b0  matplotlib \cf2\b import\cf1\b0  \cf0 pyplot\cf1  \cf2\b as\cf1\b0  \cf9 plt\cf1\tab\'e8\'ec\'ef\'ee\'f0\'f2\'e8\'f0\'ee\'e2\'e0\'eb\'e8 \'e1\'e8\'e1\'eb\'e8\'ee\'f2\'e5\'ea\'f3. \'cd\'e0 \'ed\'e0\'e7\'e2\'e0\'ed\'e8\'e5 matplotlib.pyplot \'ef\'ee\'e2\'e5\'f1\'e8\'eb\'e8 alias \kerning1\u8594?\kerning0  plt. \'ca\'ee\'e3\'e4\'e0 \cf2\b import\cf1\b0  \'e4\'e2\'f3\'f5 \'ec\'ee\'e4\'f3\'eb\'e5\'e9, \'e0 \'e2 \'ed\'e8\'f5 \'ee\'e4\'e8\'ed\'ea\'e0\'ee\'e2\'fb\'e5 \'ed\'e0\'e7\'e2\'e0\'ed\'e8\'ff \'f4\'f3\'ed\'ea\'f6\'e8\'e9, \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'f5 \'e8 \'f2.\'ef.\cf0\kerning1\par
+\cf1\kerning0\tab\cf9 plt\cf1 .plot(x, y)\cf0\kerning1\par
+\cf1\kerning0\par
+\par
+PEP8 \'e2\'fb\'e4\'e5\'eb\'ff\'e5\'f2 4 \'f1\'ef\'ee\'f1\'ee\'e1\'e0 \'e7\'e0\'e4\'e0\'ed\'e8\'ff \'e8\'ec\'e5\'ed:\cf0\kerning1\par
+\cf1\kerning0\tab   foo_\tab\'c4\'eb\'ff \'e8\'e7\'e1\'e5\'e6\'e0\'ed\'e8\'ff \'ea\'ee\'ed\'f4\'eb\'e8\'ea\'f2\'ee\'e2 \'f1 system \'e8\'ec\'e5\'ed\'e0\'ec\'e8. \'c2\'ee\'f2 \'f5\'ee\'f7\'f3 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'e8\'ec\'ff List, \'e0 \'ed\'e5\'eb\'fc\'e7\'ff. \'cf\'ee\'fd\'f2\'ee\'ec\'f3 \'ed\'e0\'e7\'fb\'e2\'e0\'fe \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'f3\'fe List\b _\b0 .\cf0\kerning1\par
+\cf1\kerning0\tab  _foo\tab\tab Only a convention. \'d3\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2 \'ef\'f0\'ee\'e3\'e5\'f0\'f3, \'f7\'f2\'ee \'f0\'e0\'e7\'f0\'e0\'e1\'ee\'f2\'f7\'e8\'ea \'ec\'ee\'e4\'f3\'eb\'ff \ul\'f5\'ee\'f2\'e5\'eb \'e1\'fb\ulnone , \'f7\'f2\'ee\'e1\'fb \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'e0\'ff \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'eb\'e8\'f1\'fc \'ea\'e0\'ea \cf2\b private\cf1\b0 . \'cd\'ee \'f2\'fb \'f1 \'ed\'e5\'e9 \'ec\'ee\'e6\'e5\'f8\'fc \'e4\'e5\'eb\'e0\'f2\'fc, \'f7\'f2\'ee \'f5\'ee\'f7\'e5\'f8\'fc.\cf0\kerning1\par
+\cf1\kerning0\tab __foo\tab\tab\'d0\'e5\'e0\'eb\'fc\'ed\'ee\'e5 \'f1\'ea\'f0\'fb\'f2\'e8\'e5 \'e8\'ec\'e5\'ed\'e8. \'c8\'ed\'f2\'e5\'f0\'ef\'f0\'e5\'f2\'e0\'f2\'ee\'f0 \'fd\'f2\'f3 \'ea\'ee\'ed\'f1\'f2\'f0\'f3\'ea\'f6\'e8\'fe \'e7\'e0\'ec\'e5\'ed\'e8\'f2 \'ed\'e0 _classname__foo \'e8 \'ef\'f0\'e8 \cf2\b from\cf1\b0  mymodule \cf2\b import\cf1\b0  * \'fd\'f2\'e0 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'e0\'ff \'ed\'e5 \'e1\'f3\'e4\'e5\'f2 \'e8\'ec\'ef\'ee\'f0\'f2\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'e0.\cf0\kerning1\par
+\cf1\kerning0\tab __foo__\tab Only a convention. Python \'ee\'e1\'fa\'ff\'e2\'eb\'ff\'e5\'f2 \'f2\'e0\'ea\'e8\'e5 \'e8\'ec\'e5\'ed\'e0 \'ea\'e0\'ea system \'e4\'eb\'ff \'e8\'e7\'e1\'e5\'e6\'e0\'ed\'e8\'ff \'ea\'ee\'ed\'f4\'eb\'e8\'ea\'f2\'ee\'e2 \'f1 user names.\cf0\kerning1\par
+\par
+\cf1\kerning0 >>> class MyClass():\cf0\kerning1\par
+\cf1\kerning0 ...     def \cf10\b __init__\cf1\b0 (self):\cf0\kerning1\par
+\cf1\kerning0 ...             self.\cf7\b __superprivate\cf1\b0  = "Hello"\cf0\kerning1\par
+\cf1\kerning0 ...             self.\cf9\b _semiprivate\cf1\b0  = "world"\cf0\kerning1\par
+\cf1\kerning0 ...\cf0\kerning1\par
+\cf1\kerning0 >>> mc = MyClass()\cf0\kerning1\par
+\cf1\kerning0 >>> print mc.\cf7\b __superprivate\cf0\kerning1\b0\par
+\cf4\kerning0\b Error\cf0\kerning1\b0\par
+\cf1\kerning0 >>> print mc.\cf9\b _semiprivate\cf0\kerning1\b0\par
+\cf1\kerning0 world\cf0\kerning1\par
+\cf1\kerning0 >>> print mc.__dict__\cf0\kerning1\par
+\cf1\kerning0\{'\cf7\b _MyClass__superprivate\cf1\b0 ': 'Hello', '\cf9\b _semiprivate\cf1\b0 ': 'world'\}\cf0\kerning1\par
+\cf1\kerning0\par
+\par
+\'c5\'f1\'f2\'fc \'ec\'ee\'e4\'f3\'eb\'fc\cf0\kerning1\par
+\cf1\kerning0 # \cf5\b my\cf1\b0 .py\cf0\kerning1\par
+\cf1\kerning0 def \cf9\b foo\cf1\b0 ():\cf0\kerning1\par
+\cf1\kerning0\tab return 10\cf0\kerning1\par
+\cf1\kerning0\par
+print('\'cf\'f0\'e8 import \'fd\'f2\'ee\'e3\'ee \'ec\'ee\'e4\'f3\'eb\'ff \'e2 \'e4\'f0\'f3\'e3\'ee\'e9 \'f5\'f5\'f5.py \'ef\'ee\'ff\'e2\'e8\'f2\'f1\'ff \'fd\'f2\'ee \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'e5')\cf0\kerning1\par
+\cf1\kerning0\par
+\cf2\b if\cf1\b0  \cf10\b __name__\cf1\b0  == '__main__':\cf0\kerning1\par
+\cf1\kerning0\tab print ('\'c0 \'fd\'f2\'ee \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'e5 \'ed\'e5 \'ef\'ee\'ff\'e2\'e8\'f2\'f1\'ff')\cf0\kerning1\par
+\cf1\kerning0\tab main()\cf0\kerning1\par
+\cf1\kerning0\par
+>> import \cf5\b my\cf0\kerning1\b0\par
+\cf1\kerning0 >> type(\cf5\b my\cf1\b0 )\cf0\kerning1\par
+\cf6\kerning0 <class 'module'>\cf0\kerning1\par
+\cf1\kerning0 >> dir(\cf5\b my\cf1\b0 )\cf0\kerning1\par
+\cf1\kerning0 ['__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '\cf10\b __name__\cf1\b0 ', '__package__', '__spec__', '\cf9\b foo\cf1\b0 '] \'f3 \'ec\'ee\'e4\'f3\'eb\'e5\'e9 \'e5\'f1\'f2\'fc default \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5 \'f2\'e8\'ef\'e0 \cf10\b __name__\cf0\kerning1\b0\par
+\cf1\kerning0\par
+\par
+\ul FTP\cf0\kerning1\ulnone\par
+\cf1\kerning0 # pip install --user pyftpdlib\cf0\kerning1\par
+\cf1\kerning0 # python -m pyftpdlib --write --directory=FTP --port=2121\cf0\kerning1\par
+\cf1\kerning0\tab\'e8\'eb\'e8 \'ef\'f0\'ee\'f1\'f2\'ee\cf0\kerning1\par
+\cf1\kerning0 C:\\Users\\\'cf\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'fc\\AppData\\Local\\Programs\\Python\\Python38\\python.exe -m pyftpdlib -w\cf0\kerning1\par
+\cf1\kerning0\par
+\ul HTTP\cf0\kerning1\ulnone\par
+\cf1\kerning0 #python\lang1033\f1 3\lang1049\f0  -m http.server 8080 --bind 0.0.0.0\cf0\kerning1\par
+\cf1\kerning0 #python\lang1033\f1 3\lang1049\f0  -m http.server 8080 --bind \lang1033\f1 ::\cf0\lang1049\kerning1\f0\par
+\cf1\par
+\kerning0\par
+\ul\'d0\'e0\'e1\'ee\'f2\'e0 \'f1 \'e1\'e8\'e1\'eb\'e8\'ee\'f2\'e5\'ea\'e0\'ec\'e8 \'d1++\ulnone .\cf0\kerning1\par
+\cf1\kerning0 # foo.c\cf0\kerning1\par
+\cf2\kerning0\b int\cf1\b0  func()\{\cf0\kerning1\par
+\cf1\kerning0\tab\cf2\b return\cf1\b0  12345\cf0\kerning1\par
+\cf1\kerning0\}\cf0\kerning1\par
+\cf1\kerning0 # gcc -c -Wall -Werror -fPIC foo.c\cf0\kerning1\par
+\cf1\kerning0 # gcc -shared -o libfoo.so foo.o\cf0\kerning1\par
+\cf1\kerning0\par
+# my.py\cf0\kerning1\par
+\cf2\b import\cf1\kerning0\b0  ctypes\cf0\kerning1\par
+\cf1\kerning0 libfoo = ctypes.CDLL("./libfoo.so")\tab\'e1\'e8\'e1\'eb\'e8\'ee\'f2\'e5\'ea\'e0 libfoo.so \'eb\'e5\'e6\'e8\'f2 \'e2 \'f2\'ee\'e9 \'e6\'e5 \'ef\'e0\'ef\'ea\'e5, \'f7\'f2\'ee \'e8 \'f4\'e0\'e9\'eb my.py\cf0\kerning1\par
+\cf1\kerning0 counter = libfoo.func()\cf0\kerning1\par
+\cf1\kerning0\par
+\'cf\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'e0\'ff \cf10\b __name__\cf1\b0  \'f5\'f0\'e0\'ed\'e8\'f2 \'ed\'e0\'e7\'e2\'e0\'ed\'e8\'e5 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'fb\cf0\kerning1\par
+\cf1\kerning0\tab myProg.py\tab\tab\tab\tab foo.py\cf0\kerning1\par
+\cf1\kerning0\tab   print(\cf10\b __name__\cf1\b0 )\tab\tab\tab   \cf2\b import\cf1\b0  myProg\cf0\kerning1\par
+\cf1\kerning0 #python myProg.py\cf0\kerning1\par
+\cf1\kerning0\tab __main__\cf0\kerning1\par
+\cf1\kerning0 #python foo.py\cf0\kerning1\par
+\cf1\kerning0\tab myProg\cf0\kerning1\par
+\cf1\kerning0\par
+\par
+\par
+\ul Flask\ulnone .\cf0\kerning1\par
+\cf1\kerning0\'c2 \'ea\'ee\'f0\'ed\'e5 \'ef\'f0\'ee\'e5\'ea\'f2\'e0 \'e2 \'ef\'e0\'ef\'ea\'e5 templates \'f1\'ee\'e7\'e4\'e0\'b8\'ec \'f4\'e0\'e9\'eb results.html\cf0\kerning1\par
+\cf1\kerning0 <!DOCTYPE html>\cf0\kerning1\par
+\cf1\kerning0 <html lang="en">\cf0\kerning1\par
+\cf1\kerning0 <head>\cf0\kerning1\par
+\cf1\kerning0   <meta charset="utf-8">\cf0\kerning1\par
+\cf1\kerning0   <title>\{\{ title \}\}</title>\cf0\kerning1\par
+\cf1\kerning0 </head>\cf0\kerning1\par
+\par
+\cf1\kerning0 <body>\cf0\kerning1\par
+\cf1\kerning0   <h1>\{\{ test_name \}\} \{\{ title \}\}</h1>\cf0\kerning1\par
+\cf1\kerning0   <ul>\cf0\kerning1\par
+\cf1\kerning0   \{% for student in students %\}\cf0\kerning1\par
+\cf1\kerning0     <li>\cf0\kerning1\par
+\cf1\kerning0       \{% if student.score > 80 %\}good\{% else %\}bad\{% endif %\}\cf0\kerning1\par
+\cf1\kerning0       <em>\{\{ student.name \}\}:</em> \{\{ student.score \}\}/\{\{ max_score \}\}\cf0\kerning1\par
+\cf1\kerning0     </li>\cf0\kerning1\par
+\cf1\kerning0   \{% endfor %\}\cf0\kerning1\par
+\cf1\kerning0   </ul>\cf0\kerning1\par
+\cf1\kerning0 </body>\cf0\kerning1\par
+\cf1\kerning0 </html>\cf0\kerning1\par
+\par
+\cf1\kerning0 # main.py\cf0\kerning1\par
+\cf2\b from\cf1\kerning0\b0  flask \cf2\kerning1\b import\cf1\kerning0\b0  Flask, render_template\cf0\kerning1\par
+\cf1\kerning0\par
+app = Flask(\cf10\b __name__\cf1\b0 )\cf0\kerning1\par
+\par
+\cf1\kerning0 max_score = 100\cf0\kerning1\par
+\cf1\kerning0 test_name = "Python Challenge"\cf0\kerning1\par
+\cf1\kerning0 students = [\cf0\kerning1\par
+\cf1\kerning0     \{"name": "Sandrine",  "score": 100\},\cf0\kerning1\par
+\cf1\kerning0     \{"name": "Gergeley", "score": 87\}\cf0\kerning1\par
+\cf1\kerning0 ]\cf0\kerning1\par
+\cf11\b @app.route\cf1\kerning0\b0 ('/')\cf0\kerning1\par
+\cf2\kerning0\b def\cf1\b0  home():\cf0\kerning1\par
+\cf1\kerning0     context = \{\cf0\kerning1\par
+\cf1\kerning0         "title": "Results",\cf0\kerning1\par
+\cf1\kerning0         "students": students,\cf0\kerning1\par
+\cf1\kerning0         "test_name": test_name,\cf0\kerning1\par
+\cf1\kerning0         "max_score": max_score\cf0\kerning1\par
+\cf1\kerning0     \}\cf0\kerning1\par
+\cf1\kerning0     \cf2\b return\cf1\b0  render_template("results.html", **context)\cf0\kerning1\par
+\par
+\cf1\kerning0 $ FLASK_APP=main.py flask run\tab\tab\'ef\'ee\'f1\'eb\'e5 #pip install flask \'e2 \'ef\'e0\'ef\'ea\'e5 bin \'ef\'ee\'ff\'e2\'e8\'f2\'f1\'ff \'e1\'e8\'ed\'e0\'f0\'ed\'e8\'ea flask\cf0\kerning1\par
+\cf1\kerning0  * Serving Flask app "main.py"\cf0\kerning1\par
+\cf1\kerning0  * Environment: production\cf0\kerning1\par
+\cf1\kerning0    WARNING: This is a development server. Do not use it in a production deployment.\cf0\kerning1\par
+\cf1\kerning0    Use a production WSGI server instead.\cf0\kerning1\par
+\cf1\kerning0  * Debug mode: off\cf0\kerning1\par
+\cf1\kerning0  * Running on \cf0{\field{\*\fldinst{HYPERLINK "http://127.0.0.1:5000/"}}{\fldrslt{\ul\cf3 http://127.0.0.1:5000/}}}\cf1\f0\fs22  (Press CTRL+C to quit)\cf0\kerning1\par
+\cf1\kerning0\par
+\par
+\par
+\ul Sockets\ulnone .\cf0\kerning1\par
+\cf1\kerning0\'ce\'e4\'e8\'ed \'e8\'e7 \'e2\'e8\'e4\'ee\'e2 IPC. \cf0\kerning1\par
+\cf2\b import\cf1\kerning0\b0  socket\cf0\kerning1\par
+\cf1\kerning0 s = socket.socket (socket_family, socket_type, protocol)\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\li720\sl240\slmult1\cf1\kerning0 socket_family:\tab AF_UNIX, AF_INET, AF_INET6, AF_UNIX, AF_IPX, AF_BLUETOOTH \'e8 \'f2.\'e4.\cf0\kerning1\par
+\cf1\kerning0 socket_type:\tab SOCK_STREAM (\'e2 \'f7\'e0\'f1\'f2\'ed\'ee\'f1\'f2\'e8 \'e4\'eb\'ff TCP, SCTP), SOCK_DGRAM (\'e4\'eb\'ff UDP \'e8\'eb\'e8 \'e5\'f9\'b8 \'f7\'e5\'e3\'ee-\'ed\'e8\'e1\'f3\'e4\'fc), SOCK_RAW (\'e2 \'f7\'e0\'f1\'f2\'ed\'ee\'f1\'f2\'e8 \'e1\'e5\'e7 L4 \'e7\'e0\'e3\'ee\'eb\'ee\'e2\'ea\'e0) \'e8 \'f2.\'e4.\cf0\kerning1\par
+\cf1\kerning0 protocol:\tab IPPROTO_TCP, IPPROTO_UDP \'e8 \'f2.\'e4.\cf0\kerning1\par
+\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf2\kerning0\b import\cf1\b0  socket\cf0\kerning1\par
+\cf1\kerning0 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)\tab\'f1\'eb\'f3\'f8\'e0\'e5\'ec \'ef\'ee\'f0\'f2 UDP 9999\cf0\kerning1\par
+\cf1\kerning0 s.bind(('', 9999))\cf0\kerning1\par
+\cf2\kerning0\b while\cf1\b0  True:\cf0\kerning1\par
+\cf1\kerning0   print(s.recv(64))\cf0\kerning1\par
+\cf1\kerning0\par
+\'cb\'e8\'f2\'e5\'f0\'e0\'f2\'f3\'f0\'e0:\cf0\kerning1\par
+\cf1\kerning0\'c2\'f1\'e5 \'e1\'e5\'f0\'f3 \'ee\'f2\'f1\'fe\'e4\'e0 \cf0{\field{\*\fldinst{HYPERLINK "https://habrahabr.ru/post/150302/"}}{\fldrslt{\ul\cf3 https://habrahabr.ru/post/150302/}}}\kerning1\f0\fs22\par
+\cf1\kerning0\par
+\'cc\'e0\'f0\'ea \'cb\'f3\'f2\'f6 - \'c8\'e7\'f3\'f7\'e0\'e5\'ec Python, 5-\'e5 \'e8\'e7\'e4\'e0\'ed\'e8\'e5. 2019\cf0\kerning1\par
+\kerning0{\field{\*\fldinst{HYPERLINK "https://docs.python.org/2/tutorial/"}}{\fldrslt{\ul\cf3 https://docs.python.org/2/tutorial/}}}\kerning1\f0\fs22\par
+\kerning0{\field{\*\fldinst{HYPERLINK "https://docs.python.org/2.7/py-modindex.html"}}{\fldrslt{\ul\cf3 https://docs.python.org/2.7/py-modindex.html}}}\cf1\f0\fs22  \tab\'f1\'ef\'e8\'f1\'ee\'ea \'ec\'ee\'e4\'f3\'eb\'e5\'e9 \'e2 Python\cf0\kerning1\par
+\kerning0{\field{\*\fldinst{HYPERLINK "https://younglinux.info/"}}{\fldrslt{\ul\cf3 https://younglinux.info/}}}\cf1\f0\fs22\tab\tab\tab\tab\'ec\'ed\'ee\'e3\'ee \'e2\'f1\'e5\'e3\'ee \'e2 \'f2\'ee\'ec \'f7\'e8\'f1\'eb\'e5 \'e8 \'ef\'f0\'ee Python\cf0\kerning1\par
+\cf1\kerning0 Python. \'cf\'ee\'e4\'f0\'ee\'e1\'ed\'fb\'e9 \'f1\'ef\'f0\'e0\'e2\'ee\'f7\'ed\'e8\'ea, 4-\'e5 \'e8\'e7\'e4\'e0\'ed\'e8\'e5.\cf0\kerning1\par
+\kerning0{\field{\*\fldinst{HYPERLINK "http://youtube.com"}}{\fldrslt{\ul\cf3 http://youtube.com}}}\cf1\f0\fs22  Google Python Class Day 1 Part 1\cf0\kerning1\par
+\cf1\kerning0\b\par
+\b0 Python \'ff\'e7\'fb\'ea \'f1 \'e4\'e8\'ed\'e0\'ec\'e8\'f7\'e5\'f1\'ea\'ee\'e9 \'f2\'e8\'ef\'e8\'e7\'e0\'f6\'e8\'e5\'e9. \'cf\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'e0\'ff \'f5 - \'fd\'f2\'ee \'ef\'f0\'ee\'f1\'f2\'ee \'e1\'f3\'ea\'e2\'e0, \'ea\'ee\'f2\'ee\'f0\'e0\'ff \'f1\'f1\'fb\'eb\'e0\'e5\'f2\'f1\'ff \'ed\'e0 \'ed\'e5\'ea\'e8\'e9 \'ee\'e1\'fa\'e5\'ea\'f2 \'e2 \'ef\'e0\'ec\'ff\'f2\'e8. \'d3 \'ee\'e1\'fa\'e5\'ea\'f2\'e0 \'ef\'ee\'ec\'e8\'ec\'ee \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'ff, \'e5\'f1\'f2\'fc \'ef\'ee\'eb\'e5 type \'e8 \'ef\'ee\'eb\'e5 \'f1\'ee\'e4\'e5\'f0\'e6\'e0\'f9\'e8\'e5 \'ea\'ee\'eb\'e8\'f7\'e5\'f1\'f2\'e2\'ee \'f1\'f1\'fb\'eb\'ee\'ea \'ed\'e0 \'fd\'f2\'ee\'f2 \'ee\'e1\'fa\'e5\'ea\'f2. \'ca\'e0\'ea \'f2\'ee\'eb\'fc\'ea\'ee \'ea\'ee\'eb\'e8\'f7\'e5\'f1\'f2\'e2\'ee \'f1\'f1\'fb\'eb\'ee\'ea =0 - \'ee\'e1\'fa\'e5\'ea\'f2 \'f3\'e4\'e0\'eb\'ff\'e5\'f2\'f1\'ff - Garbage Collector. \'d1\'e1\'ee\'f0\'f9\'e8\'ea \'ec\'f3\'f1\'ee\'f0\'e0 \'f1\'ef\'ee\'f1\'ee\'e1\'e5\'ed \'ee\'e1\'ed\'e0\'f0\'f3\'e6\'e8\'e2\'e0\'f2\'fc \'e8 \'f3\'e4\'e0\'eb\'ff\'f2\'fc \'ee\'e1\'fa\'e5\'ea\'f2\'fb \'f1 \'f6\'e8\'ea\'eb\'e8\'f7\'e5\'f1\'ea\'e8\'ec\'e8 \'f1\'f1\'fb\'eb\'ea\'e8. \'dd\'f2\'f3 \'ee\'f1\'ee\'e1\'e5\'ed\'ed\'ee\'f1\'f2\'fc \'ec\'ee\'e6\'ed\'ee \'ee\'f2\'ea\'eb\'fe\'f7\'e8\'f2\'fc.\cf0\kerning1\par
+\cf1\kerning0\par
+>>> a = [[1,2], 'asd']\cf0\kerning1\par
+\cf1\kerning0 >>> b = a\tab\tab\tab\tab\tab\tab\'f1\'ee\'e7\'e4\'e0\'b8\'f2\'f1\'ff \'ed\'ee\'e2\'e0\'ff \'f1\'f1\'fb\'eb\'ea\'e0 \'ed\'e0 \'ee\'e1\'fa\'e5\'ea\'f2 \cf6 <class 'list'>\cf0\kerning1\par
+\cf1\kerning0 >>> \'f1 = a.\b copy\b0 ()\tab\tab\'e8\'eb\'e8 c = a[:]\tab\'f1\'ee\'e7\'e4\'e0\'b8\'f2\'f1\'ff \'ed\'ee\'e2\'fb\'e9 \'ee\'e1\'fa\'e5\'ea\'f2 \cf6 <class 'list'>\cf0\kerning1\par
+\cf1\kerning0 >>> \cf2\b import\cf1\b0  copy; d = copy.\b deepcopy\b0 (a)\tab\'e3\'eb\'f3\'e1\'ee\'ea\'ee\'e5 \'ea\'ee\'ef\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'e5 \'ee\'e1\'fa\'e5\'ea\'f2\'e0\cf0\kerning1\par
+\cf1\kerning0 >>> a[0][0] = \cf9\b 50\cf0\kerning1\b0\par
+\cf1\kerning0 >>> a[1] = '\cf8\b qwe\cf1\b0 '\cf0\kerning1\par
+\cf1\kerning0 >>> b\tab\tab\tab >>> c\tab\tab\tab >>> d\cf0\kerning1\par
+\cf1\kerning0 [[\cf9\b 50\cf1\b0 ,2], '\cf8\b qwe\cf1\b0 ']\tab [[\cf9\b 50\cf1\b0 ,2], 'asd']\tab [[1,2], 'asd']\cf0\kerning1\par
+\cf1\kerning0\par
+\'d1\'ee \'f1\'eb\'ee\'e2\'e0\'f0\'ff\'ec\'e8 \'f2\'e0\'ea \'ed\'e5 \'ef\'f0\'ee\'ea\'e0\'f2\'e8\'f2, \'f2\'e0\'ea \'ea\'e0\'ea \'ee\'ed\'e8 \'ed\'e5 \'ef\'ee\'f1\'eb\'e5\'e4\'ee\'e2\'e0\'f2\'e5\'eb\'fc\'ed\'ee\'f1\'f2\'e8:\cf0\kerning1\par
+\cf1\kerning0 >>> a = \{1:'x', 2:'y', 3:'z'\}\cf0\kerning1\par
+\cf1\kerning0 >>> b = a\tab\tab\'f1\'ee\'e7\'e4\'e0\'f2\'fc \'ed\'ee\'e2\'f3\'fe \'f1\'f1\'fb\'eb\'ea\'f3 \'ed\'e0 \'ee\'e1\'fa\'e5\'ea\'f2\cf0\kerning1\par
+\cf1\kerning0 >>> c = a.\b copy\b0 ()\tab\'f1\'ee\'e7\'e4\'e0\'f2\'fc \'ed\'ee\'e2\'fb\'e9 \'ee\'e1\'fa\'e5\'ea\'f2\cf0\kerning1\par
+\cf1\kerning0\par
+\par
+\'ce\'ef\'e5\'f0\'e0\'f2\'ee\'f0 \cf2\kerning1\b is\cf1\kerning0\b0  \'e8 \b id()\b0 .\cf0\kerning1\par
+\cf1\kerning0 >>> x = [1, 2, 3]\cf0\kerning1\par
+\cf1\kerning0 >>> y = x\cf0\kerning1\par
+\cf1\kerning0 >>> z = [1, 2, 3]\cf0\kerning1\par
+\cf1\kerning0 >>> \b id\b0 (x)\tab ->\tab 4353702856\cf0\kerning1\par
+\cf1\kerning0 >>> \b id\b0 (y)\tab ->\tab 4353702856\cf0\kerning1\par
+\cf1\kerning0 >>> \b id\b0 (z)\tab ->\tab 3871433289\cf0\kerning1\par
+\cf1\kerning0 >>> x == y\tab\tab >>> x == z\tab\tab\tab\'e7\'ed\'e0\'f7\'e5\'ed\'e8\'ff \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'f5 \'f0\'e0\'e2\'ed\'fb\cf0\kerning1\par
+\cf1\kerning0 True\tab\tab\tab True\cf0\kerning1\par
+\cf1\kerning0 >>> x \cf2\kerning1\b is\cf1\kerning0\b0  y\tab\tab >>> x \cf2\b is\cf1\b0  z\tab\tab\tab\'ed\'e0 \'ee\'e4\'e8\'ed \'e8 \'f2\'ee\'f2 \'e6\'e5 \'ee\'e1\'fa\'e5\'ea\'f2 \'f1\'f1\'fb\'eb\'e0\'fe\'f2\'f1\'ff x \'e8 y?\cf0\kerning1\par
+\cf1\kerning0 True\tab\tab\tab False\cf0\kerning1\par
+\cf1\kerning0\par
+\'c2 \'f2\'ee\'e6\'e5 \'e2\'f0\'e5\'ec\'ff !!!\cf0\kerning1\par
+\cf1\kerning0\par
+>>> x = 42\cf0\kerning1\par
+\cf1\kerning0 >>> y = 42\cf0\kerning1\par
+\cf1\kerning0 >>> x \cf2\kerning1\b is\cf1\kerning0\b0  y\cf0\kerning1\par
+\cf1\kerning0 True\tab\tab\'f2.\'ea. \cf6 <class 'int'>\cf1  \'ed\'e5\'e8\'e7\'ec\'e5\'ed\'ff\'e5\'ec\'fb\'e9, \'ed\'ee \'e1\'eb\'e0\'e3\'ee\'e4\'e0\'f0\'ff \ul\'ea\'e5\'f8\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'fe\ulnone  \'ee\'e1\'e5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5 \'f1\'f1\'fb\'eb\'e0\'fe\'f2\'f1\'ff \'ed\'e0 \'ee\'e4\'e8\'ed \'e8 \'f2\'ee\'f2 \'e6\'e5 \'ee\'e1\'fa\'e5\'ea\'f2\cf0\kerning1\par
+\cf1\kerning0 >>> \cf2\kerning1\b import\cf1\kerning0\b0  sys\cf0\kerning1\par
+\cf1\kerning0 >>> sys.\b getrefcount\b0 (42)\tab\'ef\'ee\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2 \'f1\'ea\'ee\'eb\'fc\'ea\'ee \'f1\'f1\'fb\'eb\'ee\'ea \'ed\'e0 \'ee\'e1\'fa\'e5\'ea\'f2 42\cf0\kerning1\par
+\cf1\kerning0 2\cf0\kerning1\par
+\par
+\cf1\kerning0\'d2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5 \'e8 \'f1 \cf6 <class 'str'>\cf1  \'ed\'e5\'e8\'e7\'ec\'e5\'ed\'ff\'e5\'ec\'fb\'e9\cf0\kerning1\par
+\cf1\kerning0 >>> x = "hello"\cf0\kerning1\par
+\cf1\kerning0 >>> y = 'hello'\cf0\kerning1\par
+\cf1\kerning0 >>> x \cf2\b is\cf1\b0  y\cf0\kerning1\par
+\cf1\kerning0 True\cf0\kerning1\par
+\cf1\kerning0\b\par
+\par
+\b0\par
+\ul\i If\ulnone\tab\tab\b\i0\'c2\'e0\'e6\'ed\'fb \'ee\'f2\'f1\'f2\'f3\'ef\'fb !\cf0\kerning1\b0\par
+\cf1\kerning0 x = int(\cf4\b input\cf1\b0 ('\'c2\'e2\'e5\'e4\'e8\'f2\'e5 \'f7\'e8\'f1\'eb\'ee'))\cf0\kerning1\par
+\cf2\b if\cf1\kerning0\b0  x < 0:\cf0\kerning1\par
+\cf1\kerning0   x = 0\cf0\kerning1\par
+\cf1\kerning0   print('\'ce\'f2\'f0\'e8\'f6\'e0\'f2\'e5\'eb\'fc\'ed\'ee\'e5')\cf0\kerning1\par
+\cf2\b elif\cf1\kerning0\b0  x == 0:\tab\'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2 elif = else if\cf0\kerning1\par
+\cf1\kerning0   print('0')\cf0\kerning1\par
+\cf2\b elif\cf1\kerning0\b0  x == 1:\cf0\kerning1\par
+\cf1\kerning0   print('1')\cf0\kerning1\par
+\cf2\b else\cf1\kerning0\b0 :\cf0\kerning1\par
+\cf1\kerning0   print('\'c1\'ee\'eb\'fc\'f8\'e5 1')\cf0\kerning1\par
+\cf1\kerning0\par
+\'cb\'ee\'e3\'e8\'f7\'e5\'f1\'ea\'e8\'e5 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'ff: \cf2\b True\cf1\b0  \'e8\'eb\'e8 \cf2\b False\cf0\kerning1\b0\par
+\cf1\kerning0\'cb\'ee\'e3\'e8\'f7\'e5\'f1\'ea\'e8\'e5 \'ee\'ef\'e5\'f0\'e0\'f6\'e8\'e8: and, or, not - \'ed\'e5\'f2 \'ed\'e8\'ea\'e0\'ea\'e8\'f5 && \'e8\'eb\'e8 ||\cf0\kerning1\par
+\cf1\kerning0\'c5\'f1\'eb\'e8 \'ed\'e0\'ef\'e8\'f8\'e5\'ec \cf2\kerning1\b if\cf1\kerning0\b0  5: - \'fd\'f2\'ee = True. False \'e5\'f1\'eb\'e8 \'e2\'ec\'e5\'f1\'f2\'ee 5 \'e1\'f3\'e4\'e5\'f2 0, \'ef\'f3\'f1\'f2\'ee\'e9 \'f1\'ef\'e8\'f1\'ee\'ea \'e8\'eb\'e8 \'ef\'f3\'f1\'f2\'e0\'ff \'f1\'f2\'f0\'ee\'f7\'ea\'e0.\cf0\kerning1\par
+\par
+\cf1\kerning0\par
+\ul\i While\cf0\kerning1\ulnone\i0\par
+\cf1\kerning0 a,b = 0,1 - \'e2\'fb\'e4\'e0\'b8\'f2 \'f7\'e8\'f1\'eb\'e0 \'d4\'e8\'e1\'ee\'ed\'e0\'f7\'f7\'e8.\cf0\kerning1\par
+\cf2\b while\cf1\kerning0\b0  b < 10:\cf0\kerning1\par
+\cf1\kerning0   print(b)\cf0\kerning1\par
+\cf1\kerning0   a,b = b,a - swap 2-\'f5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'f5\cf0\kerning1\par
+\cf1\kerning0\par
+\ul\i For\cf0\kerning1\ulnone\i0\par
+\cf1\kerning0 tupleOrList = ('it ', 'is a')\cf0\kerning1\par
+\cf2\b for\cf1\kerning0\b0  i \cf2\kerning1\b in\cf1\kerning0\b0  tupleOrList:\cf0\kerning1\par
+\cf1\kerning0   print(i)\cf0\kerning1\par
+\cf1\kerning0\par
+\cf2\kerning1\b for\cf1\kerning0\b0  i \cf2\kerning1\b in\cf1\kerning0\b0  'hello world':\cf0\kerning1\par
+\cf1\kerning0   print(i)\cf0\kerning1\par
+\par
+\cf1\kerning0 >>> print(*range(5)) - * unpack the sequence. Range - \'fd\'f2\'ee \'ee\'e1\'fa\'e5\'ea\'f2 \'f1 3-\'ff \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'e0\'ec\'e8: \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5(~3), \'e8\'ed\'ea\'f0\'e5\'ec\'e5\'ed\'f2(+1), \'ef\'ee\'f0\'ee\'e3(5). \'d0\'e5\'e0\'eb\'fc\'ed\'ee\'e9 \'ef\'ee\'f1\'eb\'e5\'e4\'ee\'e2\'e0\'f2\'e5\'eb\'fc\'ed\'ee\'f1\'f2\'e8 \'ed\'e5 \'f1\'ee\'e7\'e4\'e0\'b8\'f2\'f1\'ff.\cf0\kerning1\par
+\cf1\kerning0 0 1 2 3 4\cf0\kerning1\par
+\cf1\kerning0 >>> l = list(range(5)) - \'e4\'eb\'ff \'f1\'ee\'e7\'e4\'e0\'ed\'e8\'ff \'ef\'ee\'f1\'eb\'e5\'e4\'ee\'e2\'e0\'f2\'e5\'eb\'fc\'ed\'ee\'f1\'f2\'e8 \'e4\'e5\'eb\'e0\'e5\'ec \'f2\'e0\'ea\cf0\kerning1\par
+\cf1\kerning0 [0, 1, 2, 3, 4]\cf0\kerning1\par
+\cf1\kerning0\par
+range(5, 10)\tab 5 6 7 8 9\tab\tab range(start, stop, step)\cf0\kerning1\par
+\cf1\kerning0 range(0, 10, 3)\tab 2 5 8\cf0\kerning1\par
+\cf1\kerning0\par
+a = ('\'d7\'f2\'ee-\'f2\'ee ', '\'ed\'ee\'e2\'e5\'ed\'fc\'ea\'ee\'e5 ', '?')\cf0\kerning1\par
+\cf2\b for\cf1\kerning0\b0  i \cf2\kerning1\b in\cf1\kerning0\b0  range(len(a)):\cf0\kerning1\par
+\cf1\kerning0   print(a[i])\cf0\kerning1\par
+\cf1\kerning0\par
+a = (1, 2, 3)\cf0\kerning1\par
+\cf1\kerning0 b = ('x', 'y', 'z')\cf0\kerning1\par
+\cf1\kerning0 c = \b zip\b0 (a, b)\tab ->\tab c \'fd\'f2\'ee class zip \'f1 \'ef\'f0\'e8\'ec\'e5\'f0\'ed\'fb\'ec \'f1\'ee\'e4\'e5\'f0\'e6\'e0\'ed\'e8\'e5\'ec: (1, 'x'), (2, 'y'), (3, 'z')\cf0\kerning1\par
+\cf2\kerning0\b for\cf1\b0  n, m \cf2\b in\cf1\b0  c:\cf0\kerning1\par
+\cf1\kerning0   print(n + m)\cf0\kerning1\par
+\cf1\kerning0\par
+\cf2\b for\cf1\b0  line \cf2\b in\cf1\b0  open('file.txt'):\cf0\kerning1\par
+\cf1\kerning0   print(line)\cf0\kerning1\par
+\cf1\kerning0\par
+\par
+\par
+\ul\'cc\'ed\'ee\'e3\'ee\'ef\'ee\'f2\'ee\'f7\'ed\'ee\'f1\'f2\'fc\ulnone .\cf0\kerning1\par
+\cf2\b from\cf1\kerning0\b0  threading \cf2\kerning1\b import\cf1\kerning0\b0  \cf6\b Thread\cf0\kerning1\b0\par
+\cf1\kerning0\par
+\cf2\kerning1\b def\cf1\kerning0\b0  loop1():\cf0\kerning1\par
+\cf1\kerning0   \cf2\kerning1\b while\cf1\kerning0\b0  \cf2\b True\cf1\b0 :\cf0\kerning1\par
+\cf1\kerning0     print('1')\cf0\kerning1\par
+\cf1\kerning0\par
+\cf2\kerning1\b def\cf1\kerning0\b0  loop2():\cf0\kerning1\par
+\cf1\kerning0   \cf2\kerning1\b while\cf1\kerning0\b0  \cf2\b True\cf1\b0 :\cf0\kerning1\par
+\cf1\kerning0     print('2')\cf0\kerning1\par
+\cf1\kerning0\par
+\cf6\b Thread\cf1\b0 (\cf10 target \cf1 = loop1).start()\cf0\kerning1\par
+\cf6\kerning0\b Thread\cf1\b0 (\cf10 target \cf1 = loop2).start()\cf0\kerning1\par
+\cf1\kerning0\par
+\par
+\par
+\par
+>>> type(a)\tab\'f3\'e7\'ed\'e0\'f2\'fc \'f2\'e8\'ef \'ee\'e1\'fa\'e5\'ea\'f2\'e0\cf0\kerning1\par
+\cf6\kerning0 <class 'list'>\cf0\kerning1\par
+\cf1\kerning0 >>> type(type(a)) - \'f2\'e8\'ef \'ee\'e1\'fa\'e5\'ea\'f2\'e0 \'f1\'e0\'ec \'ff\'e2\'eb\'ff\'e5\'f2\'f1\'ff \'f2\'e8\'ef\'ee\'ec\cf0\kerning1\par
+\cf6\kerning0 <class 'type'>\cf0\kerning1\par
+\cf1\kerning0\par
+\'c7\'e0\'e4\'e0\'f7\'e0: \'ca\'e0\'ea \'ef\'f0\'ee\'e2\'e5\'f0\'e8\'f2\'fc \'f2\'e8\'ef \'ee\'e1\'fa\'e5\'ea\'f2\'e0?\cf0\kerning1\par
+\cf2\kerning0\b if\cf1\b0  type(L) == type([]) print ('List')\cf0\kerning1\par
+\cf1\kerning0\'e8\'eb\'e8\cf0\kerning1\par
+\cf2\kerning0\b if\cf1\b0  isinstance (L, dict) print('\'d1\'eb\'ee\'e2\'e0\'f0\'fc')\cf0\kerning1\par
+\cf1\kerning0\par
+\tab\ul\b\'d7\'c8\'d1\'cb\'c0\cf0\kerning1\ulnone\b0\par
+\cf1\kerning0\ul\par
+\ulnone\b help\b0 (int)\tab\tab\cf6 <class 'int'> <class 'float'> <class 'bool'>\cf0\kerning1\par
+\cf1\kerning0\ul\par
+\cf2\kerning1\ulnone\b import\cf1\kerning0\b0  math\cf0\kerning1\par
+\cf2\b import\cf1\kerning0\b0  random\cf0\kerning1\par
+\cf1\kerning0\ul\par
+\ulnone -1234, 645L\tab\tab\tab\'f6\'e5\'eb\'fb\'e5 \'f7\'e8\'f1\'eb\'e0, Python 2.6 \'e2\'fb\'e4\'e5\'eb\'ff\'e5\'f2 32 \'e1\'e8\'f2\'e0 \'e4\'eb\'ff "\'ee\'e1\'fb\'f7\'ed\'ee\'e3\'ee \'f6\'e5\'eb\'ee\'e3\'ee" \'e8 \'e1\'e5\'f1\'ea\'ee\'ed\'e5\'f7\'ed\'ee\'e5 \'e4\'eb\'ff "\'e4\'eb\'e8\'ed\'ed\'ee\'e3\'ee \'f6\'e5\'eb\'ee\'e3\'ee" \'e5\'f1\'eb\'e8 \'ed\'e0 \'ea\'ee\'ed\'f6\'e5 'L'; \'e2 3.0 \'e2\'f1\'e5 \'f6\'e5\'eb\'fb\'e5 - \'e4\'eb\'e8\'ed\'fb\'e5\cf0\kerning1\par
+\cf1\kerning0 3.14, 4.9e-12, 1., 1.0E+25\tab\'e2\'e5\'f9\'e5\'f1\'f2\'e2\'e5\'ed\'ed\'fb\'e5\cf0\kerning1\par
+\cf1\kerning0 3+4j, 3.0+4.9J\tab\tab\tab\'ea\'ee\'ec\'ef\'eb\'e5\'ea\'f1\'ed\'fb\'e5\cf0\kerning1\par
+\cf1\kerning0 0157, 0\'f545\'c0, 0b1101\tab\tab\'e2\'ee\'f1\'fc\'ec\'e8\'f0\'e8\'f7\'ed\'fb\'e5, \'f8\'e5\'f1\'f2... Python 2.6\cf0\kerning1\par
+\cf1\kerning0 0\b o\b0 157, 0\'f545\'c0, 0b1101\tab\tab\'e2\'ee\'f1\'fc\'ec\'e8\'f0\'e8\'f7\'ed\'fb\'e5, \'f8\'e5\'f1\'f2... Python 3.0\cf0\kerning1\par
+\cf1\kerning0\par
+>>> 0.1 + 0.1 + 0.1 - 0.3\cf0\kerning1\par
+\cf1\kerning0 5.551115123125783e-17\tab\'f2.\'ea. 0.1 \'e2 \'ef\'e0\'ec\'ff\'f2\'e8 \'ea\'ee\'ec\'ef\'fc\'fe\'f2\'e5\'f0\'e0 \'f5\'f0\'e0\'ed\'e8\'f2\'f1\'ff \'e2 \'e4\'e2\'ee\'e8\'f7\'ed\'ee\'e9 \'f1\'e8\'f1\'f2\'e5\'ec\'e5 \'ea\'e0\'ea 0.0001100110011..., 0.3 = 0.01001100110011...\cf0\kerning1\par
+\cf1\kerning0\par
+\'cf\'f0\'e5\'ee\'e1\'f0\'e0\'e7\'ee\'e2\'e0\'ed\'e8\'e5 \'f6\'e5\'eb\'ee\'e3\'ee \'f7\'e8\'f1\'eb\'e0 \'e2:  hex(I), oct(I), bin(I), int(str, base)\cf0\kerning1\par
+\cf1\kerning0\'cf\'ee\'e4\'ea\'eb\'fe\'f7\'e0\'e5\'ec\'fb\'e5 \'ec\'ee\'e4\'f3\'eb\'e8 \'e4\'eb\'ff \'f0\'e0\'e1\'ee\'f2\'fb \'f1 \'f7\'e8\'f1\'eb\'e0\'ec\'e8: random, math\cf0\kerning1\par
+\cf1\kerning0 x>>y \'e8\'eb\'e8 x<<y\tab\tab\tab\tab\'ef\'ee\'e1\'e8\'f2\'ee\'e2\'fb\'e9 \'f1\'e4\'e2\'e8\'e3 x \'ed\'e0 y \'e1\'e8\'f2\'ee\'e2\cf0\kerning1\par
+\cf1\kerning0 x \cf2\b in\cf1\b0  y \'e8\'eb\'e8 x \cf2\b not in\cf1\b0  y\tab\tab\tab\'ef\'f0\'ee\'e2\'e5\'f0\'ea\'e0 \'ed\'e0 \'e2\'f5\'ee\'e6\'e4\'e5\'ed\'e8\'e5 (\'e4\'eb\'ff \'e8\'ed\'f2\'e5\'e3\'f0\'e8\'f0\'f3\'e5\'ec\'fb\'f5 \'ee\'e1\'fa\'e5\'ea\'f2\'ee\'e2 \'e8 \'ec\'ed\'ee\'e6\'e5\'f1\'f2\'e2)\cf0\kerning1\par
+\cf1\kerning0 x>y \'e8\'eb\'e8 x<=y \'e8\'eb\'e8 x==y \'e8\'eb\'e8 x!=y\tab\'f1\'f0\'e0\'e2\'ed\'e5\'ed\'e8\'e5\cf0\kerning1\par
+\cf1\kerning0\par
+>>> 2.0 != 2.0\tab\kerning1\u8594?\kerning0\tab False\cf0\kerning1\par
+\cf1\kerning0 >>> 10<15<30\tab\u8594?\tab True\tab\tab\'c2\'fb\'f0\'e0\'e6\'e5\'ed\'e8\'e5\'ec X<Y<Z \'e8\'ed\'f2\'e5\'f0\'ef\'f0\'e5\'f2\'e0\'f2\'ee\'f0 Python \'f0\'e0\'e7\'e1\'e8\'e2\'e0\'e5\'f2 \'ed\'e0 X<Y AND Y<Z - \'ef\'f0\'ee\'e2\'e5\'f0\'ff\'e5\'f2 \'e2\'f5\'ee\'e4\'e8\'f2 \'eb\'e8 Y \'e2 \'e4\'e8\'e0\'ef\'ee\'e7\'ee\'ed \'ec\'e5\'e6\'e4\'f3 X \'e8 Z. \'cc\'ee\'e6\'ed\'ee \'e4\'e5\'eb\'e0\'f2\'fc A>B>C>D. \'c8\'eb\'e8 A==B>C, \'f7\'f2\'ee \'f0\'e0\'e7\'ee\'e1\'fc\'e5\'f2\'f1\'ff \'ed\'e0 A==B AND B>C.\cf0\kerning1\par
+\cf1\kerning0\par
+x \cf2\b or\cf1\b0  y \'e8\'eb\'e8 x \cf2\b and\cf1\b0  y \'e8\'eb\'e8 \cf2\b not\cf1\b0  x\tab  \tab\'eb\'ee\'e3\'e8\'f7\'e5\'f1\'ea\'e8\'e5 \'ee\'ef\'e5\'f0\'e0\'f6\'e8\'e8\cf0\kerning1\par
+\cf1\kerning0 x|y \'e8\'eb\'e8 x^y \'e8\'eb\'e8 x&y \'e8\'eb\'e8 ~x\tab\tab\'e1\'e8\'f2\'ee\'e2\'fb\'e5 \'ee\'ef\'e5\'f0\'e0\'f6\'e8\'e8 OR, XOR, AND, NOT\cf0\kerning1\par
+\cf1\kerning0 x/y \'e8\'eb\'e8 x//y\tab\tab\tab\tab\'e4\'e5\'eb\'e5\'ed\'e8\'e5 \'e8 \'e4\'e5\'eb\'e5\'ed\'e8\'e5 \'f1 \'ee\'ea\'f0\'f3\'e3\'eb\'e5\'ed\'e8\'e5\'ec \'e4\'ee \'f6\'e5\'eb\'ee\'e3\'ee \'f7\'e8\'f1\'eb\'e0\cf0\kerning1\par
+\cf1\kerning0 x**y\tab\tab\tab\tab\tab\'e2\'ee\'e7\'e2\'e5\'e4\'e5\'ed\'e8\'e5 \'e2 \'f1\'f2\'e5\'ef\'e5\'ed\'fc. \'c5\'f1\'eb\'e8 y=0.5 - \'e2\'e7\'ff\'f2\'fc \'ea\'e2\'e0\'e4\'f0\'e0\'f2\'ed\'fb\'e9 \'ea\'ee\'f0\'e5\'ed\'fc.\cf0\kerning1\par
+\cf1\kerning0\par
+\'cf\'f0\'e8\'ee\'f0\'e8\'f2\'e5\'f2 \'ee\'ef\'e5\'f0\'e0\'f6\'e8\'e9 \'e2 \'f2\'e0\'e1\'eb\'e8\'f6\'e5: \'cc\'e0\'f0\'ea \'cb\'f3\'f2\'f6 - \'c8\'e7\'f3\'f7\'e0\'e5\'ec Python (4-e \'e8\'e7\'e4\'e0\'ed\'e8\'e5).pdf \'f1\'f2\'f0.157\cf0\kerning1\par
+\cf1\kerning0\par
+>>> abs(-42.0), sum((1,2,3,4)), min(3,1,2,4), max(3,1,2,4)\cf0\kerning1\par
+\cf1\kerning0 (42.0, 10, 1, 4)\cf0\kerning1\par
+\cf1\kerning0\par
+\par
+\tab\ul\b\'d1\'d2\'d0\'ce\'ca\'c8\cf0\kerning1\ulnone\b0\par
+\cf1\kerning0\ul\i\par
+\ulnone\b\i0 help\b0 (str)\tab\tab\cf6 <class 'str'>\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\cf1\kerning0\par
+\cf2\kerning1\b import\cf1\kerning0\b0  re\tab\tab Regular Expressions\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf1\kerning0\ul\i\par
+\ulnone\i0\'d1\'f2\'f0\'ee\'ea\'e0 - \'fd\'f2\'ee \ul\'ef\'ee\'f1\'eb\'e5\'e4\'ee\'e2\'e0\'f2\'e5\'eb\'fc\'ed\'ee\'f1\'f2\'fc\ulnone  \'ee\'e4\'ed\'ee\'f1\'e8\'ec\'e2\'ee\'eb\'fc\'ed\'fb\'f5 \'f1\'f2\'f0\'ee\'ea. \'d1\'f2\'f0\'ee\'ea\'e0 \'e2 \'ef\'e0\'ec\'ff\'f2\'e8 \'f5\'f0\'e0\'ed\'e8\'f2\'f1\'ff \'ea\'e0\'ea \'e4\'eb\'e8\'ed\'e0 + \'f1\'ee\'e1\'f1\'f2\'e2\'e5\'ed\'ed\'ee \'f1\'e0\'ec\'e0 \'f1\'f2\'f0\'ee\'ea\'e0, \'f2.\'e5. \'ed\'e5\'f2 \'f1\'e8\'ec\'e2\'ee\'eb\'e0 "\'ea\'ee\'ed\'e5\'f6 \'f1\'f2\'f0\'ee\'ea\'e8" \'ea\'e0\'ea \'e2 \'d1++. \'c2 \'d1++ \'ea\'ee\'ed\'e5\'f6 \'f1\'f2\'f0\'ee\'ea\'e8 - \'fd\'f2\'ee 0\'f5\kerning1 0\'c0\kerning0  \'e2 \'f2\'e0\'e1\'eb\'e8\'f6\'e5 ASCII.\cf0\kerning1\par
+\cf1\kerning0\par
+S = ''\tab\tab\tab\tab\'ef\'f3\'f1\'f2\'e0\'ff \'f1\'f2\'f0\'ee\'ea\'e0\cf0\kerning1\par
+\cf1\kerning0 'spam" s'\tab\tab\tab\tab\'f1\'f2\'f0\'ee\'ea\'e0 \'e2 \'e0\'ef\'ee\'f1\'f2\'f0\'ee\'f4\'e0\'f5 \'e4\'eb\'ff \'f2\'ee\'e3\'ee \'f7\'f2\'ee\'e1\'fb \'e2 \'f1\'f2\'f0\'ee\'ea\'f3 \'e2\'f1\'f2\'e0\'e2\'e8\'f2\'fc \'f1\'e8\'ec\'e2\'ee\'eb "\cf0\kerning1\par
+\cf1\kerning0 "spam ' s"\tab\tab\tab\tab\'f1\'f2\'f0\'ee\'ea\'e0 \'e2 \'ea\'e0\'e2\'fb\'f7\'ea\'e0\'f5 \'e4\'eb\'ff \'f2\'ee\'e3\'ee \'f7\'f2\'ee\'e1\'fb \'e2 \'f1\'f2\'f0\'ee\'ea\'f3 \'e2\'f1\'f2\'e0\'e2\'e8\'f2\'fc \'f1\'e8\'ec\'e2\'ee\'eb '\cf0\kerning1\par
+\cf1\kerning0 S = 'a\\tx10c'\tab\tab\tab\'fd\'ea\'f0\'e0\'ed\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'fb\'e5 \'ef\'ee\'f1\'eb\'e5\'e4\'ee\'e2\'e0\'f2\'e5\'eb\'fc\'ed\'ee\'f1\'f2\'e8 - \'fd\'f2\'ee \\n, \\t, \\v \'e8 \'f2.\'ef. \'f2\'e0\'e1\'eb\'e8\'f6\'e0 \'ed\'e0 \'f1\'f2\'f0.212 \'cc\'e0\'f0\'ea \'cb\'f3\'f2\'f6 - \'c8\'e7\'f3\'f7\'e0\'e5\'ec Python\cf0\kerning1\par
+\cf1\kerning0 S = r 'c:\\new\\text.data'\tab r'...' - \'e4\'eb\'ff \'f2\'ee\'e3\'ee \'f7\'f2\'ee\'e1\'fb \'e8\'ed\'f2\'e5\'f0\'ef\'f0\'e5\'f2\'e0\'f2\'ee\'f0 \'ed\'e5 \'ef\'f0\'e5\'ee\'e1\'f0\'e0\'e7\'ee\'e2\'e0\'eb \\new \'e8 \\text \'e2 \i NEWLINE\i0 ew \'e8 \i TAB\i0 ext\cf0\kerning1\par
+\cf1\kerning0 S = 'c:\\\\new\\\\text.data'\tab\\\\ - \'e8\'ed\'f2\'e5\'f0\'ef\'f0\'e5\'f2\'e8\'f0\'f3\'e5\'f2\'f1\'ff \'ea\'e0\'ea \\\cf0\kerning1\par
+\cf1\kerning0 S = b'spam'\tab\tab\tab\tab\'f1\'f2\'f0\'ee\'ea\'e0 \'e1\'e0\'e9\'f2\'ee\'e2\cf0\kerning1\par
+\cf1\kerning0 S = u'spam'\tab\tab\tab\tab\'f1\'f2\'f0\'ee\'ea\'e0 \'e2 \'f1\'e8\'ec\'e2\'ee\'eb\'e0\'f5 unicode\cf0\kerning1\par
+\cf1\kerning0 S = """ ... """\tab\tab\tab\'f2\'f0\'ee\'e9\'ed\'fb\'e5 \'ea\'e0\'e2\'fb\'f7\'ea\'e8 - \'ec\'ee\'e6\'ed\'ee \'ef\'e8\'f1\'e0\'f2\'fc \'f7\'f2\'ee \'f3\'e3\'ee\'e4\'ed\'ee: \\n, ', " \'e8 \'f2.\'ef.\cf0\kerning1\par
+\cf1\kerning0 'asd\\x10dsa'\tab\tab\tab\\x10 \'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2 \'e2\'f1\'f2\'e0\'e2\'e8\'f2\'fc 10-\'e9 \'f1\'e8\'ec\'e2\'ee\'eb \'e8\'e7 \'f2\'e0\'e1\'eb\'e8\'f6\'fb ASCII\cf0\kerning1\par
+\cf1\kerning0 S1 + S2\tab\tab\tab\tab\cf7\b\'ea\'ee\'ed\'ea\'e0\'f2\'e5\'ed\'e0\'f6\'e8\'ff\cf0\kerning1\b0\par
+\cf1\kerning0 strlist = ["one", "two", "three"]\cf0\kerning1\par
+\cf1\kerning0 ",,,".\b join\b0 (strlist)\tab\tab\cf7\b\'ea\'ee\'ed\'ea\'e0\'f2\'e5\'ed\'e0\'f6\'e8\'ff\cf1\b0 , \'e2\'fb\'e4\'e0\'f1\'f2 one,,,two,,,three \'d2.\'e5 ",,," - \'fd\'f2\'ee \'f0\'e0\'e7\'e4\'e5\'eb\'e8\'f2\'e5\'eb\'fc.\cf0\kerning1\par
+\cf1\kerning0 S * 3\tab\tab\tab\tab\tab\'ef\'ee\'e2\'f2\'ee\'f0\'e5\'ed\'e8\'e5\cf0\kerning1\par
+\cf1\kerning0 S[i]\tab\tab\tab\tab\tab\'ee\'e1\'f0\'e0\'f9\'e5\'ed\'e8\'e5 \'ef\'ee \'e8\'ed\'e4\'e5\'ea\'f1\'f3\cf0\kerning1\par
+\cf1\kerning0 len(S)\tab\tab\tab\tab\'ee\'ef\'f0\'e5\'e4\'e5\'eb\'e5\'ed\'e8\'e5 \'e4\'eb\'e8\'ed\'fb \'f1\'f2\'f0\'ee\'ea\'e8\cf0\kerning1\par
+\cf1\kerning0 "a %s parrot" %'king'\tab\tab\'f4\'ee\'f0\'ec\'e0\'f2\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'e5\\\'ef\'ee\'e4\'f1\'f2\'e0\'ed\'ee\'e2\'ea\'e0 \'f1\'f2\'f0\'ee\'ea\'e8. %s - \'f1\'f2\'f0\'ee\'ea\'e0, %d - integer. \'d2\'e0\'e1\'eb\'e8\'f6\'e0 \'f1\'f2\'f0.236 \'cc\'e0\'f0\'ea \'cb\'f3\'f2\'f6 - \'c8\'e7\'f3\'f7\'e0\'e5\'ec Python\cf0\kerning1\par
+\cf1\kerning0 "a %s %d" %('king', 123)\cf0\kerning1\par
+\cf1\kerning0 "a \{\} parrot" .\b format\b0 (king)\'f1\'f2\'f0\'ee\'ea\'ee\'e2\'ee\'e9 \'ec\'e5\'f2\'ee\'e4 \'f4\'ee\'f0\'ec\'e0\'f2\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'ff - \'ef\'f0\'ee \'fd\'f2\'ee \'ed\'e0\'ef\'e8\'f1\'e0\'ed\'e0 \'f6\'e5\'eb\'e0\'ff \'e3\'eb\'e0\'e2\'e0 \'f1\'ee \'f1\'f2\'f0. 236 \'cc\'e0\'f0\'ea \'cb\'f3\'f2\'f6 - \'c8\'e7\'f3\'f7\'e0\'e5\'ec Python. \'c5\'f9\'b8 \'ec\'ee\'e6\'ed\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'e4\'eb\'ff \cf7\b\'ea\'ee\'ed\'ea\'e0\'f2\'e5\'ed\'e0\'f6\'e8\'e8\cf1\b0 .\cf0\kerning1\par
+\cf1\kerning0 >>> S.\b find\b0 ('pa')\tab\tab\tab\'ef\'ee\'e8\'f1\'ea, \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 \'f1\'ec\'e5\'f9\'e5\'ed\'e8\'e5 \'e8\'f1\'ea\'ee\'ec\'ee\'e3\'ee \'e1\'eb\'ee\'ea\'e0 - \'e5\'f1\'eb\'e8 \'f0\'e5\'e7\'f3\'eb\'fc\'f2\'e0\'f2 =-1 - \'ed\'e8\'f7\'e5\'e3\'ee \'ed\'e5 \'ed\'e0\'f8\'eb\'e8\cf0\kerning1\par
+\cf1\kerning0 >>> 'pa' \cf2\b in\cf1\b0  s\tab\tab\tab\'e5\'f1\'f2\'fc \'eb\'e8 'pa' \'e2 \'f1\'f2\'f0\'ee\'ea\'e5 s\cf0\kerning1\par
+\cf1\kerning0 True\cf0\kerning1\par
+\cf1\kerning0 >>> 'pa' \cf2\b not in\cf1\b0  s\cf0\kerning1\par
+\cf1\kerning0 False\cf0\kerning1\par
+\cf1\kerning0 >>> S.\b rstrip\b0 ()\tab\tab\tab\'f3\'e4\'e0\'eb\'e5\'ed\'e8\'e5 \'f1\'e8\'ec\'e2\'ee\'eb\'ee\'e2 (\'ea\'e0\'ea \'ff \'ef\'ee\'ed\'ff\'eb) \\n, \\t \'e8 \'f2.\'ef.\cf0\kerning1\par
+\cf1\kerning0 >>> S.\b replace\b0 ('pa', 'xx')\tab\'e2\'fb\'e2\'ee\'e4\'e8\'f2 \'ef\'ee\'e8\'f1\'ea \'f1 \'e7\'e0\'ec\'e5\'ed\'ee\'e9, \'ed\'ee \'f1\'e0\'ec\'f3 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'f3\'fe s \'ed\'e5 \'e8\'e7\'ec\'e5\'ed\'ff\'e5\'f2\cf0\kerning1\par
+\cf1\kerning0 >>> S.\b split\b0 (',')\tab\tab\tab\'f0\'e0\'e7\'e1\'e8\'e2\'e0\'e5\'f2 \'f1\'f2\'f0\'ee\'ea\'f3 \'ef\'ee \'f0\'e0\'e7\'e4\'e5\'eb\'e8\'f2\'e5\'eb\'fe(\'e7\'e0\'ef\'ff\'f2\'e0\'ff) \'e8 \'f1\'ee\'e7\'e4\'e0\'b8\'f2 \'f1\'ef\'e8\'f1\'ee\'ea \'f1\'f2\'f0\'ee\'ea (\'ef\'ee default-\'f3 \'f0\'e0\'e7\'e4\'e5\'eb\'e8\'f2\'e5\'eb\'fc - \'ef\'f0\'ee\'e1\'e5\'eb)\cf0\kerning1\par
+\cf1\kerning0\par
+>>> S = "42"\cf0\kerning1\par
+\cf1\kerning0 >>> I = 1\cf0\kerning1\par
+\cf1\kerning0 >>> S + I\cf0\kerning1\par
+\cf1\kerning0 TypeError: cannot concatenate 'str' and 'int' objects\cf0\kerning1\par
+\par
+\cf1\kerning0 >>> int (S) + I\tab\tab # \'e8\'e7 str \kerning1\u8594? int\cf0\par
+\cf1\kerning0 43\cf0\kerning1\par
+\cf1\kerning0 >>> S + str (I)\tab\tab # \'e8\'e7 int \kerning1\u8594? str\cf0\par
+\cf1\kerning0 '421'\cf0\kerning1\par
+\cf1\kerning0\par
+>>> title = "Meaning" 'of' "Life"\tab\'ed\'e5\'ff\'e2\'ed\'e0\'ff \'ea\'ee\'ed\'ea\'e0\'f2\'e5\'ed\'e0\'f6\'e8\'ff\cf0\kerning1\par
+\cf1\kerning0 'Meaning of Life'\tab\tab\tab\tab\tab\'ef\'ee\'eb\'f3\'f7\'e8\'ec \cf6 <class 'str'>\cf0\kerning1\par
+\cf1\kerning0\par
+>>> title = "Meaning", 'of', "Life"\tab\'e5\'f1\'eb\'e8 \'ec\'e5\'e6\'e4\'f3 \'f1\'eb\'ee\'e2\'e0\'ec\'e8 \'ef\'ee\'f1\'f2\'e0\'e2\'e8\'f2\'fc \'e7\'e0\'ef\'ff\'f2\'fb\'e5\cf0\kerning1\par
+\cf1\kerning0 ('Meaning', 'of', 'Life')\tab\tab\tab\tab\'ef\'ee\'eb\'f3\'f7\'e8\'ec \cf6 <class 'tuple'>\cf0\kerning1\par
+\cf1\kerning0\par
+\'d1\'f2\'f0\'ee\'ea\'e8 \'ed\'e5\'eb\'fc\'e7\'ff \'e8\'e7\'ec\'e5\'ed\'ff\'f2\'fc, \'f2.\'e5. \'ed\'e5\'eb\'fc\'e7\'ff \'f1\'e4\'e5\'eb\'e0\'f2\'fc:\cf0\kerning1\par
+\cf1\kerning0 >>> s='Spam'\cf0\kerning1\par
+\cf1\kerning0 >>> s[0]='z' - \'ee\'f8\'e8\'e1\'ea\'e0\cf0\kerning1\par
+\cf1\kerning0\'cd\'e0\'e4\'ee \'f3\'e4\'e0\'eb\'e8\'f2\'fc \'ef\'f0\'e5\'e4\'fb\'e4\'f3\'f9\'f3\'fe \'e8 \'f1\'ee\'e7\'e4\'e0\'f2\'fc \'ed\'ee\'e2\'f3\'fe\cf0\kerning1\par
+\cf1\kerning0 >>> s='z'+s[1:]\cf0\kerning1\par
+\cf1\kerning0 'zpam'\cf0\kerning1\par
+\par
+\cf1\kerning0 >>> a='01234'\cf0\kerning1\par
+\cf1\kerning0 >>> a[2]\cf0\kerning1\par
+\cf1\kerning0 2\cf0\kerning1\par
+\cf1\kerning0 >>> a[1:3]\tab\tab\'f0\'e0\'e7\'e1\'e8\'f2\'fc \'f1\'f2\'f0\'ee\'ea\'f3\cf0\kerning1\par
+\cf1\kerning0 '12'\cf0\kerning1\par
+\cf1\kerning0 >>> a[:3]\cf0\kerning1\par
+\cf1\kerning0 '012'\cf0\kerning1\par
+\cf1\kerning0 >>> a[:-1]\cf0\kerning1\par
+\cf1\kerning0 '0123'\cf0\kerning1\par
+\cf1\kerning0 >>> a[-1]\cf0\kerning1\par
+\cf1\kerning0 '4'\cf0\kerning1\par
+\cf1\kerning0 >>> a[1:]\cf0\kerning1\par
+\cf1\kerning0 '1234'\cf0\kerning1\par
+\cf1\kerning0 >>> a[:]\cf0\kerning1\par
+\cf1\kerning0 '01234'\cf0\kerning1\par
+\cf1\kerning0 >>> a[::2]\tab\tab\'ee\'e1\'f9\'e0\'ff \'f4\'ee\'f0\'ec\'e0 a[start:stop:step]\cf0\kerning1\par
+\cf1\kerning0 '024'\cf0\kerning1\par
+\cf1\kerning0 >>> a[::-1]\tab\tab\'ef\'e5\'f0\'e5\'e2\'e5\'f0\'ed\'f3\'f2\'fc \'f1\'f2\'f0\'ee\'ea\'f3\cf0\kerning1\par
+\cf1\kerning0 '43210'\cf0\kerning1\par
+\cf1\kerning0\par
+echo.py\cf0\kerning1\par
+\cf1\kerning0\tab\cf2\kerning1\b import\cf1\kerning0\b0  sys\cf0\kerning1\par
+\cf1\kerning0\tab print sys.argv\tab\tab\tab\'ec\'ee\'e6\'e5\'ec \'ef\'ee\'eb\'f3\'f7\'e8\'f2\'fc \'f1\'ef\'e8\'f1\'ee\'ea \'e0\'f0\'e3\'f3\'ec\'e5\'ed\'f2\'ee\'e2\cf0\kerning1\par
+\cf1\kerning0\tab args = sys.argv[1:]\tab\tab\'f2\'e5\'ef\'e5\'f0\'fc \'ec\'ee\'e6\'e5\'ec \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'e0\'f0\'e3\'f3\'ec\'e5\'ed\'f2\'fb, \'ef\'e5\'f0\'e5\'e4\'e0\'e2\'e0\'e5\'ec\'fb\'e5 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e5\cf0\kerning1\par
+\par
+\cf1\kerning0 $ python echo.py -a -b -c\cf0\kerning1\par
+\cf1\kerning0 ['echo.py' , '-a', '-b', '-c']\cf0\kerning1\par
+\cf1\kerning0\'cd\'ee \'ee\'e1\'fb\'f7\'ed\'ee \'e4\'eb\'ff \'fd\'f2\'e8\'f5 \'f6\'e5\'eb\'e5\'e9 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'fe\'f2 \'ec\'ee\'e4\'f3\'eb\'fc \'e8\'e7 \'f1\'f2\'e0\'ed\'e4\'e0\'f0\'f2\'ed\'fb\'e9 \'e1\'e8\'e1\'eb\'e8\'ee\'f2\'e5\'ea\'e8:\cf0\kerning1\par
+\cf1\kerning0\tab\cf2\kerning1\b import\cf1\kerning0\b0  argparse\cf0\kerning1\par
+\par
+\par
+\cf1\kerning0 >>> \b dir\b0 ('asd')\tab\'e2\'fb\'e4\'e0\'f1\'f2 \'f1\'ef\'e8\'f1\'ee\'ea \'ec\'e5\'f2\'ee\'e4\'ee\'e2, \'ef\'f0\'e8\'ec\'e5\'ed\'ff\'e5\'ec\'fb\'f5 \'ea \'ee\'e1\'fa\'e5\'ea\'f2\'f3 + \'f1\'ef\'e8\'f1\'ee\'ea \'e2\'ee\'e7\'ec\'ee\'e6\'ed\'fb\'f5 \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'ee\'e2\cf0\kerning1\par
+\cf1\kerning0\tab >>> s = 'Hello'\cf0\kerning1\par
+\cf1\kerning0\tab >>> s.__add__('world')\cf0\kerning1\par
+\cf1\kerning0\tab 'Hello world'\cf0\kerning1\par
+\cf1\kerning0\tab >>> s.__eq__('Hello')\cf0\kerning1\par
+\cf1\kerning0\tab True\cf0\kerning1\par
+\par
+\cf1\kerning0 ['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmod__', '__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'capitalize', 'casefold', 'center', 'count', 'encode', 'endswith', 'expandtabs', 'find', 'format', 'format_map', 'index', 'isalnum', 'isalpha', 'isascii', 'isdecimal', 'isdigit', 'isidentifier', 'islower', 'isnumeric', 'isprintable', 'isspace', 'istitle', 'isupper', '\cf7\b join\cf1\b0 ', 'ljust', 'lower', 'lstrip', 'maketrans', 'partition', 'removeprefix', 'removesuffix', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']\cf0\kerning1\par
+\par
+\cf1\kerning0 >>> \b help\b0 (s.\cf2\kerning1\b join\cf1\kerning0\b0 )\tab\'e2\'fb\'e4\'e0\'f1\'f2 help \'ef\'ee \'ec\'e5\'f2\'ee\'e4\'f3 \cf2\kerning1\b join\cf1\kerning0\b0  \'e4\'eb\'ff \'f1\'f2\'f0\'ee\'ea\cf0\kerning1\par
+\cf1\kerning0\par
+>>> s='A\\nB\\tC'\tab\tab\\n - \'ef\'e5\'f0\'e5\'e2\'ee\'e4 \'f1\'f2\'f0\'ee\'ea\'e8, \\t - \'f2\'e0\'e1\'f3\'eb\'ff\'f6\'e8\'ff\cf0\kerning1\par
+\cf1\kerning0 >>> s\cf0\kerning1\par
+\cf1\kerning0 'A\\nB\\tC'\cf0\kerning1\par
+\cf1\kerning0 >>> print (s)\cf0\kerning1\par
+\cf1\kerning0 A\cf0\kerning1\par
+\cf1\kerning0 B\tab C\cf0\kerning1\par
+\cf1\kerning0 >>> \cf0\kerning1\b len\cf1\kerning0\b0 (s)\cf0\kerning1\par
+\cf1\kerning0 5\cf0\kerning1\par
+\cf1\kerning0 >>> \cf0\kerning1\b ord\cf1\kerning0\b0 ('\\n')\tab\'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 \'e2 \'f2\'e0\'e1\'eb\'e8\'f6\'e5 ACSII\cf0\kerning1\par
+\cf1\kerning0 10\cf0\kerning1\par
+\cf1\kerning0 >>> \cf0\kerning1\b chr\cf1\kerning0\b0 (10)\cf0\kerning1\par
+\cf1\kerning0 '\\n'\cf0\kerning1\par
+\cf1\kerning0\par
+>>> \cf0\kerning1\b repr\cf1\kerning0\b0 (1./3)\tab\tab\tab repr() = toString() \'e4\'eb\'ff \'eb\'fe\'e1\'fb\'f5 \'ee\'e1\'fa\'e5\'ea\'f2\'ee\'e2\cf0\kerning1\par
+\cf1\kerning0 '0.3333333333333333'\tab\tab\'f4\'ee\'f0\'ec\'e0 \'ea\'e0\'ea \'e5\'f1\'f2\'fc\cf0\kerning1\par
+\cf1\kerning0 >>> \cf0\kerning1\b str\cf1\kerning0\b0 (1./3)\cf0\kerning1\par
+\cf1\kerning0 '0.333333333333'\tab\tab\'f4\'ee\'f0\'ec\'e0, \'ea\'ee\'f2\'ee\'f0\'e0\'ff \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2 \'f4\'f3\'ed\'ea\'f6\'e8\'ff print = user friendly\cf0\kerning1\par
+\cf1\kerning0\par
+>>> \cf2\kerning1\b import\cf1\kerning0\b0  re\tab\tab\tab\'ef\'ee\'e8\'f1\'ea \'ef\'ee \'f8\'e0\'e1\'eb\'ee\'ed\'f3\cf0\kerning1\par
+\cf1\kerning0 >>> match = re.match('Hello[ \\t]*(.*)world', 'Hello Python world') \cf0\kerning1\par
+\cf1\kerning0 >>> match.groupe(1)\cf0\kerning1\par
+\cf1\kerning0 'Python'\cf0\kerning1\par
+\cf1\kerning0\par
+\par
+\tab\ul\b\'d1\'cf\'c8\'d1\'ca\'c8\cf0\kerning1\ulnone\b0\par
+\cf1\kerning0\par
+\b help\b0 (list)\tab\tab\cf6 <class 'list'>\cf0\kerning1\par
+\cf1\kerning0\'ee\'e1\'ee\'e7\'ed\'e0\'f7\'e0\'fe\'f2\'f1\'ff \b []\b0  - \'e2 \'ee\'e4\'ed\'ee\'ec \'f1\'ef\'e8\'f1\'ea\'e5 \'ec\'ee\'e3\'f3\'f2 \'e1\'fb\'f2\'fc \'e8 \'f7\'e8\'f1\'eb\'e0 \'e8 \'f1\'f2\'f0\'ee\'ea\'e8 \'e8 \'e4\'f0\'f3\'e3\'e8\'e5 \'f1\'ef\'e8\'f1\'ea\'e8.\cf0\kerning1\par
+\cf1\kerning0\par
+>>> lis = ['spam', 'eggs ', 100, 1234]\cf0\kerning1\par
+\cf1\kerning0 ['spam', 'eggs', 100, 1234]\cf0\kerning1\par
+\par
+\cf1\kerning0 >>> lis * 2\cf0\kerning1\par
+\cf1\kerning0 ['spam', 'eggs', 100, 1234, 'spam', 'eggs', 100, 1234]\cf0\kerning1\par
+\par
+\cf1\kerning0 >>> lis[:]\tab\tab\tab\tab\tab\'e2\'f1\'b8 \'f1\'ee\'e4\'e5\'f0\'e6\'e8\'ec\'ee\'e5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'ee\'e9\cf0\kerning1\par
+\cf1\kerning0 ['spam', 'eggs', 100, 1234]\cf0\kerning1\par
+\par
+\cf1\kerning0 >>> lis[1:-1]\tab\tab\tab\tab\'ee\'e1\'f9\'e0\'ff \'f4\'ee\'f0\'ec\'e0 lis[start:stop:step]\cf0\kerning1\par
+\cf1\kerning0 ['eggs', 100]\cf0\kerning1\par
+\par
+\cf1\kerning0 >>> lis[:2] + ['bacon', 2*2]\tab\tab\'ea\'ee\'ed\'ea\'e0\'f2\'e5\'ed\'e0\'f6\'e8\'ff\cf0\kerning1\par
+\cf1\kerning0 ['spam', 'eggs', 'bacon', 4]\cf0\kerning1\par
+\par
+\cf1\kerning0\tab a = [1, 2]\cf0\kerning1\par
+\cf1\kerning0\tab b = [3, 4]\cf0\kerning1\par
+\cf1\kerning0\tab >>> a + b\cf0\kerning1\par
+\cf1\kerning0\tab [1, 2, 3, 4]\cf0\kerning1\par
+\par
+\cf1\kerning0 >>> 2 * lis[:3] + ['Boe']\cf0\kerning1\par
+\cf1\kerning0 ['spam', 'eggs', 100, 'spam', 'eggs', 100, 'Boe']\cf0\kerning1\par
+\par
+\cf1\kerning0 >>> lis[2] = lis[2] + 23\cf0\kerning1\par
+\cf1\kerning0 ['spam', 'eggs', 123, 1234]\cf0\kerning1\par
+\par
+\cf1\kerning0 >>> lis[0:2] = [1, 12]\tab\tab\tab\'f0\'e0\'e7\'e1\'e8\'f2\'fc \'f1\'ef\'e8\'f1\'ee\'ea\cf0\kerning1\par
+\cf1\kerning0 [1, 12, 123, 1234]\cf0\kerning1\par
+\par
+\cf1\kerning0 >>> lis[0:2]=[]\cf0\kerning1\par
+\cf1\kerning0 [123, 1234]\cf0\kerning1\par
+\par
+\cf1\kerning0 >>> lis[1:1]=['asd', 'qwe']\cf0\kerning1\par
+\cf1\kerning0 [123, 'asd', 'qwe', 1234]\cf0\kerning1\par
+\par
+\cf1\kerning0 >>> d0, d1, d2, d3 = lis\tab\'e5\'f1\'eb\'e8 \'e2 lis 4 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'e0, \'f2\'ee \'e8 d0..d3 \'e4\'ee\'eb\'e6\'ed\'ee \'e1\'fb\'f2\'fc \'f0\'ee\'e2\'ed\'ee 4-\'e5, \'ed\'e8 \'e1\'ee\'eb\'fc\'f8\'e5 \'ed\'e8 \'ec\'e5\'ed\'fc\'f8\'e5\cf0\kerning1\par
+\cf1\kerning0 >>> d0\cf0\kerning1\par
+\cf1\kerning0 123\cf0\kerning1\par
+\par
+\cf1\kerning0\tab\'cd\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee \'f1\'ef\'ee\'f1\'ee\'e1\'ee\'e2 \b add\b0  \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'ee\'e2 \'e2 \'f1\'ef\'e8\'f1\'ee\'ea:\cf0\kerning1\par
+\cf1\kerning0 >>> lis = lis + ['zxc']\cf0\kerning1\par
+\cf1\kerning0 [123, 'asd', 'qwe', 1234, 'zxc']\cf0\kerning1\par
+\par
+\cf1\kerning0 >>> lis.\b append\b0 ('asd')\tab\tab\tab\tab\tab\'e2 \'ea\'ee\'ed\'e5\'f6 \'f1\'ef\'e8\'f1\'ea\'e0 \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'f2 "\'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5"\cf0\kerning1\par
+\cf1\kerning0 [123, 'asd', 'qwe', 1234, 'zxc', 'asd']\cf0\kerning1\par
+\par
+\cf1\kerning0 >>> lis.\b extend\b0 (['$', 'four'])\tab\tab\tab\'e2 \'ea\'ee\'ed\'e5\'f6 \'f1\'ef\'e8\'f1\'ea\'e0 \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'f2 \ul\'e4\'f0\'f3\'e3\'ee\'e9\ulnone  \'f1\'ef\'e8\'f1\'ee\'ea\cf0\kerning1\par
+\cf1\kerning0 [123, 'asd', 'qwe', 1234, 'zxc', 'asd', '$', 'four']\cf0\kerning1\par
+\par
+\cf1\kerning0 >>> lis.\b insert\b0 (0, '$')\tab\tab\tab\tab\'f0\'e0\'e7\'e4\'e2\'e8\'ed\'f3\'f2\'fc \'f1\'ef\'e8\'f1\'ee\'ea \'e8 \'e2\'f1\'f2\'e0\'e2\'e8\'f2\'fc \'fd\'eb\'e5\'ec\'e5\'ed\'f2\cf0\kerning1\par
+\cf1\kerning0 ['$', 'asd', 'qwe', 1234, 'zxc', 'asd', '$', 'four']\cf0\kerning1\par
+\par
+\cf1\kerning0 >>> \b del\b0 (lis[4])\tab\tab\tab\tab\tab\tab\'f3\'e4\'e0\'eb\'e8\'f2\'fc \'fd\'eb\'e5\'ec\'e5\'ed\'f2 \'ef\'ee \'e8\'ed\'e4\'e5\'ea\'f1\'f3\cf0\kerning1\par
+\cf1\kerning0 ['$', 'asd', 'qwe', 1234, 'asd', '$', 'four']\cf0\kerning1\par
+\par
+\cf1\kerning0 >>> lis.\b remove\b0 ('asd')\tab\tab\tab\tab\tab\'f3\'e4\'e0\'eb\'e8\'f2\'fc \'ef\'e5\'f0\'e2\'fb\'e9 \'f1\'ee\'e2\'ef\'e0\'e4\'e0\'fe\'f9\'e8\'e9 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\cf0\kerning1\par
+\cf1\kerning0 ['$', 'qwe', 1234, 'asd', '$', 'four']\cf0\kerning1\par
+\par
+\cf1\kerning0 >>> lis.\b pop\b0 ()\tab\tab\'ef\'ee \'e0\'ed\'e0\'eb\'ee\'e3\'e8\'e8 \'f1\'ee "\'f1\'f2\'e5\'ea\'ee\'ec" - \'e2\'fb\'f2\'e0\'f1\'ea\'e8\'e2\'e0\'e5\'f2 \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e8\'e9 \'fd\'eb\'e5\'ec\'e5\'ed\'f2 \'e8\'e7 \'f1\'ef\'e8\'f1\'ea\'e0\cf0\kerning1\par
+\cf1\kerning0 'four'\cf0\kerning1\par
+\cf1\kerning0 ['$', 'qwe', 1234, 'asd', '$']\cf0\kerning1\par
+\par
+\cf1\kerning0 >>> lis.\b pop\b0 (2)\tab\tab\'e2\'fb\'f2\'e0\'f1\'ea\'e8\'e2\'e0\'e5\'f2 \'e8\'e7 \'f1\'ef\'e8\'f1\'ea\'e0 2-\'ee\'e9 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\cf0\kerning1\par
+\cf1\kerning0 ['$', 'qwe', 'asd', '$']\cf0\kerning1\par
+\par
+\cf1\kerning0 >>> lis.\b sort\b0 (key=str.lower, reverse=True)\tab\tab\'f1\'ee\'f0\'f2\'e8\'f0\'ee\'e2\'ea\'e0 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'ee\'e2\cf0\kerning1\par
+\cf1\kerning0 >>> lis.\b reverse\b0 ()\tab\tab\tab\tab\tab\tab\'f1\'ee\'f0\'f2\'e8\'f0\'ee\'e2\'ea\'e0 \'e2 \'ee\'e1\'f0\'e0\'f2\'ed\'ee\'ec \'ef\'ee\'f0\'ff\'e4\'ea\'e5\cf0\kerning1\par
+\cf1\kerning0\par
+\'cc\'ee\'e6\'ed\'ee \'f1\'ee\'e7\'e4\'e0\'e2\'e0\'f2\'fc \'e2\'eb\'ee\'e6\'e5\'ed\'ed\'fb\'e5 \'ee\'e1\'fa\'e5\'ea\'f2\'fb, \'f2.\'e5. \'f1\'ef\'e8\'f1\'ee\'ea, \'f1\'ee\'e4\'e5\'f0\'e6\'e0\'f9\'e8\'e9 \'f1\'eb\'ee\'e2\'e0\'f0\'fc, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'f1\'ee\'e4\'e5\'f0\'e6\'e8\'f2 \'f1\'ef\'e8\'f1\'ee\'ea \'e8 \'f2.\'e4.\cf0\kerning1\par
+\cf1\kerning0 >>> lis = [[1,2,3], [4,5,6], [7,8,9]]\tab\'ec\'e0\'f0\'e8\'f6\'e0 3\'f53\cf0\kerning1\par
+\cf1\kerning0 >>> lis[1]\cf0\kerning1\par
+\cf1\kerning0 [4,5,6]\cf0\kerning1\par
+\cf1\kerning0 >>> lis[2][0]\cf0\kerning1\par
+\cf1\kerning0 7\cf0\kerning1\par
+\par
+\cf2\b for\cf1\kerning0\b0  l \cf2\kerning1\b in\cf1\kerning0\b0  lis:\tab\tab\'e8\'f2\'e5\'f0\'e0\'f6\'e8\'ff \'ef\'ee \'f1\'ef\'e8\'f1\'ea\'f3\cf0\kerning1\par
+\cf1\kerning0\tab print(l)\cf0\kerning1\par
+\par
+\cf1\kerning0 >>> 3 \cf2\kerning1\b in\cf1\kerning0\b0  [1, 2, 3]\tab\'f7\'eb\'e5\'ed\'f1\'f2\'e2\'ee\cf0\kerning1\par
+\cf1\kerning0 True\cf0\kerning1\par
+\cf1\kerning0 >>> 4 \cf2\kerning1\b not in\cf1\kerning0\b0  [1, 2, 3]\cf0\kerning1\par
+\cf1\kerning0 True\cf0\kerning1\par
+\par
+\cf1\kerning0 >>> res = [c *4 \cf2\b for\cf1\b0  c \cf2\b in\cf1\b0  'SPAM']\tab\cf4\b\'f5\'e8\'f2\'f0\'e0\'ff \'ea\'ee\'ed\'f1\'f2\'f0\'f3\'ea\'f6\'e8\'ff\cf0\kerning1\b0\par
+\cf1\kerning0 ['SSSS', 'PPPP', 'AAAA', 'MMMM']\cf0\kerning1\par
+\cf1\kerning0\par
+\par
+\par
+\tab\ul\b\'ca\'ce\'d0\'d2\'c5\'c6\'c8\ulnone\b0  - Tuples\cf0\kerning1\par
+\cf1\kerning0\par
+\b help\b0 (tuple)\tab\cf6 <class 'tuple'>\cf0\kerning1\par
+\cf1\kerning0\'ce\'e1\'ee\'e7\'ed\'e0\'f7\'e0\'fe\'f2\'f1\'ff \b ( )\b0 . \'ca\'ee\'f0\'f2\'e5\'e6\'e8 - \'fd\'f2\'ee \'ef\'ee\'f1\'eb\'e5\'e4\'ee\'e2\'e0\'f2\'e5\'eb\'fc\'ed\'ee\'f1\'f2\'e8 = \'f1\'ef\'e8\'f1\'ea\'e8, \'cd\'ce \'ed\'e5\'eb\'fc\'e7\'ff \'e8\'e7\'ec\'e5\'ed\'ff\'f2\'fc.\cf0\kerning1\par
+\cf1\kerning0 >>> tup=()\tab\tab\'f1\'ee\'e7\'e4\'e0\'f2\'fc \'ef\'f3\'f1\'f2\'ee\'e9 \'ea\'ee\'f0\'f2\'e5\'e6\cf0\kerning1\par
+\par
+\cf1\kerning0 >>> tup = 1234, 'a', "Hello" \tab\'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5 \'f7\'f2\'ee \'e8 tup=(1234, 'a', "Hello")\cf0\kerning1\par
+\cf1\kerning0 >>> tup[0]\cf0\kerning1\par
+\cf1\kerning0 1234\cf0\kerning1\par
+\cf1\kerning0 >>> 'a' \cf2\kerning1\b in\cf1\kerning0\b0  tup\tab\'ed\'e0\'eb\'e8\'f7\'e8\'e5 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'e0 \'e2 \'ea\'ee\'f0\'f2\'e5\'e6\'e5\cf0\kerning1\par
+\cf1\kerning0 True\cf0\kerning1\par
+\cf1\kerning0 >>> 'c' \cf2\kerning1\b not in\cf1\kerning0\b0  tup\cf0\kerning1\par
+\cf1\kerning0 True\cf0\kerning1\par
+\cf1\kerning0 >>> tup + (5,)\tab\'ea\'ee\'ed\'ea\'e0\'f2\'e5\'ed\'e0\'f6\'e8\'ff tuple + tuple \kerning1\u8594? \'f1\'ee\'e7\'e4\'e0\'f1\'f2\'f1\'ff \'ed\'ee\'e2\'fb\'e9 \kerning0 tuple. \'d1\'e0\'ec tup \'ed\'e5 \'e8\'e7\'ec\'e5\'ed\'e8\'f2\'f1\'ff. \'c7\'e0\'ef\'ff\'f2\'e0\'ff(5,) - \'e4\'e0\'f2\'fc \'ef\'ee\'ed\'ff\'f2\'fc, \'f7\'f2\'ee \'fd\'f2\'ee \'ea\'ee\'f0\'f2\'e5\'e6, \'e0 \'ed\'e5 \'e0\'f0\'e8\'f4\'ec\'e5\'f2\'e8\'f7\'e5\'f1\'ea\'e8\'e5 \'f1\'ea\'ee\'e1\'ea\'e8.\cf0\kerning1\par
+\cf1\kerning0 (1234, 'a', "Hello", 5)\cf0\kerning1\par
+\cf1\kerning0 >>> u = tup, (1, 2, 3, 4, 5)\cf0\kerning1\par
+\cf1\kerning0 ((1234, 'a', "Hello"), (1, 2, 3, 4, 5))\cf0\kerning1\par
+\cf1\kerning0\par
+\cf0\kerning1\'c5\'f1\'f2\'fc \'e5\'f9\'b8\par
+\cf1\kerning0\tab\b len\b0 (tup)\tab\'ea\'ee\'eb\'e8\'f7\'e5\'f1\'f2\'e2\'ee \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'ee\'e2 \'e2 tup\cf0\kerning1\par
+\tab\b min\b0 (tup)\tab\'e2\'fb\'e4\'e0\'b8\'f2 \'ec\'e8\'ed\'e8\'ec\'e0\'eb\'fc\'ed\'fb\'e9 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\par
+\tab\b max\b0 (tup)\par
+\tab\b del\b0 (tup[x])\'f3\'e4\'e0\'eb\'e8\'f2\'fc \'fd\'eb\'e5\'ec\'e5\'ed\'f2 \'ef\'ee\'e4 \'ed\'ee\'ec\'e5\'f0\'ee\'ec x\par
+\tab tup.\b count\b0 ('Hello')\tab\'f1\'ea\'ee\'eb\'fc\'ea\'ee \'f0\'e0\'e7 \'e2\'f1\'f2\'f0\'e5\'f7\'e0\'e5\'f2\'f1\'ff 'Hello' \'e2 tup\par
+\cf1\kerning0\tab tup.\b index\b0 ('asd')\tab\tab\'ed\'e0 \'ea\'e0\'ea\'ee\'e9 \'ef\'ee\'e7\'e8\'ed\'e8\'e8 \'ed\'e0\'f5\'ee\'e4\'e8\'f2\'f1\'ff \'fd\'eb\'e5\'ec\'e5\'ed\'f2 'asd'\cf0\kerning1\par
+\par
+\cf1\kerning0\'d0\'e0\'f1\'ef\'e0\'ea\'ee\'e2\'ea\'e0 \'ea\'ee\'f0\'f2\'e5\'e6\'e0.\cf0\kerning1\par
+\cf1\kerning0 >>> q,w=u\tab\'e8\'eb\'e8 q,w = foo() - \'f4\'f3\'ed\'ea\'f6\'e8\'ff, \'ea\'ee\'f2\'ee\'f0\'e0\'ff \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 \'ea\'ee\'f0\'f2\'e5\'e6\cf0\kerning1\par
+\cf1\kerning0 >>> q\cf0\kerning1\par
+\cf1\kerning0 (1234, 'asd')\cf0\kerning1\par
+\cf1\kerning0 >>> w\cf0\kerning1\par
+\cf1\kerning0 (1, 2, 3, 4, 5)\cf0\kerning1\par
+\cf1\kerning0 >>> a = 10\cf0\kerning1\par
+\cf1\kerning0 >>> b = 20\cf0\kerning1\par
+\cf1\kerning0 >>> a*3, b/8\cf0\kerning1\par
+\cf1\kerning0 (30, 2.5)\cf0\kerning1\par
+\par
+\cf1\kerning0\par
+\tab\ul\b\'d1\'cb\'ce\'c2\'c0\'d0\'c8\cf0\kerning1\ulnone\b0\par
+\par
+\cf1\kerning0\b help\b0 (dict)\tab\tab\cf6 <class 'dict'>\cf0\kerning1\par
+\cf1\kerning0\'ce\'e1\'ee\'e7\'ed\'e0\'f7\'e0\'fe\'f2\'f1\'ff \b\{ \}\cf0\kerning1\b0\par
+\cf1\kerning0\'d1\'eb\'ee\'e2\'e0\'f0\'e8 - \'fd\'f2\'ee \'ed\'e5 \'ef\'ee\'f1\'eb\'e5\'e4\'ee\'e2\'e0\'f2\'e5\'eb\'fc\'ed\'ee\'f1\'f2\'e8 - \'fd\'f2\'ee \'ee\'f2\'ee\'e1\'f0\'e0\'e6\'e5\'ed\'e8\'ff = HashMap. \'ce\'f2\'f1\'f3\'f2\'f1\'f2\'e2\'f3\'e5\'f2 \'ef\'ee\'f0\'ff\'e4\'ee\'ea, \'ed\'e5\'eb\'fc\'e7\'ff sort.\cf0\kerning1\par
+\cf1\kerning0 >>> d = \{'a':1, 'b':2, 'c':3\}\cf0\kerning1\par
+\cf1\kerning0\{'a': 1, 'c': 3, 'b': 2\}\tab\'e2\'fb\'e2\'ee\'e4 \'e2 \'e4\'f0\'f3\'e3\'ee\'e9 \'ef\'ee\'f0\'ff\'e4\'ea\'e5\cf0\kerning1\par
+\cf1\kerning0 >>> d['a']\tab\tab\tab\tab\tab = get()\cf0\kerning1\par
+\cf1\kerning0 1\cf0\kerning1\par
+\cf1\kerning0 >>> d['f']\tab\tab\tab\tab\'ef\'f3\'f1\'f2\'ee - \'ed\'e5\'f2 \'f2\'e0\'ea\'ee\'e3\'ee \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'e0\cf0\kerning1\par
+\cf1\kerning0 >>> d['f']=6\tab\tab\tab\tab = add()\cf0\kerning1\par
+\cf1\kerning0\{'a': 1, 'c': 3, 'b': 2, 'f': 6\}\cf0\kerning1\par
+\cf1\kerning0 >>> d['a']=87\tab\tab\tab\tab = set()\cf0\kerning1\par
+\cf1\kerning0\{'a': 87, 'c': 3, 'b': 2, 'f': 6\}\cf0\kerning1\par
+\cf1\kerning0 >>> \b del\b0 (d['a'])\tab\tab\tab\tab = del()\cf0\kerning1\par
+\cf1\kerning0\{'c': 3, 'b': 2, 'f': 6\}\cf0\kerning1\par
+\cf1\kerning0 >>> 'f' \cf2\kerning1\b not in\cf1\kerning0\b0  d\tab\tab\tab\'ef\'f0\'ee\'e2\'e5\'f0\'ea\'e0 \'ed\'e0 \'ed\'e0\'eb\'e8\'f7\'e8\'e5 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'e0 \'e2 \'f1\'eb\'ee\'e2\'e0\'f0\'e5\cf0\kerning1\par
+\cf1\kerning0 True\cf0\kerning1\par
+\cf1\kerning0 >>> 'f' \cf2\kerning1\b in\cf1\kerning0\b0  d\cf0\kerning1\par
+\cf1\kerning0 False\cf0\kerning1\par
+\cf1\kerning0\par
+\'c7\'e0\'e4\'e0\'f7\'e0: \'ce\'f2\'f1\'ee\'f0\'f2\'e8\'f0\'ee\'e2\'e0\'f2\'fc \'f1\'eb\'ee\'e2\'e0\'f0\'fc \'ef\'ee \'ea\'eb\'fe\'f7\'f3:\cf0\kerning1\par
+\cf1\kerning0 >>> Ks = list (d)\tab\tab\tab list \'f1\'ee\'e7\'e4\'e0\'b8\'f2 \'f1\'ef\'e8\'f1\'ee\'ea \'e8\'e7 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'ee\'e2 \'eb\'fe\'e1\'ee\'e9 \'ef\'ee\'f1\'eb\'e5\'e4\'ee\'e2\'e0\'f2\'e5\'eb\'fc\'ed\'ee\'f1\'f2\'e8\cf0\kerning1\par
+\cf1\kerning0 ['a', 'c', 'b']\cf0\kerning1\par
+\cf1\kerning0 >>> Ks.sort\cf0\kerning1\par
+\cf1\kerning0 ['a', 'b', 'c']\cf0\kerning1\par
+\cf1\kerning0 >>> \cf2\b for\cf1\b0  ke \cf2\b in\cf1\b0  Ks:\cf0\kerning1\par
+\cf1\kerning0\tab print (ke, '\'f1\'ee\'ee\'f2\'e2\'e5\'f2\'f1\'f2\'e2\'f3\'e5\'f2', d[ke])\cf0\kerning1\par
+\cf1\kerning0\'cc\'ee\'e6\'ed\'ee \'e5\'f9\'b8 \'f2\'e0\'ea:\cf0\kerning1\par
+\cf1\kerning0 >>> \cf2\b for\cf1\b0  ke \cf2\b in\cf1\b0  sorted(d):\cf0\kerning1\par
+\cf1\kerning0\tab print (ke, '\'f1\'ee\'ee\'f2\'e2\'e5\'f2\'f1\'f2\'e2\'f3\'e5\'f2', d[ke])\cf0\kerning1\par
+\par
+\cf1\kerning0 >>> rec = \{'name' : \{'first' : 'Bob', 'last' : 'Smith'\}, 'job' : ['dev', 'mrg'], 'age' : 40.5\}\tab\tab\'ef\'f0\'ee \'e2\'eb\'ee\'e6\'e5\'ed\'ed\'ee\'f1\'f2\'fc\cf0\kerning1\par
+\cf1\kerning0 >>> rec['name']['last']\cf0\kerning1\par
+\cf1\kerning0 'Smith'\cf0\kerning1\par
+\cf1\kerning0 >>> rec['job'][-1]\cf0\kerning1\par
+\cf1\kerning0 'mrg'\cf0\kerning1\par
+\cf1\kerning0\par
+\par
+\b\tab\ul\'cc\'cd\'ce\'c6\'c5\'d1\'d2\'c2\'c0\cf0\kerning1\ulnone\b0\par
+\par
+\cf1\kerning0\b help\b0 (dict)\tab\tab\cf6 <class 'dict'>\cf0\kerning1\par
+\cf1\kerning0\{'a', 'b', 'c'\} \'e8\'eb\'e8 set('abc')\cf0\kerning1\par
+\cf1\kerning0\'c5\'f1\'eb\'e8 \'d1\'eb\'ee\'e2\'e0\'f0\'fc = HashMap, \'f2\'ee \'cc\'ed\'ee\'e6\'e5\'f1\'f2\'e2\'e0 = HashSet\cf0\kerning1\par
+\cf1\kerning0\'ce\'ef\'e5\'f0\'e0\'f6\'e8\'e8 \'f1 \'ec\'ed\'ee\'e6\'e5\'f1\'f2\'e2\'e0\'ec\'e8:\cf0\kerning1\par
+\cf1\kerning0 >>> x = \{'a', 'b', 'c', 'd', 'e'\}\cf0\kerning1\par
+\cf1\kerning0 >>> y = set('bdxyz')\cf0\kerning1\par
+\cf1\kerning0 >>> x\cf0\kerning1\par
+\cf1\kerning0\{'d', 'c', 'a', 'e', 'b'\}\tab\'e2\'fb\'e2\'ee\'e4 \'e2 \'e4\'f0\'f3\'e3\'ee\'e9 \'ef\'ee\'f0\'ff\'e4\'ea\'e5\cf0\kerning1\par
+\cf1\kerning0 >>> 'e' \cf2\kerning1\b in\cf1\kerning0\b0  x\tab\tab\tab\'ef\'f0\'ee\'e2\'e5\'f0\'ea\'e0 \'e2\'f5\'ee\'e6\'e4\'e5\'ed\'e8\'ff \'e2 \'ec\'ed\'ee\'e6\'e5\'f1\'f2\'e2\'ee\cf0\kerning1\par
+\cf1\kerning0 True\cf0\kerning1\par
+\cf1\kerning0 >>> x - y\cf0\kerning1\par
+\cf1\kerning0\{'a', 'c', 'e'\}\cf0\kerning1\par
+\cf1\kerning0 >>> x|y\tab\tab\tab\tab\'ee\'e1\'fa\'e5\'e4\'e8\'ed\'e5\'ed\'e8\'e5\cf0\kerning1\par
+\cf1\kerning0\{'a', 'c', 'b', 'e', 'd', 'y', 'x', 'z'\}\cf0\kerning1\par
+\cf1\kerning0 >>> x&y\tab\tab\tab\tab\'ef\'e5\'f0\'e5\'f1\'e5\'f7\'e5\'ed\'e8\'e5\cf0\kerning1\par
+\cf1\kerning0\{'b', 'd'\}\cf0\kerning1\par
+\cf1\kerning0 >>> x^y\tab\tab\tab\tab\'f1\'e8\'ec\'ec\'e5\'f2\'f0\'e8\'f7\'e5\'f1\'ea\'e0\'ff \'f0\'e0\'e7\'ed\'ee\'f1\'f2\'fc\cf0\kerning1\par
+\cf1\kerning0\{'a', 'c', 'e', 'y', 'x', 'z'\}\cf0\kerning1\par
+\cf1\kerning0 >>> x>y, x<y\tab\tab\tab\'ed\'e0\'e4\'ec\'ed\'ee\'e6\'e5\'f1\'f2\'e2\'ee, \'ef\'ee\'e4\'ec\'ed\'ee\'e6\'e5\'f1\'f2\'e2\'ee\cf0\kerning1\par
+\cf1\kerning0 (False, False)\cf0\kerning1\par
+\cf1\kerning0 >>> x.add('SPAM')\cf0\kerning1\par
+\cf1\kerning0\{'a', 'c', 'b', 'e', 'd', 'SPAM'\}\cf0\kerning1\par
+\cf1\kerning0 >>> x.remove('SPAM')\cf0\kerning1\par
+\cf1\par
+\par
+\kerning0\tab\ul\b\'d4\'c0\'c9\'cb\'db\cf0\kerning1\ulnone\b0\par
+\par
+\cf1\kerning0 >>> \lang1033\f1 f\lang1049\f0  = open ('data.txt')\tab\tab\tab\'ef\'ee default \'f0\'e5\'e6\'e8\'ec \'e4\'ee\'f1\'f2\'f3\'ef\'e0 read \'e8\'eb\'e8 'r'\cf0\kerning1\par
+\cf1\kerning0 >>> \lang1033\f1 f\lang1049\f0  = open ('data.txt', '\lang1033\f1 b\lang1049\f0 r+')\tab\'ee\'f2\'ea\'f0\'fb\'f2\'fc \'e1\'e8\'ed\'e0\'f0\'ed\'e8\'ea \'ed\'e0 read + write\cf0\kerning1\par
+\cf1\kerning0 >>> \lang1033\f1 f\lang1049\f0  = open ('c:\\data.txt', 'w')\tab type(myFile) \kerning1\u8594?\kerning0  \cf6 <class '_io.TextIOWrapper'>\cf0\kerning1\par
+\cf1\kerning0 >>> \lang1033\f1 f\lang1049\f0  = open ('data.txt', 'w', encoding='utf-8')\cf0\kerning1\par
+\cf1\kerning0 >>> text = myFile.read()\tab\tab\tab\'f1\'f7\'e8\'f2\'e0\'f2\'fc \'e4\'e0\'ed\'ed\'fb\'e9 \'e8\'e7 \'f4\'e0\'e9\'eb\'e0 \'e2 text. type(text) \kerning1\u8594?\kerning0  \cf6 <class 'str'>\cf0\kerning1\par
+\cf1\kerning0 >>> \lang1033\f1 f\lang1049\f0 .write('Hello')\tab\tab\tab\tab\'e7\'e0\'ef\'e8\'f1\'e0\'f2\'fc \'e2 \'f4\'e0\'e9\'eb \'f1\'f2\'f0\'ee\'ea\'f3\cf0\kerning1\par
+\cf1\kerning0 5\tab\tab\tab\tab\tab\tab\tab\'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 \'ea\'ee\'eb\'e8\'f7\'e5\'f1\'f2\'e2\'ee \'e7\'e0\'ef\'e8\'f1\'e0\'ed\'ed\'fb\'f5 \'f1\'e8\'ec\'e2\'ee\'eb\'ee\'e2\par
+\lang1033\f1 >>> f.flush()\tab\tab\tab\tab\tab\lang1049\f0\'e7\'e0\'ef\'e8\'f1\'e0\'f2\'fc \'e4\'e0\'ed\'ed\'fb\'e5 \'e8\'e7 \'e1\'f3\'f4\'e5\'f0\'e0 \'ed\'e0 \'e4\'e8\'f1\'ea\cf0\kerning1\par
+\cf1\kerning0 >>> \lang1033\f1 f\lang1049\f0 .close()\par
+\par
+r\tab r+\tab w\tab w+\tab a\tab a+\par
++\tab +\tab\tab +\tab\tab +\tab\'d7\'e8\'f2\'e0\'e5\'f2\par
+\tab +\tab +\tab +\tab +\tab +\tab\'c7\'e0\'ef\'e8\'f1\'fb\'e2\'e0\'e5\'f2\par
+\tab\tab +\tab +\tab +\tab +\tab Create - \'f4\'e0\'e9\'eb \'e1\'fb\'eb 10 \'e1\'e0\'e9\'f2, \'ec\'ee\'e6\'e5\'f2 \'f1\'f2\'e0\'f2\'fc 15 \'e1\'fb\'e9\'f2. \'cf\'f0\'e8 \lang1033\f1 write \lang1049\f0\'f1\'e8\'ec\'e2\'ee\'eb\'fb \'ef\'e5\'f0\'e5\'e7\'e0\'ef\'e8\'f1\'fb\'e2\'e0\'fe\'f2\'f1\'ff, \'e0 \'ed\'e5 \'f0\'e0\'e7\'e4\'e2\'e8\'e3\'e0\'fe\'f2\'f1\'ff \'e8 \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'f2\'f1\'ff \'ed\'ee\'e2\'fb\'e9.\par
+\tab\tab +\tab +\tab\tab\tab Cover - \'ec\'ee\'e6\'e5\'ec \'ef\'ee\'f1\'f2\'e0\'e2\'e8\'f2\'fc \cf7\b\'ea\'f3\'f0\'f1\'ee\'f0\cf1\b0  \'ed\'e0 5 \'e1\'e0\'e9\'f2 \'e8 \'e5\'e3\'ee \'ef\'e5\'f0\'e5\'ef\'e8\'f1\'e0\'f2\'fc/\'ef\'ee\'ea\'f0\'fb\'f2\'fc.\par
++\tab +\tab +\tab +\tab\tab\tab\cf7\b\'ea\'f3\'f0\'f1\'ee\'f0\cf1\b0  \'e2\'ed\'e0\'f7\'e0\'eb\'e5 \'f4\'e0\'e9\'eb\'e0\par
+\tab\tab\tab\tab + \tab +\tab\cf7\b\'ea\'f3\'f0\'f1\'ee\'f0\cf1\b0  \'e2\'ea\'ee\'ed\'f6\'e5 \'f4\'e0\'e9\'eb\'e0\cf0\kerning1\par
+\cf1\kerning0\'cc\'e5\'f2\'ee\'e4\'fb:\cf0\kerning1\par
+\cf1\kerning0\tab read(5)\tab\tab\tab\tab\tab\tab\'f1\'f7\'e8\'f2\'e0\'f2\'fc 5 \'e1\'e0\'e9\'f2 \'e8\'e7 \'f4\'e0\'e9\'eb\'e0, \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 \cf7\b\'ea\'f3\'f0\'f1\'ee\'f0\'e0\cf1\b0  \'f1\'f2\'e0\'ed\'e5\'f2 =5\cf0\kerning1\par
+\cf1\kerning0\tab readline()\tab\tab\tab\tab\tab\tab\'f1\'f7\'e8\'f2\'fb\'e2\'e0\'e5\'f2 \'ef\'ee \'ee\'e4\'ed\'ee\'e9 \'f1\'f2\'f0\'ee\'ea\'e5 \'e7\'e0 \'ee\'e4\'ed\'ee \'ee\'e1\'f0\'e0\'f9\'e5\'ed\'e8\'e5, \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 \cf6 <class 'str'>\cf0\kerning1\par
+\cf1\kerning0\tab readlines()\tab\tab\tab\tab\tab\'e2\'e5\'f0\'ed\'b8\'f2 \'f1\'ef\'e8\'f1\'ee\'ea(\cf6 <class 'list'>\cf1 ) \'f1\'f2\'f0\'ee\'ea(\cf6 <class 'str'>\cf1 ) \'e2\'f1\'e5\'e3\'ee \'f4\'e0\'e9\'eb\'e0, \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 \cf7\b\'ea\'f3\'f0\'f1\'ee\'f0\'e0\cf1\b0  \'f1\'f2\'e0\'ed\'e5\'f2 =\'f5 \'f1\'ee\'ee\'f2\'e2\'e5\'f2\'f1\'f2\'e2\'f3\'fe\'f9\'e8\'ec \'ea\'ee\'ed\'f6\'f3 \'f4\'e0\'e9\'eb\'e0\cf0\kerning1\par
+\cf1\kerning0\tab tell()\tab\tab\tab\tab\tab\tab\'e2\'e5\'f0\'ed\'b8\'f2 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 \cf7\b\'ea\'f3\'f0\'f1\'ee\'f0\'e0\cf0\kerning1\b0\par
+\cf1\kerning0\tab seek(10)\tab\tab\tab\tab\tab\tab\'ef\'e5\'f0\'e5\'ec\'e5\'f9\'e0\'e5\'f2 \cf7\b\'ea\'f3\'f0\'f1\'ee\'f0\'e0\cf1\b0  \'ed\'e0 10 \'e1\'e0\'e9\'f2/\'f1\'e8\'ec\'e2\'ee\'eb\'ee\'e2 \'ee\'f2 \'ed\'e0\'f7\'e0\'eb\'e0 \'f4\'e0\'e9\'eb\'e0\cf0\kerning1\par
+\par
+\cf2\b for\cf1\kerning0\b0  line \cf2\kerning1\b in\cf1\kerning0\b0  open('data.txt'):\tab\tab\tab\'ef\'f0\'e0\'e2\'e8\'eb\'fc\'ed\'ee \'f7\'e8\'f2\'e0\'f2\'fc \'e8\'e7 \'f4\'e0\'e9\'eb\'e0 \'f2\'e0\'ea\cf0\kerning1\par
+\cf1\kerning0\tab print(line)\cf0\kerning1\par
+\cf1\kerning0\par
+\'c5\'f1\'f2\'fc \'f0\'e0\'e7\'e3\'f0\'e0\'ed\'e8\'f7\'e5\'ed\'e8\'e5 \'ec\'e5\'e6\'e4\'f3 \'f2\'e5\'ea\'f1\'f2\'ee\'e2\'fb\'ec\'e8 \'e8 .bin \'f4\'e0\'e9\'eb\'e0\'ec\'e8. \'d2\'e5\'ea\'f1\'f2\'ee\'e2\'fb\'e5 \'f1\'f0\'e0\'e7\'f3 \'e4\'e5\'ea\'ee\'e4\'e8\'f0\'f3\'fe\'f2\'f1\'ff \'e2 Unicode \'e8 \'f2\'e8\'ef \cf6 <class 'str'>\cf1 . Bin - \'ef\'f0\'e5\'e4\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2\'f1\'ff \'e2 \'e2\'e8\'e4\'e5 \'f1\'f2\'f0\'ee\'ea \cf6 <class 'bytes'>\cf1 .\cf0\kerning1\par
+\cf1\kerning0 >>> f=open('asd.bin', 'r\b b\b0 ').read()\cf0\kerning1\par
+\cf1\kerning0 b'\\x00\\x00\\x00\\x07spam\\x00\\x08'\cf0\kerning1\par
+\cf1\kerning0 >>> f[4:8]\cf0\kerning1\par
+\cf1\kerning0 b'spam'\cf0\kerning1\par
+\cf1\par
+\par
+\kerning0\par
+\cf2\kerning1\b def\cf1\kerning0\b0  abs():\cf0\kerning1\par
+\cf1\kerning0\tab\cf2\kerning1\b pass\cf1\kerning0\b0  - \'f2.\'ea. \'e2 python \'ed\'e5\'f2 \'f1\'ea\'ee\'e1\'ee\'f7\'e5\'ea \}\{, \'f2\'ee \'e2 \'ef\'f3\'f1\'f2\'ee\'ec \'f2\'e5\'eb\'e5 \'f4\'f3\'ed\'ea\'f6\'e8\'e8 \'ed\'e0\'e4\'ee \'ef\'e8\'f1\'e0\'f2\'fc \cf2\b pass\cf1\b0 . \'c4\'eb\'ff builtin \'f4\'f3\'ed\'ea\'f6\'e8\'e8 abs() \'e8\'f1\'f5\'ee\'e4\'ed\'e8\'ea \'e1\'f3\'e4\'e5\'f2 \'e8\'ec\'e5\'ed\'ed\'ee \'f2\'e0\'ea\'ee\'e9. \'d0\'e5\'e0\'eb\'fc\'ed\'ee\'e5 \'f2\'e5\'eb\'ee \'ea\'ee\'ec\'ef\'e8\'eb\'e8\'f0\'f3\'e5\'f2\'f1\'ff \'e2 \'d1\'e8.\cf0\kerning1\par
+\cf1\kerning0 -------------------\cf0\kerning1\par
+\cf2\b def\cf1\kerning0\b0  gcd(a,b):\cf0\kerning1\par
+\cf1\kerning0\tab '''\'ce\'ef\'e8\'f1\'e0\'ed\'e8\'e5 \'f4\'f3\'ed\'ea\'f6\'e8\'e8'''\tab\tab\'ef\'f0\'e8\'f1\'e2\'e0\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'ee\'e9 __doc__\cf0\kerning1\par
+\cf1\kerning0\tab\cf2\kerning1\b while\cf1\kerning0\b0  a!=0:\cf0\kerning1\par
+\cf1\kerning0\tab\tab a,b=b%a,a\cf0\kerning1\par
+\cf1\kerning0\tab\cf2\kerning1\b return\cf1\kerning0\b0  b\cf0\kerning1\par
+\cf1\kerning0 >>> gcd.__doc__\tab\tab\'ef\'f0\'ee\'f1\'ec\'ee\'f2\'f0\'e5\'f2\'fc, \'f7\'f2\'ee \'ed\'e0\'ef\'e8\'f1\'e0\'ed\'ee \'e2 \'ee\'ef\'e8\'f1\'e0\'ed\'e8\'e8, \'ef\'f0\'ee\'e3\'ee\'ed \'ee \'f2\'ee\'ec, \'f7\'f2\'ee \'e2 python \'e2\'f1\'b8 \'e5\'f1\'f2\'fc \'ee\'e1\'fa\'e5\'ea\'f2\'fb, \'f3 \'ee\'e1\'fa\'e5\'ea\'f2\'ee\'e2 \'e5\'f1\'f2\'fc \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'fb \'e8, \'e2 \'f7\'e0\'f1\'f2\'ed\'ee\'f1\'f2\'e8, \'f2\'f3\'f2 \'f3 \'f4\'f3\'ed\'ea\'f6\'e8\'e8 \'e2\'fb\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0 __doc__\cf0\kerning1\par
+\cf1\kerning0 >>> dir(gcd)\tab\tab\'ef\'ee\'f1\'ec\'ee\'f2\'f0\'e5\'f2\'fc \'e2\'f1\'e5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5/\'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'fb, \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'ee\'f2\'ed\'ee\'f1\'ff\'f2\'f1\'ff \'ea \'ee\'e1\'fa\'e5\'ea\'f2\'f3 gcd\cf0\kerning1\par
+\par
+\cf1\kerning0 >>> gcd\tab\tab\tab\tab\tab\'ea\'e0\'ea \'f2\'ee\'eb\'fc\'ea\'ee \'f1\'ee\'e7\'e4\'e0\'eb\'e8 \'f4\'f3\'ed\'ea\'f6\'e8\'fe, \'ee\'ed\'e0 \'f1\'f2\'e0\'eb\'e0 \'ee\'e1\'fa\'e5\'ea\'f2\'ee\'ec, \'f2.\'e5. \'eb\'e5\'e6\'e8\'f2 \'e3\'e4\'e5-\'f2\'ee \'e2 \'ef\'e0\'ec\'ff\'f2\'e8\cf0\kerning1\par
+\cf1\kerning0 <function gcd at 10042e12>\cf0\kerning1\par
+\cf1\kerning0 >>> new_function = gcd\tab\tab\tab\'f7\'f2\'ee-\'f2\'ee \'f2\'e8\'ef\'e0 \'f1\'f1\'fb\'eb\'ea\'e8 \'ed\'e0 \'f4\'f3\'ed\'ea\'f6\'e8\'fe\cf0\kerning1\par
+\cf1\kerning0 >>> print new_function(14,7)\cf0\kerning1\par
+\cf1\kerning0 7\cf0\kerning1\par
+\cf1\kerning0 -------------------\cf0\kerning1\par
+\cf2\b def\cf1\kerning0\b0  magic(v): - \'e2 python \'e2\'f1\'e5 \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'fb \'e2 \'f4\'f3\'ed\'ea\'f6\'e8\'fe \'ef\'e5\'f0\'e5\'e4\'e0\'fe\'f2\'f1\'ff \'ef\'ee \'f1\'f1\'fb\'eb\'ea\'e0\'ec\cf0\kerning1\par
+\cf1\kerning0\tab v.append('Blue')\cf0\kerning1\par
+\cf1\kerning0 >>> lis = ['Red', 'Green']\cf0\kerning1\par
+\cf1\kerning0 >>> magic(lis)\cf0\kerning1\par
+\cf1\kerning0 >>> lis\cf0\kerning1\par
+\cf1\kerning0 ['Red', 'Green', 'Blue']\tab\'e2 \'d1++ \'f1\'ef\'e8\'f1\'ee\'ea \'ee\'f1\'f2\'e0\'eb\'f1\'ff \'e1\'fb \'e1\'e5\'e7 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'e9\cf0\kerning1\par
+\cf1\kerning0 -------------------\cf0\kerning1\par
+\cf2\b def\cf1\kerning0\b0  multiout():\cf0\kerning1\par
+\cf1\kerning0\tab\cf2\b return\cf1\b0  1, 2, 3\cf0\kerning1\par
+\cf1\kerning0 >>>print multiout()\cf0\kerning1\par
+\cf1\kerning0 (1, 2, 3)\tab\tab\tab\tab\tab\'e8\'e7 \'f4\'f3\'ed\'ea\'f6\'e8\'e8 \'ec\'ee\'e6\'e5\'ec \'e4\'ee\'f1\'f2\'e0\'f2\'fc \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e9 \'e2 \cf6 <class 'tuples'>\cf0\kerning1\par
+\cf1\kerning0 -------------------\cf0\kerning1\par
+\cf1\kerning0 var=2\tab\tab\tab\tab\tab\tab\'f0\'e0\'f1\'f1\'ec\'e0\'f2\'f0\'e8\'e2\'e0\'e5\'f2\'f1\'ff scope \'e4\'eb\'ff \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'f5. \'d0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'f2\'ee\'eb\'fc\'ea\'ee \'f1 \'f4\'f3\'ed\'ea\'f6\'e8\'ff\'ec\'e8.\cf0\kerning1\par
+\cf2\b def\cf1\kerning0\b0  foo():\cf0\kerning1\par
+\cf1\kerning0\tab\cf2\kerning1\b global\cf1\kerning0\b0  var\tab\tab\tab\tab\'f1 \'fd\'f2\'ee\'e9 \'ea\'ee\'ec\'e0\'ed\'e4\'ee\'e9 print(var) \'e2\'fb\'e4\'e0\'f1\'f2 =5, \'e0 \'e1\'e5\'e7 \'ed\'e5\'b8 =2\cf0\kerning1\par
+\cf1\kerning0\tab var=5\cf0\kerning1\par
+\cf1\kerning0 foo()\cf0\kerning1\par
+\cf1\kerning0 print(var)\cf0\kerning1\par
+\cf1\kerning0 -------------------\cf0\kerning1\par
+\cf2\b def\cf1\kerning0\b0  greet(adr='mr.', name='X'):\tab\'e7\'e0\'e4\'e0\'b8\'ec default \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'ff\cf0\kerning1\par
+\cf1\kerning0   print ('Hello ' + adr + name + ' !')\cf0\kerning1\par
+\cf1\kerning0 >>> greet('mrs.', 'Anderson')\tab\'ef\'e5\'f0\'e5\'e4\'e0\'b8\'ec \'ee\'e1\'e0 \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'e0\cf0\kerning1\par
+\cf1\kerning0 Hello mrs.Anderson !\cf0\kerning1\par
+\cf1\kerning0 >>> greet(name='Gates')\tab\tab\'ef\'e5\'f0\'e5\'e4\'e0\'b8\'ec \'f2\'ee\'eb\'fc\'ea\'ee 2-\'ee\'e9 \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0, \'e1\'e5\'e7 1-\'ee\'e3\'ee\cf0\kerning1\par
+\cf1\kerning0 Hello mr.Gates !\cf0\kerning1\par
+\cf1\kerning0 >>> greet('dr.')\tab\tab\tab\'ef\'e5\'f0\'e5\'e4\'e0\'b8\'ec \'f2\'ee\'eb\'fc\'ea\'ee 1-\'fb\'e9 \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0, \'e1\'e5\'e7 2-\'ee\'e3\'ee\cf0\kerning1\par
+\cf1\kerning0 Hello dr.X !\cf0\kerning1\par
+\cf1\kerning0 >>> greet()\tab\tab\tab\tab\'e1\'e5\'e7 \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'ee\'e2\cf0\kerning1\par
+\cf1\kerning0 Hello mr.X !\cf0\kerning1\par
+\cf1\kerning0 -------------------\cf0\kerning1\par
+\cf1\kerning0 i=5\cf0\kerning1\par
+\cf2\b def\cf1\kerning0\b0  foo(arg1, arg2 = i):\tab\tab default \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0 \'e2\'fb\'f7\'e8\'f1\'eb\'ff\'e5\'f2\'f1\'ff \'e5\'e4\'e8\'ed\'ee\'e6\'e4\'fb \'e8 \'e7\'e4\'e5\'f1\'fc!\cf0\kerning1\par
+\cf1\kerning0\tab print arg1, arg2\cf0\kerning1\par
+\cf1\kerning0 i=6\cf0\kerning1\par
+\cf1\kerning0 >>> foo(1)\tab\tab\tab\tab\tab\'e0 \'ed\'e5 \'e7\'e4\'e5\'f1\'fc, \'ef\'ee\'f1\'eb\'e5 \'e2\'fb\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'ff i=6\cf0\kerning1\par
+\cf1\kerning0 1 5\cf0\kerning1\par
+\cf1\kerning0 >>> foo(1, 2)\cf0\kerning1\par
+\cf1\kerning0 1 2\cf0\kerning1\par
+\cf1\kerning0 -------------------\cf0\kerning1\par
+\cf2\b def\cf1\kerning0\b0  list_func(t, my_list=[]):\cf0\kerning1\par
+\cf1\kerning0\tab my_list.append(t)\tab\tab\'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'f2 \'e2 \'f1\'ef\'e8\'f1\'ee\'ea \'fd\'eb\'e5\'ec\'e5\'ed\'f2 t\cf0\kerning1\par
+\cf1\kerning0\tab\cf2\b return\cf1\b0  my_list\cf0\kerning1\par
+\cf1\kerning0 >>> print list_func(10)\cf0\kerning1\par
+\cf1\kerning0 [10]\cf0\kerning1\par
+\cf1\kerning0 >>> print list_func(20)\tab\tab\'ef\'f0\'e8 \'e2\'fb\'e7\'ee\'e2\'e5 \'f4\'f3\'ed\'ea\'f6\'e8\'e8 \'f1\'ef\'e8\'f1\'ee\'ea \'e1\'f3\'e4\'e5\'f2 \'f1\'ee\'f5\'f0\'e0\'ed\'ff\'f2\'f1\'ff - "\'ef\'ee\'eb\'ed\'fb\'e9 \'e1\'f0\'e5\'e4"\cf0\kerning1\par
+\cf1\kerning0 [10, 20]\cf0\kerning1\par
+\cf1\kerning0\par
+-------------------\cf0\kerning1\par
+\cf1\kerning0 >>> arr = [0, 1, 2, 3]\tab\cf6 <class 'list'>\cf0\kerning1\par
+\cf1\kerning0 >>> arr = '0123'\tab\tab\cf6 <class 'str'>\cf1\tab\tab\'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'e8 \'f1\'ee \'f1\'f2\'f0\'ee\'ea\'e0\'ec\'e8 \'f2\'ee\'e6\'e5 !!!\cf0\kerning1\par
+\cf1\kerning0 >>> arr = (0, 1, 2, 3)\tab\cf6 <class 'tuple'>\cf0\kerning1\par
+\cf1\kerning0 >>> d0, d1, d2, d3 = arr\tab\'e5\'f1\'eb\'e8 \'e2 arr 4 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'e0, \'f2\'ee \'e8 d0..d3 \'e4\'ee\'eb\'e6\'ed\'ee \'e1\'fb\'f2\'fc \'f0\'ee\'e2\'ed\'ee 4-\'e5, \'ed\'e8 \'e1\'ee\'eb\'fc\'f8\'e5 \'ed\'e8 \'ec\'e5\'ed\'fc\'f8\'e5\cf0\kerning1\par
+\cf1\kerning0 >>> d0\cf0\kerning1\par
+\cf1\kerning0 0\cf0\kerning1\par
+>>> d0, \b *d\b0  = arr\par
+>>> d\par
+[\cf1\kerning0 1, 2, 3]\cf0\kerning1\tab\tab\tab\tab\cf6\kerning0 <class 'list'>\cf0\kerning1\par
+\cf1\kerning0 >>> print(d)\cf0\kerning1\par
+\cf1\kerning0 [1, 2, 3]\tab\cf0\kerning1\tab\tab\tab\cf6\kerning0 <class 'list'>\cf0\kerning1\par
+\cf1\kerning0 >>> print(\b *d\b0 )\cf0\kerning1\par
+\cf1\kerning0 1 2 3\tab\tab\tab\tab\tab\'ef\'f0\'ee\'f1\'f2\'ee \'ef\'e5\'f0\'e5\'f7\'e5\'ed\'fc \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'ee\'e2\cf0\kerning1\par
+\cf1\kerning0 >>> \cf0\kerning1\b *d\b0 , d3 = arr\par
+>>> d\par
+[0, 1\cf1\kerning0 , 2]\cf0\kerning1\par
+\cf1\kerning0 >>> \cf0\kerning1 d0, \b *d\b0 , d3 = arr\par
+>>> d\par
+[\cf1\kerning0 1, 2]\cf0\kerning1\par
+\cf1\kerning0 -------------------\cf0\kerning1\par
+\cf2\b def\cf1\kerning0\b0  average(\b *args\b0 ):\tab\tab\tab * \'ee\'e1\'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2 \'ed\'e5\'ee\'ef\'f0\'e5\'e4\'e5\'eb\'b8\'ed\'ed\'ee\'e5 \'ea\'ee\'eb-\'e2\'ee \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'ee\'e2 args - \cf6 <class 'tuple'>\cf1 . \'cc\'ee\'e6\'ed\'ee \'ee\'e1\'f0\'e0\'f9\'e0\'f2\'fc\'f1\'ff \'ea\'e0\'ea args[3] \'e8\'eb\'e8 args[1]\cf0\kerning1\par
+\cf1\kerning0\tab sum=0.0\tab\tab\tab\tab\'ee\'e1\'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2 \'f2\'e8\'ef \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'ee\'e9 float\cf0\kerning1\par
+\cf1\kerning0\tab\cf2\kerning1\b for\cf1\kerning0\b0  i \cf2\kerning1\b in\cf1\kerning0\b0  args:\cf0\kerning1\par
+\cf1\kerning0\tab\tab sum+=i\cf0\kerning1\par
+\cf1\kerning0\tab\cf2\kerning1\b return\cf1\kerning0\b0  sum/len(args)\cf0\kerning1\par
+\cf1\kerning0 >>> print average(1, 2)\cf0\kerning1\par
+\cf1\kerning0 1.5\cf0\kerning1\par
+\cf1\kerning0 >>> print average(3, 5, 2)\cf0\kerning1\par
+\cf1\kerning0 3.3333333333\cf0\kerning1\par
+\cf1\kerning0 -------------------\cf0\kerning1\par
+\cf2\kerning0\b def\cf1\b0  foo(farg, \b **kwargs\b0 ):\tab\tab ** \'ee\'e1\'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2 \'ed\'e5\'ee\'ef\'f0\'e5\'e4\'e5\'eb\'b8\'ed\'ed\'ee\'e5 \'ea\'ee\'eb-\'e2\'ee \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'ee\'e2 kwargs - \cf6 <class 'dict'>\cf1  \{\'ea\'eb\'fe\'f7:\'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5\}\cf0\kerning1\par
+\cf1\kerning0\tab print "formal arg:", farg\cf0\kerning1\par
+\cf1\kerning0\tab\cf2\b for\cf1\b0  key \cf2\b in\cf1\b0  kwargs:\cf0\kerning1\par
+\cf1\kerning0\tab\tab print "keyword arg: %s: %s" %(key, kwargs[key])\tab\tab\'f0\'e0\'f1\'ef\'e5\'f7\'e0\'f2\'fb\'e2\'e0\'e5\'ec \'f1\'eb\'ee\'e2\'e0\'f0\'fc\cf0\kerning1\par
+\cf1\kerning0 >>> foo(farg=1, myarg2='two', myarg3=3)\tab\tab\tab\tab\tab\'e2 \'f4\'f3\'ed\'ea\'f6\'e8\'fe \'ef\'e5\'f0\'e5\'e4\'e0\'b8\'ec \'f6\'e5\'eb\'fb\'e9 \'f1\'eb\'ee\'e2\'e0\'f0\'fc \{myarg2:'two', myarg3:3\}\cf0\kerning1\par
+\cf1\kerning0 formal arg: 1\cf0\kerning1\par
+\cf1\kerning0 keyword arg: myarg2: two\cf0\kerning1\par
+\cf1\kerning0 keyword arg: myarg3: 3\cf0\kerning1\par
+\cf1\kerning0 -------------------\cf0\kerning1\par
+\cf2\b def\cf1\kerning0\b0  make_addr(x):\cf0\kerning1\par
+\cf1\kerning0   \cf2\kerning1\b def\cf1\kerning0\b0  \cf9\b addr\cf1\b0 (n):\cf0\kerning1\par
+\cf1\kerning0     \cf2\kerning1\b return\cf1\kerning0\b0  x+n\cf0\kerning1\par
+\cf1\kerning0   \cf2\kerning1\b return\cf1\kerning0\b0  \cf9\b addr\cf1\b0  \tab\tab\tab\'fd\'f2\'ee \'f7\'f3\'e4\'ee \'ed\'e0\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff "\b\'c7\'e0\'ec\'fb\'ea\'e0\'ed\'e8\'e5\b0 "\cf0\kerning1\par
+\cf1\kerning0 f = make_addr(10)\tab\tab\'f4\'f3\'ed\'ea\'f6\'e8\'ff make_addr \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 \'f4\'f3\'ed\'ea\'f6\'e8\'fe \cf9\b addr\cf1\b0 (n)\cf0\kerning1\par
+\cf1\kerning0 >>> print f(5)\cf0\kerning1\par
+\cf1\kerning0 15\cf0\kerning1\par
+\cf1\kerning0 -------------------\cf0\kerning1\par
+\cf2\kerning0\b def\cf1\b0  \cf10\b decorator\cf1\b0 (f):\cf0\kerning1\par
+\cf1\kerning0     \cf2\b def\cf1\b0  inner():\cf0\kerning1\par
+\cf1\kerning0         print("I got decorated")\cf0\kerning1\par
+\cf1\kerning0         f()\cf0\kerning1\par
+\cf1\kerning0     \cf2\b return\cf1\b0  inner\tab\tab\tab\'e4\'e5\'ea\'ee\'f0\'e0\'f2\'ee\'f0\cf0\kerning1\par
+\par
+\cf2\kerning0\b def\cf1\b0  func():\cf0\kerning1\par
+\cf1\kerning0     print("I am Normal function")\cf0\kerning1\par
+\par
+\cf1\kerning0 decorated_func = decorator(func)\cf0\kerning1\par
+\cf1\kerning0 decorated_func()\cf0\kerning1\par
+\par
+\par
+\par
+\par
+\cf1\kerning0\i\'d4\'f3\'ed\'ea\'f6\'e8\'ee\'ed\'e0\'eb\'fc\'ed\'ee\'e5 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'e5\i0 .\cf0\kerning1\par
+\par
+\cf1\kerning0\'cb\'ff\'ec\'e1\'e4\'e0 \'f4\'f3\'ed\'ea\'f6\'e8\'ff - \'ef\'f0\'ee\'f1\'f2\'ee\'e5 \'e4\'e5\'e9\'f1\'f2\'e2\'e8\'e5\cf0\kerning1\par
+\cf1\kerning0 >>> (lambda x:x*x)(5)\cf0\kerning1\par
+\cf1\kerning0 25\cf0\kerning1\par
+\cf1\kerning0 >>> foo=lambda x:2*x\cf0\kerning1\par
+\cf1\kerning0 >>> print foo(7)\cf0\kerning1\par
+\cf1\kerning0 14\cf0\kerning1\par
+\cf1\kerning0 -------------------\cf0\kerning1\par
+\cf1\kerning0 >>> l = [10, 4, 2, -1, 6]\cf0\kerning1\par
+\cf1\kerning0 >>> list(filter(lambda x:x<5, l))\tab\tab\'f4\'f3\'ed\'ea\'f6\'e8\'ff "\'c2\'fb\'f1\'f8\'e5\'e3\'ee \'ef\'ee\'f0\'ff\'e4\'ea\'e0", \'f2.\'e5. \'e2 \'ed\'e5\'b8 \'e2 \'ea\'e0\'f7\'e5\'f1\'f2\'e2\'e5 \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'ee\'e2 \'e7\'e0\'ef\'e8\'f5\'e8\'e2\'e0\'e5\'ec \'f4\'f3\'ed\'ea\'f6\'e8\'fe. Filter \'ef\'f0\'ee\'e2\'e5\'f0\'ff\'e5\'f2 list \'ed\'e0 \'f1\'ee\'ee\'f2\'e2\'e5\'f2\'f1\'f2\'e2\'e8\'e5....\cf0\kerning1\par
+\cf1\kerning0 [4, 2, -1]\cf0\kerning1\par
+\cf1\kerning0 -------------------\cf0\kerning1\par
+\cf1\kerning0 >>> list1 = [7, 2, 3]\cf0\kerning1\par
+\cf1\kerning0 >>> list2 = [-1, 1, -5]\cf0\kerning1\par
+\cf1\kerning0 >>> map(lambda x,y: x*y, list1, list2)\tab\'f4\'f3\'ed\'ea\'f6\'e8\'ff "\'c2\'fb\'f1\'f8\'e5\'e3\'ee \'ef\'ee\'f0\'ff\'e4\'ea\'e0" - \'ec\'f3\'f2\'fc\cf0\kerning1\par
+\cf1\kerning0 [-7, -2, -15]\cf0\kerning1\par
+\cf1\kerning0 -------------------\cf0\kerning1\par
+\cf1\kerning0 >>> list = [2, 3, 4, 5, 6]\cf0\kerning1\par
+\cf1\kerning0 >>> reduce(lambda res, x: res*x, list, 1)\tab\'f0\'e5\'e7\'f3\'eb\'fc\'f2\'e0\'f2 \'e2\'fb\'f7\'e8\'f1\'eb\'e5\'ed\'e8\'e9 = ((((1*2)*3)*4)*5)*6\cf0\kerning1\par
+\cf1\kerning0 720\cf0\kerning1\par
+\cf1\kerning0\par
+\par
+\tab\ul\b\'c2\'d1\'d2\'d0\'ce\'c5\'cd\'cd\'c0\'df SQLite\cf0\kerning1\ulnone\b0\par
+\cf1\kerning0\par
+\'cf\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'e5\'f2 \'f2\'e8\'ef\'fb \'e4\'e0\'ed\'ed\'fb\'f5: NULL, INT, REAL, TEXT, BLOB\cf0\kerning1\par
+\cf1\kerning0\par
+\cf2\b import\cf1\b0  sqlite3\cf0\kerning1\par
+\cf1\kerning0 conn = sqlite3.connect('orders.db')\tab\tab\'e1\'e0\'e7\'e0 \'e1\'f3\'e4\'e5\'f2 \'eb\'e5\'e6\'e0\'f2\'fc \'e2 \'f4\'e0\'e9\'eb\'e5 orders.db \'e2 \'ea\'ee\'f0\'ed\'e5 \'ef\'f0\'ee\'e5\'ea\'f2\'e0\cf0\kerning1\par
+\cf1\kerning0 conn = sqlite3.connect(':memory:')\tab\tab in-memory \'c1\'c4\cf0\kerning1\par
+\cf1\kerning0 cur = conn.cursor()\cf0\kerning1\par
+\cf1\kerning0 cur.execute("CREATE TABLE USERS(\cf0\kerning1\par
+\cf1\kerning0\tab id INT,\cf0\kerning1\par
+\cf1\kerning0\tab name TEXT,\cf0\kerning1\par
+\cf1\kerning0\tab gender TEXT);")\cf0\kerning1\par
+\cf1\kerning0 conn.commit()\cf0\kerning1\par
+\cf1\kerning0\par
+\cf7\b user\cf1\b0  = ('2', 'Vasya', 'Male')\cf0\kerning1\par
+\cf1\kerning0\par
+cur.execute("INSERT INTO USERS VALUES(?, ?);", \cf7\b user\cf1\b0 )\cf0\kerning1\par
+\cf1\kerning0 conn.commit()\cf0\kerning1\par
+\cf1\kerning0\par
+cur.execute("SELECT * FROM users;")\cf0\kerning1\par
+\cf1\kerning0 res = cur.fetch\ul one\ulnone ()\tab\'e8\'eb\'e8\tab cur.fetch\ul many\ulnone (3)\tab\'e8\'eb\'e8\tab cur.fetch\ul all\ulnone ()\cf0\kerning1\par
+\cf1\kerning0 print(res)\cf0\kerning1\par
+\cf1\kerning0\par
+\tab\ul\b CLASS\cf0\kerning1\ulnone\b0\par
+\cf1\kerning0\par
+\'ca\'eb\'e0\'f1\'f1 \'e2 Python - \'fd\'f2\'ee \'e3\'ee\'f2\'ee\'e2\'fb\'e9 \'ee\'e1\'fa\'e5\'ea\'f2. \'d1 \'ed\'e8\'ec \'ec\'ee\'e6\'ed\'ee \'e4\'e5\'eb\'e0\'f2\'fc: \'e7\'e0\'ef\'f0\'e0\'f8\'e8\'e2\'e0\'f2\'fc \'f1\'f1\'fb\'eb\'ea\'e8 \'ed\'e0 \'e0\'f2\'f0\'e8\'e1\'f3\'f2\'fb \'ea\'eb\'e0\'f1\'f1\'e0 \'e8 \'f1\'ee\'e7\'e4\'e0\'e2\'e0\'f2\'fc \'fd\'ea\'e7\'e5\'ec\'ef\'eb\'ff\'f0\'fb \'ea\'eb\'e0\'f1\'f1\'e0\cf0\kerning1\par
+\par
+\cf2\kerning0\b class\cf1\b0  Student:\tab\tab\tab\tab\tab\tab\tab class Student \{\cf0\kerning1\par
+\cf1\kerning0\tab surname = 'Ivanov'\tab\tab\tab\tab\tab\cf2\b static \cf1\b0 String surname = "Ivanov";\cf0\kerning1\par
+\cf1\kerning0\tab\tab\tab\tab\tab\tab\tab =\tab\tab\tab String name;\cf0\kerning1\par
+\cf1\kerning0\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab Integer age;\cf0\kerning1\par
+\cf1\kerning0\tab\cf2\b def\cf1\b0  __init__(\cf6\b self\cf1\b0 , name, age):\tab\tab\tab\tab Student(String name, Integer age) \{\cf0\kerning1\par
+\cf1\kerning0\tab\tab\cf6\b self\cf1\b0 .name=name\tab\tab\tab\tab\tab\tab\tab\cf6\b this\cf1\b0 .name = name\cf0\kerning1\par
+\cf1\kerning0\tab\tab\cf6\b self\cf1\b0 .age=age\tab\tab\tab\tab\tab\tab\tab\cf6\b this\cf1\b0 .age = age\cf0\kerning1\par
+\cf1\kerning0\tab\cf2\b def\cf1\b0  pr(\cf6\b self\cf1\b0 ):\tab\tab\tab\tab\tab\tab\tab\cf2\b void\cf1\b0  pr() \{\cf0\kerning1\par
+\cf1\kerning0\tab\tab print(\cf6\b self\cf1\b0 .surname)\cf0\kerning1\par
+\cf1\kerning0\tab\cf2\b def\cf1\b0  set_surname(\cf6\b self\cf1\b0 , surname):\cf0\kerning1\par
+\cf1\kerning0\tab\tab\cf6\b self\cf1\b0 .surname = surname\cf0\kerning1\par
+\cf1\kerning0\tab\cf12\b @staticmethod\cf0\kerning1\b0\par
+\cf1\kerning0\tab\cf2\b def\cf1\b0  static_method():\cf0\kerning1\par
+\cf1\kerning0\tab\tab print('Static')\cf0\kerning1\par
+\cf1\kerning0\tab\cf12\b @classmethod\cf0\kerning1\b0\par
+\cf1\kerning0\tab\cf2\b def\cf1\b0  set_class_surname(\cf10\b cls\cf1\b0 , surname):\tab\cf0\kerning1\par
+\cf1\kerning0\tab\tab\cf10\b cls\cf1\b0 .surname = surname\tab\tab\tab\cf10\b cls\cf1\b0  \'e7\'ed\'e0\'f7\'e8\'f2 \'ec\'fb \'f5\'ee\'f2\'e8\'ec \'e8\'e7\'ec\'e5\'ed\'e8\'f2\'fc \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'f3\'fe \'ea\'eb\'e0\'f1\'f1\'e0\cf0\kerning1\par
+\cf1\kerning0\tab\cf12\b @classmethod\cf0\kerning1\b0\par
+\cf1\kerning0\tab\cf2\b def\cf1\b0  pr_class_surname(\cf10\b cls\cf1\b0 ):\cf0\kerning1\par
+\cf1\kerning0\tab\tab print(\cf10\b cls\cf1\b0 .surname)\tab\tab\'ee\'e1\'f0\'e0\'f2\'e8\'f2\'fc \'e2\'ed\'e8\'ec\'e0\'ed\'e8\'e5 \'ea\'e0\'ea \'e2\'fb\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'e0\'ff surname, \'ec\'fb \'f5\'ee\'f2\'e8\'ec \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc \'f1 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'ee\'e9 \'ea\'eb\'e0\'f1\'f1\'e0, \'e0 \'ed\'e5 \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'ee\'e3\'ee \'fd\'ea\'e7\'e5\'ec\'ef\'eb\'ff\'f0\'e0\cf0\kerning1\par
+\par
+\cf1\kerning0 >>> vasya \cf0\kerning1 = Student('Vasya', 10)\tab\'f1\'ee\'e7\'e4\'e0\'b8\'ec \'ee\'e1\'fa\'e5\'ea\'f2\par
+\cf1\kerning0 >>> katya \cf0\kerning1 = Student('Katya', 15)\par
+\par
+\cf1\kerning0 >>> vasya.surname\cf0\kerning1\par
+\cf1\kerning0 Ivanov\tab\tab\tab\tab\tab\tab\'f3 \'ee\'e1\'fa\'e5\'ea\'f2\'e0 \'ed\'e5\'f2 \'f1\'e2\'ee\'e5\'e9 \cf6\b self\cf1\b0 .surname \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'ee\'e9, \'ef\'ee\'fd\'f2\'ee\'ec\'f3 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 \'ef\'ee\'e4\'f2\'ff\'e3\'e8\'e2\'e0\'e5\'f2 \'e8\'e7 \'ea\'eb\'e0\'f1\'f1\'ee\'e2\'ee\'e9 \cf10\b cls\cf1\b0 .surname \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'ee\'e9\cf0\kerning1\par
+\cf1\kerning0 >>> katya.surname\cf0\kerning1\par
+\cf1\kerning0 Ivanov\cf0\kerning1\par
+\cf1\kerning0 >>> Student.surname\cf0\kerning1\par
+\cf1\kerning0 Ivanov\cf0\kerning1\par
+\par
+\cf1\kerning0 >>> Student.surname = 'Petrov'\tab\tab\'e8\'eb\'e8 \'f2\'e0\'ea vasya.set_class_surname('Petrov')\cf0\kerning1\par
+\cf1\kerning0 >>> vasya\cf0\kerning1 .\cf1\kerning0 surname\cf0\kerning1\par
+\cf1\kerning0 Petrov\cf0\kerning1\par
+\cf1\kerning0 >>> katya\cf0\kerning1 .\cf1\kerning0 surname\cf0\kerning1\par
+\cf1\kerning0 Petrov\cf0\kerning1\par
+\cf1\kerning0 >>> Student.surname\cf0\kerning1\par
+\cf1\kerning0 Petrov\cf0\kerning1\par
+\cf1\kerning0\par
+>>> vasya.set_surname('Sidorov')\tab\'f1\'ee\'e7\'e4\'e0\'b8\'ec \'f3 \'ee\'e1\'fa\'e5\'ea\'f2\'e0 \'f1\'e2\'ee\'fe \cf6\b self\cf1\b0 .surname \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'f3\'fe\cf0\kerning1\par
+\cf1\kerning0 >>> vasya\cf0\kerning1 .\cf1\kerning0 surname\cf0\kerning1\par
+\cf1\kerning0 Sidorov\cf0\kerning1\par
+\cf1\kerning0 >>> vasya.pr_class_surname()\cf0\kerning1\par
+\cf1\kerning0 Petrov\cf0\kerning1\par
+\cf1\kerning0 >>> katya\cf0\kerning1 .\cf1\kerning0 surname\cf0\kerning1\par
+\cf1\kerning0 Petrov\cf0\kerning1\par
+\cf1\kerning0 >>> Student.surname\cf0\kerning1\par
+\cf1\kerning0 Petrov\cf0\kerning1\par
+\cf1\kerning0\par
+>>> vasya\cf0\kerning1 .\cf1\kerning0 static_method\cf0\kerning1 ()\par
+\cf1\kerning0 Static\cf0\kerning1\par
+\cf1\kerning0 >>> Student.static_method()\cf0\kerning1\par
+\cf1\kerning0 Static\cf0\kerning1\par
+\par
+\par
+\cf1\kerning0 -------------------\cf0\kerning1\par
+\cf2\kerning0\b class\cf1\b0  \'d1:\tab\tab\tab\'ee\'f2\'f1\'f2\'f3\'ef\'eb\'e5\'ed\'e8\'e5 \'ef\'f0\'ee \'e4\'e8\'ed\'e0\'ec\'e8\'f7\'e5\'f1\'ea\'e8\'e9 Python\cf0\kerning1\par
+\cf1\kerning0\tab\cf2\b pass\cf1\b0\tab\tab\tab\'f1\'ee\'e7\'e4\'e0\'eb\'e8 instance \'ea\'eb\'e0\'f1\'f1\'e0 \'e2 RAM\cf0\kerning1\par
+\cf1\kerning0 a=\'d1()\tab\'e8\'eb\'e8\tab a=C\tab\tab\'f1\'ee\'e7\'e4\'e0\'eb\'e8 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'f3\'fe a (=\'f1\'f1\'fb\'eb\'ea\'f3) \'ed\'e0 instance \'ea\'eb\'e0\'f1\'f1\'e0\cf0\kerning1\par
+\cf1\kerning0\'d1.attr=10\tab\tab\tab\'f1\'ee\'e7\'e4\'e0\'eb\'e8 \'f3 \'f1\'e0\'ec\'ee\'e3\'ee \'ea\'eb\'e0\'f1\'f1\'e0 \'e0\'f2\'f0\'e8\'e1\'f3\'f2 attr\cf0\kerning1\par
+\cf1\kerning0 b=\'d1()\tab\tab\tab\tab\'f1\'ee\'e7\'e4\'e0\'eb\'e8 \'e5\'f9\'b8 \'ee\'e4\'ed\'f3 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'f3\'fe y \'ed\'e0 instance \'ea\'eb\'e0\'f1\'f1\'e0\cf0\kerning1\par
+\cf1\kerning0 >>> print (b.attr)\tab\'ed\'e0\'f8\'b8\'eb \'f3 \'f1\'e5\'e1\'ff attr\cf0\kerning1\par
+\cf1\kerning0 10\cf0\kerning1\par
+\cf1\kerning0 >>> print (a.attr)\tab\'ea\'e0\'ea \'ee\'e1\'fa\'ff\'f1\'ed\'e8\'eb\'e0 \'f2\'b8\'f2\'ea\'e0, \'e2\'ee\'e7\'ec\'ee\'e6\'ed\'ee \'ed\'e5 \'ef\'f0\'e0\'e2\'e4\'e0, \'ed\'e5 \'ed\'e0\'f8\'b8\'eb \'f3 \'f1\'e5\'e1\'ff \'e8 \'ef\'ee\'eb\'e5\'e7 \'e2 \'ef\'e0\'ec\'ff\'f2\'fc \'ea \'f0\'ee\'e4\'e8\'f2\'e5\'eb\'fc\'f1\'ea\'ee\'ec\'f3 \'ea\'eb\'e0\'f1\'f1\'f3\cf0\kerning1\par
+\cf1\kerning0 10\cf0\kerning1\par
+\cf1\kerning0 -------------------\cf0\kerning1\par
+\cf2\kerning0\b class\cf1\b0  \'d1:\cf0\kerning1\par
+\cf1\kerning0\tab\cf2\b pass\cf0\kerning1\b0\par
+\cf2\kerning0\b def\cf1\b0  foo():\cf0\kerning1\par
+\cf1\kerning0\tab\cf2\b pass\cf0\kerning1\b0\par
+\cf1\kerning0\'d1.func=foo\cf0\kerning1\par
+\cf1\kerning0 a=\'d1()\tab\tab\tab\tab\'e8\'eb\'e8 \'ef\'f0\'ee\'f1\'f2\'ee\tab a=C\cf0\kerning1\par
+\cf1\kerning0 a.func()\tab\tab\tab\'e2 Python \'fd\'f2\'ee \'f0\'e0\'e2\'ed\'ee\'f1\'e8\'eb\'fc\'ed\'ee a.func(\cf6\b self\cf1\b0 ) - \'f2.\'e5. \'e2 func \'ef\'e5\'f0\'e5\'e4\'e0\'b8\'ec \'ea\'e0\'ea \'ec\'e8\'ed\'e8\'ec\'f3\'ec \'ee\'e4\'e8\'ed \'e0\'f0\'e3\'f3\'ec\'e5\'ed\'f2 \cf6\b self\cf1\b0  = "this" \'e2 Java\cf0\kerning1\par
+\cf1\kerning0 Traceback (most recent call last)\cf0\kerning1\par
+\cf1\kerning0   File "<stdin>", line 1, in <module>\cf0\kerning1\par
+\cf1\kerning0 TypeError: foo() takes no arguments (1 given)\cf0\kerning1\par
+\cf1\kerning0\par
+\par
+\ul\'cd\'e0\'f1\'eb\'e5\'e4\'ee\'e2\'e0\'ed\'e8\'e5\ulnone .\cf0\kerning1\par
+\cf2\kerning0\b class\cf1\b0  InterfaceExample:\cf0\kerning1\par
+\cf1\kerning0\tab\cf2\b def\cf1\b0  foo(\cf6\b self\cf1\b0 , x: int, y: srt) -> srt:\cf0\kerning1\par
+\cf2\kerning0\b class\cf1\b0  MyClass (InterfaceExample):\tab\tab\tab\'ec\'ee\'e6\'ed\'ee \'e8 \'f2\'e0\'ea\tab\tab class MyClass (Interface1, Interface2, Interface3):\cf0\kerning1\par
+\cf1\kerning0\tab\cf2\b def\cf1\b0  foo(\cf6\b self\cf1\b0 , x: int, y: srt) -> srt:\cf0\kerning1\par
+\cf1\kerning0\tab\tab ...\'f0\'e5\'e0\'eb\'e8\'e7\'e0\'f6\'e8\'ff...\cf0\kerning1\par
+\cf1\kerning0\par
+\par
+\par
+\par
+\tab\ul\b DEBUG\cf0\kerning1\ulnone\b0\par
+\cf1\kerning0\par
+\'cc\'ee\'e4\'f3\'eb\'fc pdb.\cf0\kerning1\par
+\cf1\kerning0 $ pdb3 myScript.py\tab\'ef\'f0\'e5\'e4\'f3\'f1\'f2\'e0\'ed\'ee\'e2\'eb\'e5\'ed \'e2 Debian \'e2 /usr/bin\cf0\kerning1\par
+\cf1\kerning0\tab\'e8\'eb\'e8\cf0\kerning1\par
+\cf1\kerning0 $ python3 -m pdb myScript.py\cf0\kerning1\par
+\cf1\kerning0 (Pdb) \b h\cf0\kerning1\b0\par
+\cf1\kerning0\par
+Documented commands (type help <topic>):\cf0\kerning1\par
+\cf1\kerning0 ========================================\cf0\kerning1\par
+\cf1\kerning0 EOF\tab\tab c\tab\tab d\tab\tab h\tab\tab list\tab\tab q\tab\tab rv\tab\tab undisplay\cf0\kerning1\par
+\cf1\kerning0 a\tab\tab cl\tab\tab debug\tab\tab help\tab\tab ll\tab\tab quit\tab\tab s\tab\tab unt\cf0\kerning1\par
+\cf1\kerning0 alias\tab\tab clear\tab\tab disable\tab ignore\tab longlist\tab r\tab\tab source\tab until\cf0\kerning1\par
+\cf1\kerning0 args\tab\tab commands\tab display\tab interact\tab n\tab\tab restart\tab step\tab\tab up\cf0\kerning1\par
+\cf1\kerning0 b\tab\tab condition\tab down\tab\tab j\tab\tab next\tab\tab return\tab tbreak\tab w\cf0\kerning1\par
+\cf1\kerning0 break\tab\tab cont\tab\tab enable\tab jump\tab\tab p\tab\tab retval\tab u\tab\tab whatis\cf0\kerning1\par
+\cf1\kerning0 bt\tab\tab continue\tab exit\tab\tab l\tab\tab pp\tab\tab run\tab\tab unalias\tab where\cf0\kerning1\par
+\cf1\kerning0\par
+(Pdb) \b n\b0  - \'ef\'e5\'f0\'e5\'f5\'ee\'e4\'e8\'ec \'ea \'f1\'eb\'e5\'e4\'f3\'fe\'f9\'e5\'e9 \'e8\'ed\'f1\'f2\'f0\'f3\'ea\'f6\'e8\'e8\cf0\kerning1\par
+\cf1\kerning0 (Pdb) \b l\b0  - \'e2\'fb\'e2\'e5\'e4\'e5\'f2 \'ea\'f3\'f1\'ee\'ea \'ea\'ee\'e4\'e0 \'e8 \'f1\'f2\'f0\'e5\'eb\'ee\'f7\'ea\'ee\'e9 \'f3\'ea\'e0\'e6\'e5\'f2 \'e3\'e4\'e5 \'ec\'fb \'f1\'e5\'e9\'f7\'e0\'f1\cf0\kerning1\par
+\cf1\kerning0 (Pdb) \b s\b0  - \'ef\'f0\'ee\'e2\'e0\'eb\'e8\'e2\'e0\'e5\'ec\'f1\'ff \'e2\'ed\'f3\'f2\'f0\'fc \'f4\'f3\'ed\'ea\'f6\'e8\'e8\cf0\kerning1\par
+\cf1\kerning0 (Pdb) \b p\b0  \i somevar \i0 - \'e2\'fb\'e4\'e0\'f1\'f2 \'f7\'e5\'ec\'f3 \'f1\'e5\'e9\'f7\'e0\'f1 \'f0\'e0\'e2\'ed\'e0 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'e0\'ff \i somevar\cf0\kerning1\i0\par
+\cf1\kerning0 (Pdb) locals() - \'ef\'ee\'ea\'e0\'e6\'e5\'f2 \'c2\'d1\'c5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5\cf0\kerning1\par
+\par
+\par
+\par
+\par
+\cf1\tab\ul\b\'d1\'c1\'ce\'d0\'ca\'c0 \'cf\'c0\'ca\'c5\'d2\'ce\'c2\cf0\ulnone\b0\par
+\par
+{\field{\*\fldinst{HYPERLINK "https://packaging.python.org/en/latest/tutorials/packaging-projects/"}}{\fldrslt{\ul\cf3 https://packaging.python.org/en/latest/tutorials/packaging-projects/}}}\f0\fs22\par
+\cf1\'c1\'fb\'eb \'f1\'f2\'e0\'f0\'fb\'e9 \'f4\'ee\'f0\'ec\'e0\'f2 .egg \'cd\'e0 \'f1\'ec\'e5\'ed\'f3 \'ef\'f0\'e8\'f8\'b8\'eb \'ed\'ee\'e2\'fb\'e9: wheel = dpkg \'ee\'f2 Python \'f0\'e0\'f1\'f8\'e8\'f0\'e5\'ed\'e8\'e5 \'f4\'e0\'e9\'eb\'ee\'e2 .whl = .deb\cf0\par
+\par
+#mkdir \cf1 MyProj\cf0\tab\tab\tab\'f1\'ee\'e7\'e4\'e0\'b8\'ec \'ef\'e0\'ef\'ea\'f3 \'e4\'eb\'ff \'ed\'ee\'e2\'ee\'e3\'ee \'ef\'f0\'ee\'e5\'ea\'f2\'e0\par
+#cd \cf1 MyProj\cf0\par
+\cf1 #pip list\tab\tab\tab\tab\'e2\'fb\'e4\'e0\'f1\'f2 \'e4\'eb\'e8\'ed\'ed\'fb\'e9 \'f1\'ef\'e8\'f1\'ee\'ea \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'eb\'e5\'ed\'ed\'fb\'f5 \'ef\'e0\'ea\'e5\'f2\'ee\'e2, \'ed\'e0\'f5\'ee\'e4\'ff\'f9\'e8\'f5\'f1\'ff \'e2 \'ee\'e1\'eb\'e0\'f1\'f2\'e8 \'e2\'e8\'e4\'e8\'ec\'ee\'f1\'f2\'e8 Global Scope.\cf0\par
+\pard\nowidctlpar\hyphpar0\cf1 #python -m venv venv\tab\tab\'e2 \'ef\'e0\'ef\'ea\'e5 MyProj \'f1\'ee\'e7\'e4\'e0\'f1\'f2\'f1\'ff \'ef\'e0\'ef\'ea\'e0 venv \'f1 \'ef\'ee\'f2\'f0\'ee\'f5\'e0\'ec\'e8. \'ca\'e0\'ea\'e0\'ff \'ef\'f0\'ee\'e1\'eb\'e5\'ec\'e0 \'e2 Python \u8594? \'e2 \'ef\'e0\'ef\'ea\'e5 \'e4\'eb\'ff \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'eb\'e5\'ed\'ed\'fb\'f5 \'ef\'e0\'ea\'e5\'f2\'ee\'e2 \'ed\'e5\'eb\'fc\'e7\'ff \'f3\'ea\'e0\'e7\'fb\'e2\'e0\'f2\'fc \'e2\'e5\'f0\'f1\'e8\'fe (\'f2\'e0\'ec \'eb\'e5\'e6\'e0\'f2 \'ef\'f0\'ee\'f1\'f2\'ee math.py). \'d1\'e4\'e5\'eb\'e0\'eb\'e8 \'ea\'ee\'f1\'f2\'fb\'eb\'fc \u8594? \'e2 \'ef\'e0\'ef\'ea\'e5 \'ef\'f0\'ee\'e5\'ea\'f2\'e0 MyProj \'f1\'ee\'e7\'e4\'e0\'fe\'f2 \'ef\'e0\'ef\'ea\'f3 venv \'f1\'ee\'e4\'e5\'f0\'e6\'e0\'f9\'f3\'fe \'e2\'f1\'e5 \'ec\'ee\'e4\'f3\'eb\'e8, \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'fe\'f9\'e8\'e5\'f1\'ff \'e2 \'ef\'f0\'ee\'e5\'ea\'f2\'e5 \'e8 \'ef\'ee\'e4\'ec\'e5\'ed\'ff\'fe\'f2 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'f3\'fe $PATH. \'d2\'e5\'ef\'e5\'f0\'fc #which python3 \'e2\'fb\'e4\'e0\'f1\'f2 ..MyProj/venv/bin/\cf10\b python3\cf0\b0\par
+\cf1 #source ./venv/bin/\cf12\b activate\cf1\b0\tab\'e0\'ea\'f2\'e8\'e2\'e0\'f6\'e8\'ff venv. \'d2\'e5\'ef\'e5\'f0\'fc #which python3 \'e2\'fb\'e4\'e0\'f1\'f2 ..MyProj/venv/bin/\cf10\b python3\cf1\b0  \'e8 \'e2\'f1\'e5 libs \'e1\'f3\'e4\'e5\'f2 \'f2\'ff\'ed\'f3\'f2\'fc \'e8 \'f3\'f1\'f2\'e0\'ed\'e0\'e2\'eb\'e8\'e2\'e0\'f2\'fc (pip install) \'e2 ..MyProj/venv/lib/python/site-packages\cf0\par
+\cf1 #pip list\tab\tab\tab\tab\'f2\'e5\'ef\'e5\'f0\'fc \'ea\'ee\'ec\'e0\'ed\'e4\'e0 \'e2\'fb\'e4\'e0\'f1\'f2 \'ea\'ee\'f0\'ee\'f2\'ea\'e8\'e9 \'f1\'ef\'e8\'f1\'ee\'ea \'ef\'e0\'ea\'e5\'f2\'ee\'e2 \'e8\'e7 \'ef\'e0\'ef\'ea\'e8 ..MyProj/venv/lib/python/site-packages\cf0\par
+\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf1\tab MyProj\cf0\par
+\cf1\tab\tab + src\cf0\par
+\cf1\tab\tab\tab __init__.py\tab\tab\'fd\'f2\'ee\'f2 \'f4\'e0\'e9\'eb \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'e5\'f2\'f1\'ff \'ea\'ee\'e3\'e4\'e0 \'e2 \'e4\'f0\'f3\'e3\'ee\'e9 .py \'e4\'e5\'eb\'e0\'e5\'ec import myApp\cf0\par
+\cf1\tab\tab\tab __main__.py\tab\tab\'fd\'f2\'ee\'f2 \'f4\'e0\'e9\'eb \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'e5\'f2\'f1\'ff \'ea\'ee\'e3\'e4\'e0 $python -m myApp\cf0\par
+\cf1\tab\tab + venv\cf0\par
+\cf1\tab\tab\tab + pyvenv.cfg\cf0\par
+\cf1\tab\tab\tab + bin\cf0\par
+\cf1\tab\tab\tab\tab\cf12\b activate\cf0\b0\par
+\cf1\tab\tab\tab\tab pip\cf0\par
+\cf1\tab\tab\tab\tab\cf10\b python3\cf0\b0\par
+\cf1\tab\tab\tab\tab wheel\cf0\par
+\cf1\tab\tab\tab + lib/python/site-packages\cf0\par
+\cf1\tab\tab\tab\tab pip\cf0\par
+\cf1\tab\tab\tab\tab setuptools\cf0\par
+\cf1\tab\tab\tab\tab wheel\cf0\par
+\cf1\tab\tab\tab\tab virtualenv.py\cf0\par
+\cf1\tab\tab requirements.txt\tab\tab\tab\'f2\'f3\'f2 \'eb\'e5\'e6\'e8\'f2 \'f1\'ef\'e8\'f1\'ee\'ea \'ef\'e0\'ea\'e5\'f2\'ee\'e2 \'e7\'e0\'e2\'e8\'f1\'e8\'ec\'ee\'f1\'f2\'e5\'e9 \'e4\'eb\'ff PIP!!, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'ef\'e5\'f0\'e5\'e4 \'e7\'e0\'ef\'f3\'f1\'ea\'ee\'ec \'ef\'f0\'ee\'e5\'ea\'f2\'e0 \'ed\'e0\'e4\'ee #\b pip install -r requirements.txt\cf0\b0\par
+\cf1\tab\tab\tab flask==0.10.1\cf0\par
+\cf1\tab\tab\tab ...\cf0\par
+\cf1\tab\tab\cf4\b pyproject.toml\cf1\b0\tab\tab\tab\'f1\'ee\'e7\'e4\'e0\'eb \'fd\'f2\'ee\'f2 \'f4\'e0\'e9\'eb \'ef\'f3\'f1\'f2\'fb\'ec, \'e2\'f1\'b8 \'f0\'e0\'e2\'ed\'ee \'ee\'f2\'f0\'e0\'e1\'ee\'f2\'e0\'eb $python3 -m build. \'d1 \'f3\'ef\'f0\'e0\'e2\'eb\'e5\'ed\'e8\'e5\'ec \'e7\'e0\'e2\'e8\'f1\'e8\'ec\'ee\'f1\'f2\'ff\'ec\'e8 \'e2 Python \'e1\'e5\'e4\'e0. \'c2\'ec\'e5\'f1\'f2\'ee PIP \'e4\'e2\'e8\'e3\'e0\'fe\'f2 \b Poetry\b0 . \'c4\'eb\'ff Poetry py\cf0 project.toml\cf1  \'fd\'f2\'ee \'ea\'e0\'ea pom.xml \'e4\'eb\'ff Maven.\cf0\par
+\cf1\tab\tab\tab [build-system]\cf0\par
+\cf1\tab\tab\tab\tab requires = ["setuptools"]\cf0\par
+\cf1\tab\tab\tab\tab build-backend = "setuptools.build_meta"\cf0\par
+\cf1\tab\tab setup.py\cf0\par
+\cf1\tab\tab setup.cfg\cf0\par
+\par
+\cf1\'c4\'eb\'ff static \'ed\'e0\'f1\'f2\'f0\'ee\'e5\'ea \'f1\'e1\'ee\'f0\'ea\'e8\tab\tab\tab\'c4\'eb\'ff dynamic \'ed\'e0\'f1\'f2\'f0\'ee\'e5\'ea \'f1\'e1\'ee\'f0\'ea\'e8\cf0\par
+\cf1 setup.cfg\tab\tab\tab\tab\tab\tab setup.py\cf0\par
+\cf1\tab\tab\tab\tab\tab\tab\tab from setuptools import setup\cf0\par
+\cf1\tab [metadata]\tab\tab\tab\tab\tab setup(\cf0\par
+\cf1\tab\tab name = Hello\tab\tab\tab\tab name='Hello'\cf0\par
+\cf1\tab\tab version = 0.0.1\tab\tab\tab\tab version='0.0.1'\cf0\par
+\cf1\tab\tab author = Example Author\tab\tab\tab author='Example Author')\cf0\par
+\par
+\cf1 $python3 -m pip install --upgrade build\tab\'ef\'f0\'ee\'e2\'e5\'f0\'ff\'e5\'ec \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'ff\'ff \'eb\'e8 \'e2\'e5\'f0\'f1\'e8\'ff build \'f3 \'ed\'e0\'f1 \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'eb\'e5\'ed\'ed\'e0\cf0\par
+\cf1 $python3 -m build --wheel\tab\tab\tab\tab\'f1\'e1\'ee\'f0\'ea\'e0, \'ef\'ee\'f1\'eb\'e5 \'f7\'e5\'e3\'ee \'ef\'ee\'ff\'e2\'e8\'f2\'f1\'ff dist/Hello-1.0.0-py3-none-any.whl\cf0\par
+\cf1\tab\'e8\'eb\'e8\cf0\par
+\cf1 $python setup.py bdist_wheel\cf0\par
+\par
+\cf1 $python -m pip install Hello-1.0.0-py3-none-any.whl\cf0\par
+\cf1\par
+\b Poetry\cf0\b0\par
+{\field{\*\fldinst{HYPERLINK "https://habr.com/ru/companies/otus/articles/716588/"}}{\fldrslt{\ul\cf3 https://habr.com/ru/companies/otus/articles/716588/}}}\f0\fs22\par
+\cf1 #pip install poetry\cf0\par
+\cf1 #poetry init\tab\tab\'e5\'f1\'eb\'e8 \'f3 \'ed\'e0\'f1 \'e5\'f1\'f2\'fc \'f3\'e6\'e5 \'f0\'e0\'e1\'ee\'f7\'e8\'e9 \'ef\'f0\'ee\'e5\'ea\'f2, \'f2\'ee \'e7\'e0\'f5\'ee\'e4\'e8\'ec \'e2 \'ef\'e0\'ef\'ea\'f3 MyProj \'e8 \'e4\'e5\'eb\'e0\'e5\'ec \'fd\'f2\'ee \u8594? \'f1\'ee\'e7\'e4\'e0\'f1\'f2\'f1\'ff \cf0 pyproject.toml\par
+#\cf1 poetry new MyProj\tab\'e8\'eb\'e8 \'f1\'ee\'e7\'e4\'e0\'b8\'ec \'ef\'f0\'ee\'e5\'ea\'f2 \'f1 \'ed\'f3\'eb\'ff. \'ca\'e0\'ea Idea \'f1 Java \u8594? \'f1\'ee\'e7\'e4\'e0\'e4\'f3\'f2\'f1\'ff \'e2\'f1\'e5 \'ef\'e0\'ef\'ea\'e8 test, src, \cf0 pyproject.toml, __init__.py \'e8 \'f2.\'ef.\par
+#poetry add pygame@^2\tab\'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'ec \'e7\'e0\'e2\'e8\'f1\'e8\'ec\'ee\'f1\'f2\'fc \'e2 \'ef\'f0\'ee\'e5\'ea\'f2 (^2 - \'e7\'ed\'e0\'f7\'e8\'f2 \'ef\'e0\'ea\'e5\'f2 \'e2\'e5\'f0\'f1\'e8\'e8 "2")\tab\'e8\'eb\'e8 \'f2\'e0\'ea #cat requirements.txt | xargs poetry add\par
+\tab\'c2\'f1\'e5 dependency \'e1\'f3\'e4\'f3\'f2 \'eb\'e5\'e6\'e0\'f2\'fc \'e2 \'f4\'e0\'e9\'eb\'e5 \cf1 MyProj/\cf0 poetry.lock\par
+#poetry build\tab\tab\tab\'f1\'ee\'e7\'e4\'e0\'f1\'f2 \'ef\'e0\'ef\'ea\'f3 dist \'e8 \'e2 \'ed\'e5\'e9 .tar.gz \'e8 .whl \'f4\'e0\'e9\'eb\'fb \'ef\'e0\'ea\'e5\'f2\'ee\'e2\par
+#poetry run python main.py\tab\'e2\'ee\'f2 \'f2\'e0\'ea \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'e5\'f2\'f1\'ff \'ef\'f0\'ee\'e5\'ea\'f2\par
+#poetry version \i major\i0\tab\tab\'e2 pyproject.toml \'e5\'f1\'f2\'fc \'f0\'e0\'e7\'e4\'e5\'eb "version". \'d2\'e0\'ea\'e8\'ec \'ee\'e1\'f0\'e0\'e7\'ee\'ec \'e8\'e7\'ec\'e5\'ed\'ff\'e5\'ec \'f6\'e8\'f4\'e5\'f0\'ea\'f3. \'c5\'f1\'f2\'fc \'e5\'f9\'b8  minor \'e8 patch.\par
+#poetry publish\tab\tab\tab\'e7\'e0\'e3\'f0\'f3\'e7\'e8\'f2\'fc \'e2 \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'ee\'f0\'e8\'e9. \'c4\'eb\'ff \'fd\'f2\'ee\'e3\'ee \'ed\'f3\'e6\'e5\'ed \'f4\'e0\'e9\'eb .pypirc \'f1 URL, tocken \'e8 \'f2.\'ef.\par
+\par
+\par
+\par
+\b Trash\b0 .\par
+\par
+>>> any((False, True, False))\tab\'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 True, \'e5\'f1\'eb\'e8 \'f5\'ee\'f2\'ff \'e1\'fb \'ee\'e4\'e8\'ed \'fd\'eb\'e5\'ec\'e5\'ed\'f2 \'e2 Iterable \'f1\'f2\'f0\'f3\'ea\'f2\'f3\'f0\'e5 = True\par
+True\par
+>>> all((True, True, True))\tab\tab\'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 True, \'e5\'f1\'eb\'e8 \'e2\'f1\'e5 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'fb \'e2 Iterable \'f1\'f2\'f0\'f3\'ea\'f2\'f3\'f0\'e5 = True\par
+True\par
+\par
+\par
+\b Autoreload \cf9 myModule\cf0\b0 .\par
+main.py\tab\tab\tab\tab\tab\cf9\b myModule\cf0\b0 /__init__.py\par
+\tab import signal\tab\tab\tab\tab def \cf7\b foo\cf0\b0 ():\par
+\tab import importlib\tab\tab\tab\tab\tab print("aaa")\par
+\tab import \cf9\b myModule\cf0\b0\par
+\par
+\tab def \cf13\b handler\cf0\b0 (signum, frame):\par
+\tab\tab importlib.reload(\cf9\b myModule\cf0\b0 )\par
+\par
+\tab signal.signal(\cf4\b 13\cf0\b0 , \cf13\b handler\cf0\b0 )\par
+\par
+\tab while True:\par
+\tab\tab\cf9\b myModule\cf0\b0 .\cf7\b foo\cf0\b0 ()\par
+\par
+\'c7\'e0\'ef\'f3\'f1\'ea\'e0\'e5\'ec #python3 main.py. \'c2 \'ea\'ee\'ed\'f1\'ee\'eb\'e8 \'ef\'e5\'f0\'e8\'ee\'e4\'e8\'f7\'e5\'f1\'ea\'e8 \'ef\'e5\'f7\'e0\'f2\'e0\'e5\'f2\'f1\'ff "aaa". \'d0\'e5\'e4\'e0\'ea\'f2\'e8\'f0\'f3\'e5\'ec __init__.py - \'e8\'e7\'ec\'e5\'ed\'ff\'e5\'ec "aaa" \'ed\'e0 "ddd". \'ce\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'ec Signal \'ef\'f0\'ee\'f6\'e5\'f1\'f1\'f3 Python: #kill -\cf4\b 13\cf0\b0  696. \'c2 \'ea\'ee\'ed\'f1\'ee\'eb\'e5 \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2 \'ef\'e5\'f7\'e0\'f2\'e0\'f2\'fc\'f1\'ff "ddd".\par
+}
+ 

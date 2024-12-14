@@ -1,0 +1,115 @@
+Всё наследуется от
+class org.apache.wicket.Component
+	куча методов…
+Есть ещё какие-то Containers.
+
+Основная идея подобных фреймворков (Wicket — для HTML), (Swing и SWT — для desktop windows): в RAM лежат Java классы, которые фреймворк трансформируется в HTML pages. C Java классами мы работаем обычными методами ? таким образом изменяя HTML странички.
+
+
+Скачиваем с http://wicket.apache.org
+там лежат модули:
+wicket-core
+wicket-request
+wicket-util
+wicket-bean-validation
+wicket-devutils
+wicket-extensions
+wicket-auth-roles
+...
+
+
+
+.../src/main/webapp/WEB-INF/web.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+    <display-name>Wicket Test</display-name>
+    <filter>
+        <filter-name>TestApplication</filter-name>
+        <filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
+        <init-param>
+          <param-name>applicationClassName</param-name>
+          <param-value>org.wicketTutorial.WicketApplication</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>TestApplication</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+</web-app>
+
+
+
+class org.apache.wicket.markup.html.link.Link
+
+public class HomePage extends WebPage {		создаём Component = наша страица HomePage
+	public HomePage(){
+		add(new Link<Void>("id"){		в наш Component добавляем новый Component - определяем объект Link
+			@Override
+				public void onClick() {				что мы делаем при клике на ссылку
+					AnotherPage anotherPage = new AnotherPage();
+					setResponsePage(AnotherPage.class)		возвращаем страницу-класс AnotherPage.class
+
+
+
+
+
+class org.apache.wicket.markup.html.basic.Label
+В класс, который extends WebPage добавляем Component ? у WebPage есть метод add(Component component). Т.е. add(new Label("id", "message") - обычный текст.
+ 
+Раньше была одна большая страница. Теперь страница разделяется на Layout: Header, Left, Footer, Content.
+Когда мы наследуемся от WebPage, мы также подтягиваем некую default HTML page — это называется markup inheritance.
+
+Делаем такую цепочку наследования: class WebPage ? class GeneralPage ? class ExtendsPage. У class GeneralPage есть соответствующий HTML файл GeneralPage.html. Class-у ExtendsPage своего HTML файла не создаём. В таком сценарии class ExtendsPage использует GeneralPage.html как markup file.
+
+class org.apache.wicket.markup.html.WebPage
+Может рендрится как standalone сущность. Panel — может находится только внутри WebPage.
+
+
+class org.apache.wicket.markup.html.panel.Panel
+
+Специальный компонент, позволяющий переиспользовать/переносить между проектами GUI code и HTML сущности.
+Создали класс Panel. У него есть свой Panel_HTML файл.
+В WebPage_HTML файл добавляем:
+<body>
+	<wicket:panel>
+		сюда вставят Panel_HTML
+	</wicket:panel>
+</body>
+
+class org.apache.wicket.MarkupContainer extends Component implements Iterable<Component>	
+
+Родитель для org.apache.wicket.markup.html.WebPage и org.apache.wicket.markup.html.panel.Panel
+Наследники MarkupContainer могут в себе содержать Components.
+
+
+Всё это для того чтобы сделать примерно такое - разбиваем страницу на компоненты и каждый компонент отдельно пилим.
+<body>
+	<div id="header" wicket:id="headerPanel">header</div>
+	<div id="body">
+		<div id="menu" wicket:id="menuPanel">menu</div>
+		<div id="content" wicket:id="contentComponent">content</div>
+	</div>
+	<div id="footer" wicket:id="footerPanel">footer</div>
+</body>
+public class MyPage extends WebPage
+	public static final String CONTENT_ID = "contentComponent";
+
+	private Component headerPanel;
+	private Component menuPanel;
+	private Component footerPanel;
+
+	public JugTemplate()
+		add(headerPanel = new HeaderPanel("headerPanel"));
+		add(menuPanel = new MenuPanel("menuPanel"));
+		add(footerPanel = new FooterPanel("footerPanel"));
+		add(new Label(CONTENT_ID, "Put your content here"));
+
+
+
+
+У Component можно вызывать .setVisible, .setEnabled, .isVisible — скрывать/показывать HTML tags.
+
+<span wicket:id="simpleLabel"></span>
+создаём label("simpleLabel","message")
+label.add(new AttributeModifier("style", "color:red;font-weight:bold")) — забавная конструкция по изменению атрибутов tags.

@@ -1,0 +1,291 @@
+{\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}}
+{\colortbl ;\red0\green0\blue0;\red0\green0\blue255;\red0\green77\blue187;\red209\green99\blue73;\red255\green0\blue0;}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\nowidctlpar\hyphpar0\sl240\slmult1\lang1049\kerning1\f0\fs22 Type Class = Interface \'e2 Java.\par
+\par
+\'ce\'f1\'ed\'ee\'e2\'e0\'f2\'e5\'eb\'fc \cf1\u955?-\'e8\'f1\'f7\'e8\'f1\'eb\'e5\'ed\'e8\'e5\cf0  - \'c0\'eb\'ee\'ed\'e7\'ee \'d7\'b8\'f0\'f7\par
+\'d4\'f3\'ed\'ea\'f6\'e8\'ee\'ed\'e0\'eb\'fc\'f9\'e8\'ed\'e0 - \'fd\'f2\'ee \'e0\'eb\'e3\'e5\'e1\'f0\'e0 \'ed\'e0\'e4 \'e0\'eb\'e3\'ee\'f0\'e8\'f2\'ec\'e0\'ec\'e8. \'cc\'ee\'e6\'e5\'ec \'f1\'ea\'eb\'e5\'e8\'f2\'fc \'e4\'e2\'e0 \'e0\'eb\'e3\'ee\'f0\'e8\'f2\'ec\'e0.\par
+\'cc\'fb \'e4\'ee\'e1\'e0\'e2\'e8\'eb\'e8 \'ea \'f1\'f2\'e0\'ed\'e4\'e0\'f0\'f2\'ed\'ee\'e9 \'ec\'ee\'e4\'e5\'eb\'e8 \'e2\'fb\'f7\'e8\'f1\'eb\'e5\'ed\'e8\'ff \'e2\'ee\'f2 \'f2\'e0\'ea\'f3\'fe \'ed\'ee\'e2\'f3\'fe.\par
+\par
+{\field{\*\fldinst{HYPERLINK "https://www.ohaskell.guide/lambda-function.html"}}{\fldrslt{\ul\cf2 https://www.ohaskell.guide/lambda-function.html}}}\cf1\f0\fs22  \'f5\'ee\'f0\'ee\'f8\'e8\'e9 \'f1\'e0\'e9\'f2 \'ef\'f0\'ee \u955?-\'e8\'f1\'f7\'e8\'f1\'eb\'e5\'ed\'e8\'e5\cf0\par
+\cf1\par
+\'c2 \'d1++ \'f4\'f3\'ed\'ea\'f6\'e8\'ff \'ec\'ee\'e6\'e5\'f2 \'e2\'e5\'f0\'ed\'f3\'f2\'fc \'f2\'ee\'eb\'fc\'ea\'ee \ul\'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5\ulnone : int f(int x). \'c2 Haskell \'f4\'f3\'ed\'ea\'f6\'e8\'ff \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 \'f4\'f3\'ed\'ea\'f6\'e8\'fe.\cf0\par
+\cf1 +------------+ Desugar  +------+ STGify  +-----+ CodeGen  +-----+\cf0\par
+\cf1 | Parse tree |--------->| Core |-------->| STG |--------->| C-- |\cf0\par
+\cf1 +------------+          +------+         +-----+          +-----+\cf0\par
+{\field{\*\fldinst{HYPERLINK "http://www.cs.tufts.edu/~nr/c--/"}}{\fldrslt{\ul\cf2 http://www.cs.tufts.edu/~nr/c--/}}}\cf1\f0\fs22  \'e2 \'d1-- \'e5\'f1\'f2\'fc \'f1\'e1\'ee\'f0\'f9\'e8\'ea \'ec\'f3\'f1\'ee\'f0\'e0, \'ee\'e1\'f0\'e0\'e1\'ee\'f2\'ea\'e0 Exception \'e8 \'f5\'e2\'ee\'f1\'f2\'ee\'e2\'e0\'ff \'f0\'e5\'ea\'f3\'f0\'f1\'e8\'ff - \'ef\'f0\'e8 \'ee\'e1\'fb\'f7\'ed\'ee\'e9 \'f0\'e5\'ea\'f3\'f0\'f1\'e8\'e8 \'ed\'e0 \'ea\'e0\'e6\'e4\'ee\'e9 \'e8\'f2\'e5\'f0\'e0\'f6\'e8\'e8 \'ed\'e0 \'f1\'f2\'e5\'ea\'e5 \'f1\'ee\'e7\'e4\'e0\'b8\'f2\'f1\'ff \'ed\'ee\'e2\'fb\'e9 \'f4\'f0\'e5\'e9\'ec. \'c5\'f1\'eb\'e8 \'f0\'e5\'ea\'f3\'f0\'f1\'e8\'ff \'e4\'eb\'e8\'ed\'ed\'e0\'ff, \'f2\'ee \'e1\'f3\'e4\'e5\'f2 Stack Overflow. \'d5\'e2\'ee\'f1\'f2\'ee\'e2\'e0\'ff \'f0\'e5\'ea\'f3\'f0\'f1\'e8\'ff \'ed\'ee\'e2\'fb\'e9 \'f4\'f0\'e5\'e9\'ec \'ed\'e5 \'f1\'ee\'e7\'e4\'e0\'b8\'f2, \'e0 \'ef\'e5\'f0\'e5\'e7\'e0\'ef\'e8\'f1\'fb\'e2\'e0\'e5\'f2 \'ef\'f0\'e5\'e4\'fb\'e4\'f3\'f9\'e8\'e9.\cf0\par
+\cf1\tab recursionSum(x) \{\cf0\par
+\cf1\tab\tab if (x == 0) \{\cf0\par
+\cf1\tab\tab\tab return x;\cf0\par
+\cf1\tab\tab\} else \{\cf0\par
+\cf1\tab\tab\tab return x + recursionSum(x - 1);\cf0\par
+\cf1\tab\tab\}\cf0\par
+\cf1\'cd\'e0 \'f1\'f2\'e5\'ea\'e5 \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'ec:\cf0\par
+\cf1\tab recursionSum(3)\cf0\par
+\cf1\tab 3 + recursionSum(2)\cf0\par
+\cf1\tab 3 + (2 + recursionSum(1) \'ea\'ee\'f2\'ee\'f0\'e0\'ff \'e4\'e5\'eb\'e0\'e5\'f2 return 1 \'e8 \'e7\'e0 \'ed\'e8\'ec \'f1\'e2\'ee\'f0\'e0\'f7\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'e2\'e5\'f1\'fc \'f1\'f2\'e5\'ea \'f1\'e2\'e5\'f0\'f5\'f3.\cf0\par
+\cf1\par
+\'c0 \'ec\'ee\'e6\'ed\'ee \'f1\'e4\'e5\'eb\'e0\'f2\'fc \'f2\'e0\'ea, \'e5\'f1\'eb\'e8 \'ff\'e7\'fb\'ea \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'e5\'f2 \'f5\'e2\'ee\'f1\'f2\'ee\'e2\'f3\'fe \'f0\'e5\'ea\'f3\'f0\'f1\'e8\'fe:\cf0\par
+\cf1\tab recursionSum(x, sum) \{\cf0\par
+\cf1\tab\tab if (x == 1) \{\cf0\par
+\cf1\tab\tab\tab return sum;\cf0\par
+\cf1\tab\tab\} else \{\cf0\par
+\cf1\tab\tab\tab return recursionSum(x - 1, sum + x);\cf0\par
+\cf1\tab\tab\}\cf0\par
+\cf1\'cd\'e0 \'f1\'f2\'e5\'ea\'e5 \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'ec:\cf0\par
+\cf1\tab recursionSum(3, 0) \'e2\'fb\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff \'ed\'ee\'e2\'e0\'ff \'f4\'f3\'ed\'ea\'f6\'e8\'ff recursionSum(2, 3), \'e0 \'fd\'f2\'e0 \'f1\'ee \'f1\'f2\'e5\'ea\'e0 \'f3\'e4\'e0\'eb\'ff\'e5\'f2\'f1\'ff\cf0\par
+\cf1\tab recursionSum(2, 3) \'e2\'fb\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff \'ed\'ee\'e2\'e0\'ff \'f4\'f3\'ed\'ea\'f6\'e8\'ff recursionSum(1, 5), \'e0 \'fd\'f2\'e0 \'f1\'ee \'f1\'f2\'e5\'ea\'e0 \'f3\'e4\'e0\'eb\'ff\'e5\'f2\'f1\'ff\cf0\par
+\cf1\tab recursionSum(1, 5) \'e2\'fb\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff \'ed\'ee\'e2\'e0\'ff \'f4\'f3\'ed\'ea\'f6\'e8\'ff recursionSum(0, 6), \'e0 \'fd\'f2\'e0 \'f1\'ee \'f1\'f2\'e5\'ea\'e0 \'f3\'e4\'e0\'eb\'ff\'e5\'f2\'f1\'ff\cf0\par
+\cf1\tab recursionSum(0, 6) \'e4\'e5\'eb\'e0\'e5\'f2 return 6 - \'e2\'fb\'f7\'e8\'f1\'eb\'e5\'ed\'e8\'e5 \'e7\'e0\'ea\'ee\'ed\'f7\'e8\'ed\'ee\cf0\par
+\cf1\par
+\'c4\'eb\'ff \'f4\'f3\'ed\'ea\'f6\'e8\'ee\'ed\'e0\'eb\'fc\'ed\'fb\'f5 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec \'ed\'e5\'ee\'f7\'e5\'e2\'e8\'e4\'ed\'ee \'ea\'e0\'ea\'e8\'e5 \'e4\'e5\'e9\'f1\'f2\'e2\'e8\'ff \'e1\'f3\'e4\'f3\'f2 \'e2\'fb\'ef\'ee\'eb\'ed\'e5\'ed\'fb \'e0\'ef\'ef\'e0\'f0\'e0\'f2\'f3\'f0\'ee\'e9 -> \'f2\'ff\'e6\'e5\'eb\'ee \'e2\'fb\'f7\'e8\'f1\'eb\'e8\'f2\'fc \'ef\'ee\'f2\'f0\'e5\'e1\'eb\'e5\'ed\'e8\'e5 \'f0\'e5\'f1\'f3\'f0\'f1\'ee\'e2, \'f2\'e0\'ea\'e8\'f5 \'ea\'e0\'ea \'e2\'f0\'e5\'ec\'ff \'e8 \'ef\'e0\'ec\'ff\'f2\'fc.\cf0\par
+\cf1\par
+\'c2\'e2\'ee\'e4/\'e2\'fb\'e2\'ee\'e4 \'ea\'e0\'ea-\'f2\'ee \'e4\'e5\'eb\'e0\'e5\'f2\'f1\'ff \'ed\'e0 \'ee\'f1\'ed\'ee\'e2\'e0\'ed\'e8\'e8 \'e1\'e5\'f1\'ea\'ee\'ed\'e5\'f7\'ed\'fb\'f5 \'ef\'ee\'f1\'eb\'e5\'e4\'ee\'e2\'e0\'f2\'e5\'eb\'fc\'ed\'ee\'f1\'f2\'e5\'e9.\cf0\par
+\cf1\par
+\'cd\'e5\'f2 \'e2\'ee\'e7\'ec\'ee\'e6\'ed\'ee\'f1\'f2\'e8 \'f5\'f0\'e0\'ed\'e8\'f2\'fc \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e5 \u8594? \'ed\'e5\'eb\'fc\'e7\'ff \'ee\'f0\'e3\'e0\'ed\'e8\'e7\'ee\'e2\'e0\'f2\'fc \'f6\'e8\'ea\'eb\'fb. \'c2\'ec\'e5\'f1\'f2\'ee \'fd\'f2\'ee\'e3\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'f0\'e5\'ea\'f3\'f0\'f1\'e8\'ff.\cf0\par
+\cf1\par
+\tab\'cf\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'fb \'ed\'e0 \'f4\'f3\'ed\'ea\'f6\'e8\'ee\'ed\'e0\'eb\'fc\'f9\'e8\'ed\'e5 \'ef\'f0\'ee\'f9\'e5 \'ef\'f0\'ee\'e2\'e5\'f0\'ff\'f2\'fc \'ed\'e0 \'ee\'f8\'e8\'e1\'ea\'e8, \'e4\'e5\'eb\'e0\'f2\'fc \b Verification\b0 . \'cf\'f0\'e0\'e2\'e8\'eb\'fc\'ed\'ee \'eb\'e8 \'ec\'fb \'ed\'e0\'ef\'e8\'f1\'e0\'eb\'e8 \'e0\'eb\'e3\'ee\'f0\'e8\'f2\'ec. \'cd\'e0 \'ef\'f0\'e8\'ec\'e5\'f0\'e5 \'f4\'e0\'ea\'f2\'ee\'f0\'e8\'e0\'eb\'e0 \'e4\'ee\'ea\'e0\'e6\'e5\'ec, \'f7\'f2\'ee \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e0 \'e2\'e5\'f0\'ed\'e0. \'d4\'f3\'ed\'ea\'f6\'e8\'ff fact(n) \'f0\'e5\'e0\'eb\'e8\'e7\'ee\'e2\'e0\'ed\'ed\'e0 \'f0\'e5\'ea\'f3\'f0\'f1\'e8\'e5\'e9, \'f2.\'e5. \'e2\'fb\'e7\'fb\'e2\'e0\'e5\'f2 \'f1\'e0\'ec\'e0 \'f1\'e5\'e1\'ff. \'c4\'ee\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff \'ec\'e5\'f2\'ee\'e4\'ee\'ec \'e8\'ed\'e4\'f3\'ea\'f6\'e8\'e8. fact() \'ef\'f0\'e8 n=1 - \'e2\'e5\'f0\'ed\'ee. \'cf\'f0\'e5\'e4\'ef\'ee\'eb\'ee\'e6\'e8\'ec fact(n)-\'e2\'e5\'f0\'ed\'ee, \'e4\'ee\'ea\'e0\'e6\'e5\'ec, \'f7\'f2\'ee fact(n+1)-\'e2\'e5\'f0\'ed\'ee. \'d2\'f3\'f2 \'e4\'ee\'ea\'e0\'e7\'fb\'e2\'e0\'f2\'fc \'ed\'e5\'f7\'e5\'e3\'ee. \'cf\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'f3 \'ec\'ee\'e6\'ed\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'e2 Boeing.\cf0\par
+\cf1\par
+\'cf\'e8\'f8\'e5\'ec \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'f3 \'ed\'e0 Haskell. \'c2 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e5 \'ed\'e5\'f2 \'e2\'f5\'ee\'e4\'ed\'fb\'f5 \'e4\'e0\'ed\'ed\'fb\'f5 D. \'ca\'ee\'ec\'ef\'e8\'eb\'ff\'f2\'ee\'f0 \'fd\'f2\'f3 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'f3 \'ef\'f0\'e5\'ee\'e1\'f0\'e0\'e7\'f3\'e5\'f2 \'e4\'ee \'e2\'e8\'e4\'e0, \'e2 \'ea\'ee\'f2\'ee\'f0\'ee\'ec \'ed\'e5\'f2 \'f0\'e5\'e4\'e5\'ea\'f1\'ee\'e2. \'c2 \'ea\'e0\'ea\'ee\'ec-\'f2\'ee \'f1\'ec\'fb\'f1\'eb\'e5 \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'ec \'ed\'e5\'ea\'e8\'e9 \'f2\'e5\'f0\'ec F \'e1\'e5\'e7 \'f0\'e5\'e4\'e5\'ea\'f1\'ee\'e2. \'cf\'ee\'f2\'ee\'ec \'fd\'f2\'ee\'f2 F \'ef\'f0\'e8\'ec\'e5\'ed\'ff\'e5\'ec \'ea \'ed\'e0\'f8\'e8\'ec \'e2\'f5\'ee\'e4\'ed\'fb\'ec \'e4\'e0\'ed\'ed\'fb\'ec D (\'e4\'e5\'eb\'e0\'e5\'ec FD). \'cf\'f0\'e8 \'ef\'f0\'e8\'ec\'e5\'ed\'e5\'ed\'e8\'e8 \'ee\'e1\'f0\'e0\'e7\'f3\'fe\'f2\'f1\'ff \'f0\'e5\'e4\'e5\'ea\'f1\'fb \'e8 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e0 \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2 \'e8\'f5 \'e2\'fb\'f7\'e8\'f1\'eb\'ff\'f2\'fc. \'cf\'ee \'e2\'f1\'e5\'e9 \'e2\'e8\'e4\'e8\'ec\'ee\'f1\'f2\'e8 \'e4\'e5\'eb\'e0\'ff \'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5, \'f7\'f2\'ee \'e8 \'ed\'e0 \'fd\'f2\'e0\'ef\'e5 \'ea\'ee\'ec\'ef\'e8\'eb\'ff\'f6\'e8\'e8 \'f2\'ee\'eb\'fc\'ea\'ee \'f3\'e6\'e5 \'e8\'ec\'e5\'ff D.\cf0\par
+\cf1\par
+\cf0{\field{\*\fldinst{HYPERLINK "https://www.youtube.com/watch?v=o-vFJNAKgBg"}}{\fldrslt{\ul\cf2 https://www.youtube.com/watch?v=o-vFJNAKgBg}}}\cf1\f0\fs22  \'cb\'e5\'ea\'f6\'e8\'ff 1. \'d1.\'cb. \'ca\'f3\'e7\'ed\'e5\'f6\'ee\'e2. \'c1\'e5\'f1\'f2\'e8\'ef\'ee\'e2\'ee\'e5 \'eb\'ff\'ec\'e1\'e4\'e0-\'e8\'f1\'f7\'e8\'f1\'eb\'e5\'ed\'e8\'e5\cf0\par
+\cf1\par
+(sin x)'= cos x\cf0\par
+\cf1\tab\'e8\'eb\'e8\cf0\par
+\cf1 f: x \u8594? sin x\tab\'eb\'f3\'f7\'f8\'e5 f: int \u8594? float \'f4\'f3\'ed\'ea\'f6\'e8\'ff f \'ee\'f2\'ee\'e1\'f0\'e0\'e6\'e0\'e5\'f2 \'ec\'ed\'ee\'e6\'e5\'f1\'f2\'e2\'ee int \'ed\'e0 \'ec\'ed\'ee\'e6\'e5\'f1\'f2\'e2\'ee float\cf0\par
+\cf1 g: x \u8594? cos x\cf0\par
+\cf1 f'=g\cf0\par
+\cf1\tab\'e8\'eb\'e8\cf0\par
+\cf1 Df=g, \'e3\'e4\'e5 D - \'e4\'e8\'f4\'f4\'e5\'f0\'e5\'ed\'f6\'e8\'e0\'eb\'fc\'ed\'fb\'e9 \'ee\'ef\'f0\'e5\'f0\'e0\'f2\'ee\'f0\cf0\par
+\cf1 D(x \u8594? sin x) = (x \u8594? cos x)\cf0\par
+\cf1\'f1\'ee\'ee\'f2\'e2\'e5\'f2\'f1\'f2\'e2\'e5\'ed\'ed\'ee x \u8594? sin x \'e8\'eb\'e8 x \u8594? u\cf0\par
+\cf1\'e7\'e0\'ef\'e8\'f8\'e5\'ec \'ea\'e0\'ea \b\u955?\'f5.u\b0  - \'f7\'f2\'ee \'f0\'e0\'e2\'ed\'ee\'f1\'e8\'eb\'fc\'ed\'ee f(x)=u\cf0\par
+\cf1\par
+\pard\nowidctlpar\hyphpar0\li720\sl240\slmult1\\\'f5 \u8594? \'f5 * \'f5 \'ee\'e4\'ed\'ee \'e8 \'f2\'ee\'e6\'e5 \'f7\'f2\'ee \'e8 \u955?\'f5.\'f5\'f5\cf0\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf1\par
+\tab\'cf\'f0\'e5\'ee\'e1\'f0\'e0\'e7\'ee\'e2\'e0\'f2\'fc \'f2\'e5\'f0\'ec \'ea \'ed\'ee\'f0\'ec\'e0\'eb\'fc\'ed\'ee\'e9 \'f4\'ee\'f0\'ec\'e5 \'e7\'ed\'e0\'f7\'e8\'f2 \'ef\'f0\'e8\'e2\'e5\'f1\'f2\'e8 \'ea \'f4\'ee\'f0\'ec\'e5, \'e2 \'ea\'ee\'f2\'ee\'f0\'ee\'e9 \'ed\'e5\'f2 \'f0\'e5\'e4\'e5\'ea\'f1\'ee\'e2. \'c2 \'f2\'e5\'f0\'ec\'e5 B=\u955?f.\u955?g.\u955?x.f(gx) \'ed\'e5\'f2 \'f0\'e5\'e4\'e5\'ea\'f1\'ee\'e2 - \'f2.\'e5. \'f2\'e5\'f0\'ec \'ed\'e0\'f5\'ee\'e4\'e8\'f2\'f1\'ff \'e2 \'ed\'ee\'f0\'ec\'e0\'eb\'fc\'ed\'ee\'e9 \'f4\'ee\'f0\'ec\'e5. \'c5\'e3\'ee \'e1\'ee\'eb\'fc\'f8\'e5 \'ed\'e8\'ea\'e0\'ea \'ed\'e5 \'ed\'e5\'eb\'fc\'e7\'ff \'e1\'e5\'f2\'e0-\'f0\'e5\'e4\'f3\'f6\'e8\'f0\'ee\'e2\'e0\'f2\'fc. \'cd\'ee \'fd\'f2\'ee\'f2 \'f2\'e5\'f0\'ec - \'fd\'f2\'ee \'f4\'e0\'ea\'f2\'e8\'f7\'e5\'f1\'ea\'e8 \'f4\'f3\'ed\'ea\'f6\'e8\'ff \'ee\'f2 3-\'f5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'f5 f,g,x. \'c5\'f1\'eb\'e8 \'e5\'e3\'ee \'ef\'f0\'e8\'ec\'e5\'ed\'e8\'f2\'fc \'ea \'ea\'e0\'ea\'e8\'ec-\'f2\'ee 3-\'ec \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'ec/\'f4\'f3\'ed\'ea\'f6\'e8\'ff\'ec, \'f2\'ee \'f0\'e5\'e4\'e5\'ea\'f1\'fb \'ef\'ee\'ff\'e2\'ff\'f2\'f1\'ff \'e8 \'fd\'f2\'f3 \'ea\'ee\'ed\'f1\'f2\'f0\'f3\'ea\'f6\'e8\'fe \'ec\'ee\'e6\'ed\'ee \'e4\'e0\'eb\'fc\'f8\'e5 \'e1\'e5\'f2\'e0-\'f0\'e5\'e4\'f3\'f6\'e8\'f0\'ee\'e2\'e0\'f2\'fc.\cf0\par
+\cf1\'d2\'e5\'ee\'f0\'e5\'f2\'e8\'f7\'e5\'f1\'ea\'e8\'e5 \'e2\'ee\'ef\'f0\'ee\'f1\'fb:\cf0\par
+\pard\nowidctlpar\hyphpar0\fi-360\li720\sl240\slmult1\kerning0 1.\tab\cf1\kerning1\'cc\'ee\'e6\'e5\'ec \'eb\'e8 \'ec\'fb \'e8\'e7 \'ee\'e4\'ed\'ee\'e3\'ee \'f2\'e5\'f0\'ec\'e0 \'ef\'ee\'eb\'f3\'f7\'e8\'f2\'fc \'f0\'e0\'e7\'ed\'fb\'e5 \'ed\'ee\'f0\'ec\'e0\'eb\'fc\'ed\'fb\'e5 \'f4\'ee\'f0\'ec\'fb (\'f0\'e0\'e7\'ed\'fb\'e5 \'ee\'f2\'e2\'e5\'f2\'fb)? \'cd\'c5\'d2 - \'e4\'ee\'ea\'e0\'e7\'e0\'ed\'ed\'ee \'e2 \'f2\'e5\'ee\'f0\'e5\'ec\'e5 \'d7\'b8\'f0\'f7\'e0-\'d0\'ee\'f1\'f1\'e0.\cf0\par
+\kerning0 2.\tab\cf1\kerning1\'d1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'e5\'f2 \'eb\'e8 \'ed\'ee\'f0\'ec\'e0\'eb\'fc\'ed\'e0\'ff \'f4\'ee\'f0\'ec\'e0? \'cd\'c5 \'c2\'d1\'c5\'c3\'c4\'c0 - (\u955?x.\cf3 xx\cf1 )(\cf4\u955?x.xx\cf1 ) \'e1\'e5\'f2\'e0-\'f0\'e5\'e4\'f3\'ea\'f6\'e8\'ff = \'e2\'ec\'e5\'f1\'f2\'ee \'ea\'e0\'e6\'e4\'ee\'e3\'ee \'e8\'ea\'f1\'e0 \cf3 xx\cf1  \'ed\'e0\'e4\'ee \'ef\'ee\'e4\'f1\'f2\'e0\'e2\'e8\'f2\'fc \cf4\u955?x.xx\cf1 . \'c2 \'f0\'e5\'e7\'f3\'eb\'fc\'f2\'e0\'f2\'e5 \'ef\'ee\'eb\'f3\'f7\'e8\'ec \'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5 \'e2\'fb\'f0\'e0\'e6\'e5\'ed\'e8\'e5. \'c1\'e5\'f1\'ea\'ee\'ed\'e5\'f7\'ed\'ee\'e5 \'ef\'f0\'e5\'ee\'e1\'f0\'e0\'e7\'ee\'e2\'e0\'ed\'e8\'e5. \'c5\'f9\'b8 \'f5\'f3\'e6\'e5 \'e5\'f1\'eb\'e8 (\u955?x.xxx)(\u955?x.xxx).\cf0\par
+\kerning0 3.\tab\cf1\kerning1\'cb\'fe\'e1\'e0\'ff \'eb\'e8 \'ef\'ee\'f1\'eb\'e5\'e4\'ee\'e2\'e0\'f2\'e5\'eb\'fc\'ed\'ee\'f1\'f2\'fc \'f0\'e5\'e4\'f3\'ea\'f6\'e8\'e9 \'ef\'f0\'e8\'e2\'ee\'e4\'e8\'f2 \'ea \'ed\'ee\'f0\'ec\'e0\'eb\'fc\'ed\'ee\'e9 \'f4\'ee\'f0\'ec\'e5? \'cd\'c5 \'c2\'d1\'c5\'c3\'c4\'c0 - \'ef\'ee \'ee\'e4\'ed\'ee\'e9 \'ef\'ee\'f1\'eb\'e5\'e4\'ee\'e2\'e0\'f2\'e5\'eb\'fc\'ed\'ee\'f1\'f2\'e8 \'f0\'e5\'e4\'f3\'ea\'f6\'e8\'e9 \'ec\'fb \'ef\'f0\'e8\'e4\'b8\'ec \'ea \'ed\'ee\'f0\'ec\'e0\'eb\'fc\'ed\'ee\'e9 \'f4\'ee\'f0\'ec\'e5 \'c5. \'cf\'ee\'e9\'e4\'ff \'ef\'ee \'e4\'f0\'f3\'e3\'ee\'e9 \'ec\'ee\'e6\'e5\'ec \'ef\'ee\'ef\'e0\'f1\'f2\'fc \'e2 \'e1\'e5\'f1\'ea\'ee\'ed\'e5\'f7\'ed\'fb\'e9 \'f6\'e8\'ea\'eb. \'cf\'ee \'f2\'f0\'e5\'f2\'fc\'e5\'e9 \'ec\'ee\'e6\'e5\'ec \'f3\'e9\'f2\'e8 \'e2 \'e4\'e5\'e1\'f0\'e8, \'ed\'ee \'e2 \'e8\'f2\'ee\'e3\'e5 \'e2\'f1\'b8 \'f0\'e0\'e2\'ed\'ee \'ef\'f0\'e8\'e4\'b8\'ec \'ea \'f2\'ee\'e9 \'e5\'e4\'e8\'ed\'f1\'f2\'e2\'e5\'ed\'ed\'ee\'e9 \'ed\'ee\'f0\'ec\'e0\'eb\'fc\'ed\'ee\'e9 \'f4\'ee\'f0\'ec\'e5 \'c5.\cf0\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf1\par
+\'c8\'e7 \'ef.2,3 \'f1\'eb\'e5\'e4\'f3\'e5\'f2, \'f7\'f2\'ee \'e1\'fb\'e2\'e0\'fe\'f2 \'ed\'e5\'ed\'ee\'f0\'ec\'e0\'eb\'e8\'e7\'f3\'e5\'ec\'fb\'e5 \'f2\'e5\'f0\'ec\'fb. \'c4\'eb\'ff \'ea\'ee\'ec\'ef\'fc\'fe\'f2\'e5\'f0\'e0 - \'fd\'f2\'ee \'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2, \'f7\'f2\'ee \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e0 \'e7\'e0\'e2\'e8\'f1\'eb\'e0. \'cd\'e0\'ef\'e8\'f1\'e0\'eb\'e8 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'f3 = (\u955?x.xxx)(\u955?x.xxx) - \'ea\'ee\'ec\'ef \'e7\'e0\'e2\'e8\'f1. \'c2\'fb\'f5\'ee\'e4: \'ed\'e5\'e4\'ee\'ef\'f3\'f1\'ea\'e0\'f2\'fc \'ef\'ee\'e4\'ee\'e1\'ed\'fb\'f5 \'f2\'e5\'f0\'ec\'ee\'e2 -> \'e2\'e2\'e5\'f1\'f2\'e8 \'f1\'f2\'f0\'ee\'e3\'f3\'fe \'f2\'e8\'ef\'e8\'e7\'e0\'f6\'e8\'fe. \'c5\'f1\'f2\'fc \'f2\'ee\'eb\'fc\'ea\'ee String, Int, Char. \'c5\'f1\'f2\'fc \'f4\'f3\'ed\'ea\'f6\'e8\'ff, \'ea\'ee\'f2\'ee\'f0\'f3\'fe \'ec\'ee\'e6\'ed\'ee \'ef\'f0\'e8\'ec\'e5\'ed\'e8\'f2\'fc \'f2\'ee\'eb\'fc\'ea\'ee \'ea String, \'ed\'ee \'ed\'e5\'eb\'fc\'e7\'ff \'ea Char. \'c8\'eb\'e8 \'e2\'ee\'ee\'e1\'f9\'e5 \'ed\'e5\'eb\'fc\'e7\'ff \'f4\'f3\'ed\'ea\'f6\'e8\'fe \'ef\'f0\'e8\'ec\'e5\'ed\'e8\'f2\'fc \'f1\'e0\'ec\'f3 \'ea \'f1\'e5\'e1\'e5 \'ea\'e0\'ea \'e2 \'ef\'f0\'e8\'ec\'e5\'f0\'e5 (\u955?x.xx)(\u955?x.xx).\cf0\par
+\cf1\'ca\'f3\'e7\'ed\'e5\'f6\'ee\'e2 (\'cb\'e5\'ea\'f6\'e8\'ff 1 1:35:00) \'f3\'ef\'ee\'ec\'e8\'ed\'e0\'e5\'f2 \'f1\'e8\'f1\'f2\'e5\'ec\'f3 Coq \'e8 \'e2\'f1\'f2\'f0\'ee\'e5\'ed\'ed\'fb\'e9 \'e2 \'ed\'e5\'b8 \'e6\'b8\'f1\'f2\'ea\'ee \'f2\'e8\'ef\'e8\'e7\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'fb\'e9 \'f4\'f3\'ed\'ea\'f6\'e8\'ee\'ed\'e0\'eb\'fc\'ed\'fb\'e9 \'ff\'e7\'fb\'ea Gallina - \'ed\'e0 \'ed\'b8\'ec \'ed\'e5\'eb\'fc\'e7\'ff \'ed\'e0\'ef\'e8\'f1\'e0\'f2\'fc \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'f3, \'ea\'ee\'f2\'ee\'f0\'e0\'ff \'e7\'e0\'e2\'e8\'f1\'ed\'e5\'f2. \'c5\'f1\'eb\'e8 \'f2\'e0\'ec \'e7\'e0\'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e8\'f0\'ee\'e2\'e0\'f2\'fc \'f2\'e5\'f0\'ec (\u955?x.xx)(\u955?x.xx), \'f2\'ee \'e2\'fb\'f1\'ea\'ee\'f7\'e8\'f2 \'ee\'f8\'e8\'e1\'ea\'e0. \'d2.\'e5. \'e2\'e2\'ee\'e4\'ff \'f2\'e8\'ef\'e8\'e7\'e0\'f6\'e8\'fe, \'ec\'fb \'ee\'e3\'f0\'e0\'ed\'e8\'f7\'e8\'e2\'e0\'e5\'ec \'ec\'ed\'ee\'e6\'e5\'f1\'f2\'e2\'ee \'f2\'e5\'f0\'ec\'ee\'e2, \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'ec\'ee\'e6\'e5\'ec \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc. \'c2 \'e1\'e5\'e7\'f2\'e8\'ef\'ee\'e2\'ee\'ec \'e2\'e0\'f0\'e8\'e0\'ed\'f2\'e5 \'ec\'fb \'ec\'ee\'e6\'e5\'ec \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'e2\'f1\'b8 \'ec\'ed\'ee\'e6\'e5\'f1\'f2\'e2\'ee \'f2\'e5\'f0\'ec\'ee\'e2.\cf0\par
+\cf1\par
+\pard\nowidctlpar\hyphpar0\fi-1136\li1136\sl240\slmult1\'c0\'eb\'fc\'f4\'e0 \'ea\'ee\'ed\'e2\'e5\'f0\'f1\'e8\'ff - \u955?x.x \'fd\'ea\'e2\'e8\'e2\'e0\'eb\'e5\'ed\'f2\'ed\'ee \u955?y.y - \'f2\'f3\'ef\'ee\'e5 \'ef\'e5\'f0\'e5\'e8\'ec\'e5\'ed\'ee\'e2\'e0\'ed\'e8\'e5 \'d1\'c2\'df\'c7\'c0\'cd\'cd\'db\'d5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'f5.\cf0\par
+\par
+\cf1\'c3\'e0\'ec\'ec\'e0 \'fd\'ea\'e2\'e8\'e2\'e0\'eb\'e5\'ed\'f2\'ed\'ee\'f1\'f2\'fc - \'e2 \'e2\'fb\'f0\'e0\'e6\'e5\'ed\'e8\'e8 (\u955?x.x*2)5 \'ed\'e5 \'ef\'ee\'ed\'ff\'f2\'ed\'ee \'f7\'f2\'ee \'f2\'e0\'ea\'ee\'e5 *. \'d2.\'e5. \'f3\'ec\'ed\'ee\'e6\'e5\'ed\'e8\'e5 \'e4\'ee\'eb\'e6\'ed\'ee \'e1\'fb\'f2\'fc \'e2\'fb\'f0\'e0\'e6\'e5\'ed\'ee \'f7\'e5\'f0\'e5\'e7 \'eb\'ff\'ec\'e1\'e4\'e0 \'f4\'f3\'ed\'ea\'f6\'e8\'fe. \'c8 \'ea\'ee\'e3\'e4\'e0 \'e2\'f1\'fe \'ef\'ee\'f1\'eb\'e5\'e4\'ee\'e2\'e0\'f2\'e5\'eb\'fc\'ed\'ee\'f1\'f2\'fc \'e2\'fb\'e2\'ee\'e4\'e0 \'f4\'f3\'ed\'ea\'f6\'e8\'e8 \'f3\'ec\'ed\'ee\'e6\'e5\'ed\'e8\'ff \'ef\'f0\'e8\'ec\'e5\'ed\'e8\'ec, \'ef\'ee\'eb\'f3\'f7\'e8\'ec, \'f7\'f2\'ee (\u955?x.x*2)5 \'fd\'ea\'e2\'e8\'e2\'e0\'eb\'e5\'ed\'f2\'ed\'ee 10.\cf0\par
+\cf1\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\'c1\'e5\'f2\'e0 \'f0\'e5\'e4\'f3\'ea\'f6\'e8\'ff - \'ea\'ee\'e3\'e4\'e0 \'e2 \'f4\'f3\'ed\'ea\'f6\'e8\'fe \'ef\'ee\'e4\'f1\'f2\'e0\'e2\'e8\'eb\'e8 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 (\'e0 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 - \'fd\'f2\'ee \'e2\'f1\'e5\'e3\'e4\'e0 \'f4\'f3\'ed\'ea\'f6\'e8\'ff). (\u955?x.x*2)5 \'fd\'ea\'e2\'e8\'e2\'e0\'eb\'e5\'ed\'f2\'ed\'ee 5*2 (\'ef\'ee\'ea\'e0 \'ed\'e5 \'e7\'ed\'e0\'e5\'ec \'f7\'f2\'ee \'f2\'e0\'ea\'ee\'e5 *).\cf0\par
+\cf1  \cf0\par
+\pard\nowidctlpar\hyphpar0\fi-1136\li1136\sl240\slmult1\cf1\tab\'d0\'e5\'e4\'e5\'ea\'f1: (\u955?x.M)N = M[x:=N] - \'ed\'e0\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff "\'ef\'ee\'e4\'f1\'f2\'e0\'ed\'ee\'e2\'ea\'e0". \'c2 \'f4\'f3\'ed\'ea\'f6\'e8\'fe \'cc(\'f5) \'e2\'ec\'e5\'f1\'f2\'ee \'f5 \'ef\'ee\'e4\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'ec N.\cf0\par
+\cf1\par
+\'c2\'fb\'f7\'e8\'f1\'eb\'e5\'ed\'e8\'e5 \'f2\'e5\'f0\'ec\'ee\'e2 - \'fd\'f2\'ee \'e2 \'f1\'eb\'ee\'e6\'ed\'ee\'ec \'f2\'e5\'f0\'ec\'e5 \'ed\'e0\'f5\'ee\'e4\'e8\'ec \'f0\'e5\'e4\'e5\'ea\'f1 \'e8 \'e4\'e5\'eb\'e0\'e5\'ec \'e1\'e5\'f2\'e0-\'f0\'e5\'e4\'f3\'ea\'f6\'e8\'fe. \'c7\'e0\'e4\'e0\'f7\'e0 \'ef\'ee\'eb\'f3\'f7\'e8\'f2\'fc \'f2\'e5\'f0\'ec, \'e2 \'ea\'ee\'f2\'ee\'f0\'ee\'ec \'ed\'e5 \'ee\'f1\'f2\'e0\'eb\'ee\'f1\'fc \'f0\'e5\'e4\'e5\'ea\'f1\'ee\'e2. \'dd\'f2\'ee \'ed\'e5 \'e2\'f1\'e5\'e3\'e4\'e0 \'e2\'ee\'e7\'ec\'ee\'e6\'ed\'ee. \'cf\'f0\'e8\'ec\'e5\'f0: (\u955?x.xx)(\u955?x.xx), \'e2 \'f4\'f3\'ed\'ea\'f6\'e8\'fe f(x) = x x \'e2\'ec\'e5\'f1\'f2\'ee \'f5 \'ed\'e0\'e4\'ee \'ef\'ee\'e4\'f1\'f2\'e0\'e2\'e8\'f2\'fc "\u955?x.xx". \'c2 \'f0\'e5\'e7\'f3\'eb\'fc\'f2\'e0\'f2\'e5 \'ef\'ee\'eb\'f3\'f7\'e8\'ec: (\u955?x.xx)(\u955?x.xx). \'ce\'ef\'ff\'f2\'fc \'e5\'f1\'f2\'fc \'f0\'e5\'e4\'e5\'ea\'f1 - \'e7\'ed\'e0\'f7\'e8\'f2 \'e2\'f0\'ee\'e4\'e5 \'ea\'e0\'ea \'e2\'fb\'f7\'e8\'f1\'eb\'e5\'ed\'e8\'ff \'ed\'e5 \'e7\'e0\'ea\'ee\'ed\'f7\'e5\'ed\'fb.\cf0\par
+\cf1\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\tab\b\'d2\'e5\'ee\'f0\'e5\'ec\'e0 \'d7\'b8\'f0\'f7\'e0-\'d0\'ee\'f1\'f1\'e0\b0 : \'c2\'ee\'e7\'fc\'ec\'b8\'ec \'f2\'e5\'f0\'ec, \'e2 \'ea\'ee\'f2\'ee\'f0\'ee\'ec \'ec\'ed\'ee\'e3\'ee \'f0\'e5\'e4\'e5\'ea\'f1\'ee\'e2. \'c2\'fb\'f7\'e8\'f1\'eb\'ff\'f2\'fc \'f0\'e5\'e4\'e5\'ea\'f1\'fb \'ec\'ee\'e6\'ed\'ee \'e2 \'ee\'e4\'ed\'ee\'ec \'ef\'ee\'f0\'ff\'e4\'ea\'e5: \'f1\'ed\'e0\'f7\'e0\'eb\'e0 1-\'fb\'e9, \'ef\'ee\'f2\'ee\'ec 2-\'ee\'e9, \'ef\'ee\'f2\'ee\'ec 3-\'e8\'e9. \'cc\'ee\'e6\'e5\'ec \'f1\'ed\'e0\'f7\'e0\'eb\'e0 3-\'e8\'e9, \'ef\'ee\'f2\'ee\'ec 2-\'ee\'e9, \'ef\'ee\'f2\'ee\'ec 1-\'fb\'e9. \'d0\'e5\'e7\'f3\'eb\'fc\'f2\'e0\'f2 \'e2\'f1\'b8 \'f0\'e0\'e2\'ed\'ee \'e1\'f3\'e4\'e5\'f2 \'ee\'e4\'e8\'ed \'e8 \'f2\'ee\'f2 \'e6\'e5.\cf0\par
+\cf1\'c0\'ed\'e0\'eb\'ee\'e3\'e8\'f7\'ed\'ee \'ea\'e0\'ea \'e2 \'f8\'ea\'ee\'eb\'fc\'ed\'ee\'e9 \'e7\'e0\'e4\'e0\'f7\'ea\'e5: \'f3\'ef\'f0\'ee\'f1\'f2\'e8\'f2\'fc \'e2\'fb\'f0\'e0\'e6\'e5\'ed\'e8\'e5. \'ce\'f2\'e2\'e5\'f2 \'ed\'e5 \'e7\'e0\'e2\'e8\'f1\'e8\'f2 \'ee\'f2 \'f2\'ee\'e3\'ee, \'e2 \'ea\'e0\'ea\'ee\'e9 \'ef\'ee\'f1\'eb\'e5\'e4\'ee\'e2\'e0\'f2\'e5\'eb\'fc\'ed\'ee\'f1\'f2\'e8 \'e1\'f3\'e4\'e5\'f8\'fc \'ef\'f0\'ee\'e8\'e7\'e2\'ee\'e4\'e8\'f2\'fc \'f3\'ef\'f0\'ee\'f9\'e5\'ed\'e8\'ff.\cf0\par
+\cf1\par
+\'d1\'eb\'e5\'e4\'f1\'f2\'e2\'e8\'e5: \'cc\'ee\'e6\'e5\'ec \'ee\'e4\'ed\'ee\'e2\'f0\'e5\'ec\'e5\'ed\'ed\'ee \'ed\'e0 \'ec\'ed\'ee\'e3\'ee\'ef\'f0\'ee\'f6\'e5\'f1\'f1\'ee\'f0\'ed\'ee\'e9 \'ec\'e0\'f8\'e8\'ed\'e5 \'e2\'fb\'f7\'e8\'f1\'eb\'ff\'f2\'fc 1, 2, 3. \'c2 \'f0\'e5\'e7\'f3\'eb\'fc\'f2\'e0\'f2\'e5 \'e2\'fb\'f7\'e8\'f1\'eb\'e5\'ed\'e8\'e9 \'ef\'ee\'eb\'f3\'f7\'e8\'ec \'ed\'ee\'e2\'fb\'e5 \'f0\'e5\'e4\'e5\'ea\'f1\'fb - \'ee\'ef\'ff\'f2\'fc \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'e5\'ec \'e2 \'ef\'e0\'f0\'e0\'eb\'eb\'e5\'eb\'fc \'e8 \'f2.\'e4.\cf0\par
+\cf1\'cf\'f0\'e8\'ec\'e5\'f0: \'c2\'fb\'f7\'e8\'f1\'eb\'e8\'f2\'fc 2+3+4+5. \'cc\'ee\'e6\'ed\'ee \'f1\'ed\'e0\'f7\'e0\'eb\'e0 2+3. \'cf\'ee\'f2\'ee\'ec \'ea \'f0\'e5\'e7\'f3\'eb\'fc\'f2\'e0\'f2\'f3 + 4. \'cc\'ee\'e6\'ed\'ee \'f1\'ed\'e0\'f7\'e0\'eb\'e0 4+5. \'cf\'ee\'f2\'ee\'ec \'ea \'f0\'e5\'e7\'f3\'eb\'fc\'f2\'e0\'f2\'f3 + 2. \'c0 \'ec\'ee\'e6\'ed\'ee \'ef\'e0\'f0\'e0\'eb\'eb\'e5\'eb\'fc\'ed\'ee 2+3 \'e8 4+5. \'cf\'ee\'f2\'ee\'ec 5+9.\cf0\par
+\cf1\par
+\'cf\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'e0\'ff\tab\tab\'f5\cf0\par
+\cf1\'cf\'f0\'e8\'ec\'e5\'ed\'e5\'ed\'e8\'e5\tab\tab FX\tab\'e2\'e8\'e4\'ee\'e8\'e7\'ec\'e5\'ed\'ff\'e5\'ec \'e0\'eb\'e3\'ee\'f0\'e8\'f2\'ec/\'e4\'e0\'ed\'ed\'fb\'e5, \'ed\'ee \'ed\'e5 \'e7\'e0\'ed\'e8\'ec\'e0\'e5\'ec\'f1\'ff \'ef\'ee\'e4\'f1\'f2\'e0\'ed\'ee\'e2\'ea\'ee\'e9\cf0\par
+\cf1\'c0\'e1\'f1\'f2\'f0\'e0\'ea\'f6\'e8\'ff\tab\tab\u955?x.F\tab\'ea\'e0\'e6\'e4\'ee\'ec\'f3 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'f3 \'f5 \'e8\'e7 \'ec\'ed\'ee\'e6\'e5\'f1\'f2\'e2\'e0 \'f1\'ee\'ef\'ee\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'ec \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 F[\'f5] = \b\'ee\'e1\'fa\'ff\'e2\'eb\'e5\'ed\'e8\'e5 \'f4\'f3\'ed\'ea\'f6\'e8\'e8\cf0\b0\par
+\cf1\par
+\u955?xyz.FGH - \'e4\'ee \'f2\'ee\'f7\'ea\'e8 - \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5 (\'f1\'e2\'ff\'e7\'e0\'ed\'ed\'fb\'e5!). \'cf\'ee\'f1\'eb\'e5 \'f2\'ee\'f7\'ea\'e8 - \'f2\'e5\'f0\'ec\'fb.\cf0\par
+\cf1 FGH - \'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2, \'f7\'f2\'ee \'f1\'ed\'e0\'f7\'e0\'eb\'e0 F \'ef\'f0\'e8\'ec\'e5\'ed\'ff\'e5\'ec \'ea G, \'e0 \'ef\'ee\'f2\'ee\'ec \'f0\'e5\'e7\'f3\'eb\'fc\'f2\'e0\'f2 \'ef\'f0\'e8\'ec\'e5\'ed\'ff\'e5\'ec \'ea H. (FG)H.\cf0\par
+\cf1\u955?xyz.M = \u955?x.(\u955?y.(\u955?z.M)) - \'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2, \'f7\'f2\'ee \'f4\'f3\'ed\'ea\'f6\'e8\'ff 3-\'f5 \'f1\'e2\'ff\'e7\'e0\'ed\'ed\'fb\'f5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'f5.\cf0\par
+\cf1\par
+\u955?fgx.f(gx) - \'ef\'ee \'f1\'ee\'f1\'f2\'e0\'e2\'f3 \'e2\'e8\'e4\'ed\'ee, \'f7\'f2\'ee f \'e8 g - \'f2\'ee\'f7\'ed\'ee \'f4\'f3\'ed\'ea\'f6\'e8\'e8, \'e0 x - \'ec\'ee\'e6\'e5\'f2 \'f4\'f3\'ed\'ea\'f6\'e8\'ff, \'e0 \'ec\'ee\'e6\'e5\'f2 \'e8 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'e0\'ff. \'cf\'ee\'f2\'ee\'ec\'f3 \'f7\'f2\'ee \'e2\'e8\'e4\'e8\'ec (gx), \'e0 \'f2\'ee\'eb\'fc\'ea\'ee \'f4\'f3\'ed\'ea\'f6\'e8\'ff \'ec\'ee\'e6\'e5\'f2 \'ef\'f0\'e8\'ec\'e5\'ed\'ff\'f2\'fc\'f1\'ff \'ea \'f7\'e5\'ec\'f3-\'f2\'ee, \'f2.\'e5. g - \'f4\'f3\'ed\'ea\'f6\'e8\'ff. \'cf\'ee\'f2\'ee\'ec f \'ef\'f0\'e8\'ec\'e5\'ed\'ff\'e5\'f2\'f1\'ff \'ea (gx), \'f2\'ee\'e6\'e5 \'f2\'ee\'eb\'fc\'ea\'ee \'f4\'f3\'ed\'ea\'f6\'e8\'ff \'ec\'ee\'e6\'e5\'f2 \'ef\'f0\'e8\'ec\'e5\'ed\'ff\'f2\'fc\'f1\'ff \'ea \'f7\'e5\'ec\'f3-\'f2\'ee, \'f2.\'e5. f - \'f4\'f3\'ed\'ea\'f6\'e8\'ff.\cf0\par
+\cf1\par
+\u955?fgx.fx(gx) - \'f2\'f3\'f2 f - \'fd\'f2\'ee \'f4\'f3\'ed\'ea\'f6\'e8\'ff \'ee\'f2 \'e4\'e2\'f3\'f5 \'e0\'f0\'e3\'f3\'ec\'e5\'ed\'f2\'ee\'e2. \'cf\'e5\'f0\'e2\'fb\'e9 \'e0\'f0\'e3\'f3\'ec\'e5\'ed\'f2 x, \'e2\'f2\'ee\'f0\'ee\'e9 (gx).\cf0\par
+\cf1\par
+\b\'d4\'f3\'ed\'ea\'f6\'e8\'e8 \'e4\'e2\'f3\'f5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'f5.\cf0\b0\par
+\cf1 K 5 = \u955?x.(\u955?y.x) 5 = \u955?y.5 = 5\cf0\par
+\cf1 K 5 7 = \u955?x.(\u955?y.x) 5 7 = (\u955?y.5) 7 - \'f2\'e5\'ef\'e5\'f0\'fc 7 \'ed\'e0\'e4\'ee \'ef\'ee\'e4\'f1\'f2\'e0\'e2\'e8\'f2\'fc \'e2\'ec\'e5\'f1\'f2\'ee y \'e2 \'f2\'e5\'eb\'ee \'f4\'f3\'ed\'ea\'f6\'e8\'e8 = (5), \'e3\'e4\'e5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'ee\'e9 y \'ed\'e5\'f2. \'d2.\'e5. (\u955?y.5) 7 = 5\cf0\par
+\cf1\par
+\b\'ca\'e0\'f0\'f0\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'e5.\b0  \'ee\'f2 \'f4\'e0\'ec\'e8\'eb\'e8\'e8 \'ca\'e0\'f0\'f0\'e8\cf0\par
+\cf1\'c2 \u955?-\'e8\'f1\'f7\'e8\'f1\'eb\'e5\'ed\'e8\'e8 \'e2\'f1\'e5 \'f4\'f3\'ed\'ea\'f6\'e8\'e8 \'e8\'ec\'e5\'fe\'f2 \'ee\'e4\'e8\'ed \'e0\'f0\'e3\'f3\'ec\'e5\'ed\'f2. \'c0 \'e5\'f1\'eb\'e8 \'e0\'f0\'e3\'f3\'ec\'e5\'ed\'f2\'ee\'e2 \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee?\cf0\par
+\cf1\'c5\'f1\'eb\'e8 \'e5\'f1\'f2\'fc \'f4\'f3\'ed\'ea\'f6\'e8\'ff 2-\'f5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'f5, \'ef\'f0\'e8\'e2\'e5\'f1\'f2\'e8 \'e5\'b8 \'ea \'f4\'f3\'ed\'ea\'f6\'e8\'e8 \'ee\'e4\'ed\'ee\'e9 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'ee\'e9. \'c5\'f1\'f2\'fc \'f4\'f3\'ed\'ea\'f6\'e8\'ff q(x,y). \'d1\'ed\'e0\'f7\'e0\'eb\'e0 \'f0\'e0\'f1\'f1\'ec\'e0\'f2\'f0\'e8\'e2\'e0\'e5\'ec \'fd\'f2\'f3 \'f4\'f3\'ed\'ea\'f6\'e8\'fe \'ff\'ea\'ee\'e1\'fb \'ee\'f2 \'ee\'e4\'ed\'ee\'e9 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'ee\'e9 x, \'e0 y - \'ea\'e0\'ea "\'ea\'ee\'ed\'f1\'f2\'e0\'ed\'f2\'e0". \'cf\'ee\'e4\'f1\'f2\'e0\'e2\'e8\'e2 x, \'ef\'ee\'f2\'ee\'ec \'f0\'e0\'f1\'f1\'ec\'e0\'f2\'f0\'e8\'e2\'e0\'e5\'ec \'ef\'ee\'eb\'f3\'f7\'e8\'e2\'f8\'f3\'fe\'f1\'ff \'f4\'f3\'ed\'ea\'f6\'e8\'fe \'ea\'e0\'ea \'f4\'f3\'ed\'ea\'f6\'e8\'fe \'ee\'f2 \'ee\'e4\'ed\'ee\'e3\'ee \'e0\'f0\'e3\'f3\'ec\'e5\'ed\'f2\'e0 y. \'d2.\'e5. \'d4\'d5Y = (\'d4\'d5)Y\cf0\par
+\cf1\par
+\'cc - \'f2\'e5\'f0\'ec \'ee\'f2 \'e4\'e2\'f3\'f5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'f5 \'f5 \'e8 y. \'c2\'ec\'e5\'f1\'f2\'ee \'f5 \'ef\'ee\'e4\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'ec N. \'c2\'ec\'e5\'f1\'f2\'ee y - L. \'cd\'ee \'e7\'e0\'e3\'e2\'ee\'e7\'e4\'ea\'e0: \'e2\'ed\'f3\'f2\'f0\'e8 N \'e5\'f1\'f2\'fc \'f2\'e0 \'e6\'e5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'e0\'ff L.\cf0\par
+\cf1 M[x:=N][y:=L] = M[y:=L][x:=N[y:=L]]\cf0\par
+\cf1\par
+\b\'ca\'ee\'ed\'f1\'f2\'e0\'ed\'f2\'ed\'e0\'ff \'f4\'f3\'ed\'ea\'f6\'e8\'ff.\cf0\b0\par
+\cf1\u955?x.5 \'cd\'e5 \'e2\'e0\'e6\'ed\'ee \'f7\'f2\'ee \'ef\'f0\'e8\'ed\'e8\'ec\'e0\'e5\'f2. \'c2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 \'e2\'f1\'e5\'e3\'e4\'e0 5.\cf0\par
+\cf1\par
+\b\'d1\'e2\'ee\'e1\'ee\'e4\'ed\'fb\'e5 \'e8 \'f1\'e2\'ff\'e7\'e0\'ed\'ed\'fb\'e5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5.\cf0\b0\par
+\cf1 (\u955?y.(\u955?x.xz)y)w\cf0\par
+\cf1 x \'e8 y - \'f1\'e2\'ff\'e7\'e0\'ed\'ed\'fb\'e5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5, \'f2\'e0\'ea \'ea\'e0\'ea \'ef\'e5\'f0\'e5\'e4 \'ed\'e8\'ec\'e8 \'e2 \'e2\'fb\'f0\'e0\'e6\'e5\'ed\'e8\'e8 \'f1\'f2\'ee\'e8\'f2 \u955?\cf0\par
+\cf1 z \'e8 w - \'f1\'e2\'ee\'e1\'ee\'e4\'ed\'fb\'e5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5.\cf0\par
+\cf1\'d1\'e2\'ee\'e1\'ee\'e4\'ed\'fb\'e5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e9 ~ \'fd\'f2\'ee \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1 \'f1 \'e2\'ed\'e5\'f8\'ed\'e8\'ec \'ec\'e8\'f0\'ee\'ec. \'cd\'e5 \'ec\'ee\'e6\'e5\'ec \'e4\'e5\'eb\'e0\'f2\'fc \'e0\'eb\'fc\'f4\'e0 \'ef\'f0\'e5\'ee\'e1\'f0\'e0\'e7\'ee\'e2\'e0\'ed\'e8\'e5.\cf0\par
+\cf1\'d1\'e2\'ff\'e7\'e0\'ed\'ed\'fb\'e5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5 - \'fd\'f2\'ee \'ed\'e0\'f8\'e0 \'e2\'ed\'f3\'f2\'f0\'e5\'ed\'ed\'ff\'ff \'ea\'f3\'f5\'ed\'ff. \'cc\'ee\'e6\'e5\'ec \'e4\'e5\'eb\'e0\'f2\'fc \'e0\'eb\'fc\'f4\'e0 \'ef\'f0\'e5\'ee\'e1\'f0\'e0\'e7\'ee\'e2\'e0\'ed\'e8\'e5.\cf0\par
+\cf1\'d0\'e0\'e7\'eb\'e8\'f7\'e8\'ff \'e2 \'ec\'e5\'f5\'e0\'ed\'e8\'e7\'ec\'e0\'f5 \'ef\'ee\'e4\'f1\'f2\'e0\'ed\'ee\'e2\'ea\'e8. \'c4\'eb\'ff \ul\'f1\'e2\'ee\'e1\'ee\'e4\'ed\'fb\'f5\ulnone  \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'f5:\cf0\par
+\pard\nowidctlpar\hyphpar0\fi-568\li568\sl240\slmult1\cf1 x[x:=N] = N\cf0\par
+\cf1 y[x:=N] = y\cf0\par
+\cf1 (PQ)[x:=N] = (P[x:=N])(Q[x:=N])\cf0\par
+\cf1 (\u955?y.P)[x:=N] = \u955?y.(P[x:=N])  \'e1\'fb\'e2\'e0\'fe\'f2 \'ea\'e0\'ea\'e8\'e5-\'f2\'ee \'ea\'ee\'eb\'eb\'e8\'e7\'e8\'e8 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'f5\cf0\par
+\cf1 (\u955?x.P)[x:=N] = (\u955?x.P) \'f2.\'ea. \'ef\'ee\'e4\'f1\'f2\'e0\'ed\'ee\'e2\'ea\'e0 \'ee\'f1\'f3\'f9\'e5\'f1\'f2\'e2\'eb\'ff\'e5\'f2\'f1\'ff \'f2\'ee\'eb\'fc\'ea\'ee \'e4\'eb\'ff \'f1\'e2\'ee\'e1\'ee\'e4\'ed\'fb\'f5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'f5. \'cf\'f0\'e8\'ec\'e5\'f0: (\u955?y.(\u955?x.xz)y)w \'ec\'ee\'e6\'ed\'ee \'ef\'e5\'f0\'e5\'ef\'e8\'f1\'e0\'f2\'fc (\'e0\'eb\'fc\'f4\'e0 \'fd\'ea\'e2\'e8\'e2\'e0\'eb\'e5\'ed\'f2\'ed\'ee) \'ea\'e0\'ea (\u955?x.(\u955?x.xz)x)x. \'c2\'f1\'e5 \'f5 \'d0\'c0\'c7\'cd\'db\'c5. \'c8 \'e2\'ee\'f2 \'f1\'e0\'ec\'fb\'e9 \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e8\'e9 \'f5 - \'fd\'f2\'ee \'f1\'e2\'ee\'e1\'ee\'e4\'ed\'e0\'ff \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'e0\'ff. \'d2\'ee\'e3\'e4\'e0 (\u955?x.(\u955?x.xz)x)x[x:=N] = (\u955?x.(\u955?x.xz)x)N.\cf0\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf1\par
+\b\'ca\'ee\'ec\'e1\'e8\'ed\'e0\'f2\'ee\'f0\'fb\b0  - \'f2\'e5\'f0\'ec\'fb, \'e2 \'ea\'ee\'f2\'ee\'f0\'fb\'f5 \'ed\'e5\'f2 \'f1\'e2\'ee\'e1\'ee\'e4\'ed\'fb\'f5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'f5.\cf0\par
+\pard\nowidctlpar\hyphpar0\fi-360\li1080\sl240\slmult1\kerning0 4.\tab\cf1\kerning1 I = \u955?x.x\tab\'ca\'ee\'ec\'e1\'e8\'ed\'e0\'f2\'ee\'f0 identity. C\'ee \'f1\'e2\'ee\'e8\'ec \'e0\'f0\'e3\'f3\'ec\'e5\'ed\'f2\'ee\'ec \'ed\'e8\'f7\'e5\'e3\'ee \'ed\'e5 \'e4\'e5\'eb\'e0\'e5\'f2. \'ce\'ed \'e5\'e3\'ee \'ef\'f0\'e8\'ed\'e8\'ec\'e0\'e5\'f2 \'e8 \'f2\'f3\'f2 \'e6\'e5 \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2. \'d2.\'e5. Iz = (\u955?x.x)z = z\cf0\par
+\kerning0 5.\tab\cf1\kerning1 w = \u955?x.xx \'ed\'f3\'e6\'e5\'ed \'e4\'eb\'ff \'e2\'fb\'f7\'e8\'f1\'eb\'e5\'ed\'e8\'ff \'ea\'ee\'ec\'e1\'e8\'ed\'e0\'f2\'ee\'f0\'e0 W = ww = (\u955?x.xx)(\u955?x.xx) - \'e8\'ec\'e5\'e5\'f2 \'ea\'e0\'ea\'e8\'e5-\'f2\'ee \'ee\'f1\'ee\'e1\'fb\'e5 \'f1\'e2\'ee\'e9\'f1\'f2\'e2\'e0\cf0\par
+\kerning0 6.\tab\cf1\kerning1 K = \u955?xy.x\tab\'ca\'ee\'ec\'e1\'e8\'ed\'e0\'f2\'ee\'f0 cancel-\'ff\'f2\'ee\'f0. \'cf\'f0\'e5\'e4\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2 \'f4\'f3\'ed\'ea\'f6\'e8\'fe \'e4\'e2\'f3\'f5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'f5, \'e0 \'e2 \'f2\'e5\'eb\'e5 \'f2\'ee\'eb\'fc\'ea\'ee \'ee\'e4\'e8\'ed \'f5. \'d2.\'e5 \'ef\'f0\'e8\'ed\'e8\'ec\'e0\'e5\'f2 2-\'e5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5. \'c2\'f2\'ee\'f0\'f3\'fe \'ef\'f0\'ee\'f1\'f2\'ee \'e2\'fb\'ea\'e8\'e4\'fb\'e2\'e0\'e5\'f2, \'e0 \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 \'f2\'ee\'eb\'fc\'ea\'ee \'ef\'e5\'f0\'e2\'f3\'fe.\cf0\par
+\kerning0 7.\tab\cf1\kerning1 K* = \u955?xy.y \'d2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5, \'f2\'ee\'eb\'fc\'ea\'ee \'ef\'e5\'f0\'e2\'f3\'fe \'e2\'fb\'ea\'e8\'e4\'fb\'e2\'e0\'e5\'f2, \'e0 \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 \'e2\'f2\'ee\'f0\'f3\'fe.\cf0\par
+\kerning0 8.\tab\cf1\kerning1 S - \u955?fgx.fx(gx)\cf0\par
+\kerning0 9.\tab\cf1\kerning1 B = \u955?fgx.f(gx)\tab\'ca\'ee\'ec\'e1\'e8\'ed\'e0\'f2\'ee\'f0 \'ea\'ee\'ec\'ef\'ee\'e7\'e8\'f6\'e8\'ff.\cf0\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf1\par
+\'ca\'ee\'ec\'e1\'e8\'ed\'e0\'f2\'ee\'f0\'ee\'e2 K \'e8 S \'e4\'ee\'f1\'f2\'e0\'f2\'ee\'f7\'ed\'ee \'e4\'eb\'ff \'ef\'ee\'eb\'ed\'ee\'e9 \'d2\'fc\'fe\'f0\'e8\'ed\'e3 \'f1\'e8\'f1\'f2\'e5\'ec\'fb.\cf0\par
+\cf1\par
+\u955?-\'e8\'f1\'f7\'e8\'f1\'eb\'e5\'ed\'e8\'e5 \'e7\'e0\'e4\'e0\'b8\'f2 \'ed\'e0\'e1\'ee\'f0 \'ef\'f0\'e0\'e2\'e8\'eb \'e4\'eb\'ff \'ef\'f0\'ee\'e8\'e7\'e2\'e5\'e4\'e5\'ed\'e8\'ff \'e2\'fb\'f7\'e8\'f1\'eb\'e5\'ed\'e8\'e9, \'ed\'ee \'ed\'e5 \'e7\'e0\'e4\'e0\'b8\'f2 \'ef\'f0\'e8\'e3\'ee\'e4\'ed\'fb\'e5 \'e4\'eb\'ff \'ed\'e0\'f1 \'ee\'e1\'fa\'e5\'ea\'f2\'fb, \'f2\'e8\'ef\'e0 \'cd\'e0\'f2\'f3\'f0\'e0\'eb\'fc\'ed\'fb\'e5 \'f7\'e8\'f1\'eb\'e0.\cf0\par
+\cf1\par
+\'d7\'e8\'f1\'eb\'e0, \'f4\'f3\'ed\'ea\'f6\'e8\'e8 plus, mult ... (\'ed\'e0\'e1\'ee\'f0 \'ee\'e1\'fa\'e5\'ea\'f2\'ee\'e2 \'e4\'eb\'ff \'e2\'fb\'f7\'e8\'f1\'eb\'e5\'ed\'e8\'e9 \'f1 \'ed\'e0\'f2\'f3\'f0\'e0\'eb\'fc\'ed\'fb\'ec\'e8 \'f7\'e8\'f1\'eb\'e0\'ec\'e8) \'ec\'ee\'e6\'ed\'ee \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'e8\'f2\'fc \'f0\'e0\'e7\'ed\'fb\'ec\'e8 \'f1\'ef\'ee\'f1\'ee\'e1\'e0\'ec\'e8. \'ce\'e4\'e8\'ed \'e8\'e7 \'e2\'e0\'f0\'e8\'e0\'ed\'f2\'ee\'e2: \'cd\'f3\'ec\'e5\'f0\'e0\'eb\'fb \'d7\'b8\'f0\'f7\'e0: \cf0\par
+\cf1\par
+T = \u955?x.\u955?y.x - T \'ee\'f2 \'f1\'eb\'ee\'e2\'e0 true\cf0\par
+\cf1 F = \u955?x.\u955?y.y - F \'ee\'f2 \'f1\'eb\'ee\'e2\'e0 false\cf0\par
+\cf1\par
+[u,v] = \u955?z.((zu)v) - "\'f1\'ef\'e0\'f0\'e8\'e2\'e0\'ed\'e8\'e5". \'d7\'f2\'ee \'ee\'ed\'ee \'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2:\cf0\par
+\cf1 [u,v] T = \u955?z.((zu)v) T = (Tu)v = (\u955?x.\u955?y.x u)v = (\u955?y.u) v = u\cf0\par
+\cf1 [u,v] F = \u955?z.((zu)v) F = (Fu)v = (\u955?x.\u955?y.y u)v = (\u955?y.y) v = v\cf0\par
+\cf1\tab\'f2\'ee\'e3\'e4\'e0\cf0\par
+\cf1 d\sub 0\nosupersub  = \u955?x.x - \'ee\'e1\'fa\'e5\'ea\'f2 \'ee\'e1\'ee\'e7\'ed\'e0\'f7\'e0\'fe\'f9\'e8\'e9 0\cf0\par
+\cf1 d\sub n+1\nosupersub  = [F,d\sub n\nosupersub ]\cf0\par
+\cf1\par
+\'cd\'e0 wiki \'ef\'e8\'f8\'f3\'f2 \'f7\'f3\'f2\'fc \'e8\'ed\'e0\'f7\'e5:\cf0\par
+\cf1 0 = \u955?sz.z\cf0\par
+\cf1 Succ = \u955?nsz.s(nsz)\cf0\par
+\cf1 1 = Succ 0 = \u955?nsz.s(nsz) 0 = \u955?sz.s(0sz) = \u955?sz.s((\u955?xy.y)sz) = \u955?sz.s((\u955?y.y)z) = \u955?sz.s(z) = \u955?sz.sz\cf0\par
+\cf1 2 = Succ 1 = \u955?nsz.s(nsz) 1 = \u955?sz.s(1sz) = \u955?sz.s((\u955?xy.xy)sz) = \u955?sz.s((\u955?y.sy)z) = \u955?sz.s(sz)\cf0\par
+\cf1 3 = Succ 2 = \u955?nsz.s(nsz) 2 = \u955?sz.s(2sz) = \u955?sz.s((\u955?xy.x(xy))sz) = \u955?sz.s((\u955?y.s(sy)z) = \u955?sz.s(s(sz))\cf0\par
+\cf1\par
+\par
+plus = \u955?n.\u955?m.\u955?s.\u955?z.ns(msz)\cf0\par
+\cf1 mult = \u955?n.\u955?m.\u955?s.\u955?z.n(ms)z\cf0\par
+\cf1 power = \u955?n.\u955?m.\u955?s.\u955?z.nmsz\cf0\par
+\cf1 if = \u955?p.\u955?t.\u955?e.pte\cf0\par
+\cf1\par
+\'ce\'e4\'ed\'e0 \'e8\'e7 \'ef\'f0\'e8\'f7\'e8\'ed, \'ef\'ee\'f7\'e5\'ec\'f3 \'d7\'b8\'f0\'f7 \'e2\'fb\'e1\'f0\'e0\'eb \'e8\'ec\'e5\'ed\'ed\'ee \'f2\'e0\'ea\'ee\'e5 \'ef\'f0\'e5\'e4\'f1\'f2\'e0\'e2\'eb\'e5\'ed\'e8\'e5 \'ed\'e0\'f2\'f3\'f0\'e0\'eb\'fc\'ed\'fb\'f5 \'f7\'e8\'f1\'e5\'eb \'e8 \'f4\'f3\'ed\'ea\'f6\'e8\'e9 \'e8\'f5 \'ef\'f0\'e5\'ee\'e1\'f0\'e0\'e7\'f3\'fe\'f9\'e8\'e5 -> \'e2\'f1\'e5 \'fd\'f2\'e8 \'f2\'e5\'f0\'ec\'fb - \'c7\'c0\'cc\'ca\'cd\'d3\'d2\'db\'c5, \'f2.\'e5. \'ed\'e5 \'e7\'e0\'e2\'e8\'f1\'ff\'f2 \'ee\'f2 \'ea\'e0\'ea\'e8\'f5-\'eb\'e8\'e1\'ee \'f1\'e2\'ee\'e1\'ee\'e4\'ed\'fb\'f5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'f5 + \'dd\'f2\'e8 \'f2\'e5\'f0\'ec\'fb \'e1\'ee\'eb\'fc\'f8\'e5 \'ed\'e5\'eb\'fc\'e7\'ff \'f0\'e5\'e4\'f3\'f6\'e8\'f0\'ee\'e2\'e0\'f2\'fc - \'ee\'ed\'e8 \'ff\'e2\'eb\'ff\'fe\'f2\'f1\'ff "\'ed\'ee\'f0\'ec\'e0\'eb\'fc\'ed\'fb\'ec\'e8 \'f4\'ee\'f0\'ec\'e0\'ec\'e8".\cf0\par
+\cf1\par
+\par
+\par
+\par
+\cf0\ul\'d0\'e5\'ea\'f3\'f0\'f1\'e8\'e2\'ed\'fb\'e5 \'f4\'f3\'ed\'ea\'f6\'e8\'e8\ulnone .\par
+\par
+\'cf\'f0\'e8\'ec\'e8\'f2\'e8\'e2\'ed\'ee-\'f0\'e5\'ea\'f3\'f0\'f1\'e8\'e2\'ed\'fb\'e5 \'f4\'f3\'ed\'ea\'f6\'e8\'e8 \'e2 \'ed\'e0\'f2\'f3\'f0\'e0\'eb\'fc\'ed\'fb\'f5 \'f7\'e8\'f1\'eb\'e0\'f5:\par
+1. \'c1\'e0\'e7\'e8\'f1\'ed\'fb\'e5\par
+\tab I(x\sub 1\nosupersub , x\sub 2\nosupersub , ... ,x\sub n\nosupersub )= x\sub k\nosupersub  \'e8\'e7 \'ed\'e0\'e1\'ee\'f0\'e0 n \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'ee\'e2 \'e2\'fb\'e1\'e8\'f0\'e0\'e5\'f2 \'ef\'ee\'e4 \'ed\'ee\'ec\'e5\'f0\'ee\'ec k: = \u955?x\sub 1\nosupersub .\u955?x\sub 2\nosupersub ...\u955?x\sub n\nosupersub .x\sub k\nosupersub .\par
+\tab Z(x)=0 \'e2\'f1\'e5\'e3\'e4\'e0 \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 0: \cf1\u955?x.0 \'ed\'ee 0 - \'fd\'f2\'ee \'ed\'e5 \'f2\'e5\'f0\'ec, \'ef\'ee\'fd\'f2\'ee\'ec\'f3 = \u955?x.d\sub 0\cf0\nosupersub\par
+\tab S(x)=x+1 - \u955?x.x+1 \'ed\'ee "+" - \'fd\'f2\'ee \'ed\'e5 \'f2\'e5\'f0\'ec, \'ef\'ee\'fd\'f2\'ee\'ec\'f3 = \cf1\u955?x.[F,x]\cf0\par
+2. \'ca\'ee\'ec\'ef\'ee\'e7\'e8\'f6\'e8\'ff\par
+\tab g(x\sub 1\nosupersub , x\sub 2\nosupersub , ... ,x\sub n\nosupersub )\par
+\tab f\sub 1\nosupersub (x\sub 1\nosupersub , x\sub 2\nosupersub , ... ,x\sub n\nosupersub ), f\sub 2\nosupersub , ... ,f\sub m\nosupersub  - \'f4\'f3\'ed\'ea\'f6\'e8\'e8, \'ea\'e0\'e6\'e4\'e0\'ff \'f1\'ee\'f1\'f2\'ee\'e8\'f2 \'e8\'e7 n \'e0\'f0\'e3\'f3\'ec\'e5\'ed\'f2\'ee\'e2, \'f2\'ee\par
+\tab h(x\sub 1\nosupersub , x\sub 2\nosupersub , ... ,x\sub n\nosupersub ) = g(f\sub 1\nosupersub (x\sub 1\nosupersub , x\sub 2\nosupersub , ... ,x\sub n\nosupersub ), f\sub 2\nosupersub , ... ,f\sub m\nosupersub ) -> h = \u955?x\sub 1\nosupersub .\u955?x\sub 2\nosupersub ...\u955?x\sub n\nosupersub .G(... \'ed\'e5 \'f1\'f2\'e0\'eb \'ef\'e5\'f0\'e5\'ef\'e8\'f1\'fb\'e2\'e0\'f2\'fc\par
+\par
+3. \'cf\'f0\'e8\'ec\'e8\'f2\'e8\'e2\'ed\'e0\'ff \'f0\'e5\'ea\'f3\'f0\'f1\'e8\'ff\par
+\tab f(0,x\sub 1\nosupersub , x\sub 2\nosupersub , ... ,x\sub n\nosupersub ) = g(x\sub 1\nosupersub , x\sub 2\nosupersub , ... ,x\sub n\nosupersub )\par
+\tab f(n+1, x\sub 1\nosupersub , x\sub 2\nosupersub , ... ,x\sub n\nosupersub ) = h(\par
+\par
+\par
+\par
+\b\'df\'e7\'fb\'ea Haskel\b0\par
+Demo.hs\par
+\tab module Demo where\par
+\tab ...\par
+$ ghci demo- \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'e5\'ec \'e8\'ed\'f2\'e5\'f0\'ef\'f0\'e5\'f2\'e0\'f2\'ee\'f0 Haskel \'e8 \'f1\'f0\'e0\'e7\'f3 \'ef\'ee\'e4\'ea\'eb\'e0\'e4\'fb\'e2\'e0\'e5\'ec \'ed\'e0\'f8 \'ec\'ee\'e4\'f3\'eb\'fc Demo\par
+Prelude > :type 3 \'e8\'eb\'e8 :t 3 - \'f3\'e7\'ed\'e0\'f2\'fc \'f2\'e8\'ef \'eb\'e8\'f2\'e5\'f0\'e0\'eb\'e0 "3"? \'ce\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff "3" - \'fd\'f2\'ee \'f4\'f3\'ed\'ea\'f6\'e8\'ff\par
+3 :: Num a => a\par
+\par
+int - 2\super 64\nosupersub\par
+Integer - \'e1\'e5\'e7\'e3\'f0\'e0\'ed\'e8\'f7\'e5\'ed.\par
+String \'f1\'e8\'ed\'ee\'ed\'e8\'ec \'e4\'eb\'ff [Char], \'f2.\'e5. ['H', 'i'] = "Hi"\par
+\'ca\'ee\'f0\'f2\'e5\'e6 - \'ec\'ee\'e6\'e5\'f2 \'f1\'ee\'f1\'f2\'ee\'ff\'f2\'fc \'e8\'e7 \'f0\'e0\'e7\'ed\'fb\'f5 \'f2\'e8\'ef\'ee\'e2 (1, True, 'c') \'e8 \'e4\'eb\'e8\'ed\'e0 \'ea\'ee\'f0\'f2\'e5\'e6\'e0 \'e7\'e0\'e4\'e0\'b8\'f2\'f1\'ff \'f1\'f0\'e0\'e7\'f3\par
+\'d1\'ef\'e8\'f1\'ea\'e8 - \'f2\'ee\'eb\'fc\'ea\'ee \'e8\'e7 \'ee\'e4\'ed\'ee\'f2\'e8\'ef\'ed\'fb\'f5 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'ee\'e2 [1, 2, 3]. [1, True, 'c'] - \'e1\'f3\'e4\'e5\'f2 \'ee\'f8\'e8\'e1\'ea\'e0. \'c4\'eb\'e8\'ed\'e0 \'f1\'ef\'e8\'f1\'ea\'e0 \'ec\'ee\'e6\'e5\'f2 \'f1\'e2\'ee\'e1\'ee\'e4\'ed\'ee \'e8\'e7\'ec\'e5\'ed\'ff\'f2\'fc\'f1\'ff.\par
+\par
+\b\'d1\'ef\'e8\'f1\'ea\'e8 - \'fd\'f2\'ee \'ea\'eb\'fe\'f7\'e5\'e2\'ee\'e9 \'f2\'e8\'ef \'f4\'f3\'ed\'ea\'f6\'e8\'ee\'ed\'e0\'eb\'fc\'ed\'ee\'e3\'ee \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'ff.\b0\par
+\par
+Prelude > 'H':"ello" - \'ee\'ef\'e5\'f0\'e0\'f2\'ee\'f0 (:) \'fd\'f2\'ee \'e4\'ee\'e1\'e0\'e2\'eb\'e5\'ed\'e8\'e5 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'e0 'H' \'e2 "\'e3\'ee\'eb\'ee\'e2\'f3" \'f1\'ef\'e8\'f1\'ea\'e0\par
+"Hello"\par
+\par
+\'d0\'e5\'ea\'f3\'f0\'f1\'e8\'e2\'ed\'fb\'e5 \'f4\'f3\'ed\'ea\'f6\'e8\'e8 - \'f2\'e5 \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'e2\'fb\'e7\'fb\'e2\'e0\'fe\'f2 \'f1\'e0\'ec\'e8 \'f1\'e5\'e1\'ff.\par
+\tab factorial \cf3\b n\cf0\b0  =\par
+\tab\tab if n == 0\par
+\tab\tab\tab then 1\par
+\tab\tab\tab else n * factorial \cf5\b (n-1)\cf0\b0\par
+\par
+\'d2\'f0\'e5\'e1\'ee\'e2\'e0\'ed\'e8\'ff \'ea \'f0\'e5\'ea\'f3\'f0\'f1\'e8\'e2\'ed\'fb\'ec \'f4\'f3\'ed\'ea\'f6\'e8\'ff\'ec, \'f7\'f2\'ee\'e1\'fb \'ee\'ed\'e0 \'ed\'e5 \'e7\'e0\'f6\'e8\'ea\'eb\'e8\'eb\'e0\'f1\'fc:\par
+\tab 1. \'cf\'e0\'f0\'e0\'ec\'e5\'f2\'f0 \'e2\'fb\'e7\'ee\'e2\'e0 \'f4\'f3\'ed\'ea\'f6\'e8\'e8 \'f1\'eb\'e5\'e2\'e0 \cf3\b n\cf0\b0  \'e4\'ee\'eb\'e6\'e5\'ed \'ee\'f2\'eb\'e8\'f7\'e0\'f2\'fc\'f1\'ff \'ee\'f2 \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'e0 \'f1\'ef\'f0\'e0\'e2\'e0 \cf5\b (n-1)\cf0\b0\par
+\tab 2. \'c4\'ee\'eb\'e6\'ed\'ee \'e1\'fb\'f2\'fc \'f2\'e5\'f0\'ec\'e8\'ed\'e8\'f0\'f3\'fe\'f9\'e5\'e5 \'f3\'f1\'eb\'ee\'e2\'e8\'e5 - if n == 0\par
+\par
+\'cc\'ee\'e6\'ed\'ee \'ef\'e5\'f0\'e5\'ef\'e8\'f1\'e0\'f2\'fc \'f4\'f3\'ed\'ea\'f6\'e8\'fe \'e1\'e5\'e7 if. \'cd\'e5\'ea\'e8\'e9 \'e0\'ed\'e0\'eb\'ee\'e3 switch-case. \'cf\'f0\'e8\'b8\'ec \'ed\'e0\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff "\'f1\'ee\'ef\'ee\'f1\'f2\'e0\'e2\'eb\'e5\'ed\'e8\'e5 \'f1 \'ee\'e1\'f0\'e0\'e7\'f6\'ee\'ec"\par
+\tab factorial 0 = 1\par
+\tab factorial n = n * factorial (n-1)\par
+\par
+\'d4\'f3\'ed\'ea\'f6\'e8\'ff factorial \'ed\'e5 \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'ed\'e0 \'ee\'f2\'f0\'e8\'f6\'e0\'f2\'e5\'eb\'fc\'ed\'fb\'f5 \'e0\'f0\'e3\'f3\'ec\'e5\'ed\'f2\'e0\'f5, \'e7\'e0\'ea\'f0\'ee\'e5\'ec \'fd\'f2\'f3 \'e4\'fb\'f0\'f3.\par
+\tab factorial 0 = 1\par
+\tab factorial n = if n < 0 then error "arg must >=0" else n * factorial n - error ~ Exception \'e2 Java\par
+\par
+\'cf\'e5\'f0\'ef\'e8\'f8\'e5\'ec, \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'ff "\'ee\'f5\'f0\'e0\'ed\'ed\'fb\'e5 \'e2\'fb\'f0\'e0\'e6\'e5\'ed\'e8\'ff" - \'ee\'ef\'e5\'f0\'e0\'f2\'ee\'f0 |\par
+\tab factorial 0 = 1\par
+\tab factorial n =\tab | n < 0 = error "arg must >=0"\par
+\tab\tab\tab\tab | n > 0 = n * factorial n\par
+\tab\'e8\'eb\'e8\par
+\par
+\tab factorial :: Integer -> Integer\par
+\tab factorial n\tab | n == 0\tab = 1\par
+\tab\tab\tab | n > 0\tab = n * factorial n\par
+\tab\tab\tab | otherwise\tab = error "arg must >=0"\par
+\par
+\'c5\'f1\'eb\'e8 \'ed\'e0\'ef\'e8\'f1\'e0\'f2\'fc \'e0\'eb\'e3\'ee\'f0\'e8\'f2\'ec \'f4\'e0\'ea\'f2\'ee\'f0\'e8\'e0\'eb\'e0 \'e2 Java:\par
+\tab factorial (n)\par
+\tab\tab int sum = 0 - \'e5\'f1\'f2\'fc \'ed\'e5\'ea\'e0\'ff \'e0\'ea\'ea\'f3\'ec\'f3\'eb\'e8\'f0\'f3\'fe\'f9\'e0\'ff \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'e0\'ff\par
+\tab\tab while (n>0)\par
+\tab\tab\tab sum *= n--\par
+\tab\tab return sum\par
+\par
+\'dd\'f2\'ee \'ec\'ee\'e6\'ed\'ee \'f1\'e4\'e5\'eb\'e0\'f2\'fc \'ed\'e0 Haskel:\par
+\tab factorial n\tab | n>=0\tab = helper 1 n - \'f2\'f3\'f2 "1" \'fd\'f2\'ee \'ea\'e0\'ea \'e2 \'f5\'e2\'ee\'f1\'f2\'ee\'e2\'ee\'e9 \'f0\'e5\'ea\'f3\'f0\'f1\'e8\'e8, \'e2 \'fd\'f2\'ee\'f2 \'e0\'f0\'e3\'f3\'ec\'e5\'ed\'f2 \'f1\'ea\'eb\'e0\'e4\'fb\'e2\'e0\'e5\'ec \'f1\'f3\'ec\'ec\'f3\par
+\tab\tab\tab | otherwise\tab = error "arg must >=0"\par
+\par
+\tab helper sum 0 = sum\par
+\tab helper sum n = helper (sum * n)(n - 1)\par
+\par
+\'ca\'ee\'ed\'f1\'f2\'f0\'f3\'ea\'f6\'e8\'ff let .. in.\par
+\'d5\'ee\'f2\'e8\'ec \'f1\'ee\'e7\'e4\'e0\'f2\'fc \'f1\'ef\'e8\'f1\'ee\'ea ("Hello Vasya", "Hello Petya", "Hello Misha")\par
+\tab let h = "Hello " in (h ++ "Vasya", h ++ "Petya", h ++ "Misha")\par
+\par
+\'cf\'e5\'f0\'e5\'ef\'e8\'f8\'e5\'ec \'ef\'f0\'e8\'ec\'e5\'f0 \'f1 helper-\'ee\'ec \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'ff let .. in\par
+\tab factorial n\tab | n>=0\tab = let\par
+\tab\tab\tab\tab helper sum 0 = sum\par
+\tab\tab\tab\tab helper sum n = helper (sum * n)(n - 1)\par
+\tab\tab\tab   in hlper 1 n\par
+\tab\tab\tab | otherwise\tab = error "arg must >=0"\par
+\par
+\cf1\u955?-\cf0\'f4\'f3\'ed\'ea\'f6\'e8\'ff - \'fd\'f2\'ee \'f4\'f3\'ed\'ea\'f6\'e8\'ff \'e1\'e5\'e7 \'e8\'ec\'e5\'ed\'e8.\par
+\'ce\'e1\'fb\'f7\'ed\'ee \'ef\'e8\'f8\'e5\'ec: let func x y = 2 * x + 7 - \'e2\'fb\'f0\'e0\'e6\'e5\'ed\'e8\'fe \'e4\'e0\'eb\'e8 \'e8\'ec\'ff func.\par
+\tab Prelude > func 10\par
+\tab 27\par
+\tab Prelude >\par
+\'c1\'e5\'e7 \'e8\'ec\'e5\'ed\'e8 \'fd\'f2\'ee \'e7\'e0\'ef\'e8\'f8\'e5\'f2\'f1\'ff: \\x -> 2 * x + 7 - \\ \'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2 \cf1\u955?\cf0\par
+\tab Prelude > (\\x -> 2 * x + 7) 10\par
+\tab 27\par
+\tab Prelude >\par
+\'cc\'ee\'e6\'e5\'ec \'e7\'e0\'ef\'e8\'f1\'e0\'f2\'fc \'f2\'e0\'ea: let func = \\x -> 2 * x + 7, \'f0\'e0\'ed\'fc\'f8\'e5 \'e1\'fb\'eb\'ee let func \b x\b0\par
+\'c4\'ee\'e1\'e0\'e2\'e8\'ec:\tab let func x y = 2 * x + 7 * y\par
+\tab\tab let func x = \\y -> 2 * x + 7 * y\par
+\tab\tab let func = \\x -> \\y -> 2 * x + 7 * y \'e8\'eb\'e8 \\x y -> 2 * x + 7 * y\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+}
+ 

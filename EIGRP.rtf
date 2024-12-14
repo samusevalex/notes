@@ -1,0 +1,245 @@
+{\rtf1\ansi\ansicpg1251\deff0\deflang1049{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\f0\fs22\'ce\'f1\'ed\'ee\'e2\'ed\'fb\'e5 \'ef\'f0\'e5\'e8\'ec\'f3\'f9\'e5\'f1\'f2\'e2\'e0 EIGRP \'ed\'e0\'e4 RIP:\par
+1. Unequal-cost load sharing\par
+2. Update \'ef\'e5\'f0\'e8\'ee\'e4 \'e2 3 \'f0\'e0\'e7\'e0 \'e1\'ee\'eb\'fc\'f8\'e5, \'f7\'e5\'ec \'f3 RIP\par
+3. \'c1\'ee\'eb\'e5\'e5 \'fd\'f4\'f4\'e5\'ea\'f2\'e8\'e2\'ed\'fb\'e9 \'f4\'ee\'f0\'ec\'e0\'f2 update \'ef\'e0\'ea\'e5\'f2\'ee\'e2\par
+\par
+\'cd\'c5\'c4\'ce\'d1\'d2\'c0\'d2\'ca\'c8 - IGRP \'e8 EIGRP - \'fd\'f2\'ee Cisco proprietary \'ef\'f0\'ee\'f2\'ee\'ea\'ee\'eb\'fb\par
+\par
+|AS 15:(EIGRP 10)*redistribute*(EIGRP 12)| <-BGP-> |AS 13|\par
+\par
+Metric EIGRP = 256 * IGRP\par
+\par
+EIGRP \'f1\'ee\'f1\'f2\'ee\'e8\'f2 \'e8\'e7 4-\'f5 \'ea\'ee\'ec\'ef\'ee\'ed\'e5\'ed\'f2:\par
+1. Protocol-Dependent Modules\par
+2. Reliable Transport Protocol (RTP)\par
+3. Neighbor Discovery/Recovery\par
+4. Diffusing Update Algorithm (DUAL)\par
+\par
+\ul Protocol-Dependent Modules\ulnone\par
+\par
+IGRP \'e8 EIGRP \'ec\'ee\'e3\'f3\'f2 \'f2\'e0\'ea \'e6\'e5 \'f0\'ee\'f3\'f2\'e8\'f2\'fc IPX \'e8 AppleTalk. \'cc\'ee\'e3\'f3\'f2 \'ee\'e1\'ec\'e5\'ed\'e8\'e2\'e0\'f2\'fc\'f1\'ff routing information \'f1 \'f0\'e0\'e7\'eb\'e8\'f7\'ed\'fb\'ec\'e8 Network \'ef\'f0\'ee\'f2\'ee\'ea\'ee\'eb\'e0\'ec\'e8.\par
+\par
+\ul Reliable Transport Protocol\ulnone\par
+\par
+\'cf\'f0\'ee\'f2\'ee\'ea\'ee\'eb \'e4\'eb\'ff \'ee\'e1\'ec\'e5\'ed\'e0 EIRGP \'ef\'e0\'ea\'e5\'f2\'e0\'ec\'e8. \'d1\'c2\'ce\'c9 \'cf\'d0\'ce\'d2\'ce\'ca\'ce\'cb ! \'c3\'e0\'f0\'e0\'ed\'f2\'e8\'f0\'f3\'e5\'f2 \'e4\'ee\'f1\'f2\'e0\'e2\'ea\'f3.\par
+\par
+\'c3\'e0\'f0\'e0\'ed\'f2\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'e0\'ff \'e4\'ee\'f1\'f2\'e0\'e2\'ea\'e0 \'ee\'f1\'f3\'f9\'e5\'f1\'f2\'e2\'eb\'ff\'e5\'f2\'f1\'ff \'ef\'ee \'e0\'eb\'e3\'ee\'f0\'e8\'f2\'ec\'f3 \i reliable multicast\i0  224.0.0.10 \'ca\'e0\'ea \'f2\'ee\'eb\'fc\'ea\'ee neighbor \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'f2 \'f2\'e0\'ea\'ee\'e9 \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2, \'ee\'ed \'e4\'ee\'eb\'e6\'e5\'ed \'ee\'f2\'ef\'f0\'e0\'e2\'e8\'f2\'fc unicast acknowledgment.\par
+\'d2\'e0\'ea\'e6\'e5 \'e2 \'ef\'e0\'ea\'e5\'f2\'e5 \'e5\'f1\'f2\'fc 2-\'e0 sequence numbers. \'cf\'e5\'f0\'e2\'fb\'e9 - \'f3\'e2\'e5\'eb\'e8\'f7\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'ed\'e0 +1 \'ea\'e0\'e6\'e4\'fb\'e9 \'f0\'e0\'e7 \'ea\'ee\'e3\'e4\'e0 \'f0\'ee\'f3\'f2\'e5\'f0 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \'ee\'f7\'e5\'f0\'e5\'e4\'ed\'ee\'e9 \'ef\'e0\'ea\'e5\'f2. \'c2\'f2\'ee\'f0\'ee\'e9 - \'ed\'ee\'ec\'e5\'f0 \'ef\'e0\'ea\'e5\'f2\'e0 \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e8\'e9 \'f0\'e0\'e7 \'ef\'f0\'e8\'f8\'e5\'e4\'f8\'e5\'e3\'ee \'ee\'f2 destination \'f0\'ee\'f3\'f2\'e5\'f0\'e0.\par
+\par
+RTP \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2 \'ed\'e5\'e3\'e0\'f0\'e0\'ed\'f2\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'f3\'fe \'e4\'ee\'f1\'f2\'e0\'e2\'ea\'f3 - \'ed\'e5 \'ed\'e0\'e4\'ee \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'f2\'fc acknowledgment \'e8 \'ed\'e5\'f2 sequence numbers.\par
+\par
+\'d2\'e8\'ef\'fb EIGRP \'ef\'e0\'ea\'e5\'f2\'ee\'e2 (IP protocol 88 ):\par
+\pard\fi-426\li1136\i Hellos\i0  - \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'fe\'f2\'f1\'ff \'e4\'eb\'ff neighbor discovery/recovery. Multicast, unreliable.\par
+\i Acknowledgments (ACK\i0 ) = Hellos with no data. Unicast, unreliable.\par
+\i Updates\i0  - \'ef\'e5\'f0\'e5\'ed\'ee\'f1\'ff\'f2 route information. \'cf\'e0\'ea\'e5\'f2\'fb \'ef\'e5\'f0\'e5\'e4\'e0\'fe\'f2\'f1\'ff \'d2\'ce\'cb\'dc\'ca\'ce \'ef\'ee \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee\'f1\'f2\'e8. \'d1\'ee\'e4\'e5\'f0\'e6\'e0\'f2 \'d2\'ce\'cb\'dc\'ca\'ce \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'f3\'fe information (\'e2 \'ee\'f2\'eb\'e8\'f7\'e8\'e8 \'ee\'f2 RIP, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'f8\'eb\'b8\'f2 \'e2\'f1\'fe \'f1\'e2\'ee\'fe RIP \'f2\'e0\'e1\'eb\'e8\'f6\'f3). \'ca\'ee\'e3\'e4\'e0 update \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'ee\'ec\'f3 \'f0\'ee\'f3\'f2\'e5\'f0\'f3 - unicast.  \'ca\'ee\'e3\'e4\'e0 \'ec\'ed\'ee\'e3\'e8\'ec \'f0\'ee\'f3\'f2\'e5\'f0\'e0\'ec, \'e2 \'f1\'eb\'f3\'f7\'e0\'e5 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff topology \'e8\'eb\'e8 metric - multicast. \'c2\'f1\'e5\'e3\'e4\'e0 reliable.\par
+\i Queries \'e8 Replies\i0  - \'ed\'f3\'e6\'e5\'ed \'e4\'eb\'ff DUAL Finite State Machine. Queries - multicast \'e8\'eb\'e8 unicast + reliable. Replies - unicast, releable.\par
+\i Requests\i0  - \'ed\'e5 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff.\par
+\pard\par
+\'c5\'f1\'eb\'e8 \'ed\'e0 reliable multicast \'ed\'e5 \'ef\'f0\'e8\'f8\'eb\'ee ACK \'e2 \'f2\'e5\'f7\'e5\'ed\'e8\'e8 \i multicast flow timer \i0 (\'e8\'e7\'ec\'e5\'f0\'ff\'e5\'f2\'f1\'ff \'e2 \'ec\'e8\'eb\'eb\'e8\'f1\'e5\'ea\'f3\'ed\'e4\'e0\'f5)\'ee\'f2 \'ea\'e0\'ea\'ee\'e3\'ee-\'f2\'ee neighbor, \'ef\'e0\'ea\'e5\'f2 \'ef\'e5\'f0\'e5\'f1\'fb\'eb\'e0\'e5\'f2\'f1\'ff \'e5\'f9\'b8 \'f0\'e0\'e7 \'f3\'e6\'e5 unicast-\'ee\'ec \'ef\'e5\'f0\'f1\'ee\'ed\'e0\'eb\'fc\'ed\'ee \'e4\'eb\'ff \'fd\'f2\'ee\'e3\'ee neighbor-\'e0. \'c5\'f1\'eb\'e8 \'f7\'e5\'f0\'e5\'e7 \i retransmission timeout (RTO)\i0  (\'ec\'e8\'eb\'eb\'e8\'f1\'e5\'ea\'f3\'ed\'e4\'e0\'f5) \'ee\'ef\'ff\'f2\'fc \'ed\'e5 \'ef\'f0\'e8\'f8\'b8\'eb ACK, \'ef\'ee\'e2\'f2\'ee\'f0\'ed\'ee unicast.\par
+\par
+Multicast flow timer \'e8 RTO \'e2\'fb\'f1\'f7\'e8\'f2\'fb\'e2\'e0\'fe\'f2\'f1\'ff \'e4\'eb\'ff \'ea\'e0\'e6\'e4\'ee\'e3\'ee neighbor \'e8\'e7 \i smooth round-trip time (SRTT)\i0  - \'f1\'f0\'e5\'e4\'ed\'e8\'e9 round-trip \'ec\'e5\'e6\'e4\'f3 \'f1\'ee\'f1\'e5\'e4\'ff\'ec\'e8 - \'f4\'ee\'f0\'ec\'f3\'eb\'e0 proprietary.\par
+\par
+\ul Neighbor Discovery/Recovery\ulnone\par
+\par
+Hellos \'e2 \'e1\'ee\'eb\'fc\'f8\'e5\'ed\'f1\'f2\'e2\'e5 \'f1\'e5\'f2\'ff\'f5 multicast \'ea\'e0\'e6\'e4\'fb\'e5 5 \'f1\'e5\'ea.\par
+\'c2 NBMA \'f1\'e5\'f2\'ff\'f5, \'f2\'e0\'ea\'e8\'f5 \'ea\'e0\'ea FR, ATM ....  unicast \'ea\'e0\'e6\'e4\'fb\'e5 60 \'f1\'e5\'ea.\par
+Point-to-point subinterfaces = 5 \'f1\'e5\'ea.\par
+\par
+\'cd\'c5 \'f2\'f0\'e5\'e1\'f3\'fe\'f2 ACK.\par
+\par
+router(config-if)#\b ip hello-interval eigrp \b0\i as_number seconds\i0\par
+\par
+\'ca\'ee\'e3\'e4\'e0 \'f0\'ee\'f3\'f2\'e5\'f0 \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'f2 Hello, \'e2 \'ed\'b8\'ec \'f1\'ee\'e4\'e5\'f0\'e6\'e8\'f2\'f1\'ff \i hold-timer\i0  = 3 * Hello ~ 15 \'f1\'e5\'ea. \'c5\'f1\'eb\'e8 \'e2 \'f2\'e5\'f7\'e5\'ed\'e8\'e8 hold-time \'f0\'ee\'f3\'f2\'e5\'f0 \'ed\'e5 \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'f2 Hello - \'f1\'ee\'f1\'e5\'e4 unreachable \'e8 DUAL \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2 \'e8\'ed\'f4\'ee\'f0\'ec\'e8\'f0\'ee\'e2\'e0\'f2\'fc \'ee \'ef\'ee\'f2\'e5\'f0\'e5 \'f1\'ee\'f1\'e5\'e4\'e0.\par
+\par
+router(config-if)#\b ip hold-time eigrp \b0\i as_number seconds\i0  \par
+\par
+router#show ip eigrp neighbors detail \par
+IP-EIGRP neighbors for process 1\par
+H   Address                 Interface       Hold Uptime   SRTT   RTO  Q  Seq\par
+                                            (sec)         (ms)       Cnt Num\par
+0   10.0.23.4               Fa0/1             13 00:00:51  12   200  0  19\par
+   Version 12.4/1.2, Retrans: 1, Retries: 0\par
+   Stub Peer Advertising ( CONNECTED SUMMARY ) Routes\par
+   Suppressing queries\par
+1   10.0.23.3               Fa0/1             12 00:01:42  12   200  0  24\par
+   Version 12.4/1.2, Retrans: 0, Retries: 0, Prefixes: 1\par
+router#\par
+\par
+router#show ip eigrp neighbors\par
+IP-EIGRP neighbors for process 1\par
+H\tab Address\tab Interface\tab Hold\tab Uptime\tab SRTT\tab RTO\tab Q\tab Seq\par
+\tab\tab\tab\tab\tab (sec)\tab\tab\tab (ms)\tab\tab Cnt\tab Num\par
+3\tab 10.1.1.2\tab Et0\tab\tab 10\tab 09:01:27\tab 12\tab 200\tab 0\tab 5\par
+2\tab 10.1.4.2\tab Se1\tab\tab 13\tab 09:02:11\tab 23\tab 200\tab 0\tab 11\par
+1\tab 10.1.2.2\tab Et1\tab\tab 14\tab 09:02:12\tab 8\tab 200\tab 0\tab 15\par
+0\tab 10.1.3.2\tab Se0\tab\tab 12\tab 09:02:12\tab 21\tab 200\tab 0\tab 13\par
+router#\par
+\par
+Q Cnt - \'f1\'ea\'ee\'eb\'fc\'ea\'ee \'f0\'e0\'e7 \'e7\'e0\'ea\'e0\'ed\'f7\'e8\'e2\'e0\'eb\'f1\'ff RTO\par
+Seq Num - \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e8\'e9 sequence number, \'ef\'f0\'e8\'f8\'e5\'e4\'f8\'e8\'e9 \'ee\'f2 \'f1\'ee\'f1\'e5\'e4\'e0\par
+\par
+\ul Diffusing Update Algorithm\ulnone\par
+\par
+\b Diffusing computation\b0  \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2\'f1\'ff - \'d2\'ce\'cb\'dc\'ca\'ce \'e5\'f1\'eb\'e8 \'cd\'c5\'d2 \b Feasible successor\b0  !!!\par
+\par
+\'cf\'f0\'e8 \'e2\'ea\'eb\'fe\'f7\'e5\'ed\'e8\'e8 \'f0\'ee\'f3\'f2\'e5\'f0 \'f8\'eb\'b8\'f2 Hello. \'cd\'e0\'f8\'b8\'eb \'f1\'ee\'f1\'e5\'e4\'e0 -> \'f3\'f1\'f2\'e0\'ed\'e0\'e2\'eb\'e8\'e2\'e0\'e5\'f2 adjacency. \'cf\'ee\'eb\'f3\'f7\'e0\'e5\'f2 update \'ee\'f2 neighbor c routes \'e8 metrics = \i advertise distance (AD)\i0 . \'cd\'e0 \'ee\'f1\'ed\'ee\'e2\'e0\'ed\'e8\'e8 metrics \'e8 cost link-\'e0 \'f0\'ee\'f3\'f2\'e5\'f0 \'e2\'fb\'f7\'e8\'f1\'eb\'ff\'e5\'f2 metric \'ea \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'e0\'ec.\par
+\par
+\'cd\'e0\'e8\'ec\'e5\'ed\'fc\'f8\'e0\'ff \'ec\'e5\'f2\'f0\'e8\'ea\'e0 \'ea \'f4\'e8\'ea\'f1\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'ee\'ec\'f3 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'f3 - \i feasible distance (FD)\i0 .\par
+\i Feasibility condition (FC)\i0  - \'fd\'f2\'ee \'ea\'ee\'e3\'e4\'e0 AD < FD -> \'f1\'ee\'f1\'e5\'e4 \'f1\'f2\'e0\'ed\'ee\'e2\'e8\'f2\'f1\'ff \i Feasible successor\i0 .\par
+\par
+\'c2\'f1\'e5 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'fb \'e8 successors \'e7\'e0\'ef\'e8\'f1\'fb\'e2\'e0\'fe\'f2\'f1\'ff \'e2 topology table:\par
+\par
+router#show ip eigrp topology \par
+IP-EIGRP Topology Table for AS(1)/ID(10.0.12.1)\par
+\par
+Codes: P - Passive, A - Active, U - Update, Q - Query, R - Reply,\par
+       r - reply Status, s - sia Status \par
+\par
+P 10.0.12.0/24, 1 successors, FD is 28160\par
+        via Connected, FastEthernet0/0\par
+P 10.0.23.0/24, 2 successors, FD is 30720\par
+        via 10.0.12.2 (30720/28160), FastEthernet0/0\par
+        via 10.0.12.3 (30720/28160), FastEthernet0/0\par
+router#\par
+\par
+router#show ip eigrp topology 10.0.23.0/24\par
+IP-EIGRP (AS 1): Topology entry for 10.0.23.0/24\par
+  State is Passive, Query origin flag is 1, 2 Successor(s), FD is 30720\par
+  Routing Descriptor Blocks:\par
+  10.0.12.2 (FastEthernet0/0), from 10.0.12.2, Send flag is 0x0\par
+      Composite metric is (30720/28160), Route is Internal\par
+      Vector metric:\par
+        Minimum bandwidth is 100000 Kbit\par
+        Total delay is 200 microseconds\par
+        Reliability is 255/255\par
+        Load is 1/255\par
+        Minimum MTU is 1500\par
+        Hop count is 1\par
+  10.0.12.3 (FastEthernet0/0), from 10.0.12.3, Send flag is 0x0\par
+      Composite metric is (30720/28160), Route is Internal\par
+      Vector metric:\par
+        Minimum bandwidth is 100000 Kbit\par
+        Total delay is 200 microseconds\par
+        Reliability is 255/255\par
+        Load is 1/255\par
+        Minimum MTU is 1500\par
+        Hop count is 1\par
+router1#\par
+\par
+\'c8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'e5 \'ec\'e5\'f2\'f0\'e8\'ea\'e8:\par
+router(config-if)#\b bandwidth\b0  \i bandwidth\i0\par
+router(config-if)#\b delay \b0\i delay\i0\par
+router(config-if)#\b ip bandwidth-percent eigrp\b0\par
+router(config-router)#\b metric weights \b0 0 0 0 1 0 0 - \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'f2\'ee\'eb\'fc\'ea\'ee delay\par
+\par
+\ul DUAL Finite State Machine\ulnone\par
+\par
+\'ca\'ee\'e3\'e4\'e0 \'e2\'f1\'b8 \'ed\'ee\'f0\'ec\'e0\'eb\'fc\'ed\'ee \'ed\'e8\'ea\'e0\'ea\'e8\'f5 \i Diffusing computations\i0  \'ed\'e5 \'ef\'f0\'ee\'e8\'f1\'f5\'ee\'e4\'e8\'f2, \'ea\'e0\'e6\'e4\'fb\'e9 route \'e2 topology table \'e2 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e8 P - Passive.\par
+\par
+\'c5\'f1\'eb\'e8 \'f1\'f0\'e0\'e1\'e0\'f2\'fb\'e2\'e0\'e5\'f2 event:\par
+1. \'c8\'e7\'ec\'e5\'ed\'e8\'eb\'f1\'ff cost \'f3 directly connected link-\'e0\par
+2. \'c8\'e7\'ec\'e5\'ed\'e8\'eb\'ee\'f1\'fc \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e5 UP/DOWN \'f3 directly connected link-\'e0\par
+3. \'cf\'f0\'e8\'f8\'b8\'eb Update \'ef\'e0\'ea\'f2\'e5\par
+4. \'cf\'f0\'e8\'f8\'b8\'eb Query \'ef\'e0\'ea\'e5\'f2\par
+5. \'cf\'f0\'e8\'f8\'b8\'eb Reply \'ef\'e0\'ea\'e5\'f2\par
+\par
+\'cf\'e5\'f0\'e2\'fb\'ec \'e4\'e5\'eb\'ee\'ec \'ef\'f0\'ee\'e8\'f1\'f5\'ee\'e4\'e8\'f2 \i Local Computation\i0  - \'e5\'f1\'eb\'e8 \'ed\'e0\'e4\'ee \'e2\'fb\'e1\'ee\'f0 \'ed\'ee\'e2\'ee\'e3\'ee successor-\'e0, \'ef\'e5\'f0\'e5\'f1\'f7\'b8\'f2 \'ec\'e5\'f2\'f0\'e8\'ea. \'c2\'f1\'e5 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'fb \'ee\'f1\'f2\'e0\'fe\'f2\'f1\'ff \'e2 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e8 Passive.\par
+\par
+\'c5\'f1\'eb\'e8 Feasible successor-\'e0 \'ed\'e5\'f2 \'e2 topology table, \'f0\'ee\'f3\'f2\'e5\'f0 \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2 diffusing computation \'e8 \'ec\'e0\'f0\'f8\'f0\'f3\'f2 \'ec\'e5\'ed\'ff\'e5\'f2 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e5 \'ed\'e0 A - Active\par
+\par
+\'d7\'f2\'ee-\'f2\'ee \'e7\'e0\'e2\'ff\'e7\'e0\'ed\'ee \'ed\'e0 \'f4\'eb\'e0\'e3\'e0\'f5: r - \i replay status\i0  \'e8 O - \i query origin\i0\par
+\par
+\'d0\'ee\'f3\'f2\'e5\'f0 \'ef\'ee\'f1\'fb\'eb\'e0\'e5\'f2 Queries \'e2\'f1\'e5\'ec \'f1\'e2\'ee\'e8\'ec \'f1\'ee\'f1\'e5\'e4\'ff\'ec \'f1 \'ed\'ee\'e2\'fb\'ec AD (AD \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc = infinite) \'ea \'e4\'e0\'ed\'ed\'ee\'ec\'f3 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'f3. \'d1\'ee\'f1\'e5\'e4\'e8 \'ed\'e0\'f7\'e8\'ed\'e0\'fe\'f2 local computation. \'c5\'f1\'eb\'e8 \'f3 \'ed\'e8\'f5 \'ed\'e5\'f2 \'fd\'f2\'ee\'e3\'ee \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'e0, \'f2\'ee \'f2\'ee\'e6\'e5 \'ef\'e5\'f0\'e5\'f5\'ee\'e4\'ff\'f2 \'e2 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e5 active. \'c5\'f1\'eb\'e8 \'e5\'f1\'f2\'fc, \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'fe\'f2 Replay.\par
+\par
+\'cf\'e5\'f0\'e5\'f5\'ee\'e4 \'e8\'e7 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'ff A -> P \'ea\'ee\'e3\'e4\'e0 \'ed\'e0 \'ea\'e0\'e6\'e4\'fb\'e9 query \'ef\'ee\'eb\'f3\'f7\'e5\'ed replay.\par
+\par
+\'c2 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e8 A \'f0\'ee\'f3\'f2\'e5\'f0 \'ec\'ee\'e6\'e5\'f2 \'ed\'e0\'f5\'ee\'e4\'e8\'f2\'f1\'ff \'e2 \'f2\'e5\'f7\'e5\'ed\'e8\'e8 3 \'ec\'e8\'ed. \'c5\'f1\'eb\'e8 \'e7\'e0 \'fd\'f2\'ee \'e2\'f0\'e5\'ec\'ff \'ed\'e5 \'ef\'ee\'eb\'f3\'f7\'e5\'ed\'ed\'fb \'e2\'f1\'e5 reply \'e8\'e7-\'e7\'e0 \'ec\'e5\'e4\'eb\'e5\'ed\'ed\'fb\'f5 \'eb\'e8\'ed\'ea\'ee\'e2, \'ed\'e0\'f7\'e8\'ed\'e0\'fe\'f2\'f1\'ff \'e7\'e0\'ec\'ee\'f0\'ee\'f7\'ea\'e8 \'f1 \i stuck-in-active (SIA)\i0  \'f3\'e4\'e0\'eb\'e5\'ed\'e8\'e5 \'f1\'ee\'f1\'e5\'e4\'e5\'e9 \'e8\'e7 neighbor table \'e8 \'f2.\'e4.\par
+\par
+router(config-router)#\b timers active-time \b0\i minutes\i0\par
+\par
+\ul\'d4\'ee\'f0\'ec\'e0\'f2 EIGRP \'ef\'e0\'ea\'e5\'f2\'e0\ulnone\par
+\par
+|\tab 8\tab |\tab 8\tab |\tab 8\tab |\tab 8\tab |\par
+|-----------------------------------------------|\par
+|  Version  |   OPCODE  |       Checksum        |\par
+|-----------------------------------------------|\par
+|\tab\tab\tab     Flags\tab\tab\tab\tab |\par
+|-----------------------------------------------|\par
+|\tab\tab\tab    Sequence\tab\tab\tab\tab |\par
+|-----------------------------------------------|\par
+|\tab\tab\tab\tab ACK\tab\tab\tab\tab |\par
+|-----------------------------------------------|\par
+|\tab\tab Autonomous System Number\tab\tab |\par
+|-----------------------------------------------|\par
+|\tab\tab\tab\tab\tab\tab\tab\tab |\par
+|\tab\tab\tab\tab TLVs\tab\tab\tab\tab |\par
+|\tab\tab\tab\tab\tab\tab\tab\tab |\par
+-------------------------------------------------\par
+\par
+\i Version\i0  - \'e2\'e5\'f0\'f1\'e8\'e8 EIGRP 0 \'e8\'eb\'e8 1\par
+\i Opcode\i0  - \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'e5\'f2 \'f2\'e8\'ef \'ef\'e0\'ea\'e5\'f2\'e0\par
+\pard\fi710 1\tab Update\par
+3\tab Query\par
+4\tab Replay\par
+5\tab Hello\par
+6\tab IPX SAP\par
+10\tab SIA Query\par
+11\tab SIA Replay\par
+\pard\i Checksum\i0  - \'f1\'f2\'e0\'ed\'e4\'e0\'f0\'f2\'ed\'e0\'ff IP \'f7\'e5\'ea\'f1\'f3\'ec\'ec\'e0\par
+\i Flags\i0  - \'ec\'f3\'f2\'fc, \'ed\'e8\'f7\'e5\'e3\'ee \'e8\'ed\'f2\'e5\'f0\'e5\'f1\'ed\'ee\'e3\'ee\par
+\i Sequence\i0  - \'ec\'ee\'e9 \'ef\'ee\'f0\'ff\'e4\'ea\'ee\'e2\'fb\'e9 \'ed\'ee\'ec\'e5\'f0 \'ef\'e0\'ea\'e5\'f2\'e0\par
+\pard\fi-710\li710\i ACK\i0  - \'ef\'ee\'f0\'ff\'e4\'ea\'ee\'e2\'fb\'e9 \'ed\'ee\'ec\'e5\'f0 \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e5\'e3\'ee \'ef\'ee\'eb\'f3\'f7\'e5\'ed\'ed\'ee\'e3\'ee \'ef\'e0\'ea\'e5\'f2\'e0 \'ee\'f2 \'e4\'e0\'ed\'ed\'ee\'e3\'ee \'f1\'ee\'f1\'e5\'e4\'e0. Hello \'ef\'e0\'ea\'e5\'f2 \'f1 ACK = \'ed\'e5 0 \'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2, \'f7\'f2\'ee \'fd\'f2\'ee \'ed\'e5 Hello, \'e0 Acknowledgment\par
+\pard\i AS number\i0  - \'e8\'e4\'e5\'ed\'f2\'e8\'f4\'e8\'ea\'e0\'f6\'e8\'ee\'ed\'ed\'fb\'e9 \'ed\'ee\'ec\'e5\'f0 EIGRP \'e4\'ee\'ec\'e5\'ed\'e0\par
+\i TLVs\i0  - \'e1\'fb\'e2\'e0\'fe\'f2 \'f1\'eb\'e5\'e4\'f3\'fe\'f9\'e8\'ec\'e8:\par
+\pard\li710 General TLV Types\par
+-----------------------------------\par
+0x0001\tab\tab EIGRP Parameters\par
+0x0003\tab\tab Sequence\par
+0x0004\tab\tab Software version\par
+0x0005\tab\tab Next Multicast Sequence\par
+-----------------------------------\par
+IP-Specific TLV Types\par
+-----------------------------------\par
+0x0102\tab\tab IP Internal Routes\par
+0x0103\tab\tab IP External Routes\par
+\pard\par
+\ul General TLV \'ef\'ee\'eb\'ff\par
+\par
+\ulnone |\tab 8\tab |\tab 8\tab |\tab 8\tab |\tab 8\tab |\par
+|-----------------------------------------------|\par
+|\tab TYPE = 0x0001\tab |\tab    Length\tab\tab |\par
+|-----------------------------------------------|\par
+|\tab K1\tab |\tab K2\tab |\tab K3\tab |\tab K4\tab |\par
+|-----------------------------------------------|\par
+|\tab K5\tab |  RESERVED\tab |\tab   HOLD TIME\tab\tab |\par
+-------------------------------------------------\par
+\par
+\'ce\'f1\'f2\'e0\'eb\'fc\'ed\'fb\'e5 \'f2\'e8\'ef\'fb 0x0003 \'e8 \'f2.\'e4. - Cisco proprietary\par
+\par
+\ul IP-Specific TLV \'ef\'ee\'eb\'ff\ulnone\par
+\par
+\pard\fi-710\li710 router(config-router)#\b variance \b0\i multiplie\i0  - \'e4\'eb\'ff load balancing\par
+router(config-router)#\b maximum-paths\b0  \i numberof paths\i0  - \'e4\'ee 32 \'ef\'e0\'f0\'e0\'eb\'eb\'e5\'eb\'fc\'ed\'fb\'f5 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'ee\'e2 (default=4)\par
+\par
+\pard\par
+router(config-if)#\b ip summary-address eigrp\b0  \i as_number\i0  \i address mask\i0\par
+\par
+\ul Inject default route\ulnone\par
+\par
+router(config)#ip route 0.0.0.0 0.0.0.0 x.x.x.x\par
+router(config-router)#redistribute static\par
+\par
+\ul\'c0\'f3\'f2\'e5\'ed\'f2\'e8\'f4\'e8\'ea\'e0\'f6\'e8\'ff\ulnone\par
+\par
+key chain XXX\par
+ key 1\par
+ key-string AAA\par
+interface Fa0/0\par
+ ip authentication key-chain eigrp 1 XXX\par
+ ip authentication mode eigrp 1 md5\par
+\par
+Hellos \'e2 \'e1\'ee\'eb\'fc\'f8\'e5\'ed\'f1\'f2\'e2\'e5 \'f1\'e5\'f2\'ff\'f5 multicast \'ea\'e0\'e6\'e4\'fb\'e5 5 \'f1\'e5\'ea.\par
+\'c2 NBMA \'f1\'e5\'f2\'ff\'f5, \'f2\'e0\'ea\'e8\'f5 \'ea\'e0\'ea FR, ATM ....  unicast \'ea\'e0\'e6\'e4\'fb\'e5 60 \'f1\'e5\'ea.\par
+}
+ 

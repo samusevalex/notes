@@ -1,0 +1,675 @@
+{\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}{\f1\fnil\fcharset0 Courier New;}{\f2\fnil\fcharset2 Symbol;}}
+{\colortbl ;\red0\green0\blue255;\red0\green176\blue80;\red0\green0\blue0;\red155\green0\blue211;\red247\green150\blue70;\red243\green164\blue71;\red75\green172\blue198;\red0\green77\blue187;\red209\green99\blue73;\red127\green0\blue85;\red79\green129\blue189;\red255\green0\blue0;}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\nowidctlpar\hyphpar0\lang1049\kerning1\f0\fs22{\field{\*\fldinst{HYPERLINK "https://iu5edu.ru/wiki/devops/docs/labs/gitcicd/cicd/gitlab/"}}{\fldrslt{\ul\cf1 https://iu5edu.ru/wiki/devops/docs/labs/gitcicd/cicd/gitlab/}}}\lang1033\f1\fs22\tab\tab\lang1049\f0\'e4\'ee\'ea\'f3\'ec\'e5\'ed\'f2\'e0\'f6\'e8\'ff \'ed\'e0 \'f0\'f3\'f1\'f1\'ea\'ee\'ec\par
+\'d7\'f2\'ee \'ed\'e0\'e4\'ee \'e4\'eb\'ff \'f0\'e0\'e7\'f0\'e0\'e1\'ee\'f2\'ea\'e8:\par
+\tab - Jira\par
+\tab - BugTracker - \'e7\'e0\'ea\'e0\'e7\'f7\'e8\'ea\'f3 \'f7\'f2\'ee-\'f2\'ee \'ed\'e5 \'ed\'f0\'e0\'e2\'e8\'f2\'f1\'ff - \'ef\'e8\'f8\'e5\'f2 \'f1\'fe\'e4\'e0\par
+\tab - Confluence\par
+\tab - \'d1\'f2\'e5\'ed\'e4\'fb Dev \'e8 Test \'e4\'ee\'eb\'e6\'ed\'fb \'e1\'fb\'f2\'fc \'f3 \'e7\'e0\'ea\'e0\'e7\'f7\'e8\'ea\'e0\par
+\tab - \'ca\'ee\'e4\'fb \'ed\'e0 GitLab \'e4\'ee\'eb\'e6\'ed\'fb \'f3\'f1\'ef\'e5\'f8\'ed\'ee \'f1\'ee\'e1\'e8\'f0\'e0\'f2\'fc\'f1\'ff \'ef\'f0\'ee\'f1\'f2\'fb\'ec #git clone ...\par
+\par
+\kerning0 Proxmox VE ~ \'f2\'ee\'e6\'e5 \'f7\'f2\'ee \'e8 VmWare vSphere \'f2\'ee\'eb\'fc\'ea\'ee \'e4\'eb\'ff KVM.\kerning1\par
+\par
+\lang1033\kerning0\f1\tab\ul Vagrant\ulnone  - \lang1049\kerning1\f0\'f0\'e0\'e7\'f0\'e0\'e1\'ee\'f2\'f7\'e8\'ea HashiCorp. \'d1\kerning0\'e8\'f1\'f2\'e5\'ec\'e0 \'e0\'e2\'f2\'ee\'ec\'e0\'f2\'e8\'e7\'e0\'f6\'e8\'e8 \'e2\'e8\'f0\'f2\'f3\'e0\'eb\'fc\'ed\'fb\'f5 \'f1\'f0\'e5\'e4\lang1033\f1 .\lang1049\f0  \'cf\'ee \lang1033\f1 default \lang1049\f0\'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2 \lang1033\f1 VirtualBox. \lang1049\f0\'cd\'ee \'f3\'ec\'e5\'e5\'f2 \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc \'e8 \'f1 \lang1033\f1 VmWare \lang1049\f0\'e8 \lang1033\f1 KVM.\par
+\lang1049\f0\'cd\'e0 \'e4\'ee\'ec\'e0\'f8\'ed\'e5\'ec \'ea\'ee\'ec\'ef\'e5, \'f1 \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'eb\'e5\'ed\'ed\'fb\'ec \lang1033\f1 VirtualBox\lang1049\f0 , \'e2 \'ef\'e0\'ef\'ea\'e5 \lang1033\f1 /myapp \lang1049\f0\'f1\'ee\'e7\'e4\'e0\'b8\'ec\lang1033\f1  \cf2\b index.html\cf0\b0  \lang1049\f0\'e8 script.sh (#apt install nginx + \lang1033\f1 #cat > \lang1049\f0 nginx.conf \lang1033\f1 << EOF \lang1049\f0 + \lang1033\f1 #systemctl start\lang1049\f0  nginx)\lang1033\f1\par
+#cd myapp\par
+#vagrant init -m bento/ubuntu-18.04\lang1049\f0\par
+\'e2 \'ef\'e0\'ef\'ea\'e5 \lang1033\f1 myapp\lang1049\f0  \'ef\'ee\'ff\'e2\'e8\'f2\'f1\'ff \'f4\'e0\'e9\'eb Vagrantfile, \'ed\'e0\'ef\'e8\'f1\'e0\'ed\'ed\'fb\'e9 \'ed\'e0 \lang1033\f1 Ruby\lang1049\f0\par
+\lang1033\f1\tab\lang1049\f0 Vagrant.configure("2") do |config|\par
+\lang1033\f1\tab\lang1049\f0   config.vm.box = "bento/ubuntu-18.04"\par
+\lang1033\f1\tab\lang1049\f0 end\par
+\'e4\'ee\'e1\'e0\'e2\'e8\'ec \'e2 \'ed\'b8\'ec \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e8: \lang1033\f1 CPUs 1; RAM \lang1049\f0 2\'c3\'e1\lang1033\f1 ; forward port \cf3\lang1049\kerning1\f0\u8594?\cf0\lang1033\kerning0\f1  guest: 80, host: \cf4\b 8080\cf0\b0 ; \lang1049\f0\'f1\'e8\'ed\'f5\'f0\'ee\'ed\'e8\'e7\'e8\'f0\'ee\'e2\'e0\'f2\'fc \'ef\'e0\'ef\'ea\'f3 /\lang1033\f1 myapp\lang1049\f0  \'f1 \'ef\'e0\'ef\'ea\'ee\'e9 \'e2\'ed\'f3\'f2\'f0\'e8 \lang1033\f1 VM \lang1049\f0 /usr/share/nginx/html/\lang1033\f1  \lang1049\f0\'e8 \'ef\'ee\'f1\'eb\'e5 \'f1\'ee\'e7\'e4\'e0\'ed\'e8\'ff \lang1033\f1 VM \lang1049\f0\'e7\'e0\'ef\'f3\'f1\'f2\'e8\'f2\'fc \'e2 \'ed\'e5\'e9 \lang1033\f1 script.sh\par
+#vagrant up\par
+\lang1049\f0\'c2 \'e1\'f0\'e0\'f3\'e7\'e5\'f0\'e5 \lang1033\f1 hxxp://localhost:\cf4\b 8080\cf0\b0  \lang1049\f0\'ee\'f2\'ee\'e1\'f0\'e0\'e7\'e8\'f2\'f1\'ff \cf2\lang1033\b\f1 index.html\cf0\b0\par
+\lang1049\kerning1\f0\par
+\tab\ul Terraform\ulnone  - \'f0\'e0\'e7\'f0\'e0\'e1\'ee\'f2\'f7\'e8\'ea HashiCorp. \'c8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'ef\'f0\'e8 \'f0\'e0\'e1\'ee\'f2\'e5 \'f1 \lang1033\f1 Clouds\lang1049\f0  \'f2\'e8\'ef\'e0 Infrastructure as Code (IaC).\par
+{\field{\*\fldinst{HYPERLINK "https://habr.com/ru/companies/nixys/articles/721404/"}}{\fldrslt{\ul\cf1 https://habr.com/ru/companies/nixys/articles/721404/}}}\f0\fs22\par
+\'cd\'e0 \'e4\'ee\'ec\'e0\'f8\'ed\'e5\'ec \'ea\'ee\'ec\'ef\'e5 \'e2 \'f4\'e0\'e9\'eb\'e5 foo.tf \'ee\'ef\'e8\'f1\'fb\'e2\'e0\'e5\'ec:\par
+provider "aws" \{\tab\tab\'e1\'f3\'e4\'e5\'ec \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'ee\'e1\'eb\'e0\'ea\'ee Amazon\par
+   access_key = "Akdf15Tq"\tab\'e1\'e5\'f0\'b8\'ec \'e8\'e7 \'f1\'e2\'ee\'e5\'e3\'ee Amazon account-\'e0\par
+   secret_key = "Hjd896Rg"\par
+   region = "eu-central-1"\tab\'f3 Amazon \'f1\'e5\'f0\'e2\'e5\'f0\'ed\'fb\'e5 \'e2 \'f0\'e0\'e7\'ed\'fb\'f5 \'f1\'f2\'f0\'e0\'ed\'e0\'f5. \'d5\'ee\'f2\'e8\'ec \'f0\'e0\'e7\'e2\'e5\'f0\'ed\'f3\'f2\'fc \'e2 \'c5\'e2\'f0\'ee\'ef\'e5.\par
+\}\par
+\par
+data "\cf4\b vkcs_images_image\cf0\b0 " "\cf2\b compute\cf0\b0 " \{\lang1033\f1\tab\tab\lang1049\f0\'fd\'f2\'ee \lang1033\f1 Data Source. \lang1049\f0\'cf\'ee\'e7\'e2\'ee\'eb\'ff\'e5\'f2 \'ef\'ee\'eb\'f3\'f7\'e8\'f2\'fc, \'e2 \'ed\'e0\'f8\'e5\'ec \'ef\'f0\'e8\'ec\'e5\'f0\'e5 \lang1033\f1 id \lang1049\f0 resource\lang1033\f1 -\lang1049\f0\'e0, \'f3\'e6\'e5 \'f1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'fe\'f9\'e5\'e3\'ee \'f3 \'ef\'f0\'ee\'e2\'e0\'e9\'e4\'e5\'f0\'e0.\lang1033\f1  \lang1049\f0\'c2 \'ea\'ee\'ed\'f4\'e8\'e3\'e5 \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee "vkcs_images_image", \'ed\'ee \'f3 \'ea\'e0\'e6\'e4\'ee\'e3\'ee \'e4\'ee\'eb\'e6\'e5\'ed \'e1\'fb\'f2\'fc \'f3\'ed\'e8\'ea\'e0\'eb\'fc\'ed\'fb\'e9 \lang1033\f1 name\lang1049\f0 ="\lang1033\f1 compute\lang1049\f0 "\par
+  name                    = "Debian11.4"\par
+\}\par
+resource "vkcs_compute_instance" "compute" \{\par
+  name                    = "Debian11.4_STD2-1-1_10GB"\par
+  flavor_name             = "STD2-1-1"\par
+  key_pair                = "home"\par
+  security_groups         = ["default","ssh"]\par
+  availability_zone       = "GZ1"\par
+  block_device \{\par
+    source_type           = "image"\par
+    uuid                  = data.\cf4\b vkcs_images_image\cf0\b0 .\cf2\b compute\cf0\b0 .id\tab\'e7\'e4\'e5\'f1\'fc \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'ec \lang1033\f1 Data Source\lang1049\f0\par
+    destination_type      = "volume"\par
+    volume_size           = 10\par
+    delete_on_termination = true\par
+  \}\par
+  network \{\par
+    name = "ext-net"\par
+  \}\par
+\}\par
+\lang1033\f1 #\lang1049\f0 terraform init\lang1033\f1\tab\tab\lang1049\f0\'f1\'ea\'e0\'f7\'e0\'e5\'f2 \lang1033\f1 plugin (\lang1049\f0\'e1\'e8\'ed\'e0\'f0\'ed\'e8\'ea\lang1033\f1 )\lang1049\f0  \'e4\'eb\'ff \'e2\'e7\'e0\'e8\'ec\'ee\'e4\'e5\'e9\'f1\'f2\'e2\'e8\'ff \'f1 aws\par
+\lang1033\f1 #terraform validate\tab\lang1049\f0\'e2\'e0\'eb\'e8\'e4\'e0\'f6\'e8\'ff \'f1\'e8\'ed\'f2\'e0\'ea\'f1\'e8\'f1\'e0 \lang1033\f1 foo.tf \lang1049\f0\'f4\'e0\'e9\'eb\'e0\par
+\lang1033\f1 #\lang1049\f0 terraform \lang1033\f1 plan\tab\tab\lang1049\f0\'e2 \'ea\'ee\'ed\'f1\'ee\'eb\'e5 \'ee\'f2\'ee\'e1\'f0\'e0\'e7\'e8\'f2 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff, \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'e1\'f3\'e4\'f3\'f2 \'f1\'e4\'e5\'eb\'e0\'ed\'fb \'e2 \lang1033\f1 cloud\lang1049\f0  = \'e4\'e5\'eb\'fc\'f2\'e0 \'ec\'e5\'e6\'e4\'f3 \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e0\'f6\'e8\'e5\'e9, \'ea\'ee\'f2\'ee\'f0\'e0\'ff \'f3\'e6\'e5 \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'e2 \'ee\'e1\'eb\'e0\'ea\'e5, \'ee\'f2 \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e0\'f6\'e8\'e8 \'e2 \lang1033\f1 foo.tf\lang1049\f0\par
+\lang1033\f1 #\lang1049\f0 terraform apply\lang1033\f1\tab\tab\lang1049\f0\'f1\'f0\'e0\'e2\'ed\'e8\'e2\'e0\'e5\'f2 "\'f1\'ee\'e4\'e5\'f0\'e6\'e0\'ed\'e8\'e5" .\lang1033\f1 tf \lang1049\f0\'f4\'e0\'e9\'eb\'ee\'e2 \'e8 "\'f1\'ee\'e4\'e5\'f0\'e6\'e0\'ed\'e8\'e5" \lang1033\f1 terraform.tfstate\lang1049\f0 , \'e2\'e8\'e4\'e8\'f2 \'f0\'e0\'e7\'ed\'e8\'f6\'f3 \'e8 \'fd\'f2\'f3 \'f0\'e0\'e7\'ed\'e8\'f6\'f3 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \'e2 Amazon\par
+\lang1033\f1 #\lang1049\f0 terraform \lang1033\f1 refresh\tab\lang1049\f0\'ee\'e1\'ed\'ee\'e2\'eb\'ff\'e5\'f2 \lang1033\f1 terraform.tfstate\lang1049\f0  = \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'fe \'ee\'e1\'eb\'e0\'ea\'e0\par
+#terraform \lang1033\f1 state list\par
+\lang1049\f0 #terraform \lang1033\f1 state show \lang1049\f0 vkcs_compute_instance\lang1033\f1 .\lang1049\f0 compute\par
+\lang1033\f1\par
+{\field{\*\fldinst{HYPERLINK "https://www.andreyus.com/vmware-i-terraform/"}}{\fldrslt{\ul\cf1 https://www.andreyus.com/vmware-i-terraform/}}}\lang1049\f0\fs22\par
+\par
+\'c5\'f1\'f2\'fc \'ef\'ee\'e4\'f5\'ee\'e4: \'c2 \lang1033\f1 vk cloud \lang1049\f0\'f0\'f3\'f7\'ea\'e0\'ec\'e8 \'f1\'ee\'e7\'e4\'e0\'b8\'ec \lang1033\f1 VM. \lang1049\f0\'c7\'e0\'f5\'ee\'e4\'e8\'ec \'e2 \'e5\'b8 \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e8 \'e8 \'ea\'ee\'ef\'e8\'f0\'f3\'e5\'ec \lang1033\f1 ID VM \cf5\b b4a7\cf0\b0\par
+\lang1049\f0\'d1\'ee\'e7\'e4\'e0\'b8\'ec \'f4\'e0\'e9\'eb\'e5 \lang1033\f1 main.tf\par
+\tab resource "vkcs_compute_instance" "vm" \{\par
+\tab\}\lang1049\f0\par
+\lang1033\f1 #terraform import vkcs_compute_instance.vm \cf5\b b4a7\cf0\b0\par
+#terraform show\tab\tab\lang1049\f0\'ee\'f2\'ee\'e1\'f0\'e0\'e7\'e8\'f2 \'c2\'d1\'c5 \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e8 \lang1033\f1 VM \lang1049\f0\'e2 \'f1\'e8\'ed\'f2\'e0\'ea\'f1\'e8\'f1\'e5 \lang1033\f1 terraform\par
+\par
+terraform.tfstate\lang1049\f0\tab\'ce\'d7\'c5\'cd\'dc \'c2\'c0\'c6\'cd\'db\'c9 \'d4\'c0\'c9\'cb. \'d5\'f0\'e0\'ed\'e8\'f2 \'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'fe \'ee \'f2\'ee\'ec, \'f7\'f2\'ee \'f3 \'ed\'e0\'f1 \'f3\'e6\'e5 \'ef\'ee\'e4\'ed\'ff\'f2\'ee. \'cf\'f0\'ee\'e1\'eb\'e5\'ec\'e0: \'c2\'f0\'ee\'e4\'e5 \'ea\'e0\'ea \'ec\'fb \'ed\'e5 \'ec\'ee\'e6\'e5\'ec \'ee\'f2\'ef\'f0\'e0\'e2\'e8\'f2\'fc \'e2 \'ee\'e1\'eb\'e0\'ea\'ee \'e7\'e0\'ef\'f0\'ee\'f1 "\'cf\'f0\'e8\'f8\'eb\'e8 \'ed\'e0\'ec \'f1\'ef\'e8\'f1\'ee\'ea \'f2\'ee\'e3\'ee, \'f7\'f2\'ee \'f3 \'ed\'e0\'f1 \'e7\'e0\'ef\'f3\'f9\'e5\'ed\'ee". \'cc\'ee\'e6\'e5\'ec \'f2\'ee\'eb\'fc\'ea\'ee \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'f2\'fc "\'d1\'ee\'e7\'e4\'e0\'e9 \lang1033\f1 VM \lang1049\f0\'f1 \'f2\'e0\'ea\'e8\'ec\'e8-\'f2\'ee \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'e0\'ec\'e8", "\'c8\'e7\'ec\'e5\'ed\'e8 \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'fb \'f3 \'f2\'e0\'ea\'ee\'e9-\'f2\'ee \lang1033\f1 VM\lang1049\f0 "\lang1033\f1 ,\lang1049\f0  "\'d3\'e4\'e0\'eb\'e8 \lang1033\f1 VM \lang1049\f0\'f1 \lang1033\f1 ID \lang1049\f0\'f2\'e0\'ea\'e8\'ec-\'f2\'ee".\lang1033\f1  \lang1049\f0\'cf\'eb\'ee\'f5\'ee \'e5\'f1\'eb\'e8 \'f4\'e0\'e9\'eb \'ef\'ee\'f2\'e5\'f0\'ff\'e5\'ec \'e8\'eb\'e8 \'f0\'e0\'f1\'f1\'ee\'e3\'eb\'e0\'f1\'f3\'e5\'ec. \'d0\'e0\'f1\'f1\'ee\'e3\'eb\'e0\'f1\'f3\'e5\'ec - \'fd\'f2\'ee \'ea\'ee\'e3\'e4\'e0 \lang1033\f1 terraform \lang1049\f0\'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'fe\'f2 \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee \'f1\'ee\'f2\'f0\'f3\'e4\'ed\'e8\'ea\'ee\'e2. \'ce\'e4\'e8\'ed \'f7\'f2\'ee-\'f2\'ee \'f1\'e4\'e5\'eb\'e0\'eb \u8594? \'ed\'e0 \'e5\'e3\'ee \'ec\'e0\'f8\'e8\'ed\'e5 \'e8\'e7\'ec\'e5\'ed\'e8\'eb\'f1\'ff \lang1033\f1 terraform.tfstate\lang1049\f0 . \'d2\'e5\'ef\'e5\'f0\'fc \'ed\'e0\'e4\'ee \'fd\'f2\'ee\'f2 \'f4\'e0\'e9\'eb \lang1033\f1 #cp \lang1049\f0\'e2\'f1\'e5\'ec \'ee\'f1\'f2\'e0\'eb\'fc\'ed\'fb\'ec. \'c4\'e5\'eb\'e0\'fe\'f2 \'f2\'e0\'ea: \lang1033\f1 terraform.tfstate\lang1049\f0  \'f1 \'ee\'ef\'e8\'f1\'e0\'ed\'e8\'e5\'ec \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'ff \'f1\'ee\'f5\'f0\'e0\'ed\'ff\'fe\'f2 \'e2 \'c1\'c4 \'e8\'eb\'e8 \lang1033\f1 AWS\lang1049\f0  \lang1033\f1 S3\lang1049\f0 , \'e0 \'f3 \'ea\'e0\'e6\'e4\'ee\'e3\'ee \'ed\'e0 \'ea\'ee\'ec\'ef\'e5 \'f4\'e0\'e9\'eb \lang1033\f1 terraform.tfstate\lang1049\f0  \'f1\'ee\'e4\'e5\'f0\'e6\'e8\'f2 \'f1\'f1\'fb\'eb\'ea\'f3 \'ed\'e0 \'c1\'c4 \'e8\'eb\'e8 \lang1033\f1 AWS\lang1049\f0  \lang1033\f1 S3\lang1049\f0 .\lang1033\f1  \lang1049\f0\'dd\'f2\'ee \'ed\'e0\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff \lang1033\f1 remote backend.\par
+\par
+\lang1049\f0 1. \'ce\'e6\'e8\'e4\'e0\'eb: resource \lang1033\f1 VM \lang1049\f0\'f1 1\lang1033\f1 xCPU, 2xRAM, 10Gb Disk, ext-net. \lang1049\f0\'cf\'ee \'f4\'e0\'ea\'f2\'f3: \'ed\'e0\'e4\'ee \'f1\'ee\'e7\'e4\'e0\'f2\'fc 5 resource, 3 \lang1033\f1 data\lang1049\f0 .\lang1033\f1  \lang1049\f0\'c7\'e0\'ec\'ee\'f0\'ee\'f7 \'f1 \lang1033\f1 routers, float IP - \lang1049\f0\'ea\'ee\'f8\'ec\'e0\'f0.\par
+2. \'cc\'ee\'e6\'ed\'ee \'c2\'d1\'a8 \'f0\'e0\'e7\'ee\'ec \'e7\'e0\'e2\'e0\'eb\'e8\'f2\'fc: \lang1033\f1 #\lang1049\f0 terraform \lang1033\f1 destroy \lang1049\f0\'e8\'eb\'e8 \lang1033\f1 #rm terraform.tfstate\par
+\lang1049\f0 3. \'d3 \'ea\'e0\'e6\'e4\'ee\'e3\'ee provider \'f1\'e2\'ee\'e8 "\'e8\'ec\'e5\'ed\'e0 \'f4\'f3\'ed\'ea\'f6\'e8\'e9" \'f1\'ee \'f1\'e2\'ee\'e8\'ec\'e8 \'ef\'ee\'eb\'ff\'ec\'e8.\lang1033\f1\par
+\lang1049\f0 4. \'c8\'ed\'f2\'f3\'e8\'f2\'e8\'e2\'ed\'ee \'ed\'e5 \'ef\'ee\'ed\'ff\'f2\'ed\'fb\'e9. \'cf\'eb\'ee\'f5\'e0\'ff \'e4\'ee\'ea\'f3\'ec\'e5\'ed\'f2\'e0\'f6\'e8\'ff. \'cc\'ee\'e6\'ed\'ee \'ee\'f2\'f2\'e0\'eb\'ea\'e8\'e2\'e0\'f2\'fc\'f1\'ff \'f2\'ee\'eb\'fc\'ea\'ee \'ee\'f2 \'f0\'e0\'e1\'ee\'f2\'e0\'fe\'f9\'e8\'f5 \'ef\'f0\'e8\'ec\'e5\'f0\'ee\'e2 \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e0\'f6\'e8\'e9, \'ef\'f0\'ee\'e2\'e5\'f0\'e5\'ed\'ed\'fb\'f5 provider-\'ee\'ec.\lang1033\f1\par
+\lang1049\f0 5\lang1033\f1 . \lang1049\f0\'c2\'f0\'ee\'e4\'e5 \'e4\'e5\'ea\'eb\'e0\'f0\'e0\'f2\'e8\'e2\'ed\'fb\'e9 \'ff\'e7\'fb\'ea, \'ed\'ee \'ec\'ee\'e6\'e5\'f2 \'ee\'e1\'f0\'e0\'f9\'e0\'f2\'fc\'f1\'ff \'ea \'e0\'f2\'f0\'e8\'e1\'f3\'f2\'e0\'ec \'e2\'ed\'e5\'f8\'ed\'e8\'f5 \'ee\'e1\'fa\'e5\'ea\'f2\'ee\'e2. \'c8\'e7-\'e7\'e0 \'f7\'e5\'e3\'ee \'e2 \'e3\'ee\'eb\'ee\'e2\'e5 \'e2\'ee\'e7\'ed\'e8\'ea\'e0\'e5\'f2 \'ef\'f3\'f2\'e0\'ed\'e8\'f6\'e0. resource "vkcs_compute_instance" \'ee\'e1\'f0\'e0\'f9\'e0\'e5\'f2\'f1\'ff \'ea data.vkcs_images_image.compute.id\par
+6. \'cd\'e5 \'f1\'ee\'e2\'ec\'e5\'f1\'f2\'e8\'ec \'f1 \lang1033\f1 Web. \lang1049\f0\'d7\'e5\'f0\'e5\'e7 \lang1033\f1 Web\lang1049\f0  \'f1\'ee\'e7\'e4\'e0\'eb\'e8/\'f3\'e4\'e0\'eb\'e8\'eb\'e8 \lang1033\f1 VM - \lang1049\f0\'e2 \lang1033\f1 terraform\lang1049\f0  \'fd\'f2\'ee \'ed\'e8\'ea\'e0\'ea \'ed\'e5 \'ee\'f2\'ee\'e1\'f0\'e0\'e7\'e8\'f2\'f1\'ff.\par
+\lang1033\f1 7. \lang1049\f0\'c2 \lang1033\f1 terraform\lang1049\f0  \'ed\'e5\'f2 \'e0\'ed\'e0\'eb\'ee\'e3\'e0 \lang1033\f1 git pull, \lang1049\f0\'f2.\'e5. \'f1\'f2\'ff\'ed\'f3\'f2\'fc \'f1 \'ef\'f0\'ee\'e2\'e0\'e9\'e4\'e5\'f0\'e0 \'f1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'fe\'f9\'f3\'fe \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e0\'f6\'e8\'fe \'e8 \'f1\'ee\'e7\'e4\'e0\'f2\'fc \'f1\'ee\'ee\'f2\'e2\'e5\'f2\'f1\'f2\'e2\'f3\'fe\'f9\'e8\'e5 \'f4\'e0\'e9\'eb\'fb \lang1033\f1 foo\lang1049\f0 .\lang1033\f1 tf\lang1049\f0\par
+\par
+\par
+\tab\ul OpenStack\ulnone  (\'ed\'e0 Python) - \'ef\'eb\'e0\'f2\'f4\'ee\'f0\'ec\'e0 \'e4\'eb\'ff \'ef\'ee\'f1\'f2\'f0\'ee\'e5\'ed\'e8\'ff \'ee\'e1\'eb\'e0\'ea\'ee\'e2 \'ed\'e0 \'e1\'e0\'e7\'e5 KVM, VMware, Xen, Hyper-V.\lang1033\f1  OpenStack \lang1049\f0\u8594?\lang1033\f1  libvirt \lang1049\f0\u8594?\lang1033\f1  KVM.\lang1049\f0  \'d1\'ee\'f1\'f2\'ee\'e8\'f2 \'e8\'e7 \'ec\'ee\'e4\'f3\'eb\'e5\'e9:\par
+\pard{\pntext\f2\'B7\tab}{\*\pn\pnlvlblt\pnf2\pnindent0{\pntxtb\'B7}}\nowidctlpar\hyphpar0\fi-360\li720 Nova - \'f1\'e0\'ec\'fb\'e9 \'e3\'eb\'e0\'e2\'ed\'fb\'e9 \'ec\'ee\'e4\'f3\'eb\'fc. \'d2\'ce\'cb\'dc\'ca\'ce \'f3\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 VM\lang1033\f1 s\lang1049\f0 . \'c2\'fb\'ef\'ee\'eb\'ed\'ff\'e5\'f2 \lang1033\f1 create/start/stop\lang1049\f0  \lang1033\f1 VM. \lang1049\f0\'d7\'e5\'f0\'e5\'e7 \lang1033\f1 libvirt \lang1049\f0\'e2\'e7\'e0\'e8\'ec\'ee\'e4\'e5\'e9\'f1\'f2\'e2\'f3\'e5\'f2 \'f1 KVM, VMware, Xen, Hyper-V.\par
+\lang1033\f1{\pntext\f2\'B7\tab}Zun - \lang1049\f0\'e0\'ed\'e0\'eb\'ee\'e3 \lang1033\f1 Nova \lang1049\f0\'f2\'ee\'eb\'fc\'ea\'ee \'e4\'eb\'ff \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'ee\'e2.\par
+{\pntext\f2\'B7\tab}Ironic - \'e4\'eb\'ff \'f3\'ef\'f0\'e0\'e2\'eb\'e5\'ed\'e8\'e5 \'ed\'e5 \lang1033\f1 VMs\lang1049\f0 , \'e0 bare metal \'f1\'e5\'f0\'e2\'e5\'f0\'e0\'ec\'e8.\par
+{\pntext\f2\'B7\tab}Glance - \lang1033\f1 Image Storage - \lang1049\f0\'e8\'ed\'f1\'f2\'f0\'f3\'ec\'e5\'ed\'f2 \'e4\'eb\'ff \'f5\'f0\'e0\'ed\'e5\'ed\'e8\'ff \'ee\'e1\'f0\'e0\'e7\'ee\'e2 VM\lang1033\f1 . \lang1049\f0\'d1\'e0\'ec\'e8 \'ee\'e1\'f0\'e0\'e7\'fb \'ea\'e0\'ea \'ef\'f0\'e0\'e2\'e8\'eb\'ee \'f5\'f0\'e0\'ed\'ff\'f2\'f1\'ff \'e2 Swift.\par
+{\pntext\f2\'B7\tab}Swift - \lang1033\f1 Object Storage - \lang1049\f0\'f1\'e8\'f1\'f2\'e5\'ec\'e0 \'f5\'f0\'e0\'ed\'e5\'ed\'e8\'ff \'f4\'e0\'e9\'eb\'ee\'e2 \'e8 \'ee\'e1\'fa\'e5\'ea\'f2\'ee\'e2/\'c8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1 \lang1033\f1 ~S3\lang1049\f0\par
+{\pntext\f2\'B7\tab}Cinder - \lang1033\f1 Block Storage - \lang1049\f0\'f0\'e5\'e0\'eb\'e8\'e7\'e0\'f6\'e8\'ff \'e1\'eb\'ee\'f7\'ed\'ee\'e3\'ee \'f5\'f0\'e0\'ed\'e8\'eb\'e8\'f9\'e0\lang1033\f1  ~RBD\lang1049\f0\par
+{\pntext\f2\'B7\tab}Manila \lang1033\f1 - \lang1049\f0 File\lang1033\f1  Storage ~CephFS\lang1049\f0\par
+\lang1033\f1{\pntext\f2\'B7\tab}Neutron \lang1049\f0 - \'f1\'e5\'f0\'e2\'e8\'f1\lang1033\f1 ,\lang1049\f0  \'ef\'f0\'e5\'e4\'ee\'f1\'f2\'e0\'e2\'eb\'ff\'fe\'f9\'e8\'e9 \'f1\'e5\'f2\'fc \'ea\'e0\'ea \'f3\'f1\'eb\'f3\'e3\'f3 \lang1033\f1 NaaS\lang1049\f0\par
+\lang1033\f1{\pntext\f2\'B7\tab}Ceilometer - \lang1049\f0\'ec\'ee\'ed\'e8\'f2\'ee\'f0\'e8\'ed\'e3\par
+{\pntext\f2\'B7\tab}Horizon - \lang1033\f1 Dashboard\lang1049\f0  \'e2 \'f1\'f2\'e8\'eb\'e5 Kanban, \'ee\'f2\'f1\'eb\'e5\'e6\'e8\'e2\'e0\'e5\'f2 \'e2\'f1\'e5 \'e4\'e5\'e9\'f1\'f2\'e2\'e8\'ff \'e2\'ed\'f3\'f2\'f0\'e8 OpenStack\par
+\lang1033\f1{\pntext\f2\'B7\tab}K\lang1049\f0 eystone \lang1033\f1 - \lang1049\f0\'f6\'e5\'ed\'f2\'f0 \'e0\'e2\'f2\'ee\'f0\'e8\'e7\'e0\'f6\'e8\'e8. \'c2\'f1\'ff \'e0\'e2\'f2\'ee\'f0\'e8\'e7\'e0\'f6\'e8\'ff \'ef\'f0\'ee\'f5\'ee\'e4\'e8\'f2 \'f2\'f3\'f2.\par
+\pard\nowidctlpar\hyphpar0\par
+\kerning0\par
+\par
+\tab\'cb\'ee\'e3\'e8 vs \'cc\'e5\'f2\'f0\'e8\'ea\'e8\lang1033\f1  + Trace = Observability\par
+{\field{\*\fldinst{HYPERLINK "https://unlimited.humio.com/rs/756-LMY-106/images/Distributed-Systems-Observability-eBook.pdf"}}{\fldrslt{\ul\cf1 https://unlimited.humio.com/rs/756-LMY-106/images/Distributed-Systems-Observability-eBook.pdf}}}\lang1049\f0\fs22  36 \'f1\'f2\'f0\'e0\'ed\'e8\'f6\lang1033\f1\par
+\par
+\lang1049\f0\'c2 \'f6\'e5\'eb\'ee\'ec \'ee\'f7\'e5\'ed\'fc \'f1\'f5\'ee\'e6\'e8\'e5 \'f8\'f2\'f3\'ea\'e8.\kerning1\par
+\kerning0\tab\'cb\'ee\'e3\'e8 - \'ec\'e5\'f5\'e0\'ed\'e8\'e7\'ec Push. \'cc\'ed\'ee\'e3\'ee \'f2\'e5\'ea\'f1\'f2\'e0 \kerning1\u8594?\kerning0  \'ec\'ed\'ee\'e3\'ee \'f2\'f0\'e0\'f4\'e8\'ea\'e0. Parsing. \'d3\'e4\'ee\'e1\'ed\'ee \'f7\'e8\'f2\'e0\'f2\'fc, \'ed\'ee \'f1\'eb\'ee\'e6\'ed\'ee \'e2\'fb\'f2\'e0\'f9\'e8\'f2\'fc \'ef\'ee\'eb\'e5\'e7\'ed\'f3\'fe \'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'fe.\kerning1\par
+\kerning0\tab\'cc\'e5\'f2\'f0\'e8\'ea\'e8 - \'ec\'e5\'f5\'e0\'ed\'e8\'e7\'ec Pull (\'ee\'ef\'f0\'e0\'f8\'e8\'e2\'e0\'e5\'ec \'ea\'e0\'e6\'e4\'fb\'e5 30 \'f1\'e5\'ea). \'c8\'e7\'ec\'e5\'f0\'e8\'f2\'e5\'eb\'fc - \'f1\'e5\'e9\'f7\'e0\'f1 \'f2\'e0\'ea\'e0\'ff \'e7\'e0\'e3\'f0\'f3\'e7\'ea\'e0 \lang1033\f1 CPU/RAM.\lang1049\f0  \'cc\'ee\'ed\'ee\'f2\'ee\'ed\'ed\'ee \'e2\'ee\'e7\'f0\'e0\'f1\'f2\'e0\'fe\'f9\'e8\'e9 \'f1\'f7\'b8\'f2\'f7\'e8\'ea - \'f1\'ea\'ee\'eb\'fc\'ea\'ee \'e2\'f1\'e5\'e3\'ee \'ef\'f0\'e8\'f8\'eb\'ee HTTP \'e7\'e0\'ef\'f0\'ee\'f1\'ee\'e2\lang1033\f1 .\lang1049\f0  \'cf\'ee\'f1\'eb\'e5 \'ee\'f2\'e2\'e5\'f2\'e0 \'f1\'e5\'f0\'e2\'e5\'f0 \'f1\'f7\'b8\'f2\'f7\'e8\'ea \'cd\'c5 \'f1\'e1\'f0\'e0\'f1\'fb\'e2\'e0\'e5\'f2.\par
+\par
+\kerning1\'d7\'e5\'f2\'fb\'f0\'e5 "\'c7\'ee\'eb\'ee\'f2\'fb\'f5 \'f1\'e8\'e3\'ed\'e0\'eb\'e0"\lang1033\f1  ~ \lang1049\f0\'cc\'e5\'f2\'f0\'e8\'ea:\par
+\lang1033\f1 1. \lang1049\f0\'c2\'f0\'e5\'ec\'ff \'ee\'f2\'ea\'eb\'e8\'ea\'e0 \'ee\'f2 \'f1\'e5\'f0\'e2\'e8\'f1\'e0 - \'ec\'ee\'e6\'e5\'f2 \'e2\'f1\'b8 \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc, \'ee\'f8\'e8\'e1\'ee\'ea \'ed\'e5\'f2, \'e7\'e0\'e3\'f0\'f3\'e7\'ea\'e0 \'ed\'e0 \'ec\'e8\'ed\'e8\'ec\'f3\'ec\'e5, \'e0 \'f1\'e5\'f0\'e2\'e8\'f1 \'ee\'f2\'e2\'e5\'f7\'e0\'e5\'f2 \'ef\'ee 50 \'f1\'e5\'ea.\par
+\lang1033\f1 2. \lang1049\f0\'c2\'e5\'eb\'e8\'f7\'e8\'ed\'e0 "\'f2\'f0\'e0\'f4\'e8\'ea\'e0" - \'ea\'ee\'eb-\'e2\'ee HTTP \'e7\'e0\'ef\'f0\'ee\'f1\'ee\'e2/\'f1\'e5\'ea. \'e8\'eb\'e8 \'ea\'ee\'eb-\'e2\'ee \'f2\'f0\'e0\'ed\'e7\'e0\'ea\'f6\'e8\'e9/\'f1\'e5\'ea. \'e8\'eb\'e8 \'e4\'eb\'ff Video \'f5\'ee\'f1\'f2\'e8\'ed\'e3\'e0 \'cc\'e1\'e0\'e9\'f2/\'f1\'e5\'ea.\par
+\lang1033\f1 3. \lang1049\f0\'d3\'f0\'ee\'e2\'e5\'ed\'fc \'ee\'f8\'e8\'e1\'ee\'ea = \'ea\'ee\'eb-\'e2\'ee \'ee\'f8\'e8\'e1\'ee\'ea/\'ee\'e1\'f9\'e5\'e5 \'ea\'ee\'eb-\'e2\'ee \'e7\'e0\'ef\'f0\'ee\'f1\'ee\'e2\par
+\lang1033\f1 4. \lang1049\f0\'d1\'f2\'e5\'ef\'e5\'ed\'fc \'e7\'e0\'e3\'f0\'f3\'e6\'e5\'ed\'ed\'ee\'f1\'f2\'e8 - \'f1\'ea\'ee\'eb\'fc\'ea\'ee \'ee\'f1\'f2\'e0\'eb\'ee\'f1\'fc \'e4\'ee \'e4\'ee\'f1\'f2\'e8\'e6\'e5\'ed\'e8\'ff 100% CPU \'e8\'eb\'e8 \'e2\'fb\'e3\'f0\'e5\'e1\'e0\'ed\'e8\'e5 \'e2\'f1\'e5\'e9 RAM\par
+\kerning0\par
+\lang1033\f1\par
+\lang1049\f0\'cd\'e0 \'f1\'ee\'e1\'e5\'f1\'e5 \'e7\'e0\'e4\'e0\'e2\'e0\'eb\'e8 \'e2\'ee\'ef\'f0\'ee\'f1: \'ca\'e0\'ea \'f3\'e7\'ed\'e0\'f2\'fc \'f1\'ea\'ee\'eb\'fc\'ea\'ee \'e2\'f0\'e5\'ec\'e5\'ed\'e8 \'ee\'e1\'f0\'e0\'e1\'e0\'f2\'fb\'e2\'e0\'e5\'f2\'f1\'ff \'e7\'e0\'ef\'f0\'ee\'f1?\lang1033\f1  \ul Jaeger\lang1049\ulnone\f0\par
+\lang1033\f1\par
+\tab\tab\lang1049\f0\'c2\'f0\'e5\'ec\'ff ---\lang1033\f1 >\par
+\tab |\{\lang1049\f0\'e7\'e0\'ef\'f0\'ee\'f1 \lang1033\f1  \lang1049\f0\'ef\'f0\'e8\'eb\'e5\'f2\'e5\'eb \'ed\'e0 \'e1\'e0\'eb\'e0\'ed\'f1\'e8\'f0\'ee\'e2\'f9\'e8\'ea\lang1033\f1\}\tab 90 \lang1049\f0\'ec\'f1\lang1033\f1 |\par
+\tab |\lang1049\f0   \lang1033\f1\{\lang1049\f0\'e7\'e0\'ef\'f0\'ee\'f1 \'ef\'f0\'e8\'eb\'e5\'f2\'e5\'eb \'ed\'e0 \'f1\'e5\'f0\'e2\'e5\'f0 \lang1033\f1 App\}\tab\lang1049\f0 70 \'ec\'f1\lang1033\f1 |\par
+Trace\tab |    \{\lang1049\f0\'ee\'f2\'f0\'e0\'e1\'ee\'f2\'e0\'eb\lang1033\f1  cache\}\tab\tab\tab\lang1049\f0 25 \'ec\'f1\lang1033\f1 |\lang1049\kerning1\f0\par
+\lang1033\kerning0\f1\tab |                \{\lang1049\f0\'ee\'f2\'f0\'e0\'e1\'ee\'f2\'e0\'eb\'e0 \'c1\'c4\lang1033\f1\}\tab\lang1049\f0 30 \'ec\'f1\lang1033\f1 |\par
+\lang1049\f0\par
+\par
+\tab\ul Zabbix\ulnone  - \'ec\'ee\'e6\'e5\'f2 \'f1\'e0\'ec ping-\'ee\'e2\'e0\'f2\'fc \'f1\'e5\'f0\'e2\'e5\'f0\'e0 \'e8\'eb\'e8 \'ef\'f0\'ee\'e2\'e5\'f0\'ff\'f2\'fc \'e4\'ee\'f1\'f2\'f3\'ef\'ed\'ee\'f1\'f2\'fc HTTP \'f1\'f2\'f0\'e0\'ed\'e8\'f7\'e5\'ea (\'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 HTTP \'e7\'e0\'ef\'f0\'ee\'f1\'fb \'ed\'e0 \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'f3\'fe \'f1\'f2\'f0\'e0\'ed\'e8\'f7\'ea\'f3). \'cc\'ee\'e6\'e5\'f2 \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc \'e2 \'f0\'e5\'e6\'e8\'ec\'e5 Push\lang1033\f1 =Active\lang1049\f0 (\lang1033\f1 zabbix-agent \lang1049\f0\'ef\'e5\'f0\'e8\'ee\'e4\'e8\'f7\'e5\'f1\'ea\'e8 \'f8\'eb\'b8\'f2 \'e4\'e0\'ed\'ed\'fb\'e5 \'ed\'e0 \'f1\'e5\'f0\'e2\'e5\'f0) \'e8\'eb\'e8 Pull=\lang1033\f1 Passive\lang1049\f0 (\'ee\'ef\'f0\'e0\'f8\'e8\'e2\'e0\'e5\'ec \'ec\'e0\'f8\'e8\'ed\'fb \'ef\'ee \lang1033\f1 SNMP, JMX, IPMI\lang1049\f0 ). \'cf\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'e5\'f2 \'f1\'ef\'e5\'f6\'e8\'f4\'e8\'f7\'e5\'f1\'ea\'e8\'e5 \'ef\'f0\'ee\'f2\'ee\'ea\'ee\'eb\'fb, \'ed\'e0\'ef\'f0\'e8\'ec\'e5\'f0 ModBus \'e4\'eb\'ff \'ec\'ee\'ed\'e8\'f2\'ee\'f0\'e8\'ed\'e3\'e0 \'ef\'f0\'ee\'ec\'fb\'f8\'eb\'e5\'ed\'ed\'fb\'f5 \'ea\'ee\'ed\'f2\'f0\'ee\'eb\'eb\'e5\'f0\'ee\'e2. \'cc\'ed\'ee\'e3\'ee \'e2\'f1\'f2\'f0\'ee\'e5\'ed\'ed\'fb\'f5 \cf2\b Alert-\'e8\'ed\'e3\'ee\'e2\cf0\b0  - \'f3\'e2\'e5\'e4\'ee\'ec\'eb\'e5\'ed\'e8\'ff \'ed\'e0 Email, SMS, Telegram, Jira \'e8 \'f2.\'ef. \cf6\b\'cf\'ee\'e4 \'ea\'e0\'ef\'ee\'f2\'ee\'ec\cf0\b0  SQL \'c1\'c4 (\'f1\'ee\'e7\'e4\'e0\'b8\'f2\'f1\'ff \'ef\'f0\'e8 install \'e8 \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc PostgreSQL, Oracle, MySQL, DB2) \'e2 \'ee\'f2\'eb\'e8\'f7\'e8\'e8 \'ee\'f2 Prometheus - TSDB. SQL \'c1\'c4 \'ec\'ee\'e6\'e5\'f2 \ul\'e4\'ee\'eb\'e3\'ee\'e2\'f0\'e5\'ec\'e5\'ed\'ed\'ee\ulnone  \'f5\'f0\'e0\'ed\'e8\'f2\'fc \'e4\'e0\'ed\'ed\'fb\'e5. TSDB - \'f2\'ee\'eb\'fc\'ea\'ee \'ea\'f0\'e0\'f2\'ea\'ee\'e2\'f0\'e5\'ec\'e5\'ed\'ed\'ee \'ed\'e5\'e4\'e5\'eb\'ff-\'e4\'e2\'e5??? TSDB \'ef\'ee\'f1\'f2\'f0\'ee\'e5\'ed\'e0 \'ef\'ee \'ef\'f0\'e8\'ed\'f6\'e8\'ef\'f3 \lang1033\f1 "append-only" \lang1049\kerning1\f0\u8594?\lang1033\f1  \lang1049\f0\'ee\'ef\'f2\'e8\'ec\'e8\'e7\'e8\'f0\'ee\'e2\'e0\'ed\'e0 \'ef\'ee\'e4 \'e2\'fb\'f1\'ee\'ea\'e8\'e9 \lang1033\f1 WRITE\lang1049\f0 , \kerning0\'e1\'ee\'eb\'e5\'e5 \'ef\'f0\'ee\'e8\'e7\'e2\'ee\'e4\'e8\'f2\'e5\'eb\'fc\'ed\'e0\'ff \'f7\'e5\'ec SQL \'c1\'c4, \'ef\'ee\'fd\'f2\'ee\'ec\'f3 Highload \'ec\'ee\'ed\'e8\'f2\'ee\'f0\'e8\'ec Prometheus-\'ee\'ec. \cf4\b\'c2\'f1\'ff \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e0\'f6\'e8\'ff\cf0\b0  \'f7\'e5\'f0\'e5\'e7 \'ec\'e5\'ed\'fe\'f8\'ea\'e8 \'e8 \'eb\'e5\'e6\'e8\'f2 \'e2 \'c1\'c4. \cf7\b\'cc\'ee\'e6\'e5\'f2 \'f5\'f0\'e0\'ed\'e8\'f2\'fc\cf0\b0  \'e4\'e0\'ed\'ed\'fb\'e5 \'e0\'e1\'f1\'ee\'eb\'fe\'f2\'ed\'ee \'eb\'fe\'e1\'fb\'f5 \'f2\'e8\'ef\'ee\'e2: \lang1033\f1 int, log\lang1049\f0 , \lang1033\f1 text, JSON.\lang1049\f0  \'cd\'ee \'ef\'e5\'f0\'e2\'e0\'ff \'ea\'ee\'eb\'ee\'ed\'ea\'e0 \'e2\'f1\'b8 \'f0\'e0\'e2\'ed\'ee\lang1033\f1  T\lang1049\f0 imestamp. \'c2 Prometheus \'f2\'ee\'eb\'fc\'ea\'ee \lang1033\f1 float\lang1049\f0 .\par
+\par
+\'cd\'e0 \'ec\'e0\'f8\'e8\'ed\'e5 \lang1033\f1 #apt install zabbix-agent\lang1049\f0 2.\lang1033\f1  \lang1049\f0\'c2 /etc/zabbix/zabbix_agent2\lang1033\f1 .\b conf\b0  \lang1049\f0\'f4\'e0\'e9\'eb\'e5 \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'ec\lang1033\f1 :\par
+Server=10.0.11.6 \lang1049\f0\'e4\'eb\'ff \lang1033\f1 Passive \lang1049\f0\'f0\'e5\'e6\'e8\'ec\'e0, \'ea\'ee\'e3\'e4\'e0 \'f1\'e5\'f0\'e2\'e5\'f0 \'ee\'ef\'f0\'e0\'f8\'e8\'e2\'e0\'e5\'f2 \'e0\'e3\'e5\'ed\'f2\'ee\'e2\lang1033\f1\par
+ServerActive=10.0.11.6 \lang1049\f0\'e4\'eb\'ff \lang1033\f1 Active \lang1049\f0\'f0\'e5\'e6\'e8\'ec\'e0, \'ea\'ee\'e3\'e4\'e0 \'e0\'e3\'e5\'ed\'f2\'fb \'ef\'e5\'f0\'e8\'ee\'e4\'e8\'f7\'e5\'f1\'ea\'e8 \'f8\'eb\'fe\'f2 \'e4\'e0\'ed\'ed\'fb\'e5 \'ed\'e0 \'f1\'e5\'f0\'e2\'e5\'f0\par
+\kerning1\par
+\lang1033\f1 S\lang1049\f0 imple \lang1033\f1 C\lang1049\f0 heck\par
+\'c2\'f1\'e5\'e3\'ee \lang1033\f1 ~\lang1049\f0  7 \'f8\'f2.\lang1033\f1  \lang1049\f0\'c2\'f1\'f2\'f0\'ee\'e5\'ed\'ed\'fb\'e9 \'e2 \lang1033\f1 Zabbix \lang1049\f0\'f4\'f3\'ed\'ea\'f6\'e8\'ee\'ed\'e0\'eb:\par
+\'cf\'e8\'ed\'e3\'ee\'e2\'e0\'eb\'ea\'e0 icmpping[<\lang1033\f1 IP\lang1049\f0 >,<\'ea\'ee\'eb\lang1033\f1 -\lang1049\f0\'e2\'ee\lang1033\f1  \lang1049\f0\'ef\'e0\'ea\'e5\'f2\'ee\'e2>,<\'e8\'ed\'f2\'e5\'f0\'e2\'e0\'eb>,<\lang1033\f1 size \lang1049\f0\'ef\'e0\'ea\'e5\'f2\'e0>,<\'e2\'f0\'e5\'ec\'ff \'ee\'e6\'e8\'e4\'e0\'ed\'e8\'ff>] \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 0 \'e8\'eb\'e8 1.\par
+\'cf\'f0\'ee\'e2\'e5\'f0\'ea\'e0 \lang1033\f1 TCP \lang1049\f0\'ef\'ee\'f0\'f2\'e0 net.tcp.service[<\'f1\'e5\'f0\'e2\'e8\'f1\lang1033\f1 , \lang1049\f0\'ed\'e0\'ef\'f0\'e8\'ec\'e5\'f0 \lang1033\f1 ssh ftp>\lang1049\f0 ,<\lang1033\f1 IP\lang1049\f0 >,<\lang1033\f1 Port\lang1049\f0 >] \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 0 \'e8\'eb\'e8 1.\par
+net.udp.service.perf[\lang1033\f1 <\lang1049\f0\'f1\'e5\'f0\'e2\'e8\'f1\lang1033\f1 >\lang1049\f0 ,<\lang1033\f1 IP\lang1049\f0 >,<\lang1033\f1 Port\lang1049\f0 >]\par
+\lang1033\f1\par
+E\lang1049\f0 xternal \lang1033\f1 C\lang1049\f0 heck\lang1033\f1\par
+\lang1049\f0\'cf\'ee \'e0\'ed\'e0\'eb\'ee\'e3\'e8\'e8 \'f1 \lang1033\f1 S\lang1049\f0 imple \lang1033\f1 C\lang1049\f0 heck, \'f2\'ee\'eb\'fc\'ea\'ee \lang1033\f1 Zabbix \lang1049\f0\'ef\'e5\'f0\'e8\'ee\'e4\'e8\'f7\'e5\'f1\'ea\'e8 \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'e5\'f2 \ul\'ed\'e0\'f8 \lang1033\f1 script\ulnone , \lang1049\f0\'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'e4\'ee\'eb\'e6\'e5\'ed \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'f2\'fc 0 \'e8\'eb\'e8 1.\par
+\par
+\i\'c2\'fb\'f7\'e8\'f1\'eb\'ff\'e5\'ec\'fb\'e5\i0  \'ec\'e5\'f2\'f0\'e8\'ea\'e8 - \'f1 \'f5\'ee\'f1\'f2\'e0 \'ef\'f0\'e8\'eb\'e5\'f2\'e0\'e5\'f2 \'ec\'e5\'f2\'f0\'e8\'ea\'e0 \lang1033\f1 X\lang1049\f0  \'e8 \'e4\'f0\'f3\'e3\'e0\'ff \lang1033\f1 Y\lang1049\f0 , \'e0 \'e2 \'e1\'e0\'e7\'f3 \'ea\'eb\'e0\'e4\'b8\'ec \lang1033\f1 X\lang1049\f0 +\lang1033\f1 Y.\par
+\lang1049\i\f0\'cf\'f0\'e5\'e4\'ee\'e1\'f0\'e0\'e1\'ee\'f2\'ea\'e0\i0  \'ec\'e5\'f2\'f0\'e8\'ea - \'f1 \'f5\'ee\'f1\'f2\'e0 \'ef\'f0\'e8\'eb\'e5\'f2\'e0\'e5\'f2 \lang1033\f1 JSON\lang1049\f0 , \'e0 \'e2 \'e1\'e0\'e7\'f3 \'f1\'ee\'f5\'f0\'e0\'ed\'ff\'e5\'ec \'f2\'ee\'eb\'fc\'ea\'ee \'ef\'ee\'eb\'ff \lang1033\f1 A \lang1049\f0\'e8\lang1033\f1  B.\par
+\i D\lang1049\f0 ependent item\i0  - \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'ec \lang1033\f1 sys.info, \lang1049\f0\'e0 \'ef\'ee\'f2\'ee\'ec \'ed\'e0 \'e5\'b8 \'e1\'e0\'e7\'e5 \'e4\'e5\'eb\'e0\'e5\'ec \lang1033\f1 sys.info.cpu\lang1049\f0\par
+\par
+\kerning0\'c7\'e0\'e4\'e0\'f7\'e0: \'d1\'ef\'e8\'f1\'ee\'ea \'e7\'e0\'ef\'f3\'f9\'e5\'ed\'ed\'fb\'f5 \lang1033\f1 docker \lang1049\f0\'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'ee\'e2 \'ed\'e0 \'ec\'e0\'f8\'e8\'ed\'e5\lang1033\f1 .\par
+\lang1049\f0\'e2 \'f4\'e0\'e9\'eb\'e5 /etc/zabbix/zabbix_agent2\lang1033\f1 .\b conf\b0  \lang1049\f0\'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'ec: UserParameter=\cf8\lang1033\kerning1\b\f1 cust_key\cf0\lang1049\kerning0\b0\f0 ,ls -\lang1033\f1 la\par
+\lang1049\f0\'cd\'e0 \'f1\'e5\'f0\'e2\'e5\'f0\'e5 \lang1033\f1 Hosts \lang1049\kerning1\f0\u8594?\lang1033\f1  Items \lang1049\f0\u8594?\lang1033\f1  Create Item(\lang1049\f0\'ea\'ed\'ee\'ef\'ea\'e0 \'f1\'e2\'e5\'f0\'f5\'f3 \'f1\'ef\'f0\'e0\'e2\'e0)\par
+\lang1033\f1 Name: \cf9\b cust_name\cf0\lang1049\b0\f0\par
+\lang1033\f1 Key: \cf8\b cust_key\cf0\kerning0\b0\tab\tab\tab\tab\lang1049\f0\'e2\'ee\'ee\'e1\'f9\'e5 \'ea\'eb\'fe\'f7\'e8 \'ea\'e0\'ea \'e8 \'f4\'f3\'ed\'ea\'f6\'e8\'e8, \'f7\'e5\'f0\'e5\'e7 \'ed\'e8\'f5 \'ec\'ee\'e6\'ed\'ee \'ef\'e5\'f0\'e5\'e4\'e0\'e2\'e0\'f2\'fc \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'fb \lang1033\f1 cust[]\par
+Type of information: Text\par
+\par
+\lang1049\f0\'c7\'e0\'f5\'ee\'e4\'e8\'ec \'e2 \lang1033\f1 D\lang1049\f0 ashboards\lang1033\kerning1\f1  \lang1049\f0\u8594?\lang1033\f1  \kerning0 All dashboards\kerning1  \lang1049\f0\u8594?\lang1033\f1  Create \kerning0 dashboards(\lang1049\kerning1\f0\'ea\'ed\'ee\'ef\'ea\'e0 \'f1\'e2\'e5\'f0\'f5\'f3 \'f1\'ef\'f0\'e0\'e2\'e0\lang1033\kerning0\f1 )\kerning1  \lang1049\f0\u8594?\lang1033\f1  Add widget\par
+Type: Item value\par
+Item: \cf9\b cust_name\cf0\lang1049\b0\f0\par
+\par
+\kerning0{\field{\*\fldinst{HYPERLINK "https://habr.com/ru/companies/ua-hosting/articles/485534/"}}{\fldrslt{\ul\cf1 https://habr.com/ru/companies/ua-hosting/articles/485534/}}}\lang1033\f1\fs22  \lang1049\f0\'ea\'e0\'ea \'ee\'ef\'f2\'e8\'ec\'e8\'e7\'e8\'f0\'ee\'e2\'e0\'eb\'e8 \lang1033\f1 Zabbix \lang1049\f0\'e2 \'ea\'e0\'ea\'ee\'ec-\'f2\'ee \'ef\'f0\'ee\'e2\'e0\'e9\'e4\'e5\'f0\'e5, \'f3 \'ea\'ee\'f2\'ee\'f0\'ee\'e3\'ee 70 \'f2\'fb\'f1. \lang1033\f1 switch-\lang1049\f0\'e5\'e9.\kerning1\par
+\par
+\lang1033\f1\tab\ul InfluxDB\ulnone  - \lang1049\f0\'ef\'ee \'e0\'ed\'e0\'eb\'ee\'e3\'e8\'e8 \'f1 \lang1033\f1 P\lang1049\kerning0\f0 rometheus\lang1033\f1  \lang1049\f0\'e2 \'f1\'f2\'e5\'ea \'e2\'f5\'ee\'e4\'e8\'f2\lang1033\f1 :\lang1049\f0  \lang1033\kerning1\f1 Telegraf - \lang1049\f0\'e0\'e3\'e5\'ed\'f2 \'ed\'e0 \'f1\'e5\'f0\'e2\'e5\'f0\'e0\'f5, Kapacitor\lang1033\f1  - \lang1049\f0\'e4\'eb\'ff \lang1033\f1 A\lang1049\f0 lert-\'e8\'ed\'e3\'e0, Chronograf - \'f3\'ef\'f0\'e0\'e2\'eb\'ff\'eb\'ea\'e0 + \lang1033\f1 dashboard.\lang1049\f0  \'d3 InfluxDB \'ef\'ee\'e4 \'ea\'e0\'ef\'ee\'f2\'ee\'ec Time-Structured Merge Tree (TSM \'e4\'e5\'f0\'e5\'e2\'ee)\lang1033\f1  ~ LSM/SSTable - \lang1049\f0\'f7\'f2\'ee \'ef\'ee \lang1033\f1 default \lang1049\f0\'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'e5\'f2 \'ea\'eb\'e0\'f1\'f2\'e5\'f0\'e8\'e7\'e0\'f6\'e8\'fe. \'c2 \'ee\'f2\'eb\'e8\'f7\'e8\'e8 \'ee\'f2 \lang1033\f1 P\lang1049\kerning0\f0 rometheus, \'e3\'e4\'e5 \'ef\'ee\'e4 \'ea\'e0\'ef\'ee\'f2\'ee\'ec \lang1033\f1 Append-Only File\kerning1  \lang1049\f0\u8594?\lang1033\f1  \lang1049\kerning0\f0\'ef\'f0\'ee\'e1\'eb\'e5\'ec\'fb \'ef\'f0\'e8 \'ea\'eb\'e0\'f1\'f2\'e5\'f0\'e8\'e7\'e0\'f6\'e8\'e8.\kerning1\par
+\par
+\kerning0\'c4\'eb\'ff \'ef\'f0\'ff\'ec\'ee\'e3\'ee \'ec\'ee\'ed\'e8\'f2\'ee\'f0\'e8\'ed\'e3\'e0 \lang1033\f1 Pods\lang1049\f0  (\'f2.\'e5. \'ea\'ee\'e3\'e4\'e0 \'e7\'e0\'f5\'ee\'e4\'e8\'ec \'e2\'ed\'f3\'f2\'f0\'fc \lang1033\f1 Pod \lang1049\f0\'e8 \'f1\'ed\'e8\'ec\'e0\'e5\'ec \lang1033\f1 metric)\lang1049\f0 , \lang1033\f1 P\lang1049\f0 rometheus\lang1033\f1  \lang1049\f0\'ed\'e0\'e4\'ee \'ef\'ee\'e4\'ed\'e8\'ec\'e0\'f2\'fc \'e2 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e5, \'f2.\'ea. \lang1033\f1 IP Pods \lang1049\f0\'e8\'e7\'e2\'e5\'f1\'f2\'ed\'fb/\'e4\'ee\'f1\'f2\'f3\'ef\'ed\'fb \'d2\'ce\'cb\'dc\'ca\'ce \'e8\'e7\'ed\'f3\'f2\'f0\'e8 \lang1033\f1 K\lang1049\f0 ubernetes \'ea\'eb\'e0\'f1\'f2\'e5\'f0\'e0.\kerning1\par
+\kerning0\par
+\tab\ul Prometheus\ulnone  - (#apt install prometheus \'e8 #apt install prometheus-node-exporter) \'f1\'ee\'e1\'e8\'f0\'e0\'e5\'f2 \'ec\'e5\'f2\'f0\'e8\'ea\'e8 \'f2\'ee\'eb\'fc\'ea\'ee \'ef\'ee HTTP. Default \'ef\'ee\'f0\'f2\'fb: \'f1\'e5\'f0\'e2\'e5\'f0-\'e3\'ee\'eb\'ee\'e2\'e0 c web-\'ec\'ee\'f0\'e4\'ee\'e9 9090, Node Exporter \'f1\'eb\'f3\'f8\'e0\'fe\'f2 9100. \'c8\'e7\'ed\'e0\'f7\'e0\'eb\'fc\'ed\'ee \'ef\'f0\'e5\'e4\'ed\'e0\'e7\'ed\'e0\'f7\'e0\'eb\'f1\'ff \'e4\'eb\'ff \'ec\'ee\'ed\'e8\'f2\'ee\'f0\'e8\'ed\'e3\'e0 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'ed\'fb\'f5 \'f1\'f0\'e5\'e4. \'c8\'ec\'e5\'e5\'f2 \'ec\'e5\'f5\'e0\'ed\'e8\'e7\'ec Service Discovery - \'f1\'ea\'e0\'ed\'e8\'f0\'f3\'e5\'f2 \'ec\'e0\'f8\'e8\'ed\'fb \'ef\'ee 9100 \'ef\'ee\'f0\'f2\'f3 \'e8 \'e0\'e2\'f2\'ee\'ec\'e0\'f2\'e8\'f7\'e5\'f1\'ea\'e8 \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'e5\'f2 \'f7\'f2\'ee \'f2\'e0\'ec \'ed\'e0\'f1\'f2\'f0\'ee\'e5\'ed\'ee. \'d0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'e2 \'f0\'e5\'e6\'e8\'ec\'e5 Pull - \'e2 \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'b8\'ed\'ed\'fb\'e5 \'e8\'ed\'f2\'e5\'f0\'e2\'e0\'eb\'fb \'f1\'e5\'f0\'e2\'e5\'f0-\'e3\'ee\'eb\'ee\'e2\'e0 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \'e7\'e0\'ef\'f0\'ee\'f1\'fb {\field{\*\fldinst{HYPERLINK "http://\f1 nodes\f0 :9100/metrics"}}{\fldrslt{\ul\cf1 http://\lang1033\f1 nodes\lang1049\f0 :9100/metrics\f0 }}}\f0\fs22 , \'e0 nodes \'ee\'f2\'e2\'e5\'f7\'e0\'fe\'f2 \'ec\'e5\'f2\'f0\'e8\'ea\'ee\'e9 plain-text\lang1033\f1 .\lang1049\f0  \'c5\'f1\'f2\'fc \'e3\'ee\'f2\'ee\'e2\'fb\'e5 Exporters (\'e4\'eb\'ff Linux \'ec\'e0\'f8\'e8\'ed\'fb - Node Exporter, \'e4\'eb\'ff \'c1\'c4 - SQL Exporter \'e8 \'f2.\'e4.). \'cc\'ed\'ee\'e3\'ee \'f1\'ee\'f4\'f2\'e0 \'e8\'ec\'e5\'fe\'f2 \'e2\'f1\'f2\'f0\'ee\'e5\'ed\'ed\'fb\'e5 Exporters, \'f2.\'e5. \'e8\'e7 \'ea\'ee\'f0\'ee\'e1\'ea\'e8 \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'fe\'f2 "\'e8\'ed\'f2\'e5\'e3\'f0\'e0\'f6\'e8\'fe" \'f1 Prometheus. \cf6\b\'cf\'ee\'e4 \'ea\'e0\'ef\'ee\'f2\'ee\'ec\cf0\b0  \'e1\'e0\'e7\'e0 \'e4\'e0\'ed\'ed\'fb\'f5 \'e2\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'f5 \'f0\'ff\'e4\'ee\'e2 (TSDB), \'e3\'e4\'e5 \'ea\'eb\'fe\'f7\'e5\'e2\'e0\'ff \'ea\'ee\'eb\'ee\'ed\'ea\'e0 - \lang1033\f1 T\lang1049\f0 imestamp. \'c8\'ec\'ff \'f1\'eb\'e5\'e4\'f3\'fe\'f9\'e5\'e9 \'ea\'ee\'eb\'ee\'ed\'ea\'e8 = \'e8\'ec\'ff \'ec\'e5\'f2\'f0\'e8\'ea\'e8. \'d1\'e0\'ec\'e0 \'ea\'ee\'eb\'ee\'ed\'ea\'e0 \'f1\'ee\'e4\'e5\'f0\'e6\'e8\'f2 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'ff \'ec\'e5\'f2\'f0\'e8\'ea\'e8. \cf7\b\'cc\'ee\'e6\'e5\'f2 \'f5\'f0\'e0\'ed\'e8\'f2\'fc\cf0\b0  \ul\'f2\'ee\'eb\'fc\'ea\'ee\ulnone  64-bit float (\'ed\'e5\'eb\'fc\'e7\'ff \lang1033\f1 text\lang1049\f0 , \lang1033\f1 JSON, logs\lang1049\f0 ). Prometheus - \'ef\'f0\'ee\'e4\'f3\'ea\'f2 \'e4\'eb\'ff \b\'ee\'ef\'e5\'f0\'e0\'f2\'e8\'e2\'ed\'ee\'e3\'ee \b0\'ec\'ee\'ed\'e8\'f2\'ee\'f0\'e8\'ed\'e3\'e0. \'cd\'e5\'f2 \'e2\'f1\'f2\'f0\'ee\'e5\'ed\'ed\'fb\'f5 \cf2\b Alert-\'e8\'ed\'e3\'ee\'e2\cf0\b0 , \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee #apt intsall prometheus-alertmanager. \'cc\'e5\'f2\'f0\'e8\'ea\'e8 \'e1\'fb\'e2\'e0\'fe\'f2: \'f1\'f7\'b8\'f2\'f7\'e8\'ea\'e8 (\'f1\'ea\'ee\'eb\'fc\'ea\'ee \'e2\'f1\'e5\'e3\'ee \'ef\'f0\'e8\'f8\'eb\'ee HTTP \'e7\'e0\'ef\'f0\'ee\'f1\'ee\'e2, \'ef\'ee\'f1\'eb\'e5 \'ee\'f2\'e2\'e5\'f2\'e0 \'f1\'e5\'f0\'e2\'e5\'f0 \'f1\'f7\'b8\'f2\'f7\'e8\'ea \'ed\'e5 \'f1\'e1\'f0\'e0\'f1\'fb\'e2\'e0\'e5\'f2), \'e8\'e7\'ec\'e5\'f0\'e8\'f2\'e5\'eb\'e8 (\'f1\'e5\'e9\'f7\'e0\'f1 \'f1\'e2\'ee\'e1\'ee\'e4\'ed\'ee 2GB RAM). \'cd\'e5\'f2 \'f1\'e2\'ee\'e5\'e3\'ee Dashboard - \'ea\'e0\'ea \'ef\'f0\'e0\'e2\'e8\'eb\'ee \'e8\'ed\'f2\'e5\'e3\'f0\'e8\'f0\'f3\'e5\'f2\'f1\'ff \'f1 Grafana. \cf4\b\'c2\'f1\'ff \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e0\'f6\'e8\'ff\cf0\b0  \'e2 .yml \'f4\'e0\'e9\'eb\'e0\'f5 ~ \'e0\'e4\'e0\'ef\'f2\'e8\'f0\'ee\'e2\'e0\'ed\'e0 \'ef\'ee\'e4 IaC.\kerning1\par
+\kerning0\'c4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'ec \'f5\'ee\'f1\'f2\'fb, \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'f5\'ee\'f2\'e8\'ec \'ec\'ee\'ed\'e8\'f2\'ee\'f0\'e8\'f2\'fc:\kerning1\par
+\kerning0 /etc/prometheus/prometheus.yml\kerning1\par
+\kerning0\tab - job_name: \lang1033\f1 '\lang1049\f0 node\lang1033\f1 -exporter'\lang1049\kerning1\f0\par
+\kerning0\tab\tab static_configs:\kerning1\par
+\kerning0\tab\tab\tab - targets: ['10.0.0.15:9100', '10.0.0.27:9100']\kerning1\par
+\kerning0{\field{\*\fldinst{HYPERLINK "https://antonputra.com/monitoring/install-prometheus-and-grafana-on-ubuntu/#install-prometheus-on-ubuntu-2004"}}{\fldrslt{\ul\cf1 https://antonputra.com/monitoring/install-prometheus-and-grafana-on-ubuntu/#install-prometheus-on-ubuntu-2004}}}\kerning1\f0\fs22\par
+\kerning0\par
+\lang1033\f1 D\lang1049\f0 ata directory\lang1033\f1  \lang1049\f0\'e2 \lang1033\f1 TSDB \lang1049\f0\'e2\'fb\'e3\'eb\'ff\'e4\'e8\'f2 \'f2\'e0\'ea:\lang1033\f1  {\field{\*\fldinst{HYPERLINK "https://prometheus.io/docs/prometheus/latest/storage/"}}{\fldrslt{\ul\cf1 https://prometheus.io/docs/prometheus/latest/storage/}}}\lang1049\f0\fs22\par
+\pard\sl240\slmult1\lang9\f1 ./data\par
+|---01BKGV7JBM69T2G1BGBGM6KB12\par
+|\tab |---meta.json\par
+|---01BKGTZQ1SYQJTR4PB43C8PD98\lang1049\f0\tab\'e4\'e0\'ed\'ed\'fb\'e5 \'e3\'f0\'f3\'ef\'ef\'e8\'f0\'f3\'fe\'f2\'f1\'ff \'e2 \'e1\'eb\'ee\'ea\'e8/\'e4\'e8\'f0\'e5\'ea\'f2\'ee\'f0\'e8\'e8 \'ef\'ee 2 \'f7\'e0\'f1\'ee\'e2\'ee\'ec\'f3 \'ef\'e5\'f0\'e8\'ee\'e4\'f3\lang9\f1\par
+\lang1033 |\lang9\tab |---chunks\par
+\lang1033 |\lang9\tab |\tab |---000001\lang1049\f0\tab\tab\tab\'f2\'f3\'f2 \'eb\'e5\'e6\'e0\'f2 \'ed\'e5\'ef\'ee\'f1\'f0\'e5\'e4\'f1\'f2\'e2\'e5\'ed\'ed\'ee \'ec\'e5\'f2\'f0\'e8\'ea\'e8\lang9\f1\par
+\lang1033 |\lang9\tab |---tombstones\lang1049\f0\tab\tab\tab\'ef\'f0\'e8 \'f3\'e4\'e0\'eb\'e5\'ed\'e8\'e8 series, \'e4\'e0\'ed\'ed\'fb\'e5 \'f1\'ee\'f5\'f0\'e0\'ed\'ff\'fe\'f2\'f1\'ff \'e2 \'fd\'f2\'ee\'ec \'f4\'e0\'e9\'eb\'e5 ???\lang9\f1\par
+\lang1033 |\lang9\tab |---index\lang1049\f0\tab\tab\tab\tab\'e8\'ed\'e4\'e5\'ea\'f1\'fb \'e4\'eb\'ff \'ef\'ee\'e8\'f1\'ea\'e0\lang9\f1\par
+\lang1033 |\lang9\tab |---meta.json\lang1049\f0\tab\tab\tab\'ea\'e0\'ea\'e0\'ff-\'f2\'ee \lang1033\f1 meta-\lang1049\f0\'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'ff\lang9\f1\par
+|---01BKGTZQ1HHWHV8FBJXW1Y3W0K\par
+\u9474?\tab |---meta.json\par
+|---chunks_head\par
+|\tab |---000001\par
+|---wal\lang1049\f0\tab\tab\tab\tab\tab\lang1033\f1 ~ redo.log\lang9\par
+\tab |---000000002\par
+\tab |---checkpoint.00000001\par
+\tab\tab |---00000000\par
+\pard\nowidctlpar\hyphpar0\lang1049\f0\par
+\par
+\tab\lang1033\ul\f1 Grafana\ulnone  \lang1049\f0 =\lang1033\f1  \lang1049\f0 Dashboard\lang1033\f1 ,\lang1049\f0  \'e2\'e8\'e7\'f3\'e0\'eb\'e8\'e7\'e0\'f6\'e8\'ff \'e4\'e0\'ed\'ed\'fb\'f5. \'c7\'e0\'f5\'ee\'e4\'e8\'ec \'ed\'e0 \lang1033\f1 web\lang1049\f0  \'e8\lang1033\f1  Configuration -> Data sources -> Add data source: \lang1049\f0\'e2\'f1\'f2\'f0\'ee\'e5\'ed\'ed\'e0\'ff \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'ea\'e0 Prometheus, Elasticsearch (\'e2\'ec\'e5\'f1\'f2\'ee Kibana), Jaeger, InfluxDB, MySQL, PostgreSQL ... \'c4\'ee\'e1\'e0\'e2\'e8\'eb\'e8 Prometheus. \'d2\'e5\'ef\'e5\'f0\'fc \lang1033\f1 Grafana \lang1049\f0\'ec\'ee\'e6\'e5\'f2 \'e2\'fb\'e3\'f0\'f3\'e6\'e0\'f2\'fc \'e4\'e0\'ed\'ed\'fb\'e5 \'e8\'e7 Prometheus, \'ed\'ee \'ea\'e0\'ea \'e8\'f5 \'ee\'f2\'ee\'e1\'f0\'e0\'e6\'e0\'f2\'fc? \'cd\'e0\'e4\'ee \'f1\'ea\'e0\'f7\'e0\'f2\'fc .\lang1033\f1 json\lang1049\f0  (\'e2 \lang1033\f1 google: grafana node exporter\lang1049\f0 )\lang1033\f1 , \lang1049\f0\'ee\'ef\'e8\'f1\'fb\'e2\'e0\'fe\'f9\'e8\'e9 \'ea\'e0\'ea \'ee\'f2\'ee\'e1\'f0\'e0\'e6\'e0\'f2\'fc \'e4\'fb\'ed\'ed\'fb\'e5 \'f1 \'f2\'e0\'ea\'ee\'e3\'ee-\'f2\'ee \lang1033\f1 Exporter\lang1049\f0 -\'e0.\lang1033\f1  \lang1049\f0\'c2 \lang1033\f1 Grafana \lang1049\f0\'e2\'fb\'e1\'e8\'f0\'e0\'e5\'ec \lang1033\f1 Dashboards -> Manage -> Import Ctrl+V \lang1049\f0\'f1\'ee\'e4\'e5\'f0\'e6\'e8\'ec\'ee\'e5 .\lang1033\f1 json\par
+\tab Grafana Loki ~ E\lang1049\f0 lasticsearch\par
+\lang1033\f1\tab Grafana Tempo ~ Jaeger\par
+\tab Grafana Mimir ~ P\lang1049\f0 rometheus\kerning1\par
+\kerning0\par
+\tab\ul ELK\ulnone  = \b E\b0 lasticsearch(\'f5\'f0\'e0\'ed\'e5\'ed\'e8\'e5 \'e8 \'e1\'fb\'f1\'f2\'f0\'fb\'e9 \'ef\'ee\'e8\'f1\'ea) + \b L\b0 ogstash(\'f1\'e1\'ee\'f0 \'eb\'ee\'e3\'ee\'e2 \'e8 \'ef\'f0\'e8\'e2\'e5\'e4\'e5\'ed\'e8\'e5 \'ea \'e5\'e4\'e8\'ed\'ee\'ec\'f3 \'f4\'ee\'f0\'ec\'e0\'f2\'f3) + \b K\b0 ibana(\'e2\'e8\'e7\'f3\'e0\'eb\'e8\'e7\'e0\'f6\'e8\'ff = Dashboard)\kerning1\par
+\kerning0\par
+#wget {\field{\*\fldinst{HYPERLINK "https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.9.1-amd64.deb"}}{\fldrslt{\ul\cf1 https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.9.1-amd64.deb}}}\kerning1\f0\fs22\par
+\kerning0 #wget {\field{\*\fldinst{HYPERLINK "https://artifacts.elastic.co/downloads/kibana/kibana-8.9.1-amd64.deb"}}{\fldrslt{\ul\cf1 https://artifacts.elastic.co/downloads/kibana/kibana-8.9.1-amd64.deb}}}\f0\fs22\tab\kerning1\par
+\kerning0 #wget {\field{\*\fldinst{HYPERLINK "https://artifacts.elastic.co/downloads/logstash/logstash-8.9.1-amd64.deb"}}{\fldrslt{\ul\cf1 https://artifacts.elastic.co/downloads/logstash/logstash-8.9.1-amd64.deb}}}\kerning1\f0\fs22\par
+\kerning0\par
+\i\tab Logstash\i0  - \'ea\'eb\'fe\'f7\'e5\'e2\'ee\'e9 \'fd\'eb\'e5\'ec\'e5\'ed\'f2. \'d0\'e5\'f8\'e0\'e5\'f2 \'ef\'f0\'ee\'e1\'eb\'e5\'ec\'f3 \lang1033\b\f1 p\lang1049\f0 arsing\b0 , \'ed\'ee\'f0\'ec\'e0\'eb\'e8\'e7\'e0\'f6\'e8\'e8 \'e8 \'f4\'e8\'eb\'fc\'f2\'f0\'e0\'f6\'e8\'e8 \'eb\'ee\'e3\'ee\'e2: \'ea\'e0\'e6\'e4\'e0\'ff \'f1\'e8\'f1\'f2\'e5\'ec\'e0 \'e3\'e5\'ed\'e5\'f0\'e8\'f2 \'eb\'ee\'e3\'e8 \'e2 \'f1\'e2\'ee\'b8\'ec \'f4\'ee\'f0\'ec\'e0\'f2\'e5 + \'ef\'f0\'ee\'e1\'eb\'e5\'ec\'e0 \'f1 \'f4\'ee\'f0\'ec\'e0\'f2\'ee\'ec \'e2\'f0\'e5\'ec\'e5\'ed\'e8 (Oct 12 23:15:45, 2015-05-30 T 05:45 UTC).\par
+\kerning1\par
+\kerning0 Logstash \'f1\'ee\'f1\'f2\'ee\'e8\'f2 \'e8\'e7: Input \kerning1\u8594? Filter \u8594? Output "\'ec\'ee\'e4\'f3\'eb\'e5\'e9".\par
+\lang1033\f1   \lang1049\f0\'e2) Output - \'ea\'f3\'e4\'e0 \'e2\'f1\'b8 \'e1\'f3\'e4\'e5\'ec \'f1\'ea\'eb\'e0\'e4\'fb\'e2\'e0\'f2\'fc. \'cc\'ee\'e6\'ed\'ee \'e2 file.csv, Mongo, S3, Elastic Cloud. \'d1\'e0\'ec\'fb\'e9 \'ef\'ee\'ef\'f3\'eb\'ff\'f0\'ed\'fb\'e9 - \kerning0 Elasticsearch.\kerning1\par
+\lang1033\f1   \lang1049\f0\'e1) Filter - ...??? \'f4\'e8\'eb\'fc\'f2\'f0\'f3\'e5\'f2\par
+\lang1033\f1   \lang1049\f0 a) Input - \'ec\'ee\'e4\'f3\'eb\'fc \'ee\'f2\'e2\'e5\'f7\'e0\'e5\'f2 \'e7\'e0 \'ef\'f0\'e8\'b8\'ec \'f7\'e5\'e3\'ee-\'eb\'e8\'e1\'ee (\'ed\'e5 \'ee\'e1\'ff\'e7\'e0\'f2\'e5\'eb\'fc\'ed\'ee \'eb\'ee\'e3\'ee\'e2) \'e8\'e7 \'f0\'e0\'e7\'eb\'e8\'f7\'ed\'fb\'f5 \'e8\'f1\'f2\'ee\'f7\'ed\'e8\'ea\'ee\'e2. \'d1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'e5\'f2 ~50 \'ef\'f0\'e5\'e4\'f3\'f1\'f2\'e0\'ed\'ee\'e2\'eb\'e5\'ed\'ed\'fb\'f5 plug-ins \'f0\'e0\'e7\'eb\'e8\'f7\'ed\'fb\'f5 \'e8\'f1\'f2\'ee\'f7\'ed\'e8\'ea\'ee\'e2 {\field{\*\fldinst{HYPERLINK "https://www.elastic.co/guide/en/logstash/current/input-plugins.html"}}{\fldrslt{\ul\cf1 https://www.elastic.co/guide/en/logstash/current/input-plugins.html}}}\f0\fs22\par
+\par
+\'cf\'f0\'e8\'ec\'e5\'f0\'fb \'e8\'f1\'f2\'ee\'f7\'ed\'e8\'ea\'ee\'e2: \'ed\'e0\'ef\'f0\'ff\'ec\'f3\'fe \'e8\'e7 JVM, \'e8\'e7 file, syslog, \lang1033\f1 B\lang1049\f0 eats, Fluent\lang1033\f1 d/Fluent\lang1049\f0 Bit\par
+\par
+\tab\lang1033\f1 Fluent\lang1049\f0 Bit\lang1033\f1  vs \lang1049\f0 Beats\par
+\'ce\'e1\'e0 fast \'e8 lightweight. \'c2 Beats \'e4\'eb\'ff \'f1\'e1\'ee\'f0\'e0 \'eb\'ee\'e3\'ee\'e2 \'ed\'e0 \'ec\'e0\'f8\'e8\'ed\'f3 \'ed\'e0\'e4\'ee \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'e8\'f2\'fc \lang1033\f1 Filebeat\lang1049\f0 , \'e4\'eb\'ff \'ec\'e5\'f2\'f0\'e8\'ea Metricbeat - \lang1033\f1 2-\lang1049\f0\'e0 \'ef\'f0\'ee\'f6\'e5\'f1\'f1\'e0, \lang1033\f1 2-\lang1049\f0\'e0 \lang1033\f1 .conf \lang1049\f0\'f4\'e0\'e9\'eb\'e0. \lang1033\f1 Fluent\lang1049\f0 Bit\lang1033\f1  \lang1049\f0\'e2 \'ee\'e4\'ed\'ee\'ec \'eb\'e8\'f6\'e5 \'f3\'ec\'e5\'e5\'f2 \'f1\'ee\'e1\'e8\'f0\'e0\'f2\'fc \'e8 \'eb\'ee\'e3\'e8 \'e8 \'ec\'e5\'f2\'f0\'e8\'ea\'e8 \'e8 ... Beats \'f3\'ec\'e5\'fe\'f2 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'f2\'fc \'e4\'e0\'ed\'ed\'fb\'e5 \'f2\'ee\'eb\'fc\'ea\'ee \'e2 Logstash \'e8 Elasticsearch. \'d3 \lang1033\f1 Fluent\lang1049\f0 Bit\lang1033\f1  \lang1049\f0\'ed\'e5\'f2 \'ed\'e8\'ea\'e0\'ea\'e8\'f5 \'ee\'e3\'f0\'e0\'ed\'e8\'f7\'e5\'ed\'e8\'e9 \'e2 \'ef\'eb\'ee\'f2\'fc \'e4\'ee \'f2\'ee\'e3\'ee, \'f7\'f2\'ee \lang1033\f1 metrics \lang1049\f0\'ec\'ee\'e6\'e5\'f2 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'f2\'fc \'e2 \kerning0 Prometheus.\par
+\par
+\kerning1 Fluent\lang1033\f1 d (\lang1049\f0\'ed\'e0 \lang1033\f1 Ruby) = Fluent\lang1049\f0 Bit\lang1033\f1  (\lang1049\f0\'ed\'e0 \'d1\'e8\lang1033\f1 ) + \lang1049\f0\'f4\'f3\'ed\'ea\'f6\'e8\'ee\'ed\'e0\'eb \kerning0 Logstash. \'c5\'f1\'f2\'fc \'f2\'e5\'f0\'ec\'e8\'ed \lang1033\f1 E\b F\b0 K, \lang1049\f0\'e2 \'ee\'f2\'eb\'e8\'f7\'e8\'e8 \'ee\'f2\lang1033\f1  ELK.\par
+\lang1049\f0\'cf\'e8\'f8\'f3\'f2, \'f7\'f2\'ee Fluentd \'ee\'f7\'e5\'ed\'fc \'ef\'f0\'ee\'e6\'ee\'f0\'eb\'e8\'e2 \'e2 \'ef\'eb\'e0\'ed\'e5 \lang1033\f1 CPU/RAM\lang1049\kerning1\f0  \u8594? \'ef\'ee\'fd\'f2\'ee\'ec\'f3 \'f1\'ee\'e7\'e4\'e0\'eb\'e8 \lang1033\f1 Fluent\lang1049\f0 Bit, \'ed\'ee \'ec\'e5\'ed\'e5\'e5 \'f4\'f3\'ed\'ea\'f6\'e8\'ee\'ed\'e0\'eb\'fc\'ed\'fb\'e9\kerning0 .\lang1033\f1  \lang1049\kerning1\f0 Fluent\lang1033\f1 d\lang1049\f0  \'e8\kerning0\'ec\'e5\'e5\'f2 9 \lang1033\f1 p\lang1049\f0 lugins\lang1033\f1 : Input, Parser, Filter, Output, Formatter, Storage, Service Discovery, Buffer, Metrics. \kerning1\par
+\lang1049\f0\par
+Beats - open-source \'ef\'eb\'e0\'f2\'f4\'ee\'f0\'ec\'e0, \'e2\'f5\'ee\'e4\'ff\'f9\'e0\'ff \'e2 \'fd\'ea\'ee\'f1\'e8\'f1\'f2\'e5\'ec\'f3 ELK. \'c5\'e4\'e8\'ed\'f1\'f2\'e2\'e5\'ed\'ed\'e0\'ff \'f6\'e5\'eb\'fc - \lang1033\f1 D\lang1049\f0 ata \lang1033\f1 S\lang1049\f0 hippers\lang1033\f1  \lang1049\f0\'c1\'c5\'c7 \'ca\'c0\'ca\'ce\'c9-\'cb\'c8\'c1\'ce \'ce\'c1\'d0\'c0\'c1\'ce\'d2\'ca\'c8\lang1033\f1 . \lang1049\f0\'cd\'e0 \'ef\'f0\'e8\'ec\'e5\'f0\'e5 \lang1033\f1 Filebeat:\lang1049\f0  \'f2\'f3\'ef\'ee \'e2\'e7\'ff\'f2\'fc \'eb\'ee\'e3\'e8 \'e8\'e7 \'f4\'e0\'e9\'eb\'e0 \'e8 \'ee\'f2\'ef\'f0\'e0\'e2\'e8\'f2\'fc \'e2 Logstash \'e8\'eb\'e8 Elasticsearch. Beats \'f3\'ec\'e5\'fe\'f2 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'f2\'fc \'e4\'e0\'ed\'ed\'fb\'e5 \'d2\'ce\'cb\'dc\'ca\'ce \'e2 Logstash \'e8\'eb\'e8 Elasticsearch. \'c5\'f1\'eb\'e8 \'f5\'ee\'f2\'e8\'ec \'ee\'e1\'f0\'e0\'e1\'e0\'f2\'fb\'e2\'e0\'f2\'fc \'eb\'ee\'e3\'e8 \'ef\'e5\'f0\'e5\'e4 \'f1\'ee\'f5\'f0\'e0\'ed\'e5\'ed\'e8\'e5\'ec, \'f2\'ee \lang1033\f1 Filebeat \lang1049\f0\u8594? \kerning0 Logstash\lang1033\kerning1\f1  \lang1049\f0\u8594? Elasticsearch\lang1033\f1 . \lang1049\f0\'c5\'f1\'eb\'e8 \'ed\'e5 \'f5\'ee\'f2\'e8\'ec, \'f2\'ee \lang1033\f1 Filebeat \lang1049\f0\u8594? Elasticsearch.\lang1033\f1\par
+\lang1049\f0\par
+{\field{\*\fldinst{HYPERLINK "https://www.elastic.co/beats"}}{\fldrslt{\ul\cf1 https://www.elastic.co/beats}}}\f0\fs22\tab\'f0\'e5\'e0\'eb\'e8\'e7\'e0\'f6\'e8\'e8:\par
+Filebeat\lang1033\f1  - \lang1049\f0\'e2\'fb\'e3\'f0\'e5\'e1\'e0\'e5\'f2 \'eb\'ee\'e3\'e8 \ul\'e8\'e7 \'f4\'e0\'e9\'eb\'ee\'e2\ulnone  \'e8 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \'e2 \lang1033\f1 E\lang1049\f0 lastic/\kerning0 Logstash\par
+Journalbeat\lang1033\f1  - \lang1049\kerning1\f0\'e2\'fb\'e3\'f0\'e5\'e1\'e0\'e5\'f2 \'eb\'ee\'e3\'e8\lang1033\f1  \lang1049\f0\'e8\'e7\lang1033\f1  \cf3\lang1049\b\f0 journalctl\cf0\b0\par
+Metricbeat - \'f1\'ee\'e1\'e8\'f0\'e0\'e5\'f2 \'ec\'e5\'f2\'f0\'e8\'ea\'e8 \'f2\'e8\'ef\'e0 \lang1033\f1 %CPU, %RAM \lang1049\f0\'e8 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \'e2 \'e2\'e8\'e4\'e5 \'eb\'ee\'e3\'ee\'e2 \'e2 \lang1033\f1 EL\lang1049\f0\par
+Packetbeat - capture HTTP, DNS, MySQL \'e7\'e0\'ef\'f0\'ee\'f1\'fb \'e8 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \'e2 \lang1033\f1 EL\lang1049\f0\par
+Auditbeat\par
+Heartbeat - \'e4\'eb\'ff \'e1\'e0\'eb\'e0\'ed\'f1\'e8\'f0\'ee\'e2\'ea\'e8 \lang1033\f1 Kub Master \lang1049\f0\'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'eb\'f1\'ff \'ea\'e0\'ea \'e0\'ed\'e0\'eb\'ee\'e3 \lang1033\f1 keepalived ???\lang1049\f0  \lang1033\f1 keepalived\lang1049\f0  - \'f3\'ef\'ee\'f0 \'ed\'e0 \'f1\'e5\'f2\'fc \lang1033\f1 ~ HSRP. \lang1049\f0 Heartbeat \lang1033\f1 - \lang1049\f0\'f3\'ef\'ee\'f0 \'ed\'e0 \lang1033\f1 App.\par
+\lang1049\f0\par
+\par
+{\field{\*\fldinst{HYPERLINK "https://serveradmin.ru/ustanovka-i-nastroyka-elasticsearch-logstash-kibana-elk-stack/"}}{\fldrslt{\ul\cf1 https://serveradmin.ru/ustanovka-i-nastroyka-elasticsearch-logstash-kibana-elk-stack/}}}\f0\fs22\par
+\kerning0\tab\i Elasticsearch\i0  - Time-Series NoSQL \'c1\'c4 (TSDB). \'cc\'ee\'e6\'ed\'ee \'ef\'ee\'e4\'ed\'ff\'f2\'fc Cluster \'e8\'e7 \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'e8\'f5 \lang1033\f1 Instance\lang1049\f0  \'e1\'e0\'e7. \'d5\'f0\'e0\'ed\'e8\'f2 \'e4\'ee\'ea\'f3\'ec\'e5\'ed\'f2\'fb \'e2 JSON. Lucene \'e4\'e2\'e8\'e6\'ee\'ea \'ef\'ee\'eb\'ed\'ee\'f2\'e5\'ea\'f1\'f2\'ee\'e2\'ee\'e3\'ee \'ef\'ee\'e8\'f1\'ea\'e0. \'c2\'f1\'b8 \'e2\'e7\'e0\'e8\'ec\'ee\'e4\'e5\'e9\'f1\'f2\'e2\'e8\'e5 \'f1 \'f1\'e8\'f1\'f2\'e5\'ec\'ee\'e9 \'f7\'e5\'f0\'e5\'e7 REST API.\kerning1\par
+\par
+\kerning0\'c4\'ee\'e1\'e0\'e2\'e8\'f2\'fc JSON \'ef\'ee\'f1\'f2:\kerning1\par
+\kerning0 curl -X\b PUT\b0  "localhost/blog/post/1?pretty" -d'\kerning1\par
+\kerning0\{\kerning1\par
+\kerning0   "title": "\'c2\'e5\'f1\'e5\'eb\'fb\'e5 \'ea\'ee\'f2\'ff\'f2\'e0",\kerning1\par
+\kerning0   "content": "<p>\'d1\'ec\'e5\'f8\'ed\'e0\'ff \'e8\'f1\'f2\'ee\'f0\'e8\'ff \'ef\'f0\'ee \'ea\'ee\'f2\'ff\'f2<p>",\kerning1\par
+\kerning0   "tags": [\kerning1\par
+\kerning0     "\'ea\'ee\'f2\'ff\'f2\'e0",\kerning1\par
+\kerning0     "\'f1\'ec\'e5\'f8\'ed\'e0\'ff \'e8\'f1\'f2\'ee\'f0\'e8\'ff"\kerning1\par
+\kerning0   ],\kerning1\par
+\kerning0   "published_at": "2014-09-12T20:44:42+00:00"\kerning1\par
+\kerning0\}'\kerning1\par
+\kerning0\'d2\'e5\'ef\'e5\'f0\'fc \'e8\'f9\'e5\'ec \'e5\'e3\'ee \'e6\'e5:\kerning1\par
+\kerning0 curl -X\b GET\b0  "localhost/blog/_mapping?pretty"\kerning1\par
+\kerning0\{\kerning1\par
+\kerning0   "blog" : \{\kerning1\par
+\kerning0     "mappings" : \{\kerning1\par
+\kerning0       "post" : \{\kerning1\par
+\kerning0         "properties" : \{\kerning1\par
+\kerning0           /* "content": "<p>\'d1\'ec\'e5\'f8\'ed\'e0\'ff \'e8\'f1\'f2\'ee\'f0\'e8\'ff \'ef\'f0\'ee \'ea\'ee\'f2\'ff\'f2<p>", */ \kerning1\par
+\kerning0           "content" : \{\kerning1\par
+\kerning0             "type" : "string"\kerning1\par
+\kerning0           \},\kerning1\par
+\kerning0           /* "published_at": "2014-09-12T20:44:42+00:00" */\kerning1\par
+\kerning0           "published_at" : \{\kerning1\par
+\kerning0             "type" : "date",\kerning1\par
+\kerning0             "format" : "strict_date_optional_time||epoch_millis"\kerning1\par
+\kerning0           \},\kerning1\par
+\kerning0           /* "tags": ["\'ea\'ee\'f2\'ff\'f2\'e0", "\'f1\'ec\'e5\'f8\'ed\'e0\'ff \'e8\'f1\'f2\'ee\'f0\'e8\'ff"] */\kerning1\par
+\kerning0           "tags" : \{\kerning1\par
+\kerning0             "type" : "string"\kerning1\par
+\kerning0           \},\kerning1\par
+\kerning0           /*  "title": "\'c2\'e5\'f1\'e5\'eb\'fb\'e5 \'ea\'ee\'f2\'ff\'f2\'e0" */\kerning1\par
+\kerning0           "title" : \{\kerning1\par
+\kerning0             "type" : "string"\kerning1\par
+\kerning0\par
+\par
+\b Nginx\kerning1\b0\par
+\kerning0\par
+Beginner's Guide: {\field{\*\fldinst{HYPERLINK "https://nginx.org/ru/docs/beginners_guide.html"}}{\fldrslt{\ul\cf1 https://nginx.org/ru/docs/beginners_guide.html}}}\kerning1\f0\fs22\par
+\kerning0 Full Example Configuration: {\field{\*\fldinst{HYPERLINK "https://www.nginx.com/resources/wiki/start/topics/examples/full/"}}{\fldrslt{\ul\cf1 https://www.nginx.com/resources/wiki/start/topics/examples/full/}}}\kerning1\f0\fs22\par
+\kerning0\'c2\'f1\'e5 \'e4\'e8\'f0\'e5\'ea\'f2\'e8\'e2\'fb Nginx: {\field{\*\fldinst{HYPERLINK "https://nginx.org/en/docs/dirindex.html"}}{\fldrslt{\ul\cf1 https://nginx.org/en/docs/dirindex.html}}}\kerning1\f0\fs22\par
+\par
+\kerning0 Forward Proxy "\'e7\'e0\'f9\'e8\'f9\'e0\'e5\'f2" \'ea\'eb\'e8\'e5\'ed\'f2\'ee\'e2. Reverse Proxy "\'e7\'e0\'f9\'e8\'f9\'e0\'e5\'f2" \'f1\'e5\'f0\'e2\'e5\'f0\'e0.\kerning1\par
+\par
+\kerning0 Nginx vs HAProxy.\kerning1\par
+\kerning0{\field{\*\fldinst{HYPERLINK "https://klink0v.livejournal.com/692218.html"}}{\fldrslt{\ul\cf1 https://klink0v.livejournal.com/692218.html}}}\kerning1\f0\fs22\par
+\par
+\kerning0\tab Nginx - \'ea\'ee\'e3\'e4\'e0 \'ed\'f3\'e6\'e5\'ed High-Performance Web-\'f1\'e5\'f0\'e2\'e5\'f0, \'e4\'eb\'ff \'ee\'f2\'e4\'e0\'f7\'e8 Static \'f1\'f2\'f0\'e0\'ed\'e8\'f7\'e5\'ea + \'e2\'fb\'f1\'ee\'ea\'ee\'ef\'f0\'ee\'e8\'e7\'e2\'ee\'e4\'e8\'f2\'e5\'eb\'fc\'ed\'fb\'e9 HTTP/HTTPS \'e1\'e0\'eb\'e0\'ed\'f1\'e8\'f0\'ee\'e2\'f9\'e8\'ea/Reverse Proxy + \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'e5\'f2 \'f5\'e8\'f2\'f0\'fb\'ec Routing Web-\'e7\'e0\'ef\'f0\'ee\'f1\'ee\'e2. \'d0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'d2\'ce\'cb\'dc\'ca\'ce \'f1 HTTP \'e8 HTTPS. \'c1\'ee\'eb\'e5\'e5 "\'f7\'e8\'f1\'f2\'fb\'e9" \'ea\'ee\'e4 (\'e1\'e5\'e7 Bugs), \'f7\'e5\'ec HAProxy. \'c2\'fb\'f8\'e5 \'ef\'f0\'ee\'e8\'e7\'e2\'ee\'e4\'e8\'f2\'e5\'eb\'fc\'ed\'ee\'f1\'f2\'fc, \'f7\'e5\'ec HAProxy. Logs \'e8 Configs \'f3 Nginx \'e1\'ee\'eb\'e5\'e5 \'f7\'e8\'f2\'e0\'e5\'ec\'fb human-friendly, \'f7\'e5\'ec \'f3 HAProxy. "\'c2\'ea\'f3\'f1\'ed\'fb\'e5" \'f4\'f3\'ed\'ea\'f6\'e8\'e8 \'e2 Nginx - \'ef\'eb\'e0\'f2\'ed\'fb\'e5: Health Check \'f1\'e5\'f0\'e2\'e5\'f0\'ee\'e2 ...\kerning1\par
+\kerning0\tab HAProxy - \'ea\'ee\'e3\'e4\'e0 \'ed\'e5\'e4\'ee\'f1\'f2\'e0\'f2\'ee\'f7\'ed\'ee \'f4\'f3\'ed\'ea\'f6\'e8\'ee\'ed\'e0\'eb\'e0 Nginx, \'f2.\'e5. \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee \'e1\'e0\'eb\'e0\'ed\'f1\'e8\'f0\'ee\'e2\'e0\'f2\'fc/\'ef\'f0\'ee\'ea\'f1\'e8\'f0\'ee\'e2\'e0\'f2\'fc \'e4\'f0\'f3\'e3\'e8\'e5 TCP-\'ef\'f0\'ee\'f2\'ee\'ea\'ee\'eb\'fb ~ LDAP, SMPP, AMQP. \'cd\'e5 \'f3\'ec\'e5\'e5\'f2 \'ee\'f2\'e4\'e0\'e2\'e0\'f2\'fc Static \'f1\'f2\'f0\'e0\'ed\'e8\'f7\'ea\'e8. \'c2\'f1\'f2\'f0\'ee\'e5\'ed\'ed\'fb\'e9 \'ec\'e5\'f5\'e0\'ed\'e8\'e7\'ec Health Check \'f1\'e5\'f0\'e2\'e5\'f0\'ee\'e2. \'c5\'f1\'f2\'fc \'ea\'f0\'e0\'f1\'e8\'e2\'e0\'ff \'e4\'e8\'e0\'e3\'ed\'ee\'f1\'f2\'e8\'f7\'e5\'f1\'ea\'e0\'ff Web-\'f1\'f2\'f0\'e0\'ed\'e8\'f7\'ea\'e0 \'e8 \'e3\'ee\'e4\'ed\'fb\'e9 API. \'c2 \'ee\'f2\'eb\'e8\'f7\'e8\'e8 \'ee\'f2 Nginx, HAProxy \'f3\'e4\'ee\'e1\'ed\'e5\'e5 \'ec\'ee\'ed\'e8\'f2\'ee\'f0\'e8\'f2\'fc \'ea\'e0\'ea \'e3\'eb\'e0\'e7\'e0\'ec\'e8, \'f2\'e0\'ea \'e8 Zabbix-\'ee\'ec.\kerning1\par
+\par
+\kerning0 /etc/nginx/nginx.conf\kerning1\par
+\kerning0 /usr/share/nginx/html/index.html\tab\tab default-\'e0\'ff \'f1\'f2\'f0\'e0\'ed\'e8\'f6\'e0\kerning1\par
+\par
+\kerning0 #nginx -c \lang1033\f1 custom.\lang1049\f0 conf\tab\tab\'e5\'f1\'eb\'e8 \'f5\'ee\'f2\'e8\'ec \'ef\'ee\'e4\'e3\'f0\'f3\'e7\'e8\'f2\'fc \lang1033\f1 custom.\lang1049\f0 conf\lang1033\f1  \lang1049\f0\'e2\'ec\'e5\'f1\'f2\'ee \lang1033\f1 default\lang1049\f0 -\'ee\'e3\'ee\kerning1\par
+\kerning0 #nginx -s reload\tab = #kill -s HUP $(cat /var/run/nginx.pid)\tab\'ef\'e5\'f0\'e5\'e7\'e0\'e3\'f0\'f3\'e7\'e8\'f2\'fc conf \'f4\'e0\'e9\'eb\kerning1\par
+\kerning0 #nginx -s start/stop\kerning1\par
+\kerning0\par
+user www-data;\tab\tab\tab\tab\tab\tab\'ee\'f2 \'ea\'e0\'ea\'ee\'e3\'ee \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'ff \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 nginx, \'f2.\'e5. \'ef\'ee\'ea\'e0\'e6\'e5\'f2 \'e2 #ps -ef\kerning1\par
+\kerning0 worker_processes 4;\tab\tab\tab\tab\tab = \'ea\'ee\'eb\'e8\'f7\'e5\'f1\'f2\'e2\'ee \'ff\'e4\'e5\'f0 CPU\kerning1\par
+\kerning0\par
+events \{\tab\tab\tab\tab\tab\tab\tab\'e1\'e5\'e7 \'fd\'f2\'ee\'e3\'ee \'ed\'e5 \'f1\'f2\'e0\'f0\'f2\'f3\'e5\'f2 #systemctl start nginx\kerning1\par
+\kerning0\}\kerning1\par
+\kerning0\par
+upstream \cf4\b myserv\cf0\b0  \{\kerning1\par
+\lang1033\kerning0\f1\tab\lang1049\f0 least_conn;\tab\tab\tab\tab\tab\tab\'ec\'e5\'f2\'ee\'e4\'fb sticky, round-robin, ip_hash, ...\kerning1\par
+\lang1033\kerning0\f1\tab\lang1049\f0 server 127.0.0.1:8000;\kerning1\par
+\lang1033\kerning0\f1\tab\lang1049\f0 server 127.0.0.1:8001 weight=3;\tab\tab\'fd\'f2\'ee weighted load balancing\kerning1\par
+\par
+\lang1033\kerning0\f1\tab\lang1049\f0 server 127.0.0.1:8002 max_fails=3 fail_timeout=60s\lang1033\f1 ;\tab ~ \lang1049\f0\'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e0 \lang1033\f1 Health Check\lang1049\kerning1\f0\par
+\lang1033\kerning0\f1\tab\lang1049\f0 server 127.0.0.1:8003 backup\lang1033\f1 ;\lang1049\f0\tab\tab\'e2\'e7\'ff\'eb \'e8\'e7 PTAF-\'e0\kerning1\par
+\kerning0\}\kerning1\par
+\kerning0\par
+http \{\par
+\kerning1\par
+\kerning0 include /etc/nginx/proxy.conf;\tab\tab\tab\'ea\'e0\'ea \'e2 \'d1\'e8 \'e2\'ec\'e5\'f1\'f2\'ee \'fd\'f2\'ee\'e9 \'f1\'f2\'f0\'ee\'ea\'e8 \'ef\'ee\'e4\'f1\'f2\'e0\'e2\'e8\'f2\'fc \'f2\'e5\'ea\'f1\'f2 \'e8\'e7 \'f4\'e0\'e9\'eb\'e0\kerning1\par
+\kerning0 default_type  application/octet-stream;\tab\'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'e5\'f2 default MIME type \'e4\'eb\'ff Response\kerning1\par
+\par
+\kerning0 access_log logs/\cf10\kerning1\b access.log\cf0\kerning0\b0  \cf5\b main\cf0\b0 ;\kerning1\par
+\kerning0 error_log logs/\cf10\kerning1\b error.log\cf0\kerning0\b0  \cf5\b main\cf0\b0 ;\kerning1\par
+\kerning0 log_format \cf5\b main\cf0\b0  '$remote_addr - $remote_user [$time_local]  $status '\kerning1\par
+\lang1033\kerning0\f1\tab\tab\lang1049\f0 '"$request" $body_bytes_sent "$http_referer" '\tab\tab\tab\'e2 nginx \'e5\'f1\'f2\'fc \'e2\'ed\'f3\'f2\'f0\'e5\'ed\'ed\'e8\'e5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5 \cf11\b $remote_addr\cf0\kerning1\b0\par
+\lang1033\kerning0\f1\tab\tab\lang1049\f0 '"$http_user_agent" "$http_x_forwarded_for"';\kerning1\par
+\par
+\kerning0 root /var/www/html;\tab\tab\'ec\'ee\'e6\'ed\'ee \'fd\'f2\'ee \'ee\'ef\'e8\'f1\'e0\'f2\'fc \'f2\'f3\'f2, \'e0 \'ec\'ee\'e6\'ed\'ee \'e2 \'f1\'e5\'ea\'f6\'e8\'e8 server - localtion\kerning1\par
+\kerning0 server \{\kerning1\par
+\lang1033\kerning0\f1\tab\cf2\lang1049\b\f0 listen 443 ssl;\cf0\b0\tab\tab\cf2\b\'c7\'c5\'cb\'a8\'cd\'db\'cc\cf0\b0  \'e2\'fb\'e4\'e5\'eb\'e5\'ed\'fb \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e8 \'e4\'eb\'ff \'f0\'e0\'e1\'ee\'f2\'fb ssl\kerning1\par
+\lang1033\kerning0\f1\tab\lang1049\f0 listen 80;\kerning1\par
+\lang1033\kerning0\f1\tab\lang1049\f0 server_name domain2.com;\tab\tab\'ea\'ee\'e3\'e4\'e0 \'e7\'e0\'f5\'ee\'e4\'e8\'ec \'ef\'ee DNS \'e8\'ec\'e5\'ed\'e8\kerning1\par
+\lang1033\kerning0\f1\tab\cf2\lang1049\b\f0 ssl_certificate\tab\tab /etc/ssl/my_site.crt;\cf0\b0\tab\tab\'fd\'f2\'ee\'f2 \'f4\'e0\'e9\'eb-cert \'e4\'ee\'eb\'e6\'e5\'ed \'f1\'ee\'e4\'e5\'f0\'e6\'e0\'f2\'fc \'e2 \'f1\'e5\'e1\'e5 \'e2\'f1\'e5 cert-\'fb, \'f2.\'e5. #cat root.crt site.crt > my_site.crt \kerning1\par
+\lang1033\kerning0\f1\tab\cf2\lang1049\b\f0 ssl_certificate\tab\tab /etc/ssl/my_site.key;\cf0\kerning1\b0\par
+\lang1033\kerning0\f1\tab\lang1049\f0 location ^~ /\b image\b0  \{\tab\tab\tab\'e5\'f1\'eb\'e8 \'e7\'e0\'f5\'ee\'e4\'e8\'ec \'ed\'e0 hxxp://10.0.0.1/\b image\lang1033\b0\f1 /example.png\lang1049\kerning1\f0\par
+\lang1033\kerning0\f1\tab\tab\lang1049\f0 root /\lang1033\f1 data\lang1049\f0 /\lang1033\f1 static\lang1049\f0 ;\lang1033\f1\tab\lang1049\f0\tab\'f2\'ee static \'ea\'ee\'ed\'f2\'e5\'ea\'f1\'f2 \'e1\'f3\'e4\'e5\'f2 \'e1\'f0\'e0\'f2\'fc \'e8\'e7 \'ef\'e0\'ef\'ea\'e8\lang1033\f1  \lang1049\f0 /\lang1033\f1 data\lang1049\f0 /\lang1033\f1 static/\b image\b0 /example.png\par
+\tab\tab alias\lang1049\f0  /\lang1033\f1 data\lang1049\f0 /\lang1033\f1 static\lang1049\f0 ;\lang1033\f1\tab\lang1049\f0\tab\'f2\'ee static \'ea\'ee\'ed\'f2\'e5\'ea\'f1\'f2 \'e1\'f3\'e4\'e5\'f2 \'e1\'f0\'e0\'f2\'fc \'e8\'e7 \'ef\'e0\'ef\'ea\'e8\lang1033\f1  \lang1049\f0 /\lang1033\f1 data\lang1049\f0 /\lang1033\f1 static/example.png\par
+\par
+\tab\tab allow 172.16.0.0/12;\tab\tab access-list\par
+\tab\tab deny all;\lang1049\kerning1\f0\par
+\lang1033\kerning0\f1\tab\lang1049\f0\}\kerning1\par
+\lang1033\kerning0\f1\tab\lang1049\f0 location / \{\kerning1\par
+\lang1033\kerning0\f1\tab\tab\lang1049\f0 proxy_pass hxxp://\cf4\b myserv\cf0\b0 ;\kerning1\par
+\lang1033\kerning0\f1\tab\tab\lang1049\f0 proxy_set_header X-Forwarded-For \cf11\b $proxy_add_x_forwarded_for\tab\cf0\b0\tab\'e1\'e5\'f0\'b8\'ec \'e8\'e7 \'e7\'e0\'ef\'f0\'ee\'f1\'e0 header=\cf11\b $proxy_add_x_forwarded_for\cf0\b0  \'e8 \'ef\'f0\'e8 \'ef\'f0\'ee\'ea\'f1\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'e8 \'e2\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'ec \'e5\'e3\'ee \'e2 X-Forwarded-For. \'c2\'f1\'e5 \'ef\'ee\'e4\'ee\'e1\'ed\'fb\'e5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5 nginx {\field{\*\fldinst{HYPERLINK "https://nginx.org/en/docs/varindex.html"}}{\fldrslt{\ul\cf1 https://nginx.org/en/docs/varindex.html}}}\kerning1\f0\fs22\par
+\lang1033\kerning0\f1\tab\lang1049\f0\}\kerning1\par
+\kerning0   \lang1033\f1  \lang1049\f0\}\kerning1\par
+\kerning0\}\par
+\par
+\lang1033\ul\f1 N\lang1049\f0 ginx \lang1033\f1 C\lang1049\f0 ache\lang1033\ulnone\f1\par
+{\field{\*\fldinst{HYPERLINK "https://habr.com/ru/articles/428127"}}{\fldrslt{\ul\cf1 https://habr.com/ru/articles/428127}}}\lang1049\f0\fs22\par
+\'cf\'f0\'ee\'e2\'e5\'f0\'e8\'f2\'fc\lang1033\f1 ,\lang1049\f0  \'f7\'f2\'ee \lang1033\f1 N\lang1049\f0 ginx \'f1\'ee\'e1\'f0\'e0\'ed \'f1 \'ec\'ee\'e4\'f3\'eb\'e5\'ec ngx_http_proxy_module\lang1033\f1 .\lang1049\f0\par
+\lang1033\f1\tab\lang1049\f0 proxy_cache_path /var/lib/nginx/proxy_cache levels=1:2 keys_zone=proxy_cache:15m max_size=1G;\par
+\lang1033\f1\tab\lang1049\f0 proxy_cache_key $request_method$host$orig_uri:$cookie_some_cookie:$arg_some_arg;\par
+\lang1033\f1\tab\lang1049\f0 proxy_cache_key $scheme$proxy_host$request_uri;\par
+\lang1033\f1\tab\lang1049\f0 proxy_cache_valid 15m;\par
+\lang1033\f1\tab\lang1049\f0 proxy_cache_valid 404 15s;\kerning1\par
+\kerning0\par
+\ul Search-Order\ulnone\tab\tab\tab\tab\tab\tab\tab\'ce\'f1\'f2\'e0\'ed\'e0\'e2\'eb\'e8\'e2\'e0\'f2\'fc \'ef\'ee\'e8\'f1\'ea \'ef\'f0\'e8 \'f1\'ee\'e2\'ef\'e0\'e4\'e5\'ed\'e8\'e8\par
+=\lang1033\f1\tab\lang1049\f0 UR\lang1033\f1 L\lang1049\f0  \'e4\'ee\'eb\'e6\'e5\'ed \'ef\'ee\'eb\'ed\'ee\'f1\'f2\'fc\'fe \'f1\'ee\'e2\'ef\'e0\'e4\'e0\'f2\'fc\tab\'ce\'e1\'fb\'f7\'ed\'e0\'ff \'f1\'f2\'f0\'ee\'ea\'e0\tab\tab\tab\'c4\'e0\par
+^~\tab UR\lang1033\f1 L\lang1049\f0  \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2\'f1\'ff \'f1 ...\tab\tab\tab\'ce\'e1\'fb\'f7\'ed\'e0\'ff \'f1\'f2\'f0\'ee\'ea\'e0\tab\tab\tab\'c4\'e0\par
+None\tab UR\lang1033\f1 L\lang1049\f0  \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2\'f1\'ff \'f1 ...\lang1033\f1\tab\tab\tab\lang1049\f0\'ce\'e1\'fb\'f7\'ed\'e0\'ff \'f1\'f2\'f0\'ee\'ea\'e0\tab\tab\lang1033\f1\tab\lang1049\f0\'cd\'e5\'f2\par
+~\lang1033\f1\tab\lang1049\f0 case-sensitive \'e2 \'e2\'e8\'e4\'e5\lang1033\f1  RegE\lang1049\f0 x\lang1033\f1 p\tab\lang1049\f0 Perl \lang1033\f1 RegExp\tab\lang1049\f0\'c4\'e0 \tab\tab (first match)                 \par
+~*\lang1033\f1\tab\lang1049\f0 case-insensitive \'e2 \'e2\'e8\'e4\'e5\lang1033\f1  RegE\lang1049\f0 x\lang1033\f1 p\tab\lang1049\f0 Perl \lang1033\f1 RegExp\tab\lang1049\f0\'c4\'e0 \tab\tab (first match)\par
+@\lang1033\f1\tab\lang1049\f0\'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'e5\'f2 named location block\tab\'ce\'e1\'fb\'f7\'ed\'e0\'ff \'f1\'f2\'f0\'ee\'ea\'e0\tab\tab\tab\'c4\'e0\par
+\par
+\b HAProxy\kerning1\b0\par
+\kerning0\'c0\'f0\'f5\'e8\'f2\'e5\'ea\'f2\'f3\'f0\'e0: {\field{\*\fldinst{HYPERLINK "http://www.haproxy.org/download/1.2/doc/architecture.txt"}}{\fldrslt{\ul\cf1 http://www.haproxy.org/download/1.2/doc/architecture.txt}}}\kerning1\f0\fs22\par
+\kerning0\'cf\'f0\'e8\'ec\'e5\'f0 \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e0\'f6\'e8\'ee\'ed\'ed\'ee\'e3\'ee \'f4\'e0\'e9\'eb\'e0: {\field{\*\fldinst{HYPERLINK "https://habr.com/ru/sandbox/34354/?ysclid=l5uej4twnv70916939"}}{\fldrslt{\ul\cf1 https://habr.com/ru/sandbox/34354/?ysclid=l5uej4twnv70916939}}}\kerning1\f0\fs22\par
+\kerning0\'cf\'e5\'f0\'e5\'e2\'ee\'e4 \'f1\'f2\'e0\'f2\'fc\'e8 HAProxy Quick Start: {\field{\*\fldinst{HYPERLINK "https://support.qbpro.ru/index.php?title=HAProxy_Configuration_Manual"}}{\fldrslt{\ul\cf1 https://support.qbpro.ru/index.php?title=HAProxy_Configuration_Manual}}}\kerning1\f0\fs22\par
+\kerning0\par
+\'ca\'ee\'ed\'f4\'e8\'e3 \'f1\'ee\'f1\'f2\'ee\'e8\'f2 \'e8\'e7 \'f0\'e0\'e7\'e4\'e5\'eb\'ee\'e2:\kerning1\par
+\kerning0\tab global - \'f3\'f1\'f2\'e0\'ed\'e0\'e2\'eb\'e8\'e2\'e0\'e5\'f2 \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'fb \'e4\'eb\'ff \'e2\'f1\'e5\'f5 \'ef\'f0\'ee\'f6\'e5\'f1\'f1\'ee\'e2\kerning1\par
+\kerning0\tab defaults - \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'e5\'f2 \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'fb \'ef\'ee \'f3\'ec\'ee\'eb\'f7\'e0\'ed\'e8\'fe \'e4\'eb\'ff \'e2\'f1\'e5\'f5 \'ee\'f1\'f2\'e0\'eb\'fc\'ed\'fb\'f5, \'ea\'f0\'ee\'ec\'e5 global. \'ce\'e1\'ff\'e7\'e0\'f2\'e5\'eb\'fc\'ed\'fb\'e9\kerning1\par
+\kerning0\tab frontend - \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e8 \'e4\'eb\'ff \'ef\'f0\'e8\'ed\'ff\'f2\'e8\'ff \'f1\'ee\'e5\'e4\'e8\'ed\'e5\'ed\'e8\'e9 \'ee\'f2 \'ea\'eb\'e8\'e5\'ed\'f2\'ee\'e2\kerning1\par
+\kerning0\tab backend - \'ed\'e0\'e1\'ee\'f0 \'f1\'e5\'f0\'e2\'e8\'f1\'ee\'e2, \'ea \'ea\'ee\'f2\'ee\'f0\'fb\'ec \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e0\'e5\'f2\'f1\'ff \'ef\'f0\'ee\'ea\'f1\'e8\kerning1\par
+\kerning0\tab listen - \'ef\'ee\'eb\'e5\'e7\'ed\'e0 \'e4\'eb\'ff TCP \'f2\'f0\'e0\'f4\'e8\'ea\'e0\kerning1\par
+\kerning0\b\par
+\b0 global\kerning1\par
+\kerning0    daemon\kerning1\par
+\kerning0    maxconn 256\kerning1\par
+\kerning0\b\par
+\b0 defaults\kerning1\par
+\kerning0    mode http\tab\tab\tab\tab\'e5\'f9\'b8 \'ec\'ee\'e6\'e5\'f2 \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc \'e2 \'f0\'e5\'e6\'e8\'ec\'e5 mode tcp\kerning1\par
+\kerning0    timeout connect 5000ms\kerning1\par
+\kerning0    timeout client 50000ms\kerning1\par
+\kerning0    timeout server 50000ms\kerning1\par
+\kerning0\b\par
+\b0 frontend http-in\kerning1\par
+\kerning0    bind *:80\kerning1\par
+\kerning0    monitor-uri /static/\tab\tab\'e5\'f1\'eb\'e8 \'ee\'e1\'f0\'e0\'f9\'e0\'e5\'ec\'f1\'ff {\field{\*\fldinst{HYPERLINK "http://localhost/static"}}{\fldrslt{\ul\cf1 http://localhost/static}}}\f0\fs22 , \'f2\'ee \'ef\'ee\'eb\'f3\'f7\'e8\'ec 200.html\kerning1\par
+\kerning0    errorfile 200 /var/haproxy/200.html\kerning1\par
+\kerning0    default_backend servers\kerning1\par
+\kerning0\b\par
+\b0 backend servers\kerning1\par
+\kerning0    server server1 127.0.0.1:8000\kerning1\par
+\kerning0\b\par
+\b0 #haproxy -f configuration.conf -c\par
+\par
+\par
+\lang1033\b\f1 ArgoCD\b0\par
+\lang1049\f0\'c7\'e0\'ef\'f3\'f1\'ea\'e0\'e5\'f2\'f1\'ff \'ea\'e0\'ea \lang1033\f1 Pod \lang1049\f0\'e2 \lang1033\f1 K\lang1049\f0 ubernetes\lang1033\f1 . \lang1049\f0\'ca\'e0\'e6\'e4\'fb\'e5 3 \'ec\'e8\'ed \'eb\'e5\'e7\'e5\'f2 \'e2 \lang1033\f1 Git \lang1049\f0\'e2 \'ef\'f0\'ee\'e5\'ea\'f2 \lang1033\f1 devops/myapp1\lang1049\f0 , \'e3\'e4\'e5 \'eb\'e5\'e6\'e0\'f2 \'eb\'e8\'e1\'ee \lang1033\f1 M\lang1049\f0 anifest\lang1033\f1  \lang1049\f0\'e4\'eb\'ff \lang1033\f1 kubctl, \lang1049\f0\'eb\'e8\'e1\'ee \lang1033\f1 Helm Chatrs \lang1049\f0\'e8 \'ee\'f2\'f1\'eb\'e5\'e6\'e8\'e2\'e0\'e5\'f2 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff\'ec\'e8. \'c5\'f1\'eb\'e8 \'e2\'e8\'e4\'e8\'f2 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff, \'f2\'ee implements \'e8\'f5 \'e2 \lang1033\f1 K\lang1049\f0 ubernetes. \'d4\'e0\'ea\'f2\'e8\'f7\'e5\'f1\'ea\'e8 \'e2 \lang1033\f1 ArgoCD \lang1049\f0\'ed\'e0\'f1\'f2\'f0\'e0\'e8\'e2\'e0\'e5\'ec \'f2\'ee\'eb\'fc\'ea\'ee \lang1033\f1 Git URL\lang1049\f0 , \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'e1\'f3\'e4\'e5\'ec "\'ec\'ee\'ed\'e8\'f2\'ee\'f0\'e8\'f2\'fc" \'e8 \lang1033\f1 Branch.\par
+\lang1049\f0\'cf\'ee\'f1\'eb\'e5 \'f1\'e1\'ee\'f0\'ea\'e8 \'e2 \lang1033\f1 GitLab CI, \lang1049\f0\'ef\'ee\'eb\'f3\'f7\'e5\'ed\'ed\'fb\'e9 \'e0\'f0\'f2\'e8\'f4\'e0\'ea\'f2 \'e7\'e0\'e3\'f0\'f3\'e6\'e0\'e5\'ec \'e2 \lang1033\f1 Docker Hub. \lang1049\f0\'c2 \'ef\'e0\'ef\'ea\'e5, \'ea\'ee\'f2\'ee\'f0\'f3\'fe "\'ec\'ee\'ed\'e8\'f2\'ee\'f0\'e8\'f2" \lang1033\f1 ArgoCD\lang1049\f0 ,\lang1033\f1  \lang1049\f0\'e4\'e5\'eb\'e0\'e5\'ec "\'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff", \'ed\'e0\'ef\'f0\'e8\'ec\'e5\'f0 \lang1033\f1 update tag\lang1049\f0 . \lang1033\f1 ArgoCD\lang1049\f0  \'e2\'e8\'e4\'e8\'f2 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff \'e8 \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2 \'f1\'e2\'ee\'fe \'f0\'e0\'e1\'ee\'f2\'f3.\kerning1\par
+\i\par
+\kerning0\i0\par
+\b Gitlab\kerning1\b0\par
+\kerning0\'c1\'fb\'eb\'e0  \'ef\'f0\'ee\'e1\'eb\'e5\'ec\'e0 wrong SSH Clone URL: \'e2 /etc/gitlab/gitlab.rb \'f0\'e0\'f1\'ea\'ee\'ec\'ec\'e5\'ed\'f2\'e8\'f2\'fc \'e8 \'e8\'e7\'ec\'e5\'ed\'e8\'f2\'fc gitlab_rails['gitlab_shell_ssh_port'] = 2222, \'ef\'ee\'f1\'eb\'e5 #gitlab-ctl reconfigure\kerning1\par
+\kerning0\par
+\'c2 \'ee\'f1\'ed\'ee\'e2\'ed\'ee\'ec \'ed\'e0\'ef\'e8\'f1\'e0\'ed \'ed\'e0 \lang1033\f1 Ruby. \lang1049\f0\'d1\'ee\'f1\'f2\'ee\'e8\'f2 \'e8\'e7 \'ea\'ee\'ec\'ef\'ee\'ed\'e5\'ed\'f2:\par
+\pard{\pntext\f2\'B7\tab}{\*\pn\pnlvlblt\pnf2\pnindent0{\pntxtb\'B7}}\nowidctlpar\hyphpar0\fi-360\li720\lang1033\f1 Nginx - \lang1049\f0\'ef\'f0\'e8\'ed\'e8\'ec\'e0\'e5\'f2 \lang1033\f1 HTTP/HTTPS \lang1049\f0\'e7\'e0\'ef\'f0\'ee\'f1\'fb \'e8 \'f0\'e0\'f1\'ea\'e8\'e4\'fb\'e2\'e0\'e5\'f2 \'ed\'e0 Workhorse\lang1033\f1 , Registry,\lang1049\f0  GitLab pages\lang1033\f1  \lang1049\f0 (\'f5\'f0\'e0\'ed\'e8\'f2 \lang1033\f1 static HTML)\lang1049\f0  \'e8 \'e5\'f9\'b8 \'f7\'f2\'ee-\'f2\'ee.\par
+\lang1033\f1{\pntext\f2\'B7\tab}GitLab Shell - \lang1049\f0\'ef\'f0\'e8\'ed\'e8\'ec\'e0\'e5\'f2 \lang1033\f1 SSH \lang1049\f0\'e7\'e0\'ef\'f0\'ee\'f1\'fb \lang1033\f1 ~ OpenSSH\lang1049\f0 . \'c2\'e7\'e0\'e8\'ec\'ee\'e4\'e5\'e9\'f1\'f2\'e2\'f3\'e5\'f2 \'f1 Gitaly.\par
+\lang1033\f1{\pntext\f2\'B7\tab}Puma - \lang1049\f0\'ee\'f1\'ed\'ee\'e2\'ed\'ee\'e9\lang1033\f1  Web Application Server - \lang1049\f0\'f1\'e5\'f0\'e4\'f6\'e5 \lang1033\f1 GitLab\lang1049\f0 . \'cf\'ee\'eb\'f3\'f7\'e0\'e5\'f2 \'e7\'e0\'ef\'f0\'ee\'f1\'fb \'ee\'f2 Workhorse. \'cf\'f0\'e8\'f7\'e8\'ed\'fb \'ef\'ee\'ff\'e2\'eb\'e5\'ed\'e8\'ff \'ea\'ee\'ec\'ef\'ee\'ed\'e5\'ed\'f2\'e0 Workhorse \'ec\'e5\'e6\'e4\'f3 \lang1033\f1 Nginx \lang1049\f0\'e8 \lang1033\f1 Puma\lang1049\f0 : \'ea\'ee\'e3\'e4\'e0 \'ec\'fb \'e4\'e5\'eb\'e0\'e5\'ec \lang1033\f1 #git clone hxxp://repo \lang1049\f0\'fd\'f2\'ee \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'f2\'f1\'ff \'ec\'ed\'ee\'e3\'ee \'ec\'e0\'eb\'e5\'ed\'fc\'ea\'e8\'f5 \'ea\'ee\'f0\'ee\'f2\'ea\'e8\'f5 \lang1033\f1 HTTP \lang1049\f0\'f1\'e5\'f1\'f1\'e8\'e9. \'ce\'e4\'ed\'e0 \'f1\'e5\'f1\'f1\'e8\'ff - \'ee\'e4\'e8\'ed \'f4\'e0\'e9\'eb. \'cd\'e0 \'f2\'e0\'ea\'e8\'f5 \'e7\'e0\'ef\'f0\'ee\'f1\'e0\'f5 \lang1033\f1 Puma\lang1049\f0  \'f1\'e8\'eb\'fc\'ed\'ee \'ef\'ee\'e4\'e2\'e8\'f1\'e0\'e5\'f2. Workhorse \'ea\'e0\'ea-\'f2\'ee \'f0\'e5\'f8\'e0\'e5\'f2 \'fd\'f2\'f3 \'ef\'f0\'ee\'e1\'eb\'e5\'ec\'f3. \lang1033\f1 Puma \lang1049\f0\'e2\'e7\'e0\'e8\'ec\'ee\'e4\'e5\'e9\'f1\'f2\'e2\'f3\'e5\'f2 \'f1 Gitaly, \'f1 PostgreSQL (\'f2\'f3\'f2 \'f5\'f0\'e0\'ed\'ff\'f2\'f1\'ff \'e2\'f1\'e5 \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e8 \'ef\'f0\'ee\'e5\'ea\'f2\'ee\'e2, \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'e8, permissions, \lang1033\f1 metadata\lang1049\f0  ...)\lang1033\f1 , c Redis\lang1049\f0 /Sidekiq\lang1033\f1  \lang1049\f0 (\'ee\'e1\'e0 \'f0\'e0\'e1\'ee\'f2\'e0\'fe\'f2 \'e2 \'ef\'e0\'f0\'e5 \'e2 \'ea\'e0\'f7\'e5\'f1\'f2\'e2\'e5 \'e2\'f1\'f2\'f0\'ee\'e5\'ed\'ed\'ee\'e3\'ee \'e2 \lang1033\f1 Ruby \lang1049\f0\'ec\'e5\'f5\'e0\'ed\'e8\'e7\'ec\'e0\lang1033\f1  \lang1049\f0\'e4\'eb\'ff \lang1033\f1 S\lang1049\f0 cheduler).\kerning1\par
+\kerning0{\pntext\f2\'B7\tab}Gitaly\lang1033\f1 .\lang1049\f0  \'c8\'ec\'e5\'e5\'ec \'ee\'e4\'e8\'ed \'f1\'e5\'f0\'e2\'e5\'f0 \lang1033\f1 GitLab. \lang1049\f0\'d1\'e5\'f0\'e2\'e5\'f0 \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2 \'f2\'ee\'f0\'ec\'ee\'e7\'e8\'f2\'fc \'ef\'ee \lang1033\f1 CPU/RAM (\lang1049\f0\'ed\'e5\lang1033\f1  \lang1049\f0\'ef\'ee \lang1033\f1 HDD!!!) \lang1049\f0\'e8 \'f0\'e5\'f8\'e0\'e5\'ec \'e4\'ee\'e1\'e0\'e2\'e8\'f2\'fc \'e2\'f2\'ee\'f0\'ee\'e9 \'f1\'e5\'f0\'e2\'e5\'f0 \lang1033\f1 GitLab\lang1049\f0 , \'ed\'ee \'f1 \'ee\'e1\'f9\'e8\'ec \'f5\'f0\'e0\'ed\'e8\'eb\'e8\'f9\'e5\'ec - NFS. \'d2\'e5\'ef\'e5\'f0\'fc NFS - Bottleneck \'e4\'eb\'ff \'e2\'fb\'f1\'ee\'ea\'e8\'f5 \lang1033\f1 IOPS. \lang1049\f0\'c4\'f3\'ec\'e0\'eb\'e8 \'ef\'e5\'f0\'e5\'f5\'ee\'e4\'e8\'f2\'fc \'ed\'e0 \lang1033\f1 Ceph\lang1049\f0 , \'ed\'ee \'ee\'ed \'ee\'ea\'e0\'e7\'e0\'eb\'f1\'ff \'ed\'e5 \'f2\'e0\'ea\'e8\'ec \'f8\'f3\'f1\'f2\'f0\'fb\'ec. \'d0\'e0\'e7\'f0\'e0\'e1\'ee\'f2\'e0\'eb\'e8 \'f1\'e2\'ee\'e9 \'f1\'e5\'f0\'e2\'e8\'f1 Gitaly. \'c4\'eb\'ff \'ee\'e4\'ed\'ee\'e3\'ee \'f1\'e5\'f0\'e2\'e5\'f0\'e0 \'e2\'f1\'e5 \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'ee\'f0\'e8\'e8 \'e1\'f3\'e4\'f3\'f2 \'eb\'e5\'e6\'e0\'f2\'fc \'e2 /var/opt/gitlab/git-data\kerning1\par
+\kerning0{\pntext\f2\'B7\tab}GitLab \lang1033\f1 A\lang1049\f0 gent\lang1033\f1  - \lang1049\f0\'e0\'ed\'e0\'eb\'ee\'e3 \lang1033\f1 ArgoCD\lang1049\f0 . \'d3\'f1\'f2\'e0\'ed\'e0\'e2\'eb\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'e2 \lang1033\f1 K\lang1049\f0 ubernetes \'ea\'eb\'e0\'f1\'f2\'e5\'f0 \'e4\'eb\'ff \'e1\'ee\'eb\'e5\'e5 \'f2\'e5\'f1\'ed\'ee\'e9 \'e8\'ed\'f2\'e5\'e3\'f0\'e0\'f6\'e8\'e8.\kerning1\par
+\kerning0{\pntext\f2\'B7\tab}Registry\lang1033\f1  - \lang1049\f0\'f5\'f0\'e0\'ed\'e8\'f2 \lang1033\f1 Docker images.\lang1049\kerning1\f0\par
+\kerning0{\pntext\f2\'B7\tab}\'c5\'f1\'f2\'fc \'e5\'f9\'b8 Elasticsearch, GitLab Prometheus, 5 \'f8\'f2. \'f0\'e0\'e7\'eb\'e8\'f7\'ed\'fb\'f5 GitLab Exporter\lang1033\f1 -\lang1049\f0\'ee\'e2, GitLab Alertmanager, GitLab Grafana, GitLab Jaeger, \lang1033\f1 LDAP, Inbound/Outbound Email, MinIO, PgBouncer, Patroni\lang1049\f0 .\kerning1\par
+\pard\nowidctlpar\hyphpar0\par
+\kerning0{\field{\*\fldinst{HYPERLINK "https://docs.gitlab.com/omnibus/settings/memory_constrained_envs.html"}}{\fldrslt{\ul\cf1 https://docs.gitlab.com/omnibus/settings/memory_constrained_envs.html}}}\f0\fs22\tab\tab\'ee\'ef\'f2\'e8\'ec\'e8\'e7\'e0\'f6\'e8\'ff GitLab\kerning1\par
+\kerning0\par
+\cf3\kerning1\'c1\'fb\'e2\'e0\'e5\'f2 \'ef\'eb\'e0\'f2\'ed\'fb\'e9 gitlab-ee (Enterprise Edition) \'e8 \'e1\'e5\'f1\'ef\'eb\'e0\'f2\'ed\'fb\'e9 gitlab-ce (Community Edition). \'d1\'ea\'e0\'f7\'e8\'e2\'e0\'e5\'ec \'f1 \cf0{\field{\*\fldinst{HYPERLINK "https://packages.gitlab.com/gitlab/gitlab-ce"}}{\fldrslt{\ul\cf1 https://packages.gitlab.com/gitlab/gitlab-ce}}}\kerning0\f0\fs22  \'e8 sudo EXTERNAL_URL="http://192.168.1.150" #apt install ./gitlab-ce\kerning1\par
+\kerning0\par
+# gitlab-ctl help\kerning1\par
+\kerning0 # gitlab-ctl restart\kerning1\par
+\kerning0 # gitlab-ctl status\kerning1\par
+\kerning0\par
+{\field{\*\fldinst{HYPERLINK "https://www.youtube.com/watch?v=jAIhhULc7YA"}}{\fldrslt{\ul\cf1 https://www.youtube.com/watch?v=jAIhhULc7YA}}}\f0\fs22\tab DevOps \'ef\'f0\'e0\'ea\'f2\'e8\'ea\'e0: GitlLab CI+Runners. \'d1\'ee\'e7\'e4\'e0\'ed\'e8\'e5 CI CD Pipeline\kerning1\par
+\kerning0\par
+Gitlab Runner Executers - \'fd\'f2\'ee \'f1\'e5\'f0\'e2\'e5\'f0\'e0, \'ed\'e0 \'ea\'ee\'f2\'ee\'f0\'fb\'f5 \'ed\'e5\'ef\'ee\'f1\'f0\'e5\'e4\'f1\'f2\'e2\'e5\'ed\'ed\'ee \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'fe\'f2\'f1\'ff Job-\'fb, \'ee\'ef\'e8\'f1\'e0\'ed\'ed\'fb\'e5 \'e2 gitlab-ci.yml.\kerning1\par
+\kerning0{\field{\*\fldinst{HYPERLINK "https://docs.gitlab.com/runner/executors/"}}{\fldrslt{\ul\cf1 https://docs.gitlab.com/runner/executors/}}}\f0\fs22  \'ee\'ef\'e8\'f1\'e0\'ed\'ee \'ea\'e0\'ea\'e8\'e5 Executor-\'fb \'e1\'fb\'e2\'e0\'fe\'f2: Shell (\'f1\'e0\'ec\'fb\'e9 \'ef\'f0\'ee\'f1\'f2\'ee\'e9 - \'e2\'f1\'e5 dependencies \'f3\'f1\'f2\'e0\'ed\'e0\'e2\'eb\'e8\'e2\'e0\'fe\'f2\'f1\'ff \'ef\'f0\'ff\'ec\'ee \'ed\'e0 \'ec\'e0\'f8\'e8\'ed\'f3), VirtualBox, Parallels, Docker, Kubernetes. \'ce\'e1\'fb\'f7\'ed\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'fe\'f2 Docker.\kerning1\par
+\par
+\kerning0 Settings \'ef\'f0\'ee\'e5\'ea\'f2\'e0 \cf3\u8594? \cf0 CI/CD \cf3\u8594? Runners\cf0\kerning1\par
+\kerning0 Runner \'ec\'ee\'e6\'ed\'ee \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e8\'f2\'fc \'e3\'eb\'ee\'e1\'e0\'eb\'fc\'ed\'ee (Shared runners) \'e8\'eb\'e8 \'ea \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'ee\'ec\'f3 \'ef\'f0\'ee\'e5\'ea\'f2\'f3 (Specific runners). \'dd\'f2\'e8\'f5 Runners (\'f1\'e5\'f0\'e2\'e5\'f0\'ee\'e2) \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee. \'ca\'e0\'e6\'e4\'ee\'ec\'f3 \'f2\'e0\'ea\'ee\'ec\'f3 \'f1\'e5\'f0\'e2\'e5\'f0\'f3 \'ed\'e0\'e7\'ed\'e0\'f7\'e0\'e5\'ec \cf2\b tag\cf0\b0 . \'c2 \'f0\'e5\'e7\'f3\'eb\'fc\'f2\'e0\'f2\'e5 \'e2\'fb\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'ff Job \'ec\'fb \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'ec "\'f7\'f2\'ee-\'f2\'ee" - \'ed\'e0\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff \cf4\b artifact\cf0\b0  \'e8 \'ec\'ee\'e6\'e5\'ec \'f1\'ee\'f5\'f0\'e0\'ed\'e8\'f2\'fc, \'ea\'e0\'ea \'e2 \'ef\'f0\'e8\'ec\'e5\'f0\'e5, \'f3\'e6\'e5 \'ed\'e5 \'ed\'e0 Runner-\'e5, \'e0 \'e2 \'f1\'e0\'ec\'ee\'ec Gitlab \'e2 \'ef\'e0\'ef\'ea\'e5 build. \'cd\'e0\'ef\'f0\'e8\'ec\'e5\'f0 \'e4\'eb\'ff stage: test \'ed\'e8\'ea\'e0\'ea\'ee\'e3\'ee artifact \'ed\'e5 \'f1\'ee\'e7\'e4\'e0\'b8\'f2\'f1\'ff.\kerning1\par
+\par
+\kerning0{\field{\*\fldinst{HYPERLINK "http://docs.gitlab.com/ee/ci/examples/"}}{\fldrslt{\ul\cf1 http://docs.gitlab.com/ee/ci/examples/}}}\f0\fs22  \cf3\u8594? CI/CD templates\tab\'ef\'f0\'e8\'ec\'e5\'f0\'fb \'f1\'ee\'e7\'e4\'e0\'ed\'e8\'ff \cf0 .gitlab-ci.yml \'e4\'eb\'ff \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'fb\'f5 case-\'ee\'e2 (Bash.gitlab-ci.yml \'e8\'eb\'e8 Python.gitlab-ci.yml)\kerning1\par
+\par
+\kerning0\tab .gitlab-ci.yml\kerning1\par
+\par
+\kerning0 variables:\kerning1\par
+\kerning0   \b TEST_VAR\b0 : "Hello world"\kerning1\par
+\par
+\kerning0 stages:\kerning1\par
+\kerning0   - \cf5\b build\cf0\kerning1\b0\par
+\kerning0   - \cf5\b test\cf0\kerning1\b0\par
+\kerning0\par
+\i ### build stage\kerning1\i0\par
+\kerning0 build_on_dev:\tab\tab\'ed\'e0\'e7\'e2\'e0\'ed\'e8\'e5 Job - \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc \'eb\'fe\'e1\'fb\'ec\kerning1\par
+\kerning0   variables:\kerning1\par
+\kerning0     \b TEST_VAR\b0 : "Bye world"\kerning1\par
+\kerning0     ARRAY_VAR: Vasya Petya Masha\kerning1\par
+\kerning0   stage: \cf5\b build\cf0\kerning1\b0\par
+\kerning0   image: ubuntu:20.04\kerning1\par
+\kerning0   \cf2\b tags\cf0\b0 :\tab\tab\tab\'ed\'e0 \'ea\'e0\'ea\'ee\'ec Runner-\'e5 \'e1\'f3\'e4\'e5\'ec \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'f2\'fc \'e4\'e0\'ed\'ed\'f3\'fe Job-\'f3. \'cd\'e0 Runner-\'e5 \'f1 tag = build.\kerning1\par
+\kerning0     - runner_build\kerning1\par
+\kerning0   script:\kerning1\par
+\kerning0     - echo $\b TEST_VAR\b0  >> index.html\kerning1\par
+\kerning0     - |\kerning1\par
+\kerning0       for i in $ARRAY_VAR\kerning1\par
+\kerning0         do\kerning1\par
+\kerning0           echo "Hello $\{i\}"\kerning1\par
+\kerning0         done\kerning1\par
+\kerning0   \cf4\b artifacts\cf0\b0 :\kerning1\par
+\kerning0     name: my_art  \kerning1\par
+\kerning0     paths:\kerning1\par
+\kerning0       - build/\tab\tab\'f1\'ee\'f5\'f0\'e0\'ed\'ff\'e5\'ec, \'f7\'f2\'ee \'f1\'e4\'e5\'eb\'e0\'eb\'e0 Job-\'e0 (\'f1\'ee\'e7\'e4\'e0\'eb\'e0 \'f4\'e0\'e9\'eb index.html) \'e2 \'ef\'e0\'ef\'ea\'f3 build. \'cc\'ee\'e6\'ed\'ee \'ed\'e0\'e9\'f2\'e8 \'e2 CI/CD \cf3\kerning1\u8594? Pipelines \'f1\'ef\'f0\'e0\'e2\'e0 \'e1\'f3\'e4\'e5\'f2 3-\'e8 \'e2\'e5\'f0\'f2\'e8\'ea\'e0\'eb\'fc\'ed\'fb\'e5 \'f2\'ee\'f7\'ea\'e8 "Download artifacts".\cf0\par
+\cf3     expire_in: 1 day\cf0\par
+\cf3\kerning0   only:\tab\tab\tab\'f3\'f1\'eb\'ee\'e2\'e8\'ff, \'ef\'f0\'e8 \'ea\'ee\'f2\'ee\'f0\'fb\'f5 job-\'e0 \'ef\'ee\'ef\'e0\'e4\'e0\'e5\'f2 \'e2 pipeline. \'cd\'ee \'ee\'e1\'fb\'f7\'ed\'ee \'fd\'f2\'ee \'f0\'e5\'e3\'f3\'eb\'e8\'f0\'f3\'e5\'f2\'f1\'ff \'f7\'e5\'f0\'e5\'e7 "\cf8\b rules\cf3\b0 ".\cf0\kerning1\par
+\cf3\kerning0     - master\tab\tab\tab\'e5\'f1\'eb\'e8 \'e2\'e5\'f2\'ea\'e0 = master\cf0\kerning1\par
+\cf3\kerning0     - /^feature/.*$/\tab\tab\'e5\'f1\'eb\'e8 \'ef\'ee\'e4\'f5\'ee\'e4\'e8\'f2 \'e2\'e5\'f2\'ea\'e0 = regexp\cf0\kerning1\par
+\cf3\kerning0     - merge_requests\tab\tab\'e5\'f1\'eb\'e8 \'ef\'f0\'ee\'e8\'f1\'f5\'ee\'e4\'e8\'f2 Merge Requests. \'cc\'ee\'e6\'e5\'f2 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc\'f1\'ff \'f1\'eb\'ee\'e2\'ee \'e8\'e7 \'f1\'ef\'e8\'f1\'ea\'e0 \cf0{\field{\*\fldinst{HYPERLINK "https://docs.gitlab.com/ee/ci/yaml/#only--except"}}{\fldrslt{\ul\cf1 https://docs.gitlab.com/ee/ci/yaml/#only--except}}}\kerning1\f0\fs22\par
+\cf3\kerning0   \cf8\b rules\cf3\b0 :\cf0\kerning1\par
+\cf3\kerning0     - if: $CI_PIPELINE_SOURCE == "merge_request_event"\tab\'e5\'f1\'f2\'fc \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee Jobs \'f1 \'ee\'e4\'ed\'e8\'ec \'e8 \'f2\'e5\'ec \'e6\'e5 stage: \cf5\b test\cf3\b0 , \'f2\'ee \'e2 \'e7\'e0\'e2\'e8\'f1\'e8\'ec\'ee\'f1\'f2\'e8 \'ee\'f2 if\cf0\kerning1\par
+\cf3\kerning0       when: never\cf0\kerning1\par
+\cf3\kerning0     - when: on_success\cf0\kerning1\par
+\kerning0\par
+\i ### test stage\kerning1\i0\par
+\kerning0 test_on_dev:\kerning1\par
+\kerning0   stage: \cf5\b test\cf0\kerning1\b0\par
+\kerning0   image: ubuntu:20.04\kerning1\par
+\kerning0   allow_failure: true\tab\tab\'e5\'f1\'eb\'e8 job-\'e0 \'f3\'ef\'e0\'e4\'b8\'f2, \'f2\'ee pipeline \'ef\'f0\'ee\'e4\'ee\'eb\'e6\'e8\'f2 \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc\kerning1\par
+\kerning0   services:\tab\tab\tab\'ef\'ee\'e4\'ed\'e8\'ec\'e0\'e5\'ec \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0 ubuntu:20.04, \'e0 \'e2 \'e4\'ee\'e2\'e5\'f1 \'ea \'ed\'e5\'ec\'f3 \'ef\'ee\'e4\'ed\'e8\'ec\'e0\'e5\'ec \'e2\'f2\'ee\'f0\'ee\'e9 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0 \'f1 \'c1\'c4 \'e8 \'e2\'e5\'f8\'e0\'e5\'ec \'ed\'e0 \'ed\'e5\'e3\'ee alias: dind (docker-in-docker). \'c4\'eb\'ff \'ee\'e1\'f0\'e0\'f9\'e5\'ed\'e8\'ff \'ea \'ed\'e5\'ec\'f3 \'f2\'e8\'ef\'e0 DOCKER_HOST: tcp://dind:2375\kerning1\par
+\kerning0     - name: artifactory.raiffeisen.ru/ext-rbru-devimage-container-docker/dind:19.03-centos-rbru\kerning1\par
+\kerning0       alias: dind\kerning1\par
+\kerning0   \cf2\b tags\cf0\b0 :\kerning1\par
+\kerning0     - runner_test\kerning1\par
+\kerning0   script:\kerning1\par
+\kerning0     - test -f build/index.html\tab "\'f2\'e5\'f1\'f2\'e8\'f0\'f3\'e5\'ec" - \'e5\'f1\'f2\'fc \'eb\'e8 \'f3 \'ed\'e0\'f1 \'e2 \'ef\'e0\'ef\'ea\'e5 build \'f4\'e0\'e9\'eb index.html\kerning1\par
+\kerning0   when: manual\tab\tab\tab\tab\'e1\'e5\'e7 \'fd\'f2\'ee\'e9 \'e7\'e0\'ef\'e8\'f1\'e8 stage: \cf5\b test\cf0\b0  \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'eb\'f1\'ff \'e1\'fb \'f1\'f0\'e0\'e7\'f3 \'e0\'e2\'f2\'ee\'ec\'e0\'f2\'e8\'f7\'e5\'f1\'ea\'e8 \'ef\'ee\'f1\'eb\'e5 stage: build. \'d2\'e5\'ef\'e5\'f0\'fc \'e4\'eb\'ff \'e7\'e0\'ef\'f3\'f1\'ea\'e0 \'ed\'e0\'e4\'ee \'ed\'e0\'e6\'e0\'f2\'fc \'ed\'e0 \'ea\'ed\'ee\'ef\'ea\'f3.\kerning1\par
+\par
+\kerning0{\field{\*\fldinst{HYPERLINK "https://docs.gitlab.com/ee/ci/yaml/"}}{\fldrslt{\ul\cf1 https://docs.gitlab.com/ee/ci/yaml/}}}\f0\fs22  GitLab CI/CD Keyword Reference\kerning1\par
+{\field{\*\fldinst{HYPERLINK "https://docs.gitlab.com/ee/ci/variables/predefined_variables.html"}}{\fldrslt{\ul\cf1 https://docs.gitlab.com/ee/ci/variables/predefined_variables.html}}}\f0\fs22  Predefined variables\par
+\par
+\par
+\ul YAML Anchors (=&)\ulnone :\par
+\par
+\i\'cf\'f0\'e8\'ec\'e5\'f0 \'b91\i0 :\par
+.default_scripts: \cf4\kerning0\b &default_scripts\cf0\kerning1\b0\par
+  - ./default-script1.sh\par
+  - ./default-script2.sh\par
+\par
+job1:\par
+  script:\par
+    - \cf4\kerning0\b *default_scripts\cf0\kerning1\b0\par
+    - ./job-script.sh\par
+\par
+\i\'cf\'f0\'e8\'ec\'e5\'f0 \'b92\i0 :\par
+.job_template: \cf5\kerning0\b &job_configuration\cf0\kerning1\b0\par
+  image: ruby:2.6\par
+  services:\par
+    - postgres\par
+    - redis\par
+\i\par
+\i0 test1:\par
+  <<: \cf5\kerning0\b *job_configuration\cf0\kerning1\b0\par
+  script:\par
+    - test1 project\par
+\i\par
+\par
+\ul\i0 "Extends" \'e2 YAML\ulnone .\par
+~ \'f2\'ee\'e6\'e5 \'f7\'f2\'ee \'e8 Anchors, \'ed\'ee \'e1\'ee\'eb\'e5\'e5 \'ea\'f0\'e0\'f1\'e8\'e2\'e5\'e9\par
+\i\par
+\'cf\'f0\'e8\'ec\'e5\'f0\i0 :\par
+\cf8\tab\tab\tab\tab\tab\b .base\cf0\b0 :\par
+\tab\tab\tab\tab\tab   script: test\par
+\tab\tab\tab\tab\tab   variables:\par
+\tab\tab\tab\tab\tab     VAR1: \cf2\kerning0\b base var 1\cf0\kerning1\b0\par
+\i\par
+\i0 test1:\par
+  extends: \cf8\b .base\cf0\b0\par
+  variables:\par
+    VAR1: test1 var 1\tab\tab\tab\tab\tab\tab\tab VAR1: test1 var 1\par
+    VAR2: test2 var 2\tab\tab\tab\tab\tab\tab\tab VAR2: test2 var 2\par
+\i\par
+\i0 test2:\par
+  extends: \cf8\b .base\cf0\b0\par
+  variables:\par
+    VAR2: test2 var 2\tab\tab\tab\tab\tab\tab\tab VAR2: test2 var 2\par
+\tab\tab\tab\tab\tab\'e2 \'f0\'e5\'e7\'f3\'eb\'fc\'f2\'e0\'f2\'e5 \'ef\'ee\'eb\'f3\'f7\'e8\'ec\tab\tab VAR1: \cf2\kerning0\b base var 1\cf0\kerning1\b0\par
+test3:\par
+  extends: \cf8\b .base\cf0\b0\par
+  variables: \{\}\tab\tab\tab\tab\tab\tab\tab\tab VAR1: \cf2\kerning0\b base var 1\cf0\kerning1\b0\par
+\i\par
+\i0 test4:\par
+  extends: \cf8\b .base\cf0\b0\par
+  variables: \cf12 null\cf0\tab\tab\tab\tab\tab\tab\tab variables: \cf12 null\cf0\par
+\i\par
+\ul\i0\'d7\'f2\'ee \'f2\'e0\'ea\'ee\'e5 YAML\ulnone ?\par
+\par
+some.yaml\par
+\kerning0\tab server:\kerning1\par
+\tab   str1: Hello world\par
+\tab   str2: Privet mir\tab\tab\'f1\'f2\'f0\'ee\'ea\'e8\par
+\tab   list:\tab\tab\tab\tab\tab\tab\tab\'ec\'ee\'e6\'ed\'ee \'ef\'e8\'f1\'e0\'f2\'fc \'f2\'e0\'ea server:list:\par
+\tab   - milk: 2\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab -milk ...\par
+\tab     eggs: 10\tab\tab\tab\'f1\'ef\'e8\'f1\'ee\'ea\par
+\tab   - milk: 1\par
+\tab     eggs: 20\lang1033\f1\tab\tab\tab\lang1049\f0\'ec\'eb\'ec \lang1033\f1 list: [ 'Apple', 'Orange', 'Strawberry', 'Mango' ]\lang1049\f0\par
+\tab   dict:\par
+\tab   - dan:\tab\tab\tab\tab\'f1\'eb\'ee\'e2\'e0\'f0\'fc\par
+\tab       name: Dan Veloper\par
+\tab       age: 18\lang1033\f1\tab\tab\tab\lang1049\f0\'e8\'eb\'e8 dan: \{\lang1033\f1  \lang1049\f0 name: Dan Veloper, \lang1033\f1 age\lang1049\f0 : \lang1033\f1 18, job: Developer \}\lang1049\f0\par
+\tab   - dora:\par
+\tab       name: Dora Veloper\par
+\tab       age: 22\par
+\par
+"\'c8\'f1\'f2\'e8\'ed\'e0" \'e2 yaml: 1, true, True, TRUE, yes, Yes, YES, on, On, ON, y, Y\par
+"\'cb\'ee\'e6\'fc" \'e2 yaml: 0, false, False, FALSE, no, No, NO, off, Off, OFF, n, N\par
+\par
+\i\par
+\i0\par
+\kerning0\b Nexus\kerning1\b0\par
+\b\par
+\b0{\field{\*\fldinst{HYPERLINK "https://help.sonatype.com/en/sonatype-nexus-repository-system-requirements.html"}}{\fldrslt{\ul\cf1 https://help.sonatype.com/en/sonatype-nexus-repository-system-requirements.html}}}\f0\fs22\par
+\kerning0\'d1\'ea\'e0\'f7\'e8\'e2\'e0\'e5\'ec Nexus, \'f0\'e0\'f1\'ef\'e0\'ea\'ee\'e2\'fb\'e2\'e0\'e5\'ec, \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'e5\'ec bin/nexus start. \'c7\'e0\'f5\'ee\'e4\'e8\'ec {\field{\*\fldinst{HYPERLINK "http://10.0.0.1:8081"}}{\fldrslt{\ul\cf1 http://10.0.0.1:8081}}}\f0\fs22  login/password: admin/admin123\kerning1\par
+\par
+\kerning0 7.11.2023\kerning1\par
+\kerning0\'d1\'ea\'e0\'f7\'e8\'e2\'e0\'e5\'ec \'e8 \'f0\'e0\'f1\'ef\'e0\'ea\'ee\'e2\'fb\'e2\'e0\'e5\'ec nexus-3.61.0-02-unix.tar.gz. \'c4\'eb\'ff \'e7\'e0\'ef\'f3\'f1\'ea\'e0 \'f5\'ee\'f7\'e5\'f2 Java 8, \'e2\'e7\'ff\'eb \'e8\'e7 Debian 10 \'ef\'e0\'ea\'e5\'f2\'ee\'e2 openjdk-8-jre-\b headless\b0 _8u252-b09-1~deb9u1_amd64.deb\kerning1\par
+\kerning0\'d0\'e0\'e7\'ee\'e1\'f0\'e0\'f2\'fc\'f1\'ff \'f1 \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e0\'ec\'e8 Nexus - \'ef\'e0\'ef\'ea\'e8 Data, T\lang1033\f1 e\lang1049\f0 mp \'e8 Log \'e8 \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e8 JVM: {\field{\*\fldinst{HYPERLINK "https://help.sonatype.com/repomanager3/installation-and-upgrades/configuring-the-runtime-environment#ConfiguringtheRuntimeEnvironment-ConfiguringtheRuntimeEnvironment-ConfiguringMemory"}}{\fldrslt{\ul\cf1 https://help.sonatype.com/repomanager3/installation-and-upgrades/configuring-the-runtime-environment#ConfiguringtheRuntimeEnvironment-ConfiguringtheRuntimeEnvironment-ConfiguringMemory}}}\kerning1\f0\fs22\par
+\par
+\kerning0 bin/nexus start \'e8 \'e7\'e0\'f5\'ee\'e4\'e8\'ec {\field{\*\fldinst{HYPERLINK "http://10.0.0.1:8081"}}{\fldrslt{\ul\cf1 http://10.0.0.1:8081}}}\f0\fs22  login/password: admin/admin123\kerning1\par
+\kerning0\'d1\'ee\'e7\'e4\'e0\'b8\'ec \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'ff \'e4\'eb\'ff Upload \'e0\'f0\'f2\'e8\'f4\'e0\'ea\'f2\'ee\'e2 \kerning1\par
+\par
+\kerning0\'c7\'e0\'e4\'e0\'f7\'e0 \'b91\kerning1\par
+\kerning0\'d1\'ee\'e7\'e4\'e0\'f2\'fc apt \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'ee\'f0\'e8\'e9.\kerning1\par
+\kerning0\'cd\'e0 \'ea\'ee\'ec\'ef\'e5 \'ef\'ee \'e0\'ed\'e0\'eb\'ee\'e3\'e8\'e8 \'f1 ssh, \'e3\'e5\'ed\'e5\'f0\'e8\'f0\'f3\'e5\'ec gpg \'ea\'eb\'fe\'f7\'e8.\kerning1\par
+\kerning0\tab #gpg --default-new-key-algo ed25519 --gen-key\tab\tab\'e4\'eb\'ff \'f3\'e4\'e0\'eb\'e5\'ed\'e8\'ff \'ea\'eb\'fe\'f7\'e0 \'f1\'ed\'e0\'f7\'e0\'eb\'e0 #gpg --delete-secret-key \cf8\b DC2D8...\cf0\b0 , \'ef\'ee\'f2\'ee\'ec #gpg --delete-key \cf8\b DC2D8...\cf0\kerning1\b0\par
+\kerning0\tab #gpg --list-key\kerning1\par
+\kerning0\tab\tab /home/samusev/.gnupg/pubring.kbx\kerning1\par
+\kerning0\tab\tab --------------------------------\kerning1\par
+\kerning0\tab\tab pub   ed25519 2023-11-07 [SC] [   \'e3\'ee\'e4\'e5\'ed \'e4\'ee: 2025-11-06]\kerning1\par
+\kerning0\tab\tab       \cf8\b DC2D8\cf0\b0 EC8BA0B4A8FDDF41F4111BE5F040E7C5515\kerning1\par
+\kerning0\tab\tab uid         [  \'e0\'e1\'f1\'ee\'eb\'fe\'f2\'ed\'ee ] Samusev Alex <xxx@xxx.ru>\kerning1\par
+\kerning0\tab #gpg --armor --export-secret-key \cf8\b DC2D8...\cf0\b0  --output private.gpg.key\tab\tab\'e2\'fb\'e3\'f0\'e5\'e1\'e0\'e5\'ec Private.gpg.key\kerning1\par
+\kerning0\tab #gpg --armor --export \cf8\b DC2D8...\cf0\b0  --output public.gpg.key\tab\tab\tab\tab\'e2\'fb\'e3\'f0\'e5\'e1\'e0\'e5\'ec Public.gpg.key\kerning1\par
+\par
+\kerning0 Public \'ea\'eb\'fe\'f7 \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'ec \'e2 apt (\'f0\'e0\'ed\'fc\'f8\'e5 \'e1\'fb\'eb\'ee \'f7\'e5\'f0\'e5\'e7 apt-key add) \u8594? \'e2 \'ef\'e0\'ef\'ea\'e5 /etc/apt/trusted.gpg.d, \'e3\'e4\'e5 \'f3\'e6\'e5 \'eb\'e5\'e6\'e0\'f2 \'ea\'eb\'fe\'f7\'e8 \'e4\'eb\'ff \'e4\'ee\'f1\'f2\'f3\'ef\'e0 \'ef\'ee apt \'ea debian.org, \'f1\'ee\'e7\'e4\'e0\'b8\'ec \'f4\'e0\'e9\'eb\'e8\'ea .asc \'f1 \'f1\'ee\'e4\'e5\'f0\'e6\'e8\'ec\'fb\'ec \'e8\'e7 Public.gpg.key\kerning1\par
+\kerning0\'c4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'ec \'e2 /etc/apt/sources.list\kerning1\par
+\kerning0 deb {\field{\*\fldinst{HYPERLINK "http://10.0.0.1:8081/repository/debian/"}}{\fldrslt{\ul\cf1 http://10.0.0.1:8081/repository/debian/}}}\f0\fs22  bullseye main\kerning1\par
+\par
+\kerning0\'cd\'e0 Nexus \'e7\'e0\'f5\'ee\'e4\'e8\'ec Administration \u8594? Repository \u8594? Repositories \u8594? + Create  Repository.\kerning1\par
+\par
+\kerning0\'c2\'fb\'e1\'e8\'f0\'e0\'e5\'ec: apt (hosted)\kerning1\par
+\par
+\kerning0 Name:\tab\tab\tab debian\kerning1\par
+\kerning0 Distribution:\tab hosted\kerning1\par
+\kerning0 Signing Key:\tab\'e1\'e5\'f0\'b8\'ec \'f1\'ee\'e4\'e5\'f0\'e6\'e8\'ec\'ee\'e5 \'e8\'e7 Private.gpg.key\kerning1\par
+\par
+\kerning0\'e2\'f1\'b8 \'ee\'f1\'f2\'e0\'eb\'fc\'ed\'ee\'e5 \'ee\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'ec \'ea\'e0\'ea \'e5\'f1\'f2\'fc - \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'ee\'f0\'e8\'e9 \'f1\'ee\'e7\'e4\'e0\'f1\'f2\'f1\'ff.\kerning1\par
+\par
+\kerning0\'c7\'e0\'e3\'f0\'f3\'e6\'e0\'e5\'ec \'e2 \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'ee\'f0\'e8\'e9 .deb \'ef\'e0\'ea\'e5\'f2\'fb\kerning1\par
+\kerning0{\field{\*\fldinst{HYPERLINK "https://help.sonatype.com/repomanager3/nexus-repository-administration/formats/apt-repositories"}}{\fldrslt{\ul\cf1 https://help.sonatype.com/repomanager3/nexus-repository-administration/formats/apt-repositories}}}\kerning1\f0\fs22\par
+\kerning0{\field{\*\fldinst{HYPERLINK "https://help.sonatype.com/repomanager3/integrations/rest-and-integration-api/components-api"}}{\fldrslt{\ul\cf1 https://help.sonatype.com/repomanager3/integrations/rest-and-integration-api/components-api}}}\kerning1\f0\fs22\par
+\par
+\kerning0\'e7\'e0\'f5\'ee\'e4\'e8\'ec \'e2 \'ef\'e0\'ef\'ea\'f3 \'f1 .deb \'ef\'e0\'ea\'e5\'f2\'e0\'ec\'e8 \'e8\kerning1\par
+\kerning0 #curl -v -u admin:admin123 -X 'POST' '{\field{\*\fldinst{HYPERLINK "http://10.0.0.1:8081/service/rest/v1/components?repository=debian"}}{\fldrslt{\ul\cf1 http://10.0.0.1:8081/service/rest/v1/components?repository=debian}}}\f0\fs22 ' -F 'apt.asset=@adwaita-icon-theme_3.38.0-1_all.deb'\kerning1\par
+\par
+\kerning0\'c7\'e0\'e4\'e0\'f7\'e0 \'b92\kerning1\par
+\kerning0 apt (proxy)\kerning1\par
+\kerning0 Distribution: proxy\kerning1\par
+\kerning0 Remote Storage: {\field{\*\fldinst{HYPERLINK "http://deb.debian.org/debian"}}{\fldrslt{\ul\cf1 http://deb.debian.org/debian}}}\kerning1\f0\fs22\par
+\par
+\par
+\kerning0\'cf\'ee\'e4\'ea\'eb\'fe\'f7\'e5\'ed\'e8\'e5 \'ef\'ee HTTPS \'ea Nexus:\kerning1\par
+\kerning0\'e2 web \'ef\'f0\'ee\'ef\'e8\'f1\'e0\'f2\'fc \'e4\'ee\'f1\'f2\'f3\'ef \'ea docker-hosted \'ef\'ee HTTPS 8123\kerning1\par
+\kerning0\'ed\'e0 Nexus:\kerning1\par
+\kerning0 # cd /opt/sonatype-work/nexus3/etc/ssl\kerning1\par
+\kerning0 # keytool -genkey -keystore keystore.jks -alias example.com -keyalg RSA\kerning1\par
+\kerning0 Enter keystore password:  \ul password\kerning1\ulnone\par
+\kerning0 What is your first and last name?\kerning1\par
+\kerning0   [Unknown]:  jetty.eclipse.org\kerning1\par
+\kerning0 What is the name of your organizational unit?\kerning1\par
+\kerning0   [Unknown]:  Jetty\kerning1\par
+\kerning0 What is the name of your organization?\kerning1\par
+\kerning0   [Unknown]:  Mort Bay Consulting Pty. Ltd.\kerning1\par
+\kerning0 What is the name of your City or Locality?\kerning1\par
+\kerning0   [Unknown]:\kerning1\par
+\kerning0 What is the name of your State or Province?\kerning1\par
+\kerning0   [Unknown]:\kerning1\par
+\kerning0 What is the two-letter country code for this unit?\kerning1\par
+\kerning0   [Unknown]:\kerning1\par
+\kerning0 Is CN=jetty.eclipse.org, OU=Jetty, O=Mort Bay Consulting Pty. Ltd., L=Unknown, ST=Unknown, C=Unknown correct?\kerning1\par
+\kerning0   [no]:  yes\kerning1\par
+\par
+\kerning0 Enter key password for <jetty>\kerning1\par
+\kerning0   (RETURN if same as keystore password):\kerning1\par
+\par
+\kerning0 # keytool -exportcert -keystore keystore.jks -alias example.com -file example.crt\tab\'fd\'f2\'ee\'f2 \'f4\'e0\'e9\'eb \'ef\'ee\'eb\'ee\'e6\'e8\'f2\'fc /etc/docker/certs.d/nexus.kadastr.ru:8123/example.crt\kerning1\par
+\kerning0 # nano /opt/sonatype-work/nexus3/etc/nexus.properties\kerning1\par
+\kerning0\'c4\'ee\'e1\'e0\'e2\'e8\'f2\'fc \'f1\'f2\'f0\'ee\'ea\'e8\kerning1\par
+\kerning0\tab application-port-ssl=8443\kerning1\par
+\kerning0\tab ssl.etc=$\{karaf.data\}/etc/ssl\kerning1\par
+\kerning0\tab nexus-args=$\{jetty.etc\}/jetty.xml,$\{jetty.etc\}/jetty-http.xml,$\{jetty.etc\}/jetty-https.xml,$\{jetty.etc\}/jetty-requestlog.xml\kerning1\par
+\par
+\kerning0 #/opt/nexus-3.61.0-02/bin/nexus restart\kerning1\par
+\par
+\kerning0\'cf\'ee\'f1\'eb\'e5 \'fd\'f2\'ee\'e3\'ee \'ec\'ee\'e6\'ed\'ee \'f1\'ef\'ee\'ea\'ee\'e9\'ed\'ee \'e4\'e5\'eb\'e0\'f2\'fc\kerning1\par
+\kerning0  #docker login nexus.kadastr.ru:8123 - \'ed\'e5 8443 !\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+1. \'c2\'e5\'f1\'fc source code \'e4\'ee\'eb\'e6\'e5\'ed \'eb\'e5\'e6\'e0\'f2\'fc \'e2 Gitlab, \'f3\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'ec\'fb\'ec \'d4\'ca\'cf.\par
+2. \'c4\'eb\'ff \'ef\'f0\'e5\'e4\'ee\'f2\'e2\'f0\'e0\'f9\'e5\'ed\'e8\'ff \'e7\'e0\'f5\'eb\'e0\'ec\'eb\'e5\'ed\'e8\'ff Gitlab \'e2\'ee \'e2\'f1\'e5\'f5 \'ef\'f0\'ee\'e5\'ea\'f2\'e0\'f5 \'ee\'f1\'ed\'ee\'e2\'ed\'ee\'e9 branch - master. \'c2\'f1\'e5 \'ee\'f1\'f2\'e0\'eb\'fc\'ed\'fb\'e5 \'e2\'e5\'f2\'ea\'e8 - \'fd\'f2\'ee feature \'e8 bugfix, \'e2\'f0\'e5\'ec\'ff \'e6\'e8\'e7\'ed\'e8 \'ea\'ee\'f2\'ee\'f0\'fb\'f5 \'ed\'e5 \'e1\'ee\'eb\'e5\'e5 3 \'e4\'e5\'ed\'e5\'e9. \'d1\'e4\'e5\'eb\'e0\'eb\'e8 \'f4\'e8\'f7\'f3, \'e7\'e0\'ec\'e5\'f0\'e6\'e8\'eb\'e8 \'e2 master - \'f3\'e4\'e0\'eb\'e8\'eb\'e8 \'e2\'e5\'f2\'ea\'f3. \'c2\'e5\'f0\'f1\'e8\'ee\'ed\'ed\'ee\'f1\'f2\'fc \'ef\'f0\'ee\'e5\'ea\'f2\'e0 \'ee\'f2\'f1\'eb\'e5\'e6\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'e8\'f1\'ea\'eb\'fe\'f7\'e8\'f2\'e5\'eb\'fc\'ed\'ee \'ef\'ee #git tag.\par
+3. \'cd\'e0\'e7\'e2\'e0\'ed\'e8\'e5 Feature \'e8 Bugfix \'e2\'e5\'f2\'ee\'ea \'e4\'ee\'eb\'e6\'ed\'ee \'f1\'ee\'e4\'e5\'f0\'e6\'e0\'f2\'fc \'f3\'ed\'e8\'ea\'e0\'eb\'fc\'ed\'fb\'e9 \'e8\'e4\'e5\'ed\'f2\'e8\'f4\'e8\'ea\'e0\'f2\'ee\'f0, \'f1\'ee\'ee\'f2\'e2\'e5\'f2\'f1\'f2\'e2\'f3\'fe\'f9\'e8\'e9 \'ed\'ee\'ec\'e5\'f0\'f3 Jira Task - "Feature-5368".\par
+4. \'c8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff \'e2 master \'e2\'e5\'f2\'ea\'f3 \'ef\'ee\'ef\'e0\'e4\'e0\'fe\'f2 \'f2\'ee\'eb\'fc\'ea\'ee \'f7\'e5\'f0\'e5\'e7 Code Review \'e8 Merge Request. \'cf\'ee\'eb\'e8\'f2\'e8\'ea\'e0\'ec\'e8 GitLab \'e4\'ee\'eb\'e6\'ed\'e0 \'e1\'fb\'f2\'fc \'e7\'e0\'ef\'f0\'e5\'f9\'e5\'ed\'e0 \'e2\'ee\'e7\'ec\'ee\'e6\'ed\'ee\'f1\'f2\'fc \'ef\'ee \'f2\'e8\'ef\'f3: \'e7\'e0\'f8\'b8\'eb \'ed\'e0 Web, \'e2\'fb\'e1\'f0\'e0\'eb \'e2\'e5\'f2\'ea\'f3 master, \'f7\'f2\'ee \'ef\'ee\'ef\'f0\'e0\'e2\'e8\'eb, \'ed\'e0\'e6\'e0\'eb commit.\par
+5. \'c2 master \'e2\'e5\'f2\'ea\'e5 \'e2\'f1\'e5\'e3\'e4\'e0 \'f2\'ee\'eb\'fc\'ea\'ee \'f0\'e0\'e1\'ee\'f2\'e0\'fe\'f9\'e0\'ff \'e2\'e5\'f0\'f1\'e8\'ff \'ef\'f0\'e8\'eb\'ee\'e6\'e5\'ed\'e8\'ff. \'cd\'e0 \'f0\'e0\'e1\'ee\'f7\'e5\'e9 \'f1\'f2\'e0\'ed\'f6\'e8\'e8 \'f1\'ee\'f2\'f0\'f3\'e4\'ed\'e8\'ea\'e0, \'f1\'e4\'e5\'eb\'e0\'e2 #git clone someproject, \'ef\'f0\'ee\'e5\'ea\'f2 \'e2\'f1\'e5\'e3\'e4\'e0 \'ef\'f0\'ee\'e9\'e4\'b8\'f2 \'f1\'f2\'e0\'e4\'e8\'e8 compile \'e8 test.\par
+6. \'c2\'f1\'e5 \'ef\'f0\'ee\'e5\'ea\'f2\'fb \'e4\'ee\'eb\'e6\'ed\'fb \'f1\'ee\'e4\'e5\'f0\'e6\'e0\'f2\'fc Unit Tests. \'cf\'f0\'ee\'f6\'e5\'ed\'f2 \'ef\'ee\'ea\'f0\'fb\'f2\'e8\'ff \'ed\'e5 \'ec\'e5\'ed\'e5\'e5 ???% \'ea\'ee\'e4\'e0.\par
+7. \'c2\'f1\'e5 \'ef\'f0\'ee\'e5\'ea\'f2\'fb \'e4\'ee\'eb\'e6\'ed\'fb \'f3\'ef\'e0\'ea\'ee\'e2\'fb\'e2\'e0\'f2\'fc\'f1\'ff \'e2 docker \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'fb, \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'e2 \'f1\'e2\'ee\'fe \'ee\'f7\'e5\'f0\'e5\'e4\'fc \'f1\'ee\'f5\'f0\'e0\'ed\'ff\'fe\'f2\'f1\'ff \'e2 Nexus, \'f3\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'ec\'fb\'ec \'d4\'ca\'cf.\par
+8. \'d1\'f2\'e0\'e4\'e8\'e8: compile, test, \'f1\'e1\'ee\'f0\'ea\'e0 \'e2 docker-\'ee\'e1\'f0\'e0\'e7 \'e4\'ee\'eb\'e6\'ed\'fb \'ef\'f0\'ee\'f5\'ee\'e4\'e8\'f2\'fc \'f1 \'ef\'f0\'e8\'ec\'e5\'ed\'e5\'ed\'e8\'e5\'ec Multi-stage builds.\par
+9. \'c2\'ee\'ef\'f0\'ee\'f1: \'ed\'f3\'e6\'ed\'ee \'eb\'e8 \'f5\'f0\'e0\'ed\'e8\'f2\'fc \'ee\'e4\'ed\'ee\'e2\'f0\'e5\'ec\'e5\'ed\'ed\'ee \'e2 Nexus \'e8 docker-\'ee\'e1\'f0\'e0\'e7 \'e8 jar-\'f4\'e0\'e9\'eb \'e8\'eb\'e8 \'ec\'ee\'e6\'ed\'ee \'ee\'e3\'f0\'e0\'ed\'e8\'f7\'e8\'f2\'fc\'f1\'ff \'f2\'ee\'eb\'fc\'ea\'ee docker-\'ee\'e1\'f0\'e0\'e7?\par
+10. \'c0rtifacts, \'e7\'e0\'e3\'f0\'f3\'e6\'e5\'ed\'ed\'fb\'e5 \'e2 Nexus, \'e2 \'f1\'e2\'ee\'b8\'ec \'ed\'e0\'e7\'e2\'e0\'ed\'e8\'e8 \'e4\'ee\'eb\'e6\'ed\'fb \'f1\'ee\'e4\'e5\'f0\'e6\'e0\'f2\'fc \'f3\'ed\'e8\'ea\'e0\'eb\'fc\'ed\'fb\'e9 \'e8\'e4\'e5\'ed\'f2\'e8\'f4\'e8\'ea\'e0\'f2\'ee\'f0 \'e4\'eb\'ff \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'ea\'e8 \'e2\'e5\'f0\'f1\'e8\'ee\'ed\'ed\'ee\'f1\'f2\'e8.\par
+11. \'c2\'ed\'e5\'f8\'ed\'e8\'e5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5 \'ef\'f0\'ee\'e5\'ea\'f2\'ee\'e2 \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee \'f0\'e0\'e7\'e4\'e5\'eb\'ff\'f2\'fc \'ed\'e0 "\'f1\'f2\'e5\'ed\'e4\'ee\'e7\'e0\'e2\'e8\'f1\'e8\'ec\'fb\'e5" \'e8 "\'f1\'f2\'e5\'ed\'e4\'ee\'cd\'c5\'e7\'e0\'e2\'e8\'f1\'e8\'ec\'fb\'e5". \'cd\'e0 \'ef\'f0\'e8\'ec\'e5\'f0\'e5 \'ef\'f0\'ee\'e5\'ea\'f2\'e0 Java Spring:\par
+11.a "\'f1\'f2\'e5\'ed\'e4\'ee\'cd\'c5\'e7\'e0\'e2\'e8\'f1\'e8\'ec\'fb\'e5" \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5 \'ee\'e1\'fa\'ff\'e2\'eb\'ff\'fe\'f2\'f1\'ff \'e2 \'f4\'e0\'e9\'eb\'e5 src/main/resources/application.yml \'ea\'e0\'ea spring.jpa.hibernate.ddl-auto=validate. \'c4\'eb\'ff \'e8\'f5 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee \'ef\'e5\'f0\'e5\'f1\'ee\'e1\'e8\'f0\'e0\'f2\'fc docker-\'ee\'e1\'f0\'e0\'e7.\par
+11.\'e1 "c\'f2\'e5\'ed\'e4\'ee\'e7\'e0\'e2\'e8\'f1\'e8\'ec\'fb\'e5" \'f2\'e0\'ea\'e6\'e5 \'ee\'e1\'fa\'ff\'e2\'eb\'ff\'fe\'f2\'f1\'ff \'e2 \'f4\'e0\'e9\'eb\'e5 src/main/resources/application.yml, \'ed\'ee \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'e8\'e7\'ee\'e2\'e0\'ed\'ed\'ee spring.datasource.url=jdbc:postgresql://$\{db_IP:localhost\}:$\{db_port:5432\}/$\{db_schema:nva\} \'f1 \'ee\'e1\'fa\'ff\'e2\'eb\'e5\'ed\'e8\'e5\'ec default \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e9. \'c2\'ee\'ef\'f0\'ee\'f1: \'f7\'f2\'ee \'e2\'fb\'e1\'e8\'f0\'e0\'f2\'fc \'e2 \'ea\'e0\'f7\'e5\'f1\'f2\'e2\'e5 default \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e9? \'c2\'ee\'e7\'ec\'ee\'e6\'ed\'ee \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'ff \'e4\'eb\'ff dev \'f1\'f2\'e5\'ed\'e4\'e0.\par
+12. \'c7\'ed\'e0\'f7\'e5\'ed\'e8\'ff "c\'f2\'e5\'ed\'e4\'ee\'e7\'e0\'e2\'e8\'f1\'e8\'ec\'fb\'f5" \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'f5 \'e4\'eb\'ff \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'ee\'e3\'ee \'f1\'f2\'e5\'ed\'e4\'e0 \'f1\'ee\'e4\'e5\'f0\'e8\'f2\'f1\'ff \'e2 docker-compose.prod.yml \'e2 \'f0\'e0\'e7\'e4\'e5\'eb\'e5 environment.\par
+13. \'cd\'e0 Gitlab \'e2 \'ef\'e0\'ef\'ea\'e5 \'f1 \'ef\'f0\'ee\'e5\'ea\'f2\'e0\'ec\'e8 \'f1\'ee\'e7\'e4\'e0\'b8\'f2\'f1\'ff \'ee\'f2\'e4\'e5\'eb\'fc\'ed\'fb\'e9 \'ef\'f0\'ee\'e5\'ea\'f2: DevOps. \'cf\'ee\'eb\'e8\'f2\'e8\'ea\'e0\'ec\'e8 GitLab \'f3\'f1\'f2\'e0\'ed\'e0\'e2\'eb\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'e4\'ee\'f1\'f2\'f3\'ef \'ea \'e4\'e0\'ed\'ed\'ee\'ec\'f3 \'ef\'f0\'ee\'e5\'ea\'f2\'f3 \'f2\'ee\'eb\'fc\'ea\'ee \'f1\'ee\'f2\'f0\'f3\'e4\'ed\'e8\'ea\'e0\'ec \'d3\'c8\'d2\'c8. \'d2\'e0\'ea\'e8\'ec \'ee\'e1\'f0\'e0\'e7\'ee\'ec \'e1\'f3\'e4\'e5\'f2 \'f0\'e5\'e0\'eb\'e8\'e7\'ee\'e2\'e0\'f2\'fc\'f1\'ff \'f0\'e0\'e7\'e4\'e5\'eb\'e5\'ed\'e8\'e5 \'e7\'ee\'ed \'ee\'f2\'e2\'e5\'f2\'f1\'f2\'e2\'e5\'ed\'ed\'ee\'f1\'f2\'e8 \'ec\'e5\'e6\'e4\'f3 \'ee\'f2\'e4\'e5\'eb\'ee\'ec \'f0\'e0\'e7\'f0\'e0\'e1\'ee\'f2\'ea\'e8 \'e8 \'ee\'f2\'e4\'e5\'eb\'ee\'ec \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'ea\'e8. \'c2 \'e4\'e0\'ed\'ed\'ee\'ec \'ef\'f0\'ee\'e5\'ea\'f2\'e5 \'e4\'ee\'ef\'f3\'f1\'ea\'e0\'e5\'f2\'f1\'ff \'e2\'ed\'e5\'f1\'e5\'ed\'e8\'e5 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'e9 \'e2 master \'e2\'e5\'f2\'ea\'f3 \'e1\'e5\'e7 Merge Reqest. \'d1\'f2\'f0\'f3\'ea\'f2\'f3\'f0\'e0 \'ea\'e0\'f2\'e0\'eb\'ee\'e3\'ee\'e2 \'f1\'eb\'e5\'e4\'f3\'fe\'f9\'e0\'ff:\par
+|-DevOps\par
+|----Service1\par
+|--------docker-compose.dev.yml\par
+|--------docker-compose.test.yml\par
+|--------docker-compose.prod.yml\par
+|----Service2\par
+|--------docker-compose.dev.yml\par
+|--------docker-compose.test.yml\par
+|--------docker-compose.prod.yml\par
+14. \'ce\'e1\'e5\'f1\'ef\'e5\'f7\'e5\'ed\'e8\'e5 \'f6\'e5\'ed\'f2\'f0\'e0\'eb\'e8\'e7\'ee\'e2\'e0\'ed\'ed\'ee\'e3\'ee \'eb\'ee\'e3\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'ff - \'e2\'f1\'e5 \'eb\'ee\'e3\'e8 docker \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'ee\'e2 \'ef\'e8\'f8\'f3\'f2\'f1\'ff \'e2 stdout. \'c2\'f1\'e5 \'eb\'ee\'e3\'e8 \'f1 host-\'ec\'e0\'f8\'e8\'ed \'f1\'ee\'e1\'e8\'f0\'e0\'fe\'f2\'f1\'ff \'f1\'ef\'e5\'f6\'e8\'e0\'eb\'e8\'e7\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'fb\'ec\'e8 \'f1\'f0\'e5\'e4\'f1\'f2\'e2\'e0\'ec\'e8 ~ ELK. \'cd\'e0 host-\'ec\'e0\'f8\'e8\'ed\'e0\'f5 \'ee\'f1\'f2\'e0\'fe\'f2\'f1\'ff \'f2\'ee\'eb\'fc\'ea\'ee \'f1\'e0\'ec\'fb\'e5 "\'f1\'e2\'e5\'e6\'e8\'e5" \'eb\'ee\'e3\'e8, \'e2\'ee\'e7\'f0\'e0\'f1\'f2 \'ea\'ee\'f2\'ee\'f0\'fb\'f5 \'ed\'e5 \'e1\'ee\'eb\'e5\'e5 3-5 \'e4\'ed\'e5\'e9.\par
+15. \'cc\'ee\'ed\'e8\'f2\'ee\'f0\'e8\'ed\'e3 \'f1\'e8\'f1\'f2\'e5\'ec\'fb - \'f1\'e8\'f2\'e5\'ec\'e0 \'ec\'ee\'ed\'e8\'f2\'ee\'f0\'e8\'f2\'f1\'ff \'f1\'ee\'e3\'eb\'e0\'f1\'ed\'ee \'ef\'f0\'e0\'e2\'e8\'eb\'f3 "\'d7\'e5\'f2\'fb\'f0\'b8\'f5 \'c7\'ee\'eb\'ee\'f2\'fb\'f5 \'f1\'e8\'e3\'ed\'e0\'eb\'ee\'e2":\par
+- \'c2\'f0\'e5\'ec\'ff \'ee\'f2\'ea\'eb\'e8\'ea\'e0 \'ee\'f2 \'f1\'e5\'f0\'e2\'e8\'f1\'e0 - \'ec\'ee\'e6\'e5\'f2 \'e2\'f1\'b8 \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc, \'ee\'f8\'e8\'e1\'ee\'ea \'ed\'e5\'f2, \'e7\'e0\'e3\'f0\'f3\'e7\'ea\'e0 \'ed\'e0 \'ec\'e8\'ed\'e8\'ec\'f3\'ec\'e5, \'e0 \'f1\'e5\'f0\'e2\'e8\'f1 \'ee\'f2\'e2\'e5\'f7\'e0\'e5\'f2 \'ef\'ee 5 \'ec\'e8\'ed.\par
+- \'c2\'e5\'eb\'e8\'f7\'e8\'ed\'e0 "\'f2\'f0\'e0\'f4\'e8\'ea\'e0" - \'ea\'ee\'eb-\'e2\'ee HTTP \'e7\'e0\'ef\'f0\'ee\'f1\'ee\'e2/\'f1\'e5\'ea. \'e8\'eb\'e8 \'ea\'ee\'eb-\'e2\'ee \'f2\'f0\'e0\'ed\'e7\'e0\'ea\'f6\'e8\'e9/\'f1\'e5\'ea. \'e8\'eb\'e8 \'e4\'eb\'ff Video \'f5\'ee\'f1\'f2\'e8\'ed\'e3\'e0 \'cc\'e1\'e0\'e9\'f2/\'f1\'e5\'ea.\par
+- \'d3\'f0\'ee\'e2\'e5\'ed\'fc \'ee\'f8\'e8\'e1\'ee\'ea = \'ea\'ee\'eb-\'e2\'ee \'ee\'f8\'e8\'e1\'ee\'ea / \'ee\'e1\'f9\'e5\'e5 \'ea\'ee\'eb-\'e2\'ee \'e7\'e0\'ef\'f0\'ee\'f1\'ee\'e2\par
+- \'d1\'f2\'e5\'ef\'e5\'ed\'fc \'e7\'e0\'e3\'f0\'f3\'e6\'e5\'ed\'ed\'ee\'f1\'f2\'e8 - \'f1\'ea\'ee\'eb\'fc\'ea\'ee \'ee\'f1\'f2\'e0\'eb\'ee\'f1\'fc \'e4\'ee \'e4\'ee\'f1\'f2\'e8\'e6\'e5\'ed\'e8\'ff 100% CPU \'e8\'eb\'e8 \'e2\'fb\'e3\'f0\'e5\'e1\'e0\'ed\'e8\'e5 \'e2\'f1\'e5\'e9 RAM.\kerning1\par
+}
+ 

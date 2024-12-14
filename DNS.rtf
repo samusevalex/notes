@@ -1,0 +1,92 @@
+{\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}{\f1\fnil\fcharset0 Courier New;}{\f2\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green0\blue0;\red0\green176\blue80;\red0\green0\blue255;\red255\green0\blue0;\red255\green192\blue0;\red155\green0\blue211;}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf1\lang1049\kerning1\f0\fs22 DNS \'e4\'e2\'f3\'f5\'f3\'f0\'ee\'e2\'ed\'e5\'e2\'fb\'e9 yandex.ru - \'e4\'eb\'ff \'c8\'ed\'f2\'e5\'f0\'ed\'e5\'f2\'e0. DNS \'f2\'f0\'b8\'f5\'f3\'f0\'ee\'e2\'ed\'e5\'e2\'fb\'e9 vlg.gazprom.ru - \'e4\'eb\'ff Local.\cf0\par
+\cf1\lang1033\f1\par
+#apt install bind9\tab\lang1049\f0\'f3\'f1\'f2\'e0\'ed\'ee\'e2\'e8\'f2 \'f1\'eb\'f3\'e6\'e1\'f3 \lang1033\f1 named.service\par
+\par
+\tab\lang1049\f0\'c2\'ee\'ee\'e1\'f9\'e5 \lang1033\f1 ww1.hbc.ru \lang1049\f0\'e4\'ee\'eb\'e6\'e5\'ed \'e7\'e0\'ef\'e8\'f1\'fb\'e2\'e0\'f2\'fc\'f1\'ff \'f1 \lang1033\f1 "\cf2\lang1049\b\f0\'f2\'ee\'f7\'ea\'ee\'e9\cf1\lang1033\b0\f1 "\lang1049\f0  \'e2\'ea\'ee\'ed\'f6\'e5. \'d2.\'e5. \'ea\'ee\'f0\'ed\'e5\'e2\'ee\'e9 \'e4\'ee\'ec\'e5\'ed \'e2 \'e3\'eb\'ee\'e1\'e0\'eb\'fc\'ed\'ee\'ec \lang1033\f1 DNS - \lang1049\f0\'fd\'f2\'ee "\cf2\b\'f2\'ee\'f7\'ea\'e0\cf1\b0 ", \'ea\'ee\'f2\'ee\'f0\'e0\'ff \'e2\'fb\'e4\'e0\'f1\'f2 \'ed\'e0\'ec \'f1\'ef\'e8\'f1\'ee\'ea \lang1033\f1 root \lang1049\f0\'f1\'e5\'f0\'e2\'e5\'f0\'ee\'e2.\par
+\par
+\'cd\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e8 \'ca\'ee\'f0\'ed\'e5\'e2\'ee\'e3\'ee \lang1033\f1 DNS: \cf0{\field{\*\fldinst{HYPERLINK "ftp://ftp.internic.net/domain/"}}{\fldrslt{\ul\cf3 ftp://ftp.internic.net/domain/}}}\cf1\f1\fs22  \lang1049\f0\'f4\'e0\'e9\'eb \lang1033\f1 named.root\par
+\par
+#\lang1049\b\f0 nslookup\b0  -type=ns .\par
+\lang1033\f1 Resolver\lang1049\f0 :  ns1.onlime.ru\par
+Address:  77.37.251.33\par
+\par
+\cf4\lang1033\ul\b\f1 .\cf1\ulnone\b0\tab IN\tab NS\tab a\lang1049\f0 .root-servers.net\cf4\lang1033\ul\b\f1 .\cf1\lang1049\ulnone\b0\f0\par
+\cf4\lang1033\ul\b\f1 .\cf1\ulnone\b0\tab IN\tab NS\tab b\lang1049\f0 .root-servers.net\cf4\lang1033\ul\b\f1 .\cf1\lang1049\ulnone\b0\f0\par
+\lang1033\f1\tab\tab .....\lang1049\f0\par
+\cf4\lang1033\ul\b\f1 .\cf1\ulnone\b0\tab IN\tab NS\tab m\lang1049\f0 .root-servers.net\cf4\lang1033\ul\b\f1 .\cf1\lang1049\ulnone\b0\f0\par
+\par
+a.root-servers.net\cf4\lang1033\ul\b\f1 .\cf1\lang1049\ulnone\b0\f0\tab\lang1033\f1 IN\tab A\tab\cf5\lang1049\b\f0 198.41.0.4\cf1\b0\par
+b.root-servers.net\cf4\lang1033\ul\b\f1 .\cf1\lang1049\ulnone\b0\f0\tab\lang1033\f1 IN\tab A\tab\lang1049\f0 199.9.14.201\par
+\lang1033\f1\tab\tab .....\lang1049\f0\par
+m.root-servers.net\cf4\lang1033\ul\b\f1 .\cf1\lang1049\ulnone\b0\f0\tab\lang1033\f1 IN\tab A\tab\lang1049\f0 202.12.27.33\lang1033\f1\par
+\par
+\lang1049\f0\tab\'d0\'e5\'ea\'f3\'f0\'f1\'e8\'e2\'ed\'fb\'e9: \'df - \'ea\'ee\'ec\'ef. \'cd\'e5 \'f5\'ee\'f7\'f3 \'ed\'e0\'ef\'f0\'ff\'e3\'e0\'f2\'fc\'f1\'ff. \'ce\'f2\'ef\'f0\'e0\'e2\'e8\'eb \'e7\'e0\'ef\'f0\'ee\'f1 \'f1 \'f4\'eb\'e0\'e3\'ee\'ec \lang1033\f1 Recursive \lang1049\f0\'f1\'e2\'ee\'e5\'ec\'f3 \lang1033\f1 DNS \lang1049\f0\'f1\'e5\'f0\'e2\'e5\'f0\'f3 \'e8 \'e6\'e4\'f3 \'ee\'f2 \'ed\'e5\'e3\'ee \'e3\'ee\'f2\'ee\'e2\'fb\'e9 \'ee\'f2\'e2\'e5\'f2.\par
+\par
+\tab\'c8\'f2\'e5\'f0\'e0\'f2\'e8\'e2\'ed\'fb\'e9: \'df - \lang1033\f1 DNS \lang1049\f0\'f1\'e5\'f0\'e2\'e5\'f0. \'cf\'ee\'eb\'f3\'f7\'e8\'eb \'e7\'e0\'ef\'f0\'ee\'f1 \'ee\'f2 \'ea\'ee\'ec\'ef\'e0. \'ce\'f2\'ef\'f0\'e0\'e2\'e8\'eb \'e7\'e0\'ef\'f0\'ee\'f1 "\'d0\'e0\'e7\'f0\'e5\'e7\'ee\'eb\'e2\'fc \lang1033\f1 ww1.hbc.ru\lang1049\f0 " \'ed\'e0 \lang1033\f1 root \lang1049\f0\'f1\'e5\'f0\'e2\'e5\'f0\'e0 \'f1 \'f4\'eb\'e0\'e3\'ee\'ec \lang1033\f1 Recursive (\lang1049\f0\'f2\'ee\'e6\'e5 \'ed\'e5 \'f5\'ee\'f7\'f3 \'ed\'e0\'ef\'f0\'ff\'e3\'e0\'f2\'fc\'f1\'ff). \'cc\'ee\'eb \'e6\'e4\'f3 \'ee\'f2 \'e2\'e0\'f1 \lang1033\f1 IP \lang1049\f0\'e0\'e4\'f0\'e5\'f1 \'f5\'ee\'f1\'f2\'e0 ww1.hbc.ru \'c0 \'e2 \'ee\'f2\'e2\'e5\'f2 \lang1033\f1 root \lang1049\f0\'f1\'e5\'f0\'e2\'e5\'f0\'e0 \'ef\'f0\'e8\'f1\'fb\'eb\'e0\'fe\'f2: \'cc\'fb \'ed\'e5 \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'ec \'e2 \'f0\'e5\'ea\'f3\'f0\'f1\'e8\'e2\'ed\'ee\'ec \'f0\'e5\'e6\'e8\'ec\'e5. \'d3 \'ed\'e0\'f1 \'e5\'f1\'f2\'fc \'e7\'e0\'ef\'e8\'f1\'e8:\par
+\cf0\lang1033\kerning0\f1 ru.\lang1049\f0\tab\lang1033\f1 172800\lang1049\f0\tab\lang1033\f1 IN\lang1049\f0\tab\lang1033\f1 NS\lang1049\f0\tab\lang1033\f1 a.dns.ripn.net.\par
+ru.\lang1049\f0\tab\lang1033\f1 172800\lang1049\f0\tab\lang1033\f1 IN\lang1049\f0\tab\lang1033\f1 NS\lang1049\f0\tab\lang1033\f1 b.dns.ripn.net.\tab\lang1049\f0\'f2.\'e5. \'e7\'e0 \'e7\'ee\'ed\'f3 \lang1033\f1 .ru \lang1049\f0\'ee\'f2\'e2\'e5\'f7\'e0\'e5\'f2 \cf6\kerning1\b\'d0\'ee\'f1\'cd\'c8\'c8\'d0\'ce\'d1\cf0\lang1033\kerning0\b0\f1\par
+ru.\tab 172800\tab IN\tab NS\tab f.dns.ripn.net.\par
+a.dns.ripn.net.\lang1049\f0\tab\lang1033\f1 172800\lang1049\f0\tab\lang1033\f1 IN\lang1049\f0\tab\lang1033\f1 A\lang1049\f0\tab\cf6\lang1033\kerning1\b\f1 193.232.128.6\cf1\lang1049\b0\f0\par
+\cf0\lang1033\kerning0\f1 b.dns.ripn.net.\lang1049\f0\tab\lang1033\f1 172800\lang1049\f0\tab\lang1033\f1 IN\lang1049\f0\tab\lang1033\f1 A\lang1049\f0\tab\lang1033\f1 194.85.252.62\par
+f.dns.ripn.net.\tab 172800\tab IN\tab A\tab 193.232.156.17\cf1\lang1049\kerning1\f0\par
+\'e0 \'e4\'e0\'eb\'fc\'f8\'e5 \'f1\'e0\'ec-\'f1\'e0\'ec-\'f1\'e0\'ec.\par
+\par
+\lang1033\f1 #\b nslookup\b0  ww1.hbc.ru \cf5\lang1049\b\f0 198.41.0.4\cf1\lang1033\b0\f1\par
+Address:  \cf0\lang1049\f0 198.41.0.4\cf1\lang1033\f1\par
+Hostname\~:     ww1.hbc.ru\par
+Served by:\par
+- a.dns.ripn.net\par
+          \cf6\b 193.232.128.6\cf1\b0\par
+          ru\par
+\tab\tab .....\par
+- f.dns.ripn.net\par
+          193.232.156.17\par
+          ru\par
+\pard\nowidctlpar\hyphpar0\fi-1671\li1671\sl240\slmult1\lang1049\f0\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\'df \'ee\'ef\'ff\'f2\'fc \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'fe \'e7\'e0\'ef\'f0\'ee\'f1 \'f1 \'f4\'eb\'e0\'e3\'ee\'ec \lang1033\f1 Recursive \lang1049\f0\'f1\'e5\'f0\'e2\'e5\'f0\'e0\'ec \cf6\b\'d0\'ee\'f1\'cd\'c8\'c8\'d0\'ce\'d1\cf1\b0 , \'e0 \'ee\'ed\'e8 \'e2 \'ee\'f2\'e2\'e5\'f2: \'cc\'fb \'ed\'e5 \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'ec \'e2 \'f0\'e5\'ea\'f3\'f0\'f1\'e8\'e2\'ed\'ee\'ec \'f0\'e5\'e6\'e8\'ec\'e5. \'d3 \'ed\'e0\'f1 \'e5\'f1\'f2\'fc \'e7\'e0\'ef\'e8\'f1\'e8:\par
+\lang1033\f1 hbc.ru.\tab\tab 86400\tab\tab IN\tab NS\tab ns5.nic.ru\par
+hbc.ru.\tab\tab 86400\tab\tab IN\tab NS\tab ns9.nic.ru\tab\cf0\lang1049\kerning0\f0\'f2.\'e5. \'e7\'e0 \'e7\'ee\'ed\'f3 \lang1033\f1 hbc.ru \lang1049\f0\'ee\'f2\'e2\'e5\'f7\'e0\'e5\'f2 \cf1\lang1033\kerning1\f1 RU-CENTER\par
+ns5.nic.ru.\tab 86400\tab\tab IN\tab A\tab 31.177.67.100\par
+ns9.nic.ru.\tab 86400\tab\tab IN\tab A\tab 31.177.85.186\lang1049\f0\par
+\'e0 \'e4\'e0\'eb\'fc\'f8\'e5 \'f1\'e0\'ec-\'f1\'e0\'ec-\'f1\'e0\'ec\lang1033\f1 .\par
+\par
+#\lang1049\b\f0 nslookup\b0  ww\lang1033\f1 1\lang1049\f0 .hbc.ru \cf6\lang1033\b\f1 193.232.128.6\cf1\lang1049\b0\f0\par
+Address:  193.232.128.6\par
+\lang1033\f1 Hostname:     ww1.hbc.ru\par
+Served by:\par
+- ns5.nic.ru\par
+          31.177.67.100\par
+          hbc.ru\par
+- ns9.nic.ru\par
+          31.177.85.186\par
+          hbc.ru\lang1049\f0\par
+\cf0\par
+{\field{\*\fldinst{HYPERLINK "https://bind9.readthedocs.io/en/latest/chapter3.html"}}{\fldrslt{\ul\cf3 https://bind9.readthedocs.io/en/latest/chapter3.html}}}\f0\fs22\par
+\cf1\par
+\par
+\ul\'d4\'e0\'e9\'eb \lang1033\f1 named.conf\lang1049\ulnone\f0\par
+TTL 2d\tab\tab\lang1033\f1 TTL \lang1049\f0\'ed\'e0 \'e2\'f1\'e5 \'e7\'e0\'ef\'e8\'f1\'e8 \'e2 \'e7\'ee\'ed\'e5\par
+\par
+\'ca\'e0\'e6\'e4\'e0\'ff \'e7\'e0\'ef\'e8\'f1\'fc \'f1\'ee\'f1\'f2\'ee\'e8\'f2 \'e8\'e7:\par
+\lang1033\f1 NAME\tab\tab TTL\tab\tab CLASS\tab TYPE\tab DATA\lang1049\f0\par
+\lang1033\f1 mail\lang1049\f0\tab\tab\lang1033\f1 86400\lang1049\f0\tab\tab\lang1033\f1 IN\tab A\tab 56.8.23.7\lang1049\f0\par
+hbc.ru.\tab\lang1033\f1 86400\lang1049\f0\tab\tab\lang1033\f1 IN\tab\cf4\b NS\cf1\b0\tab ns5.nic.ru\lang1049\f0\tab\tab\'ed\'e0 \lang1033\f1 DNS \lang1049\f0\'f1\'e5\'f0\'e2\'e5\'f0\'e0\'f5 \cf6\b\'d0\'ee\'f1\'cd\'c8\'c8\'d0\'ce\'d1\cf1\b0  \'e1\'f3\'e4\'e5\'f2 \cf4\lang1033\b\f1 NS\cf1\lang1049\b0\f0  \'e7\'e0\'ef\'e8\'f1\'fc, \'f2\'e8\'ef\'e0 \'e4\'ee\'ec\'e5\'ed \lang1033\f1 hbc.ru \lang1049\f0\'e8\'f9\'e8 \'ed\'e0 \'f1\'e5\'f0\'e2\'e5\'f0\'e0\'f5 \lang1033\f1 RU-CENTER\par
+\lang1049\f0 4\lang1033\f1 .\lang1049\f0 3\lang1033\f1 .\lang1049\f0 2\lang1033\f1 .1.in-addr.arpa\tab 86400\lang1049\f0\tab\tab\lang1033\f1 IN\lang1049\f0\tab\cf4\lang1033\b\f1 PTR\cf1\lang1049\b0\f0\tab\lang1033\f1 mail.\lang1049\f0 hbc.ru\tab\'e7\'e0\'ef\'e8\'f1\'fc \cf4\lang1033\b\f1 PTR\lang1049\f0  \cf1\b0\'ef\'ee\'e7\'e2\'ee\'eb\'ff\'e5\'f2\lang1033\f1  \lang1049\f0\'ef\'ee \lang1033\f1 IP \lang1049\f0\'f3\'e7\'ed\'e0\'f2\'fc \'e4\'ee\'ec\'e5\'ed\'ed\'ee\'e5 \'e8\'ec\'ff. \'d5\'ee\'f2\'e8\'ec \'f3\'e7\'ed\'e0\'f2\'fc \'e4\'ee\'ec\'e5\'ed\'ed\'ee\'e5 \'e8\'ec\'ff \'f3 \lang1033\f1 IP 1.2.3.4 \lang1049\f0\'d1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'e5\'f2 "\'ee\'f1\'ee\'e1\'fb\'e9" \'e2\'e5\'f0\'f5\'ed\'e5\'f3\'f0\'ee\'e2\'ed\'e5\'e2\'fb\'e9 \'e4\'ee\'ec\'e5\'ed \lang1033\f1 in-addr.arpa\lang1049\f0  - \'fd\'f2\'ee \'ea\'e0\'ea .\lang1033\f1 ru \lang1049\f0\'e8\'eb\'e8 \lang1033\f1 .com\lang1049\f0 . \'ce\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'ec \'e5\'ec\'f3 \'e7\'e0\'ef\'f0\'ee\'f1, \'e0 \'ee\'ed \'f3\'e6\'e5 \'e7\'ed\'e0\'e5\'f2, \'f7\'f2\'ee \'e1\'eb\'ee\'ea \lang1033\f1 IP 1.2.\lang1049\f0 0.0/16 \'e2\'fb\'e4\'e5\'eb\'e5\'ed \'ef\'f0\'ee\'e2\'e0\'e9\'e4\'e5\'f0\'f3 \lang1033\f1 QWERTY \lang1049\f0\'e8 \'ef\'e5\'f0\'e5\'e0\'e4\'f0\'e5\'f1\'f3\'e5\'f2 \'e7\'e0\'ef\'f0\'ee\'f1 \'ed\'e0 \lang1033\f1 qwerty.ru\lang1049\f0 . \'cd\'e0 \lang1033\f1 DNS QWERTY \lang1049\f0\'ef\'f0\'ee\'ef\'e8\'f1\'e0\'ed\'ee (\'e2\'ee\'f2 \'ef\'ee\'f7\'e5\'ec\'f3 \'e2 \'c1\'e0\'eb\'e0\'f8\'e8\'f5\'e5 \'ec\'e5\'ed\'ff \'ef\'f0\'ee\'e2\'e0\'e9\'e4\'e5\'f0 \'ee\'f2\'f8\'e8\'eb - \'ed\'e0\'e4\'ee \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'f2\'fc \'e7\'e0\'ef\'e8\'f1\'e8 \'e2 \'ef\'f0\'ee\'e2\'e0\'e9\'e4\'e5\'f0\'f1\'ea\'ee\'ec \lang1033\f1 DNS)\lang1049\f0 , \'f7\'f2\'ee \'ed\'e0\'e4\'ee \'e8\'e4\'f2\'e8 \'ed\'e0 \lang1033\f1 hbc.ru\lang1049\f0 .\lang1033\f1  \lang1049\f0\'c4\'e0\'eb\'fc\'f8\'e5 \'ef\'ee\'ed\'ff\'f2\'ed\'ee...\lang1033\f1\par
+\cf0\lang1049\f0 ww.\lang1033\f1 sa\lang1049\f0 .ru\cf1\tab\lang1033\f1 86400\lang1049\f0\tab\tab\lang1033\f1 IN\tab\cf4\lang1049\b\f0 CNAME\cf1\lang1033\b0\f1\tab\lang1049\f0\tab ab7d45b3.\lang1033\f1 cloud.vk\lang1049\f0 .\lang1033\f1 com\tab\tab ~\lang1049\f0 alias\lang1033\f1 , \lang1049\f0\'ed\'ee \'ed\'e5\'eb\'fc\'e7\'ff \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'e4\'eb\'ff \'e4\'ee\'ec\'e5\'ed\'ee\'e2 2-\'ee\'e3\'ee \'f3\'f0\'ee\'e2\'ed\'ff \'f2\'e8\'ef\'e0 \'ef\'f0\'ee\'f1\'f2\'ee \lang1033\f1 sa.ru. \lang1049\f0\'d5\'ee\'f7\'f3 \'e2 \lang1033\f1 vk.cloud\lang1049\f0  \'ef\'ee\'e4\'ed\'ff\'f2\'fc\lang1033\f1  \lang1049\f0\'f1\'e2\'ee\'e9 \'f1\'e5\'f0\'e2\'e8\'f1, \'ed\'ee \lang1033\f1 DNS \lang1049\f0\'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'f1\'e2\'ee\'e9 \cf0 ww.\lang1033\f1 sa\lang1049\f0 .ru. \lang1033\f1 DNS \lang1049\f0\'f1\'e5\'f0\'e2\'e5\'f0 \'f3 \lang1033\f1 QWERTY \lang1049\f0\'f1\'ed\'e0\'f7\'e0\'eb\'e0 \'e7\'e0\'ef\'f0\'ee\'f1\'e8\'f2 ww.\lang1033\f1 sa\lang1049\f0 .ru, \'ef\'ee\'eb\'f3\'f7\'e8\'f2 \lang1033\f1 CNAME\lang1049\f0 , \'e7\'e0\'ef\'f0\'ee\'f1\'e8\'f2 \cf1 ab7d45b3.\lang1033\f1 cloud.vk\lang1049\f0 .\lang1033\f1 com\lang1049\f0 , \'ef\'ee\'eb\'f3\'f7\'e8\'f2 \lang1033\f1 IP\lang1049\f0  1.2.3.4\lang1033\f1  \lang1049\f0\'e8 \'f3 \'f1\'e5\'e1\'ff \'e2 \lang1033\f1 cache \lang1049\f0\'f1\'ee\'e7\'e4\'e0\'f1\'f2 \lang1033\f1 A \lang1049\f0\'e7\'e0\'ef\'e8\'f1\'fc\lang1033\f1  \cf0\lang1049\f0 ww.\lang1033\f1 sa\lang1049\f0 .ru\lang1033\f1  - 1.2.3.4\lang1049\f0\par
+\cf1 hbc.ru.\tab\lang1033\f1 86400\lang1049\f0\tab\tab\lang1033\f1 IN\lang1049\f0  \tab\cf4\b SOA\cf1\b0\tab\tab ns5.primaryserver.com admin.o7.com 2051 86400 7200 604800 86400\cf0\par
+\cf1\tab\'cf\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'fb SOA:\cf0\par
+\cf1\tab\tab DOMAIN\tab\tab hbc.ru\cf0\par
+\cf1\tab\tab RECORD TYPE\tab SOA\cf0\par
+\cf1\tab\tab MNAME\tab\tab\tab ns5.primaryserver.com\tab\tab\'e8\'ec\'ff Master = Primary \'f1\'e5\'f0\'e2\'e5\'f0\'e0\cf0\par
+\cf1\tab\tab RNAME\tab\tab\tab admin.mail.ru\tab\tab\tab\'ef\'ee\'f7\'f2\'e0 \'e0\'e4\'ec\'e8\'ed\'e0 =  admin@mail.ru\cf0\par
+\cf1\tab\tab SERIAL\tab\tab 2051\cf0\par
+\cf1\tab\tab REFRESH\tab\tab 86400\cf0\par
+\cf1\tab\tab RETRY\tab\tab\tab 7200\tab\tab\tab\tab\tab = 2 \'f7\'e0\'f1\'e0.\cf0\par
+\cf1\tab\tab EXPIRE\tab\tab 604800\tab\tab\tab\tab = 7 \'e4\'ed\'e5\'e9. \'d1\'ea\'ee\'eb\'fc\'ea\'ee \'f1\'e5\'ea. Secondary \'f1\'e5\'f0\'e2\'e5\'f0 \'e1\'f3\'e4\'e5\'f2 \'f5\'f0\'e0\'ed\'e8\'f2\'fc \'e7\'e0\'ef\'e8\'f1\'fc, \'e2 \'f1\'eb\'f3\'f7\'e0\'e5 \'ed\'e5\'e4\'ee\'f1\'f2\'f3\'ef\'ed\'ee\'f1\'f2\'e8 Primary\cf0\par
+\cf1\tab\tab MINIMUM\tab\tab 86400\tab\tab\tab\tab\tab = 1 \'e4\'e5\'ed\'fc. \'d1\'ea\'ee\'eb\'fc\'ea\'ee \'f1\'e5\'ea. \'f1\'e5\'f0\'e2\'e5\'f0\'e0 \'e1\'f3\'e4\'f3 \'f5\'f0\'e0\'ed\'e8\'f2\'fc NXDOMAIN \'ee\'f2\'e2\'e5\'f2\'fb. \'cf\'f0\'e8\'eb\'e5\'f2\'e0\'e5\'f2 \'e7\'e0\'ef\'f0\'ee\'f1 \lang1033\f1 xxx.hbc.ru\lang1049\f0  \'d3 \'ed\'e0\'f1 \'f2\'e0\'ea\'ee\'e9 \'e7\'e0\'ef\'e8\'f1\'e8 \'ed\'e5\'f2. \'cc\'fb \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'ec NXDOMAIN. \'d1\'eb\'e5\'e4\'f3\'fe\'f9\'e8\'e9 \'f0\'e0\'e7, \'e7\'e0\'f5\'ee\'f2\'e5\'e2 \'ee\'e1\'f0\'e0\'f2\'e8\'f2\'fc\'f1\'ff \'ea \lang1033\f1 xxx.hbc.ru\lang1049\f0 , \'f1\'e5\'f0\'e2\'e5\'f0 \'ef\'ee\'f1\'ec\'ee\'f2\'f0\'e8\'f2 \'f1\'e5\'e1\'e5 \'e2 \lang1033\f1 cache, \lang1049\f0\'f3\'e2\'e8\'e4\'e8\'f2 \'f1\'f2\'e0\'f2\'f3\'f1 \'e7\'e0\'ef\'e8\'f1\'e8 = NXDOMAIN \'e8 \'ea \'ed\'e0\'ec \'f1\'f2\'f3\'f7\'e0\'f2\'fc\'f1\'ff \'ed\'e5 \'e1\'f3\'e4\'e5\'f2 \'e2 \'f2\'e5\'f7\'e5\'ed\'e8\'e8 1 \'e4\'ed\'ff.\par
+\cf0\par
+\pard\sl240\slmult1\cf1\'d0\'e5\'f7\'fc \'e8\'e4\'b8\'f2 \'ee \'f1\'e8\'f1\'f2\'e5\'ec\'e5 Primary - Secondary DNS. \'c8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff \'ec\'ee\'e6\'ed\'ee \'e2\'ed\'ee\'f1\'e8\'f2\'fc \'f2\'ee\'eb\'fc\'ea\'ee \'ed\'e0 Primary \'f1\'e5\'f0\'e2\'e5\'f0\'e5. \'cf\'f0\'e8 \'e2\'ed\'e5\'f1\'e5\'ed\'e8\'e8 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'e9 \'f9\'b8\'eb\'ea\'e0\'e5\'f2 i++ \'f1\'f7\'b8\'f2\'f7\'e8\'ea Sequence (\'e2 \'f2\'e5\'f0\'ec\'e8\'ed\'e0\'f5 DNS \'fd\'f2\'ee \b SERIAL\b0  Number). Secondary \'e2\'f0\'e5\'ec\'ff \'ee\'f2 \'e2\'f0\'e5\'ec\'e5\'ed\'e8 (=\b Refresh\b0  time \'e2 \'f1\'e5\'ea.) \'e7\'e0\'ef\'f0\'e0\'f8\'e8\'e2\'e0\'e5\'f2 Serial Number \'f3 Primary \'e8 \'e5\'f1\'eb\'e8 \'ee\'ed \'ee\'f2\'eb\'e8\'f7\'e0\'e5\'f2\'f1\'ff, \'f2\'ee \'ef\'f0\'ee\'e8\'f1\'f5\'ee\'e4\'e8\'f2 \'f1\'f7\'e8\'f2\'fb\'e2\'e0\'ed\'e8\'e5/\'ee\'e1\'ed\'ee\'e2\'eb\'e5\'ed\'e8\'e5 \'e2\'f1\'e5\'e9 \'e7\'ee\'ed\'fb \'ef\'ee TCP (\'e2 \'f2\'e5\'f0\'ec\'e8\'ed\'e0\'f5 DNS \'fd\'f2\'ee \'ed\'e0\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff \'d2\'f0\'e0\'ed\'f1\'f4\'e5\'f0 \'c7\'ee\'ed\'fb). \b Retry\b0  \'e2 \'f1\'e5\'ea. - \'f7\'e5\'f0\'e5\'e7 \'ea\'e0\'ea\'ee\'e5 \'e2\'f0\'e5\'ec\'ff Secondary \'e4\'e5\'eb\'e0\'e5\'f2 retry, \'e5\'f1\'eb\'e8 Primary \'ed\'e5 \'ee\'f2\'e2\'e5\'f7\'e0\'e5\'f2.\cf0\lang9\kerning0\f2\par
+}
+ 
