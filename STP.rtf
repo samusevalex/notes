@@ -1,0 +1,222 @@
+{\rtf1\ansi\ansicpg1251\deff0\deflang1049{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}{\f1\fnil\fcharset0 Courier New;}{\f2\froman\fprq2\fcharset204{\*\fname Courier New;}Courier New CYR;}}
+{\colortbl ;\red0\green0\blue0;\red0\green0\blue255;}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\nowidctlpar\f0\fs22\'c2\'f5\'ee\'e4\'ff\'f9\'e8\'ec\'e8 \'e4\'e0\'ed\'ed\'fb\'ec\'e8 \'e4\'eb\'ff STP 802.1\lang1033\f1 d\lang1049\f0  \'ff\'e2\'eb\'ff\'fe\'f2\'f1\'ff 2-\'e5 \'e2\'e5\'eb\'e8\'f7\'e8\'ed\'fb:\par
+\par
+1. \b Bridge ID (BID)\b0  = 8 byte\par
+\par
+\lang1033\f1 +\lang1049\f0 -------------\lang1033\f1 +\lang1049\f0 ---------------------\lang1033\f1 +\lang1049\f0\par
+|   Bridge    |\tab\tab\tab\tab |\par
+|  Priority   |\tab\tab MAC\tab\tab |\par
+|Default:32768|\tab\tab\tab\tab |\par
+\lang1033\f1 +\lang1049\f0 -------------\lang1033\f1 +\lang1049\f0 --------------------\lang1033\f1 -+\lang1049\f0\par
+    2 byte\tab\tab     6 byte\par
+\par
+2. \b Path Cost\b0   \'d7\'c5\'cc \'cc\'c5\'cd\'dc\'d8\'c5 \'d2\'c5\'cc \'cb\'d3\'d7\'d8\'c5 !!!\par
+\par
+Bandwidth\tab |   STP Cost\par
+------------\lang1033\f1 +\lang1049\f0 -------------\par
+10  Mbps\tab |\tab 100\par
+100 Mbps\tab |\tab 19\par
+1   Gbps\tab |\tab 4\par
+10  Gbps\tab |\tab 2\par
+\par
+BPDU \'e1\'fb\'e2\'e0\'fe\'f2 2-\'f5 \'f2\'e8\'ef\'ee\'e2:\par
+1. Configuration BPDU (\'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'fe\'f2\'f1\'ff \'ef\'f0\'e8 \'e2\'ea\'eb\'fe\'f7\'e5\'ed\'e8\'e8 \'f1\'e2\'e8\'f7\'e0)\par
+2. Topology Change Notification - TCN BPDU (\'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'fe\'f2\'f1\'ff \'e4\'e0\'eb\'e5\'e5, \'ef\'f0\'e8 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'e8 \'f2\'ee\'ef\'ee\'eb\'ee\'e3\'e8\'e8)\par
+\par
+\'cf\'e0\'ea\'e5\'f2 \b Configuration BPDU:\b0\par
+\lang1033\f1 +\lang1049\f0 -----------------------------------------------------------------------------------\lang1033\f1 +\lang1049\f0\par
+|- IEEE 802.3\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab |\par
+|\tab Address: 00-10-14-23-A4-08 -> 01-80-C2-00-00-00 (\'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2\'ed\'fb\'e9 \'e0\'e4\'f0\'e5\'f1 STP)\tab |\par
+|\tab Length: 38\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab |\par
+|- Logical Link Control\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab |\par
+|- Bridge Protocol Data Unit\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab |\par
+|\tab Protocol ID: 0\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab |\par
+|\tab Version: 0\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab |\par
+|\tab Type: 0 (Configuration)\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab |\par
+|\tab Flags: 0x00\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab |\par
+|\tab Root ID: 800000101423A408\tab\tab\tab\tab\tab\tab\tab\tab\tab |\par
+|\tab\tab Priority: 0x8000\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab |\par
+|\tab\tab MAC Adress: 00-10-14-23-A4-08\tab\tab\tab\tab\tab\tab\tab\tab |\par
+|\tab Root Path Cost: 0\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab |\par
+|\tab Bridge ID: 800000101423A408\tab\tab\tab\tab\tab\tab\tab\tab\tab |\par
+|\tab\tab Priority: 0x8000\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab |\par
+|\tab\tab MAC Adress: 00-10-14-23-A4-08\tab\tab\tab\tab\tab\tab\tab\tab |\par
+|\tab Port ID: 0x8002\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab |\par
+|\tab Message Age: 0\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab |\par
+|\tab Max Age: 20\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab |\par
+|\tab Hello Timer: 2\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab |\par
+|\tab Forward Delay: 15\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab |\par
+|\tab Frame Padding: 8 bytes\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab |\par
+\lang1033\f1 +\lang1049\f0 -----------------------------------------------------------------------------------\lang1033\f1 +\lang1049\f0\par
+\par
+Protocol ID - \'e2\'f1\'e5\'e3\'e4\'e0 0\par
+Version - \tab 0 = STP\par
+\tab\tab 2 = RSTP\par
+Type - \'e2\'fb\'e1\'ee\'f0 Configuration BPDU \'e8\'eb\'e8 TCN BPDU\par
+Flag - 00000000\tab LSB = Topology Change (TC) flag\par
+\tab  10000000\tab MSB = Topology Change Acknowledgment (TCA) flag\par
+Root BID - \'ef\'ee\'f1\'eb\'e5 \'e2\'fb\'e1\'ee\'f0\'e0 Root Bridge, \'e2\'f1\'e5 BPDU \'e2 \'f1\'e8\'f1\'f2\'e5\'ec\'e5 \'e4\'ee\'eb\'e6\'ed\'fb \'f1\'ee\'e4\'e5\'f0\'e6\'e0\'f2\'fc \'ee\'e4\'e8\'ed \'e8 \'f2\'ee\'f2 \'e6\'e5 Root BID\par
+Root Path Cost - \'f1\'f3\'ec\'ec\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'fb\'e9 Cost \'e4\'ee Root Bridge\par
+Sender BID - BID \'f1\'e2\'e8\'f7\'e0, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'f1\'ee\'e7\'e4\'e0\'eb \'e4\'e0\'ed\'ed\'fb\'e9 BPDU\par
+Port ID - \'f3\'ed\'e8\'ea\'e0\'eb\'fc\'ed\'fb\'e9 \'ed\'ee\'ec\'e5\'f0 \'ef\'ee\'f0\'f2\'e0. Fa1/1 = 0x8001. Fa1/2 = 0x8002\par
+Message Age - \lang1033\f1 Root \lang1049\f0\'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \lang1033\f1 BPDU c Message Age = 0.  \lang1049\f0\'c2\'f1\'e5 \'ee\'f1\'f2\'e0\'eb\'fc\'ed\'fb\'e5 \'ef\'f0\'ee\'f1\'f2\'ee \'ef\'f0\'e8\'e1\'e0\'e2\'eb\'ff\'fe\'f2 \'ef\'ee 1. \'cf\'ee \'f4\'e0\'ea\'f2\'f3 \'ef\'ee\'eb\'e5 \'ef\'ee\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2 \'f3\'e4\'e0\'eb\'b8\'ed\'ed\'ee\'f1\'f2\'fc \'ee\'f2 \lang1033\f1 Root Bridge.\lang1049\f0\par
+Max Age - \'ec\'e0\'ea\'f1\'e8\'ec\'e0\'eb\'fc\'ed\'ee\'e5 \'e2\'f0\'e5\'ec\'ff \'f5\'f0\'e0\'ed\'e5\'ed\'e8\'ff BPDU\par
+Hello Time - \'ef\'e5\'f0\'e8\'ee\'e4 \'ec\'e5\'e6\'e4\'f3 BPDU\par
+Forward Delay - \'e2\'f0\'e5\'ec\'ff \'e2 Listening \'e8 Learning \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'ff\'f5\par
+\par
+\'cf\'e0\'ea\'e5\'f2 \b Topology Change Notification (TCN)\b0 :\par
+\lang1033\f1 +\lang1049\f0 -----------------------------------------------------------------------------------\lang1033\f1 +\lang1049\f0\par
+|- IEEE 802.3\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab |\par
+|\tab Address: 00-10-14-23-A4-08 -> 01-80-C2-00-00-00 (\'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2\'ed\'fb\'e9 \'e0\'e4\'f0\'e5\'f1 STP)\tab |\par
+|\tab Length: 38\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab |\par
+|- Logical Link Control\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab |\par
+|- Bridge Protocol Data Unit\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab |\par
+|\tab Protocol ID: 0\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab |\par
+|\tab Version: 0\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab |\par
+|\tab Type: 0x80 (Topology Change Notification)\tab\tab\tab\tab\tab\tab\tab |\par
+|\tab Frame Padding: 39 bytes\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab |\par
+\lang1033\f1 +\lang1049\f0 -----------------------------------------------------------------------------------\lang1033\f1 +\lang1049\f0\par
+\par
+\'ca\'ee\'e3\'e4\'e0 \'f1\'e2\'e8\'f2\'f7 \'e2\'ea\'eb\'fe\'f7\'e0\'e5\'f2\'f1\'ff, \'ee\'ed \'f8\'eb\'b8\'f2 \'e2\'ee \'e2\'f1\'e5 \'ef\'ee\'f0\'f2\'fb \'f1\'e2\'ee\'e9 BPDU \'ea\'e0\'e6\'e4\'fb\'e5 2 \'f1\'e5\'ea. \'ca\'e0\'ea \'f2\'ee\'eb\'fc\'ea\'ee \'ee\'ed \'ef\'ee\'eb\'f3\'f7\'e8\'eb BPDU \'ee\'f2 \'e4\'f0\'f3\'e3\'ee\'e3\'ee \'f1\'e2\'e8\'f7\'e0, \'ea\'ee\'f2\'ee\'f0\'ee\'e5 \'eb\'f3\'f7\'f8\'e5 \'e5\'e3\'ee BPDU \cf1\kerning1\f2\u8594?\cf0\kerning0\f0  \'fd\'f2\'ee\'f2 \'ef\'ee\'f0\'f2 \'ef\'e5\'f0\'e5\'f1\'f2\'e0\'b8\'f2 \'f1\'eb\'e0\'f2\'fc BPDU. \'c5\'f1\'eb\'e8 \'ed\'e0 \'fd\'f2\'ee\'f2 \'ef\'ee\'f0\'f2 \'ef\'e5\'f0\'e5\'f1\'f2\'e0\'fe\'f2 \'ef\'f0\'e8\'f5\'ee\'e4\'e8\'f2\'fc "\'eb\'f3\'f7\'f8\'e8\'e5" BPDU \'f7\'e5\'f0\'e5\'e7 20 \'f1\'e5\'ea. = Max Age (\'ef\'ee default) \'f1\'e2\'e8\'f7 \'ee\'ef\'ff\'f2\'fc \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2 \'f1\'eb\'e0\'f2\'fc \'f1\'e2\'ee\'e8 BPDU.\par
+\par
+\'cf\'ee\'f0\'ff\'e4\'ee\'ea \'ef\'f0\'ee\'f6\'e5\'f1\'f1\'ee\'e2 \'e2 STP:\par
+1. \'c2\'fb\'e1\'ee\'f0 Root Bridge \'e2 Layer 2 \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e5 \'e2 \'f6\'e5\'eb\'ee\'ec \'ed\'e0 \'ee\'f1\'ed\'ee\'e2\'e0\'ed\'e8\'e8 \'ed\'e0\'e8\'ec\'e5\'ed\'fc\'f8\'e5\'e3\'ee Root BID.\par
+2. \'c2\'fb\'e1\'ee\'f0 Root \'ef\'ee\'f0\'f2\'e0 \'ed\'e0 \'ea\'e0\'e6\'e4\'ee\'ec \'ed\'e5 Root Bridge \'f1\'e2\'e8\'f7\'e5\par
+3. \'c2\'fb\'e1\'ee\'f0 Designated Ports \'e2 \'ea\'e0\'e6\'e4\'ee\'ec L1 \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'e5 \'ec\'e5\'e6\'e4\'f3 \'f1\'e2\'e8\'f7\'e0\'ec\'e8\par
+\par
+\'c5\'f1\'eb\'e8 \'e2\'f1\'f2\'f0\'e5\'f7\'e0\'fe\'f2\'f1\'ff 2-\'e0 \'f1\'e2\'e8\'f2\'f7\'e0, \'ea\'e0\'ea \'e2 \'ef\'f0\'e8\'ec\'e5\'f0\'e5 \'ed\'e8\'e6\'e5 \lang1033\f1 Cat B \lang1049\f0\'e8 \lang1033\f1 Cat C\lang1049\f0 , \'ef\'ee\'f0\'f2 \'e1\'eb\'ee\'ea\'e8\'f0\'f3\'e5\'f2 \'f2\'ee\'f2 \'f1\'e2\'e8\'f2\'f7 \'f3 \'ea\'ee\'f2\'ee\'f0\'ee\'e3\'ee:\par
+1. \'cd\'e0\'e8\'e1\'ee\'eb\'fc\'f8\'e8\'e9 Root BID\par
+2. \'cd\'e0\'e8\'e1\'ee\'eb\'fc\'f8\'e8\'e9 Root Path Cost\par
+3. \'cd\'e0\'e8\'e1\'ee\'eb\'fc\'f8\'e8\'e9 Sender BID\par
+4. \'cd\'e0\'e8\'e1\'ee\'eb\'fc\'f8\'e8\'e9 Port ID\par
+\par
+\'ca\'e0\'ea \'f2\'ee\'eb\'fc\'ea\'ee \'e2\'f1\'b8 \'e2\'ea\'eb\'fe\'f7\'e0\'e5\'f2\'f1\'ff, \'e2\'f1\'e5 \'e4\'f0\'f3\'e6\'ed\'ee \'ed\'e0\'f7\'e8\'ed\'e0\'fe\'f2 \'e3\'e0\'eb\'e4\'e5\'f2\'fc, \'e8 \'e2 \'e8\'f2\'ee\'e3\'e5 \'e2\'fb\'e1\'e8\'f0\'e0\'e5\'f2\'f1\'ff Root Bridge.\par
+\par
+BPDU - \'dd\'d2\'ce BRIDGE-TO-BRIDGE \'d2\'d0\'c0\'d4\'d4\'c8\'ca !!!\par
+\par
+COST \'d3\'c2\'c5\'cb\'c8\'d7\'c8\'c2\'c0\'c5\'d2\'d1\'df \'d2\'ce\'cb\'dc\'ca\'ce \'d2\'ce\'c3\'c4\'c0, \'ca\'ce\'c3\'c4\'c0 BPDU \'cf\'d0\'c8\'d5\'ce\'c4\'c8\'d2 \'cd\'c0 \'d1\'c2\'c8\'d2\'d7 !!!\par
+\par
+ \tab\tab\tab\tab  Root Bridge\par
+\tab   \tab     Design Port \lang1033\f1 +\lang1049\f0 -----\lang1033\f1 +\lang1049\f0  Design Port\par
+\tab      \lang1033\f1 +\lang1049\f0 ----------------|CAT A|\lang1033\f1 -\lang1049\f0 ---------------\lang1033\f1 +\lang1049\f0\par
+   Cost 19 |\tab     BPDU  \lang1033\f1 +\lang1049\f0 -----\lang1033\f1 +\lang1049\f0\tab  BPDU\tab   \tab    | Cost 19\par
+\tab      |\tab    Cost 0\tab\tab Cost 0\tab    |\par
+\tab      |   BPDU\tab\tab\tab\tab   BPDU   |\par
+  Root Port|  Cost 19\tab\tab\tab\tab  Cost 19 |Root Port\par
+\tab   \lang1033\f1 +\lang1049\f0 -----\lang1033\f1 +\lang1049\f0  \tab\tab  \tab\tab\tab\tab\lang1033\f1 +\lang1049\f0 -----\lang1033\f1 +\lang1049\f0\par
+\tab   |CAT B|\tab\tab\tab\tab\tab\tab |CAT C|\par
+\tab   \lang1033\f1 +\lang1049\f0 -----\lang1033\f1 + \lang1049\f0 BPDU\tab\tab\tab\tab BPDU\tab\lang1033\f1 +\lang1049\f0 -----\lang1033\f1 +\lang1049\f0\par
+Design Port|\lang1033\f1    \lang1049\f0 Cost 19\lang1033\f1\tab\lang1049\f0\tab\tab\lang1033\f1      \lang1049\f0 Cost 38   |Non-Design Port\par
+\tab      \lang1033\f1 +\lang1049\f0 ---------------------------------------\lang1033\f1 +\lang1049\f0\par
+\tab\tab\tab\tab     Cost 19\par
+\par
+\'cd\'e5 \'ef\'f3\'f2\'e0\'f2\'fc:\par
+Path Cost - \'fd\'f2\'ee \'f7\'e8\'f1\'eb\'ee \'ed\'e0\'e7\'ed\'e0\'f7\'e5\'ed\'ed\'ee\'e5 \'ed\'e0 \'ef\'ee\'f0\'f2\'f3, \'e8 \'ea\'ee\'f2\'ee\'f0\'ee\'e5 \'ef\'f0\'e8\'e1\'e0\'e2\'eb\'ff\'e5\'f2\'f1\'ff \'ea Root Path Cost\par
+Root Path Cost - \'ef\'e5\'f0\'e5\'e4\'e0\'b8\'f2\'f1\'ff \'e2 BPDU \'e8 \'f0\'e0\'e2\'e5\'ed \'f1\'f3\'ec\'ec\'e5 Path Cost-\'ee\'e2 \'e4\'ee Root Bridge\par
+\par
+\pard{\pntext\f0 1.\tab}{\*\pn\pnlvlbody\pnf0\pnindent0\pnstart1\pndec{\pntxta.}}
+\nowidctlpar\fi-360\li720 CAT A \'ef\'ee\'f1\'fb\'eb\'e0\'e5\'f2 BPDU \'f1 Root BID = MAC CAT A, Root Path Cost = 0. \par
+{\pntext\f0 2.\tab}CAT B \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'f2 \'fd\'f2\'ee\'f2 BPDU \'e8 \'ea Root Path Cost \'ef\'f0\'e8\'e1\'e0\'e2\'eb\'ff\'e5\'f2 Path Cost \'ef\'ee\'f0\'f2\'e0, \'ed\'e0 \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'ef\'f0\'e8\'f8\'eb\'e0 BPDU. \'d1 \'fd\'f2\'e8\'ec \'e8\'f2\'ee\'e3\'ee\'e2\'fb\'ec Root Path Cost \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 BPDU \'e2\'ee \'e2\'f1\'e5 \'ee\'f1\'f2\'e0\'e2\'f8\'e8\'e5\'f1\'ff \'ef\'ee\'f0\'f2\'fb, \'e2 \'f2\'ee\'ec \'f7\'e8\'f1\'eb\'e5 \'e8 \'e2 \'f1\'f2\'ee\'f0\'ee\'ed\'f3 CAT C.\par
+{\pntext\f0 3.\tab}CAT C \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'f2 BPDU \'f1\'ee \'f1\'f2\'ee\'f0\'ee\'ed\'fb CAT A: Root BID = MAC CAT A, Root Path Cost = 0. \'cf\'f0\'e8\'e1\'e0\'e2\'eb\'ff\'e5\'f2 Path Cost \'ef\'ee\'f0\'f2\'e0 19 \'ea Root Path Cost 0 = 19. \'d1\'ee \'f1\'f2\'ee\'f0\'ee\'ed\'fb CAT B \'e2\'e8\'e4\'e8\'f2 BPDU c Root BID = MAC CAT A, Root Path Cost = 19, Sender BID = CAT B. \'ca \'fd\'f2\'ee\'ec\'f3 Root Path Cost \'ef\'f0\'e8\'e1\'e0\'e2\'eb\'ff\'e5\'f2 19 = 38. \'d1\'f0\'e0\'e2\'ed\'e8\'e2\'e0\'e5\'f2 Root Path Cost \'f1\'ee \'f1\'f2\'ee\'f0\'ee\'ed\'fb CAT A = 19 \'e8 \'f1\'ee \'f1\'f2\'ee\'f0\'ee\'ed\'fb CAT B = 38 \cf1\kerning1\f2\u8594?\cf0\kerning0\f0  \'ed\'e0\'e7\'ed\'e0\'f7\'e0\'e5\'f2 \'ef\'ee\'f0\'f2 \'e2 \'f1\'f2\'ee\'f0\'ee\'ed\'f3 CAT A - Root Port, \'ef\'ee\'f0\'f2 \'e2 \'f1\'f2\'ee\'f0\'ee\'ed\'f3 CAT B - Designated or Non-Designated. \'d1\'ee\'e3\'eb\'e0\'f1\'ed\'ee 3-\'e5\'ec\'f3 \'ea\'f0\'e8\'f2\'e5\'f0\'e8\'fe "\'cd\'e0\'e8\'e1\'ee\'eb\'fc\'f8\'e8\'e9 Sender BID" CAT C \'f1\'f0\'e0\'e2\'ed\'e8\'e2\'e0\'e5\'f2 \'f1\'e2\'ee\'e9 Sender BID = CC-CC-CC-CC-CC-CC \'e8 Sender BID CAT B = BB-BB-BB-BB-BB-BB \cf1\kerning1\f2\u8594?\cf0\kerning0\f0  \'ed\'e0\'e7\'ed\'e0\'f7\'e0\'e5\'f2 \'ef\'ee\'f0\'f2\'f3, \'f1\'ec\'ee\'f2\'f0\'ff\'f9\'e5\'ec\'f3 \'e2 \'f1\'f2\'ee\'f0\'ee\'ed\'f3 CAT B \'f1\'f2\'e0\'f2\'f3\'f1 Non-Designated\par
+{\pntext\f0 4.\tab}CAT C \'ed\'e5 \'ef\'e5\'f0\'e5\'f1\'f2\'e0\'b8\'f2 \'f0\'e0\'f1\'f1\'fb\'eb\'e0\'f2\'fc BPDU \'f1 Root BID = MAC CAT A, Root Path Cost = 19, Sender BID = CAT C. \lang1033\f1 BPDU\lang1049\f0  \'e4\'ee\'f5\'ee\'e4\'e8\'f2 \'e4\'ee CAT B. CAT B \'ed\'e0\'e7\'ed\'e0\'f7\'e0\'e5\'f2 Root Port \'e8 Designated Port. \'c4\'e0\'eb\'fc\'f8\'e5 \'fd\'f2\'e0 \lang1033\f1 BPDU \lang1049\f0\'ed\'e8\'ea\'f3\'e4\'e0 \'ed\'e5 \'ef\'e5\'f0\'e5\'f1\'fb\'eb\'e0\'e5\'f2\'f1\'ff.\par
+\pard\nowidctlpar\par
+Root Ports \'cd\'c5 \'ce\'d2\'cf\'d0\'c0\'c2\'cb\'df\'de\'d2 BPDU, \'d2\'ce\'cb\'dc\'ca\'ce \'d1\'cb\'d3\'d8\'c0\'de\'d2 !!!\par
+\par
+\b\'d2\'e0\'e9\'ec\'e5\'f0\'fb\b0 :\par
+\par
+Hello Timer = 2 \'f1\'e5\'ea. \'ef\'e5\'f0\'e8\'ee\'e4 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'e5\'ed\'e8\'ff Configuration BPDU Root Bridge\par
+Forward Delay = 15 \'f1\'e5\'ea. \'e2\'f0\'e5\'ec\'ff \'e2 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e8 Listening \'e8 Learning\par
+Max Age = 20 \'f1\'e5\'ea. \'e2\'f0\'e5\'ec\'ff \'f5\'f0\'e0\'ed\'e5\'ed\'e8\'ff BPDU, \'f2.\'e5. \'e5\'f1\'eb\'e8 \'e2 \'f2\'e5\'f7\'e5\'ed\'e8\'e8 \'fd\'f2\'ee\'e3\'ee \'e2\'f0\'e5\'ec\'e5\'ed\'e8 \'f1\'e2\'e8\'f7 \'ed\'e5 \'e2\'e8\'e4\'e8\'f2 BPDU \'ee\'f2 Root Bridge \cf1\kerning1\f2\u8594?\cf0\kerning0\f0  \'f1\'e2\'e8\'f2\'f7 \'ef\'e5\'f0\'e5\'f5\'ee\'e4\'e8\'f2 Listening\par
+\par
+\'c5\'f1\'eb\'e8 \'f7\'f2\'ee-\'f2\'ee \'f1\'eb\'f3\'f7\'e0\'e5\'f2\'f1\'ff \lang1033\f1 Downtime = Max Age (20 \lang1049\f0\'f1\'e5\'ea.)\lang1033\f1  + \lang1049\f0 Listening (15 \'f1\'e5\'ea.) + Learning (15 \'f1\'e5\'ea.) = 50 \'f1\'e5\'ea.\par
+\par
+\b Topology Change Process\b0\par
+\par
+\'c7\'e0\'e4\'e0\'f7\'e0 - \'f3\'f1\'ea\'ee\'f0\'e8\'f2\'fc \'ef\'f0\'ee\'f6\'e5\'f1\'f1 \'ee\'e1\'ed\'ee\'e2\'eb\'e5\'ed\'e8\'ff MAC \'f2\'e0\'e1\'eb\'e8\'f6\'fb. \'cf\'ee default \'e2\'f0\'e5\'ec\'ff \'f5\'f0\'e0\'ed\'e5\'ed\'e8\'ff MAC \'e0\'e4\'f0\'e5\'f1\'e0 \'e2 MAC \'f2\'e0\'e1\'eb\'e8\'f6\'e5 = 300 \'f1\'e5\'ea. \'c4\'e0\'ed\'ed\'fb\'e9 \'ef\'f0\'ee\'f6\'e5\'f1\'f1 \'ef\'f0\'e8\'ed\'f3\'e4\'e8\'f2\'e5\'eb\'fc\'ed\'ee \'ed\'e0 \'f1\'e2\'e8\'f7\'e0\'f5 \'e2\'fb\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2 \'f2\'e0\'e9\'ec\'e5\'f0 \'f5\'f0\'e0\'ed\'e5\'ed\'e8\'ff MAC = 15 \'f1\'e5\'ea. Root Bridge \'f8\'eb\'b8\'f2 Configuration BPDU \'f1 \'f4\'eb\'e0\'e3\'ee\'ec TC \'e2 \'f2\'e5\'f7\'e5\'ed\'e8\'e8 35 \'f1\'e5\'ea (=Forward Delay + Max Age)\par
+\par
+\'d1\'e2\'e8\'f2\'f7 \'ef\'ee\'f1\'fb\'eb\'e0\'e5\'f2 TCN \'e2 \'f1\'eb\'f3\'f7\'e0\'e5:\par
+1. \'c5\'f1\'eb\'e8 \'ef\'e5\'f0\'e5\'e2\'ee\'e4\'e8\'f2 \'f1\'e2\'ee\'e9 \'ef\'ee\'f0\'f2 \'e2 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e5 Forwarding\par
+2. \'c5\'f1\'eb\'e8 \'e8\'e7 Forwarding \'e8\'eb\'e8 Listening \'ef\'e5\'f0\'e5\'e2\'ee\'e4\'e8\'f2 \'e2 Blocking\par
+\par
+\'c4\'e5\'e9\'f1\'f2\'e2\'e8\'ff:\par
+\lang1033\f1 +\lang1049\f0 ---------------\lang1033\f1 +\lang1049\f0\tab\tab\lang1033\f1 +\lang1049\f0 ---------------\lang1033\f1 +\lang1049\f0\tab\tab\lang1033\f1 +\lang1049\f0 ---------------\lang1033\f1 +\lang1049\f0\tab\tab BPDU\tab\tab   Flags\par
+|Non-Root Bridge|\tab\tab |Non-Root Bridge|\tab\tab |  Root Bridge  |\tab\tab Type\tab\tab TCA\tab TC\par
+\lang1033\f1 +\lang1049\f0 ---------------\lang1033\f1 +\lang1049\f0\tab\tab\lang1033\f1 +\lang1049\f0 ---------------\lang1033\f1 +\lang1049\f0\tab\tab\lang1033\f1 +\lang1049\f0 ---------------\lang1033\f1 +\lang1049\f0\tab\tab ----\tab\tab --------\par
+\tab (1)-------------------> (2)\tab\tab\tab\tab\tab\tab\tab TCN\tab\tab N/A\tab N/A\par
+\tab\tab\tab <----------\tab (3)\tab\tab\tab\tab\tab\tab\tab Config\tab  1\tab  0\par
+\tab\tab\tab\tab\tab (4) ------------------>\tab\tab\tab\tab TCN\tab\tab N/A\tab N/A\par
+\tab\tab\tab\tab\tab     <------------------\tab (5)\tab\tab\tab Config\tab  1\tab  1\par
+\tab   <--------------------\tab     <------------------\tab (6)\tab\tab\tab Config\tab  0\tab  1\par
+\tab   <--------------------\tab     <------------------\tab (7)\tab\tab\tab Config\tab  0\tab  1\par
+\tab   <--------------------\tab     <------------------\tab (8)\tab\tab\tab Config\tab  0\tab  1\par
+\par
+\b PVST+\par
+\b0\'e2 \'ef\'f0\'ee\'f1\'f2\'ee\'ec \lang1033\f1 BPDU\par
+|\tab\tab\tab\tab\lang1049\f0 2 \'e1\'e0\'e9\'f2\'e0\lang1033\f1\tab\tab\tab\tab |\tab     6 \lang1049\f0\'e1\'e0\'e9\'f2\lang1033\f1\tab\tab |\par
++\lang1049\f0 -----------------------------------------------------\lang1033\f1 +-----------------------+\lang1049\f0\par
+\lang1033\f1 |\tab\tab\tab Bridge Priority\tab\tab\tab\tab |\tab\tab MAC\tab\tab |\par
++\lang1049\f0 -----------------------------------------------------\lang1033\f1 +-----------------------+\lang1049\f0\par
+\lang1033\f1\par
+\lang1049\f0\'e2 \lang1033\f1 PVST\par
+|\tab\tab\tab\tab 2 \lang1049\f0\'e1\'e0\'e9\'f2\'e0\tab\tab\tab\tab\lang1033\f1 |\tab     6 \lang1049\f0\'e1\'e0\'e9\'f2\lang1033\f1\tab\tab |\par
++\lang1049\f0 -----------------------------------------------------\lang1033\f1 +-----------------------+\lang1049\f0\par
+| Switch Priority Value\tab | Extended System ID = VLAN\tab |\tab\tab\lang1033\f1 MAC\tab\tab |\lang1049\f0\par
+\lang1033\f1 +\lang1049\f0 -----------------------------------------------------\lang1033\f1 +-----------------------+\lang1049\f0\par
+|\tab 16-13 \'e1\'e8\'f2\tab\tab |\tab\tab 12-1 \'e1\'e8\'f2\tab\tab |\par
+\par
+\par
+\'cf\'ee Default \'e4\'eb\'ff Priority\tab VLAN0001 = 0x8000 + 0x0001 = 32768 + 1 = 32769\par
+\tab\tab\tab\tab VLAN0818 = 0x8000 + 0x0818 = 32768 + 818 = 33586\par
+\par
+Router(config)#\b spanning-tree extend system-id\b0\par
+\par
+\lang1033\f1 STP\tab\tab\lang1049\f0\'ef\'f3\'e1\'eb\'e8\'f7\'ed\'fb\'e9 \'f1\'f2\'e0\'ed\'e4\'e0\'f0\'f2\lang1033\f1  802.1d\lang1049\f0\par
+\lang1033\f1 RSTP\tab\tab\lang1049\f0\'ef\'f3\'e1\'eb\'e8\'f7\'ed\'fb\'e9 \'f1\'f2\'e0\'ed\'e4\'e0\'f0\'f2 802.1w\par
+\lang1033\f1 PVST\tab\tab Cisco\lang1049\f0  \lang1033\f1 proprietary\lang1049\f0 , \'e2 \'ea\'e0\'f7\'e5\'f1\'f2\'e2\'e5 \lang1033\f1 trunk - ISL\lang1049\f0\par
+PVST+\lang1033\f1\tab\tab Cisco\lang1049\f0  \lang1033\f1 proprietary\lang1049\f0 , \'e2 \'ea\'e0\'f7\'e5\'f1\'f2\'e2\'e5 \lang1033\f1 trunk - 802.1q\par
+Rapid PVST+\tab Cisco\lang1049\f0  \lang1033\f1 proprietary\par
+MST\tab\tab\lang1049\f0\'ef\'f3\'e1\'eb\'e8\'f7\'ed\'fb\'e9 \'f1\'f2\'e0\'ed\'e4\'e0\'f0\'f2 802.1s. \'d5\'ee\'f0\'ee\'f8\'e0\'ff \'e0\'eb\'fc\'f2\'e5\'f0\'ed\'e0\'f2\'e8\'e2\'e0 \'ec\'e5\'e6\'e4\'f3 RSTP \'e8 PVRST+\par
+\par
+\'cd\'e0\'ef\'e8\'f1\'e0\'ed\'ee, \'f7\'f2\'ee \'ed\'e0 \'ee\'e4\'ed\'ee\'ec Cisco \'f1\'e2\'e8\'f7\'e5 \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc \'ed\'e5 \'e1\'ee\'eb\'e5\'e5 128 instances PVRST+.\par
+\par
+\b UplinkFast\b0  \'f1\'e4\'e5\'eb\'e0\'ed \'e4\'eb\'ff \'ee\'ef\'f2\'e8\'ec\'e8\'e7\'e0\'f6\'e8\'e8 Root Port. \'c1\'ee\'eb\'e5\'e5 \'e1\'fb\'f1\'f2\'f0\'ee\'e3\'ee \'ef\'e5\'f0\'e5\'ea\'eb\'fe\'f7\'e5\'ed\'e8\'ff \'f1 \'ee\'e4\'ed\'ee\'e3\'ee Root Port \'ed\'e0 \'e4\'f0\'f3\'e3\'ee\'e9. \'d3\'e2\'e5\'eb\'e8\'f7\'e8\'e2\'e0\'e5\'f2 Bridge Priority \'e4\'ee 49152, \'f2.\'e5. \'f1\'e2\'e8\'f2\'f7 \'ed\'e5 \'e4\'ee\'eb\'e6\'e5\'ed \'e1\'fb\'f2\'fc \'e2\'fb\'e1\'f0\'e0\'ed \'ea\'e0\'ea Root Bridge. \'cf\'f0\'e8\'e1\'e0\'e2\'eb\'ff\'e5\'f2 \'ea \'ea\'e0\'e6\'e4\'ee\'ec Port Cost \'ed\'e0 \'e4\'e0\'ed\'ed\'ee\'ec \'f1\'e2\'e8\'f7\'e5 +3000, \'f2.\'e5. \'e4\'eb\'ff \'f2\'ee\'e3\'ee \'f7\'f2\'ee\'e1\'fb \'ee\'f1\'f2\'e0\'eb\'fc\'ed\'fb\'e5 \'f1\'e2\'e8\'f2\'f7\'e8 \'ed\'e5 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'eb\'e8 \'fd\'f2\'ee\'f2 \'f1\'e2\'e8\'f2\'f7 \'e2 \'ea\'e0\'f7\'e5\'f1\'f2\'e2\'e5 \'f2\'f0\'e0\'ed\'e7\'e8\'f2\'ed\'ee\'e3\'ee \'e4\'ee Root Bridge.\par
+\b BackboneFast\b0  \'f1\'e4\'e5\'eb\'e0\'ed \'e4\'eb\'ff \'ee\'ef\'f2\'e8\'ec\'e8\'e7\'e0\'f6\'e8\'e8 Max Age. \'d3\'ec\'e5\'ed\'fc\'f8\'e0\'e5\'f2 \'e2\'f0\'e5\'ec\'ff \'f1\'f5\'ee\'e4\'e8\'ec\'ee\'f1\'f2\'e8 \'f1 50 \'e4\'ee 30 \'f1\'e5\'ea. \'c4\'ee\'eb\'e6\'e5\'ed \'e1\'fb\'f2\'fc \'e2\'ea\'eb\'fe\'f7\'b8\'ed \'ed\'e0 \'e2\'f1\'e5\'f5 \'f1\'e2\'e8\'f7\'e0\'f5.\par
+\par
+UplinkFast \'e8 BackboneFast - Cisco propretary \'ec\'e5\'f5\'e0\'ed\'e8\'e7\'ec\'fb \'ed\'e5 \'ee\'f2\'ed\'ee\'f1\'ff\'f9\'e8\'e5\'f1\'ff \'ea RSTP.\par
+\par
+\b RSTP\b0\par
+\'c7\'e0\'e4\'e0\'f7\'e0 \'f3\'e2\'e5\'eb\'e8\'f7\'e8\'f2\'fc \'f1\'ea\'ee\'f0\'ee\'f1\'f2\'fc \'f1\'f5\'ee\'e6\'e4\'e5\'ed\'e8\'ff STP.\par
+\par
+\ul Port States\ulnone :\par
+\par
+STP (802.1D)\tab RSTP(802.1w)\tab\'d1\'eb\'f3\'f8\'e0\'e5\'f2 BPDU\tab\'c8\'e7\'f3\'f7\'e0\'e5\'f2 MAC \'f2\'e0\'e1\'eb\'e8\'f6\'f3\par
+-------------------------------------------------------------------------\par
+Disabled\tab\tab Discarding\tab\tab\'cd\'e5\'f2\tab\tab\tab\'cd\'e5\'f2\par
+Blocking\tab\tab Discarding\tab\tab\'cd\'e5\'f2\tab\tab\tab\'cd\'e5\'f2\par
+Listening\tab\tab Discarding\tab\tab\'c4\'e0\tab\tab\tab\'cd\'e5\'f2\par
+Learning\tab\tab Learning\tab\tab\'c4\'e0\tab\tab\tab\'c4\'e0\par
+Forwarding\tab\tab Forwarding\tab\tab\'c4\'e0\tab\tab\tab\'c4\'e0\par
+\par
+\ul Port Roles\ulnone :\par
+1. Root - \'ef\'ee\'f0\'f2 \'e2 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e8 Forwarding, \'f1\'ec\'ee\'f2\'f0\'e8\'f2 \'e2 \'f1\'f2\'ee\'f0\'ee\'ed\'f3 Root Bridge \'e8 \'cd\'c5 \'ce\'d2\'cf\'d0\'c0\'c2\'cb\'df\'c5\'d2 \'ed\'e8\'ea\'e0\'ea\'e8\'e5 BPDU.\par
+2. Designated - \'ef\'ee\'f0\'f2 \'e2 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e8 Forwarding, \'cd\'c5 \'f1\'ec\'ee\'f2\'f0\'e8\'f2 \'e2 \'f1\'f2\'ee\'f0\'ee\'ed\'f3 Root Bridge, \'f8\'eb\'b8\'f2 BPDU.\par
+3. Alternate - \'ef\'ee\'f0\'f2 \'e2 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e8 Blocking, \'d8\'cb\'a8\'d2 BPDU, \'f1\'ec\'ee\'f2\'f0\'e8\'f2 \'e2 Designated Port \'f1\'ee\'f1\'e5\'e4\'ed\'e5\'e3\'ee Bridge.\par
+4. Backup - \'ef\'ee\'f0\'f2 \'e2 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e8 Blocking, \'ef\'ee\'f2\'ee\'ec\'f3 \'f7\'f2\'ee \'ee\'f2\'f0\'e0\'e1\'ee\'f2\'e0\'eb\'ee \'ef\'f0\'e0\'e2\'e8\'eb\'ee "\'cd\'e0\'e8\'ec\'e5\'ed\'fc\'f8\'e8\'e9 Port ID", \'d8\'cb\'a8\'d2 BPDU. \'cd\'e0 \'f1\'e2\'e8\'f2\'f7\'e5 \'e7\'e0\'ec\'ea\'ed\'f3\'f2\'fc 2 \'ef\'ee\'f0\'f2\'e0, \'ee\'e4\'e8\'ed \'e1\'f3\'e4\'e5\'f2 Designated, \'e0 \'e2\'f2\'ee\'f0\'ee\'e9 Backup.\par
+\par
+\ul Link Type\ulnone : Point-to-Point (Full-Duplex) \'e8 Shared (Half-Duplex)\par
+\par
+Edge Port \emdash  \'e4\'eb\'ff \'e2\'ea\'eb\'fe\'f7\'e5\'ed\'e8\'ff \'f2\'e0\'ea\'ee\'e3\'ee \'f0\'e5\'e6\'e8\'ec\'e0 Router(config-if)#spanning-tree portfast. \'cf\'e5\'f0\'e5\'f5\'ee\'e4 \'e8\'e7 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'ff Discarding \'e2 Forwarding, \'ef\'f0\'ee\'ef\'f3\'f1\'ea\'e0\'ff \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e5 Learning. \'cf\'ee\'f0\'f2 \'e4\'ee\'eb\'e6\'e5\'ed \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc \'e2 \'f0\'e5\'e6\'e8\'ec\'e5 Full Duplex \'e8 \'e1\'fb\'f2\'fc Point-to-Point.\par
+\par
+\'c8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'ed\'ee\'e2\'fb\'e9 \'f4\'ee\'f0\'ec\'e0\'f2 BPDU \'ef\'e0\'ea\'e5\'f2\'e0. \'c2 \'ef\'ee\'eb\'e5 Flag \'e7\'e0\'f1\'f3\'ed\'f3\'eb\'e8 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'ff (Learning, Forwarding), \'f0\'ee\'eb\'e8 (00 Unknown, 01 Alternate/Backup, 10 Root, 11 Designated) \'e8 \'e1\'e8\'f2\'fb \'e4\'eb\'ff Proposal \'e8 Agreement\lang1033\f1 .\lang1049\f0\par
+\par
+\'c2 \'ee\'e1\'fb\'f7\'ed\'ee\'ec STP Root \'e3\'e5\'ed\'e5\'f0\'e8\'f0\'f3\'e5\'f2 BPDU, \'f8\'eb\'b8\'f2 \'f1\'ee\'f1\'e5\'e4\'ed\'e5\'ec\'f3 \'f1\'e2\'e8\'f2\'f7\'f3. \'d2\'ee\'eb\'fc\'ea\'ee \'ef\'ee\'f1\'eb\'e5 \'f2\'ee\'e3\'ee \'ea\'e0\'ea \'f1\'e2\'e8\'f2\'f7 \'ef\'ee\'eb\'f3\'f7\'e8\'eb BPDU, \'ee\'ed \'e8\'e7\'ec\'e5\'ed\'ff\'e5\'f2 \'ef\'ee\'eb\'ff \'e8 \'ef\'e5\'f0\'e5\'f1\'fb\'eb\'e0\'e5\'f2 \'fd\'f2\'f3 BPDU. \'c2 RSTP \'ea\'e0\'e6\'e4\'fb\'e9 \'f1\'e2\'e8\'f2\'f7 \'ed\'e5\'e7\'e0\'e2\'e8\'f1\'e8\'ec\'ee \'ef\'ee\'eb\'f3\'f7\'e8\'eb \'ee\'ed \'ee\'f2 Root BPDU \'e8\'eb\'e8 \'ed\'e5 \'ef\'ee\'eb\'f3\'f7\'e8\'eb, \'ea\'e0\'e6\'e4\'fb\'e5 2 \'f1\'e5\'ea. \'f8\'eb\'b8\'f2 BPDU \cf1\kerning1\f2\u8594?\cf0\kerning0\f0  BPDU \'ef\'f0\'e8\'f0\'e0\'e2\'ed\'e8\'e2\'e0\'fe\'f2\'f1\'ff \'ea keep-alive \'e8 \'e5\'f1\'eb\'e8 \'f1\'e2\'e8\'f2\'f7 \'e7\'e0 3\'f52 \'f1\'e5\'ea = 6 \'f1\'e5\'ea. \'ed\'e5 \'ef\'ee\'eb\'f3\'f7\'e8\'eb BPDU - \'f1\'ee\'f1\'e5\'e4 \'f1\'e4\'ee\'f5, \'ed\'e0\'e4\'ee \'f7\'f2\'ee-\'f2\'ee \'e4\'e5\'eb\'e0\'f2\'fc.\par
+{\field{\*\fldinst{HYPERLINK "http://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/24062-146.html"}}{\fldrslt{\ul\cf2 http://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/24062-146.html}}}\f0\fs22\par
+\par
+\b Security\b0\par
+Root Guard - \'e7\'e0 \'ef\'ee\'f0\'f2\'ee\'ec \'ed\'e5 \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc root. \'c8\'ed\'e0\'f7\'e5 \'e2 block.\par
+BPDU Filter - \'ed\'e5 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \'e8 \'ed\'e5 \'ef\'f0\'e8\'ed\'e8\'ec\'e0\'e5\'f2 BPDU \'ef\'e0\'ea\'e5\'f2\'fb\par
+BPDU Guard - \'e5\'f1\'eb\'e8 \'ef\'f0\'e8\'eb\'e5\'f2\'e0\'e5\'f2 BPDU \cf1\kerning1\f2\u8594?\cf0\kerning0\f0  \'ef\'ee\'f0\'f2 \'e2 error disable\par
+Loop Guard - ?\par
+}
+ 

@@ -1,0 +1,595 @@
+{\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}{\f1\fnil\fcharset0 Courier New;}}
+{\colortbl ;\red255\green0\blue0;\red0\green0\blue0;\red0\green0\blue255;\red255\green51\blue51;\red255\green255\blue255;\red136\green19\blue145;\red33\green33\blue33;\red48\green57\blue66;\red34\green34\blue34;\red128\green128\blue128;\red86\green86\blue86;\red28\green0\blue207;\red196\green26\blue22;\red13\green34\blue170;}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf1\lang1049\kerning1\b\f0\fs22 Dart\cf2\b0  \'ee\'f2 Google - \'e7\'e0\'ec\'e5\'ed\'e0 JS, \'f0\'e0\'e7\'f0\'e0\'e1\'ee\'f2\'e0\'eb \'f2\'ee\'f2 \'e6\'e5 \'f7\'e5\'eb, \'f7\'f2\'ee \'e8 JS.\cf0\par
+\cf2 TypeScript - \'ff\'e7\'fb\'ea \'f1\'ee \'f1\'f2\'e0\'f2\'e8\'f7\'e5\'f1\'ea\'ee\'e9 \'f2\'e8\'ef\'e8\'e7\'e0\'f6\'e8\'e5\'e9. \'ca\'ee\'ec\'ef\'e8\'eb\'e8\'f0\'f3\'e5\'f2\'f1\'ff \'e2 JS.\cf0\par
+\par
+\cf2\'d2\'f0\'e0\'ed\'f1\'ef\'e8\'eb\'ff\'f6\'e8\'ff - \'e5\'f1\'f2\'fc \'ee\'e4\'e5\'eb\'fc\'ed\'fb\'e5 \'f4\'e0\'e9\'eb\'e8\'ea\'e8 .vue. \'cf\'ee\'f1\'eb\'e5 \'f2\'f0\'e0\'ed\'f1\'ef\'e8\'eb\'ff\'f6\'e8\'e8 \'ef\'f0\'ee\'e9\'e4\'f3\'f2 \'e2\'f1\'e5 \'e2\'f1\'f2\'e0\'e2\'ea\'e8 \'ea\'ee\'e4\'e0 \'e4\'f0\'f3\'e3 \'e2 \'e4\'f0\'f3\'e6\'ea\'f3, \'f3\'e4\'e0\'eb\'ff\'f2\'f1\'ff \'e2\'f1\'e5 TAB\'fb/\'ef\'f0\'ee\'e1\'e5\'eb\'fb, \'e8\'ec\'e5\'ed\'e0 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'f5 \'e7\'e0\'ec\'e5\'ed\'ff\'f2\'f1\'ff \'ed\'e0 \'ef\'f0\'ee\'f1\'f2\'fb\'e5 i, n, k \'e8 \'e2\'e5\'f1\'fc \'ea\'ee\'e4 \'e1\'f3\'e4\'e5\'f2 \'ef\'f0\'e5\'e4\'f1\'f2\'e0\'e2\'eb\'e5\'ed \'ea\'e0\'ea \'ee\'e4\'ed\'e0 \'e4\'eb\'e8\'ed\'ed\'e0\'ff \'f1\'f2\'f0\'ee\'ea\'e0.\cf0\par
+\par
+\cf2 Webpack, Rollup, Browserify, Parcel - \'f1\'e1\'ee\'f0\'ea\'e0 .js \'f4\'e0\'e9\'eb\'ee\'e2, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'ec\'fb \'e8 \'e2\'f1\'f2\'e0\'e2\'e8\'ec \'e2 index.html\par
+\par
+\lang1033\f1 yarn && yarn build\par
+yarn add ibim-3d_bwv-viewer-0.1.20.tgz\cf0\lang1049\f0\par
+\par
+\cf2\ul\'c2\'e0\'f0\'e8\'e0\'ed\'f2 \'b91\ulnone .\cf0\par
+#npm init - \'e7\'e0\'e4\'e0\'f1\'f2 \'e2\'ee\'ef\'f0\'ee\'f1\'fb \'f2\'e8\'ef\'e0 Project Name, Version \'e8 \'f1\'ee\'e7\'e4\'e0\'f1\'f2 \'f4\'e0\'e9\'eb package.json\par
+\cf2 #npm run <task> - \'f7\'f2\'ee \'e4\'e5\'eb\'e0\'fe\'f2 task-\'e8, \'ee\'ef\'e8\'f1\'e0\'ed\'ee \'e2 package.json\cf0\par
+\cf2 #npm install <package> - \'f1\'ea\'e0\'f7\'e8\'e2\'e0\'e5\'f2 \'ef\'e0\'ea\'e5\'f2 \'e8 \'e5\'e3\'ee \'e7\'e0\'e2\'e8\'f1\'e8\'ec\'ee\'f1\'f2\'e8 \'e2 \'ef\'e0\'ef\'ea\'f3 ./node_modules, \'e2 \'f4\'e0\'e9\'eb\'e5 package.json \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'f2 \'e7\'e0\'ef\'e8\'f1\'fc \'e2 \'f0\'e0\'e7\'e4\'e5\'eb "dependencies"\cf0\par
+\par
+\cf2\'cf\'ee\'e4\'ed\'e8\'ec\'e0\'eb npm-hosted \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'ee\'f0\'e8\'e9 \'e2 Nexus.\cf0\par
+\cf2\'c2 Nexus \'e2 \'f0\'e0\'e7\'e4\'e5\'eb\'e5 Security \u8594? Realms \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'ec \'e2 \'f0\'e0\'e7\'f0\'e5\'f8\'b8\'ed\'ed\'fb\'e5 \'ec\'e5\'f2\'ee\'e4\'fb \'e0\'f3\'f2\'e5\'ed\'f2\'e8\'f4\'e8\'ea\'e0\'f6\'e8\'e8 "npm Bearer Token Realm". \'cd\'e0 \'f0\'e0\'e1\'ee\'f7\'e5\'e9 \'ec\'e0\'f8\'e8\'ed\'e5:\cf0\par
+\cf2 #mkdir Project\cf0\par
+\cf2 #cd Project\cf0\par
+\cf2 #npm init\cf0\par
+\par
+\cf2\'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'ec \'e2 \'f4\'e0\'e9\'eb package.json\cf0\par
+\cf2\{\cf0\par
+\cf2   "publishConfig" : \{\cf0\par
+\cf2     "registry" : "\cf0{\field{\*\fldinst{HYPERLINK "http://10.0.0.1:8081/repository/npm-hosted/"}}{\fldrslt{\ul\cf3 http://10.0.0.1:8081/repository/npm-hosted/}}}\cf2\f0\fs22 "\cf0\par
+\cf2   \}\cf0\par
+\cf2\}\cf0\par
+\cf2 #npm adduser --auth-type=legacy --registry=http://10.0.0.1:8081/repository/npm-hosted/\cf0\par
+\par
+\cf2\'ed\'e0\'e4\'ee \'ee\'f2\'ea\'ee\'f0\'f0\'e5\'ea\'f2\'e8\'f0\'ee\'e2\'e0\'f2\'fc URL \'e2 \'f4\'e0\'e9\'eb\'e5 .npmrc, \'f7\'f2\'ee\'e1\'fb \'ee\'ed \'e1\'fb\'eb \'e8\'ec\'e5\'ed\'ed\'ee \cf0{\field{\*\fldinst{HYPERLINK "http://10.0.0.1:8081/repository/npm-hosted/"}}{\fldrslt{\ul\cf3 http://10.0.0.1:8081/repository/\b npm-hosted\b0 /}}}\f0\fs22\par
+\par
+\cf2\'ed\'e0\'f5\'ee\'e4\'ff\'f1\'fc \'e2 \'ef\'e0\'ef\'ea\'e5 Project, \'e3\'e4\'e5 \'e4\'ee\'eb\'e6\'e5\'ed \'eb\'e5\'e6\'e0\'f2\'fc \'f4\'e0\'e9\'eb package.json \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'e5\'ec\cf0\par
+\cf2 #npm publish\cf0\par
+\par
+\cf2\ul\'c2\'e0\'f0\'e8\'e0\'ed\'f2 \'b92\ulnone .\cf0\par
+\cf2 #npm config set //nexus.\lang1033\f1 xxx\lang1049\f0 .\lang1033\f1 local\lang1049\f0 /repository/npm-hosted/:_authToken=NpmToken.549e8095-ba7c-3856-8129-321f5bdbfd21\cf0\par
+\cf2 #npm config set @Platform:registry=http://nexus.\lang1033\f1 xxx\lang1049\f0 .\lang1033\f1 local\lang1049\f0 /repository/npm-hosted/\cf0\par
+\cf2\'dd\'f2\'e8 \'ea\'ee\'ec\'e0\'ed\'e4\'fb \'f1\'ee\'e7\'e4\'e0\'e4\'f3\'f2 \'f4\'e0\'e9\'eb .npmrc \'e8 \'e4\'ee\'e1\'e0\'e2\'ff\'f2 \'e2 \'ed\'e5\'e3\'ee \'fd\'f2\'e8 \'f1\'f2\'f0\'ee\'ea\'e8. \'c5\'f1\'eb\'e8 \'f5\'ee\'f2\'e8\'ec Download/Upload \'ef\'e0\'ea\'e5\'f2\'fb \'e8\'e7 scope = @Platform, \'f2\'ee \'e1\'f0\'e0\'f2\'fc \'e8\'f5 \'ed\'e0\'e4\'ee \'ed\'e5 \'e8\'e7 \'f6\'e5\'ed\'f2\'f0\'e0\'eb\'fc\'ed\'ee\'e3\'ee \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'ee\'f0\'e8\'ff, \'e0 \'e8\'e7 nexus.\lang1033\f1 xxx\lang1049\f0 .\lang1033\f1 local\cf0\lang1049\f0\par
+\par
+\cf2\par
+$(myId) \emdash  alias \'e8\'eb\'e8 \'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5 \'f7\'f2\'ee \'e8 document.getElementById(myId)\cf0\par
+\cf2\par
+\'d0\'e0\'ed\'fc\'f8\'e5 \'ed\'e0\'e4\'ee \'e1\'fb\'eb\'ee \'ef\'e8\'f1\'e0\'f2\'fc <script type="text/javascript">, \'ed\'ee \'ef\'ee\'f1\'eb\'e5 \'f2\'ee\'e3\'ee \'ea\'e0\'ea JS \'e2 \'e1\'f0\'e0\'f3\'e7\'e5\'f0\'e0\'f5 \'f1\'e4\'e5\'eb\'e0\'eb\'e8 \'ff\'e7\'fb\'ea\'ee\'ec \'ef\'ee \'f3\'ec\'ee\'eb\'f7\'e0\'ed\'e8\'fe, \'ec\'ee\'e6\'ed\'ee \'ef\'e8\'f1\'e0\'f2\'fc \'ef\'f0\'ee\'f1\'f2\'ee <script>.\cf0\par
+\cf2 JS \'f1\'f0\'e0\'e1\'e0\'f2\'fb\'e2\'e0\'e5\'f2 \'ed\'e0 \'ea\'e0\'ea\'ee\'e5-\'eb\'e8\'e1\'ee \'f1\'ee\'e1\'fb\'f2\'e8\'e5: \'ed\'e0\'e6\'e8\'ec\'e0\'e5\'ec \'ea\'ed\'ee\'ef\'ea\'f3, \'ed\'e0\'e2\'ee\'e4\'e8\'ec \'ec\'fb\'f8\'fc \'ed\'e0 \'fd\'eb\'e5\'ec\'e5\'ed\'f2 \'e8\'eb\'e8 html \'f1\'f2\'f0\'e0\'ed\'e8\'f6\'e0 \'ef\'ee\'eb\'ed\'ee\'f1\'f2\'fc\'fe \'e7\'e0\'e3\'f0\'f3\'e6\'e5\'ed\'e0.\cf0\par
+\cf2 JS \'f1\'ea\'f0\'e8\'ef\'f2\'fb \'ef\'f0\'e8\'ed\'ff\'f2\'ee \'f0\'e0\'e7\'ec\'e5\'f9\'e0\'f2\'fc \'ea\'e0\'ea \'ec\'ee\'e6\'ed\'ee \'e1\'eb\'e8\'e6\'e5 \'ea \'ea\'ee\'ed\'f6\'f3, \'e4\'eb\'ff \'f3\'f1\'ea\'ee\'f0\'e5\'ed\'e8\'ff \'e7\'e0\'e3\'f0\'f3\'e7\'ea\'e8 \'f1\'f2\'f0\'e0\'ed\'e8\'f6\'fb.\cf0\par
+\cf2\par
+\'c3\'e4\'e5 \'ec\'ee\'e6\'ed\'ee \'ef\'e8\'f1\'e0\'f2\'fc \'f1\'ea\'f0\'e8\'ef\'f2\'fb:\cf0\par
+\cf2 1. <button type="button" onclick="document.getElementById('id1').style.color = 'red'">\cf0\par
+\cf2\par
+2.<body>\cf0\par
+\cf2\tab <script>\cf0\par
+\cf2\tab\tab alert("Message");\cf0\par
+\cf2\tab </script>\cf0\par
+\cf2 </body>\cf0\par
+\cf2\par
+3.<body>\cf0\par
+\cf2\tab <script src="script.js/>\cf0\par
+\cf2 </body>\cf0\par
+\cf2\par
+\par
+\'c4\'f0\'f3\'e3\'ee\'e9 \'ef\'f0\'e8\'ec\'e5\'f0:\cf0\par
+\cf2 <!DOCTYPE html>\cf0\par
+\cf2 <html>\cf0\par
+\cf2\tab <head>\cf0\par
+\cf2\tab\tab <script>\cf0\par
+\cf2\tab\tab\tab function myFunc()\{\cf0\par
+\cf2\tab\tab\tab\tab document.getElementById('paragraph').innerHTML = '\'cf\'f0\'e8\'e2\'e5\'f2';\}\tab\tab\'f4\'f3\'ed\'ea\'f6\'e8\'ff \'e8\'e7\'ec\'e5\'ed\'e8\'f2 content \'f2\'e5\'e3\'e0\cf0\par
+\cf2\tab\tab </script>\cf0\par
+\cf2\tab </head>\cf0\par
+\cf2\par
+\tab <body>\cf0\par
+\cf2\tab\tab <p id="paragraph"/>\cf0\par
+\cf2\tab\tab <button onclick="myFunc()"> \'c8\'e7\'ec\'e5\'ed\'e8\'f2\'fc \'ef\'e0\'f0\'e0\'e3\'f0\'e0\'f4 </button>\cf0\par
+\cf2\tab\tab <script src="http://code.jquery.com/jquery-1.11.3.min.js"/>\tab\'ef\'ee\'e4\'e3\'f0\'f3\'e7\'e8\'eb\'e8 \'e1\'e8\'e1\'eb\'e8\'ee\'f2\'e5\'ea\'f3 jquery\cf0\par
+\cf2\tab </body>\cf0\par
+\cf2 </html>\cf0\par
+\cf2\par
+\b var\b0  - \'e3\'ee\'e2\'ee\'f0\'e8\'f2 \'e1\'f0\'e0\'f3\'e7\'e5\'f0\'f3 \'f1\'ee\'e7\'e4\'e0\'f2\'fc \'ed\'ee\'e2\'f3\'fe \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'f3\'fe\cf0\par
+\cf2\par
+\tab\tab\tab\ul Primitive \'f2\'e8\'ef\'fb\ulnone .\cf0\par
+\pard\nowidctlpar\hyphpar0\li720\sl240\slmult1\cf2\kerning0\b Number\cf0\kerning1\b0\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf3\kerning0 var\cf2  i = 10; \'e8\'eb\'e8 \cf3 var\cf2  n = 1.23\tab JS \'f6\'e5\'eb\'ee\'e5 \'e8 \'e4\'f0\'ee\'e1\'ed\'ee\'e5 - \'ee\'e4\'e8\'ed \'e8 \'f2\'ee\'f2 \'e6\'e5 \'f2\'e8\'ef.\cf0\kerning1\par
+\cf2\kerning0\'d2\'e0\'ea\'e6\'e5 \'e5\'f1\'f2\'fc \'f1\'ef\'e5\'f6\'e8\'e0\'eb\'fc\'ed\'fb\'e5 \'f7\'e8\'f1\'eb\'ee\'e2\'fb\'e5 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'ff\cf0\kerning1\par
+\cf2\kerning0 alert(23/0); \'e1\'f3\'e4\'e5\'f2 \'f0\'e0\'e2\'ed\'ee \'f7\'e8\'f1\'eb\'f3 Infinity\cf0\kerning1\par
+\cf2\kerning0 alert("\'f1\'f2\'f0\'ee\'ea\'e0" * 2); \'e1\'f3\'e4\'e5\'f2 NaN - Not a Number\cf0\kerning1\par
+\cf2\kerning0\par
+\par
+\pard\nowidctlpar\hyphpar0\li720\sl240\slmult1\b String\cf0\kerning1\b0\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf3\kerning0 var\cf2  str = "\'f1\'f2\'f0\'ee\'ea\'e0"; \'e1\'e5\'e7 \'f0\'e0\'e7\'ed\'e8\'f6\'fb \'ee\'e4\'e8\'ed\'e0\'f0\'ed\'fb\'e5 \'e8\'eb\'e8 \'e4\'e2\'ee\'e9\'ed\'fb\'e5 \'ea\'e0\'e2\'fb\'f7\'ea\'e8 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'fe\'f2\'f1\'ff\cf0\kerning1\par
+\cf2\kerning0\'cd\'e5\'f2 \'f2\'e8\'ef\'e0 Char. \'d2\'ee\'eb\'fc\'ea\'ee String.\cf0\kerning1\par
+\cf2\kerning0\'c2\'f1\'e5\'e3\'e4\'e0 UTF-16.\cf0\kerning1\par
+\cf2\kerning0\'c5\'f1\'eb\'e8 \'f1\'f0\'e0\'e2\'ed\'e8\'e2\'e0\'e5\'ec String \'f1 Number, \'f2\'ee String \'e2\'f1\'e5\'e3\'e4\'e0 \'ea\'ee\'ed\'e2\'e5\'f0\'f2\'e8\'f0\'f3\'e5\'ec \'e2 Number. \'c5\'f1\'eb\'e8 "123" \u8594? Number 123, \'e5\'f1\'eb\'e8 "John" \u8594? NaN.\cf0\kerning1\par
+\cf2\par
+\kerning0\par
+\pard\nowidctlpar\hyphpar0\li720\sl240\slmult1\b Boolean\cf0\kerning1\b0\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf3\kerning0 var\cf2  checked = true;\cf0\kerning1\par
+\cf2\kerning0\par
+\pard\nowidctlpar\hyphpar0\li720\sl240\slmult1\b Null\cf0\kerning1\b0\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf2\kerning0\'ce\'f2\'e4\'e5\'eb\'fc\'ed\'fb\'e9 \'f2\'e8\'ef, \'f1\'ee\'f1\'f2\'ee\'ff\'f9\'e8\'e9 \'e8\'e7 \'e5\'e4\'e8\'ed\'f1\'f2\'e2\'e5\'ed\'ed\'ee\'e3\'ee \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'ff. \'d2\'e8\'ef\'e0 \'e2\'e2\'ee\'e4\'e8\'f2 \'ef\'ee\'ed\'ff\'f2\'e8\'e5 \'ed\'e5 0, \'e0 null. \cf3 typeof\cf2 (null) == "object"\cf0\kerning1\par
+\cf3\kerning0 var\cf2  age = null;\cf0\kerning1\par
+\cf2\kerning0\par
+\pard\nowidctlpar\hyphpar0\li720\sl240\slmult1\b Undefined\cf0\kerning1\b0\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf2\kerning0\'ce\'f2\'e4\'e5\'eb\'fc\'ed\'fb\'e9 \'f2\'e8\'ef, \'f1\'ee\'f1\'f2\'ee\'ff\'f9\'e8\'e9 \'e8\'e7 \'e5\'e4\'e8\'ed\'f1\'f2\'e2\'e5\'ed\'ed\'ee\'e3\'ee \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'ff. \'cf\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'ee\'e9 \'ef\'e0\'ec\'ff\'f2\'fc \'e2\'fb\'e4\'e5\'eb\'e5\'ed\'e0, \'ed\'ee \'e2 \'ed\'e5\'b8 \'ed\'e8\'f7\'e5\'e3\'ee \'ed\'e5 \'e7\'e0\'ef\'e8\'f1\'e0\'ed\'ee. \cf3 typeof\cf2 (undefined) == "undefined"\cf0\kerning1\par
+\cf2\kerning0\'cd\'e5\'f1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'fe\'f9\'e0\'ff \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'e0\'ff.\cf0\kerning1\par
+\cf3\kerning0 var\cf2  x;\cf0\kerning1\par
+\cf2\kerning0 y = undefined;\cf0\kerning1\par
+\cf2\kerning0 console.log(window.asdsdgf)\tab\'e2\'fb\'e4\'e0\'f1\'f2 undefined\cf0\kerning1\par
+\cf2\kerning0\par
+\par
+\tab\tab\tab\ul Object \'f2\'e8\'ef\ulnone .\cf0\kerning1\par
+\cf2\kerning0\tab\'c8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e4\'eb\'ff \'ea\'ee\'eb\'eb\'e5\'ea\'f6\'e8\'e9 \'e4\'e0\'ed\'ed\'fb\'f5 \'e8 \'e4\'eb\'ff \'ee\'e1\'fa\'ff\'e2\'eb\'e5\'ed\'e8\'ff \'e1\'ee\'eb\'e5\'e5 \'f1\'eb\'ee\'e6\'ed\'fb\'f5 \'f1\'f3\'f9\'ed\'ee\'f1\'f2\'e5\'e9.\cf0\kerning1\par
+\cf3\kerning0 var\cf2  user = \{firstName: "\'c2\'e0\'f1\'ff", lastName: "\'c8\'e2\'e0\'ed\'ee\'e2"\}\cf0\kerning1\par
+\cf2\kerning0\par
+\par
+\cf3 var\cf2  x = "5" + 2 - \'e1\'f3\'e4\'e5\'f2 52\cf0\kerning1\par
+\cf3\kerning0 var\cf2  x = 2 + "5" - \'e1\'f3\'e4\'e5\'f2 25\cf0\kerning1\par
+\cf3\kerning0 var\cf2  x = 2 + + "5" - \'e1\'f3\'e4\'e5\'f2 7\cf0\kerning1\par
+\cf3\kerning0 var\cf2  cars = ["Saab", "Volvo", "BMW"] - \'ee\'e1\'fa\'ff\'e2\'eb\'e5\'ed\'e8\'e5 \'ec\'e0\'f1\'f1\'e8\'e2\'e0\cf0\kerning1\par
+\cf2\kerning0 cars[1] - \'ee\'e1\'f0\'e0\'f9\'e5\'ed\'e8\'e5 \'ea 1-\'ee\'ec\'f3 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'f3 \'ec\'e0\'f1\'f1\'e8\'e2\'e0\cf0\kerning1\par
+\cf3\kerning0 typeof\cf2 ("John") - \'e2\'fb\'e4\'e0\'f1\'f2 string\cf0\kerning1\par
+\cf2\kerning0\par
+\'cf\'f0\'e8\'ec\'e5\'f0\'fb:\cf0\kerning1\par
+\cf2\kerning0 <p id="demo"></p>\cf0\kerning1\par
+\cf2\kerning0 <button type="button" onclick="document.getElementById('demo').innerHTML = Date()"> Date and Time </button>\cf0\kerning1\par
+\cf2\kerning0\par
+<img id="myImage" src="pic1.gif" style="fontSize: 40px">\cf0\kerning1\par
+\cf2\kerning0 document.getElementById("myImage").src="pic2.gif"\tab\tab\'e8\'e7\'ec\'e5\'ed\'e8\'f2\'fc \'e0\'f2\'f0\'e8\'e1\'f3\'f2 src \'e2 \'f2\'e5\'e3\'e5 \'f1 id=myImage\cf0\kerning1\par
+\cf2\kerning0 document.getElementById("myImage").style.fontSize = "35px"\tab\'e8\'e7\'ec\'e5\'ed\'e8\'f2\'fc \'f1\'f2\'e8\'eb\'fc \'e2 \'f2\'e5\'e3\'e5 \'f1 id=myImage\cf0\kerning1\par
+\cf2\kerning0 document.getElementsByTagName(name)\tab\tab\tab\tab\tab\'e4\'ee\'f1\'f2\'f3\'ef \'ea \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'f3 \'ef\'ee Tag Name\cf0\kerning1\par
+\cf2\kerning0 document.getElementsByClassName(name)\tab\tab\tab\tab\'e4\'ee\'f1\'f2\'f3\'ef \'ea \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'f3 \'ef\'ee Class\cf0\kerning1\par
+\cf2\kerning0 document.images\tab\tab\tab\tab\tab\tab\tab\tab\'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 \'e2\'f1\'e5 <img> \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'fb\cf0\kerning1\par
+\cf2\kerning0 document.title\tab\tab\tab\tab\tab\tab\tab\tab\'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 <title> \'fd\'eb\'e5\'ec\'e5\'ed\'f2\cf0\kerning1\par
+\cf2\kerning0\par
+<script>\cf0\kerning1\par
+\cf2\kerning0\tab document.write(5 + 6);\tab\'ef\'f0\'ee\'f1\'f2\'ee \'e2 \'f2\'e5\'eb\'e5 HTML \'ed\'e0\'ef\'e8\'f8\'e5\'f2 \'f6\'e8\'f4\'f0\'f3 11\cf0\kerning1\par
+\cf2\kerning0\tab window.alert(5 + 6);\tab\'ef\'ee\'ff\'e2\'e8\'f2\'f1\'ff \'ec\'e0\'eb\'e5\'ed\'fc\'ea\'ee\'e5 \'ee\'ea\'ee\'f8\'ea\'ee \'f1 \'f6\'e8\'f4\'f0\'ee\'e9 11\cf0\kerning1\par
+\cf2\kerning0\tab console.log(5 + 6);\tab\'ed\'e0\'ef\'e8\'f8\'e5\'f2 \'e2 \'ea\'ee\'ed\'f1\'ee\'eb\'fc\cf0\kerning1\par
+\cf2\kerning0 </script>\cf0\kerning1\par
+\cf2\kerning0\par
+\'d4\'f3\'ed\'ea\'f6\'e8\'e8 \'e2 JS \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'fe\'f2\'f1\'ff \'ea\'ee\'e3\'e4\'e0:\cf0\kerning1\par
+\cf2\kerning0\tab - \'ef\'f0\'ee\'e8\'e7\'ee\'f8\'b8\'eb \'ea\'e0\'ea\'ee\'e9-\'ed\'e8\'e1\'f3\'e4\'fc Event (\'ed\'e0\'e6\'e0\'eb\'e8 \'ed\'e0 button)\cf0\kerning1\par
+\cf2\kerning0\tab - \'ea\'ee\'e3\'e4\'e0 \'f4\'f3\'ed\'ea\'f6\'e8\'fe \'e2\'fb\'e7\'e2\'e0\'eb\'e0 \'e4\'f0\'f3\'e3\'e0\'ff \'f4\'f3\'ed\'ea\'f6\'e8\'ff JS\cf0\kerning1\par
+\cf2\kerning0\tab - automatically (self invoked)\cf0\kerning1\par
+\cf2\kerning0\par
+\par
+\par
+\'ce\'ef\'e5\'f0\'e0\'f2\'ee\'f0\'fb:\cf0\kerning1\par
+\cf2\kerning0\b IF\b0 (...) \'e2\'fb\'e4\'e0\'f1\'f2 false, \'e5\'f1\'eb\'e8 \'e2 \'ea\'e0\'e2\'fb\'f7\'ea\'e0\'f5 false, 0, undefined, NaN, Null, "" = empty string\cf0\kerning1\par
+\cf2\kerning0 a & b - \'ef\'ee\'e1\'e8\'f2\'ee\'e2\'ee\'e5 AND\cf0\kerning1\par
+\cf2\kerning0 a && b - \'eb\'ee\'e3\'e8\'f7\'e5\'f1\'ea\'ee\'e5. \'c5\'f1\'eb\'e8 a = false, 0, Null, "", undefined, NaN - \'f2\'ee \'f0\'e5\'e7\'f3\'eb\'fc\'f2\'e0\'f2 false. \'c5\'f1\'eb\'e8 \'e0 - \'e4\'f0\'f3\'e3\'ee\'e5, \'f0\'e5\'e7\'f3\'eb\'fc\'f2\'e0\'f2 = b.\cf0\kerning1\par
+\cf2\kerning0\par
+\par
+\pard\nowidctlpar\hyphpar0\li720\sl240\slmult1\b\'ce\'c1\'cb\'c0\'d1\'d2\'dc \'c2\'c8\'c4\'c8\'cc\'ce\'d1\'d2\'c8\b0 .\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf2\kerning0 GLOBAL scope \emdash  \'f2\'f3\'f2 \'ef\'ee\'ed\'ff\'f2\'ed\'ee\cf0\kerning1\par
+\cf2\kerning0 FUNCTION scope \emdash  \'e2\'f1\'e5 \'f7\'f2\'ee \'e2\'ed\'f3\'f2\'f0\'e8 function showName() \{...\} \cf0\kerning1\par
+\cf2\kerning0 BLOCK scope \emdash  \'e2\'f1\'e5 \'f7\'f2\'ee \'e2\'ed\'f3\'f2\'f0\'e8 \'e8\'eb\'e8 \'ef\'f0\'ee\'f1\'f2\'ee \{...\} \'e8\'eb\'e8 \'ea\'ee\'ed\'f1\'f2\'f0\'f3\'ea\'f6\'e8\'e9 \'f2\'e8\'ef\'e0 if () \{...\} else \{\'85\}\cf0\kerning1\par
+\cf2\par
+\kerning0\'cb\'ee\'ea\'e0\'eb\'fc\'ed\'e0\'ff \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'e0\'ff - \'f0\'ee\'e6\'e4\'e0\'e5\'f2\'f1\'ff \'e8 \'f3\'ec\'e8\'f0\'e0\'e5\'f2 \'e2\'ed\'f3\'f2\'f0\'e8 \'f4\'f3\'ed\'ea\'f6\'e8\'e8. \'c1\'eb\'ee\'ea if-else \'ed\'e5 \'f1\'ee\'e7\'e4\'e0\'b8\'f2 \'eb\'ee\'ea\'e0\'eb\'fc\'ed\'ee\'e9 \'ee\'e1\'eb\'e0\'f1\'f2\'e8 \'e2\'e8\'e4\'e8\'ec\'ee\'f1\'f2\'e8.\cf0\kerning1\par
+\cf2\kerning0\par
+\cf3 var\cf2  \'f5=\cf4 30\cf2 ;\cf0\kerning1\par
+\cf3\kerning0 function\cf2  show() \{\cf0\kerning1\par
+\cf2\kerning0\tab console.log(\'f5);\cf0\kerning1\par
+\cf2\kerning0\tab\cf3 var\cf2  \'f5=\cf4 50\cf2 ;\cf0\kerning1\par
+\cf2\kerning0\tab console.log(\'f5);\cf0\kerning1\par
+\cf2\kerning0\par
+\'fd\'f2\'ee\'f2 \'ea\'ee\'e4 JS "\'ef\'f0\'e5\'ee\'e1\'f0\'e0\'e7\'f3\'e5\'f2" \'e2:\cf0\kerning1\par
+\cf2\kerning0\par
+\cf3 var\cf2  \'f5=\cf4 30\cf2 ;\tab\tab\tab // \'ee\'e1\'fa\'ff\'e2\'eb\'ff\'e5\'f2\'f1\'ff \'e3\'eb\'ee\'e1\'e0\'eb\'fc\'ed\'e0\'ff \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'e0\'ff\cf0\kerning1\par
+\cf3\kerning0 function\cf2  show() \{\cf0\kerning1\par
+\cf2\kerning0\tab\cf3 var\cf2  \'f5;\tab\tab // \'ee\'e1\'fa\'ff\'e2\'eb\'ff\'e5\'f2\'f1\'ff \'eb\'ee\'ea\'e0\'eb\'fc\'ed\'e0\'ff \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'e0\'ff, \'ed\'ee \'ed\'e5\'f2 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'ff\cf0\kerning1\par
+\cf2\kerning0\tab console.log(\'f5);\tab // \'ef\'ee\'fd\'f2\'ee\'ec\'f3 \'e2\'fb\'e4\'e0\'f1\'f2: undefined\cf0\kerning1\par
+\cf2\kerning0\tab\'f5=\cf4 50\cf2 ;\tab\tab\tab // \'e7\'e0\'e4\'e0\'b8\'f2\'f1\'ff \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5\cf0\kerning1\par
+\cf2\kerning0\tab console.log(\'f5);\tab // \'e2\'fb\'e4\'e0\'f1\'f2 50\cf0\kerning1\par
+\cf2\par
+\kerning0\'dd\'f2\'ee\'f2 \'f4\'ee\'ea\'f3\'f1 \'ed\'e0\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff Hosting \emdash  \'ef\'e5\'f0\'e5\'ec\'e5\'f9\'e5\'ed\'e8\'e5 \'e2\'f1\'e5\'f5 \cf3 var\cf2  \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'f5 declaration \'e2 \'ed\'e0\'f7\'e0\'eb\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'ec\'ee\'e3\'ee scope. \'c8\'ec\'e5\'ed\'ed\'ee declaration (\cf3 var\cf2  \'f5), \'e0 \'ed\'e5 initializations (\cf3 var\cf2  \'f5=50). \'cf\'ee\'e7\'e2\'ee\'eb\'ff\'e5\'f2 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'f3\'fe \'e4\'ee \'e5\'b8 \'ee\'e1\'fa\'ff\'e2\'eb\'e5\'ed\'e8\'ff.\cf0\kerning1\par
+\cf2\par
+\kerning0\'cf\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5 \'ee\'e1\'fa\'ff\'e2\'eb\'e5\'ed\'ed\'fb\'e5 \'ea\'e0\'ea \cf3 let\cf2  \'e2 \'ed\'e0\'f7\'e0\'eb\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'ec\'ee\'e3\'ee scope \'ed\'e5 \'ef\'e5\'f0\'e5\'ec\'e5\'f9\'e0\'fe\'f2\'f1\'ff.\cf0\kerning1\par
+\cf2\par
+\kerning0\'cf\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5 \'ee\'e1\'fa\'ff\'e2\'eb\'e5\'ed\'ed\'fb\'e5 \'ea\'e0\'ea \cf3 const\cf2  \'e2\'e5\'e4\'f3\'f2 \'f1\'e5\'e1\'ff \'ea\'e0\'ea \cf3 let\cf2  \'f2\'ee\'eb\'fc\'ea\'ee \'e4\'eb\'ff primitive \'f2\'e8\'ef\'ee\'e2 \'e8\'f5 \'ed\'e5\'eb\'fc\'e7\'ff \'ec\'e5\'ed\'ff\'f2\'fc, \'e4\'eb\'ff object \'f2\'e8\'ef\'ee\'e2 \cf3 const\cf2  \'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2 \'ed\'e5\'e8\'e7\'ec\'e5\'ed\'ff\'e5\'ec\'fb\'e9 reference \'ed\'e0 \'ee\'e1\'fa\'e5\'ea\'f2.\cf0\kerning1\par
+\cf2\par
+\kerning0\b CONST \b0\'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5.\cf0\kerning1\par
+\cf2\par
+\kerning0\tab\cf3 const\cf2  PI = 3.14\cf0\kerning1\par
+\cf2\kerning0\tab PI = 3.14\tab\tab\tab\tab // \cf1 TypeError: invalid assignment to const 'PI'\cf0\kerning1\par
+\cf2\kerning0\tab PI = 3\tab\tab\tab\tab // \cf1 TypeError: invalid assignment to const 'PI'\cf0\kerning1\par
+\cf2\par
+\kerning0\tab\cf3 const\cf2  car=\{type:\'abFiat\'bb, color:\'abwhite\'bb\}\cf0\kerning1\par
+\cf2\kerning0\tab car.color=\'abred\'bb\tab\tab\tab // \'ec\'ee\'e6\'ed\'ee \'e8\'e7\'ec\'e5\'ed\'ff\'f2\'fc \'f1\'e2\'ee\'e9\'f1\'f2\'e2\'e0 \'ee\'e1\'fa\'e5\'ea\'f2\'e0 \cf3 const\cf0\kerning1\par
+\cf2\kerning0\tab car.owner=\'abJohn\'bb\tab\tab\tab // \'ec\'ee\'e6\'ed\'ee \'f1\'ee\'e7\'e4\'e0\'e2\'e0\'f2\'fc \'ed\'ee\'e2\'fb\'e5 \'f1\'e2\'ee\'e9\'f1\'f2\'e2\'e0 \'ee\'e1\'fa\'e5\'ea\'f2 \cf3 const\cf0\kerning1\par
+\cf2\kerning0\tab car=\{type:\'abVolvo\'bb, color:\'abgreen\'bb\}\tab // \cf1 TypeError: invalid assignment to const 'car'\cf0\kerning1\par
+\cf2\par
+\kerning0\tab\cf3 const\cf2  x=\cf4 30\cf0\kerning1\par
+\cf2\kerning0\tab\cf3 var\cf2  x=\cf4 50\cf2\tab\tab\tab\tab // \cf1 SyntaxError: redeclaration of const x\cf0\kerning1\par
+\cf2\kerning0\par
+\tab\cf3 const\cf2  x=\cf4 30\cf0\kerning1\par
+\cf2\kerning0\tab\cf3 let\cf2  x=\cf4 70\cf2\tab\tab\tab\tab // \cf1 SyntaxError: redeclaration of const x\cf0\kerning1\par
+\cf2\par
+\kerning0\tab\cf3 const\cf2  x=\cf4 30\cf0\kerning1\par
+\cf2\kerning0\tab\{ \cf3 const\cf2  x=\cf4 20\cf2\tab\tab\tab // \'f2\'e0\'ea \'ec\'ee\'e6\'ed\'ee \'e4\'e5\'eb\'e0\'f2\'fc\cf0\kerning1\par
+\cf2\kerning0\par
+\tab\cf3 const\cf2  x=\cf4 30\cf0\kerning1\par
+\cf2\kerning0\tab\{ \cf3 let\cf2  x=\cf4 60\cf2\tab\}\tab\tab\tab // \'f2\'e0\'ea \'ec\'ee\'e6\'ed\'ee \'e4\'e5\'eb\'e0\'f2\'fc\cf0\kerning1\par
+\cf2\par
+\kerning0\tab\cf3 const\cf2  x=\cf4 30\cf0\kerning1\par
+\cf2\kerning0\tab\{ \cf3 var\cf2  x=\cf4 40\cf2\tab\}\tab\tab\tab // \cf1 SyntaxError: redeclaration of const x\cf0\kerning1\par
+\cf2\par
+\kerning0\tab\tab\cf0\kerning1\par
+\cf2\par
+\kerning0\b VAR \b0\'e8 \b LET \b0\'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5.\cf0\kerning1\par
+\cf2\par
+\kerning0\tab\'f5=\cf4 30\cf0\kerning1\par
+\cf2\kerning0\tab console.log(\'f5)\cf0\kerning1\par
+\cf2\kerning0\tab\cf3 var\cf2  x\tab\tab\tab\tab\tab // \'ec\'ee\'e6\'ed\'ee \'f2\'e0\'ea \'e4\'e5\'eb\'e0\'f2\'fc\cf0\kerning1\par
+\cf2\par
+\kerning0\tab\cf3 var\cf2  x=\cf4 30\cf2\tab\tab\tab\tab // x \'ee\'e1\'fa\'ff\'e2\'eb\'e5\'ed\'e0 \'e2 GLOBAL scope\cf0\kerning1\par
+\cf2\kerning0\tab\cf3 function\cf2  myFunction() \{\cf0\kerning1\par
+\cf2\kerning0\tab\tab console.log(\'f5) \}\tab\tab // x=30\cf0\kerning1\par
+\cf2\kerning0\tab console.log(\'f5)\tab\tab\tab // x=30\cf0\kerning1\par
+\cf2\kerning0\par
+\tab\cf3 function\cf2  myFunction() \{\cf0\kerning1\par
+\cf2\kerning0\tab\tab\cf3 var\cf2  x=\cf4 30\cf2\tab\tab\tab // x \'ee\'e1\'fa\'ff\'e2\'eb\'e5\'ed\'e0 \'e2\'ed\'f3\'f2\'f0\'e8 \'f4\'f3\'ed\'ea\'f6\'e8\'e8, \'f2.\'e5. \'e2 FUNCTION scope\cf0\kerning1\par
+\cf2\kerning0\tab\tab console.log(\'f5) \}\tab\tab // x=30\cf0\kerning1\par
+\cf2\kerning0\tab console.log(\'f5)\tab\tab\tab // \cf4 x is not defined\cf2 , \'ed\'e5 \'e2\'e8\'e4\'ed\'e0 \'e2\'ed\'e5 \'f4\'f3\'ed\'ea\'f6\'e8\'e8\cf0\kerning1\par
+\cf2\kerning0\par
+\tab\cf3 var\cf2  x=\cf4 30\cf0\kerning1\par
+\cf2\kerning0\tab\cf3 var\cf2  x=\cf4 50\cf0\kerning1\par
+\cf2\kerning0\tab console.log(\'f5)\tab\tab\tab // x=50, \'ec\'ee\'e6\'ed\'ee \'f2\'e0\'ea \'e4\'e5\'eb\'e0\'f2\'fc\cf0\kerning1\par
+\cf2\kerning0\par
+\tab\cf3 let\cf2  x=\cf4 30\cf0\kerning1\par
+\cf2\kerning0\tab\cf3 let\cf2  x=\cf4 50\cf2\tab\tab\tab\tab // \cf1 SyntaxError: redeclaration of let x\cf0\kerning1\par
+\cf2\kerning0\par
+\tab\cf3 var\cf2  x=\cf4 30\cf0\kerning1\par
+\cf2\kerning0\tab\{ \cf3 var\cf2  x=\cf4 50\cf2  \}\cf0\kerning1\par
+\cf2\kerning0\tab console.log(\'f5)\tab\tab\tab // x=50, \'ef\'e5\'f0\'e5\'ee\'e1\'fa\'ff\'e2\'eb\'e5\'ed\'e8\'e5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'ee\'e9, \'e4\'eb\'ff \cf3 var\cf2  \'fd\'f2\'ee \'ed\'ee\'f0\'ec\'e0\'eb\'fc\'ed\'ee\cf0\kerning1\par
+\cf2\kerning0\par
+\tab\{ \cf3 var\cf2  x=\cf4 30\cf2  \}\cf0\kerning1\par
+\cf2\kerning0\tab console.log(\'f5)\tab\tab\tab // \'f5=30, \'e4\'eb\'ff \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'f5 \'ee\'e1\'fa\'ff\'e2\'eb\'e5\'ed\'ed\'fb\'f5 \'ea\'e0\'ea \cf3 var\cf2  \'ed\'e5 \'f1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'e5\'f2 \'ef\'ee\'ed\'ff\'f2\'e8\'ff BLOCK scope\cf0\kerning1\par
+\cf2\kerning0\par
+\tab\{ \cf3 let\cf2  x=\cf4 30\cf2  \}\cf0\kerning1\par
+\cf2\kerning0\tab console.log(\'f5)\tab\tab\tab // \cf4 x is not defined\cf2 ,  \'e4\'eb\'ff \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'f5 \'ee\'e1\'fa\'ff\'e2\'eb\'e5\'ed\'ed\'fb\'f5 \'ea\'e0\'ea \cf3 let\cf2  \'e5\'f1\'f2\'fc \'ef\'ee\'ed\'ff\'f2\'e8\'e5 BLOCK scope\cf0\kerning1\par
+\cf2\kerning0\par
+\tab\cf3 var\cf2  x=\cf4 30\cf0\kerning1\par
+\cf2\kerning0\tab\{ \cf3 let\cf2  x=\cf4 50\cf0\kerning1\par
+\cf2\kerning0\tab console.log(\'f5)\}\tab\tab\tab // x=50\cf0\kerning1\par
+\cf2\kerning0\tab console.log(\'f5)\tab\tab\tab // x=30\cf0\kerning1\par
+\cf2\kerning0\par
+\tab\cf3 var\cf2  x=\cf4 30\cf0\kerning1\par
+\cf2\kerning0\tab\cf3 for \cf2 (\cf3 var\cf2  x=\cf4 0\cf2 ; x<\cf4 10 \cf2 ; x++) \{...\}\cf0\kerning1\par
+\cf2\kerning0\tab console.log(\'f5)\tab\tab\tab // x=10\cf0\kerning1\par
+\cf2\kerning0\par
+\tab\cf3 let\cf2  x=\cf4 30\cf0\kerning1\par
+\cf2\kerning0\tab\cf3 for \cf2 (\cf3 let\cf2  x=\cf4 0\cf2 ; x<\cf4 10 \cf2 ; x++) \{...\}\cf0\kerning1\par
+\cf2\kerning0\tab console.log(\'f5)\tab\tab\tab // x=30\cf0\kerning1\par
+\cf2\kerning0\par
+\tab\cf3 var\cf2  x=\cf4 30\tab\tab\tab\tab\cf2 // x=30\cf0\kerning1\par
+\cf2\kerning0\tab\cf3 let\cf2  x=\cf4 50\tab\tab\tab\tab\cf2 // \cf4 Identifier 'x' has already been declared\cf0\kerning1\par
+\cf2\kerning0\par
+\tab\cf3 let\cf2  x=\cf4 30\tab\tab\tab\tab\cf2 // x=30, \'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5\cf0\kerning1\par
+\cf2\kerning0\tab\cf3 var\cf2  x=\cf4 50\tab\tab\tab\tab\cf2 // \cf4 Identifier 'x' has already been declared\cf0\kerning1\par
+\cf2\kerning0\par
+\tab\{ \cf3 var\cf2  x=\cf4 30\tab\tab\tab\tab\cf2 // x=30, \'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5 \'e8 \'e2 BLOCK scope\cf0\kerning1\par
+\cf2\kerning0\tab\cf3 let\cf2  x=\cf4 50\cf2  \}\tab\cf4\tab\tab\tab\cf2 // \cf4 Identifier 'x' has already been declared\cf0\kerning1\par
+\cf2\kerning0\par
+\cf3\tab let\cf2  x=\cf4 30\cf0\kerning1\par
+\cf2\kerning0\tab\{ \cf3 let\cf2  x=\cf4 50\cf2  \}\tab\tab\tab // \'ec\'ee\'e6\'ed\'ee \'f2\'e0\'ea \'e4\'e5\'eb\'e0\'f2\'fc\cf0\kerning1\par
+\cf2\kerning0\par
+\'cf\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5 \'ee\'e1\'fa\'ff\'e2\'eb\'e5\'ed\'ed\'fb\'e5 \'ea\'e0\'ea \cf3 var\cf2  \'e8 \cf3 let\cf2  \'e2\'ed\'f3\'f2\'f0\'e8 \cf3 function\cf2  (\'e8\'eb\'e8 FUNCTION scope) \'e2\'e5\'e4\'f3\'f2 \'f1\'e5\'e1\'ff \'e8\'e4\'e5\'ed\'f2\'e8\'f7\'ed\'ee.\cf0\kerning1\par
+\cf2\kerning0\'cf\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5 \'ee\'e1\'fa\'ff\'e2\'eb\'e5\'ed\'ed\'fb\'e5 \'ea\'e0\'ea \cf3 var\cf2  \'e8 \cf3 let\cf2  \'e2\'ed\'f3\'f2\'f0\'e8 GLOBAL scope \'e2\'e5\'e4\'f3\'f2 \'f1\'e5\'e1\'ff \'e8\'e4\'e5\'ed\'f2\'e8\'f7\'ed\'ee.\cf0\kerning1\par
+\cf2\kerning0\par
+\tab\tab\cf0\kerning1\par
+\cf2\kerning0\tab\cf0\kerning1\par
+\cf2\kerning0\b if (\b0 name == "Vasya"\b ) \{\cf0\kerning1\b0\par
+\cf2\kerning0\tab console.log("\'f5\'e0-\'f5\'e0");\cf0\kerning1\par
+\cf2\kerning0\b\}else if (\b0 x<5\b ) \{...\}\cf0\kerning1\b0\par
+\cf2\par
+\kerning0\'d2\'e0\'ea\'e8\'e5 \'ea\'ee\'ec\'e1\'e8\'ed\'e0\'f6\'e8\'e8 = False: if(0), if(null), if(undefined), if(NaN), if("") \'ef\'f3\'f1\'f2\'e0\'ff \'f1\'f2\'f0\'ee\'ea\'e0\cf0\kerning1\par
+\cf2\kerning0\par
+\b for (\b0 i=0; i<5; i++\b ) \{...\}\cf0\kerning1\b0\par
+\cf2\par
+\kerning0\b for (\b0 variable \b in\b0  object\b ) \{...\}\cf0\kerning1\b0\par
+\cf2\par
+\kerning0 ["1", 2, null]\b .forEach\b0 (myFunc)\tab\tab // \'cd\'e0 \'e2\'f5\'ee\'e4 forEach \'ef\'ee\'e4\'e0\'b8\'ec \'ec\'e0\'f1\'f1\'e8\'e2. \'c2 myFunc \'e0\'e2\'f2\'ee\'ec\'e0\'f2\'ee\'ec \'ef\'f0\'e8\'f5\'ee\'e4\'ff\'f2 \'e0\'e3\'f0\'f3\'ec\'e5\'ed\'f2\'fb: \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5, \'e8\'ed\'e4\'e5\'ea\'f1 \'e8 \'ed\'e0\'e2\'f1\'ff\'ea\'e8\'e9 \'f1\'eb\'f3\'f7\'e0\'e9 \'f1\'f1\'fb\'eb\'ea\'e0 \'ed\'e0 \'f1\'e0\'ec \'ec\'e0\'f1\'f1\'e8\'e2\cf0\kerning1\par
+\cf2\kerning0 function myFunc(item, index, arr) \{\cf0\kerning1\par
+\cf2\kerning0\tab arr[index]=item*10;\}\cf0\kerning1\par
+\cf2\kerning0\par
+\b while\b0  (x<5) \b\{\cf0\kerning1\b0\par
+\cf2\kerning0\b\}\cf0\kerning1\b0\par
+\cf2\kerning0\par
+\b do \{\cf0\kerning1\b0\par
+\cf2\kerning0\b\} while\b0  (x<5)\cf0\kerning1\par
+\cf2\kerning0\par
+\b switch\b0  (x) \{\cf0\kerning1\par
+\cf2\kerning0   \b case\b0  3:\cf0\kerning1\par
+\cf2\kerning0     console.log(...);\cf0\kerning1\par
+\cf2\kerning0     \b break\b0 ;\cf0\kerning1\par
+\cf2\kerning0   \b case\b0  4:\cf0\kerning1\par
+\cf2\kerning0     console.log(...);\cf0\kerning1\par
+\cf2\kerning0     \b break\b0 ;\cf0\kerning1\par
+\cf2\kerning0   \b default\b0 :\cf0\kerning1\par
+\cf2\kerning0     console.log(...);\cf0\kerning1\par
+\cf2\kerning0\}\cf0\kerning1\par
+\cf2\kerning0\b\par
+\par
+\b0\'ca\'ee\'ec\'ec\'e5\'ed\'f2\'e0\'f0\'e8\'e8:\tab /* comments */\cf0\kerning1\par
+\cf2\kerning0\par
+x=5\cf0\kerning1\par
+\cf2\kerning0 x==5\tab\tab //true \endash  \'f1\'f0\'e0\'e2\'ed\'e5\'ed\'e8\'e5 \'ef\'ee \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'fe\cf0\kerning1\par
+\cf2\kerning0 x==\rdblquote 5\rdblquote\tab // \'f2\'ee\'e6\'e5 \'e1\'f3\'e4\'e5\'f2 true\cf0\kerning1\par
+\cf2\kerning0 x===5\tab\tab // true \endash  \'f1\'f0\'e0\'e2\'ed\'e5\'ed\'e8\'e5 \'ef\'ee \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'fe + \'ef\'ee \'f2\'e8\'ef\'f3\cf0\kerning1\par
+\cf2\kerning0 x===\rdblquote 5\rdblquote\tab // false\cf0\kerning1\par
+\cf2\kerning0\par
+\'d2\'e5\'f0\'ed\'e0\'f0\'ed\'e8\'ea: \cf3 var\cf2  voteable = (age<18) ? \ldblquote\'d1\'eb\'e8\'f8\'ea\'ee\'ec \'ec\'ee\'eb\'ee\'e4\rdblquote  : \ldblquote\'cc\'ee\'e6\'e5\'f2 \'e3\'ee\'eb\'ee\'f1\'ee\'e2\'e0\'f2\'fc\rdblquote\cf0\kerning1\par
+\cf2\kerning0\par
+\par
+\par
+alert() - \'ef\'f0\'ee\'f1\'f2\'ee \'ef\'f0\'ee\'ff\'e2\'e8\'f2\'f1\'ff \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'e5\cf0\kerning1\par
+\cf2\kerning0 if (confirm(\ldblquote Press a button\rdblquote ))\{\tab\tab //\'e2 \'ee\'e1\'f9\'e5\'ec \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 boolean - true \'e8\'eb\'e8 false\cf0\kerning1\par
+\cf2\kerning0 var person = prompt(\ldblquote Enter your name\rdblquote )\tab //\'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 String\cf0\kerning1\par
+\cf2\kerning0\par
+\par
+\'ce\'e1\'f0\'e0\'f9\'e5\'ed\'e8\'e5 \'e1\'fb\'e2\'e0\'e5\'f2: \'f7\'e5\'f0\'e5\'e7 first.second \'e8\'eb\'e8 first[second]\cf0\kerning1\par
+\cf2\par
+\par
+\par
+\par
+\par
+\par
+\kerning0\par
+\b FUNCTION DECLARATION\cf0\kerning1\b0\par
+\kerning0{\field{\*\fldinst{HYPERLINK "https://stackoverflow.com/questions/336859/var-functionname-function-vs-function-functionname"}}{\fldrslt{\ul\cf3 https://stackoverflow.com/questions/336859/var-functionname-function-vs-function-functionname}}}\kerning1\f0\fs22\par
+\cf2\kerning0\i\'d1\'ef\'ee\'f1\'ee\'e1 \'b91.\cf0\kerning1\i0\par
+\cf2\kerning0\b\par
+\b0\'f5();\tab\tab\tab\tab\tab // \'cc\'ee\'e6\'ed\'ee \'e2\'fb\'e7\'fb\'e2\'e0\'f2\'fc \'f4\'f3\'ed\'ea\'f6\'e8\'fe \'e4\'ee \'e5\'b8 \'ee\'e1\'fa\'ff\'e2\'eb\'e5\'ed\'e8\'ff\cf0\kerning1\par
+\cf3\kerning0 function\cf2  x() \{\cf0\kerning1\par
+\cf2\kerning0\tab console.log(\ldblquote text\rdblquote ); \}\cf0\kerning1\par
+\cf2\kerning0\par
+\i\'d1\'ef\'ee\'f1\'ee\'e1 \'b92\i0 .\cf0\kerning1\par
+\cf2\kerning0\par
+x();\tab\tab\tab\tab\tab // Uncaught ReferenceError: x is not defined\cf0\kerning1\par
+\cf3\kerning0 var\cf2  x = \cf3 function\cf2  () \{\tab\tab // Anonymous Function\cf0\kerning1\par
+\cf2\kerning0\tab console.log(x); \}\tab\tab // \'c2\'fb\'e4\'e0\'f1\'f2 \'f2\'e5\'ea\'f1\'f2 \'f1\'e0\'ec\'ee\'e9 \'f4\'f3\'ed\'ea\'f6\'e8\'e8: \i f()\{console.log(x)\}\cf0\kerning1\i0\par
+\cf2\kerning0 x();\tab\tab\tab\tab\tab // \'d2\'ee\'eb\'fc\'ea\'ee \'e7\'e4\'e5\'f1\'fc \'ec\'ee\'e6\'ed\'ee \'e2\'fb\'e7\'e2\'e0\'f2\'fc \'f4\'f3\'ed\'ea\'f6\'e8\'fe\cf0\kerning1\par
+\cf2\kerning0\par
+\i\'d1\'ef\'ee\'f1\'ee\'e1 \'b93\i0 .\cf0\kerning1\par
+\cf2\kerning0\i\par
+\cf3\i0 var\cf2  y = \cf3 function\cf2  x()\{\tab\tab // Named Function Expression\cf0\kerning1\par
+\cf2\kerning0\tab console.log(\cf3 typeof\cf2  x);\}\tab // \'cf\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'e0\'ff x \'e2\'e8\'e4\'ed\'e0 \'f2\'ee\'eb\'fc\'ea\'ee \'e2\'ed\'f3\'f2\'f0\'e8 \'f4\'f3\'ed\'ea\'f6\'e8\'e8. \'c2\'fb\'e4\'e0\'f1\'f2: \ldblquote function\rdblquote\cf0\kerning1\par
+\cf2\kerning0 console.log(\cf3 typeof\cf2  x)\tab\tab // \'c2\'fb\'e4\'e0\'f1\'f2: \ldblquote undefined\rdblquote\cf0\kerning1\par
+\cf2\kerning0\par
+\i\'d1\'ef\'ee\'f1\'ee\'e1 \'b94\i0 .\cf0\kerning1\par
+\cf2\kerning0\par
+\cf3 var\cf2  elements=["Hydrogen", "Helium", "Lithium"];\cf0\kerning1\par
+\cf2\kerning0 elements.map(\cf3 function\cf2 (el)\{\cf0\kerning1\par
+\cf2\kerning0\tab\cf3 return \cf2 el.length;\}\tab // \'c2\'fb\'e4\'e0\'f1\'f2 \'e4\'eb\'e8\'ed\'f3 \'f1\'eb\'ee\'e2: 8, 6, 7\cf0\kerning1\par
+\cf2\kerning0\par
+\'cc\'ee\'e6\'ed\'ee \'f1\'e4\'e5\'eb\'e0\'f2\'fc \'f2\'e0\'ea:\cf0\kerning1\par
+\cf2\kerning0 elements.map((el) => \{\tab\tab // Arrow Function\cf0\kerning1\par
+\cf2\kerning0\tab\cf3 return \cf2 el.length;\}\cf0\kerning1\par
+\cf2\kerning0\par
+\'cc\'ee\'e6\'ed\'ee \'f1\'e4\'e5\'eb\'e0\'f2\'fc \'e4\'e0\'e6\'e5 \'f2\'e0\'ea:\cf0\kerning1\par
+\cf2\kerning0 elements.map((el) =>  el.length);\cf0\kerning1\par
+\cf2\kerning0\par
+\'d2\'ee\'e6\'e5 \'ee\'f2\'ed\'ee\'f1\'e8\'f2\'f1\'ff \'ea Arrow Function:\cf0\kerning1\par
+\cf3\kerning0 const \cf2 myFunc = \cf3 function\cf2 (param1, param2)\{...\}\cf0\kerning1\par
+\cf2\kerning0\par
+\'d2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5 \'ec\'ee\'e6\'ed\'ee \'e7\'e0\'ef\'e8\'f1\'e0\'f2\'fc:\cf0\kerning1\par
+\cf3\kerning0 const \cf2 myFunc = (param1, param2) => \{...\}\cf0\kerning1\par
+\cf2\kerning0\par
+\par
+\par
+\b DOM\b0  - \'fd\'f2\'ee \'f1\'f2\'e0\'ed\'e4\'e0\'f0\'f2 \'ea\'e0\'ea \'f1\'e4\'e5\'eb\'e0\'f2\'fc get, change, add, delete HTML \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'ee\'e2.\cf0\kerning1\par
+\cf2\kerning0\par
+\i\'c7\'e0\'e4\'e0\'f7\'e0\i0 : \'cf\'f0\'ee\'e8\'f2\'e5\'f0\'e8\'f0\'ee\'e2\'e0\'f2\'fc \'ef\'ee \'e2\'f1\'e5\'ec \'e4\'ee\'f7\'e5\'f0\'ed\'e8\'ec \'f3\'e7\'eb\'e0\'ec, \'e2\'ed\'f3\'f2\'f0\'e8 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'e0 \'f1 \'ea\'eb\'e0\'f1\'f1\'ee\'ec "container". \'c2\'fb\'e2\'e5\'f1\'f2\'e8 \'ed\'e0\'e7\'e2\'e0\'ed\'e8\'e5 \'f3\'e7\'eb\'e0, \'f2\'e8\'ef \'e8 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5.\cf0\kerning1\par
+\cf2\i\par
+\cf3\kerning0\i0 let\cf2  obj=document.getElementsByClassName("container")[0];\cf0\kerning1\par
+\cf2\kerning0 obj.childNodes.forEach(\cf0\kerning1\par
+\cf2\kerning0\tab\cf3 function \cf2 (item)\{\cf0\kerning1\par
+\cf2\kerning0\tab\tab console.log(item.nodeName+"  "+item.nodeType+"  "+item.nodeValue);\});\cf0\kerning1\par
+\cf2\par
+\kerning0\'d1\'f2\'f0\'f3\'ea\'f2\'f3\'f0\'e0 DOM:\tab document. - \'fd\'f2\'ee root \'e2 \'e4\'e5\'f0\'e5\'e2\'e5 DOM\cf0\kerning1\par
+\cf2\par
+\par
+\pard\nowidctlpar\hyphpar0\li720\sl240\slmult1\kerning0 Node\tab\tab\b .nodeType\b0\tab\b .nodeName\b0\tab\tab\b .nodeValue\b0\tab\tab Children(.nodeType)\tab\'cf\'f0\'e8\'ec\'e5\'f0\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf2\kerning0 ELEMENT_NODE\tab\tab 1\tab\'e8\'ec\'ff \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'e0\tab null\tab\tab\tab 1,3,4,5,7,8\tab\tab <h1 class="heading">W3Schools</h1>\cf0\kerning1\par
+\cf2\kerning0 ATTRIBUTE_NODE\tab\tab 2\tab\'e8\'ec\'ff \'e0\'f2\'f0\'e8\'e1\'f3\'f2\'e0\tab\'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 \'e0\'f2\'f0\'e8\'e1\'f3\'f2\'e0\tab 3,5\tab\tab\tab class = "heading" (deprecated)\cf0\kerning1\par
+\cf2\kerning0 TEXT_NODE\tab\tab\tab 3\tab #text\tab\tab\tab\'f1\'e0\'ec \'f2\'e5\'ea\'f1\'f2\tab\tab None\tab\tab\tab W3Schools\cf0\kerning1\par
+\cf2\kerning0 CDATA_SELECTION_NODE\tab 4\tab #cdata-section\tab content of node\tab None\cf0\kerning1\par
+\cf2\kerning0 ENTITY_REFERENCE_NODE\tab 5\tab\'e8\'ec\'ff entity ref\tab null\tab\tab\tab 1,3,4,5,7,8\cf0\kerning1\par
+\cf2\kerning0 ENTITY_NODE\tab\tab\tab 6\tab\'e8\'ec\'ff entity\tab\tab null\tab\tab\tab 1,3,4,5,7,8\cf0\kerning1\par
+\cf2\kerning0 PROCESSING_INST_NODE\tab 7\tab target\tab\tab content of node\tab None\cf0\kerning1\par
+\cf2\kerning0 COMMENT_NODE\tab\tab 8\tab #comment\tab\tab\'f2\'e5\'ea\'f1\'f2 \'ea\'ee\'ec\'ec\'e5\'ed\'f2\'e0\'f0\'e8\'ff\tab None\tab\tab\tab <!-- This is a comment -->\cf0\kerning1\par
+\cf2\kerning0 DOCUMENT_NODE\tab\tab 9\tab #document\tab\tab null\tab\tab\tab 1,7,8,10\tab\tab The HTML document itself (the parent of <html>)\cf0\kerning1\par
+\cf2\kerning0 DOCUMENT_TYPE_NODE\tab 10\tab\'e8\'ec\'ff doctype\tab\tab null\tab\tab\tab None\tab\tab\tab <!Doctype html>\cf0\kerning1\par
+\cf2\kerning0 DOCUMENT_FRAGMENT_NODE\tab 11\tab #document fragmen\tab null\tab\tab\tab 1,3,4,5,7,8\cf0\kerning1\par
+\cf2\kerning0 NOTATION_NODE\tab\tab 12\tab\'e8\'ec\'ff notation\tab null\tab\tab\tab None\cf0\kerning1\par
+\cf2\kerning0\par
+\'d3 \'e2\'f1\'e5\'f5 Node \'e5\'f1\'f2\'fc Properties - \'f8\'f2\'f3\'ea\'e0, \'ea\'ee\'f2\'ee\'f0\'e0\'ff return \'f7\'e8\'f1\'eb\'ee \'e8\'eb\'e8 object:\cf0\kerning1\par
+\cf2\kerning0\tab .attributes\tab\tab\'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 NamedNodeMap \'e0\'f2\'f0\'e8\'e1\'f3\'f2\'ee\'e2 \'f3 node-\'fb = \'fd\'f2\'ee \'e1\'f3\'e4\'e5\'f2 \'ec\'e0\'f1\'f1\'e8\'e2, \'ec\'ee\'e6\'ed\'ee \'e4\'e5\'eb\'e0\'f2\'fc .length\cf0\kerning1\par
+\cf2\kerning0\tab .nodeName\tab\tab\'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 \'f2\'ee \'f7\'f2\'ee \'e2 \'f2\'e0\'e1\'eb\'e8\'f7\'ea\'e5\cf0\kerning1\par
+\cf2\kerning0\tab .nodeType\tab\tab\'e0\'ed\'e0\'eb\'ee\'e3\'e8\'f7\'ed\'ee\cf0\kerning1\par
+\cf2\kerning0\tab .nodeValue\tab\tab\'e0\'ed\'e0\'eb\'ee\'e3\'e8\'f7\'ed\'ee\cf0\kerning1\par
+\cf2\kerning0\tab .parentNode\tab\tab\'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 object \'f0\'ee\'e4\'e8\'f2\'e5\'eb\'ff\cf0\kerning1\par
+\cf2\kerning0\tab .childNodes\tab\tab\'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 NodeList \'e4\'ee\'f7\'e5\'f0\'ed\'e8\'f5 node-\'ee\'e2 = \'fd\'f2\'ee \'e1\'f3\'e4\'e5\'f2 \'ec\'e0\'f1\'f1\'e8\'e2, \'ec\'ee\'e6\'ed\'ee \'e4\'e5\'eb\'e0\'f2\'fc .length\cf0\kerning1\par
+\cf2\kerning0\tab .children\tab\tab\'fd\'f2\'ee \'f1\'e2\'ee\'e9\'f1\'f2\'e2\'ee Node-\'fb \'f1 \'f2\'e8\'ef\'ee\'ec ELEMENT_NODE\cf0\kerning1\par
+\cf2\kerning0\tab .firstChild\tab\tab\'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 object \'ef\'e5\'f0\'e2\'ee\'e3\'ee \'e4\'ee\'f7\'e5\'f0\'ed\'e5\'e3\'ee node-\'e0\cf0\kerning1\par
+\cf2\kerning0\tab .lastChild\tab\tab\'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e5\'e3\'ee \'e4\'ee\'f7\'e5\'f0\'ed\'e8\'e9 node-\'e0\cf0\kerning1\par
+\cf2\kerning0\tab .nextSibling\tab\'f1\'eb\'e5\'e4\'f3\'fe\'f9\'e5\'e3\'ee node-\'e0, \'ed\'e0\'f5\'ee\'e4\'ff\'f9\'e8\'e9\'f1\'ff \'ed\'e0 \'ee\'e4\'ed\'ee\'ec \'f3\'f0\'ee\'e2\'ed\'e5 \'e2\'eb\'ee\'e6\'e5\'ed\'ed\'ee\'f1\'f2\'e8\cf0\kerning1\par
+\cf2\kerning0\tab .previousSibling\tab\'ef\'f0\'e5\'e4\'fb\'e4\'f3\'f9\'e5\'e3\'ee node-\'e0, \'ed\'e0\'f5\'ee\'e4\'ff\'f9\'e8\'e9\'f1\'ff \'ed\'e0 \'ee\'e4\'ed\'ee\'ec \'f3\'f0\'ee\'e2\'ed\'e5 \'e2\'eb\'ee\'e6\'e5\'ed\'ed\'ee\'f1\'f2\'e8\cf0\kerning1\par
+\cf2\kerning0\tab .\highlight5 textContent\tab\'f3\'f1\'f2\'e0\'ed\'e0\'e2\'eb\'e8\'e2\'e0\'e5\'f2 \'e8\'eb\'e8 \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 \'f2\'e5\'ea\'f1\'f2 node-\'fb\cf0\highlight0\kerning1\par
+\cf2\kerning0\par
+\highlight5\'d3 \'e2\'f1\'e5\'f5 Node \'e5\'f1\'f2\'fc Method:\cf0\highlight0\kerning1\par
+\cf2\highlight5\kerning0\tab .appendChild()\cf0\highlight0\kerning1\par
+\cf2\highlight5\kerning0\tab .cloneNode()\cf0\highlight0\kerning1\par
+\cf2\highlight5\kerning0\tab .compareDocumentPosition()\cf0\highlight0\kerning1\par
+\cf2\highlight5\kerning0\tab .getFeature(feature,version)\cf0\highlight0\kerning1\par
+\cf2\highlight5\kerning0\tab .getUserData(key)\cf0\highlight0\kerning1\par
+\cf2\highlight5\kerning0\tab .hasAttributes()\cf0\highlight0\kerning1\par
+\cf2\highlight5\kerning0\tab .hasChildNodes()\cf0\highlight0\kerning1\par
+\cf2\highlight5\kerning0\tab .insertBefore()\cf0\highlight0\kerning1\par
+\cf2\highlight5\kerning0\tab .isDefaultNamespace(URI)\cf0\highlight0\kerning1\par
+\cf2\highlight5\kerning0\tab .isEqualNode()\cf0\highlight0\kerning1\par
+\cf2\highlight5\kerning0\tab .isSameNode()\cf0\highlight0\kerning1\par
+\cf2\highlight5\kerning0\tab .lookupNamespaceURI()\cf0\highlight0\kerning1\par
+\cf2\highlight5\kerning0\tab .lookupPrefix()\cf0\highlight0\kerning1\par
+\cf2\highlight5\kerning0\tab .normalize()\cf0\highlight0\kerning1\par
+\cf2\highlight5\kerning0\tab .removeChild()\cf0\highlight0\kerning1\par
+\cf2\highlight5\kerning0\tab .replaceChild()\cf0\highlight0\kerning1\par
+\cf2\highlight5\kerning0\tab .setUserData(key,data,handler)\cf0\highlight0\kerning1\par
+\cf2\kerning0\par
+\highlight5\b\'c4\'c0\'cb\'c5\'c5 \'d3 \'ca\'c0\'c6\'c4\'ce\'c3\'ce \'c8\'c7 12 \'d2\'c8\'cf\'ce\'c2 NODE \'c2 \'c4\'ce\'c1\'c0\'c2\'ce\'ca \'ca \'c2\'db\'d8\'c5 \'cf\'c5\'d0\'c5\'d7\'c8\'d1\'cb\'c5\'cd\'cd\'db\'cc \'c5\'d1\'d2\'dc \'d1\'c2\'ce\'c8 PROPERTIES \'c8 METHODS\cf0\highlight0\kerning1\b0\par
+\cf2\highlight5\kerning0\tab\'cd\'e0\'ef\'f0\'e8\'ec\'e5\'f0 \'f3 Node c .nodeType = ELEMENT \'e5\'f1\'f2\'fc properties = .children, \'ea\'ee\'f2\'ee\'f0\'e0\'ff \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 \'e4\'ee\'f7\'e5\'f0\'ed\'e8\'e5 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'fb \'f3 \'ea\'ee\'f2\'ee\'f0\'fb\'f5 .nodeType = \'f2\'ee\'e6\'e5 ELEMENT. \'c2 \'ee\'f2\'eb\'e8\'f7\'e8\'e8 \'ee\'f2 properties = .childNodes, \'ea\'ee\'f2\'ee\'f0\'e0\'ff \'e5\'f1\'f2\'fc \'f3 \'e2\'f1\'e5\'f5 nodes \'e8 \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 \'e0\'e1\'f1\'ee\'eb\'fe\'f2\'ed\'ee \'e2\'f1\'e5 \'e4\'ee\'f7\'e5\'f0\'ed\'e8\'e5 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'fb, \'e2\'ea\'eb\'fe\'f7\'e0\'ff #comment \'e8 #text.\cf0\highlight0\kerning1\par
+\cf2\kerning0\par
+\highlight5\'cf\'f0\'e8\'ec\'e5\'f0 Properties \'f3 <HTML> \'f2\'e5\'e3\'e0.\cf0\highlight0\kerning1\par
+\cf2\highlight5\kerning0\'c2 Firefox \'e6\'ec\'b8\'ec F12. \'cf\'f0\'e0\'e2\'ee\'e9 \'ea\'ed\'ee\'ef\'ea\'ee\'e9 \'ed\'e0 tag \'e8 \'e2\'fb\'e1\'f0\'e0\'f2\'fc "\'cf\'ee\'ea\'e0\'e7\'e0\'f2\'fc \'f1\'e2\'ee\'e9\'f1\'f2\'e2\'e0 DOM".\cf0\highlight0\kerning1\par
+\cf2\highlight5\kerning0\'d2\'f3\'f2 \'f3\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff \'e8 firstChild \'e8 lastChild \'e8 onclick \'e8 nextSibling \'85.\cf0\highlight0\kerning1\par
+\pard\nowidctlpar\hyphpar0\sa140\sl240\slmult1\cf6\highlight5\kerning0 1\cf7 :\~\cf8 html\cf0\highlight0\kerning1\par
+\pard\nowidctlpar\hyphpar0\li1414\sl240\slmult1\tx2828\kerning0  1.\tab\cf6\kerning1 accessKey\cf7 :\~\cf9 ""\cf0\par
+\kerning0  2.\tab\cf6\kerning1 assignedSlot\cf7 :\~\cf10 null\cf0\par
+\kerning0  3.\tab\cf6\kerning1 attributeStyleMap\cf7 :\~\cf10 StylePropertyMap\~\cf7\{\cf11 size\cf7 :\~\cf12 0\cf7\}\cf0\par
+\kerning0  4.\tab\cf6\kerning1 attributes\cf7 :\~\cf10 NamedNodeMap\~\cf7\{\cf11 0\cf7 :\~\cf8 lang\cf7 ,\~\cf11 lang\cf7 :\~\cf8 lang\cf7 ,\~\cf11 length\cf7 :\~\cf12 1\cf7\}\cf0\par
+\kerning0  5.\tab\cf6\kerning1 autocapitalize\cf7 :\~\cf9 ""\cf0\par
+\kerning0  6.\tab\cf6\kerning1 baseURI\cf7 :\~\cf9 "\cf13 file:///media/user/\cf0\par
+\kerning0  7.\tab\cf6\kerning1 childElementCount\cf7 :\~\cf12 2\cf0\par
+\kerning0  8.\tab\cf6\kerning1 childNodes\cf7 :\~\cf10 NodeList(3)\~\cf7 [\cf8 head\cf7 ,\~\cf8 text\cf7 ,\~\cf8 body\cf7 ]\cf0\par
+\kerning0  9.\tab\cf6\kerning1 children\cf7 :\~\cf10 HTMLCollection(2)\~\cf7 [\cf8 head\cf7 ,\~\cf8 body\cf7 ]\cf0\par
+\kerning0  10.\tab\cf6\kerning1 classList\cf7 :\~\cf10 DOMTokenList\~\cf7 [\cf11 value\cf7 :\~\cf13 ""\cf7 ]\cf0\par
+\kerning0  11.\tab\cf6\kerning1 className\cf7 :\~\cf9 ""\cf0\par
+\kerning0  12.\tab\cf6\kerning1 clientHeight\cf7 :\~\cf12 894\cf0\par
+\kerning0  13.\tab\cf6\kerning1 clientLeft\cf7 :\~\cf12 0\cf0\par
+\kerning0  14.\tab\cf6\kerning1 clientTop\cf7 :\~\cf12 0\cf0\par
+\kerning0  15.\tab\cf6\kerning1 clientWidth\cf7 :\~\cf12 725\cf0\par
+\kerning0  16.\tab\cf6\kerning1 contentEditable\cf7 :\~\cf9 "\cf13 inherit\cf9 "\cf0\par
+\kerning0  17.\tab\cf6\kerning1 dataset\cf7 :\~\cf10 DOMStringMap\~\cf7\{\}\cf0\par
+\kerning0  18.\tab\cf6\kerning1 dir\cf7 :\~\cf9 ""\cf0\par
+\kerning0  19.\tab\cf6\kerning1 draggable\cf7 :\~\cf14 false\cf0\par
+\kerning0  20.\tab\cf6\kerning1 firstChild\cf7 :\~\cf8 head\cf0\par
+\kerning0  21.\tab\cf6\kerning1 firstElementChild\cf7 :\~\cf8 head\cf0\par
+\kerning0  22.\tab\cf6\kerning1 hidden\cf7 :\~\cf14 false\cf0\par
+\kerning0  23.\tab\cf6\kerning1 id\cf7 :\~\cf9 ""\cf0\par
+\kerning0  24.\tab\cf6\kerning1 innerHTML\cf7 :\~\cf9 "\cf13 <head>\u8629? <meta charset="UTF-8">\u8629? <title>Use\cf0\par
+\kerning0  25.\tab\cf6\kerning1 inputMode\cf7 :\~\cf9 ""\cf0\par
+\kerning0  26.\tab\cf6\kerning1 isConnected\cf7 :\~\cf14 true\cf0\par
+\kerning0  27.\tab\cf6\kerning1 isContentEditable\cf7 :\~\cf14 false\cf0\par
+\kerning0  28.\tab\cf6\kerning1 lang\cf7 :\~\cf9 "\cf13 en\cf9 "\cf0\par
+\kerning0  29.\tab\cf6\kerning1 lastChild\cf7 :\~\cf8 body\cf0\par
+\kerning0  30.\tab\cf6\kerning1 lastElementChild\cf7 :\~\cf8 body\cf0\par
+\kerning0  31.\tab\cf6\kerning1 localName\cf7 :\~\cf9 "\cf13 html\cf9 "\cf0\par
+\kerning0  32.\tab\cf6\kerning1 namespaceURI\cf7 :\~\cf9 "\cf13 http://www.w3.org/1999/xhtml\cf9 "\cf0\par
+\kerning0  33.\tab\cf6\kerning1 nextElementSibling\cf7 :\~\cf10 null\cf0\par
+\kerning0  34.\tab\cf6\kerning1 nextSibling\cf7 :\~\cf10 null\cf0\par
+\kerning0  35.\tab\cf6\kerning1 nodeName\cf7 :\~\cf9 "\cf13 HTML\cf9 "\cf0\par
+\kerning0  36.\tab\cf6\kerning1 nodeType\cf7 :\~\cf12 1\cf0\par
+\kerning0  37.\tab\cf6\kerning1 nodeValue\cf7 :\~\cf10 null\cf0\par
+\kerning0  38.\tab\cf6\kerning1 nonce\cf7 :\~\cf9 ""\cf0\par
+\kerning0  39.\tab\cf6\kerning1 offsetHeight\cf7 :\~\cf12 410\cf0\par
+\kerning0  40.\tab\cf6\kerning1 offsetLeft\cf7 :\~\cf12 0\cf0\par
+\kerning0  41.\tab\cf6\kerning1 offsetParent\cf7 :\~\cf10 null\cf0\par
+\kerning0  42.\tab\cf6\kerning1 offsetTop\cf7 :\~\cf12 0\cf0\par
+\kerning0  43.\tab\cf6\kerning1 offsetWidth\cf7 :\~\cf12 725\cf0\par
+\kerning0  44.\tab\cf6\kerning1 onabort\cf7 :\~\cf10 null\cf0\par
+\kerning0  45.\tab\cf6\kerning1 onauxclick\cf7 :\~\cf10 null\cf0\par
+\kerning0  46.\tab\cf6\kerning1 onbeforecopy\cf7 :\~\cf10 null\cf0\par
+\kerning0  47.\tab\cf6\kerning1 onbeforecut\cf7 :\~\cf10 null\cf0\par
+\pard\nowidctlpar\hyphpar0\li1414\sa140\sl240\slmult1\tx2828\kerning0  48.\tab\cf6\kerning1 onbeforepaste\cf7 :\~\cf10 null\cf0\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf2\kerning0\par
+\par
+<div id="div"> First </div> \cf0\kerning1\par
+\cf2\kerning0 document.getElementById("div").firstChild.nodeValue - \'f0\'e5\'e7\'f3\'eb\'fc\'f2\'e0\'f2 \'f2\'e5\'ea\'f1\'f2\'ee\'e2\'ee\'e5 \'ef\'ee\'eb\'e5 \'e2\'ed\'f3\'f2\'f0\'e8 id="div"\cf0\kerning1\par
+\cf2\kerning0 document.getElementById('demo').innerHTML \'f2\'f3\'f2 getElementById() - \'fd\'f2\'ee \'ec\'e5\'f2\'ee\'e4, \'e0 innerHTML - \'fd\'f2\'ee \'f1\'e2\'ee\'e9\'f1\'f2\'e2\'ee.\cf0\kerning1\par
+\cf2\kerning0\par
+\'cd\'e0\'e9\'f2\'e8 \'fd\'eb\'e5\'ec\'e5\'ed\'f2 \'e2 HTML\cf0\kerning1\par
+\cf2\kerning0\tab document.getElementById("id")\tab\tab\tab\tab\'e5\'f1\'eb\'e8 \'e2\'fb\'e1\'e8\'f0\'e0\'e5\'ec \'ef\'ee Id, \'f2\'ee \'ef\'ee\'eb\'f3\'f7\'e8\'ec \'ee\'e4\'e8\'ed \'fd\'eb\'e5\'ec\'e5\'ed\'f2\cf0\kerning1\par
+\cf2\kerning0\tab document.getElementsByTagName("tag_name")\tab\tab\'e5\'f1\'eb\'e8 \'e2\'fb\'e1\'e8\'f0\'e0\'e5\'ec \'ef\'ee Tag, \'f2\'ee \'ef\'ee\'eb\'f3\'f7\'e8\'ec \'ec\'e0\'f1\'f1\'e8\'e2\cf0\kerning1\par
+\cf2\kerning0\tab document.getElementsByClassName("class_name")\tab\'e5\'f1\'eb\'e8 \'e2\'fb\'e1\'e8\'f0\'e0\'e5\'ec \'ef\'ee Class, \'f2\'ee \'ef\'ee\'eb\'f3\'f7\'e8\'ec \'ec\'e0\'f1\'f1\'e8\'e2\cf0\kerning1\par
+\cf2\kerning0\tab document.querySelectorAll("div#id12.class")\tab\'f1\'e8\'e3\'ed\'e0\'f2\'f3\'f0\'e0 \'e2\'fb\'e1\'ee\'f0\'ea\'e0 \'f2\'e0\'ea\'e0\'ff \'e6\'e5 \'ea\'e0\'ea \'e2 CSS\cf0\kerning1\par
+\cf2\kerning0\par
+\'c8\'e7\'ec\'e5\'ed\'e8\'f2\'fc \'ed\'e0\'e9\'e4\'e5\'ed\'ed\'fb\'e9 \'fd\'eb\'e5\'ec\'e5\'ed\'f2 HTML:\cf0\kerning1\par
+\cf2\kerning0\tab .innerHTML\tab\tab\'e8\'e7\'ec\'e5\'ed\'e8\'f2\'fc content \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'e0 document.getElementByTagName("p").innerHTML="qwe" \'c1\'fb\'eb\'ee <p>asd</p>, \'f1\'f2\'e0\'ed\'e5\'f2 <p>qwe</p>\cf0\kerning1\par
+\cf2\kerning0\tab .\i attribute\i0\tab\tab\'e8\'e7\'ec\'e5\'ed\'e8\'f2\'fc \'e0\'f2\'f0\'e8\'e1\'f3\'f2 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'e0 document.getElementByTagName("p").title="qwe" \'c1\'fb\'eb\'ee <p title="asd"></p>, \'f1\'f2\'e0\'ed\'e5\'f2 <p title="qwe"></p>\cf0\kerning1\par
+\cf2\kerning0\tab .style.\i property\i0\tab\'e8\'e7\'ec\'e5\'ed\'e8\'f2\'fc \'ee\'e4\'ed\'ee \'e8\'e7 \'f1\'e2\'ee\'e9\'f1\'f2\'e2 \'f1\'f2\'e8\'eb\'ff \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'e0 document.getElementByTagName("p").style.color="red"\cf0\kerning1\par
+\cf2\kerning0\tab .setAttribute(\i attribute\i0 , \i value\i0 )\tab\'e8\'e7\'ec\'e5\'ed\'e8\'f2\'fc \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 \'e0\'f2\'f0\'e8\'e1\'f3\'f2\'e0 \'e2 HTML \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'e5\cf0\kerning1\par
+\cf2\kerning0\par
+\i\'cf\'f0\'e8\'ec\'e5\'f0 \'b91\i0 .\cf0\kerning1\par
+\cf2\kerning0 <div id="div"> Div Element </div>\cf0\kerning1\par
+\cf2\kerning0 <p id="demo"></p>\cf0\kerning1\par
+\cf2\kerning0\par
+var myDivElement = document.getElementById("div");\tab\tab\tab\tab\tab\tab\'e5\'f1\'eb\'e8 \'e2\'fb\'e1\'e8\'f0\'e0\'e5\'ec \'ef\'ee Id, \'f2\'ee \'ef\'ee\'eb\'f3\'f7\'e8\'ec \'ee\'e4\'e8\'ed \'fd\'eb\'e5\'ec\'e5\'ed\'f2\cf0\kerning1\par
+\cf2\kerning0 document.getElementById("demo").innerHTML = "Here put" + myDivElement.innerHTML;\tab\'e2\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'ec \'e5\'e3\'ee \'e2 <p> \'fd\'eb\'e5\'ec\'e5\'ed\'f2\cf0\kerning1\par
+\cf2\kerning0\par
+Div Element\cf0\kerning1\par
+\cf2\kerning0 Here put Div Element\cf0\kerning1\par
+\cf2\kerning0\par
+\i\'cf\'f0\'e8\'ec\'e5\'f0 \'b92\i0 .\cf0\kerning1\par
+\cf2\kerning0 <div id="div"> Div Element </div>\cf0\kerning1\par
+\cf2\kerning0 <p id="demo"></p>\cf0\kerning1\par
+\cf2\kerning0 <button onclick="myFunction()">Try it</button>\tab\tab\'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5, \'f7\'f2\'ee \'e8 \'e2 \'cf\'f0\'e8\'ec\'e5\'f0\'e5 1, \'f2\'ee\'eb\'fc\'ea\'ee \'f3\'e6\'e5 funtion + button onclick\cf0\kerning1\par
+\cf2\kerning0\par
+function myFunction()\{\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\li720\sl240\slmult1\cf2\kerning0 var myDivElement = document.getElementById("div");\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf2\kerning0\tab document.getElementById("demo").innerHTML = "Here put" + myDivElement.innerHTML;\}\cf0\kerning1\par
+\cf2\kerning0\par
+\i\'cf\'f0\'e8\'ec\'e5\'f0 \'b93\i0 .\cf0\kerning1\par
+\cf2\kerning0 <div id="div"> Div Element </div>\cf0\kerning1\par
+\cf2\kerning0 <p id="demo"></p>\cf0\kerning1\par
+\cf2\kerning0 <button id="but">Try it</button>\tab\tab\'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5, \'f7\'f2\'ee \'e8 \'e2 \'cf\'f0\'e8\'ec\'e5\'f0\'e5 2, \'f2\'ee\'eb\'fc\'ea\'ee \b\'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 \'e0\'f2\'f0\'e8\'e1\'f3\'f2\'e0 onclick \'e7\'e0\'e4\'e0\'b8\'ec \'e2 JS\cf0\kerning1\b0\par
+\cf2\kerning0\par
+document.getElementById("but").onclick=myFunction;\cf0\kerning1\par
+\cf2\kerning0 function myFunction()\{\cf0\kerning1\par
+\cf2\kerning0\tab var myDivElement = document.getElementById("div");\cf0\kerning1\par
+\cf2\kerning0\tab document.getElementById("demo").innerHTML = "Here put" + myDivElement.innerHTML;\}\cf0\kerning1\par
+\cf2\kerning0\par
+\par
+\i\'cf\'f0\'e8\'ec\'e5\'f0 \'b94\i0 .\cf0\kerning1\par
+\cf2\kerning0 <div> Zero Div Element </div>\cf0\kerning1\par
+\cf2\kerning0 <div> First Div Element </div>\cf0\kerning1\par
+\cf2\kerning0 <p id="demo"></p>\cf0\kerning1\par
+\cf2\kerning0\par
+var myDivElement = document.getElementsByTagName("div");\tab\tab\tab\tab\tab\'e2\'fb\'e1\'e8\'f0\'e0\'e5\'ec \'ef\'ee \b TagName, \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'ec \'ec\'e0\'f1\'f1\'e8\'e2\cf0\kerning1\b0\par
+\cf2\kerning0 document.getElementById("demo").innerHTML = "Here put" + myDivElement[1].innerHTML;\cf0\kerning1\par
+\cf2\kerning0\par
+Zero Div Element\cf0\kerning1\par
+\cf2\kerning0 First Div Element\cf0\kerning1\par
+\cf2\kerning0 Here put First Div Element\cf0\kerning1\par
+\cf2\kerning0\par
+\i\'cf\'f0\'e8\'ec\'e5\'f0 \'b95\i0 .\cf0\kerning1\par
+\cf2\kerning0 <div id="div">\cf0\kerning1\par
+\cf2\kerning0\tab <p id="p"> First P Element </p>\cf0\kerning1\par
+\cf2\kerning0 </div>\cf0\kerning1\par
+\cf2\kerning0 <p id="demo"></p>\cf0\kerning1\par
+\cf2\kerning0\par
+var x = document.getElementById("div");\cf0\kerning1\par
+\cf2\kerning0 var y = x.getElementById("p");\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\b\'f0\'e0\'e1\'ee\'f2\'e0 \'f1 \'e2\'eb\'ee\'e6\'e5\'ed\'ed\'ee\'f1\'f2\'ff\'ec\'e8\cf0\kerning1\b0\par
+\cf2\kerning0 document.getElementById("demo").innerHTML = "Here put" + myDivElement[1].innerHTML;\cf0\kerning1\par
+\cf2\par
+\kerning0\i\'cf\'f0\'e8\'ec\'e5\'f0 \'b96\i0 .\cf0\kerning1\par
+\cf2\kerning0 <div id="div">\cf0\kerning1\par
+\cf2\kerning0   <p id="p1">This is a paragraph.</p>\cf0\kerning1\par
+\cf2\kerning0   <p id="p2">This is another paragraph.</p>\cf0\kerning1\par
+\cf2\kerning0 </div>\cf0\kerning1\par
+\cf2\par
+\kerning0 <script>\cf0\kerning1\par
+\cf2\kerning0 var para = document.createElement("p");\cf0\kerning1\par
+\cf2\kerning0 var node = document.createTextNode("This is new.");\cf0\kerning1\par
+\cf2\kerning0 para.appendChild(node);\cf0\kerning1\par
+\cf2\par
+\kerning0 var element = document.getElementById("div");\cf0\kerning1\par
+\cf2\kerning0 var child = document.getElementById("p2");\cf0\kerning1\par
+\cf2\kerning0 element.appendChild(para);\tab\tab\tab\tab // \'c4\'ee\'e1\'e0\'e2\'e8\'f2\'fc \'ed\'ee\'e2\'fb\'e9 HTML \'fd\'eb\'e5\'ec\'e5\'ed\'f2 \'e2\'ea\'ee\'ed\'e5\'f6 div\cf0\kerning1\par
+\cf2\kerning0 element.insertBefore(para, child);\tab\tab\tab // \'c4\'ee\'e1\'e0\'e2\'e8\'f2\'fc \'ed\'ee\'e2\'fb\'e9 HTML \'fd\'eb\'e5\'ec\'e5\'ed\'f2 \'ec\'e5\'e6\'e4\'f3 \'f01 \'e8 \'f02\cf0\kerning1\par
+\cf2\kerning0 </script>\cf0\kerning1\par
+\cf2\par
+\kerning0\i\'cf\'f0\'e8\'ec\'e5\'f0 \'b97\i0 .\cf0\kerning1\par
+\cf2\kerning0 function f()\{\cf0\kerning1\par
+\cf2\kerning0\tab alert(\'ab\'cf\'f0\'e8\'e2\'e5\'f2\'bb);\};\cf0\kerning1\par
+\cf2\kerning0 document.getElementById("id").\b addEventListener\b0 ("mouseover",f);\tab //\'ef\'f0\'e8 \'ed\'e0\'e2\'e5\'e4\'e5\'ed\'e8\'e8 \'ec\'fb\'f8\'ea\'e8 \'ed\'e0 \'fd\'eb\'e5\'ec\'e5\'ed\'f2 \'e2\'fb\'f1\'ea\'ee\'f7\'e8\'f2 alert\cf0\kerning1\par
+\cf2\kerning0 document.getElementById("id").addEventListener("mouseover",g);\tab //\'e2\'e5\'f9\'e0\'e5\'ec \'e2\'f2\'ee\'f0\'f3\'fe \'f4\'f3\'ed\'ea\'f6\'e8\'fe \'ee\'e1\'f0\'e0\'e1\'ee\'f2\'f7\'e8\'ea\cf0\kerning1\par
+\cf2\kerning0 document.getElementById("id").addEventListener("click",f);\tab\tab //\'ec\'ee\'e6\'ed\'ee \'e2\'e5\'f8\'e0\'f2\'fc \'ee\'e4\'ed\'ee\'e2\'f0\'e5\'ec\'e5\'ed\'ed\'ee \'ed\'e0 \'ee\'e4\'e8\'ed \'fd\'eb\'e5\'ec\'e5\'ed\'f2 \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee EventListener-\'ee\'e2\cf0\kerning1\par
+\cf2\kerning0 document.getElementById("id").\b remove\b0 EventListener("click",f);\cf0\kerning1\par
+\cf2\par
+\par
+\par
+\par
+\par
+\kerning0\b BOM\b0  (Browser Object Model)\cf0\kerning1\par
+\cf2\par
+\kerning0 window.location.protocol\tab\'e2\'fb\'e4\'e0\'f1\'f2 \'abhttp:\'bb \'e8\'eb\'e8 \'abhttps:\'bb \'e8\'eb\'e8 \'abfile:\'bb\cf0\kerning1\par
+\cf2\kerning0 window.location.href\tab\tab current page URL\cf0\kerning1\par
+\cf2\kerning0 window.screen.height\tab\tab\'f0\'e0\'e7\'ec\'e5\'f0\'fb \'ee\'ea\'ee\'ed \'e1\'f0\'e0\'f3\'e7\'e5\'f0\'e0\cf0\kerning1\par
+\cf2\kerning0 window.screen.width\cf0\kerning1\par
+\cf2\kerning0 window.navigator\tab\tab\tab\'e8\'ed\'f4\'e0 \'ee \'f1\'e0\'ec\'ee\'ec \'e1\'f0\'e0\'f3\'e7\'e5\'f0\'e5 (\'ed\'e0\'e7\'e2\'e0\'ed\'e8\'e5 \'f2\'e0\'ec \'e8 \'f2.\~\'ef.)\cf0\kerning1\par
+\cf2\kerning0 window.history.\tab\tab\tab\'e3\'f3\'eb\'ff\'f2\'fc \'ef\'ee \'e8\'f1\'f2\'ee\'f0\'e8\'e8 \'e2 \'e1\'f0\'e0\'f3\'e7\'e5\'f0\'e0\cf0\kerning1\par
+}
+ 

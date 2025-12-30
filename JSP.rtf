@@ -1,0 +1,301 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1049{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}{\f1\fnil\fcharset0 Courier New;}}
+{\colortbl ;\red0\green0\blue0;\red127\green0\blue85;\red0\green0\blue255;\red255\green0\blue0;}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf1\kerning1\f0\fs22\'d1\'e0\'e9\'f2 \'f1\'f2\'e0\'f2\'e8\'f7\'e5\'f1\'ea\'e8\'e9. \'d5\'ee\'f7\'e5\'f2\'f1\'ff \'e4\'e8\'ed\'e0\'ec\'e8\'ea\'e8 \u8594? \cf0\par
+\cf1\par
+\ul CGI\ulnone  (Common Gateway Interface)\cf0\par
+\cf1\'c2\'f1\'b8 \'f7\'f2\'ee \'ef\'f0\'e8\'ed\'e8\'ec\'e0\'e5\'f2 \'f1\'e0\'e9\'f2 \'ee\'f2\'ef\'f0\'e0\'e2\'e8\'f2\'fc \'ed\'e0 stdin, \'ea \'ef\'f0\'e8\'ec\'e5\'f0\'f3 \'ef\'f0\'e8\'eb\'ee\'e6\'e5\'ed\'e8\'ff \'ed\'e0\'ef\'e8\'f1\'e0\'ed\'ed\'ee\'e3\'ee \'ed\'e0 Python, \'e0 stdout \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \'ee\'e1\'f0\'e0\'f2\'ed\'ee \'ea\'eb\'e8\'e5\'ed\'f2\'f3.\cf0\par
+\cf1\'d0\'e0\'e7\'e3\'ee\'e2\'ee\'f0 \'ef\'f0\'ee modules. \'d4\'e8\'f7\'e0 \'f1\'e5\'f0\'e2\'e5\'f0\'e0 Apache \endash  \'e2\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'ec \'ec\'ee\'e4\'f3\'eb\'fc \'e4\'eb\'ff PHP \'e8 \'f1\'e5\'f0\'e2\'e5\'f0 \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2 \'f5\'ee\'f0\'ee\'f8\'ee \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc \'f1 \'ea\'ee\'e4\'ee\'ec \'ee\'f2 PHP.\cf0\par
+\cf1\par
+\ul Servlet\cf0\ulnone\par
+\cf1 Servlet \endash  \'fd\'f2\'ee Java \'ea\'ee\'e4, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'e3\'e5\'ed\'e5\'f0\'e8\'f2 HTML \'f1\'f2\'f0\'e0\'ed\'e8\'f7\'ea\'f3 - write(\ldblquote <html>\rdblquote )\cf0\par
+\cf1 JSP - HTML \'f1\'f2\'f0\'e0\'ed\'e8\'f7\'ea\'e0 \'f1\'ee \'e2\'f1\'f2\'e0\'e2\'ea\'e0\'ec\'e8 Java \'ea\'ee\'e4\'e0. Java \'ee\'f2\'f0\'e0\'e1\'e0\'f2\'fb\'e2\'e0\'e5\'f2, \'e3\'e5\'ed\'e5\'f0\'e8\'f2 \'f1\'f2\'e0\'f2\'e8\'f7\'e5\'f1\'ea\'f3\'fe \'f1\'f2\'f0\'e0\'ed\'e8\'f6\'f3, \'ee\'f2\'e4\'e0\'b8\'f2 \'ea\'eb\'e8\'e5\'ed\'f2\'f3.\cf0\par
+\cf1\par
+\cf2\b class\cf1\b0  \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \cf2\b extends\cf1\b0  \b HttpServlet\b0 .\cf0\par
+\cf1\par
+\'d1\'e5\'f0\'e2\'e5\'f0 \'ef\'f0\'e8\'eb\'ee\'e6\'e5\'ed\'e8\'e9 Apache Tomcat. \'c2 \'ed\'b8\'ec \'e5\'f1\'f2\'fc \'ef\'e0\'ef\'ea\'e0 Deploy. \'c2 \'ed\'e5\'b8 \'ea\'eb\'e0\'e4\'b8\'ec .war \'e2\'f1\'b8 \'ee\'f1\'f2\'e0\'eb\'fc\'ed\'ee\'e5 \'e4\'e5\'eb\'e0\'e5\'f2 \'f1\'e0\'ec \'f1\'e5\'f0\'e2\'e5\'f0. WAR \endash  Web Archive \endash  .html, .xml, .jpg \endash  \'e0\'f0\'f5\'e8\'e2, \'e3\'ee\'f2\'ee\'e2\'fb\'e9 \'e4\'eb\'ff \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'ea\'e8 \'ed\'e0 \'f1\'e5\'f0\'e2\'e5\'f0 \'ef\'f0\'e8\'eb\'ee\'e6\'e5\'ed\'e8\'e9 \'e0\'eb\'ff Tomcat \'e8\'eb\'e8 JBOS. \'c2 \'e0\'f0\'f5\'e8\'e2\'e5 \'eb\'e5\'e6\'e8\'f2 WEB-INF/web.xml \endash  \'e7\'e0\'e4\'e0\'f7\'e0 web.xml \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'fb\'e9 URL \'f1\'e2\'ff\'e7\'e0\'f2\'fc \'f1 \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'fb\'ec \'f1\'e5\'f0\'e2\'eb\'e5\'f2\'ee\'ec (WEB-INF/classes/asd.class).\cf0\par
+\cf1\par
+\cf2\b class\cf1\b0  HttpServlet \'ec\'e5\'f2\'ee\'e4\'fb. \'cf\'ee-default \'fd\'f2\'e8 \'ec\'e5\'f2\'ee\'e4\'fb \'ee\'f2\'e1\'f0\'e0\'f1\'fb\'e2\'e0\'fe\'f2 exeption NotSupported. \'cc\'e5\'f2\'ee\'e4\'fb \'ed\'e8\'f7\'e5\'e3\'ee \'ed\'e5 \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'fe\'f2, \'f2\'ee\'eb\'fc\'ea\'ee \'e8\'e7\'ec\'e5\'ed\'ff\'fe\'f2 \'ef\'e5\'f0\'e5\'e4\'e0\'ed\'ed\'fb\'e9 \'ef\'ee \'f1\'f1\'fb\'eb\'ea\'e5 \'ee\'e1\'fa\'e5\'ea\'f2 HttpResponse.\cf0\par
+\cf1\tab service (HttpRequest, HttpResponse) \endash  \'fd\'f2\'ee\'f2 \'ec\'e5\'f2\'ee\'e4 \'e2\'fb\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff \'ea\'e0\'e6\'e4\'fb\'e9 \'f0\'e0\'e7, \'ea\'ee\'e3\'e4\'e0 \'ea\'eb\'e8\'e5\'ed\'f2 \'ee\'e1\'f0\'e0\'f9\'e0\'e5\'f2\'f1\'ff \'ea \'f1\'e5\'f0\'e2\'eb\'e5\'f2\'f3. \'dd\'f2\'ee\'f2 \'ec\'e5\'f2\'ee\'e4 \'f3\'e6\'e5 \'f0\'e5\'e0\'eb\'e8\'e7\'ee\'e2\'e0\'ed \'e8 \'ef\'ee\'f1\'f2\'f0\'ee\'e5\'ed \'ef\'f0\'e8\'ec\'e5\'f0\'ed\'ee \'f2\'e0\'ea: if HttpRequest = GET-doGet, if HttpRequest = POST-doPost.\cf0\par
+\cf1\tab doGet (HttpRequest, HttpResponse)\cf0\par
+\cf1\tab doPost (HttpRequest, HttpResponse)\cf0\par
+\par
+\cf2\b void\cf1\b0  doGet(HttpServletRequest request, HttpServletResponse response) \cf2\b throws\cf1\b0  ServletException IOException\{\cf0\par
+\cf1\tab request.getRequestDispatcher("/jsp/result.jsp").forward(request, response);\tab\tab\tab\tab\tab\'ee\'f2\'e2\'e5\'f7\'e0\'e5\'ec .jsp \'f1\'f2\'f0\'e0\'ed\'e8\'f7\'ea\'ee\'e9 \'ed\'e0 GET \'e7\'e0\'ef\'f0\'ee\'f1\cf0\par
+\cf1\}\cf0\par
+\par
+\cf2\b interface \cf1\b0 ServletContext \endash  \'fd\'ea\'e7\'e5\'ec\'ef\'eb\'ff\'f0, \'e0\'f1\'f1\'ee\'f6\'e8\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'fb\'e9 \'f1 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'ee\'ec \'f1\'e5\'f0\'e2\'eb\'e5\'f2\'ee\'e2 (Tomcat). \'d5\'ee\'f2\'e8\'ec \'f3\'e7\'ed\'e0\'f2\'fc \'e2\'e5\'f0\'f1\'e8\'fe Tomcat \endash  \i ServletContext\i0 .getServerInfo()\cf0\par
+\cf2\b interface \cf1\b0 ServletConfig \endash  \'ed\'e0 Tomcat \'eb\'e5\'e6\'e8\'f2 \'ea\'ee\'ed\'f4\'e8\'e3 \'f1\'e5\'f0\'e2\'eb\'e5\'f2\'e0. \'d7\'e5\'f0\'e5\'e7 \'fd\'f2\'ee\'f2 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1 \'ec\'ee\'e6\'ed\'ee \'ef\'ee\'eb\'f3\'f7\'e8\'f2\'fc \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'fb \'fd\'f2\'ee\'e3\'ee \'ea\'ee\'ed\'f4\'e8\'e3\'e0.\cf0\par
+\par
+\cf2\b interface \cf1 HttpServletRequest\b0  \cf2\b implements \cf1\b0 ServletRequest\cf0\par
+\cf1\tab String getParameter(String \ldblquote name\rdblquote ) \endash  \'ef\'f0\'e8 \'e7\'e0\'ef\'f0\'ee\'f1\'e5 \cf0{\field{\*\fldinst{HYPERLINK "http://nvision.ru/servlet_an?a=2" }}{\fldrslt{\cf3\ul http://nvision.ru/app?name=}}}\cf0\ulnone\f0\fs22 Vasya\cf1  \'fd\'f2\'ee\'f2 \'ec\'e5\'f2\'ee\'e4 \'e2\'fb\'e4\'e0\'f1\'f2 Vasya\cf0\par
+\cf1\tab String getMethod() - \'ea\'e0\'ea\'e8\'ec \'ec\'e5\'f2\'ee\'e4\'ee\'ec \'f1\'e4\'e5\'eb\'e0\'ed \'e7\'e0\'ef\'f0\'ee\'f1 GET/POST\cf0\par
+\cf1\tab String getQueryString() - \'e8\'e7\'e2\'eb\'e5\'f7\'e5\'ed\'e8\'e5 \'f1\'f2\'f0\'ee\'ea\'e8 HTTP \'e7\'e0\'ef\'f0\'ee\'f1\'e0\cf0\par
+\cf1\tab ServletInputStream getInputStream() - \'ef\'ee\'eb\'f3\'f7\'e5\'ed\'e8\'e5 \'f1\'f1\'fb\'eb\'ea\'e8 \'ed\'e0 \'ef\'ee\'f2\'ee\'ea, \'e0\'f1\'f1\'ee\'f6\'e8\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'fb\'e9 \'f1 \'f1\'ee\'e4\'e5\'f0\'e6\'e8\'ec\'fb\'ec \'ef\'ee\'eb\'f3\'f7\'e5\'ed\'ed\'ee\'e3\'ee \'e7\'e0\'ef\'f0\'ee\'f1\'e0\cf0\par
+\cf1\par
+\b PrintWriter\b0  out= response.getWriter() - \'e8\'e7\'e2\'eb\'e5\'ea\'e0\'e5\'ec \'f1\'f1\'fb\'eb\'ea\'f3 \'ed\'e0 \'ef\'ee\'f2\'ee\'ea PrintWriter \'e4\'eb\'ff \'ef\'ee\'f1\'eb\'e5\'e4\'f3\'fe\'f9\'e5\'e9 \'ef\'e5\'f0\'e5\'e4\'e0\'f7\'e8 \'e2 \'ed\'e5\'e3\'ee \'f1\'e8\'ec\'e2\'ee\'eb\'fc\'ed\'ee\'e9 \'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'e8\cf0\par
+\cf1 out.println(request.getMethod())\cf0\par
+\cf1 out.println(request.getRequestURL())\cf0\par
+\cf1 out.println(request.getProtocol())\tab\tab\tab\tab  \'ca\'eb\'e0\'f1\'f1\'fb \'e4\'eb\'ff \'f1\'e5\'f0\'e2\'eb\'e5\'f2\'ee\'e2 \'f1\'f2\'f0.472 Java \'cc\'e5\'f2\'ee\'e4\'fb \'cf\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'ff\cf0\par
+\cf1 out.println(request.getRemoteAddr())\cf0\par
+\cf1 out.println(request.getContextPath())\cf0\par
+\cf1 out.println(request.getScheme())\cf0\par
+\cf1\par
+\'e2\'fb\'e4\'e0\'f1\'f2\cf0\par
+\cf1\par
+GET\cf0\par
+{\field{\*\fldinst{HYPERLINK "http://localhost:8080/FirstProject/FirstServlet"}}{\fldrslt{\ul\cf3 http://localhost:8080/FirstProject/FirstServlet}}}\f0\fs22\par
+\cf1 HTTP/1.1\cf0\par
+\cf1 192.168.1.1\cf0\par
+\cf1 /FirstProject\cf0\par
+\cf1 http\cf0\par
+\cf1\par
+\cf2\b interface \cf1 HttpServletResponse\b0  \cf2\b implements \cf1\b0 ServletResponse\cf0\par
+\cf1\tab void sendError(int \ldblquote\'ea\'ee\'e4 \'ee\'f8\'e8\'e1\'ea\'e8\rdblquote , String \ldblquote\'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'e5\rdblquote ) - \'ee\'f2\'ef\'f0\'e0\'e2\'e8\'f2\'fc \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'e5 \'ee\'e1 \'ee\'f8\'e8\'e1\'ea\'e5\cf0\par
+\cf1\tab void sendRedirect(String \ldblquote\'ea\'f3\'e4\'e0 \'e4\'e5\'eb\'e0\'e5\'ec \'f0\'e5\'e4\'e8\'f0\'e5\'ea\'f2\rdblquote ) - \'ef\'e5\'f0\'e5\'f5\'ee\'e4 \'ef\'ee \'e0\'e4\'f0\'e5\'f1\'f3\cf0\par
+\cf1\par
+\par
+\ul JSP \endash  Java Server Pages\cf0\ulnone\par
+\cf1 Servlet \endash  \'fd\'f2\'ee Java \'ea\'ee\'e4, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'e3\'e5\'ed\'e5\'f0\'e8\'f2 HTML \'f1\'f2\'f0\'e0\'ed\'e8\'f7\'ea\'f3.\cf0\par
+\cf1 JSP - HTML \'f1\'f2\'f0\'e0\'ed\'e8\'f7\'ea\'e0 \'f1\'ee \'e2\'f1\'f2\'e0\'e2\'ea\'e0\'ec\'e8 Java \'ea\'ee\'e4\'e0. Java \'ee\'f2\'f0\'e0\'e1\'e0\'f2\'fb\'e2\'e0\'e5\'f2, \'e3\'e5\'ed\'e5\'f0\'e8\'f2 \'f1\'f2\'e0\'f2\'e8\'f7\'e5\'f1\'ea\'f3\'fe \'f1\'f2\'f0\'e0\'ed\'e8\'f6\'f3, \'ee\'f2\'e4\'e0\'b8\'f2 \'ea\'eb\'e8\'e5\'ed\'f2\'f3.\cf0\par
+\cf1 Microsoft \'f1\'ee\'e7\'e4\'e0\'eb\'e0 ASP (Active Server Pages) \endash  \'ee\'f2\'e2\'e5\'f2 Java \u8594? JSP\cf0\par
+\cf1\'d1\'f3\'f2\'fc:\cf0\par
+\cf1\'c4\'e8\'e7\'e0\'e9\'ed\'e5\'f0 \'f1\'ee\'e7\'e4\'e0\'b8\'f2 html \'f4\'e0\'e9\'eb. \'cc\'fb \'ef\'e5\'f0\'e5\'e8\'ec\'e5\'ed\'ee\'e2\'fb\'e2\'e0\'e5\'ec \'e2 .jsp \'c8 \'e2\'ed\'f3\'f2\'f0\'e8 \'fd\'f2\'ee\'e3\'ee \'f4\'e0\'e9\'eb\'e0 \'e2\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'ec java code \endash  \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'ed\'e0\'e7\'e2\'e0\'eb\'e8 \ldblquote Scriptlet\rdblquote .\cf0\par
+\cf1\par
+\b <% code %>\b0\tab - \'fd\'f2\'ee\'f2 \'ea\'ee\'e4 \'f1\'f2\'e0\'ed\'ee\'e2\'e8\'f2\'f1\'ff \'ec\'e5\'f2\'ee\'e4\'ee\'ec service. \'c8\cf0\'eb\'e8 \'e0\'ed\'e0\'eb\'ee\'e3 \'e2 XML \'f1\'f2\'e0\'ed\'e4\'e0\'f0\'f2\'e5.\par
+\tab <jsp:scriptlet>\par
+\tab\tab out.println(\ldblquote\'d2\'e2\'ee\'e9 IP: \ldblquote +request.getRemoteAddr());\par
+\tab </jsp:scriptlet>\par
+\par
+\b <%! declaration %>\b0  - \'f2\'f3\'f2 \'ee\'e1\'fa\'ff\'e2\'eb\'ff\'e5\'ec \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5 \'e8 \'ec\'e5\'f2\'ee\'e4\'fb, \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'ec\'ee\'e6\'e5\'ec \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'ef\'ee\'e7\'e4\'ed\'e5\'e5. \'c8\'eb\'e8\par
+\tab <jsp:declaration>\par
+\tab\tab int i=10; Circle a = new Circle();\par
+\tab </jsp:declaration>\par
+\par
+\b <%= expression %>\b0  - \'e7\'e4\'e5\'f1\'fc \'ef\'e8\'f8\'e5\'ec \'ec\'e5\'f2\'ee\'e4\'fb, \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'fe\'f2 String \'e8 \'fd\'f2\'ee\'f2 String \'ed\'e0\'ef\'f0\'ff\'ec\'f3\'fe \'e2\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2\'f1\'ff \'e2 HTML \'e4\'ee\'ea\'f3\'ec\'e5\'ed\'f2.\par
+\tab <jsp:expression>\par
+\tab\tab (new java.util.Date()).toLocaleString()\par
+\tab </jsp:expression>\par
+\par
+\b JSP \'e4\'e8\'f0\'e5\'ea\'f2\'e8\'e2\'fb\b0 . \'ce\'e1\'f9\'e8\'e9 \'e2\'e8\'e4 <%@ \'e4\'e8\'f0\'e5\'ea\'f2\'e8\'e2\'e0 \'e0\'f2\'f0\'e8\'e1\'f3\'f2="\'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5" %>\par
+<%@ page ... %> - \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'e5\'f2 scripting language, error page \'e8\'eb\'e8 buffering requirements\par
+\tab <jsp:directive.page attribute=value/>\par
+\tab\'c0\'f2\'f0\'e8\'e1\'f3\'f2\'fb: {\field{\*\fldinst{HYPERLINK "https://www.tutorialspoint.com/jsp/page_directive.htm"}}{\fldrslt{\ul\cf3 https://www.tutorialspoint.com/jsp/page_directive.htm}}}\f0\fs22  \par
+\tab buffer\tab\'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'e5\'f2 buffer \'ec\'ee\'e4\'e5\'eb\'fc \'e4\'eb\'ff output stream, \'f2\'e8\'ef\'e0 buffer="none" \'e8\'eb\'e8 buffer="8kb"\par
+\tab autoFlush\tab\'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'e5\'f2 \'ea\'ee\'e3\'e4\'e0 output buffer \'e4\'ee\'eb\'e6\'e5\'ed flush \'e0\'e2\'f2\'ee\'ec\'e0\'f2\'e8\'f7\'e5\'f1\'ea\'e8, \'f2\'e8\'ef\'e0 autoFlush="false" \'e8\'eb\'e8 autoFlush="true"\par
+\tab contentType\tab\'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'e5\'ec \'ea\'ee\'e4\'e8\'f0\'ee\'e2\'ea\'f3 \'f2\'e8\'ef\'e0: "text/html;charset=UTF-8"\par
+\tab errorPage\tab\'ef\'e8\'f8\'e5\'ec URL \'e4\'f0\'f3\'e3\'ee\'e9 JSP \'e2 \'f1\'eb\'f3\'f7\'e0\'e5 \'e2\'ee\'e7\'ed\'e8\'ea\'ed\'ee\'e2\'e5\'ed\'e8\'ff unchecked runtime exception, \'f2\'e8\'ef\'e0 errorPage = "MyErrorPage.jsp"\par
+\tab isErrorPage\tab\'e3\'ee\'e2\'ee\'f0\'e8\'ec \'ee \'f2\'ee\'ec, \'f7\'f2\'ee \'fd\'f2\'e0 \'f1\'f2\'f0\'e0\'ed\'e8\'f7\'ea\'e0 \emdash  Error Page, \'f2\'e8\'ef\'e0  isErrorPage="true"\par
+\tab extends\tab\'f2\'ee \'e6\'e5 \'f7\'f2\'ee \'e8 \cf2\b extends\cf0\b0  \'e4\'eb\'ff \'ea\'eb\'e0\'f1\'f1\'ee\'e2, \'f2\'ee\'eb\'fc\'ea\'ee \'fd\'f2\'ee \'e4\'eb\'ff \'f1\'e5\'f0\'e2\'eb\'e5\'f2\'ee\'e2. \'d2\'e8\'ef\'e0 \'ed\'e0\'f1\'eb\'e5\'e4\'f3\'e5\'ec\'f1\'ff \'e8 \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'ec \'f7\'f2\'ee-\'f2\'ee \'f1\'e2\'ee\'b8, \'f2\'e8\'ef\'e0 extends="somePackege.SomeClass"\par
+\tab import\tab\'f2\'ee \'e6\'e5 \'f7\'f2\'ee \'e8 \cf2\b import\cf0\b0  \'e4\'eb\'ff \'ea\'eb\'e0\'f1\'f1\'ee\'e2, \'f2\'e8\'ef\'e0 import="java.sql.*"\par
+\tab info\tab\tab\'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'e5\'ec String, \'ea\'ee\'f2\'ee\'f0\'e0\'ff \'e1\'f3\'e4\'e5\'f2 \'e2\'fb\'e4\'e0\'e2\'e0\'f2\'fc\'f1\'ff \'e5\'f1\'eb\'e8 \'e7\'e0\'ef\'f0\'ee\'f1\'e8\'f2\'fc getServletInfo()\par
+\tab isThreadSafe\tab\'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'e5\'ec threading model \'e4\'eb\'ff \'f1\'e5\'f0\'e2\'eb\'e5\'f2\'e0\par
+\tab language\tab\'ef\'e8\'f8\'e5\'ec \'ff\'e7\'fb\'ea \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'ff, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'ed\'e0 JSP \'f1\'f2\'f0\'e0\'ed\'e8\'f7\'ea\'e5. \'d2\'e8\'ef\'e0: language="java"\par
+\tab session\tab\'ef\'ee default-\'f3 JSP \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2 session tracking ~ HttpSession. \'c4\'eb\'ff \'ee\'f2\'ea\'eb\'fe\'f7\'e5\'ed\'e8\'ff <%@ page session="false" %>\par
+\tab isELIgnored\tab\'e8\'e3\'ed\'ee\'f0\'e8\'f0\'ee\'e2\'e0\'f2\'fc EL \'ed\'e0 JSP \'f1\'f2\'f0\'e0\'ed\'e8\'f7\'ea\'e5\par
+\tab isScriptingEnabled\tab\'f0\'e0\'e7\'f0\'e5\'f8\'e8\'f2\'fc \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'f2\'fc scripting \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'fb \'ed\'e0 \'f1\'f2\'f0\'e0\'ed\'e8\'f7\'ea\'e5\par
+<%@ include ... %> - \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'f2 \'ea\'ee\'ed\'f2\'e5\'ed\'f2 \'f4\'e0\'e9\'eb\'e0 \'e2 \'f1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'fe\'f9\'e8\'e9 \'f4\'e0\'e9\'eb, \'e2 \'f2\'ee \'ec\'e5\'f1\'f2\'ee \'e3\'e4\'e5 \'fd\'f2\'ee\'f2 include \'f1\'f2\'ee\'e8\'f2, \'ea\'e0\'ea \'e2 \'d1\'e8. \'c3\'eb\'e0\'e2\'ed\'ee\'e5, \'fd\'f2\'ee \'e4\'e5\'e9\'f1\'f2\'e2\'e8\'e5 \'ef\'f0\'ee\'e8\'f1\'f5\'ee\'e4\'e8\'f2 \'e2 \'ec\'ee\'ec\'e5\'ed\'f2 translate JSP \'f1\'f2\'f0\'e0\'ed\'e8\'f7\'ea\'e8 \'e2 \'f1\'e5\'f0\'e2\'eb\'e5\'f2, \'e2 \'ee\'f2\'eb\'e8\'f7\'e8\'e8 \'ee\'f2 <jsp:include ...\par
+\tab <jsp:directive.include file="header.jsp"/>\par
+<%@ taglib ... %> - \'ef\'ee\'e4\'f2\'ff\'e3\'e8\'e2\'e0\'e5\'ec tag library\par
+\tab <jsp:directive.taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"/> \'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2, \'f7\'f2\'ee \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e8\'eb\'e8 \'e1\'e8\'e1\'eb\'e8\'ee\'f2\'e5\'ea\'f3 \'f2\'e5\'e3\'ee\'e2, \'e8 \'e4\'eb\'ff \'e5\'b8 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'ed\'e8\'ff \'ed\'e0\'e4\'ee \'ef\'e8\'f1\'e0\'f2\'fc <c:forEach ...>\par
+\par
+\par
+\b JSP actions\b0 .\par
+\'d3 \'e2\'f1\'e5\'f5 action elements \'e5\'f1\'f2\'fc 2-\'e0 \'e0\'f2\'f0\'e8\'e1\'f3\'f2\'e0 id \'e8 scope. Id = id \'e2 HTML. Scope \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'e5\'f2 \'e2\'e8\'e4\'e8\'ec\'ee\'f1\'f2\'fc \'ee\'e1\'fa\'e5\'ea\'f2\'e0 \emdash  \'e1\'fb\'e2\'e0\'e5\'f2 a(page), b(request), c(session), d(application)\par
+\tab <jsp:include\tab\'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'f2 \'ea\'ee\'ed\'f2\'e5\'ed\'f2 \'f4\'e0\'e9\'eb\'e0 \'e2 \'f1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'fe\'f9\'e8\'e9 \'f4\'e0\'e9\'eb, \'ed\'ee \'e2 \'ee\'f2\'eb\'e8\'f7\'e8\'e8 \'ee\'f2 <jsp:directive.include \'e2 \'ec\'ee\'ec\'e5\'ed\'f2 Request JSP \'f1\'f2\'f0\'e0\'ed\'e8\'f7\'ea\'e8, \'f2\'e8\'ef\'e0 <jsp:include page="date.jsp" flush="true"/>\par
+\tab <jsp:useBean\tab\'ed\'e0\'f5\'ee\'e4\'e8\'ec \'e8 \'e8\'ed\'e8\'f6\'e8\'e0\'eb\'e8\'e7\'e8\'f0\'f3\'e5\'ec JavaBean, \'f2\'e8\'ef\'e0 <jsp:useBean id="name" class="somePackage.someClass"/>\par
+\tab <jsp:setProperty\tab set the property of a JavaBean.\par
+\tab <jsp:getProperty\tab inserts the property of a JavaBean into the output\par
+\tab <jsp:forward\tab\'f4\'ee\'f0\'e2\'e0\'f0\'e4\'e8\'ec request \'ed\'e0 new page, \'f2\'e8\'ef\'e0 <jsp:forward page="main.jsp"/>\par
+\tab <jsp:plugin\tab\tab generates browser-specific code that makes an OBJECT or EMBED tag for the Java plugin\par
+\tab <jsp:element\tab defines XML elements dynamically\par
+\tab <jsp:attribute\tab defines dynamically-defined XML element's attribute\par
+\tab <jsp:body\tab\tab defines dynamically-defined XML element's body\par
+\tab <jsp:text\tab\tab\'e2\'fb\'e2\'ee\'e4 \'ee\'e1\'fb\'f7\'ed\'ee\'e3\'ee \'f2\'e5\'ea\'f1\'f2\'e0\par
+\par
+\b JSP \'ee\'e1\'fa\'e5\'ea\'f2\'fb\b0 , \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'e3\'e5\'ed\'e5\'f0\'ff\'f2\'f1\'ff \'e0\'e2\'f2\'ee\'ec\'e0\'f2\'e8\'f7\'e5\'f1\'ea\'e8.\par
+\tab request\tab =HttpServletRequest \'e2 \'f1\'e5\'f0\'e2\'eb\'e5\'f2\'e5, \'ea \'ef\'f0\'e8\'ec\'e5\'f0\'f3 \'ef\'ee\'eb\'f3\'f7\'e8\'f2\'fc \'e4\'e0\'ed\'ed\'fb\'e5 \'e8\'e7 GET \'e7\'e0\'ef\'f0\'ee\'f1\'e0: request.getParameter("first_name")\par
+\tab response\tab =HttpServletResponse\par
+\tab out\tab\tab =PrintWriter\tab\'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'ea\'e0\'ea out.print(\'85) \'e8\'eb\'e8 out.println(\'85) \'e8\'eb\'e8 out.flush() \par
+\tab session\tab =HttpSession\tab{\field{\*\fldinst{HYPERLINK "https://www.tutorialspoint.com/jsp/jsp_client_request.htm"}}{\fldrslt{\ul\cf3 https://www.tutorialspoint.com/jsp/jsp_client_request.htm}}}\f0\fs22  \par
+\tab application\tab =ServletContext\par
+\tab config\tab =ServletConfig\par
+\tab pageContext\par
+\tab page\tab\tab =this\par
+\tab Exception\tab =Exception \'ee\'e1\'fa\'e5\'ea\'f2\par
+\par
+\b JSP \'f4\'e8\'eb\'fc\'f2\'f0\'fb\b0 . \'c2\'f1\'e5 \cf2\b implements\cf0\b0  \'ee\'f2 javax.servlet.Filter. \'d1\'ee\'e4\'e5\'f0\'e6\'e8\'f2 \'ec\'e5\'f2\'ee\'e4\'fb: void doFilter(ServletRequest, ServletResponse, FilterChain); void init(FilretConfig); void destroy()\par
+\tab Data compression\par
+\tab Encription\par
+\tab Logging\par
+\tab Authentication\tab\'e4\'eb\'ff \'f2\'ee\'e3\'ee, \'f7\'f2\'ee\'e1\'fb \'ed\'e5\'eb\'fc\'e7\'ff \'e1\'fb\'eb\'ee \'f1\'e4\'e5\'eb\'e0\'f2\'fc \'f2\'e0\'ea hxxp://localhost/jsp/step5.jsp\par
+\tab Transform XML Content\par
+\par
+public class LogFilter implements javax.servlet.Filter  \{\par
+   public void  init(FilterConfig config) throws ServletException \{\par
+\par
+      String testParam = config.getInitParameter("test-param");       // Get init parameter \par
+      System.out.println("Test Param: " + testParam);       //Print the init parameter \par
+   \}\par
+   public void  doFilter(ServletRequest request, ServletResponse response, FilterChain chain) \par
+      throws java.io.IOException, ServletException \{\par
+      \par
+      String ipAddress = request.getRemoteAddr();      // Get the IP address of client machine.   \par
+      System.out.println("IP "+ ipAddress + ", Time "+ new Date().toString());      // Log the IP address and current timestamp.\par
+      chain.doFilter(request,response);      // Pass request back down the filter chain\par
+   \}\par
+\}\par
+\'c8 \'e2 web.xml \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'ec:\par
+<filter>\par
+   <filter-name>LogFilter</filter-name>\par
+   <filter-class>LogFilter</filter-class>\par
+   \par
+   <init-param>\par
+      <param-name>test-param</param-name>\par
+      <param-value>Initialization Paramter</param-value>\par
+   </init-param>\par
+</filter>\par
+ \par
+<filter>\par
+   <filter-name>AuthenFilter</filter-name>\par
+   <filter-class>AuthenFilter</filter-class>\par
+   <init-param>\par
+      <param-name>test-param</param-name>\par
+      <param-value>Initialization Paramter</param-value>\par
+   </init-param>\par
+</filter>\par
+ \par
+<filter-mapping>\par
+   <filter-name>LogFilter</filter-name>\par
+   <url-pattern>/*</url-pattern>\par
+</filter-mapping>\par
+ \par
+<filter-mapping>\par
+   <filter-name>AuthenFilter</filter-name>\par
+   <url-pattern>/*</url-pattern>\par
+</filter-mapping>\par
+\par
+\b Cookies\b0  \emdash  \'f2\'e5\'ea\'f1\'f2\'ee\'e2\'fb\'e5 \'f4\'e0\'e9\'eb\'fb, \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'eb\'e5\'e6\'e0\'f2 \'ed\'e0 \'ea\'eb\'e8\'e5\'ed\'f2\'e5.\tab{\field{\*\fldinst{HYPERLINK "https://www.tutorialspoint.com/jsp/jsp_cookies_handling.htm"}}{\fldrslt{\ul\cf3 https://www.tutorialspoint.com/jsp/jsp_cookies_handling.htm}}}\f0\fs22  \par
+\tab Web-\'f1\'e5\'f0\'e2\'e5\'f0 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \'e1\'f0\'e0\'f3\'e7\'e5\'f0\'f3 \'f1\'ea\'f0\'e8\'ef\'f2 \'f1 set of cookies. \'ca \'ef\'f0\'e8\'ec\'e5\'f0\'f3, name, age, id\par
+\b\par
+\pard\sl240\slmult1\kerning0\b0 HTTP/1.1 200 OK\par
+Date: Fri, 04 Feb 2000 21:03:38 GMT\par
+Server: Apache/1.3.9 (UNIX) PHP/4.0b3\par
+\cf4 Set-Cookie: name = xyz; expires = Friday, 04-Feb-07 22:03:38 GMT; \cf0\par
+\cf4    path = /; domain = tutorialspoint.com\cf0\par
+Connection: close\par
+\pard\sa283\sl240\slmult1 Content-Type: text/html\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\kerning1\tab\'c1\'f0\'e0\'f3\'e7\'e5\'f0 \'f1\'ee\'f5\'f0\'e0\'ed\'ff\'e5\'f2 \'fd\'f2\'f3 \'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'fe \'ed\'e0 \'eb\'ee\'ea\'e0\'eb\'fc\'ed\'ee\'e9 \'ec\'e0\'f8\'e8\'ed\'e5\par
+\tab\'cf\'f0\'e8 \'f1\'eb\'e5\'e4\'f3\'fe\'f9\'e5\'ec \'ee\'e1\'f0\'e0\'f9\'e5\'ed\'e8\'e8 \'ea \'f1\'e0\'e9\'f2\'f3 \'e1\'f0\'e0\'e9\'e7\'e5\'f0 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 request,  \'ef\'ee\'f2\'ee\'ec \'f8\'eb\'b8\'f2 \'fd\'f2\'e8 cookie \'e8 \'f2\'e0\'ea\'e8\'ec \'ee\'e1\'f0\'e0\'e7\'ee\'ec web-\'f1\'e5\'f0\'e2\'e5\'f0 \'e8\'e4\'e5\'ed\'f2\'e8\'f4\'e8\'f6\'e8\'f0\'f3\'e5\'f2\par
+\b\par
+\pard\sl240\slmult1\kerning0\b0 GET / HTTP/1.0\par
+Connection: Keep-Alive\par
+User-Agent: Mozilla/4.6 (X11; I; Linux 2.2.6-15apmac ppc)\par
+Host: zink.demon.co.uk:1126\par
+\par
+Accept: image/gif, */*\par
+Accept-Encoding: gzip\par
+Accept-Language: en\par
+Accept-Charset: iso-8859-1,*,utf-8\par
+\pard\sa283\sl240\slmult1\cf4 Cookie: name = xyz\cf0\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\kerning1 JSP \'ec\'ee\'e6\'e5\'f2 \'ef\'ee\'eb\'f3\'f7\'e0\'f2\'fc \'fd\'f2\'e8 cookie. r\i equest.getCookies()\i0\par
+\par
+\cf1\'cf\'e5\'f0\'e5\'e4\'e0\'e2\'e0\'f2\'fc \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'fb \'e2 JSP \'ec\'ee\'e6\'ed\'ee \'f7\'e5\'f0\'e5\'e7 Expression Language (EL) \'f2\'e8\'ef\'e0 $\{var\} \'f1\'ec.google\cf0\par
+\par
+\cf1\par
+\ul\b JSTL\b0  \endash  JSP Standard Tag Library\cf0\ulnone\par
+\cf1\'c2 .jsp \'f4\'e0\'e9\'eb \'e2\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'ec \'ed\'e5 java code, \'e0 custom \'f2\'e5\'e3\'e8 \'f1 \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'e0\'ec\'e8 \'ed\'e5 \'f1\'e2\'ee\'e9\'f1\'f2\'e2\'e5\'ed\'ed\'fb\'ec\'e8 html, \'f2\'e8\'ef\'e0 <counter ...> \'c0 \'e2 .xml \'f4\'e0\'e9\'eb\'e5 \'e3\'ee\'e2\'ee\'f0\'e8\'ec \'ee \'f2\'ee\'ec, \'f7\'f2\'ee \'f2\'e0\'ea\'ee\'e9 \'f2\'e5\'e3 \endash  \'fd\'f2\'ee \'f2\'e0\'ea\'ee\'e9 \'ea\'eb\'e0\'f1\'f1.\cf0\par
+\cf1\'d2\'e0\'ea \'f0\'e0\'e1\'ee\'f2\'e0\'fe\'f2 \'f1\'ee\'e2\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5 Frameworks \endash  \'f3 \'ed\'e8\'f5 \'f1\'e2\'ee\'e8 \'f2\'e5\'e3\'e8, \'e8\'f5 \'ed\'e0\'e4\'ee \'f0\'e0\'f1\'f2\'e0\'e2\'e8\'f2\'fc \'ef\'ee html \'f4\'e0\'e9\'eb\'f3 \'e8 \'ed\'e0\'ef\'e8\'f1\'e0\'f2\'fc java code \'ea \'ea\'e0\'e6\'e4\'ee\'ec\'f3 \'e8\'e7 \'f2\'e5\'e3\'ee\'e2.\cf0\par
+\cf1\par
+\pard\sl240\slmult1\kerning0 Core Tags:\tab <%@ taglib uri="\cf0 http://java.sun.com/jsp/jstl/core\cf1 " prefix = "c" %> - \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e0\'e5\'ec JSTL \'e1\'e8\'e1\'eb\'e8\'ee\'f2\'e5\'ea\'f3 \'e2 .jsp\cf0\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf1\kerning1\tab <c:out>\tab\'f2\'ee\'e6\'e5 \'f7\'f2\'ee \'e8 <%=...>\cf0\par
+\cf1\tab <c:set>\tab\cf0\par
+\cf1\tab <c:remove>\cf0\par
+\cf1\tab <c:catch>\cf0\par
+\cf1\tab <c:if>\cf0\par
+\cf1\tab <c:choose>\cf0\par
+\cf1\tab <c:when>\cf0\par
+\cf1\tab <c:otherwise>\cf0\par
+\cf1\tab <c:import>\cf0\par
+\cf1\tab <c:forEach>\cf0\par
+\cf1\tab <c:forTokens>\cf0\par
+\cf1\tab <c:param>\tab\cf0\par
+\cf1\tab <c:redirect>\tab redirect \'ed\'e0 \'ed\'ee\'e2\'fb\'e9 URL\cf0\par
+\cf1\tab <c:url>\tab\'f1\'ee\'e7\'e4\'e0\'b8\'f2 URL\cf0\par
+\cf1\par
+Formatting Tags:\tab <%@ taglib uri = "\cf0{\field{\*\fldinst{HYPERLINK "http://java.sun.com/jsp/jstl/fmt"}}{\fldrslt{\ul\cf3 http://java.sun.com/jsp/jstl/fmt}}}\cf1\f0\fs22 " prefix="fmt" %>\cf0\par
+\cf1\tab <fmt:formatNumber>\cf0\par
+\cf1\tab <fmt:parseNumber>\cf0\par
+\cf1\tab <fmt:formatDate>\cf0\par
+\cf1\tab <fmt:parseDate>\cf0\par
+\cf1\tab <fmt:bundle>\cf0\par
+\cf1\tab <fmt:setLocale>\cf0\par
+\cf1\tab <fmt:setBundle>\cf0\par
+\cf1\tab <fmt:timeZone>\cf0\par
+\cf1\tab <fmt:setTimeZone>\cf0\par
+\cf1\tab <fmt:message>\cf0\par
+\cf1\tab <fmt:requestEncoding>\cf0\par
+\cf1\par
+SQL Tags:\tab <%@ taglib uri = "\cf0{\field{\*\fldinst{HYPERLINK "http://java.sun.com/jsp/jstl/sql"}}{\fldrslt{\ul\cf3 http://java.sun.com/jsp/jstl/sql}}}\cf1\f0\fs22 " prefix="sql" %>\cf0\par
+\cf1\tab <sql:setDataSource>\cf0\par
+\cf1\tab <sql:query>\cf0\par
+\cf1\tab <sql:update>\cf0\par
+\cf1\tab <sql:param>\cf0\par
+\cf1\tab <sql:dateParam>\cf0\par
+\cf1\tab <sql:transaction>\cf0\par
+\cf1\par
+XML Tags:\tab <%@ taglib uri="\cf0 http://java.sun.com/jsp/jstl/xml\cf1 " prefix = "x" %>\cf0\par
+\cf1\tab <x:out>\cf0\par
+\cf1\tab <x:parse>\cf0\par
+\cf1\tab <x:set>\cf0\par
+\cf1\tab <x:if>\cf0\par
+\cf1\tab <x:forEach>\cf0\par
+\cf1\tab <x:choose>\cf0\par
+\cf1\tab <x:when>\cf0\par
+\cf1\tab <x:otherwise>\cf0\par
+\cf1\tab <x:transform>\cf0\par
+\cf1\tab <x:param>\cf0\par
+\cf1\par
+JSTL Functions:\tab <%@ taglib uri="\cf0 http://java.sun.com/jsp/jstl/functions\cf1 " prefix="fn" %>\cf0\par
+\cf1\tab fn:contains()\cf0\par
+\cf1\tab fn:containsIgnoreCase()\cf0\par
+\cf1\tab fn:endsWith()\cf0\par
+\cf1\tab fn:escapeXml()\cf0\par
+\cf1\tab fn:indexOf()\cf0\par
+\cf1\tab fn:join()\cf0\par
+\cf1\tab fn:length()\cf0\par
+\cf1\tab fn:replace()\cf0\par
+\cf1\tab fn:split()\cf0\par
+\cf1\tab fn:startsWith()\cf0\par
+\cf1\tab fn:substring()\cf0\par
+\cf1\tab fn:substringAfter()\cf0\par
+\cf1\tab fn:substringBefore()\cf0\par
+\cf1\tab fn:toLowerCase()\cf0\par
+\cf1\tab fn:toUpperCase()\cf0\par
+\cf1\tab fn:trim()\cf0\par
+\cf1\par
+\ul MVC\cf0\ulnone\par
+\cf1\tab Model (\'f1\'ef\'e8\'f1\'ee\'ea \'f1\'f2\'f3\'e4\'e5\'ed\'f2\'ee\'e2) \u8594? \'ef\'e5\'f0\'e5\'e4\'e0\'b8\'ec \'f7\'e5\'f0\'e5\'e7 web-\'f1\'e5\'f0\'e2\'e5\'f0 \'ea\'eb\'e8\'e5\'ed\'f2\'f3 \u8594? View \u8594? \'ea\'eb\'e8\'e5\'ed\'f2 \'ed\'e0\'e6\'e0\'eb \'ed\'e0 \'ea\'ed\'ee\'ef\'ea\'f3 delete \'f1\'f2\'f3\'e4\'e5\'ed\'f2\'e0 \u8594? Controller \u8594? \'ea\'ee\'ed\'f2\'f0\'ee\'eb\'eb\'e5\'f0 \'e2\'fb\'e7\'e2\'e0\'eb \'ec\'e5\'f2\'ee\'e4 del_stud() \'e8 \'e8\'e7\'ec\'e5\'ed\'e8\'eb model \u8594? Model\cf0\par
+\cf1\par
+\'c4\'eb\'ff \'ef\'f0\'ee\'f1\'f2\'ee\'f2\'fb \'f0\'e0\'e1\'ee\'f2\'fb \'e2\'f1\'e5 \'ea\'eb\'e0\'f1\'f1\'fb \'e2\'ee Framework-\'e0\'f5 \endash  \'fd\'f2\'ee JavaBeans:\cf0\par
+\pard\nowidctlpar\hyphpar0\fi-360\li720\sl240\slmult1\cf1\kerning0  \'b70\tab\kerning1\'ea\'eb\'e0\'f1\'f1 \'e4\'ee\'eb\'e6\'e5\'ed \'e8\'ec\'e5\'f2\'fc public constructor() \'e1\'e5\'e7 \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'ee\'e2 \endash  \'f2\'e0\'ea\'ee\'e9 \'ea\'ee\'ed\'f1\'f2\'f0\'f3\'ea\'f2\'ee\'f0 \'ef\'ee\'e7\'e2\'ee\'eb\'ff\'e5\'f2 "\'e8\'ed\'f1\'f2\'f0\'f3\'ec\'e5\'ed\'f2\'e0\'ec" \'f1\'ee\'e7\'e4\'e0\'e2\'e0\'f2\'fc  \'ee\'e1\'fa\'e5\'ea\'f2 \'e1\'e5\'e7 \'e7\'e0\'ec\'ee\'f0\'ee\'f7\'e5\'ea \'f1 \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'e0\'ec\'e8\cf0\par
+\cf1\kerning0  \'b71\tab\kerning1\'e4\'ee\'f1\'f2\'f3\'ef \'ea \'ef\'ee\'eb\'fe int vasya \'f2\'ee\'eb\'fc\'ea\'ee get_vasya() set_vasya()\cf0\par
+\cf1\kerning0  \'b72\tab\kerning1\'ea\'eb\'e0\'f1\'f1 \'e4\'ee\'eb\'e6\'e5\'ed \'e1\'fb\'f2\'fc Serializable \'e4\'eb\'ff \'f3\'e4\'ee\'e1\'f1\'f2\'e2\'e0 \'f5\'f0\'e0\'ed\'e5\'ed\'e8\'ff\cf0\par
+\cf1\kerning0  \'b73\tab\kerning1\'e4\'ee\'eb\'e6\'ed\'fb \'e1\'fb\'f2\'fc @override \'ec\'e5\'f2\'ee\'e4\'fb equals(), hashCode() \'e8 toString()\cf0\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf1\par
+\'c3\'ee\'e2\'ee\'f0\'ff\'f2, \'f7\'f2\'ee \'e4\'e0\'ed\'ed\'fb\'e9 Framework \endash  \'ee\'ed MVC \endash  \'e7\'ed\'e0\'f7\'e8\'f2 \'f2\'e0\'ec \'e5\'f1\'f2\'fc \'e3\'ee\'f2\'ee\'e2\'fb\'e5 \'ea\'eb\'e0\'f1\'f1\'fb \'e0\'f1\'f1\'ee\'f6\'e8\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'fb\'e5 Model, View \'e8 Controller, \'ee\'f2 \'ea\'ee\'f2\'ee\'f0\'fb\'f5 \'ec\'fb \'ed\'e0\'f1\'eb\'e5\'e4\'f3\'e5\'ec\'f1\'ff.\cf0\par
+\cf1\'c4\'eb\'ff \'ef\'f0\'e8\'ec\'e5\'f0\'e0 Framework Struts:\cf0\par
+\cf1\tab Model \endash  \'ea \'ef\'f0\'e8\'ec\'e5\'f0\'f3 \'ed\'e0\'f8 class Students \'f5\'f0\'e0\'ed\'e8\'f2 \'f7\'f2\'ee-\'f2\'ee, \'f2.\'e5. \'f1\'ee\'e3\'eb\'e0\'f1\'ed\'ee \'ea\'ee\'ed\'f6\'e5\'ef\'f6\'e8\'e8 \'f1\'ee\'ee\'f2\'e2\'e5\'f2\'f1\'f2\'e2\'f3\'e5\'f2 Model \u8594? \'e7\'ed\'e0\'f7\'e8\'f2 \'e4\'ee\'eb\'e6\'e5\'ed \'ed\'e0\'f1\'eb\'e5\'e4\'ee\'e2\'e0\'f2\'fc\'f1\'ff \'ee\'f2 \'ea\'eb\'e0\'f1\'f1\'e0 \'f4\'f0\'e5\'e9\'ec\'e2\'ee\'f0\'ea\'e0 \'ef\'f0\'e5\'e4\'ed\'e0\'e7\'ed\'e0\'f7\'e5\'ed\'ed\'ee\'e3\'ee \'e4\'eb\'ff Model\cf0\par
+\cf1\tab View \endash  \'fd\'f2\'ee JSP \'f1 custom tags. Tag \'e2 html \'e2\'fb\'e3\'eb\'ff\'e4\'e8\'f2 \'ea\'e0\'ea <use form Student (\'f2.\'e5. \'ed\'e0\'f8 \'ea\'eb\'e0\'f1\'f1)>. \'c2\'ee \'e2\'eb\'ee\'e6\'e5\'ed\'ed\'ee\'ec tag \'ee\'ef\'e8\'f1\'e0\'ed\'ee \'ea\'e0\'ea\'ee\'e5 \'ef\'ee\'eb\'e5 \'e8\'e7 \'ea\'eb\'e0\'f1\'f1\'e0 Student \'ec\'fb \'e4\'ee\'eb\'e6\'ed\'fb \'ee\'f2\'ee\'e1\'f0\'e0\'e7\'e8\'f2\'fc\cf0\par
+\cf1\tab Controller \endash  \'f2\'ee\'e6\'e5 class Action, \'e4\'ee\'eb\'e6\'e5\'ed \'ed\'e0\'f1\'eb\'e5\'e4\'ee\'e2\'e0\'f2\'fc\'f1\'ff \'ee\'f2 \'ea\'eb\'e0\'f1\'f1\'e0 \'e4\'eb\'ff Controller \'e2 \'e4\'e0\'ed\'ed\'ee\'ec Framework. \'c2 JSP \'ed\'e0\'ef\'e8\'f1\'e0\'ed\'ee \'f2\'e0\'ea\'e0\'ff-\'f2\'ee \'f4\'ee\'f0\'ec\'e0 submit \'ed\'e0 \'f2\'e0\'ea\'ee\'e9-\'f2\'ee action class.\cf0\par
+\cf1\par
++ \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e0\'f6\'e8\'ee\'ed\'ed\'fb\'e5 \'f4\'e0\'e9\'eb\'fb \'ee\'ef\'e8\'f1\'fb\'e2\'e0\'fe\'f9\'e8\'e5 \'e2\'f1\'b8 \'fd\'f2\'ee \'e4\'e5\'eb\'ee\cf0\par
+\cf1\par
+\ul JSF\ulnone  (Java Server Faces) = Spring MVC \'ed\'ee \'e1\'e5\'e7 AJAX\cf0\par
+\cf1\tab\'ca\'ee\'ec\'ef\'e0\'ed\'e8\'ff Sun \'e2\'e7\'ff\'eb\'e0 \'e8 \'f1\'f2\'e0\'ed\'e4\'e0\'f0\'f2\'e8\'e7\'ee\'e2\'e0\'eb\'e0 MVC \'e8 \'ed\'e0\'e7\'e2\'e0\'eb\'e0 \'fd\'f2\'ee JSF. \'cf\'ee\'f1\'ec\'ee\'f2\'f0\'e5\'f2\'fc \'e2 wikipedia \endash  JSF \'f0\'e5\'e0\'eb\'e8\'e7\'e0\'f6\'e8\'e8.\cf0\par
+\cf1\par
+\ul AJAX\ulnone  (Asynchronous JavaScript and XML)\par
+\lang1033\f1\tab\lang1049\f0\'c5\'f1\'eb\'e8 \'ec\'fb \'e2 \'e1\'f0\'e0\'f3\'e7\'e5\'f0\'e5 \'ed\'e0\'e6\'ec\'b8\'ec \'ea\'ed\'ee\'ef\'ee\'f7\'ea\'f3 \lang1033\f1 Refresh\lang1049\f0 , \'f2\'ee \'ef\'e5\'f0\'e5\'e7\'e0\'e3\'f0\'f3\'e7\'e8\'f2\'f1\'ff \'e2\'f1\'ff \'f1\'f2\'f0\'e0\'ed\'e8\'f6\'e0 = \lang1033\f1 DOM \lang1049\f0\'ec\'ee\'e4\'e5\'eb\'fc. \lang1033\f1 AJAX \lang1049\f0\'ef\'ee\'e7\'e2\'ee\'eb\'ff\'e5\'e8 \'ef\'e5\'f0\'e5\'e3\'f0\'f3\'e6\'e0\'f2\'fc \'f2\'ee\'eb\'fc\'ea\'ee \'ed\'e5\'e1\'ee\'eb\'fc\'f8\'e8\'e5 \'f7\'e0\'f1\'f2\'e8 \lang1033\f1 DOM.\cf0\lang1049\f0\par
+\cf1\tab\'c2 HTML5 = DHTML \'e8\'eb\'e8 Dynamic, JavaScript \'ed\'e0 \'f1\'f2\'ee\'f0\'ee\'ed\'e5 \'ea\'eb\'e8\'e5\'ed\'f2\'e0 \'e2 \'f0\'e5\'e6\'e8\'ec\'e5 \'f0\'e5\'e0\'eb\'fc\'ed\'ee\'e3\'ee \'e2\'f0\'e5\'ec\'e5\'ed\'e8 \'ec\'ee\'e6\'e5\'f2 \'ef\'ee\'e4\'ec\'e5\'ed\'e8\'f2\'fc \'eb\'fe\'e1\'f3\'fe \'f7\'e0\'f1\'f2\'fc html \'ed\'e0 \'eb\'fe\'e1\'f3\'fe \'e4\'f0\'f3\'e3\'f3\'fe. \'d2.\'e5. \'f4\'f3\'ed\'ea\'f6\'e8\'ff \'e2 JavaScript \'f1\'ee\'e7\'e4\'e0\'f1\'f2 \'e7\'e0\'ef\'f0\'ee\'f1 \'ed\'e0 \'f1\'e5\'f0\'e2\'e5\'f0, \'f2\'e8\'ef\'e0 \'e4\'e0\'e9 \'ec\'ed\'e5 \'e2 \'f4\'ee\'f0\'ec\'e0\'f2\'e5 html \'f2\'ee, \'ed\'e0 \'f7\'f2\'ee \'ff \'ef\'ee\'ec\'e5\'ed\'ff\'fe \'e2\'ee\'f2 \'fd\'f2\'f3 \'f7\'e0\'f1\'f2\'fc. \'cf\'ee\'f2\'ee\'ec \'f0\'e5\'f8\'e8\'eb\'e8 \'e3\'ee\'ed\'ff\'f2\'fc \'ed\'e5 html, \'e0 xml = SOAP.\cf0\par
+\cf1\'c0 \'e5\'f1\'eb\'e8 \'ff \'f5\'ee\'f7\'f3 \'ea \'f1\'e5\'f0\'e2\'e8\'f1\'f3 \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e0\'f2\'fc\'f1\'ff \'ed\'e5 \'e1\'f0\'e0\'f3\'e7\'e5\'f0\'ee\'ec, \'e0 \'f7\'e5\'f0\'e5\'e7 \'ef\'f0\'e8\'eb\'ee\'e6\'e5\'ed\'e8\'e5 \'e2 \'ec\'ee\'e1\'e8\'eb\'fc\'ed\'e8\'ea\'e5, \'f2\'ee \'e5\'f9\'b8 \'eb\'f3\'f7\'f8\'e5 \'e3\'ee\'ed\'ff\'f2\'fc REST \'f1\'ee\'ee\'e1\'f9\'e5\'ed\'e8\'ff.\cf0\par
+}
+ 
