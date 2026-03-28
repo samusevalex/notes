@@ -38,7 +38,6 @@ x230 - Break (FN + B), Pause(FN + P), SysRq (FN + S), ScrLK (FN + K)
 
 # runas /user:Администратор cmd		или быстро запустить с правами Администратора: Ctrl+Shift + кликаем на иконку приложения
 
-HKEY_CLASSES_ROOT\*\shell\ShareWithSkype	полностью удалить
 HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation\RealTimeIsUniversal	REG_DWORD	1
 HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\PortNumber
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AppKey\15\ShellExecute	REG_SZ	wordpad.exe	 переназначить кнопку E-mail на клавиатуре
@@ -46,6 +45,7 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AppKey\15\
 HKEY_LOCAL_MACHINE\Software\Policies\Mozilla\Firefox\DisableAppUpdate	REG_DWORD	1
 
 https://isidore.co/opensearch/?shortname=Multitran+Search&searchaddr=https://www.multitran.com/?s=&attr=&favicon=https://www.multitran.com/favicon-64.png
+
 browser.cache.disk.enable = false
 browser.cache.offline.enable = false
 extensions.pocket.enabled = false
@@ -53,6 +53,7 @@ browser.backspace_action = 0 - включает Backspace для Back
 security.enterprise_roots.enabled = true	работает только в Windows
 network.dnsCacheEntries = 400 записей
 network.dnsCacheExpiration = 60 сек
+general.useragent.override = Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:147.0) Gecko/20100101 Firefox/147.0
 
 about:about	about:profiles	about:networking
 
