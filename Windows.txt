@@ -18,9 +18,8 @@
 x230 - Break (FN + B), Pause(FN + P), SysRq (FN + S), ScrLK (FN + K)
 
 # pscp.exe my.txt debian:
-# pscp.exe my.txt user@192.168.1.150:		загрузить в linux
-# pscp.exe user@192.168.1.150:my.txt .		скачать с linux
-# pscp.exe -i ..\ssh\ssh_key.ppk			подсунуть ssh key
+# pscp.exe debian:my.txt .
+# pscp.exe -i ..\ssh\ssh_key.ppk
 
 # findstr -S asd .\*.*		поиск строки asd во всех файлах и subdirectories
 # netstat -n | findsrt 10.11.1.1
