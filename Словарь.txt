@@ -24,6 +24,7 @@ fetch		всасывать
 	H
 handle	число, с помощью которого можно идентифицировать ресурс. С помощью дескприторов можно ссылаться на окна, объекты ядра, графические объекты и т.п.
 	I
+improve	улучшать
 impact	урон
 issues	проблема wayland solves no issues, but breaks everything
 	J
@@ -40,6 +41,8 @@ pipeline	build--test--deploy--ещё test...  если смотреть на картинку с последова
 pivot		точка разворота
 prefetch	предсказывать
 propagation	из статьи про кэши: write propagation - изменения в одной копии данных must be propagated на другие копии
+provide	снабжать, обеспечивать
+provision	предоставлять что-либо
 	Q
 	R
 recent	недавний, последний, свежий
@@ -52,7 +55,7 @@ suggest	предлагать
 	U
 	V
 void		пустота
-volatile	non-volatile memoory энергонезависимая, неустойчивая, волатильная память
+volatile	non-volatile memoory энергонезависимая, нестабильная
 	W
 wrapper	обёртка
 	X

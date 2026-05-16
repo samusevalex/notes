@@ -736,32 +736,32 @@ if [[ $str \cf5\b =~\cf1\b0  ^www ]]\tab\tab\'e5\'f1\'eb\'e8 str \'ed\'e0\'f7\'e
 \cf1\kerning0\ul\'cf\'f0\'e8\'ec\'e5\'f0 1\ulnone .\cf0\kerning1\par
 \cf1\kerning0 for arg\lang1033\f1\tab\tab\lang1049\f0\'fd\'f2\'f3 \'f1\'f2\'f0\'ee\'ea\'f3 \lang1033\f1 bash \lang1049\f0\'f0\'e0\'f1\'ef\'e0\'ea\'f3\'e5\'f2 \'e2 for arg in "$@"\cf0\kerning1\par
 \cf1\kerning0 do\cf0\kerning1\par
-\cf1\kerning0     echo "$arg"\tab\tab\'f0\'e0\'f1\'ef\'e5\'f7\'e0\'f2\'e0\'e5\'f2 \'e0\'f0\'e3\'f3\'ec\'e5\'ed\'f2\'fb, \'ef\'e5\'f0\'e5\'e4\'e0\'e2\'e0\'e5\'ec\'fb\'e5 \'e2 script.sh\cf0\kerning1\par
+\cf1\kerning0     echo "$\lang1033\f1\{\lang1049\f0 arg\lang1033\f1\}\lang1049\f0 "\tab\tab\'f0\'e0\'f1\'ef\'e5\'f7\'e0\'f2\'e0\'e5\'f2 \'e0\'f0\'e3\'f3\'ec\'e5\'ed\'f2\'fb, \'ef\'e5\'f0\'e5\'e4\'e0\'e2\'e0\'e5\'ec\'fb\'e5 \'e2 script.sh\cf0\kerning1\par
 \cf1\kerning0 done\cf0\kerning1\par
 \cf1\kerning0\par
 \ul\'cf\'f0\'e8\'ec\'e5\'f0 2\ulnone .\cf0\kerning1\par
 \cf1\kerning0 for i in \{1..3\}\tab\tab 3 \'e8\'f2\'e5\'f0\'e0\'f6\'e8\'e8 \'e8\'eb\'e8 \'f2\'e0\'ea for i in \{1..6..2\} \{start..end..step\}\cf0\kerning1\par
 \cf1\kerning0 do\cf0\kerning1\par
-\cf1\kerning0    echo "Number $i"\cf0\kerning1\par
+\cf1\kerning0    echo "Number $\lang1033\f1\{\lang1049\f0 i\lang1033\f1\}\lang1049\f0 "\cf0\kerning1\par
 \cf1\kerning0 done\cf0\kerning1\par
 \cf1\kerning0\par
 \ul\'cf\'f0\'e8\'ec\'e5\'f0 3\ulnone .\cf0\kerning1\par
 \cf1\kerning0 for (( i=1; i <= 10; i++ ))\tab C-style\cf0\kerning1\par
 \cf1\kerning0 do\cf0\kerning1\par
-\cf1\kerning0\tab echo "Number is $i"\cf0\kerning1\par
+\cf1\kerning0\tab echo "Number is $\lang1033\f1\{\lang1049\f0 i\lang1033\f1\}\lang1049\f0 "\cf0\kerning1\par
 \cf1\kerning0 done\cf0\kerning1\par
 \cf1\kerning0\par
 \ul\'cf\'f0\'e8\'ec\'e5\'f0 4\ulnone .\cf0\kerning1\par
 \cf1\kerning0 file="/etc/passwd"\cf0\kerning1\par
-\cf1\kerning0 for var in $(cat $file)\cf0\kerning1\par
+\cf1\kerning0 for var in $(cat $\lang1033\f1\{\lang1049\f0 file\lang1033\f1\}\lang1049\f0 )\cf0\kerning1\par
 \cf1\kerning0 do\cf0\kerning1\par
-\cf1\kerning0\tab grep $var /var/kernel.log\cf0\kerning1\par
+\cf1\kerning0\tab grep $\lang1033\f1\{\lang1049\f0 var\lang1033\f1\}\lang1049\f0  /var/kernel.log\cf0\kerning1\par
 \cf1\kerning0 done\cf0\kerning1\par
 \cf1\kerning0\par
 \ul\'cf\'f0\'e8\'ec\'e5\'f0 5\ulnone .\cf0\kerning1\par
 \cf1\kerning0 for var in first "the second" 3\cf0\kerning1\par
 \cf1\kerning0 do\cf0\kerning1\par
-\cf1\kerning0\tab echo The $var item\cf0\kerning1\par
+\cf1\kerning0\tab echo The $\lang1033\f1\{\lang1049\f0 var\lang1033\f1\}\lang1049\f0  item\cf0\kerning1\par
 \cf1\kerning0 done > myfile.txt\tab\tab\'c7\'e0\'ef\'e8\'f1\'fc \'e4\'e0\'ed\'ed\'fb\'f5 \'e8\'e7 \'f6\'e8\'ea\'eb\'e0 \'e2 \'f4\'e0\'e9\'eb.\cf0\kerning1\par
 \cf1\kerning0\par
 \ul\'cf\'f0\'e8\'ec\'e5\'f0 6\ulnone .\par
@@ -769,18 +769,18 @@ while :\tab\tab\'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5 \'f7\'f2\'ee \'e8 while tru
 \cf0\kerning1\par
 \cf1\kerning0 while read line\tab\tab\'e8\'eb\'e8 \'f2\'e0\'ea: cat a.txt | while read line\cf0\kerning1\par
 \cf1\kerning0 do\cf0\kerning1\par
-\cf1\kerning0\tab echo $line\cf0\kerning1\par
+\cf1\kerning0\tab echo $\lang1033\f1\{\lang1049\f0 line\lang1033\f1\}\cf0\lang1049\kerning1\f0\par
 \cf1\kerning0 done < a.txt\tab\'ef\'f0\'ee\'f7\'e8\'f2\'e0\'f2\'fc \'f4\'e0\'e9\'eb, \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'ff \'f2\'ee\'eb\'fc\'ea\'ee bash built-in commands = cat a.txt. \'cc\'ee\'e6\'ed\'ee \'e5\'f9\'b8 \'f2\'e0\'ea: script.sh < a.txt\cf0\kerning1\par
 \cf1\kerning0\par
 \ul\'cf\'f0\'e8\'ec\'e5\'f0 7\ulnone .\cf0\kerning1\par
 \cf1\kerning0 for file in /home/*\tab\'f2\'e0\'ea \'ec\'ee\'e6\'ed\'ee \'e2\'fb\'e2\'e5\'f1\'f2\'e8 \'f1\'ef\'e8\'f1\'ee\'ea \'f4\'e0\'e9\'eb\'ee\'e2 \'e8 \'ef\'e0\'ef\'ee\'ea\cf0\kerning1\par
 \cf1\kerning0 do\cf0\kerning1\par
-\cf1\kerning0\tab if [ -d $file ]\cf0\kerning1\par
+\cf1\kerning0\tab if [ -d $\lang1033\f1\{\lang1049\f0 file\lang1033\f1\}\lang1049\f0  ]\cf0\kerning1\par
 \cf1\kerning0\tab then\cf0\kerning1\par
-\cf1\kerning0\tab\tab echo $file is a directory\cf0\kerning1\par
-\cf1\kerning0\tab elif [ -f $file ]\cf0\kerning1\par
+\cf1\kerning0\tab\tab echo $\lang1033\f1\{\lang1049\f0 file\lang1033\f1\}\lang1049\f0  is a directory\cf0\kerning1\par
+\cf1\kerning0\tab elif [ -f $\lang1033\f1\{\lang1049\f0 file\lang1033\f1\}\lang1049\f0  ]\cf0\kerning1\par
 \cf1\kerning0\tab then\cf0\kerning1\par
-\cf1\kerning0\tab\tab echo $file is a file\cf0\kerning1\par
+\cf1\kerning0\tab\tab echo $\lang1033\f1\{\lang1049\f0 file\lang1033\f1\}\lang1049\f0  is a file\cf0\kerning1\par
 \cf1\kerning0\tab fi\cf0\kerning1\par
 \cf1\kerning0 done\cf0\kerning1\par
 \cf1\kerning0\par
@@ -792,9 +792,9 @@ while :\tab\tab\'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5 \'f7\'f2\'ee \'e8 while tru
 \cf1\kerning0 do\cf0\kerning1\par
 \cf1\kerning0\tab echo "Values in $entry"\cf0\kerning1\par
 \cf1\kerning0\tab\b IFS\b0 =:\cf0\kerning1\par
-\cf1\kerning0\tab for value in $entry\cf0\kerning1\par
+\cf1\kerning0\tab for value in $\lang1033\f1\{\lang1049\f0 entry\lang1033\f1\}\cf0\lang1049\kerning1\f0\par
 \cf1\kerning0\tab do\cf0\kerning1\par
-\cf1\kerning0\tab\tab echo -e "$value \\n"\cf0\kerning1\par
+\cf1\kerning0\tab\tab echo -e "$\lang1033\f1\{\lang1049\f0 value\lang1033\f1\}\lang1049\f0  \\n"\cf0\kerning1\par
 \cf1\kerning0\tab done\cf0\kerning1\par
 \cf1\kerning0 done\cf0\kerning1\par
 \cf1\kerning0\'d6\'e8\'ea\'eb for \'ef\'ee\'eb\'f3\'f7\'e8\'f2 \'ed\'e0\'e1\'ee\'f0 \'f1\'e8\'ec\'e2\'ee\'eb\'ee\'e2 \'ee\'f2 #cat somefile. \'c4\'e0\'eb\'e5\'e5 \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee \'e8\'f5 \'f0\'e0\'e7\'e1\'e8\'f2\'fc \'ed\'e0 \'f1\'f3\'f9\'ed\'ee\'f1\'f2\'e8 - \'f1\'e4\'e5\'eb\'e0\'f2\'fc \'f1\'ef\'e8\'f1\'ee\'ea \kerning1\u8594?\kerning0  \'ed\'f3\'e6\'ed\'ee \'ef\'ee\'ed\'ff\'f2\'e8\'e5 "\'f0\'e0\'e7\'e4\'e5\'eb\'e8\'f2\'e5\'eb\'fc". \'cf\'ee default \'fd\'f2\'ee - \'ef\'f0\'ee\'e1\'e5\'eb, tab \'e8 \\n. \'c2 \'ed\'e0\'f8\'e5\'ec \'ef\'f0\'e8\'ec\'e5\'f0\'e5 \'f0\'e0\'e7\'e4\'e5\'eb\'e8\'f2\'e5\'eb\'e5\'ec \'e1\'f3\'e4\'e5\'f2 :. IFS (Internal Field Separator) - \'f1\'e8\'f1\'f2\'e5\'ec\'ed\'e0\'ff \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'e0\'ff.\cf0\kerning1\par
