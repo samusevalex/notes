@@ -1,52 +1,41 @@
-{\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}{\f1\fnil\fcharset0 Courier New;}}
-{\colortbl ;\red247\green150\blue70;\red0\green0\blue0;\red0\green0\blue255;\red0\green176\blue80;\red255\green0\blue0;\red255\green192\blue0;\red0\green0\blue128;\red155\green0\blue211;}
-{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\nowidctlpar\hyphpar0\lang1049\kerning1\f0\fs22 Podman = \'ef\'ee\'eb\'ed\'fb\'e9 \'e0\'ed\'e0\'eb\'ee\'e3 Docker. \lang1033\f1 D\lang1049\f0 aemonless\lang1033\f1 .\lang1049\f0  \'d0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'f1 OCI \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0\'ec\'e8.\par
-\lang1033\f1 #podman run -it debian\lang1049\f0\tab\'ea\'ee\'ec\'e0\'ed\'e4\'fb \'f1\'e4\'e5\'eb\'e0\'ed\'fb \'ec\'e0\'ea\'f1\'e8\'ec\'e0\'eb\'fc\'ed\'ee \'f1\'f5\'ee\'e6\'e8\'ec\'e8\lang1033\f1 . \lang1049\f0\'d2\'ee\'eb\'fc\'ea\'ee \'e2\'ec\'e5\'f1\'f2\'ee \lang1033\f1 #docker\lang1049\f0  \'ef\'e8\'f8\'e5\'ec \lang1033\f1 #podman\lang1049\f0\par
-\'c2\'ec\'e5\'f1\'f2\'ee \lang1033\f1 Dockerfile - Containerfile\lang1049\f0  \'f1 \'ec\'e0\'ea\'f1\'e8\'ec\'e0\'eb\'fc\'ed\'ee \'f1\'f5\'ee\'e6\'e8\'ec \'f1\'e8\'ed\'f2\'e0\'ea\'f1\'e8\'f1\'ee\'ec.\par
-\'c2 Podman \'e2\'f1\'b8 \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'e5\'f2\'f1\'ff \'ed\'e5 \'e8\'e7 \'ef\'ee\'e4 \lang1033\f1 root\lang1049\f0  \u8594? \'ef\'f0\'ee\'e1\'eb\'e5\'ec\'fb \'f1 \'ef\'f0\'e8\'e2\'e8\'eb\'e5\'e3\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'fb\'ec\'e8 \'ef\'ee\'f0\'f2\'e0\'ec\'e8, \'e2\'f1\'e5 \'ef\'ee\'f2\'f0\'ee\'f5\'e0 \'f5\'f0\'e0\'ed\'e8\'f2 \'e2 ~/.local/share/containers \'e2\'ec\'e5\'f1\'f2\'ee /var/lib/containers\par
-\par
-\'c5\'f1\'f2\'fc \lang1033\f1 #crictl\lang1049\f0 , \'e0 \'e5\'f1\'f2\'fc \lang1033\f1 #ctr.\lang1049\f0\par
-\pard\nowidctlpar\hyphpar0\fi-1154\li1154\cf1\lang1033\b\f1 crictl\cf0\b0  - \lang1049\f0\'f3\'f2\'e8\'eb\'e8\'f2\'e0, \'ea\'ee\'f2\'ee\'f0\'e0\'ff \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \'ea\'ee\'ec\'e0\'ed\'e4\'fb \'ef\'ee \lang1033\f1 CRI \lang1049\f0\'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'f3\lang1033\f1  Container Runtime\lang1049\f0 , \'e1\'f3\'e4\'fc \'f2\'ee \lang1033\f1 Co\lang1049\f0 ntainerd\lang1033\f1  \lang1049\f0\'e8\'eb\'e8 \lang1033\f1 CRI-O\lang1049\f0 . \'cc\'ee\'e6\'e5\'f2 \'e4\'e5\'eb\'e0\'f2\'fc \lang1033\f1 inspect|ls|run|stop|remove\lang1049\f0  containers\lang1033\f1 , pull image, exec command \lang1049\f0\'e2 container\par
-\cf1\lang1033\b\f1 ctr\cf0\lang1049\b0\f0  - \'f3\'f2\'e8\'eb\'e8\'f2\'e0, \'ea\'ee\'f2\'ee\'f0\'e0\'ff \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \'ea\'ee\'ec\'e0\'ed\'e4\'fb \'ed\'e5\'ef\'ee\'f1\'f0\'e5\'e4\'f1\'f2\'e2\'e5\'ed\'ed\'ee (\'f2\'ee\'eb\'fc\'ea\'ee!) \lang1033\f1 Co\lang1049\f0 ntainerd. \'c4\'eb\'ff developing \'e8\'eb\'e8 debugging \lang1033\f1 "C\lang1049\f0 ontainerd\lang1033\f1 ".\lang1049\f0\par
-\pard\nowidctlpar\hyphpar0\lang1033\f1 #ctr --namespace=k8s.io images ls --quiet\par
-#ctr run --rm --net-host hello-world \cf2\lang1049\kerning0\i\f0 ContainerID\lang1033\i0\f1  \cf0\kerning1 = #\cf2\lang1049\kerning0\b\f0 docker run\b0  \lang1033\f1 --rm --network host \lang1049\f0 hello-world, \'f2\'ee\'eb\'fc\'ea\'ee \lang1033\f1 docker\lang1049\f0 ,\lang1033\f1  \lang1049\f0\'e5\'f1\'eb\'e8 \'ed\'e5 \'ed\'e0\'e9\'e4\'b8\'f2 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0, \'ef\'ee\'eb\'e5\'e7\'e5\'f2 \'ed\'e0 \lang1033\f1 hub.docker.com, \lang1049\f0\'e0 \lang1033\f1 ctr - \lang1049\f0\'ed\'e5\'f2.\par
-\par
-\lang1033\f1 #\lang1049\b\f0 apt install docker-registry\par
+{\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\fnil\fcharset0 Courier New;}{\f1\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}}
+{\colortbl ;\red0\green0\blue0;\red0\green0\blue255;\red0\green176\blue80;\red255\green0\blue0;\red247\green150\blue70;\red255\green192\blue0;\red0\green0\blue128;\red155\green0\blue211;}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\nowidctlpar\hyphpar0\cf1\lang1033\f0\fs22 #\lang1049\b\f1 apt install docker-registry\par
 \b0\'c2 \'f4\'e0\'e9\'eb\'e5 /etc/docker/registry/config.yml \'f3\'e4\'e0\'eb\'ff\'e5\'ec/\'ea\'ee\'ec\'ec\'e5\'ed\'f2\'e8\'f0\'f3\'e5\'ec \'f0\'e0\'e7\'e4\'e5\'eb auth:\par
 \'ce\'e1\'f0\'e0\'e7\'fb \'ef\'ee default \'e1\'f3\'e4\'f3\'f2 \'eb\'e5\'e6\'e0\'f2\'fc \'e2 /var/lib/docker-registry, \'f2.\'e5. \'ec\'fb \'e8\'f5 \'f7\'e5\'f0\'e5\'e7 #docker images \'ed\'e5 \'f3\'e2\'e8\'e4\'e8\'ec\cf0\kerning1\par
 \pard\nowidctlpar\hyphpar0\sl240\slmult1\par
-\cf2\'cf\'f0\'e8 \kerning0 "\kerning1 Failed to check for processor microcode upgrades\kerning0 "\kerning1  \'f3\'e4\'e0\'eb\'e8\'f2\'fc \'ef\'e0\'ea\'e5\'f2 needrestart.\cf0\par
-\cf2\par
+\cf1\'cf\'f0\'e8 \kerning0 "\kerning1 Failed to check for processor microcode upgrades\kerning0 "\kerning1  \'f3\'e4\'e0\'eb\'e8\'f2\'fc \'ef\'e0\'ea\'e5\'f2 needrestart.\cf0\par
+\cf1\par
 \'d4\'e0\'e9\'eb\'ee\'e2\'e0\'ff \'f1\'e8\'f1\'f2\'e5\'ec\'e0 \'ef\'ee\'e4 docker - overlayfs2. \'ce\'ed\'e0 \'f3\'e6\'e5 \'e5\'f1\'f2\'fc \'e2 kernel.\cf0\par
-\cf2\par
+\cf1\par
 Best Practice.\cf0\par
-\cf2 1. \'cd\'e5 \'e4\'e5\'eb\'e0\'f2\'fc \'f2\'e0\'ea:\cf0\par
-\cf2\tab RUN apt install cpp\cf0\par
-\cf2\tab RUN cpp \'f7\'f2\'ee-\'f2\'ee\cf0\par
-\cf2\tab RUN apt purge cpp\tab\tab\'f0\'e0\'e7\'ec\'e5\'f0 docker \'ee\'e1\'f0\'e0\'e7\'e0 \'ed\'e5 \'e8\'e7\'ec\'e5\'ed\'e8\'f2\'f1\'ff !!!\cf0\par
-\cf2   \'c4\'e5\'eb\'e0\'f2\'fc \'f2\'e0\'ea:\cf0\par
-\cf2\tab RUN\tab apt install cpp && \\\cf0\par
-\cf2\tab\tab cpp \'f7\'f2\'ee-\'f2\'ee && \\\cf0\par
-\cf2\tab\tab apt purge cpp\cf0\par
-\cf2 2. App \'e2\'ed\'f3\'f2\'f0\'e8 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0 \'f1\'e2\'ee\'e8 \'eb\'ee\'e3\'e8 \'ef\'e8\'f1\'e0\'f2\'fc \'e2 STDOUT/STDERR (\'ed\'e5 \'e2 \'f4\'e0\'e9\'eb)- \'eb\'ee\'e3\'e8 \'ef\'ee\'ef\'e0\'e4\'f3\'f2 \'e2 \'ef\'f0\'ee\'f1\'f2\'f0\'e0\'ed\'f1\'f2\'e2\'ee docker \'e8 \'f2\'e0\'ec \'f3\'e6\'e5 docker \lang1033\f1 log \lang1049\f0\'e8 \'f2.\'e4.\cf0\par
-\cf2 3. \'c2\'ed\'f3\'f2\'f0\'e8 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0 \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'f2\'fc \'e2\'f1\'b8 \'ee\'f2 User, \'ed\'e5 \'ee\'f2 Root:\cf0\par
-\cf2\tab FROM Python3.8.6\cf0\par
-\cf2\tab RUN \'f7\'f2\'ee-\'f2\'ee\cf0\par
-\cf2\tab VOLUME \'f7\'f2\'ee-\'f2\'ee\cf0\par
-\cf2\tab\ul USER patrik\cf0\ulnone\par
-\cf2\tab CMD \'e7\'e0\'ef\'f3\'f1\'ea \'ed\'e0\'f8\'e5\'e3\'ee App\cf0\par
-\cf2 4. \'cd\'e5\'ef\'f0\'e0\'e2\'e8\'eb\'fc\'ed\'ee FROM Python3:\ul latest\ulnone . \'cf\'f0\'e0\'e2\'e8\'eb\'fc\'ed\'ee FROM Python3.8.6\cf0\par
-\cf2 5. \'cd\'e5\'ef\'f0\'e0\'e2\'e8\'eb\'fc\'ed\'ee FROM ubuntu. \'cf\'f0\'e0\'e2\'e8\'eb\'fc\'ed\'ee \'f5\'ee\'f2\'ff \'e1\'fb FROM debian. \'ca\'e0\'ea \'ec\'ee\'e6\'ed\'ee \'ec\'e5\'ed\'fc\'f8\'e5 \'ec\'f3\'f1\'ee\'f0\'e0 \'f2\'e0\'f9\'e8\'f2\'fc \'e2 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0.\cf0\par
-\cf2 6. \'cd\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e8 \'f5\'f0\'e0\'ed\'e8\'f2\'fc \'e2 ConfigMap.\cf0\par
-\cf2 7. docker run -it --rm \b --read-only\b0  debian\tab\tab\'ed\'e0 \'f4\'e0\'e9\'eb\'ee\'e2\'f3\'fe \'f1\'e8\'f1\'f2\'e5\'ec\'f3 \'ed\'e5\'eb\'fc\'e7\'ff \'ed\'e8\'f7\'e5\'e3\'ee \'ef\'e8\'f1\'e0\'f2\'fc. \'d5\'ee\'f2\'e8\'ec \'f7\'f2\'ee-\'f2\'ee \'ef\'e8\'f1\'e0\'f2\'fc/\'f1\'ee\'f5\'f0\'e0\'ed\'ff\'f2\'fc - \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'ec volumes.\cf0\par
-\cf2\par
+\cf1 1. \'cd\'e5 \'e4\'e5\'eb\'e0\'f2\'fc \'f2\'e0\'ea:\cf0\par
+\cf1\tab RUN apt install cpp\cf0\par
+\cf1\tab RUN cpp \'f7\'f2\'ee-\'f2\'ee\cf0\par
+\cf1\tab RUN apt purge cpp\tab\tab\'f0\'e0\'e7\'ec\'e5\'f0 docker \'ee\'e1\'f0\'e0\'e7\'e0 \'ed\'e5 \'e8\'e7\'ec\'e5\'ed\'e8\'f2\'f1\'ff !!!\cf0\par
+\cf1   \'c4\'e5\'eb\'e0\'f2\'fc \'f2\'e0\'ea:\cf0\par
+\cf1\tab RUN\tab apt install cpp && \\\cf0\par
+\cf1\tab\tab cpp \'f7\'f2\'ee-\'f2\'ee && \\\cf0\par
+\cf1\tab\tab apt purge cpp\cf0\par
+\cf1 2. App \'e2\'ed\'f3\'f2\'f0\'e8 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0 \'f1\'e2\'ee\'e8 \'eb\'ee\'e3\'e8 \'ef\'e8\'f1\'e0\'f2\'fc \'e2 STDOUT/STDERR (\'ed\'e5 \'e2 \'f4\'e0\'e9\'eb)- \'eb\'ee\'e3\'e8 \'ef\'ee\'ef\'e0\'e4\'f3\'f2 \'e2 \'ef\'f0\'ee\'f1\'f2\'f0\'e0\'ed\'f1\'f2\'e2\'ee docker \'e8 \'f2\'e0\'ec \'f3\'e6\'e5 docker \lang1033\f0 log \lang1049\f1\'e8 \'f2.\'e4.\cf0\par
+\cf1 3. \'c2\'ed\'f3\'f2\'f0\'e8 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0 \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'f2\'fc \'e2\'f1\'b8 \'ee\'f2 User, \'ed\'e5 \'ee\'f2 Root:\cf0\par
+\cf1\tab FROM Python3.8.6\cf0\par
+\cf1\tab RUN \'f7\'f2\'ee-\'f2\'ee\cf0\par
+\cf1\tab VOLUME \'f7\'f2\'ee-\'f2\'ee\cf0\par
+\cf1\tab\ul USER patrik\cf0\ulnone\par
+\cf1\tab CMD \'e7\'e0\'ef\'f3\'f1\'ea \'ed\'e0\'f8\'e5\'e3\'ee App\cf0\par
+\cf1 4. \'cd\'e5\'ef\'f0\'e0\'e2\'e8\'eb\'fc\'ed\'ee FROM Python3:\ul latest\ulnone . \'cf\'f0\'e0\'e2\'e8\'eb\'fc\'ed\'ee FROM Python3.8.6\cf0\par
+\cf1 5. \'cd\'e5\'ef\'f0\'e0\'e2\'e8\'eb\'fc\'ed\'ee FROM ubuntu. \'cf\'f0\'e0\'e2\'e8\'eb\'fc\'ed\'ee \'f5\'ee\'f2\'ff \'e1\'fb FROM debian. \'ca\'e0\'ea \'ec\'ee\'e6\'ed\'ee \'ec\'e5\'ed\'fc\'f8\'e5 \'ec\'f3\'f1\'ee\'f0\'e0 \'f2\'e0\'f9\'e8\'f2\'fc \'e2 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0.\cf0\par
+\cf1 6. \'cd\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e8 \'f5\'f0\'e0\'ed\'e8\'f2\'fc \'e2 ConfigMap.\cf0\par
+\cf1 7. docker run -it --rm \b --read-only\b0  debian\tab\tab\'ed\'e0 \'f4\'e0\'e9\'eb\'ee\'e2\'f3\'fe \'f1\'e8\'f1\'f2\'e5\'ec\'f3 \'ed\'e5\'eb\'fc\'e7\'ff \'ed\'e8\'f7\'e5\'e3\'ee \'ef\'e8\'f1\'e0\'f2\'fc. \'d5\'ee\'f2\'e8\'ec \'f7\'f2\'ee-\'f2\'ee \'ef\'e8\'f1\'e0\'f2\'fc/\'f1\'ee\'f5\'f0\'e0\'ed\'ff\'f2\'fc - \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'ec volumes.\cf0\par
+\cf1\par
 apt install docker.io\cf0\par
-\cf2 apt install docker-compose \cf0\par
-\cf2\par
-\'c8\'ed\'f1\'f2\'f0\'f3\'ea\'f6\'e8\'ff \'ef\'ee \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'ea\'e5 docker \cf0{\field{\*\fldinst{HYPERLINK "https://docs.docker.com/install/linux/docker-ce/debian/#install-docker-ce"}}{\fldrslt{\ul\cf3 https://docs.docker.com/install/linux/docker-ce/debian/#install-docker-ce}}}\f0\fs22\par
+\cf1 apt install docker-compose \cf0\par
+\cf1\par
+\'c8\'ed\'f1\'f2\'f0\'f3\'ea\'f6\'e8\'ff \'ef\'ee \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'ea\'e5 docker \cf0{\field{\*\fldinst{HYPERLINK "https://docs.docker.com/install/linux/docker-ce/debian/#install-docker-ce"}}{\fldrslt{\ul\cf2 https://docs.docker.com/install/linux/docker-ce/debian/#install-docker-ce}}}\f1\fs22\par
 \par
 \tab\'d1\'ef\'ee\'f1\'ee\'e1 \'b91.\par
-\'c7\'e0\'f5\'ee\'e4\'e8\'ec \'ed\'e0 {\field{\*\fldinst{HYPERLINK "https://download.docker.com/linux/debian/dists/bookworm/pool/stable/amd64/"}}{\fldrslt{\ul\cf3 https://download.docker.com/linux/debian/dists/bookworm/pool/stable/amd64/}}}\f0\fs22\par
+\'c7\'e0\'f5\'ee\'e4\'e8\'ec \'ed\'e0 {\field{\*\fldinst{HYPERLINK "https://download.docker.com/linux/debian/dists/bookworm/pool/stable/amd64/"}}{\fldrslt{\ul\cf2 https://download.docker.com/linux/debian/dists/bookworm/pool/stable/amd64/}}}\f1\fs22\par
 \'d1\'ea\'e0\'f7\'e8\'e2\'e0\'e5\'ec \'e8 \'f3\'f1\'f2\'e0\'ed\'e0\'e2\'eb\'e8\'e2\'e0\'e5\'ec:\par
 \tab containerd.io_1.3.7-1_amd64.deb\par
 \tab docker-ce-cli_19.03.9~3-0~debian-buster_amd64.deb\par
@@ -54,92 +43,92 @@ apt install docker.io\cf0\par
 \'c4\'ee\'e1\'e0\'e2\'e8\'f2\'fc user \'e2 \'e3\'f0\'f3\'ef\'ef\'f3 docker: #sudo usermod -aG docker user\par
 \par
 \tab\'d1\'ef\'ee\'f1\'ee\'e1 \'b92.\par
-# curl -fsSL {\field{\*\fldinst{HYPERLINK "https://get.docker.com/" }}{\fldrslt{\cf3\ul https://get.docker.com}}}\cf0\ulnone\f0\fs22  -o get-docker.sh \'e8 \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'e5\'ec \'fd\'f2\'ee\'f2 \'f4\'e0\'e9\'eb\par
+# curl -fsSL {\field{\*\fldinst{HYPERLINK "https://get.docker.com/" }}{\fldrslt{\cf2\ul https://get.docker.com}}}\cf0\ulnone\f1\fs22  -o get-docker.sh \'e8 \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'e5\'ec \'fd\'f2\'ee\'f2 \'f4\'e0\'e9\'eb\par
 \par
 \par
-{\field{\*\fldinst{HYPERLINK "https://docs.docker.com/engine/reference/run/" }}{\fldrslt{\cf3\ul https://docs.docker.com/engine/reference/commandline/}}}\cf0\ulnone\f0\fs22\tab\tab\'ee\'ef\'e8\'f1\'e0\'ed\'e8\'e5 \'c2\'d1\'c5\'d5 docker \ul\i command\lang1033\f1 s\lang1049\ulnone\i0\f0\par
-{\field{\*\fldinst{HYPERLINK "https://habr.com/ru/companies/flant/articles/336654/"}}{\fldrslt{\ul\cf3 https://habr.com/ru/companies/flant/articles/336654/}}}\f0\fs22\tab\tab\'f8\'ef\'e0\'f0\'e3\'e0\'eb\'ea\'e0 \'ef\'ee \'ea\'ee\'ec\'e0\'ed\'e4\'e0\'ec docker\par
-\cf2\kerning0\b docker\b0  \i command\i0  --help\tab\tab\'ef\'ee\'ec\'ee\'f9\'fc \'ef\'ee \'ea\'ee\'ec\'e0\'ed\'e4\'e0\'ec\cf0\kerning1\par
-\cf2\kerning0\b docker version\cf0\kerning1\b0\par
-\cf2\kerning0\b docker info\cf0\kerning1\b0\par
+{\field{\*\fldinst{HYPERLINK "https://docs.docker.com/engine/reference/run/" }}{\fldrslt{\cf2\ul https://docs.docker.com/engine/reference/commandline/}}}\cf0\ulnone\f1\fs22\tab\tab\'ee\'ef\'e8\'f1\'e0\'ed\'e8\'e5 \'c2\'d1\'c5\'d5 docker \ul\i command\lang1033\f0 s\lang1049\ulnone\i0\f1\par
+{\field{\*\fldinst{HYPERLINK "https://habr.com/ru/companies/flant/articles/336654/"}}{\fldrslt{\ul\cf2 https://habr.com/ru/companies/flant/articles/336654/}}}\f1\fs22\tab\tab\'f8\'ef\'e0\'f0\'e3\'e0\'eb\'ea\'e0 \'ef\'ee \'ea\'ee\'ec\'e0\'ed\'e4\'e0\'ec docker\par
+\cf1\kerning0\b docker\b0  \i command\i0  --help\tab\tab\'ef\'ee\'ec\'ee\'f9\'fc \'ef\'ee \'ea\'ee\'ec\'e0\'ed\'e4\'e0\'ec\cf0\kerning1\par
+\cf1\kerning0\b docker version\cf0\kerning1\b0\par
+\cf1\kerning0\b docker info\cf0\kerning1\b0\par
 \par
-\cf2\kerning0\ul Remote Docker\ulnone .\cf0\kerning1\par
-\kerning0{\field{\*\fldinst{HYPERLINK "https://www.docker.com/blog/how-to-deploy-on-remote-docker-hosts-with-docker-compose"}}{\fldrslt{\ul\cf3 https://www.docker.com/blog/how-to-deploy-on-remote-docker-hosts-with-docker-compose}}}\kerning1\f0\fs22\par
-\cf2\kerning0\b docker -H ssh://10\lang1033\f1 .0.0.1\lang1049\f0  ps\cf0\kerning1\b0\par
-\cf2\kerning0\tab\'e8\'eb\'e8\cf0\kerning1\par
-\cf2\kerning0 DOCKER_HOST="ssh://\lang1033\f1 10.0.0.1\lang1049\f0 " docker ps\cf0\kerning1\par
-\cf2\kerning0\tab\'e8\'eb\'e8\cf0\kerning1\par
-\cf2\kerning0 #docker context create \cf4\b remote\cf2\b0  docker "host=ssh://\lang1033\f1 10.0.0.1\lang1049\f0 "\cf0\kerning1\par
-\cf2\kerning0 #docker context ls\cf0\kerning1\par
-\cf2\kerning0\tab NAME\tab\tab DESCRIPTION\tab\tab\tab\tab\tab\tab DOCKER ENDPOINT\tab\tab\tab\tab KUBERNETES ENDPOINT\tab ORCHESTRATOR\cf0\kerning1\par
-\cf2\kerning0\tab default \cf5\b *\cf2\b0\tab Current DOCKER_HOST based configuration\tab unix:///var/run/docker.sock\tab\tab\tab\tab\tab swarm\cf0\kerning1\par
-\cf2\kerning0\tab\cf4\b remote\cf2\b0\tab\tab\tab\tab\tab\tab\tab\tab\tab ssh://\lang1033\f1 10.0.0.1\cf0\lang1049\kerning1\f0\par
-\cf2\kerning0\par
-#docker --context\cf4\b  remote\cf2\b0  ps\tab\'e2\'fb\'ef\'ee\'eb\'ed\'e8\'f2\'fc \'ea\'ee\'ec\'e0\'ed\'e4\'f3 \'e8\'e7 \'ef\'ee\'e4 context\cf4\b  remote\cf0\kerning1\b0\par
-\cf2\kerning0 #docker context use \cf4\b remote\cf2\b0  use\tab\'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc context\cf4\b  remote\cf2\b0  \'ef\'ee default-\'f3\cf0\kerning1\par
-\cf2\kerning0 #docker context ls\cf0\kerning1\par
-\cf2\kerning0\tab NAME\tab\tab DESCRIPTION\tab\tab\tab\tab\tab\tab DOCKER ENDPOINT\tab\tab\tab\tab KUBERNETES ENDPOINT\tab ORCHESTRATOR\cf0\kerning1\par
-\cf2\kerning0\tab default\tab Current DOCKER_HOST based configuration\tab unix:///var/run/docker.sock\tab\tab\tab\tab\tab swarm\cf0\kerning1\par
-\cf2\kerning0\tab\cf4\b remote\cf2\b0  \cf5\b *\cf2\b0\tab\tab\tab\tab\tab\tab\tab\tab\tab ssh://\lang1033\f1 10.0.0.1\cf0\lang1049\kerning1\f0\par
-\cf2\kerning0\b\par
-\pard\nowidctlpar\hyphpar0\fi-1136\li1136\sl240\slmult1 docker login\b0\tab\tab\tab\'ef\'ee\'e4\'f6\'e5\'ef\'e8\'f2\'fc\'f1\'ff \'ea \cf0\kerning1{\field{\*\fldinst{HYPERLINK "http://hub.docker.com/" }}{\fldrslt{\cf3\kerning0\ul http://hub.docker.com}}}\cf0\kerning1\ulnone\f0\fs22\par
-\cf2\kerning0\b docker login\b0  \b -u\b0  \i username\i0  \b -p\b0  \i password\i0   container-registry.oracle.com\tab\'ef\'ee\'e4\'f6\'e5\'ef\'e8\'f2\'fc\'f1\'ff \'ea \'eb\'e5\'e2\'ee\'ec\'f3 docker hub\cf0\kerning1\par
-\cf2\kerning0\b docker search\b0  debian\tab\tab\'ef\'ee\'e8\'f1\'ea \'ef\'ee Docker Hub \'e8\'eb\'e8 \'ea \'eb\'e5\'e2\'ee\'ec\'f3 hub-\'f3 image c \'e8\'ec\'e5\'ed\'e5\'ec/\'ee\'ef\'e8\'f1\'e0\'ed\'e8\'e5\'ec debian\cf0\kerning1\par
-\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf2\kerning0\par
-\pard\nowidctlpar\hyphpar0\fi-1136\li1136\sl240\slmult1\b docker \cf1 --no-cache\cf2\b0  \b build\b0  -t hello .\tab\tab\'e7\'e0\'f8\'eb\'e8 \'e2 \'ef\'e0\'ef\'ea\'f3 \'f1 \'ef\'f0\'ee\'e5\'ea\'f2\'ee\'ec \'e8 \'f1\'e4\'e5\'eb\'e0\'eb\'e8 build. \'cf\'ee\'eb\'f3\'f7\'e8\'eb\'e8 image \'f1 \'e8\'ec\'e5\'ed\'e5\'ec hello. \'cf\'f0\'ee \cf1\b --no-cache\cf2\b0 : \cf0\kerning1\'e2 Dockerfile \'ed\'e0 5 \'f1\'f2\'f0\'ee\'ea\'e5 \'ed\'e0\'ef\'e8\'f1\'e0\'ed\'ee: RUN apt update. \'cf\'f0\'e8 \'e1\'e8\'eb\'e4\'e5 docker \'ef\'ee\'f1\'ec\'ee\'f2\'f0\'e8\'f2, \'f7\'f2\'ee \'ef\'f0\'e5\'e4\'fb\'e4\'f3\'f9\'e8\'e9 \'f0\'e0\'e7 \'ee\'ed \'fd\'f2\'f3 \'ea\'ee\'ec\'e0\'ed\'e4\'f3 \'f3\'e6\'e5 \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'eb (\'e0 \'e7\'ed\'e0\'f7\'e8\'f2 \'fd\'f2\'ee\'f2 layer \'e5\'f1\'f2\'fc \'e2 cache), \'ef\'ee\'fd\'f2\'ee\'ec\'f3 \'ed\'e8\'f7\'e5\'e3\'ee \'e4\'e5\'eb\'e0\'f2\'fc \'ed\'e5 \'e1\'f3\'e4\'e5\'f2. \'d0\'e0\'e7\'ec\'fb\'f8\'eb\'ff\'ff \'ed\'e0\'e4\'ee \'eb\'e8 \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'f2\'fc \'e8\'ed\'f1\'f2\'f0\'f3\'ea\'f6\'e8\'e9 ADD \'e8 COPY, docker \'e1\'f3\'e4\'e5\'f2 \'f1\'f0\'e0\'e2\'ed\'e8\'e2\'e0\'f2\'fc checksum \'ea\'ee\'ef\'e8\'f0\'f3\'e5\'ec\'fb\'f5 \'f4\'e0\'e9\'eb\'ee\'e2 \'e8 \'f4\'e0\'e9\'eb\'ee\'e2 \'ed\'e0\'f5\'ee\'e4\'ff\'f9\'e8\'f5\'f1\'ff \'e2 "\'f1\'f2\'e0\'f0\'ee\'ec" image-\'e5.\par
-\cf2\kerning0\b\par
+\cf1\kerning0\ul Remote Docker\ulnone .\cf0\kerning1\par
+\kerning0{\field{\*\fldinst{HYPERLINK "https://www.docker.com/blog/how-to-deploy-on-remote-docker-hosts-with-docker-compose"}}{\fldrslt{\ul\cf2 https://www.docker.com/blog/how-to-deploy-on-remote-docker-hosts-with-docker-compose}}}\kerning1\f1\fs22\par
+\cf1\kerning0\b docker -H ssh://10\lang1033\f0 .0.0.1\lang1049\f1  ps\cf0\kerning1\b0\par
+\cf1\kerning0\tab\'e8\'eb\'e8\cf0\kerning1\par
+\cf1\kerning0 DOCKER_HOST="ssh://\lang1033\f0 10.0.0.1\lang1049\f1 " docker ps\cf0\kerning1\par
+\cf1\kerning0\tab\'e8\'eb\'e8\cf0\kerning1\par
+\cf1\kerning0 #docker context create \cf3\b remote\cf1\b0  docker "host=ssh://\lang1033\f0 10.0.0.1\lang1049\f1 "\cf0\kerning1\par
+\cf1\kerning0 #docker context ls\cf0\kerning1\par
+\cf1\kerning0\tab NAME\tab\tab DESCRIPTION\tab\tab\tab\tab\tab\tab DOCKER ENDPOINT\tab\tab\tab\tab KUBERNETES ENDPOINT\tab ORCHESTRATOR\cf0\kerning1\par
+\cf1\kerning0\tab default \cf4\b *\cf1\b0\tab Current DOCKER_HOST based configuration\tab unix:///var/run/docker.sock\tab\tab\tab\tab\tab swarm\cf0\kerning1\par
+\cf1\kerning0\tab\cf3\b remote\cf1\b0\tab\tab\tab\tab\tab\tab\tab\tab\tab ssh://\lang1033\f0 10.0.0.1\cf0\lang1049\kerning1\f1\par
+\cf1\kerning0\par
+#docker --context\cf3\b  remote\cf1\b0  ps\tab\'e2\'fb\'ef\'ee\'eb\'ed\'e8\'f2\'fc \'ea\'ee\'ec\'e0\'ed\'e4\'f3 \'e8\'e7 \'ef\'ee\'e4 context\cf3\b  remote\cf0\kerning1\b0\par
+\cf1\kerning0 #docker context use \cf3\b remote\cf1\b0  use\tab\'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc context\cf3\b  remote\cf1\b0  \'ef\'ee default-\'f3\cf0\kerning1\par
+\cf1\kerning0 #docker context ls\cf0\kerning1\par
+\cf1\kerning0\tab NAME\tab\tab DESCRIPTION\tab\tab\tab\tab\tab\tab DOCKER ENDPOINT\tab\tab\tab\tab KUBERNETES ENDPOINT\tab ORCHESTRATOR\cf0\kerning1\par
+\cf1\kerning0\tab default\tab Current DOCKER_HOST based configuration\tab unix:///var/run/docker.sock\tab\tab\tab\tab\tab swarm\cf0\kerning1\par
+\cf1\kerning0\tab\cf3\b remote\cf1\b0  \cf4\b *\cf1\b0\tab\tab\tab\tab\tab\tab\tab\tab\tab ssh://\lang1033\f0 10.0.0.1\cf0\lang1049\kerning1\f1\par
+\cf1\kerning0\b\par
+\pard\nowidctlpar\hyphpar0\fi-1136\li1136\sl240\slmult1 docker login\b0\tab\tab\tab\'ef\'ee\'e4\'f6\'e5\'ef\'e8\'f2\'fc\'f1\'ff \'ea \cf0\kerning1{\field{\*\fldinst{HYPERLINK "http://hub.docker.com/" }}{\fldrslt{\cf2\kerning0\ul http://hub.docker.com}}}\cf0\kerning1\ulnone\f1\fs22\par
+\cf1\kerning0\b docker login\b0  \b -u\b0  \i username\i0  \b -p\b0  \i password\i0   container-registry.oracle.com\tab\'ef\'ee\'e4\'f6\'e5\'ef\'e8\'f2\'fc\'f1\'ff \'ea \'eb\'e5\'e2\'ee\'ec\'f3 docker hub\cf0\kerning1\par
+\cf1\kerning0\b docker search\b0  debian\tab\tab\'ef\'ee\'e8\'f1\'ea \'ef\'ee Docker Hub \'e8\'eb\'e8 \'ea \'eb\'e5\'e2\'ee\'ec\'f3 hub-\'f3 image c \'e8\'ec\'e5\'ed\'e5\'ec/\'ee\'ef\'e8\'f1\'e0\'ed\'e8\'e5\'ec debian\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf1\kerning0\par
+\pard\nowidctlpar\hyphpar0\fi-1136\li1136\sl240\slmult1\b docker \cf5 --no-cache\cf1\b0  \b build\b0  -t hello .\tab\tab\'e7\'e0\'f8\'eb\'e8 \'e2 \'ef\'e0\'ef\'ea\'f3 \'f1 \'ef\'f0\'ee\'e5\'ea\'f2\'ee\'ec \'e8 \'f1\'e4\'e5\'eb\'e0\'eb\'e8 build. \'cf\'ee\'eb\'f3\'f7\'e8\'eb\'e8 image \'f1 \'e8\'ec\'e5\'ed\'e5\'ec hello. \'cf\'f0\'ee \cf5\b --no-cache\cf1\b0 : \cf0\kerning1\'e2 Dockerfile \'ed\'e0 5 \'f1\'f2\'f0\'ee\'ea\'e5 \'ed\'e0\'ef\'e8\'f1\'e0\'ed\'ee: RUN apt update. \'cf\'f0\'e8 \'e1\'e8\'eb\'e4\'e5 docker \'ef\'ee\'f1\'ec\'ee\'f2\'f0\'e8\'f2, \'f7\'f2\'ee \'ef\'f0\'e5\'e4\'fb\'e4\'f3\'f9\'e8\'e9 \'f0\'e0\'e7 \'ee\'ed \'fd\'f2\'f3 \'ea\'ee\'ec\'e0\'ed\'e4\'f3 \'f3\'e6\'e5 \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'eb (\'e0 \'e7\'ed\'e0\'f7\'e8\'f2 \'fd\'f2\'ee\'f2 layer \'e5\'f1\'f2\'fc \'e2 cache), \'ef\'ee\'fd\'f2\'ee\'ec\'f3 \'ed\'e8\'f7\'e5\'e3\'ee \'e4\'e5\'eb\'e0\'f2\'fc \'ed\'e5 \'e1\'f3\'e4\'e5\'f2. \'d0\'e0\'e7\'ec\'fb\'f8\'eb\'ff\'ff \'ed\'e0\'e4\'ee \'eb\'e8 \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'f2\'fc \'e8\'ed\'f1\'f2\'f0\'f3\'ea\'f6\'e8\'e9 ADD \'e8 COPY, docker \'e1\'f3\'e4\'e5\'f2 \'f1\'f0\'e0\'e2\'ed\'e8\'e2\'e0\'f2\'fc checksum \'ea\'ee\'ef\'e8\'f0\'f3\'e5\'ec\'fb\'f5 \'f4\'e0\'e9\'eb\'ee\'e2 \'e8 \'f4\'e0\'e9\'eb\'ee\'e2 \'ed\'e0\'f5\'ee\'e4\'ff\'f9\'e8\'f5\'f1\'ff \'e2 "\'f1\'f2\'e0\'f0\'ee\'ec" image-\'e5.\par
+\cf1\kerning0\b\par
 \cf0\kerning1\b0\par
-\cf2\kerning0\b docker run\b0  \lang1033\f1 -d --rm \lang1049\f0 hello-world\tab\lang1033\f1 -d \lang1049\f0\'e7\'e0\'ef\'f3\'f1\'f2\'e8\'f2\'fc \'e2 \'f4\'ee\'ed\'e5\lang1033\f1 ; --rm \lang1049\f0\'ef\'ee\'f1\'eb\'e5 \'ee\'f1\'f2\'e0\'ed\'ee\'e2\'ea\'e8 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0 \'f3\'e4\'e0\'eb\'e8\'f2\'f1\'ff, \'f2.\'e5. \'ed\'e5 \'f3\'e2\'e8\'e4\'e8\'ec \'ef\'f0\'e8 \lang1033\f1 #\cf0\lang1049\f0 docker ps -a\kerning1\par
+\cf1\kerning0\b docker run\b0  \lang1033\f0 -d --rm \lang1049\f1 hello-world\tab\lang1033\f0 -d \lang1049\f1\'e7\'e0\'ef\'f3\'f1\'f2\'e8\'f2\'fc \'e2 \'f4\'ee\'ed\'e5\lang1033\f0 ; --rm \lang1049\f1\'ef\'ee\'f1\'eb\'e5 \'ee\'f1\'f2\'e0\'ed\'ee\'e2\'ea\'e8 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0 \'f3\'e4\'e0\'eb\'e8\'f2\'f1\'ff, \'f2.\'e5. \'ed\'e5 \'f3\'e2\'e8\'e4\'e8\'ec \'ef\'f0\'e8 \lang1033\f0 #\cf0\lang1049\f1 docker ps -a\kerning1\par
 \par
 \par
 \tab --- \'cd\'ee\'e2\'fb\'e9 \'f1\'e8\'ed\'f2\'e0\'ea\'f1\'e8\'f1 ---\par
 \pard\nowidctlpar\hyphpar0\sl240\slmult1\par
-\pard\nowidctlpar\hyphpar0\fi-1136\li1136\sl240\slmult1\cf2\kerning0\b docker image ls --all\b0\tab\tab = #docker images\tab\'ef\'ee\'f1\'ec\'ee\'f2\'f0\'e5\'f2\'fc \'e2\'f1\'e5 \'f1\'ea\'e0\'f7\'e5\'ed\'ed\'fb\'e5 \'ee\'e1\'f0\'e0\'e7\'fb, \'eb\'e5\'e6\'e0\'f2 \'e2 \'ef\'e0\'ef\'ea\'e5 /var/lib/docker. \'c8\'e7 \'ee\'e4\'ed\'ee\'e3\'ee \'ee\'e1\'f0\'e0\'e7\'e0 \'ec\'ee\'e6\'ed\'ee \'f1\'ee\'e7\'e4\'e0\'f2\'fc \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'ee\'e2.\cf0\kerning1\par
-\cf2\kerning0\b docker image rm\cf0\kerning1\b0  \i ImageID\i0\tab = #docker rmi \'f3\'e4\'e0\'eb\'e8\'f2\'fc image\par
-\b docker\cf2\kerning0  image\cf0\kerning1  history\b0  \i ImageID \i0 --no-trunc\tab\'ef\'ee\'ea\'e0\'e6\'e5\'f2 \'e8\'f1\'f2\'ee\'f0\'e8\'fe \'ea\'e0\'ea \'f4\'ee\'f0\'ec\'e8\'f0\'ee\'e2\'e0\'eb\'f1\'ff image\par
+\pard\nowidctlpar\hyphpar0\fi-1136\li1136\sl240\slmult1\cf1\kerning0\b docker image ls --all\b0\tab\tab = #docker images\tab\'ef\'ee\'f1\'ec\'ee\'f2\'f0\'e5\'f2\'fc \'e2\'f1\'e5 \'f1\'ea\'e0\'f7\'e5\'ed\'ed\'fb\'e5 \'ee\'e1\'f0\'e0\'e7\'fb, \'eb\'e5\'e6\'e0\'f2 \'e2 \'ef\'e0\'ef\'ea\'e5 /var/lib/docker. \'c8\'e7 \'ee\'e4\'ed\'ee\'e3\'ee \'ee\'e1\'f0\'e0\'e7\'e0 \'ec\'ee\'e6\'ed\'ee \'f1\'ee\'e7\'e4\'e0\'f2\'fc \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'ee\'e2.\cf0\kerning1\par
+\cf1\kerning0\b docker image rm\cf0\kerning1\b0  \i ImageID\i0\tab = #docker rmi \'f3\'e4\'e0\'eb\'e8\'f2\'fc image\par
+\b docker\cf1\kerning0  image\cf0\kerning1  history\b0  \i ImageID \i0 --no-trunc\tab\'ef\'ee\'ea\'e0\'e6\'e5\'f2 \'e8\'f1\'f2\'ee\'f0\'e8\'fe \'ea\'e0\'ea \'f4\'ee\'f0\'ec\'e8\'f0\'ee\'e2\'e0\'eb\'f1\'ff image\par
 \b docker image inspect\b0  \i ImageID\i0\tab\'e2\'fb\'e4\'e0\'f1\'f2 ~config \'e2 \'f4\'ee\'f0\'ec\'e0\'f2\'e5 JSON\par
 \b docker image build\b0\tab\tab = #docker build\par
-\b docker image tag\b0\tab\tab = #docker tag hello \cf2\kerning0 samusev/hello:latest\tab\'f1\'ee\'e7\'e4\'e0\'eb\'e8 link \'ed\'e0 image. \'c2 \'e2\'fb\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'e8 \'ea\'ee\'ec\'e0\'ed\'e4\'fb docker images \'e1\'f3\'e4\'e5\'f2 2-\'e0 image-\'e0 \'f1 \'ee\'e4\'e8\'ed\'e0\'ea\'ee\'e2\'fb\'ec\'e8 image_id. \'c4\'eb\'ff \'e7\'e0\'e3\'f0\'f3\'e7\'ea\'e8 \'ed\'e0 Docker Hub, \'e8\'ec\'ff image-\'e0 \'e4\'ee\'eb\'e6\'ed\'ee \'e8\'ec\'e5\'f2\'fc \'e8\'ec\'e5\'ed\'ed\'ee \'f2\'e0\'ea\'f3\'fe \'f4\'ee\'f0\'ec\'f3 \'e7\'e0\'ef\'e8\'f1\'e8.\cf0\kerning1\par
-\cf2\kerning0\b docker image load -i\b0  out.tar\tab = #docker load < out.tar\tab\'e7\'e0\'e3\'f0\'f3\'e7\'e8\'f2\'fc image \'e8\'e7 \'f4\'e0\'e9\'eb\'e0 .tar\cf0\kerning1\par
-\cf2\kerning0\b docker image save\b0  \i ImageID\b\i0  -o\b0  out.tar\tab = #docker save \i ImageID\i0  > out.tar\tab\'f1\'ee\'f5\'f0\'e0\'ed\'e8\'f2\'fc image \'e8 \'e2\'f1\'e5 \'e5\'e3\'ee \'ef\'ee\'f2\'f0\'ee\'f5\'e0 \'e2 \'f4\'e0\'e9\'eb .tar\cf0\kerning1\par
-\b docker image push\cf2\kerning0\b0  \i ImageID\i0\tab = #docker push \i ImageID\i0\tab\'e7\'e0\'eb\'e8\'eb\'e8 image \'ed\'e0 Docker Hub\cf0\kerning1\par
-\cf2\kerning0\b docker image pull\b0  \i ImageID\i0\tab = #docker pull \i ImageID\i0\tab\'f1\'ea\'e0\'f7\'e0\'f2\'fc image=hello c tag=10 \'e8\'e7 \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'ee\'f0\'e8\'ff samusev\cf0\kerning1\par
+\b docker image tag\b0\tab\tab = #docker tag hello \cf1\kerning0 samusev/hello:latest\tab\'f1\'ee\'e7\'e4\'e0\'eb\'e8 link \'ed\'e0 image. \'c2 \'e2\'fb\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'e8 \'ea\'ee\'ec\'e0\'ed\'e4\'fb docker images \'e1\'f3\'e4\'e5\'f2 2-\'e0 image-\'e0 \'f1 \'ee\'e4\'e8\'ed\'e0\'ea\'ee\'e2\'fb\'ec\'e8 image_id. \'c4\'eb\'ff \'e7\'e0\'e3\'f0\'f3\'e7\'ea\'e8 \'ed\'e0 Docker Hub, \'e8\'ec\'ff image-\'e0 \'e4\'ee\'eb\'e6\'ed\'ee \'e8\'ec\'e5\'f2\'fc \'e8\'ec\'e5\'ed\'ed\'ee \'f2\'e0\'ea\'f3\'fe \'f4\'ee\'f0\'ec\'f3 \'e7\'e0\'ef\'e8\'f1\'e8.\cf0\kerning1\par
+\cf1\kerning0\b docker image load -i\b0  out.tar\tab = #docker load < out.tar\tab\'e7\'e0\'e3\'f0\'f3\'e7\'e8\'f2\'fc image \'e8\'e7 \'f4\'e0\'e9\'eb\'e0 .tar\cf0\kerning1\par
+\cf1\kerning0\b docker image save\b0  \i ImageID\b\i0  -o\b0  out.tar\tab = #docker save \i ImageID\i0  > out.tar\tab\'f1\'ee\'f5\'f0\'e0\'ed\'e8\'f2\'fc image \'e8 \'e2\'f1\'e5 \'e5\'e3\'ee \'ef\'ee\'f2\'f0\'ee\'f5\'e0 \'e2 \'f4\'e0\'e9\'eb .tar\cf0\kerning1\par
+\b docker image push\cf1\kerning0\b0  \i ImageID\i0\tab = #docker push \i ImageID\i0\tab\'e7\'e0\'eb\'e8\'eb\'e8 image \'ed\'e0 Docker Hub\cf0\kerning1\par
+\cf1\kerning0\b docker image pull\b0  \i ImageID\i0\tab = #docker pull \i ImageID\i0\tab\'f1\'ea\'e0\'f7\'e0\'f2\'fc image=hello c tag=10 \'e8\'e7 \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'ee\'f0\'e8\'ff samusev\cf0\kerning1\par
 \par
 \b docker container ls\b0\par
-\b docker container ls --all\b0\tab\tab = #\cf2\kerning0 docker ps -as\tab\'f1\'ef\'e8\'f1\'ee\'ea \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'ee\'e2. \'cc\'ee\'e6\'e5\'ec \'f1\'ea\'e0\'f7\'e0\'f2\'fc image, \'ed\'ee \'ed\'e8\'ea\'ee\'e3\'e4\'e0 \'e5\'e3\'ee \'ed\'e5 \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'f2\'fc - \'e7\'e4\'e5\'f1\'fc \'e5\'e3\'ee \'ed\'e5 \'e1\'f3\'e4\'e5\'f2. \'cc\'ee\'e6\'e5\'ec \'e7\'e0\'ef\'f3\'f1\'f2\'e8\'f2\'fc, \'ee\'ed \'ee\'f2\'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'e8 \'f1\'e0\'ec \'ee\'f1\'f2\'e0\'ed\'ee\'e2\'e8\'f2\'f1\'ff - \'e1\'f3\'e4\'e5\'f2 \'ef\'f0\'e8\'f1\'f3\'f2\'f1\'f2\'e2\'ee\'e2\'e0\'f2\'fc \'e2 \'f1\'ef\'e8\'f1\'ea\'e5 \'f1\'ee STATUS-\'ee\'ec = exited.\cf0\kerning1\par
-\cf2\kerning0\b docker container logs \b0\i ContainerID\i0\tab = #docker logs \i ContainerID\tab\i0\'e2\'fb\'e4\'e0\'f1\'f2 log \'ef\'ee \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'ee\'ec\'f3 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'f3\par
-\pard\nowidctlpar\hyphpar0\cf0\'d3 Docker \'e5\'f1\'f2\'fc \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee \lang1033\f1 log\lang1049\f0 -\'e4\'f0\'e0\'e9\'e2\'e5\'f0\'ee\'e2\lang1033\f1 :\tab{\field{\*\fldinst{HYPERLINK "https://habr.com/ru/companies/slurm/articles/517636/"}}{\fldrslt{\ul\cf3 https://habr.com/ru/companies/slurm/articles/517636/}}}\f1\fs22\par
-\tab local\tab\tab\lang1049\f0\'ef\'e8\'f8\'e5\'f2 \'eb\'ee\'e3\'e8 \'e2\'ee \'e2\'ed\'f3\'f2\'f0\'e5\'ed\'ed\'e8\'e5 \'f4\'e0\'e9\'eb\'fb Docker Daemon\lang1033\f1\par
-\tab json-file\lang1049\f0\tab\'e2 json-log \'e2 \'ef\'e0\'ef\'ea\'e5 \'ea\'e0\'e6\'e4\'ee\'e3\'ee \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0\lang1033\f1\par
-\tab journald\lang1049\f0\tab\'ef\'e8\'f8\'e5\'f2 \'e2 journald\par
-\'cd\'e0\'f1\'f2\'f0\'e0\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'e4\'eb\'ff \'e2\'f1\'e5\'e3\'ee \'f1\'e5\'f0\'e2\'e5\'f0\'e0 \lang1033\f1 /etc/docker/daemon.json \lang1049\f0\'e8\'eb\'e8 ~/.config/docker/daemon.json\par
-\'c2\'f1\'e5 \'e2\'ee\'e7\'ec\'ee\'e6\'ed\'fb\'e5 \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'fb \'e2 \lang1033\f1 daemon.json\lang1049\f0 : {\field{\*\fldinst{HYPERLINK "https://docs.docker.com/reference/cli/dockerd/#on-linux"}}{\fldrslt{\ul\cf3 https://docs.docker.com/reference/cli/dockerd/#on-linux}}}\f0\fs22\par
+\b docker container ls --all\b0\tab\tab = #\cf1\kerning0 docker ps -as\tab\'f1\'ef\'e8\'f1\'ee\'ea \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'ee\'e2. \'cc\'ee\'e6\'e5\'ec \'f1\'ea\'e0\'f7\'e0\'f2\'fc image, \'ed\'ee \'ed\'e8\'ea\'ee\'e3\'e4\'e0 \'e5\'e3\'ee \'ed\'e5 \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'f2\'fc - \'e7\'e4\'e5\'f1\'fc \'e5\'e3\'ee \'ed\'e5 \'e1\'f3\'e4\'e5\'f2. \'cc\'ee\'e6\'e5\'ec \'e7\'e0\'ef\'f3\'f1\'f2\'e8\'f2\'fc, \'ee\'ed \'ee\'f2\'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'e8 \'f1\'e0\'ec \'ee\'f1\'f2\'e0\'ed\'ee\'e2\'e8\'f2\'f1\'ff - \'e1\'f3\'e4\'e5\'f2 \'ef\'f0\'e8\'f1\'f3\'f2\'f1\'f2\'e2\'ee\'e2\'e0\'f2\'fc \'e2 \'f1\'ef\'e8\'f1\'ea\'e5 \'f1\'ee STATUS-\'ee\'ec = exited.\cf0\kerning1\par
+\cf1\kerning0\b docker container logs \b0\i ContainerID\i0\tab = #docker logs \i ContainerID\tab\i0\'e2\'fb\'e4\'e0\'f1\'f2 log \'ef\'ee \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'ee\'ec\'f3 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'f3\par
+\pard\nowidctlpar\hyphpar0\cf0\'d3 Docker \'e5\'f1\'f2\'fc \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee \lang1033\f0 log\lang1049\f1 -\'e4\'f0\'e0\'e9\'e2\'e5\'f0\'ee\'e2\lang1033\f0 :\tab{\field{\*\fldinst{HYPERLINK "https://habr.com/ru/companies/slurm/articles/517636/"}}{\fldrslt{\ul\cf2 https://habr.com/ru/companies/slurm/articles/517636/}}}\f0\fs22\par
+\tab local\tab\tab\lang1049\f1\'ef\'e8\'f8\'e5\'f2 \'eb\'ee\'e3\'e8 \'e2\'ee \'e2\'ed\'f3\'f2\'f0\'e5\'ed\'ed\'e8\'e5 \'f4\'e0\'e9\'eb\'fb Docker Daemon\lang1033\f0\par
+\tab json-file\lang1049\f1\tab\'e2 json-log \'e2 \'ef\'e0\'ef\'ea\'e5 \'ea\'e0\'e6\'e4\'ee\'e3\'ee \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0\lang1033\f0\par
+\tab journald\lang1049\f1\tab\'ef\'e8\'f8\'e5\'f2 \'e2 journald\par
+\'cd\'e0\'f1\'f2\'f0\'e0\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'e4\'eb\'ff \'e2\'f1\'e5\'e3\'ee \'f1\'e5\'f0\'e2\'e5\'f0\'e0 \lang1033\f0 /etc/docker/daemon.json \lang1049\f1\'e8\'eb\'e8 ~/.config/docker/daemon.json\par
+\'c2\'f1\'e5 \'e2\'ee\'e7\'ec\'ee\'e6\'ed\'fb\'e5 \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'fb \'e2 \lang1033\f0 daemon.json\lang1049\f1 : {\field{\*\fldinst{HYPERLINK "https://docs.docker.com/reference/cli/dockerd/#on-linux"}}{\fldrslt{\ul\cf2 https://docs.docker.com/reference/cli/dockerd/#on-linux}}}\f1\fs22\par
 \{\par
   "\cf6\b log-driver\cf0\b0 ": "json-file",\par
-  "\cf4\b log-opts\cf0\b0 ": \{\par
+  "\cf3\b log-opts\cf0\b0 ": \{\par
     "max-size": "10m",\par
     "max-file": "3",\par
     "labels": "prod_status",\par
     "env": "os,customer"\par
   \}\par
-\lang1033\f1   \lang1049\f0 "insecure-registries" : ["nexus.example.com:5000"],\lang1033\f1\tab\tab\lang1049\f0\'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e5\'ed\'e8\'e5 \'ea repository \'e1\'e5\'e7 \'f8\'e8\'f4\'f0\'ee\'e2\'e0\'ed\'e8\'ff\par
-\lang1033\f1   \lang1049\f0 "registry-mirrors": ["{\field{\*\fldinst{HYPERLINK "https://mirror.gcr.io"}}{\fldrslt{\ul\cf3 https://mirror.gcr.io}}}\f0\fs22 "] \tab\tab\lang1033\f1 mirror \lang1049\f0\'e4\'eb\'ff \lang1033\f1 hub.docker.com\lang1049\f0\par
+\lang1033\f0   \lang1049\f1 "insecure-registries" : ["nexus.example.com:5000"],\lang1033\f0\tab\tab\lang1049\f1\'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e5\'ed\'e8\'e5 \'ea repository \'e1\'e5\'e7 \'f8\'e8\'f4\'f0\'ee\'e2\'e0\'ed\'e8\'ff\par
+\lang1033\f0   \lang1049\f1 "registry-mirrors": ["{\field{\*\fldinst{HYPERLINK "https://mirror.gcr.io"}}{\fldrslt{\ul\cf2 https://mirror.gcr.io}}}\f1\fs22 "] \tab\tab\lang1033\f0 mirror \lang1049\f1\'e4\'eb\'ff \lang1033\f0 hub.docker.com\lang1049\f1\par
 \}\par
-\pard\nowidctlpar\hyphpar0\fi-1136\li1136\sl240\slmult1\'e8\'eb\'e8 \'e4\'eb\'ff \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'ee\'e3\'ee \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0 \lang1033\f1 #docker run \cf6\lang1049\b\f0 --\lang1033\f1 l\lang1049\f0 og-driver\cf0\lang1033\b0\f1  json-file \cf4\b --l\lang1049\f0 og-opt\cf0\lang1033\b0\f1  max-size=10m ...\lang1049\kerning1\f0\par
-\pard\nowidctlpar\hyphpar0\sl240\slmult1\b docker \cf2\kerning0 container\cf0\kerning1  inspect\b0  \i ContainerID\i0\tab\'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'ff \'ee \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e5\par
-\cf2\kerning0\b docker container start\b0  \i ContainerID\i0\tab = #docker start\b  \b0\i ContainerID\cf0\kerning1\i0\par
-\pard\nowidctlpar\hyphpar0\fi-1136\li1136\sl240\slmult1\cf2\kerning0\b docker container stop \b0\i ContainerID\i0\tab = #docker stop\b  \b0\i ContainerID\cf0\kerning1\i0\par
-\cf2\kerning0\b docker container restart \b0\i ContainerID\i0\tab = #docker restart\b  \b0\i ContainerID\cf0\kerning1\i0\par
-\cf2\kerning0\b docker container rm \b0\i ContainerID\i0\tab\tab = #docker rm -f \i ContainerID\i0  - -f \'fd\'f2\'ee \'e1\'f3\'e4\'e5\'f2 docker stop 123 + docker rm 123\cf0\kerning1\par
-\cf2\kerning0\b\tab\b0 #docker container attach\tab = #docker attach\tab\tab\'e2\'e5\'f1\'fc \'f1\'f2\'e0\'ed\'e4\'e0\'f0\'f2\'ed\'fb\'e9 \lang1033\f1 I\lang1049\f0 nput, \lang1033\f1 O\lang1049\f0 utput \'e8 \lang1033\f1 E\lang1049\f0 rror\lang1033\f1  \lang1049\f0\'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0 \'e1\'f3\'e4\'e5\'f2 \'ef\'e5\'f0\'e5\'ed\'e0\'ef\'f0\'e0\'e2\'eb\'e5\'ed \'e2 \'ed\'e0\'f8 \'f2\'e5\'f0\'ec\'e8\'ed\'e0\'eb\cf0\kerning1\par
-\cf2\kerning0\tab #docker container commit\tab = #docker commit\tab\tab\'f1\'ee\'e7\'e4\'e0\'f2\'fc image \'e8\'e7 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0\cf0\kerning1\par
-\cf2\kerning0\tab #docker container cp\tab\tab = #docker cp\lang1033\f1\tab\lang1049\f0\'f1\'ea\'ee\'ef\'e8\'f0\'ee\'e2\'e0\'f2\'fc \'f4\'e0\'e9\'eb \'e2/\'e8\'e7 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0\cf0\kerning1\par
-\cf2\kerning0\tab #docker container create\tab = #docker create\cf0\kerning1\par
-\cf2\kerning0\tab #docker container diff\tab\tab = #docker diff\tab\'ef\'ee\'ea\'e0\'e6\'e5\'f2 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff \'e4\'e8\'f0\'e5\'ea\'f2\'ee\'f0\'e8\'e9/\'f4\'e0\'e9\'eb\'ee\'e2 \'f1 \'ec\'ee\'ec\'e5\'ed\'f2\'e0 \'e7\'e0\'ef\'f3\'f1\'ea\'e0 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0\cf0\kerning1\par
-\cf2\kerning0\tab #docker container exec\tab\tab = #docker exec\cf0\kerning1\par
-\cf2\kerning0\tab #docker container run\tab\tab = #docker run\cf0\kerning1\par
-\cf2\kerning0\tab #docker container stats\tab\tab = #docker stats\tab\tab\'ea\'e0\'ea top \'f2\'ee\'eb\'fc\'ea\'ee \'ef\'ee \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0\'ec\cf0\kerning1\par
-\cf2\kerning0\tab #docker container top\tab\tab = #docker top\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\fi-1136\li1136\sl240\slmult1\'e8\'eb\'e8 \'e4\'eb\'ff \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'ee\'e3\'ee \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0 \lang1033\f0 #docker run \cf6\lang1049\b\f1 --\lang1033\f0 l\lang1049\f1 og-driver\cf0\lang1033\b0\f0  json-file \cf3\b --l\lang1049\f1 og-opt\cf0\lang1033\b0\f0  max-size=10m ...\lang1049\kerning1\f1\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\b docker \cf1\kerning0 container\cf0\kerning1  inspect\b0  \i ContainerID\i0\tab\'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'ff \'ee \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e5\par
+\cf1\kerning0\b docker container start\b0  \i ContainerID\i0\tab = #docker start\b  \b0\i ContainerID\cf0\kerning1\i0\par
+\pard\nowidctlpar\hyphpar0\fi-1136\li1136\sl240\slmult1\cf1\kerning0\b docker container stop \b0\i ContainerID\i0\tab = #docker stop\b  \b0\i ContainerID\cf0\kerning1\i0\par
+\cf1\kerning0\b docker container restart \b0\i ContainerID\i0\tab = #docker restart\b  \b0\i ContainerID\cf0\kerning1\i0\par
+\cf1\kerning0\b docker container rm \b0\i ContainerID\i0\tab\tab = #docker rm -f \i ContainerID\i0  - -f \'fd\'f2\'ee \'e1\'f3\'e4\'e5\'f2 docker stop 123 + docker rm 123\cf0\kerning1\par
+\cf1\kerning0\b\tab\b0 #docker container attach\tab = #docker attach\tab\tab\'e2\'e5\'f1\'fc \'f1\'f2\'e0\'ed\'e4\'e0\'f0\'f2\'ed\'fb\'e9 \lang1033\f0 I\lang1049\f1 nput, \lang1033\f0 O\lang1049\f1 utput \'e8 \lang1033\f0 E\lang1049\f1 rror\lang1033\f0  \lang1049\f1\'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0 \'e1\'f3\'e4\'e5\'f2 \'ef\'e5\'f0\'e5\'ed\'e0\'ef\'f0\'e0\'e2\'eb\'e5\'ed \'e2 \'ed\'e0\'f8 \'f2\'e5\'f0\'ec\'e8\'ed\'e0\'eb\cf0\kerning1\par
+\cf1\kerning0\tab #docker container commit\tab = #docker commit\tab\tab\'f1\'ee\'e7\'e4\'e0\'f2\'fc image \'e8\'e7 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0\cf0\kerning1\par
+\cf1\kerning0\tab #docker container cp\tab\tab = #docker cp\lang1033\f0\tab\lang1049\f1\'f1\'ea\'ee\'ef\'e8\'f0\'ee\'e2\'e0\'f2\'fc \'f4\'e0\'e9\'eb \'e2/\'e8\'e7 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0\cf0\kerning1\par
+\cf1\kerning0\tab #docker container create\tab = #docker create\cf0\kerning1\par
+\cf1\kerning0\tab #docker container diff\tab\tab = #docker diff\tab\'ef\'ee\'ea\'e0\'e6\'e5\'f2 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff \'e4\'e8\'f0\'e5\'ea\'f2\'ee\'f0\'e8\'e9/\'f4\'e0\'e9\'eb\'ee\'e2 \'f1 \'ec\'ee\'ec\'e5\'ed\'f2\'e0 \'e7\'e0\'ef\'f3\'f1\'ea\'e0 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0\cf0\kerning1\par
+\cf1\kerning0\tab #docker container exec\tab\tab = #docker exec\cf0\kerning1\par
+\cf1\kerning0\tab #docker container run\tab\tab = #docker run\cf0\kerning1\par
+\cf1\kerning0\tab #docker container stats\tab\tab = #docker stats\tab\tab\'ea\'e0\'ea top \'f2\'ee\'eb\'fc\'ea\'ee \'ef\'ee \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0\'ec\cf0\kerning1\par
+\cf1\kerning0\tab #docker container top\tab\tab = #docker top\cf0\kerning1\par
 \pard\nowidctlpar\hyphpar0\sl240\slmult1\par
 \b docker network ls\b0\tab\tab\tab\'ea\'e0\'ea\'ee\'e9 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0 \'ea\'e0\'ea \'ec\'e0\'ef\'e8\'f2\'f1\'ff \'f1 \'f1\'e5\'f2\'fc\'fe\par
 \b docker network create \b0 myNet\tab\'ef\'ee\'f2\'ee\'ec \'ef\'f0\'e8 \'e7\'e0\'ef\'f3\'f1\'ea\'e5 docker run --network myMet\par
@@ -147,11 +136,11 @@ apt install docker.io\cf0\par
 \b docker network inspect bridge\b0\tab\'ef\'ee\'f1\'ec\'ee\'f2\'f0\'e5\'f2\'fc \'ea\'e0\'ea\'ee\'e9 \i Container\i0  \'ea \'ea\'e0\'ea\'ee\'e9 \'f1\'e5\'f2\'e8 \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e5\'ed\par
 \b docker network inspect host\b0\par
 \par
-\kerning0\'cd\'e0\'f1\'f2\'f0\'e0\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'e4\'eb\'ff \'e2\'f1\'e5\'e3\'ee \'f1\'e5\'f0\'e2\'e5\'f0\'e0 \lang1033\f1 /etc/docker/daemon.json \lang1049\f0\'e8\'eb\'e8 ~/.config/docker/daemon.json\kerning1\par
+\kerning0\'cd\'e0\'f1\'f2\'f0\'e0\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'e4\'eb\'ff \'e2\'f1\'e5\'e3\'ee \'f1\'e5\'f0\'e2\'e5\'f0\'e0 \lang1033\f0 /etc/docker/daemon.json \lang1049\f1\'e8\'eb\'e8 ~/.config/docker/daemon.json\kerning1\par
 \{\par
   "default-address-pools": [\par
     \{\par
-      "base": "10.0.2.0/24", "size": 29\lang1033\f1\tab\tab\lang1049\f0\'e2\'fb\'e4\'e5\'eb\'ff\'e5\'ec 32 \'f1\'e5\'f2\'e8 \'ef\'ee 8 \'e0\'e4\'f0\'e5\'f1\'ee\'e2 \'f1 10\lang1033\f1 .0.2.0/29\lang1049\f0  \'ef\'ee 10\lang1033\f1 .0.2.248/29\lang1049\f0\par
+      "base": "10.0.2.0/24", "size": 29\lang1033\f0\tab\tab\lang1049\f1\'e2\'fb\'e4\'e5\'eb\'ff\'e5\'ec 32 \'f1\'e5\'f2\'e8 \'ef\'ee 8 \'e0\'e4\'f0\'e5\'f1\'ee\'e2 \'f1 10\lang1033\f0 .0.2.0/29\lang1049\f1  \'ef\'ee 10\lang1033\f0 .0.2.248/29\lang1049\f1\par
     \}\par
   ]\par
 \}\par
@@ -159,100 +148,100 @@ apt install docker.io\cf0\par
 \tab\'c2 docker \'ef\'ee default 5 \'f2\'e8\'ef\'ee\'e2 \'f1\'e5\'f2\'e5\'e9/driver-\'ee\'e2:\par
 \pard\nowidctlpar\hyphpar0\fi-1124\li1124\sl240\slmult1 1. \i Overlay network\i0 : VXLAN \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'f1\'ee Swarm. 2-\'e0 \'f0\'e5\'e6\'e8\'ec\'e0:\par
 \tab - ingress\par
-\tab - docker_gwbridge {\field{\*\fldinst{HYPERLINK "https://docs.docker.com/network/drivers/overlay/"}}{\fldrslt{\ul\cf3 https://docs.docker.com/network/drivers/overlay/}}}\f0\fs22\par
+\tab - docker_gwbridge {\field{\*\fldinst{HYPERLINK "https://docs.docker.com/network/drivers/overlay/"}}{\fldrslt{\ul\cf2 https://docs.docker.com/network/drivers/overlay/}}}\f1\fs22\par
 2. \i MACvlan\i0  \'ed\'e0 eth0 \'ed\'e0\'e4\'ee \'e2\'ea\'eb\'fe\'f7\'e0\'f2\'fc promiscuous mode. \'c5\'f1\'f2\'fc 2-\'e0 \'f0\'e5\'e6\'e8\'ec\'e0:\par
 \tab - bridge \'f1 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'ed\'e8\'e5\'ec 802.1q\par
 \tab - \'e2\'f1\'e5 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'fb \'f1\'ec\'ee\'f2\'f0\'ff\'f2 \'e2 \'f4\'e8\'e7\'e8\'f7\'e5\'f1\'ea\'f3\'fe \'f1\'e5\'f2\'fc \'e8 \'ea\'e0\'e6\'e4\'ee\'ec\'f3 \'ed\'e0\'e7\'ed\'e0\'f7\'e0\'e5\'f2\'f1\'ff \'ee\'f2\'e4\'e5\'eb\'fc\'ed\'fb\'e9 MAC-\'e0\'e4\'f0\'e5\'f1. Cisco \'ed\'e0 \'ef\'ee\'f0\'f2\'f3 \'f1\'e5\'f0\'e2\'e5\'f0\'e0 \'e1\'f3\'e4\'e5\'f2 \'e2\'e8\'e4\'e5\'f2\'fc 10 MAC-\'e0\'e4\'f0\'e5\'f1\'ee\'e2. \'cf\'f0\'ee\'e1\'eb\'e5\'ec\'fb - \'ed\'e5 \'e2\'f1\'e5 \'f1\'e5\'f0\'e2\'e5\'f0\'ed\'fb\'e5 \'f1\'e5\'f2\'e5\'e2\'f3\'f5\'e8 \'ec\'ee\'e3\'f3\'f2 \'ee\'e4\'ed\'ee\'e2\'f0\'e5\'ec\'e5\'ed\'ed\'ee \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'f2\'fc 10 MAC-\'e0\'e4\'f0\'e5\'f1\'ee\'e2\par
 3. \i IPvlan\i0  \'e2\'f0\'ee\'e4\'e5 \'ea\'e0\'ea \'cd\'c5 \'ed\'e0\'e4\'ee \'e2\'ea\'eb\'fe\'f7\'e0\'f2\'fc promiscuous mode\par
 \tab - \'e2 \'ee\'f2\'eb\'e8\'f7\'e8\'e8 \'ee\'f2 \i MACvlan\i0 , \'e2\'f1\'e5 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'fb "\'e1\'f3\'e4\'f3\'f2 \'e8\'ec\'e5\'f2\'fc" \'ee\'e4\'e8\'ed \'e8 \'f2\'ee\'f2 \'e6\'e5 MAC \'e8 \'f0\'e0\'e7\'ed\'fb\'e5 IP. \'cf\'f0\'ee\'e1\'eb\'e5\'ec\'fb - \'f1 DHCP; IPv6 \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'ef\'ee EUI-64 \'e4\'eb\'ff \'f4\'ee\'f0\'ec\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'ff IPv6-\'e0\'e4\'f0\'e5\'f1\'e0 \'e4\'ee\'eb\'e6\'ed\'fb \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'f1\'e2\'ee\'e9 MAC.\par
 4. \i Bridge\i0 : \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'ef\'ee default-\'f3. \'d3 host-\'ec\'e0\'f8\'e8\'ed\'fb \'e0\'e4\'f0\'e5\'f1 10.0.0.1. \'ca\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'f3 \'e2\'fb\'e4\'e0\'e4\'f3\'f2 10.3.0.2. \'c4\'eb\'ff \'ec\'e0\'ef\'ef\'e8\'ed\'e3\'e0 \'ed\'e0\'e4\'ee \'ef\'f0\'ee\'ef\'e8\'f1\'e0\'f2\'fc: ##docker run -p 8080:80 nginx\par
-5. \i Host\i0 : #docker run --network host nginx \'f2\'e5\'ef\'e5\'f0\'fc \'e5\'f1\'eb\'e8 \'f3 host-\'ec\'e0\'f8\'e8\'ed\'fb \'e0\'e4\'f0\'e5\'f1 10.0.0.1, \'f2\'ee \'e7\'e0\'e9\'e4\'ff \'ed\'e0 {\field{\*\fldinst{HYPERLINK "http://10.0.0.1"}}{\fldrslt{\ul\cf3 http://10.0.0.1}}}\f0\fs22  \'ef\'ee\'ef\'e0\'e4\'b8\'ec \'ed\'e0 nginx. \'c5\'f1\'eb\'e8 \'ed\'e0 \'ee\'e4\'ed\'ee\'ec host-\'e5 \'ef\'ee\'e4\'ed\'ff\'f2\'ee 2-\'e0 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0 \'f1 --network host, \'f2\'ee \'ec\'e5\'e6\'e4\'f3 \'f1\'ee\'e1\'ee\'e9 \'ee\'ed\'e8 \'ec\'ee\'e3\'f3\'f2 \'ee\'e1\'f9\'e0\'f2\'fc\'f1\'ff \'f7\'e5\'f0\'e5\'e7 loopback, \'f3\'ea\'e0\'e7\'fb\'e2\'e0\'ff \'ef\'ee\'f0\'f2 127.0.0.1:80 = \'ca\'e0\'ea Pods \'e2 Kubernetes.\par
+5. \i Host\i0 : #docker run --network host nginx \'f2\'e5\'ef\'e5\'f0\'fc \'e5\'f1\'eb\'e8 \'f3 host-\'ec\'e0\'f8\'e8\'ed\'fb \'e0\'e4\'f0\'e5\'f1 10.0.0.1, \'f2\'ee \'e7\'e0\'e9\'e4\'ff \'ed\'e0 {\field{\*\fldinst{HYPERLINK "http://10.0.0.1"}}{\fldrslt{\ul\cf2 http://10.0.0.1}}}\f1\fs22  \'ef\'ee\'ef\'e0\'e4\'b8\'ec \'ed\'e0 nginx. \'c5\'f1\'eb\'e8 \'ed\'e0 \'ee\'e4\'ed\'ee\'ec host-\'e5 \'ef\'ee\'e4\'ed\'ff\'f2\'ee 2-\'e0 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0 \'f1 --network host, \'f2\'ee \'ec\'e5\'e6\'e4\'f3 \'f1\'ee\'e1\'ee\'e9 \'ee\'ed\'e8 \'ec\'ee\'e3\'f3\'f2 \'ee\'e1\'f9\'e0\'f2\'fc\'f1\'ff \'f7\'e5\'f0\'e5\'e7 loopback, \'f3\'ea\'e0\'e7\'fb\'e2\'e0\'ff \'ef\'ee\'f0\'f2 127.0.0.1:80 = \'ca\'e0\'ea Pods \'e2 Kubernetes.\par
 6. \i None\i0 : no networks\par
 \pard\nowidctlpar\hyphpar0\sl240\slmult1\par
 IPAM - \'f8\'f2\'f3\'ea\'e0 \'e2 Docker, \'ea\'ee\'f2\'ee\'f0\'e0\'ff \'ee\'f2\'e2\'e5\'f7\'e0\'e5\'f2 \'e7\'e0 \'e2\'fb\'e4\'e0\'f7\'f3 IP-\'e0\'e4\'f0\'e5\'f1\'ee\'e2 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0\'ec.\par
 \par
 \par
-\cf2\kerning0\ul\'d0\'e0\'e7\'e2\'ee\'f0\'e0\'f7\'e8\'e2\'e0\'e5\'ec Oracle XE\ulnone .\cf0\kerning1\par
-\cf2\kerning0\par
-\cf0\kerning1{\field{\*\fldinst{HYPERLINK "https://container-registry.oracle.com/" }}{\fldrslt{\cf7\kerning0\ul https://container-registry.oracle.com}}}\cf2\kerning1\ulnone\f0\fs22  \'ef\'e5\'f0\'e5\'f5\'ee\'e4\'e8\'ec \'ed\'e0 Database, \'ef\'ee\'f2\'ee\'ec enterprise\kerning0 DOCKER COMPOSE \'ce\'cf\'c5\'d0\'c8\'d0\'d3\'c5\'d2 \'cf\'ce\'cd\'df\'d2\'c8\'c5\'cc SERVICE\cf0\kerning1\par
-\cf2\kerning0\b docker login\b0  -u samusevalex@mail.ru -p Samusev1981  container-registry.oracle.com \endash  \'e7\'e0\'eb\'ee\'e3\'e8\'ed\'e8\'f2\'fc\'f1\'ff \'ed\'e0 oracle.com\cf0\kerning1\par
-\cf2\kerning0\b docker pull\b0  container-registry.oracle.com/database/enterprise:12.2.0.1 \endash  \'f1\'ea\'e0\'f7\'e0\'f2\'fc \'ee\'e1\'f0\'e0\'e7 \'e8\'e7 \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'ee\'f0\'e8\'ff\cf0\kerning1\par
-\cf2\kerning0\b docker run\b0  -dit --name OracleDB -p 1521:1521 container-registry.oracle.com/database/enterprise:12.2.0.1 -e ORACLE_PWD=pass\cf0\kerning1\par
-\cf2\kerning0\tab -d\tab --detach\tab\tab\'e7\'e0\'ef\'f3\'f1\'f2\'e8\'f2\'fc \'e2 background\cf0\kerning1\par
-\cf2\kerning0\tab -i\tab --interactive\tab keep STDIN open\cf0\kerning1\par
-\cf2\kerning0\tab -t\tab --tty\tab\tab\tab allocate a pseudo-TTY - \'e2 \'ee\'e1\'f9\'e5\'ec \'ec\'ee\'e6\'ed\'ee \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e0\'f2\'fc\'f1\'ff \'ea docker \'f7\'e5\'f0\'e5\'e7 fd (file descriptor)\cf0\kerning1\par
-\cf2\kerning0\tab -e\tab --env\tab\tab\tab\'e4\'ee\'e1\'e0\'e2\'e8\'f2\'fc \'e2\'ed\'f3\'f2\'f0\'fc \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'f3\'fe \'ee\'ea\'f0\'f3\'e6\'e5\'ed\'e8\'ff\tab\cf0\kerning1\par
-\cf2\kerning0\b docker port\b0  OracleDB\lang1033\f1\tab\lang1049\f0\'ef\'ee\'f1\'ec\'ee\'f2\'f0\'e5\'f2\'fc \'ea\'e0\'ea\'e8\'e5 \'ef\'ee\'f0\'f2\'fb \'e7\'e0\'ec\'e0\'ef\'e8\'eb docker \'ed\'e0 Oracle (1521/tcp -> 0.0.0.0:32769)\cf0\kerning1\par
-\cf2\kerning0\b docker exec\b0  -it OracleDB bash -c "source /home/oracle/.bashrc; sqlplus /nolog" \endash  \'e2\'fb\'ef\'ee\'eb\'ed\'e8\'f2\'fc \'ea\'ee\'ec\'e0\'ed\'e4\'f3 \'e2 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e5\cf0\kerning1\par
-\cf2\kerning0\tab SQL> connect sys/Oradoc_db1@ORCLCDB as sysdba\cf0\kerning1\par
-\cf2\kerning0\tab\tab\tab\'e8\'eb\'e8\cf0\kerning1\par
-\cf2\kerning0 $ sqlplus sys/Oradoc_db1@ORCLCDB as sysdba \endash  \'e3\'e4\'e5 Login: sys, Password: Oradoc_db1, SID \'e1\'e0\'e7\'fb: ORCLCDB\cf0\kerning1\par
-\cf2\kerning0\tab\tab\tab\'e8\'eb\'e8 \'ef\'f0\'ee\'f1\'f2\'ee\cf0\kerning1\par
-\cf2\kerning0 # docker exec -it 5d7d84a59b7c /bin/sh\tab\'ef\'ee\'ef\'e0\'e4\'e0\'e5\'ec \'e2 bash \'e2\'ed\'f3\'f2\'f0\'e8 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0\cf0\kerning1\par
-\cf2\par
+\cf1\kerning0\ul\'d0\'e0\'e7\'e2\'ee\'f0\'e0\'f7\'e8\'e2\'e0\'e5\'ec Oracle XE\ulnone .\cf0\kerning1\par
+\cf1\kerning0\par
+\cf0\kerning1{\field{\*\fldinst{HYPERLINK "https://container-registry.oracle.com/" }}{\fldrslt{\cf7\kerning0\ul https://container-registry.oracle.com}}}\cf1\kerning1\ulnone\f1\fs22  \'ef\'e5\'f0\'e5\'f5\'ee\'e4\'e8\'ec \'ed\'e0 Database, \'ef\'ee\'f2\'ee\'ec enterprise\kerning0 DOCKER COMPOSE \'ce\'cf\'c5\'d0\'c8\'d0\'d3\'c5\'d2 \'cf\'ce\'cd\'df\'d2\'c8\'c5\'cc SERVICE\cf0\kerning1\par
+\cf1\kerning0\b docker login\b0  -u samusevalex@mail.ru -p Samusev1981  container-registry.oracle.com \endash  \'e7\'e0\'eb\'ee\'e3\'e8\'ed\'e8\'f2\'fc\'f1\'ff \'ed\'e0 oracle.com\cf0\kerning1\par
+\cf1\kerning0\b docker pull\b0  container-registry.oracle.com/database/enterprise:12.2.0.1 \endash  \'f1\'ea\'e0\'f7\'e0\'f2\'fc \'ee\'e1\'f0\'e0\'e7 \'e8\'e7 \'f0\'e5\'ef\'ee\'e7\'e8\'f2\'ee\'f0\'e8\'ff\cf0\kerning1\par
+\cf1\kerning0\b docker run\b0  -dit --name OracleDB -p 1521:1521 container-registry.oracle.com/database/enterprise:12.2.0.1 -e ORACLE_PWD=pass\cf0\kerning1\par
+\cf1\kerning0\tab -d\tab --detach\tab\tab\'e7\'e0\'ef\'f3\'f1\'f2\'e8\'f2\'fc \'e2 background\cf0\kerning1\par
+\cf1\kerning0\tab -i\tab --interactive\tab keep STDIN open\cf0\kerning1\par
+\cf1\kerning0\tab -t\tab --tty\tab\tab\tab allocate a pseudo-TTY - \'e2 \'ee\'e1\'f9\'e5\'ec \'ec\'ee\'e6\'ed\'ee \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e0\'f2\'fc\'f1\'ff \'ea docker \'f7\'e5\'f0\'e5\'e7 fd (file descriptor)\cf0\kerning1\par
+\cf1\kerning0\tab -e\tab --env\tab\tab\tab\'e4\'ee\'e1\'e0\'e2\'e8\'f2\'fc \'e2\'ed\'f3\'f2\'f0\'fc \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'f3\'fe \'ee\'ea\'f0\'f3\'e6\'e5\'ed\'e8\'ff\tab\cf0\kerning1\par
+\cf1\kerning0\b docker port\b0  OracleDB\lang1033\f0\tab\lang1049\f1\'ef\'ee\'f1\'ec\'ee\'f2\'f0\'e5\'f2\'fc \'ea\'e0\'ea\'e8\'e5 \'ef\'ee\'f0\'f2\'fb \'e7\'e0\'ec\'e0\'ef\'e8\'eb docker \'ed\'e0 Oracle (1521/tcp -> 0.0.0.0:32769)\cf0\kerning1\par
+\cf1\kerning0\b docker exec\b0  -it OracleDB bash -c "source /home/oracle/.bashrc; sqlplus /nolog" \endash  \'e2\'fb\'ef\'ee\'eb\'ed\'e8\'f2\'fc \'ea\'ee\'ec\'e0\'ed\'e4\'f3 \'e2 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e5\cf0\kerning1\par
+\cf1\kerning0\tab SQL> connect sys/Oradoc_db1@ORCLCDB as sysdba\cf0\kerning1\par
+\cf1\kerning0\tab\tab\tab\'e8\'eb\'e8\cf0\kerning1\par
+\cf1\kerning0 $ sqlplus sys/Oradoc_db1@ORCLCDB as sysdba \endash  \'e3\'e4\'e5 Login: sys, Password: Oradoc_db1, SID \'e1\'e0\'e7\'fb: ORCLCDB\cf0\kerning1\par
+\cf1\kerning0\tab\tab\tab\'e8\'eb\'e8 \'ef\'f0\'ee\'f1\'f2\'ee\cf0\kerning1\par
+\cf1\kerning0 # docker exec -it 5d7d84a59b7c /bin/sh\tab\'ef\'ee\'ef\'e0\'e4\'e0\'e5\'ec \'e2 bash \'e2\'ed\'f3\'f2\'f0\'e8 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0\cf0\kerning1\par
+\cf1\par
 \par
 \kerning0\par
-\'d7\'f3\'e2\'e0\'ea \'ef\'ee\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2 \'ea\'e0\'ea \'f1\'ee\'e1\'f0\'e0\'f2\'fc image \'e8\'e7 \'ef\'f0\'ee\'f1\'f2\'ee\'e3\'ee python \'f4\'e0\'e9\'eb\'e0. \cf0{\field{\*\fldinst{HYPERLINK "https://www.youtube.com/watch?v=QF4ZF857m44"}}{\fldrslt{\ul\cf3 https://www.youtube.com/watch?v=QF4ZF857m44}}}\kerning1\f0\fs22\par
-\cf2\kerning0\'c8\'ec\'e5\'e5\'ec \'e2 \'ef\'e0\'ef\'ea\'e5 ~/MyProject:\cf0\kerning1\par
-\cf2\kerning0\tab MyPython.py\cf0\kerning1\par
-\cf2\kerning0\tab\tab\'e2\'ed\'f3\'f2\'f0\'e8 \'ed\'e0 \'e1\'e0\'e7\'e5 \'e1\'e8\'e1\'eb\'e8\'ee\'f2\'e5\'ea\'e8 Flask \'ef\'ee\'e4\'ed\'e8\'ec\'e0\'e5\'f2\'f1\'ff http \'f1\'e5\'f0\'e2\'e5\'f0 \'e8 \'ed\'e0 get \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'ec \'e2\'f0\'e5\'ec\'ff, \'ea\'ee\'f2\'ee\'f0\'ee\'e5 \'f2\'e8\'ea\'e0\'e5\'f2 \'e2 docker-\'e5\cf0\kerning1\par
-\cf2\kerning0\tab\cf4 requirements.txt\cf0\kerning1\par
-\cf2\kerning0\tab\tab flask==1.1.1\tab\'e2 \'e1\'e0\'e7\'ee\'e2\'ee\'ec image - python:3.6 \'ed\'e5\'f2 flask-\'e0, \'ef\'ee\'fd\'f2\'ee\'ec\'f3 \'e5\'e3\'ee \'ed\'e0\'e4\'ee \'e1\'f3\'e4\'e5\'f2 \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'e8\'f2\'fc \'e2\'ed\'f3\'f2\'f0\'fc docker-\'e0 \'f7\'e5\'f0\'e5\'e7 pip install\cf0\kerning1\par
-\cf2\kerning0\tab Dockerfile.\'e1\'e5\'e7_\'f0\'e0\'f1\'f8\'e8\'f0\'e5\'ed\'e8\'ff\cf0\kerning1\par
-\pard\nowidctlpar\hyphpar0\fi-2840\li2840\sl240\slmult1\cf2\kerning0\b FROM \b0 python:3.6\tab\tab\tab\tab\'e7\'e0 \'ee\'f1\'ed\'ee\'e2\'f3 \'e1\'e5\'f0\'b8\'ec image = python \'f1 tag = 3.6, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'eb\'e5\'e6\'e8\'f2 \'ed\'e0 docker hub-\'e5, \'f1\'ee\'e7\'e4\'e0\'b8\'f2 \'f1\'ee\'ee\'e1\'f9\'e5\'f1\'f2\'e2\'ee python-\'e8\'f1\'f2\'ee\'e2, \'e2 \'ea\'ee\'f2\'ee\'f0\'ee\'ec \'e5\'f1\'f2\'fc \'e2\'f1\'e5 \'f1\'f2\'e0\'ed\'e4\'e0\'f0\'f2\'ed\'fb\'e5 \'e1\'e8\'e1\'eb\'e8\'ee\'f2\'e5\'ea\'e8, \'f4\'e0\'e9\'eb\'fb \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'fb\'e5 \'e4\'eb\'ff \'f0\'e0\'e1\'ee\'f2\'fb python. \'d2\'e0\'ea \'e6\'e5 \'e5\'f1\'f2\'fc image-\'fb \'ee\'f2 java-\'e8\'f1\'f2\'ee\'e2, unbuntu \'e8 \'f2.\'e4.\cf0\kerning1\par
-\cf2\kerning0\b LABEL\b0  something\tab\tab\tab\tab\'fd\'f2\'e8\'f5 LABEL \'e2 \'ee\'e4\'ed\'ee\'ec Dockerfile \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee\cf0\kerning1\par
-\cf2\kerning0\b RUN \b0 mkdir /Proj\tab\tab\tab\tab RUN \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'e5\'f2\'f1\'ff \'f2\'ee\'eb\'fc\'ea\'ee \'ef\'f0\'e8 docker build \'ee\'e1\'f0\'e0\'e7\'e0. RUN \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'e5\'f2 \'eb\'fe\'e1\'f3\'fe Linux \'ea\'ee\'ec\'e0\'ed\'e4\'f3.\cf0\kerning1\par
-\cf2\kerning0\b WORKDIR \b0 /Proj\tab\tab\tab\tab\'ed\'e0\'f1\'f2\'f0\'e0\'e8\'e2\'e0\'e5\'ec \'ee\'ea\'f0\'f3\'e6\'e5\'ed\'e8\'e5 ~ cd Proj\cf0\kerning1\par
-\cf2\kerning0\b ARG\b0  \cf1\b VAR\cf2\b0 =default_value\tab\tab\tab\'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'f2\'ee\'eb\'fc\'ea\'ee \'ef\'f0\'e8 build-\'e5. \'c8\'e7\'ec\'e5\'ed\'e8\'f2\'fc default_value: #docker build --build-arg \cf1\b VAR\cf2\b0 =new_value\cf0\kerning1\par
-\cf2\kerning0\b RUN\b0  echo $\cf1\b VAR\cf2\b0 > image_version\tab\'ef\'f0\'e8\'ec\'e5\'f0 \'ea\'e0\'ea \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc ARG\cf0\kerning1\par
-\cf2\kerning0\b ENV\b0  PATH=/usr/local/nginx/bin:$PATH\cf0\kerning1\par
-\cf2\kerning0\b ENV\b0  MONGO_DB_PWD=default_value\tab = \'e2\'ed\'f3\'f2\'f0\'e8 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0 \'e4\'e5\'eb\'e0\'e5\'ec export MONGO_DB_PWD=default_value. \'c4\'eb\'ff \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff: #docker run -e MONGO_DB_PWD=new_value \i ContainerID\i0  \'e8\'eb\'e8 \'e5\'f9\'b8 #docker run --env-file=xxx \i ContainerID\i0 . 12 \'f4\'e0\'ea\'f2\'ee\'f0\'ee\'e2, \'ea\'ee\'e3\'e4\'e0 \'ed\'f3\'e6\'ed\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc ENV: \cf0{\field{\*\fldinst{HYPERLINK "https://12factor.net/"}}{\fldrslt{\ul\cf3 https://12factor.net/}}}\kerning1\f0\fs22\par
-\cf2\kerning0\b COPY \b0 ~/MyProject /Proj\tab\tab\'e5\'f1\'f2\'fc \'e1\'ee\'eb\'e5\'e5 \'ea\'f0\'f3\'f2\'ee\'e9 \'e0\'ed\'e0\'eb\'ee\'e3 - \b ADD\b0 , \'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5 \'f7\'f2\'ee \'e8 COPY + \'f3\'ec\'e5\'e5\'f2 \'ef\'f0\'ee\'e3\'f0\'f3\'e6\'e0\'f2\'fc URL \'e2 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0 \'e8\'eb\'e8 \'f0\'e0\'f1\'ef\'e0\'ea\'ee\'e2\'e0\'f2\'fc .tar \'e2 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\cf0\kerning1\par
-\cf2\kerning0\b RUN\b0  pip install -r \cf4 requirements.txt\cf2\tab\'ed\'e5\'ea\'e0\'ff \'ef\'f0\'e5\'e4\'e2\'e0\'f0\'e8\'f2\'e5\'eb\'fc\'ed\'e0\'ff \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e0, \'ee\'f2\'eb\'e8\'f7\'e0\'e5\'f2\'f1\'ff \'ee\'f2 CMD\cf0\kerning1\par
-\cf2\kerning0\b EXPOSE\b0  8080\tab\tab\tab\tab\'ed\'e8\'ea\'e0\'ea\'ee\'e3\'ee \'f1\'ec\'fb\'f1\'eb\'e0 \'ed\'e5 \'ed\'e5\'f1\'b8\'f2. \'c1\'e5\'e7 \'fd\'f2\'ee\'e9 \'f1\'f2\'f0\'ee\'ea\'e8 \'e2\'f1\'b8 \'f0\'e0\'e2\'ed\'ee \'e2\'f1\'b8 \'e1\'f3\'e4\'e5\'f2 \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc. \'d1\'ef\'ee\'f1\'ee\'e1 \'e4\'ee\'ea\'f3\'ec\'e5\'ed\'f2\'e0\'f6\'e8\'e8. \'c3\'ee\'e2\'ee\'f0\'e8\'f2, \'f7\'f2\'ee \'ec\'fb \'f5\'ee\'f2\'e8\'ec \'ef\'f0\'ee\'e1\'f0\'ee\'f1\'e8\'f2\'fc \'ef\'ee\'f0\'f2 8080 \'ed\'e0\'f0\'f3\'e6\'f3, \'ed\'ee \'ef\'f0\'ee\'e1\'f0\'ee\'f1\'e8\'f2\'f1\'ff \'ee\'ed \'e8\'eb\'e8 \'ed\'e5\'f2, \'ed\'e0\'f1\'f2\'f0\'e0\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'e2 \lang1033\f1 #\lang1049\f0 docker run \cf1\b -p 80:8080\cf2\b0  \cf8\lang1033\b\f1 -p 53:53/udp\cf2\b0  \lang1049\f0 hello-w \'ec\'e0\'ef\'e8\'ec \'ed\'e0\'f0\'f3\'e6\'ed\'e8\'e9 80 \'ed\'e0 docker-\'fb\'e9 8080. \'c5\'f1\'eb\'e8 \'f1\'e4\'e5\'eb\'e0\'f2\'fc \cf1\b -P\cf2\b0 , \'f2\'ee \'e1\'f3\'e4\'f3\'f2 \'ee\'f2\'ea\'f0\'fb\'f2\'fb \'e2\'f1\'e5 \'ef\'ee\'f0\'f2\'fb, \'f3\'ea\'e0\'e7\'e0\'ed\'ed\'fb\'e5 \'e2 EXPOSE\cf0\kerning1\par
-\cf2\kerning0\b CMD \b0 python MyPython.py\tab\tab\'ea\'ee\'e3\'e4\'e0 \'e1\'f3\'e4\'e5\'f2 \'f0\'e0\'e7\'e2\'b8\'f0\'ed\'f3\'f2 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0, \'e7\'e0\'ef\'f3\'f1\'f2\'e8\'f2\'f1\'ff /bin/sh \'e8 \'e2 \'ed\'e5\'e9 \'ed\'e0\'ef\'e8\'f8\'e5\'f2 python MyPython.py, \'e5\'f1\'f2\'fc \'e5\'f9\'b8 \b ENTRYPOINT \b0\'e0\'ed\'e0\'eb\'ee\'e3 CMD, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'e5\'f2 \'ea\'ee\'ec\'e0\'ed\'e4\'f3 \'e1\'e5\'e7 \'e7\'e0\'ef\'f3\'f1\'ea\'e0 /bin/sh\cf0\kerning1\par
-\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf2\kerning0\par
+\'d7\'f3\'e2\'e0\'ea \'ef\'ee\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2 \'ea\'e0\'ea \'f1\'ee\'e1\'f0\'e0\'f2\'fc image \'e8\'e7 \'ef\'f0\'ee\'f1\'f2\'ee\'e3\'ee python \'f4\'e0\'e9\'eb\'e0. \cf0{\field{\*\fldinst{HYPERLINK "https://www.youtube.com/watch?v=QF4ZF857m44"}}{\fldrslt{\ul\cf2 https://www.youtube.com/watch?v=QF4ZF857m44}}}\kerning1\f1\fs22\par
+\cf1\kerning0\'c8\'ec\'e5\'e5\'ec \'e2 \'ef\'e0\'ef\'ea\'e5 ~/MyProject:\cf0\kerning1\par
+\cf1\kerning0\tab MyPython.py\cf0\kerning1\par
+\cf1\kerning0\tab\tab\'e2\'ed\'f3\'f2\'f0\'e8 \'ed\'e0 \'e1\'e0\'e7\'e5 \'e1\'e8\'e1\'eb\'e8\'ee\'f2\'e5\'ea\'e8 Flask \'ef\'ee\'e4\'ed\'e8\'ec\'e0\'e5\'f2\'f1\'ff http \'f1\'e5\'f0\'e2\'e5\'f0 \'e8 \'ed\'e0 get \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'ec \'e2\'f0\'e5\'ec\'ff, \'ea\'ee\'f2\'ee\'f0\'ee\'e5 \'f2\'e8\'ea\'e0\'e5\'f2 \'e2 docker-\'e5\cf0\kerning1\par
+\cf1\kerning0\tab\cf3 requirements.txt\cf0\kerning1\par
+\cf1\kerning0\tab\tab flask==1.1.1\tab\'e2 \'e1\'e0\'e7\'ee\'e2\'ee\'ec image - python:3.6 \'ed\'e5\'f2 flask-\'e0, \'ef\'ee\'fd\'f2\'ee\'ec\'f3 \'e5\'e3\'ee \'ed\'e0\'e4\'ee \'e1\'f3\'e4\'e5\'f2 \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'e8\'f2\'fc \'e2\'ed\'f3\'f2\'f0\'fc docker-\'e0 \'f7\'e5\'f0\'e5\'e7 pip install\cf0\kerning1\par
+\cf1\kerning0\tab Dockerfile.\'e1\'e5\'e7_\'f0\'e0\'f1\'f8\'e8\'f0\'e5\'ed\'e8\'ff\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\fi-2840\li2840\sl240\slmult1\cf1\kerning0\b FROM \b0 python:3.6\tab\tab\tab\tab\'e7\'e0 \'ee\'f1\'ed\'ee\'e2\'f3 \'e1\'e5\'f0\'b8\'ec image = python \'f1 tag = 3.6, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'eb\'e5\'e6\'e8\'f2 \'ed\'e0 docker hub-\'e5, \'f1\'ee\'e7\'e4\'e0\'b8\'f2 \'f1\'ee\'ee\'e1\'f9\'e5\'f1\'f2\'e2\'ee python-\'e8\'f1\'f2\'ee\'e2, \'e2 \'ea\'ee\'f2\'ee\'f0\'ee\'ec \'e5\'f1\'f2\'fc \'e2\'f1\'e5 \'f1\'f2\'e0\'ed\'e4\'e0\'f0\'f2\'ed\'fb\'e5 \'e1\'e8\'e1\'eb\'e8\'ee\'f2\'e5\'ea\'e8, \'f4\'e0\'e9\'eb\'fb \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'fb\'e5 \'e4\'eb\'ff \'f0\'e0\'e1\'ee\'f2\'fb python. \'d2\'e0\'ea \'e6\'e5 \'e5\'f1\'f2\'fc image-\'fb \'ee\'f2 java-\'e8\'f1\'f2\'ee\'e2, unbuntu \'e8 \'f2.\'e4.\cf0\kerning1\par
+\cf1\kerning0\b LABEL\b0  something\tab\tab\tab\tab\'fd\'f2\'e8\'f5 LABEL \'e2 \'ee\'e4\'ed\'ee\'ec Dockerfile \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee\cf0\kerning1\par
+\cf1\kerning0\b RUN \b0 mkdir /Proj\tab\tab\tab\tab RUN \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'e5\'f2\'f1\'ff \'f2\'ee\'eb\'fc\'ea\'ee \'ef\'f0\'e8 docker build \'ee\'e1\'f0\'e0\'e7\'e0. RUN \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'e5\'f2 \'eb\'fe\'e1\'f3\'fe Linux \'ea\'ee\'ec\'e0\'ed\'e4\'f3.\cf0\kerning1\par
+\cf1\kerning0\b WORKDIR \b0 /Proj\tab\tab\tab\tab\'ed\'e0\'f1\'f2\'f0\'e0\'e8\'e2\'e0\'e5\'ec \'ee\'ea\'f0\'f3\'e6\'e5\'ed\'e8\'e5 ~ cd Proj\cf0\kerning1\par
+\cf1\kerning0\b ARG\b0  \cf5\b VAR\cf1\b0 =default_value\tab\tab\tab\'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'f2\'ee\'eb\'fc\'ea\'ee \'ef\'f0\'e8 build-\'e5. \'c8\'e7\'ec\'e5\'ed\'e8\'f2\'fc default_value: #docker build --build-arg \cf5\b VAR\cf1\b0 =new_value\cf0\kerning1\par
+\cf1\kerning0\b RUN\b0  echo $\cf5\b VAR\cf1\b0 > image_version\tab\'ef\'f0\'e8\'ec\'e5\'f0 \'ea\'e0\'ea \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc ARG\cf0\kerning1\par
+\cf1\kerning0\b ENV\b0  PATH=/usr/local/nginx/bin:$PATH\cf0\kerning1\par
+\cf1\kerning0\b ENV\b0  MONGO_DB_PWD=default_value\tab = \'e2\'ed\'f3\'f2\'f0\'e8 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0 \'e4\'e5\'eb\'e0\'e5\'ec export MONGO_DB_PWD=default_value. \'c4\'eb\'ff \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff: #docker run -e MONGO_DB_PWD=new_value \i ContainerID\i0  \'e8\'eb\'e8 \'e5\'f9\'b8 #docker run --env-file=xxx \i ContainerID\i0 . 12 \'f4\'e0\'ea\'f2\'ee\'f0\'ee\'e2, \'ea\'ee\'e3\'e4\'e0 \'ed\'f3\'e6\'ed\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc ENV: \cf0{\field{\*\fldinst{HYPERLINK "https://12factor.net/"}}{\fldrslt{\ul\cf2 https://12factor.net/}}}\kerning1\f1\fs22\par
+\cf1\kerning0\b COPY \b0 ~/MyProject /Proj\tab\tab\'e5\'f1\'f2\'fc \'e1\'ee\'eb\'e5\'e5 \'ea\'f0\'f3\'f2\'ee\'e9 \'e0\'ed\'e0\'eb\'ee\'e3 - \b ADD\b0 , \'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5 \'f7\'f2\'ee \'e8 COPY + \'f3\'ec\'e5\'e5\'f2 \'ef\'f0\'ee\'e3\'f0\'f3\'e6\'e0\'f2\'fc URL \'e2 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0 \'e8\'eb\'e8 \'f0\'e0\'f1\'ef\'e0\'ea\'ee\'e2\'e0\'f2\'fc .tar \'e2 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\cf0\kerning1\par
+\cf1\kerning0\b RUN\b0  pip install -r \cf3 requirements.txt\cf1\tab\'ed\'e5\'ea\'e0\'ff \'ef\'f0\'e5\'e4\'e2\'e0\'f0\'e8\'f2\'e5\'eb\'fc\'ed\'e0\'ff \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e0, \'ee\'f2\'eb\'e8\'f7\'e0\'e5\'f2\'f1\'ff \'ee\'f2 CMD\cf0\kerning1\par
+\cf1\kerning0\b EXPOSE\b0  8080\tab\tab\tab\tab\'ed\'e8\'ea\'e0\'ea\'ee\'e3\'ee \'f1\'ec\'fb\'f1\'eb\'e0 \'ed\'e5 \'ed\'e5\'f1\'b8\'f2. \'c1\'e5\'e7 \'fd\'f2\'ee\'e9 \'f1\'f2\'f0\'ee\'ea\'e8 \'e2\'f1\'b8 \'f0\'e0\'e2\'ed\'ee \'e2\'f1\'b8 \'e1\'f3\'e4\'e5\'f2 \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc. \'d1\'ef\'ee\'f1\'ee\'e1 \'e4\'ee\'ea\'f3\'ec\'e5\'ed\'f2\'e0\'f6\'e8\'e8. \'c3\'ee\'e2\'ee\'f0\'e8\'f2, \'f7\'f2\'ee \'ec\'fb \'f5\'ee\'f2\'e8\'ec \'ef\'f0\'ee\'e1\'f0\'ee\'f1\'e8\'f2\'fc \'ef\'ee\'f0\'f2 8080 \'ed\'e0\'f0\'f3\'e6\'f3, \'ed\'ee \'ef\'f0\'ee\'e1\'f0\'ee\'f1\'e8\'f2\'f1\'ff \'ee\'ed \'e8\'eb\'e8 \'ed\'e5\'f2, \'ed\'e0\'f1\'f2\'f0\'e0\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'e2 \lang1033\f0 #\lang1049\f1 docker run \cf5\b -p 80:8080\cf1\b0  \cf8\lang1033\b\f0 -p 53:53/udp\cf1\b0  \lang1049\f1 hello-w \'ec\'e0\'ef\'e8\'ec \'ed\'e0\'f0\'f3\'e6\'ed\'e8\'e9 80 \'ed\'e0 docker-\'fb\'e9 8080. \'c5\'f1\'eb\'e8 \'f1\'e4\'e5\'eb\'e0\'f2\'fc \cf5\b -P\cf1\b0 , \'f2\'ee \'e1\'f3\'e4\'f3\'f2 \'ee\'f2\'ea\'f0\'fb\'f2\'fb \'e2\'f1\'e5 \'ef\'ee\'f0\'f2\'fb, \'f3\'ea\'e0\'e7\'e0\'ed\'ed\'fb\'e5 \'e2 EXPOSE\cf0\kerning1\par
+\cf1\kerning0\b CMD \b0 python MyPython.py\tab\tab\'ea\'ee\'e3\'e4\'e0 \'e1\'f3\'e4\'e5\'f2 \'f0\'e0\'e7\'e2\'b8\'f0\'ed\'f3\'f2 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0, \'e7\'e0\'ef\'f3\'f1\'f2\'e8\'f2\'f1\'ff /bin/sh \'e8 \'e2 \'ed\'e5\'e9 \'ed\'e0\'ef\'e8\'f8\'e5\'f2 python MyPython.py, \'e5\'f1\'f2\'fc \'e5\'f9\'b8 \b ENTRYPOINT \b0\'e0\'ed\'e0\'eb\'ee\'e3 CMD, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'e5\'f2 \'ea\'ee\'ec\'e0\'ed\'e4\'f3 \'e1\'e5\'e7 \'e7\'e0\'ef\'f3\'f1\'ea\'e0 /bin/sh\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf1\kerning0\par
 \'cc\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee RUN, \'ed\'ee \'e4\'ee\'eb\'e6\'e5\'ed \'e1\'fb\'f2\'fc \'f2\'ee\'eb\'fc\'ea\'ee \'ee\'e4\'e8\'ed CMD \'e8\'eb\'e8 ENTRYPOINT. \'ca\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0 \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2, \'e4\'ee \'f2\'e5\'f5 \'ef\'ee\'f0 \'ef\'ee\'ea\'e0 \'e6\'e8\'e2 \'ef\'f0\'ee\'f6\'e5\'f1\'f1 \'e8\'e7 CMD \'e8\'eb\'e8 ENTRYPOINT. \'d2.\'e5. docker \'ef\'ee\'f1\'f2\'ee\'ff\'ed\'ed\'ee \'ee\'f2\'f1\'eb\'e5\'e6\'e8\'e2\'e0\'e5\'f2 \'f2\'ee\'eb\'fc\'ea\'ee \'fd\'f2\'ee\'f2 \'e5\'e4\'e8\'ed\'f1\'f2\'e2\'e5\'ed\'ed\'fb\'e9 \'ef\'f0\'ee\'f6\'e5\'f1\'f1 c PID=0.\cf0\kerning1\par
-\cf2\kerning0\par
+\cf1\kerning0\par
 CMD echo "Hello World" (shell form)\tab\tab\'f1\'f2\'f0\'ee\'ea\'f3 echo "Hello" \'ef\'e5\'f0\'e5\'e4\'e5\'eb\'fb\'e2\'e0\'e5\'f2 \'e2 /bin/sh -c echo "Hello". \'c2\'ed\'f3\'f2\'f0\'e8 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0 \'e4\'ee\'eb\'e6\'e5\'ed \'e1\'fb\'f2\'fc \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'eb\'e5\'ed ~bash\cf0\kerning1\par
-\cf2\kerning0 CMD ["echo", "Hello World"] (exec form)\cf0\kerning1\par
-\cf2\kerning0 ENTRYPOINT echo "Hello World" (shell form)\cf0\kerning1\par
-\cf2\kerning0 ENTRYPOINT ["echo", "Hello World"] (exec form)\cf0\kerning1\par
-\cf2\kerning0\par
+\cf1\kerning0 CMD ["echo", "Hello World"] (exec form)\cf0\kerning1\par
+\cf1\kerning0 ENTRYPOINT echo "Hello World" (shell form)\cf0\kerning1\par
+\cf1\kerning0 ENTRYPOINT ["echo", "Hello World"] (exec form)\cf0\kerning1\par
+\cf1\kerning0\par
 shell form \'ec\'ee\'e6\'ed\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc pipe, $vars \'f2\'e8\'ef\'e0: CMD ls * | grep $mask, \'e2 \'ee\'e1\'f9\'e5\'ec \'e2\'e5\'f1\'fc \'f4\'f3\'ed\'ea\'f6\'e8\'ee\'ed\'e0\'eb bash-\'e0\cf0\kerning1\par
-\cf2\kerning0 exec form \ul\'f2\'ee\'eb\'fc\'ea\'ee \'e7\'e0\'ef\'f3\'f1\'ea \'e8\'f1\'ef\'ee\'eb\'ed\'ff\'e5\'ec\'fb\'f5 \'f4\'e0\'e9\'eb\'ee\'e2\ulnone  c \'e0\'f0\'e3\'f3\'ec\'e5\'ed\'f2\'e0\'ec\'e8: CMD ["/bin/app", "arg1", "arg2"]. \'cd\'e5 \'f1\'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 CMD ["echo", "$var"] \'f2\'e0\'ea \'ea\'e0\'ea \'e2 exec form \'ed\'e5 \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 variable substitution. \'cd\'e0\'e4\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc shell form: CMD echo $var\cf0\kerning1\par
-\cf2\kerning0\'cf\'f0\'e5\'e4\'ef\'ee\'f7\'f2\'e8\'f2\'e5\'eb\'fc\'ed\'e5\'e9 exec \'f4\'ee\'f0\'ec\'e0, \'e4\'eb\'ff \'ef\'f0\'e5\'e4\'ee\'f2\'e2\'f0\'e0\'f9\'e5\'ed\'e8\'ff \'ef\'ee\'f2\'e5\'ed\'f6\'e8\'e0\'eb\'fc\'ed\'fb\'f5 performance issues.\cf0\kerning1\par
-\cf2\kerning0\par
+\cf1\kerning0 exec form \ul\'f2\'ee\'eb\'fc\'ea\'ee \'e7\'e0\'ef\'f3\'f1\'ea \'e8\'f1\'ef\'ee\'eb\'ed\'ff\'e5\'ec\'fb\'f5 \'f4\'e0\'e9\'eb\'ee\'e2\ulnone  c \'e0\'f0\'e3\'f3\'ec\'e5\'ed\'f2\'e0\'ec\'e8: CMD ["/bin/app", "arg1", "arg2"]. \'cd\'e5 \'f1\'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 CMD ["echo", "$var"] \'f2\'e0\'ea \'ea\'e0\'ea \'e2 exec form \'ed\'e5 \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 variable substitution. \'cd\'e0\'e4\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc shell form: CMD echo $var\cf0\kerning1\par
+\cf1\kerning0\'cf\'f0\'e5\'e4\'ef\'ee\'f7\'f2\'e8\'f2\'e5\'eb\'fc\'ed\'e5\'e9 exec \'f4\'ee\'f0\'ec\'e0, \'e4\'eb\'ff \'ef\'f0\'e5\'e4\'ee\'f2\'e2\'f0\'e0\'f9\'e5\'ed\'e8\'ff \'ef\'ee\'f2\'e5\'ed\'f6\'e8\'e0\'eb\'fc\'ed\'fb\'f5 performance issues.\cf0\kerning1\par
+\cf1\kerning0\par
 CMD ["echo", "Hello World"] \'e8\'eb\'e8 CMD echo "Hello World"\cf0\kerning1\par
-\cf2\kerning0\tab # docker build .\cf0\kerning1\par
-\cf2\kerning0\tab # docker run \i ContainerID\cf0\kerning1\i0\par
-\cf2\kerning0\tab\tab Hello World\cf0\kerning1\par
-\cf2\kerning0\tab # docker run \i ContainerID\i0  uname\tab\'e2 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0 \'ef\'e5\'f0\'e5\'e4\'e0\'b8\'ec \cf0\b\'ed\'ee\'e2\'fb\'e9\b0  \cf2\'e0\'f0\'e3\'f3\'ec\'e5\'ed\'f2 = \'ed\'ee\'e2\'f3\'fe \'ea\'ee\'ec\'e0\'ed\'e4\'f3\cf0\kerning1\par
-\cf2\kerning0\tab\tab Linux\tab\tab\tab\tab\tab\'e8 \'ee\'ed\'e0 override \'ea\'ee\'ec\'e0\'ed\'e4\'f3 \'e2 CMD\cf0\kerning1\par
-\cf2\kerning0\par
+\cf1\kerning0\tab # docker build .\cf0\kerning1\par
+\cf1\kerning0\tab # docker run \i ContainerID\cf0\kerning1\i0\par
+\cf1\kerning0\tab\tab Hello World\cf0\kerning1\par
+\cf1\kerning0\tab # docker run \i ContainerID\i0  uname\tab\'e2 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0 \'ef\'e5\'f0\'e5\'e4\'e0\'b8\'ec \cf0\b\'ed\'ee\'e2\'fb\'e9\b0  \cf1\'e0\'f0\'e3\'f3\'ec\'e5\'ed\'f2 = \'ed\'ee\'e2\'f3\'fe \'ea\'ee\'ec\'e0\'ed\'e4\'f3\cf0\kerning1\par
+\cf1\kerning0\tab\tab Linux\tab\tab\tab\tab\tab\'e8 \'ee\'ed\'e0 override \'ea\'ee\'ec\'e0\'ed\'e4\'f3 \'e2 CMD\cf0\kerning1\par
+\cf1\kerning0\par
 ENTRYPOINT ["echo", "Hello World"] \'e8\'eb\'e8 ENTRYPOINT echo "Hello World"\cf0\kerning1\par
-\cf2\kerning0\tab # docker build .\cf0\kerning1\par
-\cf2\kerning0\tab # docker run \i ContainerID\cf0\kerning1\i0\par
-\cf2\kerning0\tab\tab Hello World\cf0\kerning1\par
-\cf2\kerning0\tab # docker run \i ContainerID\i0  uname\tab\'e2 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0 \'ef\'e5\'f0\'e5\'e4\'e0\'b8\'ec \cf0\b\'e4\'ee\'ef\'ee\'eb\'ed\'e8\'f2\'e5\'eb\'fc\'ed\'fb\'e9\b0  \cf2\'e0\'f0\'e3\'f3\'ec\'e5\'ed\'f2\cf0\kerning1\par
-\cf2\kerning0\tab\tab Hello World uname\cf0\kerning1\par
-\cf2\kerning0\par
-\'ce\'e4\'ed\'ee\'e2\'f0\'e5\'ec\'e5\'ed\'ed\'ee\'e5 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'ed\'e8\'e5: \cf5\b\'d7\'e5\'f0\'e5\'e7 ENTRYPOINT \'ef\'e5\'f0\'e5\'e4\'e0\'b8\'ec \'ea\'ee\'ec\'e0\'ed\'e4\'f3, \'e0 \'f7\'e5\'f0\'e5\'e7 CMD \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'fb \'ef\'ee-\'f3\'ec\'ee\'eb\'f7\'e0\'ed\'e8\'fe.\cf2\b0  \'d5\'ee\'f2\'e8\'ec \'e7\'e0\'ef\'f3\'f1\'f2\'e8\'f2\'fc \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0 \'f1\'ee \'f1\'e2\'ee\'e8\'ec\'e8 \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'e0\'ec\'e8 - docker run \i ContainerID\i0  myParams\cf0\kerning1\par
-\cf2\kerning0\tab\b FROM\b0  alpine\cf0\kerning1\par
-\cf2\kerning0\tab\b ENTRYPOINT\b0  ["ls"]\cf0\kerning1\par
-\cf2\kerning0\tab\b CMD\b0  ["/var"]\tab\tab - \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0 \'ef\'ee default\cf0\kerning1\par
-\cf2\kerning0 #docker run test\tab\tab\'ee\'f2\'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 #ls /var\cf0\kerning1\par
-\cf2\kerning0 #docker run test /bin\tab\'ee\'f2\'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 #ls /bin\cf0\kerning1\par
-\cf2\kerning0\par
+\cf1\kerning0\tab # docker build .\cf0\kerning1\par
+\cf1\kerning0\tab # docker run \i ContainerID\cf0\kerning1\i0\par
+\cf1\kerning0\tab\tab Hello World\cf0\kerning1\par
+\cf1\kerning0\tab # docker run \i ContainerID\i0  uname\tab\'e2 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0 \'ef\'e5\'f0\'e5\'e4\'e0\'b8\'ec \cf0\b\'e4\'ee\'ef\'ee\'eb\'ed\'e8\'f2\'e5\'eb\'fc\'ed\'fb\'e9\b0  \cf1\'e0\'f0\'e3\'f3\'ec\'e5\'ed\'f2\cf0\kerning1\par
+\cf1\kerning0\tab\tab Hello World uname\cf0\kerning1\par
+\cf1\kerning0\par
+\'ce\'e4\'ed\'ee\'e2\'f0\'e5\'ec\'e5\'ed\'ed\'ee\'e5 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'ed\'e8\'e5: \cf4\b\'d7\'e5\'f0\'e5\'e7 ENTRYPOINT \'ef\'e5\'f0\'e5\'e4\'e0\'b8\'ec \'ea\'ee\'ec\'e0\'ed\'e4\'f3, \'e0 \'f7\'e5\'f0\'e5\'e7 CMD \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'fb \'ef\'ee-\'f3\'ec\'ee\'eb\'f7\'e0\'ed\'e8\'fe.\cf1\b0  \'d5\'ee\'f2\'e8\'ec \'e7\'e0\'ef\'f3\'f1\'f2\'e8\'f2\'fc \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0 \'f1\'ee \'f1\'e2\'ee\'e8\'ec\'e8 \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'e0\'ec\'e8 - docker run \i ContainerID\i0  myParams\cf0\kerning1\par
+\cf1\kerning0\tab\b FROM\b0  alpine\cf0\kerning1\par
+\cf1\kerning0\tab\b ENTRYPOINT\b0  ["ls"]\cf0\kerning1\par
+\cf1\kerning0\tab\b CMD\b0  ["/var"]\tab\tab - \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0 \'ef\'ee default\cf0\kerning1\par
+\cf1\kerning0 #docker run test\tab\tab\'ee\'f2\'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 #ls /var\cf0\kerning1\par
+\cf1\kerning0 #docker run test /bin\tab\'ee\'f2\'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 #ls /bin\cf0\kerning1\par
+\cf1\kerning0\par
 \'d1\'ee\'e7\'e4\'e0\'f2\'fc Dockerfile \'e4\'eb\'ff \'ef\'f3\'f1\'f2\'ee\'e3\'ee \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0:\cf0\kerning1\par
-\cf2\kerning0\tab\b FROM\b0  scratch\cf0\kerning1\par
-\cf2\kerning0\tab\b COPY\b0  ... \'ef\'ee \'e0\'ed\'e0\'eb\'ee\'e3\'e8\'e8 \'f1 chroot \'ef\'ee\'e4\'f2\'ff\'ed\'f3\'f2\'fc \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'fb\'e5 lib-\'fb \'e4\'eb\'ff \'f0\'e0\'e1\'ee\'f2\'fb bash\cf0\kerning1\par
-\cf2\kerning0\tab\b ENTRYPOINT\b0  ["/bin/bash"]\cf0\kerning1\par
-\cf2\kerning0\par
+\cf1\kerning0\tab\b FROM\b0  scratch\cf0\kerning1\par
+\cf1\kerning0\tab\b COPY\b0  ... \'ef\'ee \'e0\'ed\'e0\'eb\'ee\'e3\'e8\'e8 \'f1 chroot \'ef\'ee\'e4\'f2\'ff\'ed\'f3\'f2\'fc \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'fb\'e5 lib-\'fb \'e4\'eb\'ff \'f0\'e0\'e1\'ee\'f2\'fb bash\cf0\kerning1\par
+\cf1\kerning0\tab\b ENTRYPOINT\b0  ["/bin/bash"]\cf0\kerning1\par
+\cf1\kerning0\par
 ~/MyProject# docker build -t hello(\'e8\'ec\'ff_\'ee\'e1\'f0\'e0\'e7\'e0) ~/MyProject\cf0\kerning1\par
-\cf2\kerning0 ~/MyProject# docker run hello\cf0\kerning1\par
-\cf2\kerning0 Hello, world!\cf0\kerning1\par
-\pard\nowidctlpar\hyphpar0\cf2\kerning0 ~/MyProject# \tab\'e2\'fb\'ef\'ee\'eb\'ed\'e8\'f2\'f1\'ff python \'f1\'ea\'f0\'e8\'ef\'f2 \'e8 docker \'ee\'f1\'f2\'e0\'ed\'ee\'e2\'e8\'f2\'f1\'ff. \'cc\'ee\'f0\'e0\'eb\'fc - Docker \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'e4\'ee \'f2\'e5\'f5 \'ef\'ee\'f0 \'ef\'ee\'ea\'e0 \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'ef\'f0\'e8\'eb\'ee\'e6\'e5\'ed\'e8\'e5 (CMD/ENTRYPOINT)!\cf0\kerning1\par
+\cf1\kerning0 ~/MyProject# docker run hello\cf0\kerning1\par
+\cf1\kerning0 Hello, world!\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\cf1\kerning0 ~/MyProject# \tab\'e2\'fb\'ef\'ee\'eb\'ed\'e8\'f2\'f1\'ff python \'f1\'ea\'f0\'e8\'ef\'f2 \'e8 docker \'ee\'f1\'f2\'e0\'ed\'ee\'e2\'e8\'f2\'f1\'ff. \'cc\'ee\'f0\'e0\'eb\'fc - Docker \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'e4\'ee \'f2\'e5\'f5 \'ef\'ee\'f0 \'ef\'ee\'ea\'e0 \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'ef\'f0\'e8\'eb\'ee\'e6\'e5\'ed\'e8\'e5 (CMD/ENTRYPOINT)!\cf0\kerning1\par
 \kerning0\par
 \b docker run --rm\b0  hello-w\tab\tab\'e1\'e5\'e7 --rm \'ef\'f0\'e8 \'e7\'e0\'ef\'f3\'f1\'ea\'e5 docker ps -a \'f3\'e2\'e8\'e4\'e8\'ec \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0 hello-w \'e2 STATUS = exited, \'ed\'ee \'ee\'ed \'e1\'f3\'e4\'e5\'f2 \'e2\'e8\'f1\'e5\'f2\'fc \'e2 RAM. \'d1 --rm \'ef\'ee\'f1\'eb\'e5 \'e7\'e0\'e2\'e5\'f0\'f8\'e5\'ed\'e8\'ff \'f0\'e0\'e1\'ee\'f2\'fb \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0 \'f1\'e0\'ec \'f3\'e4\'e0\'eb\'e8\'f2\'f1\'ff.\kerning1\par
 \kerning0\par
@@ -287,7 +276,7 @@ ENTRYPOINT ["echo", "Hello World"] \'e8\'eb\'e8 ENTRYPOINT echo "Hello World"\cf
 \kerning0\par
 \ul\'cf\'f0\'ee\'e1\'f0\'ee\'f1\'e8\'f2\'fc \'ef\'e0\'ef\'ea\'f3 \'e2\'ed\'f3\'f2\'f0\'e8 Docker-\'e0\kerning1\ulnone\par
 \kerning0\i\'d1\'ef\'ee\'f1\'ee\'e1 \'b91\i0 .\kerning1\par
-\kerning0\b docker run -v \cf8 /home/user/Download/tmp\cf0 :\cf1 /var/data\cf0\b0  hello-w\tab\'ef\'ee \'f1\'f2\'e0\'f0\'e8\'ed\'ea\'e5 - \'e7\'e0\'ec\'e0\'ef\'e8\'f2\'fc \'ef\'e0\'ef\'ea\'f3 \'ed\'e0 host \'ec\'e0\'f8\'e8\'ed\'e5 \cf8\b /home/user/Download/tmp\cf0\b0  \'f1 \'ef\'e0\'ef\'ea\'ee\'e9 \'e2\'ed\'f3\'f2\'f0\'e8 docker \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0 \cf1\b /var/data\cf0\kerning1\b0\par
+\kerning0\b docker run -v \cf8 /home/user/Download/tmp\cf0 :\cf5 /var/data\cf0\b0  hello-w\tab\'ef\'ee \'f1\'f2\'e0\'f0\'e8\'ed\'ea\'e5 - \'e7\'e0\'ec\'e0\'ef\'e8\'f2\'fc \'ef\'e0\'ef\'ea\'f3 \'ed\'e0 host \'ec\'e0\'f8\'e8\'ed\'e5 \cf8\b /home/user/Download/tmp\cf0\b0  \'f1 \'ef\'e0\'ef\'ea\'ee\'e9 \'e2\'ed\'f3\'f2\'f0\'e8 docker \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0 \cf5\b /var/data\cf0\kerning1\b0\par
 \kerning0\par
 \i\'d1\'ef\'ee\'f1\'ee\'e1 \'b92\i0 .\kerning1\par
 \kerning0\'d7\'e5\'f0\'e5\'e7 docker volume.\kerning1\par
@@ -297,7 +286,7 @@ ENTRYPOINT ["echo", "Hello World"] \'e8\'eb\'e8 ENTRYPOINT echo "Hello World"\cf
 \kerning0\b docker run -v\b0  VOL:/files\kerning1\par
 \kerning0\par
 \ul Docker Compose\kerning1\ulnone\par
-\kerning0{\field{\*\fldinst{HYPERLINK "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64"}}{\fldrslt{\ul\cf3 https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64}}}\kerning1\f0\fs22\par
+\kerning0{\field{\*\fldinst{HYPERLINK "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64"}}{\fldrslt{\ul\cf2 https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64}}}\kerning1\f1\fs22\par
 \kerning0 Dockerfile \'ed\'f3\'e6\'e5\'ed \'e4\'eb\'ff build \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0.\kerning1\par
 \kerning0 docker-compose.yml \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e4\'eb\'ff\kerning1\par
 \kerning0\tab - \'f0\'e0\'e7\'e2\'e5\'f0\'f2\'fb\'e2\'e0\'ed\'e8\'ff \'ed\'e0 \'ee\'e4\'ed\'ee\'ec \'ea\'ee\'ec\'ef\'e5 \'f7\'e5\'f0\'e5\'e7 \'f3\'f2\'e8\'eb\'e8\'f2\'f3 docker-compose\kerning1\par
@@ -305,27 +294,27 @@ ENTRYPOINT ["echo", "Hello World"] \'e8\'eb\'e8 ENTRYPOINT echo "Hello World"\cf
 \par
 \kerning0 #docker swarm init\tab\tab\'ef\'ee\'e4\'ed\'e8\'ec\'e0\'e5\'ec Docker Swarm\kerning1\par
 \kerning0 #docker swarm join\kerning1\par
-\kerning0\tab\cf5\b docker swarm \'ee\'ef\'e5\'f0\'e8\'f0\'f3\'e5\'f2 \'ef\'ee\'ed\'ff\'f2\'e8\'e5\'ec Service\cf0\kerning1\b0\par
+\kerning0\tab\cf4\b docker swarm \'ee\'ef\'e5\'f0\'e8\'f0\'f3\'e5\'f2 \'ef\'ee\'ed\'ff\'f2\'e8\'e5\'ec Service\cf0\kerning1\b0\par
 \kerning0\'ef\'ee\'fd\'f2\'ee\'ec\'f3 \'ef\'ee\'ff\'e2\'eb\'ff\'fe\'f2\'f1\'ff \'ea\'ee\'ec\'e0\'ed\'e4\'fb:\kerning1\par
 \kerning0 #\b docker service ...\kerning1\b0\par
 \par
 \kerning0\'d5\'ee\'f2\'e8\'ec \'e2\'e7\'ff\'f2\'fc docker image \'e1\'e0\'e7\'fb mongodb, \'f0\'e0\'e7\'e2\'e5\'f0\'ed\'f3\'f2\'fc \'e5\'e3\'ee \'e8 \'ed\'e0\'f8\'e8\'ec \'ef\'f0\'e8\'eb\'ee\'e6\'e5\'ed\'e8\'e5\'ec/\'f4\'e0\'e9\'eb\'ee\'ec \'f2\'f3\'e4\'e0 \'f7\'f2\'ee-\'f2\'ee \'ef\'e8\'f1\'e0\'f2\'fc:\kerning1\par
 \kerning0\tab Project1\kerning1\par
 \kerning0\tab\tab |---python1.py\kerning1\par
-\kerning0\tab\tab |---\cf2 Dockerfile\cf0\kerning1\par
-\cf2\kerning0\b\i docker-compose.yml\cf0\kerning1\b0\i0\par
+\kerning0\tab\tab |---\cf1 Dockerfile\cf0\kerning1\par
+\cf1\kerning0\b\i docker-compose.yml\cf0\kerning1\b0\i0\par
 \kerning0\par
 version: '3'\kerning1\par
 \kerning0 volumes:\kerning1\par
 \kerning0\tab\cf8\b mongodb_volume\cf0\b0 :\tab\tab\'f1\'ee\'e7\'e4\'e0\'b8\'ec volume\kerning1\par
-\kerning0 services:\tab\tab\tab\tab\cf5\b docker compose \'ee\'ef\'e5\'f0\'e8\'f0\'f3\'e5\'f2 \'ef\'ee\'ed\'ff\'f2\'e8\'e5\'ec Service\cf0\kerning1\b0\par
+\kerning0 services:\tab\tab\tab\tab\cf4\b docker compose \'ee\'ef\'e5\'f0\'e8\'f0\'f3\'e5\'f2 \'ef\'ee\'ed\'ff\'f2\'e8\'e5\'ec Service\cf0\kerning1\b0\par
 \kerning0\tab deb1:\tab\tab\tab\tab\'ef\'f0\'ee\'f1\'f2\'ee \'ed\'e0\'e7\'e2\'e0\'ed\'e8\'e5\kerning1\par
-\kerning0\tab\tab build: Project1/\tab\'e7\'e0\'e9\'f2\'e8 \'e2 \'ef\'e0\'ef\'ea\'f3 Project1, \'ed\'e0\'e9\'f2\'e8 \cf2 Dockerfile \'e8 \'f1\'e1\'e8\'eb\'e4\'e8\'f2\'fc\cf0\kerning1\par
+\kerning0\tab\tab build: Project1/\tab\'e7\'e0\'e9\'f2\'e8 \'e2 \'ef\'e0\'ef\'ea\'f3 Project1, \'ed\'e0\'e9\'f2\'e8 \cf1 Dockerfile \'e8 \'f1\'e1\'e8\'eb\'e4\'e8\'f2\'fc\cf0\kerning1\par
 \kerning0\tab\tab restart: always\tab\tab\'e5\'f1\'eb\'e8 HOST \'ec\'e0\'f8\'e8\'ed\'e0 reboot-\'e5\'f2\'f1\'ff, \'f2\'ee \'fd\'f2\'ee\'f2 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0 \'ed\'e0\'e4\'ee \'f1\'f2\'e0\'f0\'f2\'ee\'e2\'e0\'f2\'fc\kerning1\par
 \kerning0\tab\tab environment:\kerning1\par
-\kerning0\tab\tab\tab TZ\lang1033\f1 : \lang1049\f0 Europe/Moscow\kerning1\par
-\kerning0\tab\tab\tab MONGO_DB_PORT\lang1033\f1 : \lang1049\f0 27017\kerning1\par
-\kerning0\tab\tab\tab MONGO_DB_ADDR\lang1033\f1 : \lang1049\f0 $\{VAR\}\tab\tab\'e5\'f1\'eb\'e8 \'e2 \'ef\'e0\'ef\'ea\'f3 \'f1 \cf2 docker-compose.yml \'ef\'ee\'eb\'ee\'e6\'e8\'f2\'fc \'f4\'e0\'e9\'eb .env \'f1 \'f2\'e5\'ea\'f1\'f2\'ee\'ec VAR\cf0 =mongodb, \'f2\'ee \cf2 docker-compose \'e0\'e2\'f2\'ee\'ec\'e0\'f2\'e8\'f7\'e5\'f1\'ea\'e8 \'ef\'ee\'e4\'f2\'ff\'ed\'e5\'f2 \'fd\'f2\'e8 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5\cf0\kerning1\par
+\kerning0\tab\tab\tab TZ\lang1033\f0 : \lang1049\f1 Europe/Moscow\kerning1\par
+\kerning0\tab\tab\tab MONGO_DB_PORT\lang1033\f0 : \lang1049\f1 27017\kerning1\par
+\kerning0\tab\tab\tab MONGO_DB_ADDR\lang1033\f0 : \lang1049\f1 $\{VAR\}\tab\tab\'e5\'f1\'eb\'e8 \'e2 \'ef\'e0\'ef\'ea\'f3 \'f1 \cf1 docker-compose.yml \'ef\'ee\'eb\'ee\'e6\'e8\'f2\'fc \'f4\'e0\'e9\'eb .env \'f1 \'f2\'e5\'ea\'f1\'f2\'ee\'ec VAR\cf0 =mongodb, \'f2\'ee \cf1 docker-compose \'e0\'e2\'f2\'ee\'ec\'e0\'f2\'e8\'f7\'e5\'f1\'ea\'e8 \'ef\'ee\'e4\'f2\'ff\'ed\'e5\'f2 \'fd\'f2\'e8 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5\cf0\kerning1\par
 \par
 \kerning0\tab mongodb:\kerning1\par
 \kerning0\tab\tab container_name: mong_machine\tab\'ec\'ee\'e6\'ed\'ee \'e8\'e7 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'e0 deb1 \'ef\'f0\'ee\'ef\'e8\'ed\'e3\'ee\'e2\'e0\'f2\'fc #ping mong_machine\kerning1\par
@@ -357,56 +346,56 @@ version: '3'\kerning1\par
 \kerning0\b docker-compose up -d\tab  --force-recreate\b0  \i ContainerID\tab\i0\'e7\'e0\'ef\'f3\'f1\'f2\'e8\'f2\'fc \'e2\'f1\'e5 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0\'fb \'e2 \'f4\'ee\'ed\'e5 (-d). \'c5\'f1\'eb\'e8 image \'e8\'e7\'ec\'e5\'ed\'e8\'eb\'f1\'ff, \'f2\'ee \'ea\'ee\'ec\'e0\'ed\'e4\'e0 #docker-compose up \'ee\'f1\'f2\'e0\'ed\'ee\'e2\'e8\'f2 \'ea\'ee\'ed\'f2\'e5\'e9\'ed\'e5\'f0 \'e8 \'f1\'e4\'e5\'eb\'e0\'e5\'f2 recreate, --force-recreate \'e4\'eb\'ff \'f2\'ee\'e3\'ee \'f7\'f2\'ee\'e1\'fb docker-compoce \'f1\'e4\'e5\'eb\'e0\'eb recreate \'e2 \'f1\'eb\'f3\'f7\'e0\'e5, \'ea\'ee\'e3\'e4\'e0 image \'ed\'e5 \'e8\'e7\'ec\'e5\'ed\'ff\'eb\'f1\'ff.\kerning1\par
 \par
 \kerning0\par
-\cf2\lang1033\ul\b\f1 Multi-stage dockerfile\ulnone\b0 .\cf0\kerning1\par
-\kerning0{\field{\*\fldinst{HYPERLINK "https://docs.spring.io/spring-boot/docs/current/reference/html/container-images.html"}}{\fldrslt{\ul\cf3 https://docs.spring.io/spring-boot/docs/current/reference/html/container-images.html}}}\cf2\f1\fs22\tab\tab\u1082?\u1072?\u1082? Spring Boot v.2.3+ \u1087?\u1088?\u1080?\u1083?\u1086?\u1078?\u1077?\u1085?\u1080?\u1077? \u1073?\u1086?\u1083?\u1077?\u1077? \u1101?\u1092?\u1092?\u1077?\u1082?\u1090?\u1080?\u1074?\u1085?\u1086? \u1079?\u1072?\u1089?\u1091?\u1085?\u1091?\u1090?\u1100? \u1074? docker \u1080?\u1089?\u1087?\u1086?\u1083?\u1100?\u1079?\u1091?\u1103? layering feature. \u1057?\u1085?\u1072?\u1095?\u1072?\u1083?\u1072? \u1089?\u1086?\u1079?\u1076?\u1072?\u1105?\u1084? docker image \u1089?\u1086? \u1074?\u1089?\u1077?\u1081? \u1096?\u1077?\u1083?\u1091?\u1093?\u1086?\u1081? \cf5\b (0)\cf2\b0 : dependencies, spring-boot-loader \u1080? \u1090?.\u1087?. A \u1087?\u1086?\u1090?\u1086?\u1084? \u1085?\u1072? \u1077?\u1075?\u1086? \u1086?\u1089?\u1085?\u1086?\u1074?\u1072?\u1085?\u1080?\u1080? \u1076?\u1086?\u1073?\u1072?\u1074?\u1083?\u1103?\u1077?\u1084? \u1085?\u1072?\u1096?\u1077? \u1087?\u1088?\u1080?\u1083?\u1086?\u1078?\u1077?\u1085?\u1080?\u1077?.\cf0\kerning1\par
-\cf2\kerning0\par
-\cf5\b (0)\cf0\kerning1\b0\par
-\cf2\kerning0 FROM eclipse-temurin:11-jre as \cf8\b builder\cf0\kerning1\b0\par
-\cf2\kerning0 WORKDIR application\cf0\kerning1\par
-\cf2\kerning0 ARG JAR_FILE=target/*.jar\cf0\kerning1\par
-\cf2\kerning0 COPY $\{JAR_FILE\} application.jar\cf0\kerning1\par
-\cf2\kerning0 RUN java -Djarmode=layertools -jar application.jar extract\cf0\kerning1\par
-\cf2\kerning0\par
+\cf1\lang1033\ul\b\f0 Multi-stage dockerfile\ulnone\b0 .\cf0\kerning1\par
+\kerning0{\field{\*\fldinst{HYPERLINK "https://docs.spring.io/spring-boot/docs/current/reference/html/container-images.html"}}{\fldrslt{\ul\cf2 https://docs.spring.io/spring-boot/docs/current/reference/html/container-images.html}}}\cf1\f0\fs22\tab\tab\u1082?\u1072?\u1082? Spring Boot v.2.3+ \u1087?\u1088?\u1080?\u1083?\u1086?\u1078?\u1077?\u1085?\u1080?\u1077? \u1073?\u1086?\u1083?\u1077?\u1077? \u1101?\u1092?\u1092?\u1077?\u1082?\u1090?\u1080?\u1074?\u1085?\u1086? \u1079?\u1072?\u1089?\u1091?\u1085?\u1091?\u1090?\u1100? \u1074? docker \u1080?\u1089?\u1087?\u1086?\u1083?\u1100?\u1079?\u1091?\u1103? layering feature. \u1057?\u1085?\u1072?\u1095?\u1072?\u1083?\u1072? \u1089?\u1086?\u1079?\u1076?\u1072?\u1105?\u1084? docker image \u1089?\u1086? \u1074?\u1089?\u1077?\u1081? \u1096?\u1077?\u1083?\u1091?\u1093?\u1086?\u1081? \cf4\b (0)\cf1\b0 : dependencies, spring-boot-loader \u1080? \u1090?.\u1087?. A \u1087?\u1086?\u1090?\u1086?\u1084? \u1085?\u1072? \u1077?\u1075?\u1086? \u1086?\u1089?\u1085?\u1086?\u1074?\u1072?\u1085?\u1080?\u1080? \u1076?\u1086?\u1073?\u1072?\u1074?\u1083?\u1103?\u1077?\u1084? \u1085?\u1072?\u1096?\u1077? \u1087?\u1088?\u1080?\u1083?\u1086?\u1078?\u1077?\u1085?\u1080?\u1077?.\cf0\kerning1\par
+\cf1\kerning0\par
+\cf4\b (0)\cf0\kerning1\b0\par
+\cf1\kerning0 FROM eclipse-temurin:11-jre as \cf8\b builder\cf0\kerning1\b0\par
+\cf1\kerning0 WORKDIR application\cf0\kerning1\par
+\cf1\kerning0 ARG JAR_FILE=target/*.jar\cf0\kerning1\par
+\cf1\kerning0 COPY $\{JAR_FILE\} application.jar\cf0\kerning1\par
+\cf1\kerning0 RUN java -Djarmode=layertools -jar application.jar extract\cf0\kerning1\par
+\cf1\kerning0\par
 \u1042?\u1086?\u1086?\u1073?\u1097?\u1077? \u1082?\u1086?\u1084?\u1072?\u1085?\u1076?\u1072? #java -Djarmode=layertools -jar application.jar \u1074?\u1099?\u1076?\u1072?\u1089?\u1090?\cf0\kerning1\par
-\cf2\kerning0 Usage:\cf0\kerning1\par
-\cf2\kerning0   java -Djarmode=layertools -jar application.jar\cf0\kerning1\par
-\cf2\kerning0\par
+\cf1\kerning0 Usage:\cf0\kerning1\par
+\cf1\kerning0   java -Djarmode=layertools -jar application.jar\cf0\kerning1\par
+\cf1\kerning0\par
 Available commands:\cf0\kerning1\par
-\cf2\kerning0   list     List layers from the jar that can be extracted\cf0\kerning1\par
-\cf2\kerning0   extract  Extracts layers from the jar for image creation\cf0\kerning1\par
-\cf2\kerning0   help     Help about any command\cf0\kerning1\par
-\cf2\kerning0\par
+\cf1\kerning0   list     List layers from the jar that can be extracted\cf0\kerning1\par
+\cf1\kerning0   extract  Extracts layers from the jar for image creation\cf0\kerning1\par
+\cf1\kerning0   help     Help about any command\cf0\kerning1\par
+\cf1\kerning0\par
 #java -Djarmode=layertools -jar application.jar \b\i list\cf0\kerning1\b0\i0\par
-\cf2\kerning0\tab dependencies\cf0\kerning1\par
-\cf2\kerning0\tab spring-boot-loader\cf0\kerning1\par
-\cf2\kerning0\tab snapshot-dependencies\cf0\kerning1\par
-\cf2\kerning0\tab application\cf0\kerning1\par
-\cf2\kerning0\par
+\cf1\kerning0\tab dependencies\cf0\kerning1\par
+\cf1\kerning0\tab spring-boot-loader\cf0\kerning1\par
+\cf1\kerning0\tab snapshot-dependencies\cf0\kerning1\par
+\cf1\kerning0\tab application\cf0\kerning1\par
+\cf1\kerning0\par
 #java -Djarmode=layertools -jar application.jar \b\i extract\b0\i0\tab\u1074?\u1099?\u1075?\u1088?\u1091?\u1079?\u1080?\u1090? \u1074?\u1089?\u1077? \u1101?\u1090?\u1080? \u1089?\u1083?\u1086?\u1080? \u1080?\u1079? JAR \u1092?\u1072?\u1081?\u1083?\u1072?\cf0\kerning1\par
-\cf2\kerning0\par
-\cf5\b (1)\cf0\kerning1\b0\par
-\cf2\kerning0 FROM eclipse-temurin:11-jre\cf0\kerning1\par
-\cf2\kerning0 WORKDIR application\cf0\kerning1\par
-\cf2\kerning0 COPY --from=\cf8\b builder \cf2\b0 application/dependencies/ ./\cf0\kerning1\par
-\cf2\kerning0 COPY --from=\cf8\b builder \cf2\b0 application/spring-boot-loader/ ./\cf0\kerning1\par
-\cf2\kerning0 COPY --from=\cf8\b builder \cf2\b0 application/snapshot-dependencies/ ./\cf0\kerning1\par
-\cf2\kerning0 COPY --from=\cf8\b builder \cf2\b0 application/application/ ./\cf0\kerning1\par
-\cf2\kerning0 ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]\cf0\kerning1\par
-\cf2\kerning0\par
+\cf1\kerning0\par
+\cf4\b (1)\cf0\kerning1\b0\par
+\cf1\kerning0 FROM eclipse-temurin:11-jre\cf0\kerning1\par
+\cf1\kerning0 WORKDIR application\cf0\kerning1\par
+\cf1\kerning0 COPY --from=\cf8\b builder \cf1\b0 application/dependencies/ ./\cf0\kerning1\par
+\cf1\kerning0 COPY --from=\cf8\b builder \cf1\b0 application/spring-boot-loader/ ./\cf0\kerning1\par
+\cf1\kerning0 COPY --from=\cf8\b builder \cf1\b0 application/snapshot-dependencies/ ./\cf0\kerning1\par
+\cf1\kerning0 COPY --from=\cf8\b builder \cf1\b0 application/application/ ./\cf0\kerning1\par
+\cf1\kerning0 ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]\cf0\kerning1\par
+\cf1\kerning0\par
 \u1080?\u1083?\u1080?\cf0\kerning1\par
-\cf5\kerning0\b (0)\cf2\b0\tab\u1089?\u1085?\u1072?\u1095?\u1072?\u1083?\u1072? \u1073?\u1080?\u1083?\u1076?\u1103?\u1090? \u1087?\u1088?\u1080?\u1083?\u1086?\u1078?\u1077?\u1085?\u1080?\u1077? \u1074? base image = golang:1.16, \u1082?\u1086?\u1090?\u1086?\u1088?\u1099?\u1081? \u1089?\u1086?\u1078?\u1077?\u1088?\u1078?\u1080?\u1090? \u1074?\u1089?\u1077? \u1085?\u1077?\u1086?\u1073?\u1093?\u1086?\u1076?\u1080?\u1084?\u1099?\u1077? dependencies, libs \u1076?\u1083?\u1103? Golang\cf0\kerning1\par
-\cf2\kerning0 FROM golang:1.16\cf0\kerning1\par
-\cf2\kerning0 WORKDIR /go/src/github.com/alexellis/href-counter/\cf0\kerning1\par
-\cf2\kerning0 RUN go get -d -v golang.org/x/net/html  \cf0\kerning1\par
-\cf2\kerning0 COPY app.go ./\cf0\kerning1\par
-\cf2\kerning0 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app .\cf0\kerning1\par
-\cf2\kerning0\par
-\cf5\b (1)\cf2\b0\tab\u1079?\u1072?\u1090?\u1077?\u1084? \u1074?\u1099?\u1082?\u1072?\u1095?\u1080?\u1074?\u1072?\u1102?\u1090? \u1080?\u1079? image, \u1087?\u1086?\u1083?\u1091?\u1095?\u1080?\u1074?\u1096?\u1077?\u1075?\u1086?\u1089?\u1103? \u1085?\u1072? \u1089?\u1090?\u1072?\u1076?\u1080?\u1080? (0), \u1090?\u1086?\u1083?\u1100?\u1082?\u1086? \u1085?\u1077?\u1086?\u1073?\u1093?\u1086?\u1076?\u1080?\u1084?\u1086?\u1077? (COPY --from=0 ...) \u1080? \u1079?\u1072?\u1087?\u1091?\u1089?\u1082?\u1072?\u1102?\u1090? \u1101?\u1090?\u1086? \u1085?\u1072? base image = alpine.\cf0\kerning1\par
-\cf2\kerning0 FROM alpine:latest\cf0\kerning1\par
-\cf2\kerning0 RUN apk --no-cache add ca-certificates\cf0\kerning1\par
-\cf2\kerning0 WORKDIR /root/\cf0\kerning1\par
-\cf2\kerning0 COPY --from=0 /go/src/github.com/alexellis/href-counter/app ./\tab\tab\u1084?\u1086?\u1078?\u1085?\u1086? \u1074?\u1084?\u1077?\u1089?\u1090?\u1086? --from=\cf8\b builder\cf2\b0  \u1087?\u1080?\u1089?\u1072?\u1090?\u1100? --from=\cf5\b 0\cf0\kerning1\b0\par
-\cf2\kerning0 CMD ["./app"]\cf0\kerning1\par
-\lang1049\kerning0\b\f0\par
+\cf4\kerning0\b (0)\cf1\b0\tab\u1089?\u1085?\u1072?\u1095?\u1072?\u1083?\u1072? \u1073?\u1080?\u1083?\u1076?\u1103?\u1090? \u1087?\u1088?\u1080?\u1083?\u1086?\u1078?\u1077?\u1085?\u1080?\u1077? \u1074? base image = golang:1.16, \u1082?\u1086?\u1090?\u1086?\u1088?\u1099?\u1081? \u1089?\u1086?\u1078?\u1077?\u1088?\u1078?\u1080?\u1090? \u1074?\u1089?\u1077? \u1085?\u1077?\u1086?\u1073?\u1093?\u1086?\u1076?\u1080?\u1084?\u1099?\u1077? dependencies, libs \u1076?\u1083?\u1103? Golang\cf0\kerning1\par
+\cf1\kerning0 FROM golang:1.16\cf0\kerning1\par
+\cf1\kerning0 WORKDIR /go/src/github.com/alexellis/href-counter/\cf0\kerning1\par
+\cf1\kerning0 RUN go get -d -v golang.org/x/net/html  \cf0\kerning1\par
+\cf1\kerning0 COPY app.go ./\cf0\kerning1\par
+\cf1\kerning0 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app .\cf0\kerning1\par
+\cf1\kerning0\par
+\cf4\b (1)\cf1\b0\tab\u1079?\u1072?\u1090?\u1077?\u1084? \u1074?\u1099?\u1082?\u1072?\u1095?\u1080?\u1074?\u1072?\u1102?\u1090? \u1080?\u1079? image, \u1087?\u1086?\u1083?\u1091?\u1095?\u1080?\u1074?\u1096?\u1077?\u1075?\u1086?\u1089?\u1103? \u1085?\u1072? \u1089?\u1090?\u1072?\u1076?\u1080?\u1080? (0), \u1090?\u1086?\u1083?\u1100?\u1082?\u1086? \u1085?\u1077?\u1086?\u1073?\u1093?\u1086?\u1076?\u1080?\u1084?\u1086?\u1077? (COPY --from=0 ...) \u1080? \u1079?\u1072?\u1087?\u1091?\u1089?\u1082?\u1072?\u1102?\u1090? \u1101?\u1090?\u1086? \u1085?\u1072? base image = alpine.\cf0\kerning1\par
+\cf1\kerning0 FROM alpine:latest\cf0\kerning1\par
+\cf1\kerning0 RUN apk --no-cache add ca-certificates\cf0\kerning1\par
+\cf1\kerning0 WORKDIR /root/\cf0\kerning1\par
+\cf1\kerning0 COPY --from=0 /go/src/github.com/alexellis/href-counter/app ./\tab\tab\u1084?\u1086?\u1078?\u1085?\u1086? \u1074?\u1084?\u1077?\u1089?\u1090?\u1086? --from=\cf8\b builder\cf1\b0  \u1087?\u1080?\u1089?\u1072?\u1090?\u1100? --from=\cf4\b 0\cf0\kerning1\b0\par
+\cf1\kerning0 CMD ["./app"]\cf0\kerning1\par
+\lang1049\kerning0\b\f1\par
 }
  
