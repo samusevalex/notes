@@ -283,7 +283,225 @@ Router(config)#\b mplp ldp advertise-labels for\b0  \i ACL\i0  \emdash  \'ec\'ee
 \par
 \'ca\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'e5 LC-ATM (Label-controlled ATM) \'f1\'ec. Implementing Cisco MPLS \'f1\'f2\'f0.290\par
 \par
-\b\par
 \par
+\par
+\par
+\'cf\'f0\'e8\'ec\'e5\'f0 \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e0\'f6\'e8\'e8 \lang1033\f1 MPLS L3VPN\lang1049\f0  \'e8 \lang1033\f1 L\lang1049\f0 2\lang1033\f1 VPN:\lang1049\f0\par
+\par
+\pard\cf0\lang1033\kerning0\f1 R1#sh run\par
+\par
+ip vrf 100\par
+\par
+ip cef\par
+\par
+interface Loopback0\par
+ ip vrf forwarding 100\par
+ ip address 1.100.0.0 255.255.255.255\par
+\par
+interface Ethernet0/0.12\par
+ encapsulation dot1Q 12\par
+ ip vrf forwarding 100\par
+ ip address 10.0.12.1 255.255.255.0\par
+\par
+router ospf 100 vrf 100\par
+ network 1.100.0.0 0.0.0.0 area 0\par
+ network 10.0.12.1 0.0.0.0 area 0\par
+ capability vrf-lite\par
+\par
+CE1 \lang1049\f0\'e8 \lang1033\f1 CE2 \lang1049\f0\'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e5\'ed\'fb \'ea \lang1033\f1 PE1 \lang1049\f0\'e8 \lang1033\f1 PE2 \lang1049\f0\'ee\'e4\'ed\'ee\'e3\'ee \'ef\'f0\'ee\'e2\'e0\'e9\'e4\'e5\'f0\'e0. \'cd\'e0 \lang1033\f1 CE1 \lang1049\f0\'ee\'f2 \lang1033\f1 PE1\lang1049\f0  \'ef\'f0\'e8\'eb\'e5\'f2\'e0\'e5\'f2 \lang1033\f1 LSA\lang1049\f0  3 \'f1\lang1033\f1  \lang1049\f0\'ec\'e0\'f0\'f8\'f0\'f3\'f2\'ee\'ec 10.0.0.0/24. \lang1033\f1 CE1 \lang1049\f0\'ef\'e5\'f0\'e5\'e4\'e0\'b8\'f2 \'e5\'e3\'ee \lang1033\f1 CE2\lang1049\f0 , \lang1033\f1 CE2 \lang1049\kerning1\f0\u8594?\lang1033\f1  PE2, \lang1049\f0\'f2.\'e5. \'ec\'e0\'f0\'f8\'f0\'f3\'f2 \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2\'f1\'ff \'ee\'e1\'f0\'e0\'f2\'ed\'ee \'e2 \lang1033\f1 MP-BGP\lang1049\f0  -\lang1033\f1  \lang1049\f0\'ee\'e1\'f0\'e0\'e7\'f3\'e5\'f2\'f1\'ff \'ef\'e5\'f2\'eb\'ff. \'c4\kerning0\'eb\'ff \'ef\'f0\'e5\'e4\'ee\'f2\'e2\'f0\'e0\'f9\'e5\'ed\'e8\'ff \'ef\'e5\'f2\'eb\'e8 \lang1033\f1 PE1 \lang1049\f0\'e2 \lang1033\f1 LSA 3 \lang1049\f0\'f3\'f1\'f2\'e0\'ed\'e0\'e2\'eb\'e8\'e2\'e0\'e5\'f2 \lang1033\f1 DN-bit (Downward Bit), \lang1049\f0\'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'e7\'e0\'ef\'f0\'e5\'f9\'e0\'e5\'f2 \lang1033\f1 CE1 \lang1049\f0\'e2\'f1\'f2\'e0\'e2\'eb\'ff\'f2\'fc \lang1033\f1 LSA 3 5 7 \lang1049\f0\'f1\'e5\'e1\'e5 \'e2 \lang1033\f1 Routing Table\lang1049\f0 , \'e5\'f1\'eb\'e8 \'ed\'e0 \lang1033\f1 CE1 \lang1049\f0\'ed\'e0\'f1\'f2\'f0\'ee\'e5\'ed \lang1033\f1 VRF.\lang1049\f0  \'d5\'ee\'f2\'ff \'ed\'e0 \lang1033\f1 CE1\lang1049\f0  \'e2 \lang1033\f1 OSPF Database \lang1049\f0\'fd\'f2\'e8 \lang1033\f1 LSA \lang1049\f0\'e1\'f3\'e4\'e5\'f2 \'ef\'f0\'e8\'f1\'f3\'f2\'f1\'f2\'e2\'ee\'e2\'e0\'f2\'fc. \'c5\'f1\'eb\'e8 \'ed\'e0 \lang1033\f1 CE1 \lang1049\f0\'ed\'e5\'f2 \lang1033\f1 VRF\lang1049\f0 , \'f2\'ee \'e2\'f1\'b8 \'e1\'f3\'e4\'e5\'f2 \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc \'e1\'e5\'e7 \'e2\'f1\'ff\'ea\'e8\'f5 \lang1033\f1 capability vrf-lite\lang1049\f0  (\'f1\'ec. \lang1033\f1 R6#s run\lang1049\f0 )\par
+\lang1033\f1\par
+\par
+R2#sh run\par
+\par
+ip vrf 100\par
+ rd 100:100\par
+ route-target export 100:100\par
+ route-target import 100:100\par
+\par
+ip cef\par
+\par
+mpls label protocol ldp\par
+mpls ldp router-id Loopback0\par
+\par
+interface Loopback0\par
+ ip address 2.0.0.0 255.255.255.255\par
+\par
+interface Loopback100\par
+ ip vrf forwarding 100\par
+ ip address 2.100.0.0 255.255.255.255\par
+\par
+interface Ethernet0/0.12\par
+ encapsulation dot1Q 12\par
+ ip vrf forwarding 100\par
+ ip address 10.0.12.2 255.255.255.0\par
+\par
+interface Ethernet0/0.23\par
+ encapsulation dot1Q 23\par
+ ip address 10.0.23.2 255.255.255.0\par
+ mpls ip\par
+\par
+interface Ethernet0/0.24\par
+ encapsulation dot1Q 24\par
+ ip address 10.0.24.2 255.255.255.0\par
+ mpls ip\par
+\par
+router ospf 100 vrf 100\par
+ redistribute bgp 1 subnets\par
+ network 2.100.0.0 0.0.0.0 area 0\par
+ network 10.0.12.2 0.0.0.0 area 0\par
+\par
+router ospf 1\par
+ network 2.0.0.0 0.0.0.0 area 0\par
+ network 10.0.23.2 0.0.0.0 area 0\par
+ network 10.0.24.2 0.0.0.0 area 0\par
+\par
+router bgp 1\par
+ neighbor 5.0.0.0 remote-as 1\par
+ neighbor 5.0.0.0 update-source Loopback0\par
+\par
+ address-family vpnv4\par
+  neighbor 5.0.0.0 activate\par
+  neighbor 5.0.0.0 send-community extended\par
+ exit-address-family\par
+\par
+ address-family ipv4 vrf 100\par
+  redistribute ospf 100\par
+ exit-address-family\par
+\par
+\par
+\par
+R3#s run\par
+\par
+ip cef\par
+\par
+mpls label protocol ldp\par
+mpls ldp router-id Loopback0\par
+\par
+interface Loopback0\par
+ ip address 3.0.0.0 255.255.255.255\par
+\par
+interface Ethernet0/0.23\par
+ encapsulation dot1Q 23\par
+ ip address 10.0.23.3 255.255.255.0\par
+ mpls ip\par
+\par
+interface Ethernet0/0.35\par
+ encapsulation dot1Q 35\par
+ ip address 10.0.35.3 255.255.255.0\par
+ mpls ip\par
+\par
+interface Ethernet0/\lang1049\f0 1\par
+\pard\nowidctlpar\sl240\slmult1  xconnect 4.0.0.0 200 encapsulation mpls\par
+\par
+\'cc\'e5\'e6\'e4\'f3 \lang1033\f1 R3 Eth0/1 \lang1049\f0\'e8 \lang1033\f1 R4 Eth0/1 \lang1049\f0\'ed\'e0\'f1\'f2\'f0\'ee\'e5\'ed \lang1033\f1 MPLS \b L2VPN \lang1049\b0\f0\'ed\'e0\lang1033\f1  \lang1049\f0 xconnect (\lang1033\f1 Cisco proprietary\lang1049\f0 )\lang1033\f1 . \lang1049\f0\'c4\'eb\'ff \'f0\'e0\'e1\'ee\'f2\'fb\cf1\lang1033\kerning1\f1  L2VPN\lang1049\f0  \'ed\'e5 \'ed\'f3\'e6\'e5\'ed \lang1033\f1 MP-BGP. \lang1049\f0\'cd\'f3\'e6\'e5\'ed \'f2\'ee\'eb\'fc\'ea\'ee \lang1033\f1 LDP\lang1049\f0 . \cf0\kerning0\'cd\'e0 \lang1033\f1 Juniper \lang1049\f0\'e2\'f1\'b8 \'ef\'ee-\'e4\'f0\'f3\'e3\'ee\'ec\'f3: \cf1\kerning1 routing-instances \lang1033\f1 L2\lang1049\f0 VPN \{instance-type l2vpn\lang1033\f1  ... \lang1049\f0\'cf\'ee\'fd\'f2\'ee\'ec\'f3 \lang1033\f1 Cisco L2VPN \lang1049\f0\'ed\'e5 \'e4\'f0\'f3\'e6\'e8\'f2 \'f1 \lang1033\f1 Juniper L2VPN.\cf0\kerning0\par
+\pard\par
+router ospf 1\par
+ network 3.0.0.0 0.0.0.0 area 0\par
+ network 10.0.23.3 0.0.0.0 area 0\par
+ network 10.0.35.3 0.0.0.0 area 0\par
+\par
+\par
+R4#s run\par
+\par
+ip cef\par
+\par
+mpls label protocol ldp\par
+mpls ldp router-id Loopback0\par
+\par
+interface Loopback0\par
+ ip address 4.0.0.0 255.255.255.255\par
+\par
+interface Ethernet0/0.24\par
+ encapsulation dot1Q 24\par
+ ip address 10.0.24.4 255.255.255.0\par
+ mpls ip\par
+\par
+interface Ethernet0/0.45\par
+ encapsulation dot1Q 45\par
+ ip address 10.0.45.4 255.255.255.0\par
+ mpls ip\par
+\par
+interface Ethernet0/\lang1049\f0 1\par
+ xconnect 3.0.0.0 200 encapsulation mpls\lang1033\f1\par
+\par
+router ospf 1\par
+ network 4.0.0.0 0.0.0.0 area 0\par
+ network 10.0.24.4 0.0.0.0 area 0\par
+ network 10.0.45.4 0.0.0.0 area 0\par
+\par
+\par
+R5#s run\par
+\par
+ip vrf 100\par
+ rd 100:100\par
+ route-target export 100:100\par
+ route-target import 100:100\par
+\par
+ip cef\par
+\par
+mpls label protocol ldp\par
+mpls ldp router-id Loopback0\par
+\par
+interface Loopback0\par
+ ip address 5.0.0.0 255.255.255.255\par
+\par
+interface Loopback100\par
+ ip vrf forwarding 100\par
+ ip address 5.100.0.0 255.255.255.255\par
+\par
+interface Ethernet0/0.35\par
+ encapsulation dot1Q 35\par
+ ip address 10.0.35.5 255.255.255.0\par
+ mpls ip\par
+\par
+interface Ethernet0/0.45\par
+ encapsulation dot1Q 45\par
+ ip address 10.0.45.5 255.255.255.0\par
+ mpls ip\par
+\par
+interface Ethernet0/0.56\par
+ encapsulation dot1Q 56\par
+ ip vrf forwarding 100\par
+ ip address 10.0.56.5 255.255.255.0\par
+\par
+router ospf 100 vrf 100\par
+ redistribute bgp 1 subnets\par
+ network 5.100.0.0 0.0.0.0 area \lang1049\f0 10\lang1033\f1 0\par
+ network 10.0.56.5 0.0.0.0 area \lang1049\f0 10\lang1033\f1 0\par
+\par
+router ospf 1\par
+ network 5.0.0.0 0.0.0.0 area 0\par
+ network 10.0.35.5 0.0.0.0 area 0\par
+ network 10.0.45.5 0.0.0.0 area 0\par
+\par
+router bgp 1\par
+ neighbor 2.0.0.0 remote-as 1\par
+ neighbor 2.0.0.0 update-source Loopback0\par
+ \par
+ address-family vpnv4\par
+  neighbor 2.0.0.0 activate\par
+  neighbor 2.0.0.0 send-community extended\par
+ exit-address-family\par
+ \par
+ address-family ipv4 vrf 100\par
+  redistribute ospf 100\par
+ exit-address-family\par
+\par
+\par
+R6#s run\par
+\par
+ip cef\par
+\par
+interface Loopback0\par
+ ip address 6.100.0.0 255.255.255.255\par
+\par
+interface Ethernet0/0.56\par
+ encapsulation dot1Q 56\par
+ ip address 10.0.56.6 255.255.255.0\par
+\par
+router ospf 1\lang1049\f0 00\lang1033\f1\par
+ network 6.100.0.0 0.0.0.0 area \lang1049\f0 10\lang1033\f1 0\par
+ network 10.0.56.6 0.0.0.0 area \lang1049\f0 10\lang1033\f1 0\par
+\pard\nowidctlpar\sl240\slmult1\cf1\lang1049\kerning1\b\f0\par
 }
  
