@@ -829,7 +829,7 @@ echo.py\cf0\kerning1\par
 \par
 \cf1\kerning0\b help\b0 (dict)\tab\tab\cf6 <class 'dict'>\cf0\kerning1\par
 \cf1\kerning0\'ce\'e1\'ee\'e7\'ed\'e0\'f7\'e0\'fe\'f2\'f1\'ff \b\{ \}\cf0\kerning1\b0\par
-\cf1\kerning0\'d1\'eb\'ee\'e2\'e0\'f0\'e8 - \'fd\'f2\'ee \'ed\'e5 \'ef\'ee\'f1\'eb\'e5\'e4\'ee\'e2\'e0\'f2\'e5\'eb\'fc\'ed\'ee\'f1\'f2\'e8 - \'fd\'f2\'ee \'ee\'f2\'ee\'e1\'f0\'e0\'e6\'e5\'ed\'e8\'ff = HashMap. \'ce\'f2\'f1\'f3\'f2\'f1\'f2\'e2\'f3\'e5\'f2 \'ef\'ee\'f0\'ff\'e4\'ee\'ea, \'ed\'e5\'eb\'fc\'e7\'ff sort.\cf0\kerning1\par
+\cf1\kerning0\'d1\'eb\'ee\'e2\'e0\'f0\'e8 - \'fd\'f2\'ee \'ed\'e5 \'ef\'ee\'f1\'eb\'e5\'e4\'ee\'e2\'e0\'f2\'e5\'eb\'fc\'ed\'ee\'f1\'f2\'e8 - \'fd\'f2\'ee \'ee\'f2\'ee\'e1\'f0\'e0\'e6\'e5\'ed\'e8\'ff = HashMap. \'ce\'f2\'f1\'f3\'f2\'f1\'f2\'e2\'f3\'e5\'f2 \'ef\'ee\'f0\'ff\'e4\'ee\'ea, \'ed\'e5\'eb\'fc\'e7\'ff \'e4\'e5\'eb\'e0\'f2\'fc sort.\cf0\kerning1\par
 \cf1\kerning0 >>> d = \{'a':1, 'b':2, 'c':3\}\cf0\kerning1\par
 \cf1\kerning0\{'a': 1, 'c': 3, 'b': 2\}\tab\'e2\'fb\'e2\'ee\'e4 \'e2 \'e4\'f0\'f3\'e3\'ee\'e9 \'ef\'ee\'f0\'ff\'e4\'ea\'e5\cf0\kerning1\par
 \cf1\kerning0 >>> d['a']\tab\tab\tab\tab\tab = get()\cf0\kerning1\par
@@ -845,7 +845,10 @@ echo.py\cf0\kerning1\par
 \cf1\kerning0 True\cf0\kerning1\par
 \cf1\kerning0 >>> 'f' \cf2\kerning1\b in\cf1\kerning0\b0  d\cf0\kerning1\par
 \cf1\kerning0 False\cf0\kerning1\par
-\cf1\kerning0\par
+\cf1\lang1033\kerning0\f1 >>> d[(12, "asd")] = [1, 2, 3]\tab\lang1049\f0\'ec\'ee\'e6\'ed\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \cf6 <class 'tuple'>\cf1\lang1033\f1  \lang1049\f0\'e2 \'ea\'e0\'f7\'e5\'f1\'f2\'e2\'e5 \lang1033\f1 Key\par
+>>>\lang1049\f0  \lang1033\f1 d[[1, 2, 3]] = 15\par
+TypeError: unhashable type: 'list'\tab\lang1049\f0\'ed\'e5\'eb\'fc\'e7\'ff \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc\lang1033\f1  \cf6\lang1049\f0 <class 'l\lang1033\f1 ist\lang1049\f0 '>\cf1  \'e2 \'ea\'e0\'f7\'e5\'f1\'f2\'e2\'e5 \lang1033\f1 Key\par
+\lang1049\f0\par
 \'c7\'e0\'e4\'e0\'f7\'e0: \'ce\'f2\'f1\'ee\'f0\'f2\'e8\'f0\'ee\'e2\'e0\'f2\'fc \'f1\'eb\'ee\'e2\'e0\'f0\'fc \'ef\'ee \'ea\'eb\'fe\'f7\'f3:\cf0\kerning1\par
 \cf1\kerning0 >>> Ks = list (d)\tab\tab\tab list \'f1\'ee\'e7\'e4\'e0\'b8\'f2 \'f1\'ef\'e8\'f1\'ee\'ea \'e8\'e7 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'ee\'e2 \'eb\'fe\'e1\'ee\'e9 \'ef\'ee\'f1\'eb\'e5\'e4\'ee\'e2\'e0\'f2\'e5\'eb\'fc\'ed\'ee\'f1\'f2\'e8\cf0\kerning1\par
 \cf1\kerning0 ['a', 'c', 'b']\cf0\kerning1\par
