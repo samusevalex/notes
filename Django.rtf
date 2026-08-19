@@ -1,0 +1,131 @@
+{\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}{\f1\fnil\fcharset0 Courier New;}}
+{\colortbl ;\red0\green0\blue255;\red0\green176\blue80;\red155\green0\blue211;\red255\green192\blue0;\red192\green80\blue77;\red0\green77\blue187;}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\nowidctlpar\hyphpar0\sl240\slmult1\lang1049\kerning1\f0\fs22 Django \'e8 Flask \'ef\'ee \'f1\'f3\'f2\'e8 \'ee\'e4\'ed\'ee \'e8 \'f2\'ee\'e6\'e5, \'ed\'ee Flask - \'fd\'f2\'ee \'eb\'e5\'e3\'ea\'ee\'e2\'e5\'f1\'ed\'fb\'e9 Web-\'ec\'e8\'ea\'f0\'ee\'f4\'f0\'e5\'e9\'ec\'e2\'ee\'f0\'ea, \'e0 Django - \'fd\'f2\'ee \'f2\'ee\'eb\'f1\'f2\'fb\'e9 Web-Framework, \'f2\'e0\'ec \'e2\'ed\'f3\'f2\'f0\'e8 \'e8 ORM\lang1033\f1  (DB \lang1049\f0\'ea \'ea\'ee\'f2\'ee\'f0\'ee\'e9 \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e0\'e5\'ec\'f1\'ff \'e4\'ee\'eb\'e6\'ed\'e0 \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'f2\'fc SQLAlchemy-\'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'ed\'f3\'fe \'e1\'e8\'e1\'eb\'e8\'ee\'f2\'e5\'ea\'f3\lang1033\f1 )\lang1049\f0  \'e8 \'f1\'e8\'f1\'f2\'e5\'ec\'e0 \'e0\'f3\'f2\'e5\'ed\'f2\'e8\'f4\'e8\'ea\'e0\'f6\'e8\'e8 \'e8 \'e2\'f1\'f2\'f0\'ee\'e5\'ed\'ed\'fb\'e5 Web-\'f4\'ee\'f0\'ec\'fb.\par
+Django \'ec\'ee\'e6\'e5\'f2 \'ee\'f2\'e4\'e0\'e2\'e0\'f2\'fc \'ea\'e0\'ea index.html, \'f2\'e0\'ea \'e8 json. \'d1\'f2\'f0\'f3\'ea\'f2\'f3\'f0\'e0 \'ef\'f0\'ee\'e5\'ea\'f2\'e0 Django.\par
+\par
+{\field{\*\fldinst{HYPERLINK "https://www.youtube.com/watch?v=6hz6GXfiCKM&list=PLBheEHDcG7-nyRX-kMT2jyudahDQ-A-Ss&index=4"}}{\fldrslt{\ul\cf1 https://www.youtube.com/watch?v=6hz6GXfiCKM&list=PLBheEHDcG7-nyRX-kMT2jyudahDQ-A-Ss&index=4}}}\f0\fs22\par
+\par
+myShop/\par
+\tab +--manage.py\tab\tab\'f1\'ea\'f0\'e8\'ef\'f2 \'f3\'ef\'f0\'e0\'e2\'eb\'e5\'ed\'e8\'ff Django. \'c7\'e0\'ef\'f3\'f1\'ea \'f1\'e5\'f0\'e2\'e5\'f0\'e0, \'e2\'fb\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'e5 \'ec\'e8\'e3\'f0\'e0\'f6\'e8\'e9 \'c1\'c4\lang1033\f1  \lang1049\f0\'e8 \'f2.\'ef. \lang1033\f1 #./\lang1049\f0 manage.py\lang1033\f1  --help\lang1049\f0\par
+\tab +--myShop/\tab\tab\tab\'ee\'f1\'ed\'ee\'e2\'ed\'ee\'e9 \'ea\'e0\'f2\'e0\'eb\'ee\'e3 \'ef\'f0\'ee\'e5\'ea\'f2\'e0\par
+\tab\tab +--__init__.py\tab\'ef\'f3\'f1\'f2\'ee\'e9 \'f4\'e0\'e9\'eb, \'ee\'e7\'ed\'e0\'f7\'e0\'fe\'f9\'e8\'e9, \'f7\'f2\'ee \'ef\'f0\'ee\'e5\'ea\'f2 \'ec\'ee\'e6\'ed\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'ea\'e0\'ea \'ec\'ee\'e4\'f3\'eb\'fc\par
+\tab\tab +--settings.py\tab ~application.yml\par
+\tab\tab +--urls.py\tab\tab\'f4\'e0\'e9\'eb URL-\'ec\'e0\'f0\'f8\'f0\'f3\'f2\'ee\'e2 \'ef\'f0\'ee\'e5\'ea\'f2\'e0\par
+\tab\tab +--wsgi.py\tab\tab\'ef\'ee\'e4 \'ea\'e0\'ef\'ee\'f2\'ee\'ec Django \'ed\'e5\'f2 Tomcat, \'ed\'ee \'ed\'e0\'f1\'f2\'f0\'e0\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1 wsgi, \'e4\'eb\'ff \'e2\'e5\'e1-\'f1\'e5\'f0\'e2\'e5\'f0\'ee\'e2, \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'fd\'f2\'ee \'e4\'e5\'eb\'ee \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'fe\'f2, \'ed\'e0\'ef\'f0\'e8\'ec\'e5\'f0 Nginx. \'d2\'f3\'f2 \'eb\'e5\'e6\'e0\'f2 \'ea\'e0\'ea\'e8\'e5-\'f2\'ee \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e8.\par
+\tab +--\cf2\kerning0\b catalog\cf0\kerning1\b0 /\tab\tab\'ef\'f0\'e8\'eb\'ee\'e6\'e5\'ed\'e8\'e5 "\'ca\'e0\'f2\'e0\'eb\'ee\'e3 \'f2\'ee\'e2\'e0\'f0\'ee\'e2"\par
+\tab\tab +--migrations/\tab\'ea\'e0\'f2\'e0\'eb\'ee\'e3 \'f1 \'f4\'e0\'e9\'eb\'e0\'ec\'e8 \'ec\'e8\'e3\'f0\'e0\'f6\'e8\'e8 \'e4\'eb\'ff \'c1\'c4\par
+\tab\tab +--models.py\tab\'f1\'ee\'e4\'e5\'f0\'e6\'e8\'f2 \'ec\'ee\'e4\'e5\'eb\'fc \'e4\'e0\'ed\'ed\'fb\'f5 - \'ea\'eb\'e0\'f1\'f1\'fb \'e4\'eb\'ff \'f2\'ee\'e2\'e0\'f0\'ee\'e2\par
+\tab\tab +--\cf3\kerning0\b views.py\cf0\kerning1\b0\tab\'f1\'ee\'e4\'e5\'f0\'e6\'e8\'f2 \'ef\'f0\'e5\'e4\'f1\'f2\'e0\'e2\'eb\'e5\'ed\'e8\'ff (views) \'e4\'eb\'ff \'ee\'f2\'ee\'e1\'f0\'e0\'e6\'e5\'ed\'e8\'ff \'f1\'f2\'f0\'e0\'ed\'e8\'f6, \'f4\'e0\'ea\'f2\'e8\'f7\'e5\'f1\'ea\'e8 \'ec\'e5\'f0\'e6\'e8\'f2 template.html \'f1 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'ec\'e8.\par
+\tab\tab +--templates/\tab HTML-\'f8\'e0\'e1\'eb\'ee\'ed\'fb \'e4\'eb\'ff \'f8\'e0\'e1\'eb\'ee\'ed\'e8\'e7\'e0\'f2\'ee\'f0\'e0\par
+\tab\tab +--\cf4\kerning0\b urls.py\cf0\kerning1\b0\par
+\par
+\'c2\'f1\'e5 REST \'e7\'e0\'ef\'f0\'ee\'f1\'fb \'ef\'f0\'e8\'eb\'e5\'f2\'e0\'fe\'f2 \'ed\'e0 myShop/myShop/urls.py. \'d2\'f3\'f2 \'ed\'e0\'ef\'e8\'f1\'e0\'ed\'ee, \'f7\'f2\'ee \'e5\'f1\'eb\'e8 {\field{\*\fldinst{HYPERLINK "http://10.0.0.1/api/v1/catalog"}}{\fldrslt{\ul\cf1 http://10.0.0.1/api/v1/\kerning0\b catalog}}}\kerning1\b0\f0\fs22 , \'f2\'ee \'f3\'ef\'f0\'e0\'e2\'eb\'e5\'ed\'e8\'e5 \'ef\'e5\'f0\'e5\'e4\'e0\'b8\'ec myShop/\cf2\kerning0\b catalog\cf0\kerning1\b0 /\cf4\kerning0\b urls.py\cf0\kerning1\b0 . \'c0 \'e7\'e4\'e5\'f1\'fc \'ed\'e0\'ef\'e8\'f1\'e0\'ed\'ee, \'f7\'f2\'ee \'ed\'e0\'e4\'ee \'ee\'f2\'e4\'e0\'f2\'fc View-\'f8\'ea\'f3 \'e8\'e7 myShop/\cf2\kerning0\b catalog\cf0\kerning1\b0 /\cf3\kerning0\b views.py\cf0\kerning1\b0 .\par
+\par
+\par
+\par
+\ul\'cf\'e5\'f0\'e2\'fb\'e9 \'ef\'f0\'ee\'e5\'ea\'f2\ulnone .\par
+\par
+\lang1033\f1 #apt install python3-django\lang1049\f0\par
+#django-admin startproject myShop\tab\tab\'f1\'ee\'e7\'e4\'e0\'f1\'f2 \'f1\'f2\'f0\'f3\'ea\'f2\'f3\'f0\'f3. \lang1033\f1 #\lang1049\f0 django-admin = \lang1033\f1 #./\lang1049\f0 manage.py\par
+myShop/\par
+\tab +--manage.py\par
+\lang1033\f1\tab +--media\lang1049\f0 /\lang1033\f1\tab\tab\tab\lang1049\f0\'ea\'ee\'e3\'e4\'e0 \lang1033\f1 Upload \lang1049\f0\'ea\'e0\'f0\'f2\'e8\'ed\'ea\'f3, \'f2\'ee \'ea\'eb\'e0\'e4\'b8\'ec \'e5\'b8 \'f1\'fe\'e4\'e0. \'c2 myShop/myShop/settings.py \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'ec \lang1033\f1 MEDIA_URL = '/media/' \lang1049\f0\'e8 \lang1033\f1 MEDIA_ROOT = BASE_DIR / 'media'\lang1049\f0\par
+\tab +--\lang1033\f1 static\lang1049\f0 /\lang1033\f1\tab\tab\tab\lang1049\f0\'ef\'e0\'ef\'ea\'f3 \'f1\'ee\'e7\'e4\'e0\'b8\'ec \'f0\'f3\'f7\'ea\'e0\'ec\'e8. \'c4\'eb\'ff \'f5\'f0\'e0\'ed\'e5\'ed\'e8\'ff \lang1033\f1 static \lang1049\f0\'ea\'ee\'ed\'f2\'e5\'ed\'f2\'e0: \lang1033\f1 CSS, JS \lang1049\f0\'e8 \'f2.\'ef\lang1033\f1 . \lang1049\f0\'c2 myShop/myShop/settings.py \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'ec \lang1033\f1 STATIC_URL = '/static/' \lang1049\f0\'e8 \lang1033\f1 STATICFILES_DIRS = (BASE_DIR / 'static',) \lang1049\f0\'e8\'eb\'e8 \lang1033\f1 STATIC_ROOT = BASE_DIR / 'static'\lang1049\f0\par
+\tab +--myShop/\par
+\tab\tab +--__init__.py\tab\'ea\'e0\'ea \'ef\'f0\'e0\'e2\'e8\'eb\'ee \'e2\'f1\'e5\'e3\'e4\'e0 \'e1\'f3\'e4\'e5\'f2 \'ef\'f3\'f1\'f2\'fb\'ec\par
+\tab\tab +--settings.py\lang1033\f1\tab\lang1049\f0\'f2\'f3\'f2 \'ed\'e0\'e4\'ee \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'e8\'f2\'fc ALLOWED_HOSTS = ['*'] \'e8 DEBUG = False\par
+\tab\tab +--urls.py\par
+\tab\tab +--asgi.py\lang1033\f1\tab\tab\lang1049\f0\'ed\'e8\'ea\'ee\'e3\'e4\'e0 \'ed\'e5 \'f2\'f0\'ee\'e3\'e0\'e5\'ec\par
+\tab\tab +--wsgi.py\tab\tab\'f2\'ee\'e6\'e5 \'ed\'e8\'ea\'ee\'e3\'e4\'e0 \'ed\'e5 \'f2\'f0\'ee\'e3\'e0\'e5\'ec\par
+\par
+#\lang1033\f1 ./\lang1049\f0 manage.py \b runserver \b0 0.0.0.0:80\par
+\tab\'e8\'eb\'e8 \'f2\'e0\'ea\par
+#\lang1033\f1 ./\lang1049\f0 manage.py runserver\lang1033\f1\tab\tab\lang1049\f0\'e7\'e0\'ef\'f3\'f1\'f2\'e8\'f2 \'ed\'e0 127.0.0.1:8000\par
+\par
+\par
+\'d1\'ee\'e7\'e4\'e0\'b8\'ec \'ed\'ee\'e2\'fb\'e9 "Handler".\par
+#\lang1033\f1 ./\lang1049\f0 manage.py startapp p\lang1033\f1 rods\par
+\lang1049\f0 myShop/p\lang1033\f1 rods\lang1049\f0 /\par
+\tab +--__init__.py\tab\tab\'ea\'e0\'ea \'ef\'f0\'e0\'e2\'e8\'eb\'ee \'e2\'f1\'e5\'e3\'e4\'e0 \'e1\'f3\'e4\'e5\'f2 \'ef\'f3\'f1\'f2\'fb\'ec\par
+\tab +--admin.py\tab\par
+\tab +--apps.py\tab\tab\tab\'ef\'e5\'f0\'e5\'ed\'e0\'e7\'ed\'e0\'f7\'e8\'f2\'fc \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5 \'e8\'e7 myShop/myShop/settings.py\par
+\tab +--models.py\par
+\tab +--tests.py\par
+\tab +--views.py\par
+\lang1033\f1\tab +--urls.py\lang1049\f0\par
+\tab +--migrations/\par
+\tab\tab +--__init__.py\par
+\lang1033\f1\tab +--fixtures/\par
+\tab\tab +--products.json\tab\lang1049\f0 "\'e4\'e0\'ec\'ef" \'f2\'e0\'e1\'eb\'e8\'f6\'fb \'c1\'c4 \'e2 \'e2\'e8\'e4\'e5 \lang1033\f1 JSON\lang1049\f0  \lang1033\f1 #./manage.py \b dumpdata\b0  app_name.model_name > products.json \lang1049\f0\'e8 \lang1033\f1 #./manage.py \b loaddata\b0  <path_to_fixture>\lang1049\f0\par
+\lang1033\f1\tab +--templates\lang1049\f0 /\lang1033\f1\tab\tab\lang1049\f0\'fd\'f2\'f3 \'ef\'e0\'ef\'ea\'f3 \'f1\'ee\'e7\'e4\'e0\'b8\'ec \'f0\'f3\'f7\'ea\'e0\'ec\'e8\par
+\lang1033\f1\tab\tab +--\lang1049\f0 p\lang1033\f1 rods\lang1049\f0 /\lang1033\f1\par
+\tab\tab\tab +--\cf5\b test.html\cf0\lang1049\b0\f0\par
+\par
+\'ef\'ee\'f1\'eb\'e5 \'fd\'f2\'ee\'e3\'ee \'ee\'e1\'ff\'e7\'e0\'f2\'e5\'eb\'fc\'ed\'ee \'e2 myShop/myShop/settings.py \'e2 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'f3\'fe \lang1033\b\f1 INSTALLED APPS\b0  \lang1049\f0\'e4\'ee\'e1\'e0\'e2\'e8\'f2\'fc\lang1033\f1  \lang1049\f0\'ed\'e0\'e7\'e2\'e0\'ed\'e8\'e5 \'ed\'ee\'e2\'ee\'e3\'ee \lang1033\f1 application -\lang1049\f0  \lang1033\f1 '\lang1049\f0 p\lang1033\f1 rods'\lang1049\f0\par
+\par
+p\lang1033\f1 rods\lang1049\f0 /admin.py\tab\tab\'e4\'eb\'ff \'f2\'ee\'e3\'ee, \'f7\'f2\'ee\'e1\'fb \'e2 \lang1033\f1 hxxp://127.0.0.1/admin \lang1049\f0\'ee\'f2\'ee\'e1\'f0\'e0\'e6\'e0\'eb\'e8\'f1\'fc \'ed\'e0\'f8\'e8 \'f2\'e0\'e1\'eb\'e8\'f6\'fb \'c1\'c4, \'ee\'ef\'e8\'f1\'e0\'ed\'ed\'fb\'e5 \'e2 models.py\par
+\tab\lang1033\f1 from django.contrib import admin\par
+\tab from prods.models import \cf2\b Product\cf0\b0 , \cf3\b Users\cf0\b0\par
+\tab admin.site.register(\cf2\b Product\cf0\b0 )\par
+\tab admin.site.register(\cf3\b Users\cf0\b0 )\par
+\par
+\lang1049\f0 p\lang1033\f1 rods\lang1049\f0 /models.py\tab\tab\'f2\'f3\'f2 \'f1\'ee\'e7\'e4\'e0\'b8\'ec \lang1033\f1 class \cf2\b Product\cf0\b0  \lang1049\f0\'e8 \cf3\lang1033\b\f1 Users\cf0\lang1049\b0\f0\par
+\lang1033\f1\tab from django.db import models\par
+\tab class \cf2\b Product\cf0\b0 (models.Model):\par
+\tab\tab name = models.CharField(max_length = 128)\lang1049\f0\tab\tab\'e5\'f1\'f2\'fc \'ec\'ed\'ee\'e3\'ee \'f0\'e0\'e7\'eb\'e8\'f7\'ed\'fb\'f5 \'f2\'e8\'ef\'ee\'e2 \lang1033\f1 TextField, PositiveIntegerField ...\par
+\tab\tab price = models.DecimalField()\par
+\tab\tab category = models.\b ForeignKey\b0 (to=\cf3\b Users\cf0\b0 , on_delete=models.CASCADE)\tab\tab\lang1049\f0\'f2\'e0\'ea \'f1\'e2\'ff\'e7\'fb\'e2\'e0\'fe\'f2\'f1\'ff \'f2\'e0\'e1\'eb\'e8\'f6\'fb\par
+\lang1033\f1\tab\tab image = models.ImageField(upload_to='media')\tab\tab\lang1049\f0\'ea\'ee\'e3\'e4\'e0 \'f1\'ee\'e7\'e4\'e0\'b8\'ec \'ed\'ee\'e2\'fb\'e9 \lang1033\f1 Product \lang1049\f0\'f7\'e5\'f0\'e5\'e7 \lang1033\f1 hxxp://127.0.0.1/admin\lang1049\f0  \'e2\'e2\'ee\'e4\'e8\'ec \'e4\'e0\'ed\'ed\'fb\'e5 \'e8 \lang1033\f1 Upload \lang1049\f0\'f4\'ee\'f2\'ea\'f3. \'d2\'e0\'ea \'e2\'ee\'f2 \'fd\'f2\'f3 \'f4\'ee\'f2\'ea\'f3 \'ea\'eb\'e0\'e4\'b8\'ec \'e2 \'ef\'e0\'ef\'ea\'f3 \lang1033\f1 media\par
+\par
+\lang1049\f0\tab\tab\lang1033\f1 def __str__(self):\par
+\tab\tab\tab return self.name\tab\tab\lang1049\f0\'e4\'eb\'ff \'f2\'ee\'e3\'ee, \'f7\'f2\'ee\'e1\'fb \'e2 \lang1033\f1 hxxp://127.0.0.1/admin\lang1049\f0  \'ed\'ee\'f0\'e0\'ec\'eb\'fc\'ed\'ee \'ee\'f2\'ee\'e1\'f0\'e0\'e6\'e0\'eb\'e8\'f1\'fc \'e7\'e0\'ef\'e8\'f1\'e8 \'e2 \'c1\'c4\par
+\par
+\lang1033\f1 prods/templates/prods/\cf5\b test.html\cf0\lang1049\b0\f0\par
+\lang1033\f1\tab <body>\par
+\tab\tab\{\{ \cf4\b msg\cf0\b0  \}\}\tab\lang1049\f0\'f1\'fe\'e4\'e0 \'ef\'ee\'e4\'f1\'f2\'e0\'e2\'e8\'f2 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'f3\'fe\par
+\lang1033\f1\tab\tab\{\lang1049\f0 % \lang1033\f1 for product in products %\}\par
+\tab\tab\tab\{\{ product.name \}\}\par
+\tab\tab\tab\{\{ product.description \}\}\par
+\tab\tab\{% endfor %\}\par
+\tab </body>\par
+\lang1049\f0\par
+p\lang1033\f1 rods\lang1049\f0 /views.py\par
+\tab from django.http import \lang1033\f1 render\lang1049\f0\par
+\tab def \cf6\b index\cf0\b0 (request):\par
+\tab\tab return \lang1033\f1 render\lang1049\f0 (request\lang1033\f1 , '\lang1049\f0 p\lang1033\f1 rods/\cf5\b test.html\cf0\b0 ', \{'\cf4\b msg\cf0\b0 ': 'Hello World', 'products': \lang1049\f0 ...\lang1033\f1\})\par
+\par
+\tab\tab\tab\lang1049\f0\'e8\'eb\'e8 \'f2\'e0\'ea\par
+\par
+\tab\tab\lang1033\f1 context = \{'\cf4\b msg\cf0\b0 ': 'Hello World', 'products': \lang1049\f0 ...\lang1033\f1\}\par
+\tab\tab\lang1049\f0 return \lang1033\f1 render\lang1049\f0 (request\lang1033\f1 , '\lang1049\f0 p\lang1033\f1 rods/\cf5\b test.html\cf0\b0 ', context)\par
+\par
+\tab\tab\tab\lang1049\f0\'e8\'eb\'e8 \'f2\'e0\'ea\par
+\par
+\tab\tab\lang1033\f1 context =\lang1049\f0  \lang1033\f1\{\par
+\tab\tab\tab 'products': \cf2\b Product\cf0\b0 .\ul objects.all\ulnone (),\tab\tab\tab\lang1049\f0\'e8\'eb\'e8 \lang1033\f1 product = Product(name = 'Book', price = 10) \lang1049\f0\'e8 \lang1033\f1 product.save()\par
+\tab\tab\tab '\cf4\b msg\cf0\b0 ': \cf3\b Users\cf0\b0 .objects.get(name='Vasya'),\lang1049\f0\tab\lang1033\f1\tab\lang1049\f0\'f2.\'ea. \cf3\lang1033\b\f1 Users\cf0\lang1049\b0\f0  \'ed\'e0\'f1\'eb\'e5\'e4\'f3\'e5\'f2\'f1\'ff \'ee\'f2 \lang1033\f1 models.Model\lang1049\f0 , \'f2\'ee... \'f2\'e0\'ea \'e8\'e7 \'c1\'c4 \'e4\'ee\'f1\'f2\'e0\'b8\'ec \'e4\'e0\'ed\'ed\'fb\'e5\lang1033\f1 . \lang1049\f0\'c5\'f1\'f2\'fc \'e5\'f9\'b8 \lang1033\f1 .create() .filter() .count() .first() .last()\lang1049\f0  \'e8 \'f2.\'e4.\lang1033\f1\par
+\tab\tab\}\lang1049\f0\par
+\par
+myShop/urls.py\par
+\tab from django.contrib import admin\par
+\tab from django.urls import path\lang1033\f1 , include\lang1049\f0\par
+\lang1033\f1\tab from \lang1049\f0 p\lang1033\f1 rods.\lang1049\f0 views\lang1033\f1  import \cf6\lang1049\b\f0 index\cf0\b0\par
+\tab urlpatterns = [\par
+\tab\tab path("admin/", admin.site.urls),\par
+\tab\tab path("p\lang1033\f1 rods\lang1049\f0 /", \cf6\b index\cf0\b0 , name='\lang1033\f1 index\lang1049\f0 '\lang1033\f1 ),\lang1049\f0\tab\tab\'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'ec \'f1\'f2\'f0\'ee\'ea\'f3\par
+\lang1033\f1\tab\tab\lang1049\f0 path("p\lang1033\f1 rods\lang1049\f0 /",\lang1033\f1  include('\lang1049\f0 p\lang1033\f1 rods/urls.py', namespace = '\cf5\b ns-\lang1049\f0 p\lang1033\f1 rods\cf0\b0 '))\tab\lang1049\f0\'e8\'eb\'e8 \'f2\'e0\'ea, \'ed\'ee \'f2\'ee\'e3\'e4\'e0 \'f1\'ee\'e7\'e4\'e0\'b8\'ec \'f4\'e0\'e9\'eb p\lang1033\f1 rods/urls.py\lang1049\f0  \'e8 \'e2 .\lang1033\f1 html \lang1049\f0\'ef\'e8\'f8\'e5\'ec \'ed\'e5 \'ef\'f0\'ee\'f1\'f2\'ee \cf4\lang1033\b\f1 msg\cf0\lang1049\b0\f0 , \'e0 \cf5\lang1033\b\f1 ns-\lang1049\f0 p\lang1033\f1 rods\cf0\b0 :\cf4\b msg\cf0\lang1049\b0\f0\par
+\lang1033\f1\tab ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)\tab\tab STATIC_URL \lang1049\f0\'e8 STATIC_\lang1033\f1 ROOT \lang1049\f0\'f3\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'ec \'e2 myShop/myShop/settings.py\lang1033\f1\par
+\lang1049\f0\par
+p\lang1033\f1 rods/urls.py\par
+\lang1049\f0\tab from django.urls import path\lang1033\f1\par
+\lang1049\f0\tab\lang1033\f1 app_name = 'prods'\par
+\lang1049\f0\tab urlpatterns = [path("p\lang1033\f1 rods\lang1049\f0 /", \cf6\b index\cf0\b0 , name='\lang1033\f1 index\lang1049\f0 '\lang1033\f1 ),]\lang1049\f0\par
+\tab\par
+\par
+\lang1033\f1 #./\lang1049\f0 manage.py\lang1033\f1  \b shell\b0\tab\tab\tab\lang1049\f0\'e7\'e0\'ef\'f3\'f1\'f2\'e8\'f2 \lang1033\f1 ~#python3 \lang1049\f0\'f2\'ee\'eb\'fc\'ea\'ee \'f3\'e6\'e5 \'f1\'ee \'e2\'f1\'e5\'ec \lang1033\f1 Django \lang1049\f0\'ee\'ea\'f0\'f3\'e6\'e5\'ed\'e8\'e5\'ec\par
+\lang1033\f1 #./\lang1049\f0 manage.py\lang1033\f1  \b createsuperuser\b0\tab\lang1049\f0\'f1\'ee\'e7\'e4\'e0\'b8\'f2 \'e0\'e4\'ec\'e8\'ed\'e0 \'e4\'eb\'ff \lang1033\f1 hxxp://127.0.0.1/admin\par
+#./manage.py \b collectstatic\b0  --no-input\tab\tab\lang1049\f0\'ed\'e0\'e4\'ee \'fd\'f2\'ee \'e4\'e5\'eb\'e0\'f2\'fc \'ef\'ee\'f1\'eb\'e5 \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'ea\'e8 \lang1033\f1 DEBUG=False\lang1049\f0  \'e2 myShop/myShop/settings.py \par
+#\lang1033\f1 ./\lang1049\f0 manage.py \lang1033\b\f1 makemigrations\b0\par
+\lang1049\f0 #\lang1033\f1 ./\lang1049\f0 manage.py \lang1033\b\f1 migrate\b0\tab\lang1049\f0\'ef\'ee\'f1\'eb\'e5 \'f2\'ee\'e3\'ee \'ea\'e0\'ea \'f1\'ee\'e7\'e4\'e0\'eb\'e8 \lang1033\f1 class \lang1049\f0\'e2 models.py, \'ed\'e0\'e4\'ee \'f1\'ee\'e7\'e4\'e0\'f2\'fc \'f1\'ee\'ee\'f2\'e2\'e5\'f2\'f1\'f2\'e2\'f3\'fe\'f9\'e8\'e5 \'f2\'e0\'e1\'eb\'e8\'f6\'fb \'e2 \'c1\'c4.\lang1033\f1  \lang1049\f0\'d1\'ed\'e0\'f7\'e0\'eb\'e0 \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'e5\'ec \lang1033\f1 makemigration\lang1049\f0  - \'fd\'f2\'e0 \'ea\'ee\'ec\'e0\'ed\'e4\'e0 \'e2 \'ef\'e0\'ef\'ea\'e5 migrations \'f1\'ee\'e7\'e4\'e0\'f1\'f2 \'f4\'e0\'e9\'eb\'fb \'ec\'e8\'e3\'f0\'e0\'f6\'e8\'e8 \'f2\'e8\'ef\'e0 \lang1033\f1 0001_initial.py. \lang1049\f0\'cf\'ee\'f2\'ee\'ec \lang1033\f1 migrate\lang1049\f0  - \'ea\'ee\'f2\'ee\'f0\'e0\'ff \'f3\'e6\'e5 \'ed\'e5\'ef\'ee\'f1\'f0\'e5\'e4\'f1\'f2\'e2\'e5\'ed\'ed\'ee \'f1\'ee\'e4\'e5\'f0\'e6\'e0\'ed\'e8\'e5 \lang1033\f1 0001_initial.py\lang1049\f0  \'ed\'e0\'ea\'e0\'f2\'e8\'f2 \'ed\'e0 \'c1\'c4.\par
+}
+ 

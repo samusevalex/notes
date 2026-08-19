@@ -1,0 +1,605 @@
+{\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}{\f1\fnil\fcharset0 Courier New;}}
+{\colortbl ;\red127\green0\blue85;\red0\green0\blue0;\red255\green0\blue0;\red0\green77\blue187;\red0\green176\blue80;\red36\green39\blue41;\red247\green150\blue70;\red75\green172\blue198;\red0\green153\blue0;\red0\green0\blue255;}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\nowidctlpar\hyphpar0\sl240\slmult1\lang1049\kerning1\f0\fs22\'d3 \'d4\'e0\'f3\'eb\'e5\'f0\'e0:\par
+\lang1033\b\f1\tab\lang1049\f0\'ce\'ef\'f2\'e8\'ec\'e8\'f1\'f2\'e8\'f7\'ed\'ee\'e5 \'e1\'eb\'ee\'ea\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'e5\b0  - \'c2\'e0\'f1\'ff \'e8 \'cc\'e0\'f8\'e0 \'ee\'e4\'ed\'ee\'e2\'f0\'e5\'ec\'e5\'ed\'ed\'ee \'f0\'e5\'e4\'e0\'ea\'f2\'e8\'f0\'f3\'fe \'f4\'e0\'e9\'eb. \'c2\'e0\'f1\'ff \'ed\'e0\'e6\'e0\'eb \lang1033\f1 S\lang1049\f0 ave - \'e2\'f1\'b8 ok. \'cc\'e0\'f8\'e0 \'ed\'e0\'e6\'e0\'eb\'e0 \lang1033\f1 S\lang1049\f0 ave - \'f1\'e8\'f1\'f2\'e5\'ec\'e0 \'ee\'e1\'ed\'e0\'f0\'f3\'e6\'e8\'eb\'e0 \'ea\'ee\'ed\'f4\'eb\'e8\'ea\'f2 \'e8 \'f0\'f3\'e3\'ed\'f3\'eb\'e0\'f1\'fc. ~git\par
+\tab\b\'cf\'e5\'f1\'f1\'e8\'ec\'e5\'f1\'f2\'e8\'f7\'ed\'ee\'e5 \'e1\'eb\'ee\'ea\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'e5\b0  - \'e5\'f1\'eb\'e8 \'c2\'e0\'f1\'ff \'ee\'f2\'ea\'f0\'fb\'eb \'f4\'e0\'e9\'eb \'e4\'eb\'ff \'f0\'e5\'e4\'e0\'ea\'f2\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'ff, \'f2\'ee \'cc\'e0\'f8\'e0 \'ee\'f2\'ea\'f0\'fb\'f2\'fc \'f4\'e0\'e9\'eb \'ed\'e5 \'f1\'ec\'ee\'e6\'e5\'f2. ~synchronized\par
+\'c2\'fb\'e2\'ee\'e4: \'ce\'ef\'f2\'e8\'ec\'e8\'f1\'f2\'e8\'f7\'ed\'ee\'e5 \'ef\'ee\'e7\'e2\'ee\'eb\'ff\'e5\'f2 \i\'ce\'c1\'cd\'c0\'d0\'d3\'c6\'c8\'d2\'dc\i0  \'ea\'ee\'ed\'f4\'eb\'e8\'ea\'f2, \'e0 \'ef\'e5\'f1\'f1\'e8\'ec\'e5\'f1\'f2\'e8\'f7\'ed\'ee\'e5 \'ef\'ee\'e7\'e2\'ee\'eb\'ff\'e5\'f2 \i\'cf\'d0\'c5\'c4\'ce\'d2\'c2\'d0\'c0\'d2\'c8\'d2\'dc\i0  \'ea\'ee\'ed\'f4\'eb\'e8\'ea\'f2.\par
+\cf1\b\par
+import\cf2\b0  java.util.concurrent\cf0\par
+\cf2\tab C\'ee\'f1\'f2\'ee\'e8\'f2 \'e8\'e7 6 \'f7\'e0\'f1\'f2\'e5\'e9:\cf0\par
+\cf2\tab\tab - java.util.concurrent.\b Locks \b0 (\'e7\'e0\'ec\'ea\'e8)\cf0\par
+\cf2\tab\tab - java.util.concurrent.\b Atomic\b0  \'ea\'eb\'e0\'f1\'f1\'fb\cf0\par
+\cf2\tab\tab - \'d1\'e8\'ed\'f5\'f0\'ee\'ed\'e8\'e7\'e0\'f2\'ee\'f0\'fb \'ef\'ee\'f2\'ee\'ea\'ee\'e2 (Mutex)\cf0\par
+\cf2\tab\tab - Executors\cf0\par
+\cf2\tab\tab - Concurrent Collection\cf0\par
+\cf2\tab\tab - Queues\cf0\par
+\cf1\b\par
+class\cf2\b0  \kerning0\b Thread\cf0\kerning1\b0\par
+\cf2\kerning0\tab (enum)Thread.State \b getState\b0 () \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 NEW, RUNNABLE, BLOCKED, WAITING, TIMED_WAITING, TERMINATED\cf0\kerning1\par
+\cf2\kerning0\tab\cf1\kerning1\b static void \cf2\kerning0 yield\b0 ()\cf0\kerning1\par
+\cf2\kerning0\tab\cf1\kerning1\b void \cf2\kerning0 setPriority\b0 (\cf1\kerning1\b int\cf2\kerning0\b0  newPriority)\cf0\kerning1\par
+\cf2\kerning0\tab\cf1\kerning1\b void \cf2\kerning0 join\b0 ()\cf0\kerning1\par
+\cf2\kerning0\par
+\'d1\'f0\'e5\'e4\'f1\'f2\'e2\'e0 \'f1\'e8\'ed\'f5\'f0\'ee\'ed\'e8\'e7\'e0\'f6\'e8\'e8 \'ef\'ee\'f2\'ee\'ea\'ee\'e2:\cf0\kerning1\par
+\cf2\kerning0\tab 1. join()\cf0\kerning1\par
+\cf2\kerning0\tab 2. \cf1\b synchronized\cf0\kerning1\b0  \'e1\'eb\'ee\'ea + \cf1\kerning0\b synchronized\cf0\kerning1\b0  \'ec\'e5\'f2\'ee\'e4\par
+\tab 3. wait(), notify(), notifyAll()\par
+\cf2\kerning0\par
+\tab\tab\tab  \kerning1 main\cf0\par
+\cf2\tab\tab\tab /\tab\\\cf0\par
+\cf2\tab\tab Thread1\tab Thread2\cf0\par
+\cf2\tab\tab\tab\tab thread1.join() - \'e6\'e4\'b8\'ec \'ef\'ee\'ea\'e0 Thread1 \'e7\'e0\'ea\'ee\'ed\'f7\'e8\'f2 \'f0\'e0\'e1\'ee\'f2\'f3, \'f2\'ee\'eb\'fc\'ea\'ee \'ef\'ee\'f1\'eb\'e5 \'fd\'f2\'ee\'e3\'ee Thread2 \'ef\'f0\'ee\'e4\'ee\'eb\'e6\'e8\'f2 \'f0\'e0\'e1\'ee\'f2\'f3\cf0\par
+\cf2\par
+\kerning0\tab\tab\tab  main\cf0\kerning1\par
+\cf2\tab\tab\tab /\tab\\\cf0\par
+\cf2\tab\tab Thread1\tab Thread2\cf0\par
+\cf1\b synchronized\cf2\kerning0\b0  (\cf0\kerning1 seller)\tab\cf1\b synchronized\cf2\kerning0\b0  (\cf0\kerning1 seller)\par
+\tab\tab wait()\tab wait() - \'e2 \'e1\'f3\'f4\'e5\'f0 wait-\'ee\'e2 \'ee\'e1\'fa\'e5\'ea\'f2\'e0 Seller \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'ec thread2. \'d1\'e0\'ec thread \'ef\'e5\'f0\'e5\'f5\'ee\'e4\'e8\'f2 \'e2 S\cf2\kerning0 tate=WAITING.\cf0\kerning1\par
+\kerning0\par
+\cf2\tab Object Seller\cf0\kerning1\par
+\cf2\kerning0\tab\tab buffer wait-\'ee\'e2:\cf0\kerning1\par
+\cf2\kerning0\tab\tab\tab 1.wait \'ee\'f2 Thread1\cf0\kerning1\par
+\cf2\kerning0\tab\tab\tab 2.wait \'ee\'f2 Thread2\cf0\kerning1\par
+\cf2\kerning0\par
+\tab\tab Thread3\cf0\kerning1\par
+\cf1\b synchronized\cf2\kerning0\b0  (\cf0\kerning1 seller)\par
+\tab\tab notify() - \'f3 \'ee\'e1\'fa\'e5\'ea\'f2\'e0 Seller \'f1\'ec\'ee\'f2\'f0\'e8\'ec \'e2 buffer wait-\'ee\'e2, \'e2\'fb\'e1\'e8\'f0\'e0\'e5\'ec \'ef\'e5\'f0\'e2\'fb\'e9 \'e8 Thread1 \'ef\'e5\'f0\'e5\'e2\'ee\'e4\'e8\'ec \'e8\'e7 State=\cf2\kerning0 WAITING \'e2 State=RUNNABLE.\cf0\kerning1\par
+\tab\tab notifyAll() - \'f3 \'ee\'e1\'fa\'e5\'ea\'f2\'e0 Seller \'e2\'f1\'e5 \'ef\'ee\'f2\'ee\'ea\'e8 \'e8\'e7 buffer wait-\'ee\'e2 \'ef\'e5\'f0\'e5\'e2\'ee\'e4\'e8\'ec \'e2\cf2\kerning0  State=RUNNABLE.\cf0\kerning1\par
+\cf2\kerning0\i\'cf\'f0\'e8\'ec\'e5\'f0 \'b91\i0 .\cf0\kerning1\par
+\cf1\b class\cf2\kerning0\b0  Shop\cf0\kerning1\par
+\cf2\kerning0\tab\cf1\kerning1\b final \cf2\kerning0\b0 Object seller = \cf1\kerning1\b new \cf2\kerning0\b0 Object()\cf0\kerning1\par
+\cf2\kerning0\tab\cf1\kerning1\b void \cf2\kerning0\b0 doSomething()\cf0\kerning1\par
+\cf2\kerning0\tab\tab\cf1\kerning1\b synchronized\cf2\kerning0\b0  (seller)\{\cf0\kerning1\par
+\cf2\kerning0\tab\tab\tab ...\tab\tab\tab\'e2 \'fd\'f2\'ee\'f2 \'e1\'eb\'ee\'ea \'ec\'ee\'e6\'e5\'f2 \'e7\'e0\'e9\'f2\'e8 \'f2\'ee\'eb\'fc\'ea\'ee \'ee\'e4\'e8\'ed Thread.\cf0\kerning1\par
+\cf2\kerning0\tab\tab\tab ...\tab\tab\tab wait() \'e8 notify() \'ec\'ee\'e6\'ed\'ee \'e2\'fb\'e7\'fb\'e2\'e0\'f2\'fc \'f2\'ee\'eb\'fc\'ea\'ee \'e2 synchronized \'e1\'eb\'ee\'ea\'e5\cf0\kerning1\par
+\cf2\kerning0\tab\tab\}\cf0\kerning1\par
+\cf1\b void \cf2\kerning0\b0 main()\cf0\kerning1\par
+\cf2\kerning0\tab\cf1\kerning1\b new \cf2\kerning0\b0 Thread1().start()\cf0\kerning1\par
+\cf2\kerning0\tab\cf1\kerning1\b new \cf2\kerning0\b0 Thread2().start()\cf0\kerning1\par
+\cf2\kerning0\par
+\i\'cf\'f0\'e8\'ec\'e5\'f0 \'b92\i0 .\cf0\kerning1\par
+\cf1\b class\cf2\kerning0\b0  Shop\cf0\kerning1\par
+\cf2\kerning0\tab Object seller = \cf1\kerning1\b new \cf2\kerning0\b0 Object()\cf0\kerning1\par
+\cf2\kerning0\tab Object bread = \cf1\kerning1\b new \cf2\kerning0\b0 Object()\cf0\kerning1\par
+\cf2\kerning0\par
+\tab\cf1\kerning1\b public void\cf2\kerning0\b0  doSomething()\{\tab\tab\cf1\kerning1\b public void\cf2\kerning0\b0  doSomething()\{\tab\tab\tab\cf1\kerning1\b public synchronized\cf2\kerning0\b0  \cf1\kerning1\b void\cf2\kerning0\b0  doSomething()\{\cf0\kerning1\par
+\cf2\kerning0\tab\tab\cf1\kerning1\b synchronized\cf2\kerning0\b0  (\cf1\kerning1\b this\cf2\kerning0\b0 )\{\tab =\tab\tab\cf1\kerning1\b synchronized\cf2\kerning0\b0  (Shop.\cf1\kerning1\b class\cf2\kerning0\b0 )\{\tab =\tab\tab ...\tab\tab\cf0\kerning1\par
+\cf2\kerning0\tab\tab\tab ...\tab\tab\tab\tab\tab\tab\tab ...\tab\tab\tab\tab\}\cf0\kerning1\par
+\cf2\kerning0\tab\tab\}\tab\tab\tab\tab\tab\tab\tab\}\tab\'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2 \'f7\'f2\'ee \'ec\'fb \'e1\'eb\'ee\'ea\'e8\'f0\'f3\'e5\'ec \'ee\'e1\'fa\'e5\'ea\'f2 class Shop \'f1\'ee \'e2\'f1\'e5\'ec\'e8 \'e5\'e3\'ee \'e2\'ed\'f3\'f2\'f0\'e5\'ed\'ed\'ee\'f1\'f2\'ff\'ec\'e8\cf0\kerning1\par
+\cf2\kerning0  \cf0\kerning1\par
+\cf2\kerning0\'c2 \cf1\kerning1\b class\cf2\kerning0\b0  Shop \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee \'ec\'e5\'f2\'ee\'e4\'ee\'e2 \cf1\kerning1\b public synchronized\cf2\kerning0\b0  \cf1\kerning1\b void\cf2\kerning0\b0  doSomething() \'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2, \'f7\'f2\'ee \'e2 \'eb\'fe\'e1\'ee\'e9 \'ec\'ee\'ec\'e5\'ed\'f2 \'e2\'f0\'e5\'ec\'e5\'ed\'e8 \'f2\'ee\'eb\'fc\'ea\'ee \'ee\'e4\'e8\'ed \'ef\'ee\'f2\'ee\'ea \'ec\'ee\'e6\'e5\'f2 \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'f2\'fc \'f2\'ee\'eb\'fc\'ea\'ee \'ee\'e4\'e8\'ed \'ec\'e5\'f2\'ee\'e4.\cf0\kerning1\par
+\cf2\kerning0\par
+\b Monitor\b0  - \'e1\'eb\'ee\'ea \'e2 header-\'e5 \'ee\'e1\'fa\'e5\'ea\'f2\'e0. \'d5\'f0\'e0\'ed\'e8\'f2 \'e4\'e0\'ed\'ed\'fb\'e5 \'ee \'f2\'ee\'ec, \'ea\'f2\'ee \'e2 \'e4\'e0\'ed\'ed\'fb\'e9 \'ec\'ee\'ec\'e5\'ed\'f2 \'e2\'eb\'e0\'e4\'e5\'e5\'f2 \'ee\'e1\'fa\'e5\'ea\'f2\'ee\'ec.\cf0\kerning1\par
+\cf2\kerning0\tab\ul Monitor States\ulnone .\cf0\kerning1\par
+\cf2\kerning0\tab - biased/thin \'ec\'ee\'ed\'e8\'f2\'ee\'f0 \'e7\'e0\'f5\'e2\'e0\'f2\'fb\'e2\'e0\'fe\'f2 \'f0\'e0\'e7\'ed\'fb\'e5 Threads \'e1\'e5\'e7 \'ea\'ee\'eb\'eb\'e8\'e7\'e8\'e9 (\'e1\'e5\'e7 \'ef\'e5\'f0\'e5\'f1\'e5\'f7\'e5\'ed\'e8\'ff \'ef\'ee \'e2\'f0\'e5\'ec\'e5\'ed\'e8). \'cc\'ee\'ed\'e8\'f2\'ee\'f0 \'f5\'f0\'e0\'ed\'e8\'f2 ID-Thread, \'e7\'e0\'f5\'e2\'e0\'f2\'e8\'e2\'f8\'e5\'e3\'ee \'ee\'e1\'fa\'e5\'ea\'f2.\cf0\kerning1\par
+\cf2\kerning0\tab - inflated \'ec\'ee\'ed\'e8\'f2\'ee\'f0 \'ee\'f7\'e5\'ed\'fc \'ef\'ee\'ef\'f3\'eb\'ff\'f0\'e5\'ed (\'f1 \'ea\'ee\'eb\'eb\'e8\'e7\'e8\'ff\'ec\'e8). \'cc\'ee\'ed\'e8\'f2\'ee\'f0 \'f5\'f0\'e0\'ed\'e8\'f2 \'f1\'f1\'fb\'eb\'ea\'f3 \'ed\'e0 Extended Monitor.\cf0\kerning1\par
+\cf2\kerning0\tab\tab Extended Monitor \'f1\'ee\'f1\'f2\'ee\'e8\'f2 \'e8\'e7:\cf0\kerning1\par
+\cf2\kerning0\tab\tab\tab 1. ID-Thread, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'e2 \'e4\'e0\'ed\'ed\'fb\'e9 \'ec\'ee\'ec\'e5\'ed\'f2 \'e2\'eb\'e0\'e4\'e5\'e5\'f2 \'ee\'e1\'fa\'e5\'ea\'f2\'ee\'ec.\cf0\kerning1\par
+\cf2\kerning0\tab\tab\tab 2. Wait Set - \'f1\'ef\'e8\'f1\'ee\'ea Thread-\'ee\'e2, \'f3 \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'e2\'fb\'e7\'e2\'e0\'ed wait() \'e8 \'e6\'e4\'f3\'f2 notify()\cf0\kerning1\par
+\cf2\kerning0\tab\tab\tab 3. Entry Set - \'f1\'ef\'e8\'f1\'ee\'ea Thread-\'ee\'e2, \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'e2\'fb\'f1\'f2\'f0\'ee\'e8\'eb\'e8\'f1\'fc \'e2 \'ee\'f7\'e5\'f0\'e5\'e4\'fc \'e4\'eb\'ff \'e7\'e0\'f5\'ee\'e4\'e0 \'e2 synchronized \'f1\'e5\'ea\'f6\'e8\'fe.\cf0\kerning1\par
+\cf2\kerning0\par
+\par
+\b\par
+\cf1\kerning1 class\cf2\b0  \kerning0\b ThreadLocal<T>\cf0\kerning1\b0\par
+\par
+\cf2\kerning0\'c5\'f1\'f2\'fc \'ec\'e5\'f2\'ee\'e4, \'e2 \'ed\'b8\'ec \'eb\'ee\'ea\'e0\'eb\'fc\'ed\'fb\'e5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5. \'d2\'e5\'ef\'e5\'f0\'fc \'e4\'eb\'ff \'ea\'e0\'e6\'e4\'ee\'e3\'ee \'ef\'ee\'f2\'ee\'ea\'e0 \'ec\'ee\'e6\'e5\'ec \'f1\'ee\'e7\'e4\'e0\'e2\'e0\'f2\'fc \'f1\'e2\'ee\'e8 \'eb\'ee\'ea\'e0\'eb\'fc\'ed\'fb\'e5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5.\cf0\kerning1\par
+\cf2\kerning0\'c2\'ed\'f3\'f2\'f0\'e8 ThreadLocal <SomeVar> - \'fd\'f2\'ee Map <threadID, SomeVar>\cf0\kerning1\par
+\cf3\kerning0\b\tab\'cd\'e5 \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'f1 pool-\'ee\'ec \'ef\'ee\'f2\'ee\'ea\'ee\'e2 !\cf0\kerning1\b0\par
+\cf2\kerning0\'c5\'f1\'eb\'e8 pool \'f1\'ee\'f1\'f2\'ee\'e8\'f2 \'e8\'e7 10 \'ef\'ee\'f2\'ee\'ea\'ee\'e2, \'fd\'f2\'ee \'e7\'ed\'e0\'f7\'e8\'f2, \'f7\'f2\'ee \'ef\'f0\'e8 \'e8\'ed\'e8\'f6\'e8\'e0\'f6\'e8\'e8 pool-\'e0 \'f1\'ee\'e7\'e4\'e0\'fe\'f2\'f1\'ff 10 thread-\'ee\'e2 \'f1\'ee \'e2\'f1\'e5\'ec\'e8 \'ef\'f0\'e8\'e1\'e0\'ec\'e1\'e0\'f1\'e0\'ec\'e8 (\'ef\'f0\'ee\'f6\'e5\'f1\'f1 \'e8\'ed\'e8\'f6\'e8\'e0\'eb\'e8\'e7\'e0\'f6\'e8\'e8 thread \'ee\'f2\'ed\'ee\'f1\'e8\'f2\'e5\'eb\'fc\'ed\'ee \'e4\'ee\'eb\'e3\'e8\'e9). \'cd\'e0\'e4\'ee \'e2\'fb\'ef\'ee\'eb\'ed\'e8\'f2\'fc \'ea\'e0\'ea\'f3\'fe-\'f2\'ee \'e7\'e0\'e4\'e0\'f7\'f3, \'e2\'fb\'e1\'e8\'f0\'e0\'e5\'f2\'f1\'ff thread \'f1 id=0\'f56A8F, \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'e5\'f2 \'e7\'e0\'e4\'e0\'f7\'f3 \'e8 \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2\'f1\'ff \'e2 pool. \'cd\'e0\'e4\'ee \'e2\'fb\'ef\'ee\'eb\'ed\'e8\'f2\'fc \'e4\'f0\'f3\'e3\'f3\'fe \'e7\'e0\'e4\'e0\'f7\'f3, \'e2\'fb\'e1\'e8\'f0\'e0\'e5\'f2\'f1\'ff \'ee\'ed \'e6\'e5... \'d1\'ee\'ee\'f2\'e2\'e5\'f2\'f1\'f2\'e2\'e5\'ed\'ed\'ee \'ef\'f0\'e8 \'ee\'e1\'f0\'e0\'f9\'e5\'ed\'e8\'e8 \'ea Map \'ec\'ee\'e6\'e5\'f2 \'ef\'ee\'eb\'f3\'f7\'e8\'f2\'fc\'f1\'ff, \'f7\'f2\'ee \'ef\'ee \'f1\'f3\'f2\'e8 2 \'f0\'e0\'e7\'eb\'e8\'f7\'ed\'fb\'f5 \'ef\'ee\'f2\'ee\'ea\'e0, \'ef\'ee \'f4\'e0\'ea\'f2\'f3 \'e1\'f3\'e4\'f3\'f2 \'e8\'ec\'e5\'f2\'fc \'ee\'e4\'e8\'ed \'e8 \'f2\'ee\'f2 \'e6\'e5 id.\cf0\kerning1\par
+\cf2\kerning0\'cc\'e5\'f2\'ee\'e4\'fb:\cf0\kerning1\par
+\cf2\kerning0\tab T \b get\b0 ()\cf0\kerning1\par
+\cf2\kerning0\tab protected T\tab\b initialValue\b0 ()\cf0\kerning1\par
+\cf2\kerning0\tab void \tab\b remove\b0 ()\cf0\kerning1\par
+\cf2\kerning0\tab void \tab\b set\b0 (T value)\cf0\kerning1\par
+\cf2\kerning0\tab static <S> ThreadLocal<S> \b withInitial\b0 (Supplier<? extends S> supplier)\cf0\kerning1\par
+\cf2\kerning0\par
+\cf1\kerning1\b class\cf2\b0  \kerning0 Bank\cf0\kerning1\par
+\cf2\kerning0\tab ThreadLocal<Integer> account = ThreadLocal.\i withInitial\i0 () - \'ea\'ee\'ed\'f1\'f2\'f0\'f3\'ea\'f2\'ee\'f0. \'d1\'ee\'e7\'e4\'e0\'b8\'f2 Threadlocal \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'f3\'fe\cf0\kerning1\par
+\cf2\kerning0\tab\cf1\kerning1\b void \cf2\kerning0\b0 transfer(\cf1\kerning1\b int\cf2\kerning0\b0  diff)\{\cf0\kerning1\par
+\cf2\kerning0\tab\tab System.\cf4\b\i out\cf2\b0\i0 .println(Thread.\i currentThread\i0 ().getName())\cf0\kerning1\par
+\cf2\kerning0\tab\tab Integer money = account.get()\cf0\kerning1\par
+\cf2\kerning0\tab\tab\cf1\kerning1\b int\cf2\kerning0\b0  result = money + diff\cf0\kerning1\par
+\cf2\kerning0\tab\tab account.set(result)\cf0\kerning1\par
+\cf2\kerning0\par
+\par
+\cf0\kerning1\par
+\cf2\kerning0\b Atomic.\cf0\kerning1\b0\par
+\cf2\kerning0\tab\'ce\'e4\'ed\'ee\'e2\'f0\'e5\'ec\'e5\'ed\'ed\'ee\'e5 Read + Write.\cf0\kerning1\par
+\cf2\kerning0\'cd\'e0\'e8\'e1\'ee\'eb\'e5\'e5 \'f7\'e0\'f1\'f2\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'ec\'fb\'e5 AtomicBoolean, AtomicInteger, AtomicLong, AtomicReference.\cf0\kerning1\par
+\par
+\cf1\b class\cf2\b0  \kerning0 Account\cf0\kerning1\par
+\cf2\kerning0\tab\cf1\kerning1\b int\cf2\kerning0\b0  money;\cf0\kerning1\par
+\cf2\kerning0\tab\cf1\kerning1\b void \cf2\kerning0\b0 transfer(\cf1\kerning1\b int\cf2\kerning0\b0  diff)\{\cf0\kerning1\par
+\cf2\kerning0\tab\tab money = money + diff\cf0\kerning1\par
+\cf2\kerning0\tab 3-\'e8 \'ee\'ef\'e5\'f0\'e0\'f6\'e8\'e8:\cf0\kerning1\par
+\cf2\kerning0\tab\tab 1. \'f1\'f7\'e8\'f2\'fb\'e2\'e0\'e5\'ec \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 money = 100\cf0\kerning1\par
+\cf2\kerning0\tab\tab 2. \'ef\'f0\'e8\'e1\'e0\'e2\'eb\'ff\'e5\'ec diff = 50\cf0\kerning1\par
+\cf2\kerning0\tab\tab 3. \'e7\'e0\'ef\'e8\'f1\'fb\'e2\'e0\'e5\'ec \'f0\'e5\'e7\'f3\'eb\'fc\'f2\'e0\'f2 \'e2 money = 150\cf0\kerning1\par
+\cf2\kerning0\'ca \'ef\'f0\'e8\'ec\'e5\'f0\'f3, \'e4\'f0\'f3\'e3\'ee\'e9 \'ef\'ee\'f2\'ee\'ea \'f3\'f1\'ef\'e5\'eb \'e8\'e7\'ec\'e5\'ed\'e8\'f2\'fc \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 money \'f1 100 \'ed\'e0 300 \'ef\'ee\'f1\'eb\'e5 \'ee\'f2\'f0\'e0\'e1\'e0\'f2\'fb\'e2\'e0\'ed\'e8\'ff \'ef.1 \'cc\'fb \'e4\'ee\'eb\'e6\'ed\'fb \'e1\'fb\'eb\'e8 \'e1\'fb \'ef\'ee\'f1\'eb\'e5 \'e2\'fb\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'ff void transfer() \'ef\'ee\'eb\'f3\'f7\'e8\'f2\'fc  money = 350, \'e0 \'ef\'ee\'eb\'f3\'f7\'e8\'ec 150.\cf0\kerning1\par
+\cf2\kerning0\par
+\'ca\'e0\'ea \'ef\'f0\'e0\'e2\'e8\'eb\'fc\'ed\'ee:\cf0\kerning1\par
+\cf1\b class\cf2\b0  \kerning0 Account\cf0\kerning1\par
+\cf2\kerning0\tab AtomicInteger money = \cf1\kerning1\b new\cf2\kerning0\b0  AtomicInteger()\cf0\kerning1\par
+\cf2\kerning0\tab\cf1\kerning1\b void \cf2\kerning0\b0 transfer(\cf1\kerning1\b int\cf2\kerning0\b0  diff)\{\cf0\kerning1\par
+\cf2\kerning0\tab\tab money.addAndGet(diff) - \'ee\'e4\'ed\'e0 \'e0\'f2\'ee\'ec\'e0\'f0\'ed\'e0\'ff \'ee\'ef\'e5\'f0\'e0\'f6\'e8\'ff\cf0\kerning1\par
+\cf2\kerning0\par
+\par
+\par
+\par
+\b Volatile.\cf0\kerning1\b0\par
+\cf2\kerning0\tab 1. \'c0\'f2\'ee\'ec\'e0\'f0\'ed\'ee\'f1\'f2\'fc Read - long = 8 \'e1\'e0\'e9\'f2, \'e0 CPU \'f532 \'e7\'e0 \'f0\'e0\'e7 \'f1\'f7\'e8\'f2\'fb\'e2\'e0\'e5\'f2 \'ef\'ee 4 \'e1\'e0\'e9\'f2\'e0. \'cf\'ee\'ea\'e0 CPU \'f7\'e8\'f2\'e0\'e5\'f2 \'ef\'e5\'f0\'e2\'fb\'e5 4 \'e1\'e0\'e9\'f2\'e0, \'e4\'f0\'f3\'e3\'e8\'e5 4 \'e1\'e0\'e9\'f2\'e0 \'ec\'ee\'e3\'f3\'f2 \'e8\'e7\'ec\'e5\'ed\'e8\'f2\'fc\'f1\'ff. Volatile \'ee\'f2 \'fd\'f2\'ee\'e3\'ee \'e7\'e0\'f9\'e8\'f9\'e0\'e5\'f2.\cf0\kerning1\par
+\cf2\kerning0\tab 2. \'c0\'f2\'ee\'ec\'e0\'f0\'ed\'ee\'f1\'f2\'fc Write\cf0\kerning1\par
+\cf2\kerning0\tab 3. \'c7\'e0\'ef\'f0\'e5\'f2 \'ea\'fd\'f8\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'ff\cf0\kerning1\par
+\cf2\kerning0\b\par
+Happens-before\b0 .\cf0\kerning1\par
+\cf2\kerning0\tab 1. \'c7\'e0\'ef\'e8\'f1\'fc volatile - \'d7\'f2\'e5\'ed\'e8\'e5 volatile\cf0\kerning1\par
+\cf2\kerning0\tab 2. \'ce\'f1\'e2\'ee\'e1\'ee\'e6\'e4\'e5\'ed\'e8\'e5 \'ec\'ee\'ed\'e8\'f2\'ee\'f0\'e0 - \'c7\'e0\'f5\'e2\'e0\'f2 \'ec\'ee\'ed\'e8\'f2\'ee\'f0\'e0\cf0\kerning1\par
+\cf2\kerning0\tab 3. \'c7\'e0\'ef\'f3\'f1\'ea \'ef\'ee\'f2\'ee\'ea\'e0 start() - \'c2\'fb\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'e5 \'ef\'ee\'f2\'ee\'ea\'e0 run()\cf0\kerning1\par
+\cf2\kerning0\tab 4. \'cf\'f0\'e5\'f0\'fb\'e2\'e0\'ed\'e8\'e5 \'ef\'ee\'f2\'ee\'ea\'e0 interrupt() - \'ee\'e1\'ed\'e0\'f0\'f3\'e6\'e5\'ed\'e8\'e5 \'ef\'f0\'e5\'f0\'fb\'e2\'e0\'ed\'e8\'ff interrupted() \'e8 isInterrupted()\cf0\kerning1\par
+\cf2\kerning0\tab 5. \'c2\'fb\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'e5 \'ef\'ee\'f2\'ee\'ea\'e0 run() - join() \'ed\'e0 \'ef\'ee\'f2\'ee\'ea\'e5\cf0\kerning1\par
+\cf2\kerning0\tab 6. \'c2\'fb\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'e5 \'ea\'ee\'ed\'f1\'f2\'f0\'f3\'ea\'f2\'ee\'f0\'e0 - \'c2\'fb\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'e5 finalize()\cf0\kerning1\par
+\cf2\kerning0\par
+\'c1\'e5\'e7 volatile \'e8 happens-before System.out.println() \'ec\'ee\'e6\'e5\'f2 \'e2\'fb\'e4\'e0\'f2\'fc \'ea\'e0\'ea \'f5=0 \'f2\'e0\'ea \'e8 \'f5=10. \'d2.\'ea. \'ee\'ef\'f2\'e8\'ec\'e8\'e7\'e0\'f2\'ee\'f0 \'ec\'ee\'e6\'e5\'f2 \'ee\'ef\'e5\'f0\'e0\'f6\'e8\'e8 x=10 \'e8 v=true \'ef\'ee\'ec\'e5\'ed\'ff\'f2\'fc \'ec\'e5\'f1\'f2\'e0\'ec\'e8.\cf0\kerning1\par
+\cf2\kerning0\tab\ul Thread1\ulnone\tab\tab\tab\tab\ul Thread2\cf0\kerning1\ulnone\par
+\cf2\kerning0\tab\cf1\kerning1\b int\cf2\kerning0\b0  x = 10\tab\tab\tab\tab\cf1\kerning1\b while\cf2\kerning0\b0  (!v);\tab\tab\'f1\'f2\'ee\'e8\'ec \'ed\'e0 \'ec\'e5\'f1\'f2\'e5, \'ef\'ee\'ea\'e0 v \'ed\'e5 \'f1\'f2\'e0\'ed\'e5\'f2 true\cf0\kerning1\par
+\cf2\kerning0\tab\cf1\kerning1\b boolean\cf2\kerning0\b0  v = true\tab\tab\tab System.\cf4\b\i out\cf2\b0\i0 .println(x)\cf0\kerning1\par
+\cf2\kerning0\par
+Happens-before \'e3\'e0\'f0\'e0\'ed\'f2\'e8\'f0\'f3\'e5\'f2 \'ef\'ee\'f0\'ff\'e4\'ee\'ea \'e2\'fb\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'ff \'e8\'ed\'f1\'f2\'f0\'f3\'ea\'f6\'e8\'e9. \'d1\'ed\'e0\'f7\'e0\'eb\'e0 \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'f2\'f1\'ff \'e2\'f1\'e5 \'ee\'ef\'e5\'f0\'e0\'f6\'e8\'e8 \'e4\'ee "\'e7\'e0\'ef\'e8\'f1\'e8 volatile" (\'f2.\'e5. \'f5 \'e3\'e0\'f0\'e0\'ed\'f2\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'ee \'e1\'f3\'e4\'e5\'f2 = 10). \'cf\'ee\'f2\'ee\'ec \'e1\'f3\'e4\'e5\'f2 \'f1\'e2\'ff\'e7\'ea\'e0 happens-before \'e8 \'ee\'f2\'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 "\'f7\'f2\'e5\'ed\'e8\'e5 volatile". \'c8 \'ef\'ee\'f1\'eb\'e5 \'e2\'f1\'e5\'e3\'ee \'e2\'fb\'ef\'ee\'eb\'ed\'e8\'f2\'f1\'ff System.out.println().\cf0\kerning1\par
+\cf2\kerning0\tab\ul Thread1\ulnone\tab\tab\tab\tab\tab\tab\tab\tab\ul Thread2\cf0\kerning1\ulnone\par
+\cf2\kerning0\tab\cf1\kerning1\b int\cf2\kerning0\b0  x = 10\cf0\kerning1\par
+\cf2\kerning0\tab\cf1\kerning1\b volatile boolean\cf2\kerning0\b0  v = true\tab <<happens-before>>\tab\cf1\kerning1\b while\cf2\kerning0\b0  (!v);\tab\tab\'f1\'f2\'ee\'e8\'ec \'ed\'e0 \'ec\'e5\'f1\'f2\'e5, \'ef\'ee\'ea\'e0 v \'ed\'e5 \'f1\'f2\'e0\'ed\'e5\'f2 true\cf0\kerning1\par
+\cf2\kerning0\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab System.\cf4\b\i out\cf2\b0\i0 .println(x)\cf0\kerning1\par
+\cf2\kerning0\'c5\'f1\'eb\'e8 \'e6\'e5 Thread2 \'e1\'fb\'f1\'f2\'f0\'e5\'e5 \'e4\'ee\'f8\'b8\'eb \'e4\'ee "\'f7\'f2\'e5\'ed\'e8\'ff volatile", \'e8 \'f2\'ee\'eb\'fc\'ea\'ee \'ef\'ee\'f2\'ee\'ec Thread1 \'e4\'ee "\'e7\'e0\'ef\'e8\'f1\'e8 volatile", \'f2\'ee \'ed\'e8\'ea\'e0\'ea\'e8\'f5 \'e3\'e0\'f0\'e0\'ed\'f2\'e8\'e9 \'cd\'c5\'d2 (\'ea \'ed\'e0\'f8\'e5\'ec\'f3 \'ef\'f0\'e8\'ec\'e5\'f0\'f3 \'fd\'f2\'ee \'ed\'e5 \'ee\'f2\'ed\'ee\'f1\'e8\'f2\'f1\'ff).\cf0\kerning1\par
+\cf2\kerning0\par
+\'d2\'ee\'e6\'e5 \'ee\'f2\'ed\'ee\'f1\'e8\'f2\'f1\'ff \'e8 \'ea interrupt() - isInterrupted():\cf0\kerning1\par
+\cf2\kerning0\tab\ul Thread1\ulnone\tab\tab\tab\tab\tab\tab\tab\ul Thread2\cf0\kerning1\ulnone\par
+\cf2\kerning0\tab\cf1\kerning1\b int\cf2\kerning0\b0  x = 10\cf0\kerning1\par
+\cf2\kerning0\tab Thread2.interrupt()\tab <<happens-before>>\tab\cf1\kerning1\b while\cf2\kerning0\b0  (!isInterrupted());\tab\tab\'f1\'f2\'ee\'e8\'ec \'ed\'e0 \'ec\'e5\'f1\'f2\'e5, \'e6\'e4\'b8\'ec interrupt()\cf0\kerning1\par
+\cf2\kerning0\tab\tab\tab\tab\tab\tab\tab\tab\tab System.\cf4\b\i out\cf2\b0\i0 .println(x)\tab\tab\tab\'f5 \'e3\'e0\'f0\'e0\'ed\'f2\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'ee \'e1\'f3\'e4\'e5\'f2 = 10\cf0\kerning1\par
+\cf2\kerning0\par
+\'c7\'e2\'f3\'f7\'e8\'f2 \'e2\'fb\'f0\'e0\'e6\'e5\'ed\'e8\'e5 "\'d2\'e0\'f0\'e0\'ea\'e0\'ed\'fc\'ff \'eb\'ee\'e2\'f3\'f8\'ea\'e0":\cf0\kerning1\par
+\cf2\kerning0\tab\'ee\'ef\'e5\'f0\'e0\'f6\'e8\'e8 \'e4\'ee\tab\tab "\'e7\'e0\'ef\'e8\'f1\'e8 volatile"\tab\tab\'ed\'e5\'eb\'fc\'e7\'ff \'ef\'e5\'f0\'e5\'ed\'ee\'f1\'e8\'f2\'fc \'e2 \'e1\'eb\'ee\'ea\tab\'ef\'ee\'f1\'eb\'e5 "\'e7\'e0\'ef\'e8\'f1\'e8 volatile"\cf0\kerning1\par
+\cf2\kerning0\tab\'ee\'ef\'e5\'f0\'e0\'f6\'e8\'e8 \'ef\'ee\'f1\'eb\'e5\tab "\'e7\'e0\'ef\'e8\'f1\'e8 volatile"\tab\tab\'ec\'ee\'e6\'ed\'ee \'ef\'e5\'f0\'e5\'ed\'ee\'f1\'e8\'f2\'fc \'e2 \'e1\'eb\'ee\'ea\tab\tab\'e4\'ee "\'e7\'e0\'ef\'e8\'f1\'e8 volatile"\cf0\kerning1\par
+\cf2\kerning0\tab\'ee\'ef\'e5\'f0\'e0\'f6\'e8\'e8 \'e4\'ee\tab\tab "\'f7\'f2\'e5\'ed\'e8\'e5 volatile"\tab\tab\'ec\'ee\'e6\'ed\'ee \'ef\'e5\'f0\'e5\'ed\'ee\'f1\'e8\'f2\'fc \'e2 \'e1\'eb\'ee\'ea\tab\tab\'ef\'ee\'f1\'eb\'e5 "\'f7\'f2\'e5\'ed\'e8\'e5 volatile"\cf0\kerning1\par
+\cf2\kerning0\tab\'ee\'ef\'e5\'f0\'e0\'f6\'e8\'e8 \'ef\'ee\'f1\'eb\'e5\tab "\'f7\'f2\'e5\'ed\'e8\'e5 volatile"\tab\tab\'ed\'e5\'eb\'fc\'e7\'ff \'ef\'e5\'f0\'e5\'ed\'ee\'f1\'e8\'f2\'fc \'e2 \'e1\'eb\'ee\'ea\tab\'e4\'ee "\'f7\'f2\'e5\'ed\'e8\'e5 volatile"\cf0\kerning1\par
+\cf2\kerning0\par
+\tab\tab\ul Thread1\ulnone\tab\tab\tab\tab\tab\ul Thread2\cf0\kerning1\ulnone\par
+\cf2\kerning0\tab\cf5\b +-->\cf2\b0\tab ....\tab\tab\cf3\b\tab\cf2\b0\tab\tab\cf3\b +-->\cf2\b0\tab ....\cf0\kerning1\par
+\cf5\kerning0\b\tab |\cf2\b0\tab\cf3 int x = 10\cf2\tab\cf3\b ------+\cf2\b0\tab\tab\cf3\b |\cf2\b0\tab\cf5 int a = 10\cf2  \cf5\b -+\cf0\kerning1\b0\par
+\cf5\kerning0\b\tab |\cf2\b0\tab ....\tab\tab\tab\cf3\b |\tab\cf2\b0\tab\cf3\b |\cf2\b0\tab ....\tab\tab\cf5\b |\cf0\kerning1\b0\par
+\cf5\kerning0\b\'ec\'ee\'e6\'ed\'ee\tab |\cf2\b0\tab\b volatile v = true\b0\tab\cf3\b |  \'ed\'e5\'eb\'fc\'e7\'ff\tab |\cf2\b0\tab\b if (v)\b0\tab\cf5\b |\cf0\kerning1\b0\par
+\cf5\kerning0\b\tab |\cf2\b0\tab ....\tab\tab\tab\cf3\b |\tab\tab |\tab\cf2\b0 ....\tab\tab\cf5\b | \'ec\'ee\'e6\'ed\'ee\cf0\kerning1\b0\par
+\cf5\kerning0\b\tab +---\b0\tab int y = 20\cf2\tab\cf3\b\tab |\cf2\b0\tab\tab\cf3\b +---\cf2\b0\tab\cf3 print(x)\cf2\tab\cf5\b |\cf0\kerning1\b0\par
+\cf5\kerning0\b\tab\cf2\b0\tab ....\tab\tab\cf3\b <-----+\cf2\b0\tab\tab\tab ....\tab    \cf5\b <--+\cf0\kerning1\b0\par
+\cf2\kerning0\b\par
+\par
+Future and Callbale.\cf0\kerning1\b0\par
+\cf1\b\par
+interface \cf2\kerning0\b0 Future<V>\tab V ~ String - \'fd\'f2\'ee \'f2\'ee, \'f7\'f2\'ee \'ec\'fb \'f5\'ee\'f2\'e8\'ec \'ef\'ee\'eb\'f3\'f7\'e8\'f2\'fc \'ee\'f2 call()\cf0\kerning1\par
+\cf2\kerning0\tab V get()\cf0\kerning1\par
+\cf2\kerning0\par
+\cf1\kerning1\b interface\cf2\kerning0\b0  Callable<V>\tab\'f2\'ee\'e6\'e5 \'f7\'f2\'ee \'e8 Runnable, \'ed\'ee \'e5\'f9\'b8 \'e8 \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 V ~ String\cf0\kerning1\par
+\cf2\kerning0\tab V call()\cf0\kerning1\par
+\cf2\kerning0\par
+\cf1\kerning1\b class\cf2\b0  \kerning0 Executors\tab\tab c \'ea\'f3\'f7\'e5\'e9 static \'ec\'e5\'f2\'ee\'e4\'ee\'e2...\tab\cf0\kerning1\par
+\cf2\kerning0\tab\cf1\kerning1\b static\cf2\kerning0\b0  ExecutorService newSingleThreadExecutor()\cf0\kerning1\par
+\cf2\kerning0\tab\cf1\kerning1\b static\cf2\kerning0\b0  ExecutorService newFixedThreadPool(\cf1\kerning1\b int\cf2\kerning0\b0  nThreads)\cf0\kerning1\par
+\cf2\kerning0\par
+\par
+\kerning1\b\'d1\'e8\'ed\'f5\'f0\'ee\'ed\'e8\'e7\'e0\'f2\'ee\'f0\'fb \'ef\'ee\'f2\'ee\'ea\'ee\'e2\kerning0\b0 .\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\fi-1136\li1136\sl240\slmult1\cf1\b class\cf2\b0  \kerning0 Semaphore - \'e3\'ee\'e2\'ee\'f0\'e8\'ec, \'f7\'f2\'ee \'f1 \'f0\'e5\'f1\'f3\'f0\'f1\'ee\'ec \'ee\'e4\'ed\'ee\'e2\'f0\'e5\'ec\'e5\'ed\'ed\'ee \'ec\'ee\'e6\'e5\'f2 \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc < 5 \'ef\'ee\'f2\'ee\'ea\'ee\'e2 \'e8\'e7-\'e7\'e0 \'ec\'ee\'f9\'ed\'ee\'f1\'f2\'e8 \'e6\'e5\'eb\'e5\'e7\'e0. Semaphore \'fd\'f2\'ee \'e4\'e5\'eb\'ee \'ec\'ee\'e6\'e5\'f2 \'f0\'e5\'e3\'f3\'eb\'e8\'f0\'ee\'e2\'e0\'f2\'fc.\cf0\kerning1\par
+\cf1\b class\cf2\b0  \kerning0 Exchanger<V> - \'ee\'e1\'ec\'e5\'ed \'ee\'e1\'fa\'e5\'ea\'f2\'ee\'ec <V> \'ec\'e5\'e6\'e4\'f3 \'e4\'e2\'f3\'ec\'ff \'ef\'ee\'f2\'ee\'ea\'e0\'ec\'e8. \'ce\'e4\'e8\'ed \'ef\'ee\'f2\'ee\'ea \'e2\'fb\'e7\'fb\'e2\'e0\'e5\'f2 exchange() \'e8 \'e1\'eb\'ee\'ea\'e8\'f0\'f3\'e5\'f2\'f1\'ff \'ef\'ee\'ea\'e0 \'e4\'f0\'f3\'e3\'ee\'e9 \'ef\'ee\'f2\'ee\'ea \'f2\'ee\'e6\'e5 \'ed\'e5 \'e2\'fb\'e7\'ee\'e2\'e5\'f2 exchange(). \'c4\'e0\'eb\'e5\'e5 \'ef\'f0\'ee\'e8\'f1\'f5\'ee\'e4\'e8\'f2 \'ee\'e1\'ec\'e5\'ed <V> \'e8 \'ef\'ee\'f2\'ee\'ea\'e8 \'ef\'f0\'ee\'e4\'ee\'eb\'e6\'e0\'f2 \'f0\'e0\'e1\'ee\'f2\'f3.\cf0\kerning1\par
+\cf1\b class\cf2\b0  \kerning0 CyclicBarrier - \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e4\'eb\'ff \'f1\'e8\'ed\'f5\'f0\'ee\'ed\'e8\'e7\'e0\'f6\'e8\'e8 \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'e8\'f5 \'ef\'ee\'f2\'ee\'ea\'ee\'e2 \'e2 \'ee\'e4\'ed\'ee\'e9 \'f2\'ee\'f7\'ea\'e5. \'c1\'e0\'f0\'fc\'e5\'f0 \'e4\'ee\'f1\'f2\'e8\'e3\'e0\'e5\'f2\'f1\'ff \'ea\'ee\'e3\'e4\'e0 N-\'ef\'ee\'f2\'ee\'ea\'ee\'e2 \'e2\'fb\'e7\'ee\'e2\'f3\'f2 \'ec\'e5\'f2\'ee\'e4 await() \'e8 \'e7\'e0\'e1\'eb\'ee\'ea\'e8\'f0\'f3\'fe\'f2\'f1\'ff. \'cf\'ee\'f1\'eb\'e5 \'f7\'e5\'e3\'ee \'f1\'f7\'e5\'f2\'f7\'e8\'ea \'f1\'e1\'f0\'e0\'f1\'fb\'e2\'e0\'e5\'f2\'f1\'ff, \'e0 \'ee\'e6\'e8\'e4\'e0\'fe\'f9\'e8\'e5 \'ef\'ee\'f2\'ee\'ea\'e8 \'ee\'f1\'e2\'ee\'e1\'ee\'e6\'e4\'e0\'fe\'f2\'f1\'ff.\cf0\kerning1\par
+\cf1\b class\cf2\b0  \kerning0 CountDownLatch - \'f7\'f2\'ee-\'f2\'ee \'ef\'ee\'e4\'ee\'e1\'ed\'ee\'e5 CyclicBarrier.\cf0\kerning1\par
+\cf1\b class\cf2\b0  \kerning0 Phaser - \'e2\'e7\'ff\'eb \'eb\'f3\'f7\'f8\'e5\'e5 \'e8\'e7 CountDownLatch \'e8 CyclicBarrier.\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf2\kerning0\par
+\par
+\kerning1\b Executors\b0 .\cf0\par
+\cf2\kerning0\tab C\'ee\'e7\'e4\'e0\'ed\'e8\'e5 \'ef\'ee\'f2\'ee\'ea\'e0 \'ef\'f0\'ee\'f6\'e5\'e4\'f3\'f0\'e0 \'e4\'ee\'eb\'e3\'e0\'ff. \'cf\'ee\'fd\'f2\'ee\'ec\'f3 \'ec\'ee\'e6\'ed\'ee \'ef\'f0\'e8 \'f1\'f2\'e0\'f0\'f2\'e5 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'fb \'f1\'ee\'e7\'e4\'e0\'f2\'fc Pool \'e8\'e7 ~10 \'ef\'ee\'f2\'ee\'ea\'ee\'e2. \'d1\'ee\'e7\'e4\'e0\'e2\'e0\'f2\'fc \'e7\'e0\'e4\'e0\'f7\'e8, \'e1\'f0\'e0\'f2\'fc \'e8\'e7 pool-\'e0 \'ef\'ee\'f2\'ee\'ea \'e8 \'ed\'e0\'e7\'ed\'e0\'f7\'e0\'f2\'fc \'ed\'e0 \'ef\'ee\'f2\'ee\'ea \'e7\'e0\'e4\'e0\'f7\'f3.\cf0\kerning1\par
+\par
+\cf1\b interface\cf2\kerning0\b0  Executor\cf0\kerning1\par
+\cf2\kerning0\tab\cf1\kerning1\b void\cf2\kerning0\b0  execute(Runnable task)\tab\tab\'e5\'e4\'e8\'ed\'f1\'f2\'e2\'e5\'ed\'ed\'fb\'e9 \'ec\'e5\'f2\'ee\'e4\cf0\kerning1\par
+\par
+\cf1\b interface\cf2\kerning0\b0  ExecutorService \cf1\kerning1\b extends\cf2\kerning0\b0  Executor\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\fi-4686\li4686\sl240\slmult1\cf2\kerning0 Future<?>      \b submit\b0 (Runnable task)\cf0\kerning1\par
+\cf2\kerning0 <T> Future<T>  \b submit\b0 (Runnable task, T result)\cf0\kerning1\par
+\cf2\kerning0 <T> Future<T>  \b submit\b0 (Callable<T> task)\'e2 \'fd\'f2\'ee\'f2 \'ec\'e5\'f2\'ee\'e4 \'ef\'e5\'f0\'e5\'e4\'e0\'b8\'ec "class MyClass implements Callable<String>", \'ed\'e0\'ec \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'fe\'f2 \'ee\'e1\'fa\'e5\'ea\'f2 Future<String>, \'f3 \'ea\'ee\'f2\'ee\'f0\'ee\'e3\'ee \'ec\'fb \'e2\'fb\'e7\'fb\'e2\'e0\'e5\'ec String get() \'e8 \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'ec \'f2\'ee, \'f7\'f2\'ee \'ed\'e0\'ec \'ee\'f2\'e4\'e0\'b8\'f2 \'ec\'e5\'f2\'ee\'e4 call()\cf0\kerning1\par
+\cf1\b boolean        \cf6 awaitTermination\b0 ()\tab\'ef\'f0\'ee\'f1\'f2\'ee \'ef\'e5\'f0\'e5\'f1\'f2\'e0\'b8\'f2 \'e1\'f0\'e0\'f2\'fc \'ed\'ee\'e2\'fb\'e5 \'e7\'e0\'e4\'e0\'f7\'e8. \'cd\'c5 \'e7\'e0\'e2\'e5\'f0\'f8\'e0\'e5\'f2 \'f0\'e0\'e1\'ee\'f2\'e0\'fe\'f9\'e8\'e5.\cf0\par
+\cf1\b void           \cf2\kerning0 shutdown\b0 ()\tab\'ef\'e5\'f0\'e5\'f1\'f2\'e0\'b8\'f2 \'e1\'f0\'e0\'f2\'fc \'ed\'ee\'e2\'fb\'e5 \'e7\'e0\'e4\'e0\'f7\'e8 \'e8 \'e7\'e0\'e2\'e5\'f0\'f8\'e0\'e5\'f2 \cf6\kerning1 RUNNABLE \'e2 \'f2\'ee\'ec \'ef\'ee\'f0\'ff\'e4\'ea\'e5, \'e2 \'ea\'ee\'f2\'ee\'f0\'ee\'ec \'e8\'f5 \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'eb\cf0\par
+\cf6 List<Runnable> \b shutdownNow\b0 ()\tab\'f2\'ee\'e6\'e5 \'f7\'f2\'ee \'e8 shutdown, \'ed\'ee \'e5\'f9\'b8 \'e8 \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 \'f1\'ef\'e8\'f1\'ee\'ea \'e7\'e0\'e2\'e5\'f0\'f8\'b8\'ed\'ed\'fb\'f5 \'e7\'e0\'e4\'e0\'f7\cf0\par
+\cf2\kerning0 <T> T          \b invokeAny\b0 (Collection<? \cf1\kerning1\b extends\cf2\kerning0\b0  Callable<T>> tasks, \cf1\kerning1\b long\cf2\kerning0\b0  timeout, TimeUnit unit) \'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5 \'f7\'f2\'ee \'e8 invokeAll, \'f2\'ee\'eb\'fc\'ea\'ee \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'ec \'f0\'e5\'e7\'f3\'eb\'fc\'f2\'e0\'f2 \'ef\'e5\'f0\'e2\'ee\'e3\'ee \'f3\'f1\'ef\'e5\'f8\'ed\'ee \'e7\'e0\'e2\'e5\'f0\'f8\'e8\'e2\'f8\'e5\'e3\'ee\'f1\'ff \'ef\'ee\'f2\'ee\'ea\'e0\cf0\kerning1\par
+\cf2\kerning0 List<Future<T> \b invokeAll\b0 (Collection<? \cf1\kerning1\b extends\cf2\kerning0\b0  Callable<T>> tasks, \cf1\kerning1\b long\cf2\kerning0\b0  timeout, TimeUnit unit) \'e7\'e0\'ef\'f3\'f1\'ea \'f1\'f0\'e0\'e7\'f3 \'ea\'ee\'eb\'eb\'e5\'ea\'f6\'e8\'e8 task-\'ee\'e2 \'f1 \'ef\'f0\'ee\'ec\'e5\'e6\'f3\'f2\'ea\'ee\'ec timeout. \'d0\'e5\'e7\'f3\'eb\'fc\'f2\'e0\'f2\'fb \'f1\'ea\'eb\'e0\'e4\'fb\'e2\'e0\'e5\'ec \'e2 List<Future>\cf0\kerning1\par
+\cf2\kerning0\par
+\cf1\kerning1\b import\cf2\kerning0\b0  java.util.concurrent.Executors\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf2\kerning0 ExecutorService threadPool=Executors.\i newFixedThreadPool\i0 (Runtime.\i getRuntime\i0 ().availableProcessors())\'f7\'e8\'f1\'eb\'ee thread-\'ee\'e2 \'ed\'e5 \'e4\'ee\'eb\'e6\'ed\'ee \'ef\'f0\'e5\'e2\'fb\'f8\'e0\'f2\'fc \'ea\'ee\'eb-\'e2\'ee \'ed\'e0\'f8\'e8\'f5 CPU \'ff\'e4\'e5\'f0\cf0\kerning1\par
+\cf2\kerning0\tab\tab\tab\tab Executors.\i newSingleThreadExecutor\i0 ()\tab\tab\tab\tab\tab\tab\tab pool \'f1\'ee\'f1\'f2\'ee\'ff\'f9\'e8\'e9 \'e8\'e7 \'ee\'e4\'ed\'ee\'e3\'ee thread\cf0\kerning1\par
+\cf2\kerning0\tab\tab\tab\tab Executors.\i newScheduledThreadPool\i0 (\cf1\kerning1\b int\cf2\kerning0\b0  corePoolSize)\tab\tab\tab\tab pool \'e4\'eb\'ff \'e7\'e0\'e4\'e0\'f7 \'ef\'ee \'f0\'e0\'f1\'ef\'e8\'f1\'e0\'ed\'e8\'fe\cf0\kerning1\par
+\cf2\kerning0\tab\tab\tab\tab Executors.\i newCachedThreadPool\i0 ()\tab\tab\tab\tab\tab\tab\tab pool \'ef\'ee\'f2\'ee\'ea\'ee\'e2 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'ee\'e3\'ee \'ea\'ee\'eb\'e8\'f7\'e5\'f1\'f2\'e2\'e0\cf0\kerning1\par
+\cf2\kerning0\par
+\i\'cf\'f0\'e8\'ec\'e5\'f0 \'b91\i0 .\cf0\kerning1\par
+\cf2\kerning0\par
+\cf1\kerning1\b class\cf2\b0  \kerning0 MyClass \cf1\kerning1\b implements\cf2\kerning0\b0  Runnable\cf0\kerning1\par
+\cf2\kerning0\tab\cf1\kerning1\b void \cf2\kerning0\b0 run()\{\cf0\kerning1\par
+\cf2\kerning0\tab\tab System.out....\cf0\kerning1\par
+\cf2\kerning0\tab\}\cf0\kerning1\par
+\cf2\kerning0\tab ExecutorService threadPool= Executors.\i newSingleThreadExecutor\i0 ()\cf0\kerning1\par
+\cf2\kerning0\tab threadPool.execute(\cf1\kerning1\b new\cf2\kerning0\b0  MyClass())\cf0\kerning1\par
+\cf2\kerning0\tab threadPool.shutdown()\cf0\kerning1\par
+\cf2\kerning0\par
+\i\'cf\'f0\'e8\'ec\'e5\'f0 \'b92\i0 .\cf0\kerning1\par
+\cf2\kerning0\par
+\cf1\kerning1\b class\cf2\b0  \kerning0 MyClass \cf1\kerning1\b implements\cf2\kerning0\b0  Callable<String>\cf0\kerning1\par
+\cf2\kerning0\tab String call()\{\cf0\kerning1\par
+\cf2\kerning0\tab\tab\cf1\kerning1\b return\cf2\kerning0\b0  "xexe"\cf0\kerning1\par
+\cf2\kerning0\tab\}\cf0\kerning1\par
+\cf2\kerning0\tab ExecutorService threadPool= Executors.\i newFixedThreadPool\i0 (3)\cf0\kerning1\par
+\cf2\kerning0\tab Future<String> future = threadPool.submit(\cf1\kerning1\b new\cf2\kerning0\b0  MyClass())\cf0\kerning1\par
+\cf2\kerning0\tab String string = future.get()\cf0\kerning1\par
+\cf2\kerning0\tab threadPool.shutdown()\cf0\kerning1\par
+\par
+\par
+\par
+\cf2\kerning0\b Locks\b0 .\cf0\kerning1\par
+\cf2\kerning0\tab\'c1\'ee\'eb\'e5\'e5 \'e3\'e8\'e1\'ea\'e8\'e9 \'ef\'ee\'e4\'f5\'ee\'e4 \'ed\'e5\'e6\'e5\'eb\'e8 \cf1\kerning1\b synchronized\cf2\kerning0\b0 . \'cf\'f0\'e8 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'ed\'e8\'e8 \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'e8\'f5 locks, \'ef\'ee\'f0\'ff\'e4\'ee\'ea \'e8\'f5 \'ee\'f1\'e2\'ee\'e1\'ee\'e6\'e4\'e5\'ed\'e8\'ff \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc \'ef\'f0\'ee\'e8\'e7\'e2\'ee\'eb\'fc\'ed\'fb\'e9. \'c8\'ec\'e5\'e5\'f2\'f1\'ff \'e2\'ee\'e7\'ec\'ee\'e6\'ed\'ee\'f1\'f2\'fc \'ef\'ee\'e9\'f2\'e8 \'ef\'ee \'e0\'eb\'fc\'f2\'e5\'f0\'ed\'e0\'f2\'e8\'e2\'ed\'ee\'ec\'f3 \'f1\'f6\'e5\'ed\'e0\'f0\'e8\'fe, \'e5\'f1\'eb\'e8 lock \'f3\'e6\'e5 \'ea\'e5\'ec \'f2\'ee \'e7\'e0\'f5\'e2\'e0\'f7\'e5\'ed.\cf0\kerning1\par
+\cf2\kerning0\tab\cf1\kerning1\b import\cf2\kerning0\b0  java.util.concurrent.locks\cf0\kerning1\par
+\cf1\b\tab interface\cf2\kerning0\b0  Lock\cf0\kerning1\par
+\cf2\kerning0\tab\tab\cf1\kerning1\b void \cf2\kerning0 lock\b0 ()\tab\tab\'e6\'e4\'b8\'ec \'ef\'ee\'ea\'e0 \'e4\'f0\'f3\'e3\'ee\'e9 \'ef\'f0\'ee\'f6\'e5\'f1\'f1 \'ee\'f1\'e2\'ee\'e1\'ee\'e4\'e8\'f2 \'e6\'e5\'eb\'e0\'e5\'ec\'fb\'e9 \'f0\'e5\'f1\'f3\'f0\'f1 \'e8 \'ef\'ee\'f2\'ee\'ec \'e5\'e3\'ee \'e7\'e0\'f5\'e2\'e0\'f2\'fb\'e2\'e0\'e5\'ec/\'e7\'e0\'e1\'eb\'ee\'ea\'e8\'f0\'f3\'e5\'ec\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\fi-2130\li3550\sl240\slmult1\cf1\b boolean \cf2\kerning0 tryLock\b0 ()\tab\'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5, \'f7\'f2\'ee \'e8 lock(), \'f2\'ee\'eb\'fc\'ea\'ee \'ed\'e5 \'e6\'e4\'b8\'f2, \'e0 \'eb\'e8\'e1\'ee \'e7\'e0\'f5\'e2\'e0\'f2\'fb\'e2\'e0\'e5\'f2 \'f0\'e5\'f1\'f3\'f0\'f1 \'e8 return true, \'eb\'e8\'e1\'ee \'f0\'e5\'f1\'f3\'f0\'f1 \'f3\'e6\'e5 \'e7\'e0\'f5\'e2\'e0\'f7\'e5\'ed, return false \'e8 \'ef\'f0\'ee\'e4\'ee\'eb\'e6\'e0\'e5\'f2 \'e2\'fb\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'e5 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'fb\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf2\kerning0\tab\tab\cf1\kerning1\b boolean \cf2\kerning0 tryLock\b0 (long time, TimeUnit unit)\cf0\kerning1\par
+\cf2\kerning0\tab\tab\cf1\kerning1\b void \cf2\kerning0 unlock\b0 ()\tab\'f1\'ed\'e8\'ec\'e0\'e5\'f2 \'e1\'eb\'ee\'ea\'e8\'f0\'ee\'e2\'ea\'f3\cf0\kerning1\par
+\cf2\kerning0\tab\tab\cf1\kerning1\b void \cf2\kerning0 lockInterruptibly\b0 ()\cf0\kerning1\par
+\cf2\kerning0\tab\tab Condition \b newCondition\b0 ()\cf0\kerning1\par
+\cf2\kerning0\par
+\par
+\ul ReentrantLock\cf0\kerning1\ulnone\par
+\cf2\kerning0\tab\'cf\'f0\'e8 \'e2\'fb\'e7\'ee\'e2\'e5 \'ec\'e5\'f2\'ee\'e4\'e0 first() \'e7\'e0\'f5\'e2\'e0\'f2\'fb\'e2\'e0\'e5\'f2\'f1\'ff \'ec\'ee\'ed\'e8\'f2\'ee\'f0. \'cc\'e5\'f2\'ee\'e4 first() \'e4\'ee\'eb\'e6\'e5\'ed \'e2\'fb\'e7\'e2\'e0\'f2\'fc \'ec\'e5\'f2\'ee\'e4 synchronized second(), \'ed\'ee \'f2.\'ea. \'ec\'ee\'ed\'e8\'f2\'ee\'f0 \'f3\'e6\'e5 \'e7\'e0\'f5\'e2\'e0\'f7\'e5\'ed, \'f2\'ee \'e0\'e1\'f3. \'cf\'ee\'f2\'ee\'ea \'e7\'e0\'e1\'eb\'ee\'ea\'e8\'f0\'f3\'e5\'f2 \'f1\'e0\'ec \'f1\'e5\'e1\'ff.\cf0\kerning1\par
+\cf1\b class\cf2\b0  MyClass\kerning0  \{\cf0\kerning1\par
+\cf2\kerning0\tab\cf1\kerning1\b synchronized\cf2\kerning0\b0  \cf1\kerning1\b void \cf2\kerning0\b0 first() \{\cf0\kerning1\par
+\cf2\kerning0\tab\tab second();\cf0\kerning1\par
+\cf2\kerning0\tab\}\cf0\kerning1\par
+\cf2\kerning0\tab\cf1\kerning1\b synchronized\cf2\kerning0\b0  \cf1\kerning1\b void \cf2\kerning0\b0 second() \{\cf0\kerning1\par
+\cf2\kerning0\par
+\tab ReentrantLock \'ed\'e5 \'ef\'f0\'ee\'f1\'f2\'ee \'e7\'e0\'f5\'e2\'e0\'f2\'fb\'e2\'e0\'e5\'f2 \'ec\'ee\'ed\'e8\'f2\'ee\'f0, \'e0 \'e2\'fb\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2 count \'e8 threadID. \'c8\'e7\'ed\'e0\'f7\'e0\'eb\'fc\'ed\'ee \'f0\'e5\'f1\'f3\'f0\'f1 \'d5 \'e8\'ec\'e5\'e5\'f2 count=0 \'e8 ID=0. \'cf\'ee\'f2\'ee\'ea \'c0 \'e7\'e0\'f5\'e2\'e0\'f2\'fb\'e2\'e0\'e5\'f2 \'ec\'ee\'ed\'e8\'f2\'ee\'f0 X (count=1, ID=A). \'d2.\'ea. Count!=0, \'f2\'ee \'ef\'ee\'f2\'ee\'ea \'c2 \'e7\'e0\'f5\'e2\'e0\'f2\'e8\'f2\'fc \'f0\'e5\'f1\'f3\'f0\'f1 \'d5 \'ed\'e5 \'ec\'ee\'e6\'e5\'f2. \'c0 \'e2\'ee\'f2 \'ef\'ee\'f2\'ee\'ea \'c0 \'ec\'ee\'e6\'e5\'f2 \'ef\'ee\'e2\'f2\'ee\'f0\'ed\'ee "\'e7\'e0\'f5\'e2\'e0\'f2\'e8\'f2\'fc" \'d5 \kerning1\u8594?\kerning0  Count=2, ID=\'c0.\cf0\kerning1\par
+\cf2\kerning0\tab\'ca\'eb\'e0\'f1\'f1 \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'e5\'f2 "\'f7\'e5\'f1\'f2\'ed\'fb\'e9" (fair) \'e8 "\'ed\'e5\'f7\'e5\'f1\'f2\'ed\'fb\'e9" (non-fair) \'ef\'ee\'f0\'ff\'e4\'ee\'ea. Fair - \'ef\'ee\'f2\'ee\'ea \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e8\'ec \'e7\'e0\'ef\'f0\'ee\'f1\'e8\'eb \'e4\'ee\'f1\'f2\'f3\'ef \'ea \'ea\'f0\'e5\'f2\'e8\'f7\'e5\'f1\'ea\'ee\'e9 \'f1\'e5\'ea\'f6\'e8\'e8 (\'e2\'fb\'e7\'e2\'e0\'eb lock), \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e8\'ec \'e8 \'ef\'ee\'eb\'f3\'f7\'e8\'eb. Non-fair (\'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'ef\'ee default) - \'e4\'ee\'f1\'f2\'f3\'ef \'ed\'e0 \'ee\'f1\'ed\'ee\'e2\'e0\'ed\'e8\'e8 random \kerning1\u8594? \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'e1\'fb\'f1\'f2\'f0\'e5\'e5 \'f7\'e5\'ec fair.\cf0\par
+\cf2\kerning0\par
+\tab\cf1\kerning1\b class\cf2\kerning0\b0  ReentrantLock \cf1\kerning1\b implements\cf2\kerning0\b0  Lock\cf0\kerning1\par
+\cf2\kerning0\par
+\i\'cf\'f0\'e8\'ec\'e5\'f0\i0 .\cf0\kerning1\par
+\cf1\b class\cf2\b0  \kerning0 Stud\{\cf0\kerning1\par
+\cf2\kerning0\tab\tab\cf1\kerning1\b int\cf2\kerning0\b0  x=0\tab\tab\tab\tab\tab\tab // \'ee\'e1\'f9\'e8\'e9 \'f0\'e5\'f1\'f3\'f0\'f1, \'e7\'e0 \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'e2\'f1\'e5 \'e1\'ee\'f0\'ff\'f2\'f1\'ff\cf0\kerning1\par
+\cf2\kerning0\}\cf0\kerning1\par
+\cf2\kerning0\tab Stud stud = \cf1\kerning1\b new\cf2\kerning0\b0  Stud()\cf0\kerning1\par
+\cf2\kerning0\tab Lock \cf7 locker \cf2 = \cf1\kerning1\b new\cf2\kerning0\b0  ReentrantLock()\tab\tab\tab // \'f1\'ee\'e7\'e4\'e0\'e5\'ec \'e7\'e0\'e3\'eb\'f3\'f8\'ea\'f3\cf0\kerning1\par
+\cf2\kerning0\tab Executors.newFixedThreadPool(3).submit(()->\{\tab // \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'e5\'ec 3-\'e8 \'ee\'f2\'e4\'e5\'eb\'fc\'ed\'fb\'f5 \'ea\'ee\'ed\'ea\'f3\'f0\'e8\'f0\'f3\'fe\'f9\'e8\'f5 \'ef\'ee\'f2\'ee\'ea\'e0\cf0\kerning1\par
+\cf2\kerning0\tab\tab\cf7 locker\cf2 .lock()\tab\tab\tab\tab\tab // \'f3\'f1\'f2\'e0\'ed\'e0\'e2\'eb\'e8\'e2\'e0\'e5\'ec \'e1\'eb\'ee\'ea\'e8\'f0\'ee\'e2\'ea\'f3 \'ed\'e0 \'e2\'f5\'ee\'e4\'e5 \'e2 \'ea\'f0\'e8\'f2\'e8\'f7\'e5\'f1\'ea\'f3\'fe \'f1\'e5\'ea\'f6\'e8\'fe\cf0\kerning1\par
+\cf2\kerning0\tab\tab\cf1\kerning1\b try\cf2\kerning0\b0\{\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\qj\cf2\kerning0\tab\tab\tab stud.x=1;\tab\tab\tab\tab\tab // \'ce\'e1\'ff\'e7\'e0\'f2\'e5\'eb\'fc\'ed\'ee \'f0\'e0\'e1\'ee\'f2\'f3 \'f1 shared \'f0\'e5\'f1\'f3\'f0\'f1\'ee\'ec \'ee\'e1\'ee\'f0\'e0\'f7\'e8\'e2\'e0\'f2\'fc \'e2 \cf1\kerning1\b try\cf2\kerning0\b0  - \cf1\kerning1\b catch\cf2\kerning0\b0 , \'e4\'eb\'ff \'f2\'ee\'e3\'ee \'f7\'f2\'ee\'e1\'fb\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf2\kerning0\tab\tab\}\tab\tab\tab\tab\tab\tab\tab // \'ef\'f0\'e8 \'ef\'ee\'eb\'f3\'f7\'e5\'ed\'e8\'e8 InterruptedException \'f0\'e5\'f1\'f3\'f0\'f1 \'e2\'f1\'b8 \'e6\'e5 \'ee\'f1\'e2\'ee\'e1\'ee\'e4\'e8\'eb\'f1\'ff\cf0\kerning1\par
+\cf2\kerning0\tab\tab\cf1\kerning1\b catch\cf2\kerning0\b0 (InterruptedException e)\{\cf0\kerning1\par
+\cf2\kerning0\tab\tab\}\cf0\kerning1\par
+\cf1\b\tab\tab finally\cf2\kerning0\b0\{\cf0\kerning1\par
+\cf2\kerning0\tab\tab\tab\cf7 locker\cf2 .unlock();\tab\tab\tab\tab // \'f1\'ed\'e8\'ec\'e0\'e5\'ec \'e1\'eb\'ee\'ea\'e8\'f0\'ee\'e2\'ea\'f3\cf0\kerning1\par
+\cf2\kerning0\tab\tab\}\cf0\kerning1\par
+\cf2\kerning0\par
+\par
+\b ReadWriteLock\b0 .\cf0\kerning1\par
+\cf2\kerning0\tab\'c4\'eb\'ff \kerning1\'ef\'ee\'e2\'fb\'f8\'e5\'ed\'e8\'ff \'ef\'f0\'ee\'e8\'e7\'e2\'ee\'e4\'e8\'f2\'e5\'eb\'fc\'ed\'ee\'f1\'f2\'e8. \'ca\kerning0  \'ee\'e1\'fb\'f7\'ed\'ee\'ec\'f3 Lock \'e4\'ee\'e1\'e0\'e2\'e8\'eb\'e8 \'f0\'e0\'e7\'e4\'e5\'eb\'e5\'ed\'e8\'e5 \'ed\'e0 Read \'e8 Write. \'c5\'f1\'eb\'e8 \'ea\'f2\'ee-\'f2\'ee \'e4\'e5\'eb\'e0\'e5\'f2 Write, \'f2\'ee \'ed\'e8\'ea\'f2\'ee \'ed\'e5 \'ec\'ee\'e6\'e5\'f2 \'f1\'e4\'e5\'eb\'e0\'f2\'fc \'ed\'e8 Read, \'ed\'e8 Write. \'c5\'f1\'eb\'e8 \'ec\'ed\'ee\'e3\'e8\'e5 \'e4\'e5\'eb\'e0\'fe\'f2 Read, \'f2\'ee Write \'ed\'e5\'eb\'fc\'e7\'ff \'e4\'e5\'eb\'e0\'f2\'fc \'e4\'ee \'f2\'e5\'f5 \'ef\'ee\'f0, \'ef\'ee\'ea\'e0 \'ed\'e5 \'e7\'e0\'ea\'ee\'ed\'f7\'e0\'f2 \'e4\'e5\'eb\'e0\'f2\'fc Read.\cf0\kerning1\par
+\cf2\kerning0\par
+\cf1\kerning1\b\tab interface\cf2\kerning0\b0  ReadWriteLock\cf0\kerning1\par
+\cf2\kerning0\tab\tab Lock \b readLock\b0 () - \'f5\'ee\'f7\'f3 \'f7\'e8\'f2\'e0\'f2\'fc\cf0\kerning1\par
+\cf2\kerning0\tab\tab Lock \b writeLock\b0 () - \'f5\'ee\'f7\'f3 \'ef\'e8\'f1\'e0\'f2\'fc\cf0\kerning1\par
+\cf2\kerning0\par
+\cf1\kerning1\b class\cf2\b0  \kerning0 ReentrantReadWriteLock \cf1\kerning1\b implements\cf2\kerning0\b0  ReadWriteLock\cf0\kerning1\par
+\cf2\kerning0\par
+\i\'cf\'f0\'e8\'ec\'e5\'f0\i0 .\cf0\kerning1\par
+\cf1\b class\cf2\b0  \kerning0 Stud\{\cf0\kerning1\par
+\cf2\kerning0\tab\tab\cf1\kerning1\b int\cf2\kerning0\b0  x=0\cf0\kerning1\par
+\cf2\kerning0\}\cf0\kerning1\par
+\cf2\kerning0\tab Stud stud = \cf1\kerning1\b new\cf2\kerning0\b0  Stud()\cf0\kerning1\par
+\cf2\kerning0\tab ReadWriteLock \cf7 locker \cf2 = \cf1\kerning1\b new\cf2\kerning0\b0  ReentrantReadWriteLock()\cf0\kerning1\par
+\cf2\kerning0\tab Executors.newFixedThreadPool(3).submit(()->\{\cf0\kerning1\par
+\cf2\kerning0\tab\tab\cf7 locker\cf2 .\b writeLock\b0 ().lock()\cf0\kerning1\par
+\cf2\kerning0\tab\tab\cf1\kerning1\b try\cf2\kerning0\b0\{\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\qj\cf2\kerning0\tab\tab\tab stud.x=1\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf2\kerning0\tab\tab\}\cf0\kerning1\par
+\cf2\kerning0\tab\tab\cf1\kerning1\b catch\cf2\kerning0\b0 (InterruptedException e)\{\cf0\kerning1\par
+\cf2\kerning0\tab\tab\}\cf0\kerning1\par
+\cf1\b\tab\tab finally\cf2\kerning0\b0\{\cf0\kerning1\par
+\cf2\kerning0\tab\tab\tab\cf7 locker\cf2 .\b writeLock()\b0 .unlock()\cf0\kerning1\par
+\cf2\kerning0\tab\tab\}\cf0\kerning1\par
+\cf2\kerning0\tab\cf0\kerning1\par
+\cf2\kerning0\b StampedLock\b0 .\cf0\kerning1\par
+\cf2\kerning0\tab\cf3\b\'cd\'e5\'f2 Reentrant\cf2\b0  - \'f2.\'e5. \'ef\'ee\'f2\'ee\'ea \'ec\'ee\'e6\'e5\'f2 \'e7\'e0\'e1\'eb\'ee\'ea\'e8\'f0\'ee\'e2\'e0\'f2\'fc \'f1\'e0\'ec \'f1\'e5\'e1\'ff (\'f1\'ec. \ul ReentrantLock\ulnone )\cf0\kerning1\par
+\cf2\kerning0\par
+\tab StampedLock lock = \cf1\kerning1\b new\cf2\kerning0\b0  StampedLock()\cf0\kerning1\par
+\cf2\kerning0\tab\cf1\kerning1\b long\cf2\kerning0\b0  stamp = lock.writeLock()\tab\tab // \'ea\'ee\'e3\'e4\'e0 \'e4\'e5\'eb\'e0\'e5\'ec writeLock(), \'f2\'ee \'ef\'f0\'ee\'e8\'f1\'f5\'ee\'e4\'e8\'f2 Lock \'e8 \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2\'f1\'ff \'f7\'e8\'f1\'eb\'ee long\cf0\kerning1\par
+\cf2\kerning0\tab\tab ...\cf0\kerning1\par
+\cf2\kerning0\tab lock.unlockWrite(stamp)\tab\tab\tab // \'e4\'eb\'ff unlock \'ed\'e0\'e4\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'f7\'e8\'f1\'eb\'ee \'ef\'ee\'eb\'f3\'f7\'e5\'ed\'ed\'ee\'e5 \'ef\'f0\'e8 writeLock/readLock\cf0\kerning1\par
+\cf2\kerning0\par
+\par
+\par
+\kerning1\b Concurrent Collection\b0 .\cf0\par
+\cf2\par
+\'cc\'ee\'e6\'ed\'ee \'eb\'fe\'e1\'f3\'fe \'f1\'f2\'e0\'ed\'e4\'e0\'f0\'f2\'ed\'f3\'fe \'ea\'ee\'eb\'eb\'e5\'ea\'f6\'e8\'fe \'ee\'e1\'e5\'f0\'ed\'f3\'f2\'fc \'f2\'e0\'ea. \'d1 \'ea\'ee\'eb\'eb\'e5\'ea\'f6\'e8\'e5\'e9 \'e2 \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'fb\'e9 \'ec\'ee\'ec\'e5\'ed\'f2 \'e2\'f0\'e5\'ec\'e5\'ed\'e8 \'ec\'ee\'e6\'e5\'f2 \'f0\'e0\'e1\'ee\'f2\'ee\'f2\'e0\'f2\'fc \'f2\'ee\'eb\'fc\'ea\'ee \'ee\'e4\'e8\'ed \'ef\'ee\'f2\'ee\'ea. \'c1\'eb\'ee\'ea\'e8\'f0\'f3\'e5\'f2\'f1\'ff \'e4\'ee\'f1\'f2\'f3\'ef \'ea\'ee \'e2\'f1\'e5\'e9 \'ea\'ee\'eb\'eb\'e5\'ea\'f6\'e8\'e8:\cf0\par
+\cf2 Collections.\i synchronizedCollection\i0 (Collection<T> collection)\cf0\par
+\cf2 Collections.\i synchronizedList\i0 (List<T> list)\cf0\par
+\cf2 Collections.\i synchronizedMap\i0 (Map<K,V> map)\tab\tab\tab\cf3\b\'cd\'e5\'eb\'fc\'e7\'ff \'f5\'f0\'e0\'ed\'e8\'f2\'fc Null\cf0\b0  - \'f1\'e2\'ff\'e7\'e0\'ed\'ed\'ee \'f1 \'f1\'ee\'f0\'f2\'e8\'f0\'ee\'e2\'ea\'ee\'e9. \'cd\'e5\'ef\'ee\'ed\'ff\'f2\'ed\'ee \'ea\'e0\'ea \'f1\'f0\'e0\'e2\'ed\'e8\'e2\'e0\'f2\'fc Null.\par
+\cf2 Collections.\i synchronizedSet\i0 (Set<T> set)\cf0\par
+\cf2 Collections.\i synchronizedSortedMap\i0 (SortedMap<K,V> sortedMap)\cf0\par
+\cf2 Collections.\i synchronizedSortedSet\i0 (SortedSet<T> sortedSet)\cf0\par
+\cf2\par
+1. List<E>\cf0\par
+\cf2\tab\cf8\b CopyOnWriteArrayList<E>\cf2\b0  - \'e5\'e4\'e8\'ed\'f1\'f2\'e2\'e5\'ed\'ed\'fb\'e9 \'ef\'ee\'f2\'ee\'ea\'ee\'e1\'e5\'e7\'ee\'ef\'e0\'f1\'ed\'fb\'e9 \'ea\'eb\'e0\'f1\'f1 \'e4\'eb\'ff ArrayList. \'d7\'e8\'f2\'e0\'f2\'fc \'ec\'ee\'e3\'f3\'f2 \'e2\'f1\'e5 \'f1\'ea\'ee\'eb\'fc\'ea\'ee \'f3\'e3\'ee\'e4\'ed\'ee. \'cf\'f0\'e8 \'e7\'e0\'ef\'e8\'f1\'e8/\'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'e8 \'f1\'ed\'e0\'f7\'e0\'eb\'e0 \'f1\'ee\'e7\'e4\'e0\'b8\'f2\'f1\'ff \'ed\'ee\'e2\'fb\'e9 \'ec\'e0\'f1\'f1\'e8\'e2, \'e0 \'ef\'ee\'f2\'ee\'ec \'e8\'e7\'ec\'e5\'ed\'ff\'e5\'f2\'f1\'ff \'f1\'f1\'fb\'eb\'ea\'e0, \'f3\'ea\'e0\'e7\'fb\'e2\'e0\'fe\'f9\'e0\'ff \'ed\'e0 \'f1\'f2\'e0\'f0\'fb\'e9 \'ec\'e0\'f1\'f1\'e8\'e2.\cf0\par
+\cf2\tab\'cd\'e5\'f2 \'f1\'ee\'f0\'f2\'e8\'f0\'ee\'e2\'ea\'e8, \'ec\'e5\'e4\'eb\'e5\'ed\'ed\'e0\'ff \'e2\'f1\'f2\'e0\'e2\'ea\'e0, \'e8\'f2\'e5\'f0\'e0\'f2\'ee\'f0\'fb \'ed\'e5 \'ec\'e5\'ed\'ff\'fe\'f2 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'fb.\cf0\par
+\cf2\par
+2. Queue<E>\cf0\par
+\cf2\tab Non-Blocking Queues:\cf0\par
+\pard\nowidctlpar\hyphpar0\fi-710\li1420\sl240\slmult1\cf8\b ConcurrentLinkedQueue<E>\cf2\b0  - \'ef\'ee\'f1\'f2\'f0\'ee\'e5\'ed\'e0 \'ed\'e0 \'e0\'eb\'e3\'ee\'f0\'e8\'f2\'ec\'e5 Wait-Free, \'e1\'e0\'e7\'e8\'f0\'f3\'fe\'f9\'e5\'e3\'ee\'f1\'ff \'ed\'e0 CAS-\'ee\'ef\'e5\'f0\'e0\'f6\'e8\'ff\'f5. \'ce\'e1\'fb\'f7\'ed\'fb\'e9 \'ee\'e4\'ed\'ee\'f1\'e2\'ff\'e7\'ed\'fb\'e9 LinkedList, \'ec\'ee\'e6\'ed\'ee \'f2\'ee\'eb\'fc\'ea\'ee \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'f2\'fc \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'fb \'e2 \'ed\'e0\'f7\'e0\'eb\'ee \'e8 \'f3\'e4\'e0\'eb\'ff\'f2\'fc \'f1\'ea\'ee\'ed\'f6\'e0. \'d0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'e1\'fb\'f1\'f2\'f0\'ee. \'cd\'e5\'f2 \'ed\'e8\'ea\'e0\'ea\'e8\'f5 ReentrantLock. \'c2\'f1\'b8 \'ed\'e0 CAS \'ee\'ef\'e5\'f0\'e0\'f6\'e8\'ff\'f5.\cf0\par
+\cf8\b ConcurrentLinkedDuque<E\b0 >\cf2  - \'f2\'ee\'e6\'e5 \'f7\'f2\'ee \'e8 ConcurrentLinkedQueue, \'ed\'ee \'f2\'ee\'eb\'fc\'ea\'ee \'e4\'e2\'f3\'f1\'e2\'ff\'e7\'ed\'fb\'e9 \'f1\'ef\'e8\'f1\'ee\'ea. \'d0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'e2 2-\'e0 \'f0\'e0\'e7\'e0 \'f5\'f3\'e6\'e5 \'f7\'e5\'ec ConcurrentLinkedQueue. \'cf\'ee\'fd\'f2\'ee\'ec\'f3 \'e5\'f1\'eb\'e8 \'ed\'f3\'e6\'e5\'ed \'e8\'ec\'e5\'ed\'ed\'ee \'ee\'e4\'ed\'ee\'f1\'e2\'ff\'e7\'ed\'fb\'e9 \'f1\'ef\'e8\'f1\'ee\'ea, \'f2\'ee \'d2\'ce\'cb\'dc\'ca\'ce ConcurrentLinkedQueue.\cf0\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf2\par
+\tab Blocking Queues:\cf0\par
+\pard\nowidctlpar\hyphpar0\fi-710\li1420\sl240\slmult1\cf8\b PriorityBlockingQueue<E>\cf2  \b0 = \'ee\'e1\'b8\'f0\'f2\'ea\'e0 \'ed\'e0\'e4 PriorityQueue \'f1 \'e1\'eb\'ee\'ea\'e8\'f0\'ee\'e2\'ea\'ee\'e9 \'ef\'ee\'f2\'ee\'ea\'ee\'e2 ReentrantLock. \'cd\'e5\'eb\'fc\'e7\'ff \'f5\'f0\'e0\'ed\'e8\'f2\'fc Null. \'d1 \'ee\'f7\'e5\'f0\'e5\'e4\'fc\'fe \'ec\'ee\'e6\'e5\'f2 \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc \'f2\'ee\'eb\'fc\'ea\'ee \'ee\'e4\'e8\'ed \'ef\'ee\'f2\'ee\'ea \'e1\'e5\'e7 "\'f7\'e5\'f1\'f2\'ed\'ee\'e9" \'e1\'eb\'ee\'ea\'e8\'f0\'ee\'e2\'ea\'e8 ("\'f7\'e5\'f1\'f2\'ed\'e0\'ff" - \'e5\'f1\'eb\'e8 \'e7\'e0\'ef\'f0\'ee\'f1\'e8\'eb \'e4\'ee\'f1\'f2\'f3\'ef \'ea \'ee\'e1\'fa\'e5\'ea\'f2\'f3 \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e8\'ec, \'f2\'ee \'e8 \'ef\'ee\'eb\'f3\'f7\'e8\'f8\'fc \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e8\'ec; "\'ed\'e5\'f7\'e5\'f1\'f2\'ed\'e0\'ff" \'e4\'ee\'f1\'f2\'f3\'ef \'ea \'ee\'e1\'fa\'e5\'ea\'f2\'f3 \'ef\'ee\'eb\'f3\'f7\'e0\'fe\'f2 \'ef\'ee\'f2\'ee\'ea\'e8 \'f1\'ee\'e3\'eb\'e0\'f1\'ed\'ee random)\cf0\par
+\cf8\b DelayQueue<E>\cf2\b0  = \'ee\'e1\'b8\'f0\'f2\'ea\'e0 \'ed\'e0\'e4 PriorityQueue. \'d5\'f0\'e0\'ed\'e8\'f2 \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'fb, \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \cf1\b implements\cf2\b0  Delayed (\'e4\'ee\'eb\'e6\'e5\'ed \'e1\'fb\'f2\'fc \'ec\'e5\'f2\'ee\'e4 getDelay(). Delay - \'e7\'e0\'e4\'e0\'b8\'ec \'fd\'eb\'e5\'ec\'e5\'ed\'f2\'f3 \'ed\'e5\'ea\'ee\'f2\'ee\'f0\'ee\'e5 \'e2\'f0\'e5\'ec\'ff \'e8 \'e5\'f1\'eb\'e8 \'e2\'f0\'e5\'ec\'ff \'e2\'fb\'f8\'eb\'ee, \'f2\'ee \'ea\'ee\'eb\'eb\'e5\'ea\'f6\'e8\'ff \'fd\'eb\'e5\'ec\'e5\'ed\'f2 \'ee\'f2\'e4\'e0\'f1\'f2. \'c5\'f1\'eb\'e8 \'e2\'f0\'e5\'ec\'ff \'ed\'e5 \'e2\'fb\'f8\'eb\'ee, \'f2\'ee \'ef\'ee\'eb\'f3\'f7\'e8\'ec Null.\cf0\par
+\cf8\b ArrayBlockingQueue<E>\cf2\b0  - \'ee\'f7\'e5\'f0\'e5\'e4\'fc \'f0\'e5\'e0\'eb\'e8\'e7\'ee\'e2\'e0\'ed\'ed\'e0 \'e2 \'e2\'e8\'e4\'e5 \'ea\'ee\'eb\'fc\'f6\'e0. \'d4\'e8\'ea\'f1\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'fb\'e9 size() \'ee\'f7\'e5\'f0\'e5\'e4\'e8. \'cd\'e5\'eb\'fc\'e7\'ff \'f5\'f0\'e0\'ed\'e8\'f2\'fc Null. \'c1\'eb\'ee\'ea\'e8\'f0\'ee\'e2\'ea\'e0 \'ed\'e0 ReentrantLock. \'d0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'f1 "\'f7\'e5\'f1\'f2\'ed\'ee\'e9" \'e1\'eb\'ee\'ea\'e8\'f0\'ee\'e2\'ea\'ee\'e9.\cf0\par
+\cf8\b LinkedBlockingQueue<E>\cf2\b0  - \'ee\'e4\'ed\'ee\'f1\'e2\'ff\'e7\'ed\'fb\'e9 \'f1\'ef\'e8\'f1\'ee\'ea, \'ed\'ee \'f1 2-\'ff ReentrantLock. \'ce\'e4\'e8\'ed \'ed\'e0 \'f7\'f2\'e5\'ed\'e8\'e5, \'e2\'f2\'ee\'f0\'ee\'e9 \'ed\'e0 \'e7\'e0\'ef\'e8\'f1\'fc, \'f2.\'e5. \'f1 \'ea\'ee\'eb\'eb\'e5\'ea\'f6\'e8\'e5\'e9 \'ee\'e4\'ed\'ee\'e2\'f0\'e5\'ec\'e5\'ed\'ed\'ee \'ec\'ee\'e6\'e5\'f2 \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc 2-\'e0 \'ef\'ee\'f2\'ee\'ea\'e0, \'e2 \'ee\'f2\'eb\'e8\'f7\'e8\'e8 \'ee\'f2 \'ea\'ee\'eb\'eb\'e5\'ea\'f6\'e8\'e8, \'e3\'e4\'e5 ReentrantLock \'ee\'e4\'e8\'ed.\cf0\par
+\cf8\b LinkedBlockingDeque<E>\cf2\b0  - \'e4\'e2\'f3\'f1\'e2\'ff\'e7\'ed\'fb\'e9 \'f1\'ef\'e8\'f1\'ee\'ea, \'ed\'ee \'f3\'e6\'e5 \'f1 \'ee\'e4\'ed\'e8\'ec ReentrantLock. \'cf\'f0\'ee\'f1\'e0\'e4\'ea\'e0 \'ef\'ee \'ef\'f0\'ee\'e8\'e7\'e2\'ee\'e4\'e8\'f2\'e5\'eb\'fc\'ed\'ee\'f1\'f2\'e8 \'ee\'f2 LinkedBlockingQueue.\cf0\par
+\cf8\b SynchronousQueue<E>\cf2\b0  - \'ee\'f7\'e5\'f0\'e5\'e4\'fc \'ed\'e5 \'f5\'f0\'e0\'ed\'e8\'f2 \'fd\'eb\'e5\'ec\'e5\'ed\'fb. \'c5\'f1\'eb\'e8 \'ef\'f0\'e8\'f8\'b8\'eb \'ef\'ee\'f2\'ee\'ea, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'f5\'ee\'f7\'e5\'f2 \'f1\'e4\'e5\'eb\'e0\'f2\'fc add(), \'f2\'ee \'ee\'ed \'f1\'f2\'ee\'ef\'e8\'f2\'f1\'ff \'e4\'ee \'f2\'e5\'f5 \'ef\'ee\'f0, \'ef\'ee\'ea\'e0 \'ed\'e5 \'ef\'f0\'e8\'e4\'b8\'f2 \'ef\'ee\'f2\'ee\'ea c remove(). \'c8 \'ed\'e0\'ee\'e1\'ee\'f0\'ee\'f2: \'ef\'f0\'e8\'f8\'b8\'eb \'ef\'ee\'f2\'ee\'ea \'f1 remove(), \'f1\'f2\'ee\'ef\'e8\'f2\'f1\'ff \'e8 \'e6\'e4\'b8\'f2 \'ef\'e0\'f0\'f3 - \'ef\'ee\'f2\'ee\'ea, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'f1\'e4\'e5\'eb\'e0\'e5\'f2 add().\cf0\par
+\cf8\b LinkedTransferQueue<E>\cf2\b0  ~ SynchronousQueue c \'ed\'fc\'fe\'e0\'ed\'f1\'e0\'ec\'e8.\cf0\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf2\par
+3. Map<K,V>\cf0\par
+\cf2\'c4\'ee\'e1\'e0\'e2\'eb\'e5\'ed\'fb \'ed\'ee\'e2\'fb\'e5 \'ec\'e5\'f2\'ee\'e4\'fb:\cf0\par
+\cf2\tab putIfAbsent(K,V)\cf0\par
+\cf2\tab remove(K,V)\cf0\par
+\cf2\tab replace(K,oldValue,newValue)\cf0\par
+\cf2\tab replace(K,V)\cf0\par
+\cf2\par
+\tab Collections.\i synchronizedMap\i0 (HashMap hm) - \'ee\'e1\'b8\'f0\'f2\'ea\'e0 \'ed\'e0\'f8\'e5\'e9 HashMap. \'d1\'ee \'e2\'f1\'e5\'e9 \'ea\'ee\'eb\'eb\'e5\'ea\'f6\'e8\'e5\'e9, \'ed\'e5\'e7\'e0\'e2\'e8\'f1\'e8\'ec\'ee \'ee\'f2 bucket \'ec\'ee\'e6\'e5\'f2 \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc \'f2\'ee\'eb\'fc\'ea\'ee \'ee\'e4\'e8\'ed \'ef\'ee\'f2\'ee\'ea.\cf0\par
+\cf2\b\tab\cf8 ConcurrentHashMap\cf2\b0  - synchronized \'e2\'e5\'f1\'e8\'f2 \'ed\'e0 \'ea\'e0\'e6\'e4\'ee\'ec bucket-\'e5. \'d2.\'e5. \'f1 \'ea\'ee\'eb\'eb\'e5\'ea\'f6\'e8\'e5\'e9 \'ee\'e4\'ed\'ee\'e2\'f0\'e5\'ec\'e5\'ed\'ed\'ee \'ec\'ee\'e3\'f3\'f2 \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee \'ef\'ee\'f2\'ee\'ea\'ee\'e2, \'ed\'ee \'f1 \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'fb\'ec bucket-\'ee\'ec \'f2\'ee\'eb\'fc\'ea\'ee \'ee\'e4\'e8\'ed \'ef\'ee\'f2\'ee\'ea.\cf0\par
+\cf2\par
+\b\tab\cf8 ConcurrentSkipListMap\cf2\b0  = \'ef\'ee\'f2\'ee\'ea\'ee\'e1\'e5\'e7\'ee\'ef\'e0\'f1\'ed\'fb\'e9 TreeMap. \'c1\'fb\'eb\'e0 \'f2\'e0\'ea\'e0\'ff \'ea\'e0\'f0\'f2\'e8\'ed\'ea\'e0 - \'e5\'b8 \'ed\'e5 \'ef\'ee\'ed\'ff\'eb.\cf0\par
+\pard\nowidctlpar\hyphpar0\kerning0  \u9633?   \u9633? -----------------------------------> \u9633?\kerning1\par
+\kerning0  \u9633?   \u9633? ----------> \u9633? ------> \u9633? -----------> \u9633?\kerning1\par
+\kerning0  \u9633?   \u9633? -----> \u9633? -> \u9633? ------> \u9633? -----------> \u9633?\kerning1\par
+\kerning0  \u9633?   \u9633? ->\u9633? -> \u9633? -> \u9633? -> \u9633? -> \u9633? -> \u9633? -> \u9633? -> \u9633?\kerning1\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf2 HEAD\tab 1\tab 2\tab 3\tab 4\tab 5\tab 6\tab 7\tab 8\tab NIL\cf0\par
+\cf2\par
+\par
+4. Set<K,V>\cf0\par
+\cf2\b\tab\cf8 ConcurrentSkipListSet\cf2\b0  - \'e2\'ed\'f3\'f2\'f0\'e8 \'f1\'e8\'e4\'e8\'f2 ConcurrentSkipListMap.\cf0\par
+\cf2\tab\cf8\b CopyOnWriteArraySet\cf2\b0  - \'e2\'ed\'f3\'f2\'f0\'e8 \'f1\'e8\'e4\'e8\'f2 CopyOnWriteArrayList\cf0\par
+\cf2\kerning0\par
+\par
+\par
+\par
+\par
+\ul DeadLock\ulnone .\cf0\kerning1\par
+\cf2\kerning0\'c5\'f1\'f2\'fc \'f1\'f7\'e5\'f2\'e0 \'c0 \'e8 \'c2. \'c5\'f1\'f2\'fc \'f4\'f3\'ed\'ea\'f6\'e8\'ff transfer (\'c0, \'c2, RUB) - \'ef\'e5\'f0\'e5\'e2\'e5\'f1\'f2\'e8 \'f1 \'c0 \'ed\'e0 \'c2 \'ea\'ee\'eb\'e8\'f7\'e5\'f1\'f2\'e2\'ee RUB \'f0\'f3\'e1\'eb\'e5\'e9. \'d4\'f3\'ed\'ea\'f6\'e8\'ff \'e4\'ee\'eb\'e6\'ed\'e0 \'e1\'fb\'f2\'fc \'d2\'f0\'e0\'ed\'e7\'e0\'ea\'f6\'e8\'e5\'e9 - \'eb\'ee\'f7\'e8\'ec \'c0, \'e4\'e5\'eb\'e0\'e5\'ec A-RUB, \'eb\'ee\'f7\'e8\'ec B, \'e4\'e5\'eb\'e0\'e5\'ec B+RUB. \'c7\'e0\'ef\'f3\'f1\'ea\'e0\'e5\'ec 2-\'e0 \'ef\'ee\'f2\'ee\'ea\'e0: \'ee\'e4\'e8\'ed \'e4\'e5\'eb\'e0\'e5\'f2 transfer (\'c0, \'c2, 200), \'e2\'f2\'ee\'f0\'ee\'e9 transfer (B, A, 500). \'c2 \'e8\'f2\'ee\'e3\'e5 \'cf\'e5\'f0\'e2\'fb\'e9 \'f1\'e4\'e5\'eb\'e0\'eb Lock A \'e8 \'e6\'e4\'b8\'f2 \'ea\'ee\'e3\'e4\'e0 \'ee\'f1\'e2\'ee\'e1\'ee\'e4\'ff\'f2 B. \'c2\'f2\'ee\'f0\'ee\'e9 \'f1\'e4\'e5\'eb\'e0\'eb Lock B \'e8 \'e6\'e4\'b8\'f2 \'c0.\cf0\kerning1\par
+\cf2\kerning0\par
+\'d0\'e5\'f8\'e5\'ed\'e8\'ff:\cf0\kerning1\par
+\cf2\kerning0\tab 1. \'c4\'ee\'e3\'ee\'e2\'ee\'f0\'e8\'f2\'fc\'f1\'ff \'ee \'ef\'ee\'f0\'ff\'e4\'ea\'e5 \'e7\'e0\'f5\'e2\'e0\'f2\'e0 - \'c0\'ed\'e0\'eb\'ee\'e3\'e8 \'e7\'e0\'e4\'e0\'f7: \'d4\'e8\'eb\'ee\'f1\'ee\'f4\'fb \'e8 \'e2\'e8\'eb\'ea\'e0\'ec\'e8, \'d1\'ef\'ff\'f9\'e8\'e9 \'ef\'e0\'f0\'e8\'ea\'ec\'e0\'f5\'e5\'f0, \'c7\'e0\'e4\'e0\'f7\'e0 \'ee \'ea\'f3\'f0\'e8\'eb\'fc\'f9\'e8\'ea\'e0\'f5. \'c7\'e0\'e4\'e0\'f7\'e0 \'ee \'f7\'e8\'f2\'e0\'f2\'e5\'eb\'ff\'f5 \'e8 \'ef\'e8\'f1\'e0\'f2\'e5\'eb\'ff\'f5.\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\li710\sl240\slmult1\cf2\kerning0\tab\'c2\'f1\'e5\'ec shared \'f0\'e5\'f1\'f3\'f0\'f1\'e0\'ec \'ef\'f0\'e8\'f1\'e2\'ee\'e8\'f2\'fc priority \'e8 \'e7\'e0\'f1\'f2\'e0\'e2\'e8\'f2\'fc \'e4\'e5\'eb\'e0\'f2\'fc Lock \'f2\'ee\'eb\'fc\'ea\'ee \'ee\'f2 \'ec\'e5\'ed\'fc\'f8\'e5\'e3\'ee \'ea \'e1\'ee\'eb\'fc\'f8\'e5\'ec\'f3. \'c2 \'ed\'e0\'f8\'e5\'ec \'ef\'f0\'e8\'ec\'e5\'f0\'e5 \'f0\'e5\'f1\'f3\'f0\'f1\'f3 \'c0 \'e2\'fb\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'ec priority A = 10, \'c2 = 20, \'d1 = 30 \'e8 \'f2.\'e4. \'cf\'e5\'f0\'e2\'fb\'e9 \'ef\'ee\'f2\'ee\'ea \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'ff transfer (A, B, 200) \'e1\'f3\'e4\'e5\'f2 \'eb\'ee\'f7\'e8\'f2\'fc \'c0 \'e4\'e0\'eb\'fc\'f8\'e5 A-200. \'cf\'ee\'f2\'ee\'ec \'eb\'ee\'f7\'e8\'f2\'fc B \'e8 B+200. \'c2\'f2\'ee\'f0\'ee\'e9 \'ef\'ee\'f2\'ee\'ea \'f2\'ee\'e6\'e5 transfer (B, A, 500) \'e1\'f3\'e4\'e5\'f2 \'f1\'ed\'e0\'f7\'e0\'eb\'e0 \'eb\'ee\'f7\'e8\'f2\'fc \'c0, \'e4\'e5\'eb\'e0\'f2\'fc A+500 \'e8 \'f2\'ee\'eb\'ea\'ee \'ef\'ee\'f2\'ee\'ec \'eb\'ee\'f7\'e8\'f2\'fc \'c2 \'e8 \'c2-500.\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf2\kerning0\par
+\tab 2. \'c7\'e0\'f5\'e2\'e0\'f2\'fb\'e2\'e0\'f2\'fc \'e1\'eb\'ee\'ea\'e8\'f0\'ee\'e2\'ea\'e8 \'ed\'e5 \'ef\'ee\'f1\'f2\'e5\'ef\'e5\'ed\'ed\'ee - \'f1\'ed\'e0\'f7\'e0\'eb\'e0 \'c0, \'e0 \'ef\'ee\'f2\'ee\'ec \'c2. \'c0 \'f1\'f0\'e0\'e7\'f3 \'e2\'f1\'e5 \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'fb\'e5 \'e4\'eb\'ff \'e2\'fb\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'ff \'e7\'e0\'e4\'e0\'f7\'e8.\cf0\kerning1\par
+\cf2\kerning0\par
+\tab 3. \'c8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'e5 \'ef\'ee\'e2\'e5\'e4\'e5\'ed\'e8\'ff \'ef\'f0\'e8 \'ed\'e5\'f3\'e4\'e0\'f7\'ed\'ee\'ec \'e7\'e0\'f5\'e2\'e0\'f2\'e5.\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\li710\sl240\slmult1\cf2\kerning0\tab\'cd\'e5 \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'f2\'f1\'ff \'e7\'e0\'f5\'e2\'e0\'f2\'e8\'f2\'fc \'f0\'e5\'f1\'f3\'f0\'f1. \'ce\'f1\'e2\'ee\'e1\'ee\'e6\'e4\'e0\'e5\'ec \'e2\'f1\'e5 \'ed\'e0\'ec\'e8 \'e7\'e0\'f5\'e2\'e0\'f7\'e5\'ed\'ed\'fb\'e5 \'f0\'e5\'f1\'f3\'f0\'f1\'fb \'e8 \'ef\'fb\'f2\'e0\'e5\'ec\'f1\'ff \'f1\'ed\'ee\'e2\'e0 ~ Ethernet \'ea\'ee\'e0\'ea\'f1\'e8\'e0\'eb, \'ea\'e0\'e6\'e4\'fb\'e9 \'ea\'ee\'ec\'ef random-\'ee\'ec \'e3\'e5\'ed\'e5\'f0\'e8\'f2 \'f1\'ea\'ee\'eb\'fc\'ea\'ee \'f1\'e5\'ea\'f3\'ed\'e4 \'e1\'f3\'e4\'e5\'f2 \'e6\'e4\'e0\'f2\'fc, \'ef\'e5\'f0\'e5\'e4 \'f2\'e5\'ec \'ea\'e0\'ea \'ee\'ef\'ff\'f2\'fc \'ef\'ee\'ef\'fb\'f2\'e0\'f2\'fc\'f1\'ff \'e7\'e0\'f5\'e2\'e0\'f2\'e8\'f2\'fc shared \'f0\'e5\'f1\'f3\'f0\'f1. \'c5\'f1\'eb\'e8 \'e1\'fb \'ec\'fb \'e6\'b8\'f1\'f2\'ea\'ee \'ef\'f0\'ee\'ef\'e8\'f1\'e0\'eb\'e8 10 \'f1\'e5\'ea, \'f2\'ee \'e2 \'ea\'e0\'ea\'ee\'e9-\'f2\'ee \'ec\'ee\'ec\'e5\'ed\'f2 \'e2\'f1\'e5 \'ea\'ee\'ec\'ef\'fb \'f1\'e8\'ed\'f5\'f0\'ee\'ed\'ed\'ee \'ef\'fb\'f2\'e0\'eb\'e8\'f1\'fc \'ef\'ee\'eb\'f3\'f7\'e8\'f2\'fc \'e4\'ee\'f1\'f2\'f3\'ef, \'ee\'e1\'eb\'e0\'ec\'fb\'e2\'e0\'eb\'e8\'f1\'fc, \'e4\'f0\'f3\'e6\'ed\'ee \'e6\'e4\'e0\'eb\'e8 \'f1\'eb\'e5\'e4\'f3\'fe\'f9\'e8\'e5 10 \'f1\'e5\'ea.\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\fi-710\li710\sl240\slmult1\cf2\kerning0\par
+\tab 4. \'c7\'e0\'e4\'e0\'ed\'e8\'e5 max \'e2\'f0\'e5\'ec\'e5\'ed\'e8 \'e1\'eb\'ee\'ea\'e8\'f0\'ee\'e2\'ea\'e8 \'f0\'e5\'f1\'f3\'f0\'f1\'e0.\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\li710\sl240\slmult1\cf2\kerning0\'c5\'f1\'eb\'e8 \'e7\'e0 \'e2\'f0\'e5\'ec\'ff max time \'ed\'e5 \'f3\'f1\'ef\'e5\'eb \'f1\'e4\'e5\'eb\'e0\'f2\'fc \'f1\'e2\'ee\'e8 \'e4\'e5\'eb\'e0, \'f2\'ee \'e2\'f1\'b8 \'ee\'f2\'ea\'e0\'f2\'fb\'e2\'e0\'e5\'f2\'f1\'ff \'ed\'e0 \'ec\'ee\'ec\'e5\'ed\'f2 \'e4\'ee \'e1\'eb\'ee\'ea\'e8\'f0\'ee\'e2\'ea\'e8.\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf2\kerning0\par
+\ul LiveLock\ulnone .\cf0\kerning1\par
+\cf2\kerning0\tab\'c4\'eb\'ff \'f2\'ee\'e3\'ee, \'f7\'f2\'ee\'e1\'fb \'ed\'e5 \'ef\'ee\'eb\'f3\'f7\'e8\'f2\'fc \b DeadLock\b0  \'f0\'e5\'e0\'eb\'e8\'e7\'f3\'e5\'ec \'f1\'eb\'ee\'e6\'ed\'ee\'e5 \'ef\'ee\'e2\'e5\'e4\'e5\'ed\'e8\'e5: \'c7\'e0\'f5\'e2\'e0\'f2\'e8\'eb\'e8 \'ee\'e4\'e8\'ed \'f0\'e5\'f1\'f3\'f0\'f1. \'c7\'e0\'f5\'e2\'e0\'f2\'e8\'eb\'e8 \'e2\'f2\'ee\'f0\'ee\'e9. \'d2\'f0\'e5\'f2\'fc\'e8\'e9 \'e7\'e0\'f5\'e2\'e0\'f2\'e8\'f2\'fc \'ed\'e5 \'ef\'ee\'eb\'f3\'f7\'e8\'eb\'ee\'f1\'fc, \'ee\'f1\'e2\'ee\'e1\'ee\'e6\'e4\'e0\'e5\'ec \'ef\'e5\'f0\'e2\'fb\'e9 \'e8 \'e2\'f2\'ee\'f0\'ee\'e9. \'ce\'ef\'ff\'f2\'fc \'ef\'fb\'f2\'e0\'e5\'ec\'f1\'ff. \'cd\'e0 \'fd\'f2\'ee\'f2 \'f0\'e0\'e7 \'e2\'f2\'ee\'f0\'ee\'e9 \'e7\'e0\'f5\'e2\'e0\'f2\'e8\'f2\'fc \'ed\'e5 \'ef\'ee\'eb\'f3\'f7\'e8\'eb\'ee\'f1\'fc. \'ce\'ef\'ff\'f2\'fc \'ef\'fb\'f2\'e0\'e5\'ec\'f1\'ff \kerning1\u8594? \b LiveLock\b0  \'e8\'eb\'e8 \'e4\'e8\'ed\'e0\'ec\'e8\'f7\'e5\'f1\'ea\'e0\'ff \'e1\'eb\'ee\'ea\'e8\'f0\'ee\'e2\'ea\'e0\kerning0 . \'c1\'fb\'e2\'e0\'e5\'f2, \'ea\'ee\'e3\'e4\'e0 \'ea\'ee\'e4 \'e7\'e0\'eb\'e8\'eb\'e8 \cf1\kerning1\b synchronized\cf2\kerning0\b0  \'e1\'eb\'ee\'ea\'e0\'ec\'e8.\cf0\kerning1\par
+\cf2\kerning0\tab Livelock \'e2\'ee\'e7\'ed\'e8\'ea\'e0\'e5\'f2, \'ea\'ee\'e3\'e4\'e0 \'ef\'ee\'f2\'ee\'ea\'e8 \'f2\'f0\'e0\'f2\'ff\'f2 \'e2\'f1\'e5 \'f1\'e2\'ee\'e5 \'e2\'f0\'e5\'ec\'ff \'ed\'e0 \'ef\'e5\'f0\'e5\'e3\'ee\'e2\'ee\'f0\'fb \'ee \'e4\'ee\'f1\'f2\'f3\'ef\'e5 \'ea \'f0\'e5\'f1\'f3\'f0\'f1\'f3 \'e8\'eb\'e8 \'ee\'e1\'ed\'e0\'f0\'f3\'e6\'e8\'e2\'e0\'fe\'f2 \'e8 \'e8\'e7\'e1\'e5\'e3\'e0\'fe\'f2 \'f2\'f3\'ef\'e8\'ea\'ee\'e2\'ee\'e9 \'f1\'e8\'f2\'f3\'e0\'f6\'e8\'e8 \'f2\'e0\'ea, \'f7\'f2\'ee \'ef\'ee\'f2\'ee\'ea \'f4\'e0\'ea\'f2\'e8\'f7\'e5\'f1\'ea\'e8 \'ed\'e5 \'ef\'f0\'ee\'e4\'e2\'e8\'e3\'e0\'e5\'f2\'f1\'ff \'e2\'ef\'e5\'f0\'e5\'e4.\cf0\kerning1\par
+\cf2\kerning0\tab\'cf\'f0\'e8\'ec\'e5\'f0 \'f1\'eb\'ee\'e6\'ed\'ee\'e3\'ee \'ef\'ee\'e2\'e5\'e4\'e5\'ed\'e8\'ff: \'c4\'e2\'e0 \'f7\'e5\'eb\'ee\'e2\'e5\'ea\'e0 \'e8\'e4\'f3\'f2 \'ed\'e0\'e2\'f1\'f2\'e5\'f0\'e5\'f7\'f3 \'e2 \'f3\'e7\'ea\'ee\'ec \'ea\'ee\'f0\'e8\'e4\'ee\'f0\'e5. \'cf\'e5\'f0\'e2\'fb\'e9 \'f0\'e5\'f8\'e8\'eb \'f1\'ec\'e5\'f1\'f2\'e8\'f2\'fc\'f1\'ff \'e2\'ef\'f0\'e0\'e2\'ee \'e8 \'e2\'f2\'ee\'f0\'ee\'e9 \'f2\'ee\'e6\'e5 \'f3\'f8\'b8\'eb \'e2\'ef\'f0\'e0\'e2\'ee. \'cf\'e5\'f0\'e2\'fb\'e9 \'fd\'f2\'ee \'f3\'e2\'e8\'e4\'e5\'eb \'e8 \'f1\'ec\'e5\'f1\'f2\'e8\'eb\'f1\'ff \'e2\'eb\'e5\'e2\'ee, \'e2\'f2\'ee\'f0\'ee\'e9 \'f1\'e4\'e5\'eb\'e0\'eb \'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5.\cf0\kerning1\par
+\cf2\kerning0\tab\'cf\'f0\'e8 \'f0\'e5\'e0\'eb\'e8\'e7\'e0\'f6\'e8\'e8 \'f1\'eb\'ee\'e6\'ed\'ee\'e3\'ee \'ef\'ee\'e2\'e5\'e4\'e5\'ed\'e8\'ff (\'ef\'f0\'e8\'ec\'e5\'f0 Ethernet CSMA/CD) \'e7\'e0\'e4\'e5\'f0\'e6\'ea\'e8 \'ef\'f0\'e8 \'ef\'ee\'ef\'fb\'f2\'ea\'e5 \'e7\'e0\'f5\'e2\'e0\'f2\'e0 \'f0\'e5\'f1\'f3\'f0\'f1\'e0 \'e4\'ee\'eb\'e6\'ed\'fb \'e2\'fb\'f1\'f2\'e0\'e2\'eb\'ff\'f2\'fc\'f1\'ff Random-\'ed\'ee!\cf0\kerning1\par
+\cf2\kerning0\par
+\'c4\'e8\'e0\'e3\'ed\'ee\'f1\'f2\'e8\'ea\'e0 Deadlock/LiveLock.\cf0\kerning1\par
+\cf2\kerning0\tab java/bin/jps - \'ef\'ee\'ea\'e0\'e6\'e5\'f2 id \'e2\'f1\'e5\'f5 \'e7\'e0\'ef\'f3\'f9\'e5\'ed\'ed\'fb\'f5 java threads\cf0\kerning1\par
+\cf2\kerning0\tab java/bin/jstack \i id_\'ef\'ee\'f2\'ee\'ea\'e0\i0  - \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'ec thread dump \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'ee\'e3\'ee \'ef\'ee\'f2\'ee\'ea\'e0\cf0\kerning1\par
+\cf2\kerning0\tab\'e2 Linux \'ec\'ee\'e6\'ed\'ee \'ee\'f2\'ef\'f0\'e0\'e2\'e8\'f2\'fc kill -3 \i id_\'ef\'ee\'f2\'ee\'ea\'e0\i0  \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 SIGQUIT - \'f2\'ee \'e6\'e5 \'f0\'e0\'f1\'ef\'e5\'f7\'e0\'f2\'e0\'e5\'f2 dump\cf0\kerning1\par
+\cf2\kerning0\par
+Jconsole - \'f2\'f3\'eb\'e7\'e0 \'ea\'ee\'f2\'ee\'f0\'e0\'ff \'e8\'e4\'b8\'f2 \'e2\'ec\'e5\'f1\'f2\'e5 \'f1 JDK.\cf0\kerning1\par
+\cf2\kerning0\par
+\ul Starvation\ulnone .\cf0\kerning1\par
+\cf2\kerning0\'d7\'e0\'f1\'f2\'ee \'e2\'fb\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff \'ec\'e5\'f2\'ee\'e4, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'e4\'ee\'eb\'e3\'ee \'e1\'eb\'ee\'ea\'e8\'f0\'f3\'e5\'f2 \'e2\'f1\'e5\'ec \'ed\'f3\'e6\'ed\'fb\'e9 \'f0\'e5\'f1\'f3\'f0\'f1. \'c2\'f1\'ff \'f0\'e0\'e1\'ee\'f2\'e0 \'f1\'f2\'ee\'e8\'f2 \'ef\'ee\'ea\'e0 class Heavy \'ed\'e5 \'ee\'f1\'e2\'e1\'ee\'e4\'e8\'f2 int x.\cf0\kerning1\par
+\cf2\kerning0\par
+\ul Race Condition\ulnone .\cf0\kerning1\par
+\cf2\kerning0\'ca \'ee\'e4\'ed\'ee\'e9 \'e8 \'f2\'ee\'e9 \'e6\'e5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'ee\'e9 \'ee\'e4\'ed\'ee\'e2\'f0\'e5\'ec\'e5\'ed\'ed\'ee \'f1\'f2\'f3\'f7\'e0\'f2\'fc\'f1\'ff 2-\'e0 \'ef\'ee\'f2\'ee\'ea\'e0. \'d0\'e5\'e7\'f3\'eb\'fc\'f2\'e0\'f2 \'e2\'fb\'f7\'e8\'f1\'eb\'e5\'ed\'e8\'e9 \'e2 \'ea\'e0\'e6\'e4\'ee\'ec \'ef\'ee\'f2\'ee\'ea\'e5 \'e7\'e0\'e2\'e8\'f1\'e8\'f2 \'ee\'f2 "\'f3\'e4\'e0\'f7\'e8".\cf0\kerning1\par
+\cf2\kerning0 Race Condition - \'fd\'f2\'ee \'ea\'ee\'e3\'e4\'e0 \'f0\'e5\'e7\'f3\'eb\'fc\'f2\'e0\'f2 \'e7\'e0\'e2\'e8\'f1\'e8\'f2 \'ee\'f2 \'e2\'f0\'e5\'ec\'e5\'ed\'e8 \'f1\'ee\'e1\'fb\'f2\'e8\'e9.\cf0\kerning1\par
+\cf2\kerning0\par
+\'cf\'f0\'e8\'ed\'f6\'e8\'ef \b Read-Modify-Write\b0 :\cf0\kerning1\par
+\cf2\kerning0\'cf\'f0\'e5\'ee\'e1\'f0\'e0\'e7\'ee\'e2\'e0\'ed\'e8\'e5 \'ee\'e1\'fa\'e5\'ea\'f2\'e0 \'f1 \'f2\'ee\'f7\'ea\'e8 \'e7\'f0\'e5\'ed\'e8\'ff \'e5\'e3\'ee \'ef\'f0\'e5\'e4\'fb\'e4\'f3\'f9\'e5\'e3\'ee \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'ff. \'d7\'f2\'ee\'e1\'fb \'f3\'e2\'e5\'eb\'e8\'f7\'e8\'f2\'fc \'f1\'f7\'b8\'f2\'f7\'e8\'ea \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee \'f3\'e7\'ed\'e0\'f2\'fc \'e5\'e3\'ee \'ef\'f0\'e5\'e4\'fb\'e4\'f3\'f9\'e5\'e5 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5. \'d3\'e1\'e5\'e4\'e8\'f2\'f1\'ff, \'f7\'f2\'ee \'e1\'ee\'eb\'fc\'f8\'e5 \'ed\'e8\'ea\'f2\'ee \'ed\'e5 \'ec\'ee\'e6\'e5\'f2 \'e8\'e7\'ec\'e5\'ed\'e8\'f2\'fc \'fd\'f2\'ee \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5, \'ef\'ee\'ea\'e0 \'e2\'fb \'ed\'e0\'f5\'ee\'e4\'e8\'f2\'e5\'f1\'fc \'e2 \'fd\'f2\'ee\'e9 \'ef\'f0\'ee\'f6\'e5\'e4\'f3\'f0\'e5. \cf0\kerning1\par
+\cf2\kerning0\par
+\'cf\'f0\'e8\'ed\'f6\'e8\'ef \b Check-then-Act\b0 :\cf0\kerning1\par
+\cf2\kerning0\'cc\'fb \'e4\'e5\'eb\'e0\'e5\'ec \'ed\'e0\'e1\'eb\'fe\'e4\'e5\'ed\'e8\'e5: \'ef\'f0\'ee\'e2\'e5\'f0\'ff\'e5\'ec \'f1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'e5\'f2 \'eb\'e8 \'f4\'e0\'e9\'eb \kerning1\u8594?\kerning0  \'f4\'e0\'e9\'eb \'ed\'e5 \'f1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'e5\'f2. \'cd\'e0 \'ee\'f1\'ed\'ee\'e2\'e0\'ed\'e8\'e8 \'ed\'e0\'e1\'eb\'fe\'e4\'e5\'ed\'e8\'ff \'f1\'ee\'e7\'e4\'e0\'b8\'ec \'f4\'e0\'e9\'eb. \'cd\'ee \'ea\'ee\'e3\'e4\'e0 \'ec\'fb \'ef\'f0\'e8\'ed\'e8\'ec\'e0\'eb\'e8 \'fd\'f2\'ee \'f0\'e5\'f8\'e5\'ed\'e8\'e5, \'ed\'e0\'f8\'e5 \'ed\'e0\'e1\'eb\'fe\'e4\'e5\'ed\'e8\'e5 \'f1\'f2\'e0\'eb\'ee \'ed\'e5\'e4\'e5\'e9\'f1\'f2\'e2\'e8\'f2\'e5\'eb\'fc\'ed\'fb\'ec (\'ea\'f2\'ee-\'f2\'ee \'e4\'f0\'f3\'e3\'ee\'e9 \'e2 \'fd\'f2\'ee\'f2 \'ec\'ee\'ec\'e5\'ed\'f2 \'f1\'ee\'e7\'e4\'e0\'eb \'ed\'e0\'ec \'f4\'e0\'e9\'eb). \'c2 \'f0\'e5\'e7\'f3\'eb\'fc\'f2\'e0\'f2\'e5 \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'ec \'ef\'e5\'f0\'e5\'e7\'e0\'ef\'e8\'f1\'fc \'e4\'e0\'ed\'ed\'fb\'f5, \'ef\'ee\'e2\'f0\'e5\'e6\'e4\'e5\'ed\'e8\'e5 \'f4\'e0\'e9\'eb\'ee\'e2 \'e8 \'f2.\'ef.\cf0\kerning1\par
+\cf2\kerning0\par
+\cf0\'d0\'e5\'f8\'e5\'ed\'e8\'e5: \'c2\'f1\'e5 \'ee\'ef\'e5\'f0\'e0\'f6\'e8\'e8 \'ef\'ee\'e4\'ef\'e0\'e4\'e0\'fe\'f9\'e8\'e5 \'ef\'ee\'e4 Read-Modify-Write \'e8 Check-then-Act \'e4\'ee\'eb\'e6\'ed\'fb \'e1\'fb\'f2\'fc \'c0\'f2\'ee\'ec\'e0\'f0\'ed\'fb\'ec\'e8.\kerning1\par
+\cf2\kerning0\'d2.\'e5. \'ee\'ef\'e5\'f0\'e0\'f6\'e8\'fe \'f5++ \'ed\'e0\'e4\'ee \'e4\'e5\'eb\'e0\'f2\'fc AtomicInteger.getAndIncrement(). \'c0 \'ef\'f0\'ee\'e2\'e5\'f0\'ea\'e0 \'f1\'f3\'f9\'e5\'f1\'f2\'e2\'ee\'e2\'e0\'ed\'e8\'ff \'f4\'e0\'e9\'eb\'e0 \'e8 \'f1\'ee\'e7\'e4\'e0\'ed\'e8\'e5 \'ed\'ee\'e2\'ee\'e3\'ee - \'ee\'e1\'e5\'f0\'ed\'f3\'f2\'fc \'e2 synchronized.\cf0\kerning1\par
+\cf2\kerning0\par
+\pard\nowidctlpar\hyphpar0\fi-852\li852\sl240\slmult1\'cd\'e0\'f8 \'ea\'eb\'e0\'f1\'f1 \'f0\'e0\'f1\'ea\'eb\'e0\'e4\'fb\'e2\'e0\'e5\'f2 \'f7\'e8\'f1\'eb\'ee \'ed\'e0 \'ef\'f0\'ee\'f1\'f2\'fb\'e5 \'ec\'ed\'ee\'e6\'e8\'f2\'e5\'eb\'e8. \'d1\'e4\'e5\'eb\'e0\'e5\'ec cache - \'ea\'eb\'e0\'f1\'f1, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'e1\'f3\'e4\'e5\'f2 \'f5\'f0\'e0\'ed\'e8\'f2\'fc \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e5\'e5 \'f4\'e0\'ea\'f2\'ee\'f0\'e8\'e7\'ee\'e2\'e0\'ed\'ed\'ee\'e5 \'f7\'e8\'f1\'eb\'ee (lastNumber) \'e8 \'e5\'e3\'ee \'ec\'ed\'ee\'e6\'e8\'f2\'e5\'eb\'e8 (lastFactors). \'d3\'f1\'eb\'ee\'e2\'e8\'e5 \'e7\'e0\'e4\'e0\'f7\'e8: \'e2 \'eb\'fe\'e1\'ee\'e9 \'ec\'ee\'ec\'e5\'ed\'f2 \'e2\'f0\'e5\'ec\'e5\'ed\'e8 \'ef\'f0\'ee\'e8\'e7\'e2\'e5\'e4\'e5\'ed\'e8\'e5 lastFactors = lastNumber. \'c8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'e5 \'ee\'e4\'ed\'ee\'e3\'ee \'e8\'e7 \'f7\'e8\'f1\'e5\'eb \'e2\'e5\'e4\'b8\'f2 \'ea \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'fe \'e2\'f1\'e5\'f5 \'ee\'f1\'f2\'e0\'e2\'f8\'e8\'f5\'f1\'ff \u8594? \'ee\'e1\'ed\'ee\'e2\'eb\'e5\'ed\'e8\'e5 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e9 \b\'d1\'c2\'df\'c7\'c0\'cd\'cd\'db\'d5\b0  \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'f5 \'e4\'ee\'eb\'e6\'ed\'ee \'ef\'f0\'ee\'e8\'f1\'f5\'ee\'e4\'e8\'f2\'fc \'e2 \'ee\'e4\'ed\'ee\'e9 \b\'c0\'d2\'ce\'cc\'c0\'d0\'cd\'ce\'c9\b0  \'ee\'ef\'e5\'f0\'e0\'f6\'e8\'e8. \'d2.\'e5. \'e4\'eb\'ff \'ef\'ee\'f2\'ee\'ea\'ee\'e1\'e5\'e7\'ee\'ef\'e0\'f1\'ed\'ee\'f1\'f2\'e8 \'f1\'e4\'e5\'eb\'e0\'f2\'fc \'e2\'f1\'e5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5 \'f2\'e8\'ef\'ee\'ec Atomic - \'ed\'e5\'e4\'ee\'f1\'f2\'e0\'f2\'ee\'f7\'ed\'ee!\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf2\kerning0\par
+\cf9\kerning1 @NotThreadSafe\cf0\par
+\cf1\b class\cf2\b0  \kerning0 UnsafeCachingServlet \cf1\kerning1\b implements\cf2\b0  \kerning0 Servlet \{\cf0\kerning1\par
+\cf2\kerning0\tab\cf1\kerning1\b private final \cf2\kerning0\b0 AtomicReference<BigInteger> lastNumber = \cf1\kerning1\b new \cf2\kerning0\b0 AtomicReference<BigInteger>();\cf0\kerning1\par
+\cf2\kerning0\tab\cf1\kerning1\b private final \cf2\kerning0\b0 AtomicReference<BigInteger []> lastFactors = \cf1\kerning1\b new \cf2\kerning0\b0 AtomicReference<BigInteger []>();\cf0\kerning1\par
+\cf2\kerning0\tab\cf0\kerning1\par
+\cf2\kerning0\tab\cf1\kerning1\b public void \cf2\kerning0\b0 service(ServletRequest req, ServletResponse resp)\{\cf0\kerning1\par
+\cf2\kerning0\tab\tab BigInteger i ...\cf0\kerning1\par
+\cf2\kerning0\tab\tab encodeInfoResponse(resp,...\cf0\kerning1\par
+\cf2\kerning0\par
+\'c2 \'e1\'eb\'ee\'ea synchronized \'ec\'ee\'e6\'e5\'f2 \'e7\'e0\'f5\'ee\'e4\'e8\'f2\'fc \'f2\'ee\'eb\'fc\'ea\'ee \'ee\'e4\'e8\'ed Thread. Synchronized \'ec\'ee\'e6\'e5\'f2 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc\'f1\'ff \'ea\'e0\'ea:\cf0\kerning1\par
+\cf2\kerning0\par
+\tab\cf1\kerning1\b public synchronized\cf2\kerning0\b0  \cf1\kerning1\b void \cf2\kerning0\b0 service() \{\tab\tab lock-\'f7\'e8\'ec \'ef\'ee\'eb\'ed\'ee\'f1\'f2\'fc\'fe \'e2\'e5\'f1\'fc \'ec\'e5\'f2\'ee\'e4\cf0\kerning1\par
+\cf2\kerning0\tab\tab ...\cf0\kerning1\par
+\cf2\kerning0\tab\tab\}\cf0\kerning1\par
+\cf2\kerning0\'e8\'eb\'e8\cf0\kerning1\par
+\cf2\kerning0\tab\cf1\kerning1\b synchronized\cf2\kerning0\b0  (visitCounter) \{\tab\tab\tab\tab lock-\'f7\'e8\'ec \'ee\'e1\'fa\'e5\'ea\'f2 \'e8 \'e2\'ed\'f3\'f2\'f0\'e8 \'e1\'eb\'ee\'ea\'e0 \'ef\'f0\'ee\'e8\'e7\'e2\'ee\'e4\'e8\'ec \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee \'ed\'e5 \'e0\'f2\'ee\'ec\'e0\'f0\'ed\'fb\'f5 \'ee\'ef\'e5\'f0\'e0\'f6\'e8\'e8\cf0\kerning1\par
+\cf2\kerning0\tab\tab visitCounter ++;\cf0\kerning1\par
+\cf2\kerning0\tab\tab\}\cf0\kerning1\par
+\cf2\kerning0\par
+\'c4\'e0\'eb\'e5\'e5 \'e8\'e4\'f3\'f2 \'f0\'e0\'f1\'f1\'f3\'e6\'e4\'e5\'ed\'e8\'ff \'ee \'f2\'ee\'ec, \'f7\'f2\'ee \'e5\'f1\'eb\'e8 \'e5\'f1\'f2\'fc \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'e0\'ff, \'ea\'ee\'f2\'ee\'f0\'e0\'ff \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc \'e4\'ee\'f1\'f2\'f3\'ef\'ed\'e0 \'e8\'e7 \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'e8\'f5 \'ef\'ee\'f2\'ee\'ea\'ee\'e2, \'f2\'ee \'e5\'b8 \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee \'e7\'e0\'f9\'e8\'f9\'e0\'f2\'fc "\'e1\'eb\'ee\'ea\'e8\'f0\'ee\'e2\'ea\'ee\'e9" \'e8 \'e2\'f1\'e5 \'ef\'f0\'e5\'ee\'e1\'f0\'e0\'e7\'ee\'e2\'e0\'ed\'e8\'ff \'e4\'ee\'eb\'e6\'ed\'fb \'ed\'e0\'f5\'ee\'e4\'e8\'f2\'fc\'f1\'ff \'f2\'ee\'eb\'fc\'ea\'ee \'e2 \'ee\'e4\'ed\'ee\'ec \'ec\'e5\'f2\'ee\'e4\'e5. \'c5\'f1\'eb\'e8 \'e2 \'ea\'eb\'e0\'f1\'f1\'e5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5 \'f1\'e2\'ff\'e7\'e0\'ed\'fb \'e8\'ed\'e2\'e0\'f0\'e8\'e0\'ed\'f2\'ee\'ec, \'f2\'ee \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff \'e2\'f1\'e5\'f5 \'f1\'e2\'ff\'e7\'e0\'ed\'ed\'fb\'f5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'f5 \'e4\'ee\'eb\'e6\'ed\'ee \'ed\'e0\'f5\'ee\'e4\'e8\'f2\'fc\'f1\'ff \'f2\'ee\'eb\'fc\'ea\'ee \'e2 \'ee\'e4\'ed\'ee\'ec \'ec\'e5\'f2\'ee\'e4\'e5.\cf0\kerning1\par
+\cf2\kerning0\par
+\'c1\'eb\'ee\'ea\'e8\'f0\'ee\'e2\'ea\'e8 \'e4\'e5\'eb\'e0\'fe\'f2 \'f2\'ee, \'f7\'f2\'ee \'ef\'ee\'f2\'ee\'ea\'e8 \'ee\'e1\'f0\'e0\'f9\'e0\'fe\'f2\'f1\'ff \'ea \'ee\'e1\'fa\'e5\'ea\'f2\'f3 \'ef\'ee \'ee\'f7\'e5\'f0\'e5\'e4\'e8. \'d2.\'ea. "\'ef\'ee \'ee\'f7\'e5\'f0\'e5\'e4\'e8", \'f2\'ee \'ec\'ee\'e6\'ed\'ee \'e7\'e0\'e4\'f3\'ec\'e0\'f2\'fc\'f1\'ff \'ee \'ef\'f0\'ee\'f2\'ee\'ea\'ee\'eb\'e0\'f5 \'e4\'ee\'f1\'f2\'f3\'ef\'e0 \'ea \'f0\'e0\'e7\'e4\'e5\'eb\'ff\'e5\'ec\'ee\'ec\'f3 \'f0\'e5\'f1\'f3\'f0\'f1\'f3.\cf0\kerning1\par
+\cf2\kerning0\par
+\'c5\'f1\'eb\'e8 \'e2 \'ea\'eb\'e0\'f1\'f1\'e5 \'e5\'f1\'f2\'fc int \'f5 \'e8 \'f1 \'ed\'e8\'ec \'ed\'e0\'e4\'ee \'e4\'e5\'eb\'e0\'f1\'f2\'fc \'f5++, \'e0 ++ \'ee\'ef\'e5\'f0\'e0\'f6\'e8\'ff \'ed\'e5 \'e0\'f2\'ee\'ec\'e0\'f0\'ed\'e0\'ff: read, inc, write - \'ec\'ee\'e6\'e5\'f2 \'ef\'ee\'eb\'f3\'f7\'e8\'f2\'fc\'f1\'ff \'eb\'e0\'e6\'e0. \'c4\'eb\'ff \'fd\'f2\'ee\'e3\'ee AtomicInteger \'f3 \'ea\'ee\'f2\'ee\'f0\'ee\'e3\'ee \'e2\'ed\'f3\'f2\'f0\'e8 \'e5\'f1\'f2\'fc...\cf0\kerning1\par
+\cf2\kerning0\par
+\par
+\'cf\'f0\'ee Oberon \'ef\'e8\'f1\'e0\'eb\'e8: \'ec\'ee\'e4\'e5\'eb\'e8 \'ec\'ed\'ee\'e3\'ee\'ef\'ee\'f2\'ee\'f7\'ed\'ee\'f1\'f2\'e8, \'ee\'f1\'ed\'ee\'e2\'e0\'ed\'ed\'fb\'e5 \'ed\'e0 \'f0\'e0\'e1\'ee\'f2\'e0\'f5 \'c1\'f0\'e8\'ed\'f7\'e0 \'d5\'e0\'ed\'f1\'e5\'ed\'e0 \'e8 \'d2\'ee\'ed\'e8 \'d5\'ee\'e0\'f0\'e0\cf0\kerning1\par
+\cf2\kerning0  - \'c2\'fb\'f2\'e5\'f1\'ed\'ff\'fe\'f9\'e0\'ff \'ec\'ed\'ee\'e3\'ee\'e7\'e0\'e4\'e0\'f7\'ed\'ee\'f1\'f2\'fc (preemptive multitasking) - OS \'ef\'e5\'f0\'e5\'ea\'eb\'fe\'f7\'e0\'e5\'f2 \'e7\'e0\'e4\'e0\'f7\'e8 \'ef\'ee \'e8\'f1\'f2\'e5\'f7\'e5\'ed\'e8\'e8 \'ed\'e5\'ea\'ee\'e5\'e3\'ee \'ea\'e2\'e0\'ed\'f2\'e0 \'e2\'f0\'e5\'ec\'e5\'ed\'e8\cf0\kerning1\par
+\cf2\kerning0  - \'ca\'ee\'ee\'ef\'e5\'f0\'e0\'f2\'e8\'e2\'ed\'e0\'ff \'ec\'ed\'ee\'e3\'ee\'ef\'ee\'f2\'ee\'f7\'ed\'ee\'f1\'f2\'fc, \'f1 \'ed\'e5\'e1\'eb\'ee\'ea\'e8\'f0\'f3\'fe\'f9\'e5\'e9 (lock-free) \'f1\'e8\'ed\'f5\'f0\'ee\'ed\'e8\'e7\'e0\'f6\'e8\'e5\'e9 - \'ea\'ee\'ec\'ef\'e8\'eb\'ff\'f2\'ee\'f0 \'e0\'e2\'f2\'ee\'ec\'e0\'f2\'e8\'f7\'e5\'f1\'ea\'e8 \'e3\'e5\'ed\'e5\'f0\'e8\'f0\'f3\'e5\'f2 \'ea\'ee\'e4 \'ef\'e5\'f0\'e5\'ea\'eb\'fe\'f7\'e5\'ed\'e8\'ff \'ef\'ee\'f2\'ee\'ea\'ee\'e2 \'e2 \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'b8\'ed\'ed\'fb\'f5 \'ec\'e5\'f1\'f2\'e0\'f5.\cf0\kerning1\par
+\cf2\kerning0\par
+\par
+\cf0\kerning1\par
+\cf2\kerning0\par
+\b Java Concurrency\b0  \'f1\'ee\'f1\'f2\'ee\'e8\'f2 \'e8\'e7\cf0\kerning1\par
+\cf2\kerning0\tab 1. ExecutorService, Executors\cf0\kerning1\par
+\cf2\kerning0\tab 2. Atomic. Compare-and-Swap - \'ee\'ef\'e5\'f0\'e0\'f6\'e8\'ff ++ \'f1\'ee\'f1\'f2\'ee\'e8\'f2 \'e8\'e7 3-\'f5 \'e4\'e5\'e9\'f1\'f2\'e2\'e8\'e9. \'c4\'eb\'ff \'e5\'b8 \'e2\'fb\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'ff \'e2 concurrency \'f0\'e5\'e6\'e8\'ec\'e5 \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee \'e4\'e5\'eb\'e0\'f2\'fc Synchronized. \'cd\'ee \'e2 Intel CPU \'e5\'f1\'f2\'fc \'e8\'ed\'f1\'f2\'f0\'f3\'ea\'f6\'e8\'ff cmpxchg ~ CAS (Compare-and-Swap), \'f1 \'ef\'ee\'ec\'ee\'f9\'fc\'fe \'ea\'ee\'f2\'ee\'f0\'fb\'f5 \'ec\'ee\'e6\'ed\'ee \'ee\'e1\'ee\'e9\'f2\'e8\'f1\'fc \'e1\'e5\'e7 Synchronized.\cf0\kerning1\par
+\cf2\kerning0\tab 3. CyclicBarrier, CountDownLatch (\'ee\'ef\'f6\'e8\'ee\'ed\'e0\'eb\'fc\'ed\'ee)\cf0\kerning1\par
+\cf2\kerning0\tab 4. Future, CompletionStage -> CompletableFuture\cf0\kerning1\par
+\cf2\kerning0\tab 5. Futuretask, RunnableFuture, ForkJoinTask\cf0\kerning1\par
+\cf2\kerning0\ul\par
+\ulnone\'cf\'f0\'ee CompletableFuture \cf0{\field{\*\fldinst{HYPERLINK "https://javarush.ru/groups/posts/2065-threadom-java-ne-isportishjh--chastjh-iv---callable-future-i-druzjhja"}}{\fldrslt{\ul\cf10 https://javarush.ru/groups/posts/2065-threadom-java-ne-isportishjh--chastjh-iv---callable-future-i-druzjhja}}}\kerning1\f0\fs22\par
+\cf2\kerning0\ul\par
+\'d0\'e0\'e1\'ee\'f2\'e0 \'f1 \'f1\'e5\'f2\'fc\'fe\ulnone :\cf0\kerning1\par
+\cf2\tab C\'e5\'f0\'e2\'e5\'f0\'e0 \'e4\'ee\'eb\'e6\'ed\'fb \'f2\'e5\'f0\'ec\'e8\'ed\'e8\'f0\'ee\'e2\'e0\'f2\'fc \'ec\'ed\'ee\'e3\'ee \'d2\'d1\'d0 connect-\'ee\'e2. \'c2\'f1\'e5 connect-\'fb \'e8\'e7\'ed\'e0\'f7\'e0\'eb\'fc\'ed\'ee \'ee\'e1\'f0\'e0\'e1\'e0\'f2\'fb\'e2\'e0\'eb\'e8\'f1\'fc \'e2 \'ee\'e4\'ed\'ee\'ef\'ee\'f2\'ee\'f7\'ed\'ee\'ec \'f0\'e5\'e6\'e8\'ec\'e5. \'c2 \'ee\'e4\'e8\'ed\'ee\'ec socket-\'e5 \'e2\'ee\'e7\'ed\'e8\'ea\'eb\'e8 \'ef\'f0\'ee\'e1\'eb\'e5\'ec\'fb \u8594? \'e2\'f1\'e5 \'ee\'f1\'f2\'e0\'eb\'fc\'ed\'fb\'e5 \'f2\'ee\'e6\'e5 \'f1\'f2\'f0\'e0\'e4\'e0\'eb\'e8. \'c4\'e5\'eb\'e0\'eb\'e8 \'ee\'e4\'ed\'ee\'ef\'ee\'f2\'ee\'f7\'ed\'fb\'e5 \'ef\'f0\'e8\'eb\'ee\'e6\'e5\'ed\'e8\'ff \'f1 Non-Blocking \'e2\'e2\'ee\'e4\'ee\'ec/\'e2\'fb\'e2\'ee\'e4\'ee\'ec - \'f1\'f5\'e5\'ec\'e0 \'f1\'eb\'ee\'e6\'ed\'e0\'ff, \'e2 \'ef\'f0\'ee\'f6\'e5\'f1\'f1\'e5 \'f0\'e0\'e1\'ee\'f2\'fb \'e2\'ee\'e7\'ed\'e8\'ea\'e0\'eb\'ee \'ec\'ed\'ee\'e3\'ee \'ee\'f8\'e8\'e1\'ee\'ea. \'cd\'e0\'f7\'e0\'eb\'e8 \'ef\'f0\'ee\'e1\'ee\'e2\'e0\'f2\'fc \'ed\'e0 \'ea\'e0\'e6\'e4\'fb\'e9 socket \'e2\'fb\'e4\'e5\'eb\'ff\'f2\'fc thread, \'ed\'ee \'e2 Unix \'f1\'e8\'f1\'f2\'e5\'ec\'e0\'f5 \'ea\'ee\'eb-\'e2\'ee thread \'e2\'ed\'f3\'f2\'f0\'e8 \'ee\'e4\'ed\'ee\'e3\'ee proccess ~100 - \'ec\'e0\'eb\'ee\'e2\'e0\'f2\'ee. \'c2 \'f0\'e5\'e7\'f3\'eb\'fc\'f2\'e0\'f2\'e5 \'f0\'e0\'e7\'f0\'e0\'e1\'ee\'f2\'e0\'eb\'e8 \'ec\'f3\'eb\'fc\'f2\'e8\'ef\'eb\'e5\'ea\'f1\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'e5 \'e2\'e2\'ee\'e4\'e0/\'e2\'fb\'e2\'ee\'e4\'e0 \'f7\'e5\'f0\'e5\'e7 Syscall-\'fb \u8594? select \'e8 poll. \'c4\'eb\'ff \'f0\'e0\'e1\'ee\'f2\'fb \'f1 \'fd\'f2\'e8\'ec \'e4\'e5\'eb\'ee\'ec \'e2 Java \'ed\'e0\'ef\'e8\'f1\'e0\'eb\'e8 \'ed\'ee\'e2\'fb\'e9 \'ef\'e0\'ea\'e5\'f2 java.nio. - Non-Blocking I/O.\cf0\par
+\cf2\tab Thread \'f5\'ee\'f7\'e5\'f2 \'ef\'f0\'ee\'f7\'e8\'f2\'e0\'f2\'fc \'e4\'e0\'ed\'ed\'fb\'e5 \'e8\'e7 InputStream. \'d1\'ea\'ee\'f0\'ee\'f1\'f2\'fc Thread > \'f1\'ea\'ee\'f0\'ee\'f1\'f2\'e8 InputStream. \'ca\'ee\'e3\'e4\'e0 Thread \'ed\'e0\'ef\'f0\'ff\'ec\'f3\'fe \'f7\'e8\'f2\'e0\'e5\'f2 \'e4\'e0\'ed\'ed\'fb\'e5 \'e8\'e7 InputStream, \'f1\'e0\'ec Thread \'ef\'e5\'f0\'e5\'f5\'ee\'e4\'e8\'f2 \'e2 Blocking \'e8 \'e4\'ee\'eb\'e3\'ee \'e6\'e4\'b8\'f2, \'ea\'ee\'e3\'e4\'e0 InputStream \'ef\'e5\'f0\'e5\'e4\'e0\'f1\'f2 \'e5\'ec\'f3 \'e4\'e0\'ed\'ed\'fb\'e5. \'cf\'ee\'fd\'f2\'ee\'ec\'f3 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'ea\'ee\'ed\'f6\'e5\'ef\'f6\'e8\'ff Non-Blocking I/O, \'e2 \'ea\'ee\'f2\'ee\'f0\'ee\'e9 Thread \'ed\'e5 \'e6\'e4\'b8\'f2:\cf0\par
+\cf2\par
+   Thread\tab\tab Buffer\tab Channel ~ InputStream\cf0\par
+\cf2\tab |------- \'e4\'e0\'e9 \'e4\'e0\'ed\'ed\'fb\'e5 -------->\tab |\cf0\par
+\cf2\tab |\tab\tab   |<---- \'e4\'e0\'fe ----\tab |\cf0\par
+\cf2\tab |-- \'e3\'ee\'f2\'ee\'e2\'ee?-->|<---- \'e4\'e0\'fe ----\tab |\cf0\par
+\cf2\tab |--- \'ed\'e5\'f2 ---->|<---- \'e4\'e0\'fe ----\tab |\cf0\par
+\cf2\tab |\tab\tab   |<---- \'e4\'e0\'fe ----\tab |\cf0\par
+\cf2\tab |-- \'e3\'ee\'f2\'ee\'e2\'ee?-->|\tab\tab\tab |\cf0\par
+\cf2\tab |<- \'e7\'e0\'e1\'e8\'f0\'e0\'e9 --|\tab\tab\tab |\cf0\par
+\cf2\par
+\cf1\b final\cf2\b0  \b ServerSocketChannel \b0 serverChannel = ServerSocketChannel.\i open\i0 () - \'e2 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e5 chat \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'eb new ServerSocket(TCP_PORT)\cf0\par
+\cf2 serverChannel.bind(\cf1\b new\cf2\b0  InetSocketAddress("localhost",8080))\cf0\par
+\cf1\b while\cf2\b0 (\cf1\b true\cf2\b0 )\cf0\par
+\cf2\tab\cf1\b try\cf2\b0 (\b SocketChannel \b0 socketChannel = serverChannel.accept()) - \'e2 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e5 chat \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'eb serverSocket.accept()\cf0\par
+\cf2\tab\tab\cf1\b final\cf2\b0  ByteBuffer inputBuffer = ByteBuffer.\i alLocate\i0 (2<<10)\cf0\par
+\cf2\tab\tab\cf1\b while\cf2\b0 (socketChannel.isConnected())\{\cf0\par
+\cf2\tab\tab\tab\cf1\b int\cf2\b0  bytesCount = socketChannel.read(inputBuffer)\cf0\par
+\cf2\tab\tab\tab ...\cf0\par
+\cf2\tab\tab\tab inputBuffer.clear() - \'ee\'f7\'e8\'f9\'e0\'ea\'ec \'e1\'f3\'f4\'f4\'e5\'f0, \'f7\'f2\'ee\'e1\'fb \'ef\'f0\'e8 \'f1\'eb\'e5\'e4\'f3\'fe\'f9\'e5\'ec \'f7\'f2\'e5\'ed\'e8\'e8\cf0\par
+\cf2\par
+\ul\'c2\'e7\'e0\'e8\'ec\'ee\'e4\'e5\'e9\'f1\'f2\'e2\'e8\'e5 GUI \'ef\'f0\'e8\'eb\'ee\'e6\'e5\'ed\'e8\'e9 \'f1 \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'e5\'ec\ulnone :\cf0\par
+\cf2\kerning0\tab\'d0\'e0\'ed\'fc\'f8\'e5 \'ed\'e0\'e4\'ee \'e1\'fb\'eb\'ee \'e2 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e5 \'f1\'ee\'e7\'e4\'e0\'e2\'e0\'f2\'fc loop, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'e2 \'f6\'e8\'ea\'eb\'e5 \'ee\'f2\'eb\'e0\'e2\'eb\'e8\'e2\'e0\'eb \'e2\'f5\'ee\'e4\'ff\'f9\'e8\'e5 events.\cf0\kerning1\par
+\cf2\kerning0\'d1\'ee\'e2\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5 \'f4\'f0\'e5\'e9\'ec\'e2\'ee\'f0\'ea\'e8 \'f1\'e0\'ec\'e8 \'ee\'f2\'eb\'e0\'e2\'eb\'e8\'e2\'e0\'fe\'f2 events \'e8 \'e2 \'e7\'e0\'e2\'e8\'f1\'e8\'ec\'ee\'f1\'f2\'e8 \'ee\'f2 \'fd\'f2\'ee\'e3\'ee event-\'e0 \'e1\'eb\'ee\'ea "dispatch tread" \'e2\'fb\'e7\'fb\'e2\'e0\'e5\'f2 \'f2\'ee\'f2 \'e8\'eb\'e8 \'e8\'ed\'ee\'e9 \'ee\'e1\'f0\'e0\'e1\'ee\'f2\'f7\'e8\'ea = class. \'d2.\'e5. \'ec\'fb \'ef\'e8\'f8\'e5\'ec class \'e8 \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'e5\'ec, \'f7\'f2\'ee \'ee\'ed \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'e5\'f2 \'e5\'f1\'eb\'e8 \'ef\'f0\'e8\'eb\'e5\'f2\'e0\'e5\'f2 event.\cf0\kerning1\par
+\cf2\kerning0\par
+\par
+\par
+\par
+\par
+\b Concurrency \b0 - \'ea\'e0\'ea \'ee\'f0\'e3\'e0\'ed\'e8\'e7\'ee\'e2\'e0\'f2\'fc \'e4\'ee\'f1\'f2\'f3\'ef \'ea \'f0\'e0\'e7\'e4\'e5\'eb\'ff\'e5\'ec\'ee\'ec\'f3 \'e8\'e7\'ec\'e5\'ed\'ff\'e5\'ec\'ee\'ec\'f3 \'ee\'e1\'fa\'e5\'ea\'f2\'f3 (shared mutable state).\cf0\kerning1\par
+\cf2\kerning0\tab Shared Mutable - \'fd\'f2\'ee \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc \'ed\'e5 \'ef\'f0\'ee\'f1\'f2\'ee\'e9 int, \'e0 \'f6\'e5\'eb\'fb\'e9 \'ee\'e1\'fa\'e5\'ea\'f2 HashMap \'f1\'ee \'e2\'f1\'e5\'ec\'e8 \'e5\'e3\'ee \'e7\'e0\'e2\'e8\'f1\'e8\'ec\'ee\'f1\'f2\'ff\'ec\'e8 Map.Entry.\cf0\kerning1\par
+\cf2\kerning0\tab\'cc\'e5\'f5\'e0\'ed\'e8\'e7\'ec\'ee\'ec \'e4\'eb\'ff \'e4\'ee\'f1\'f2\'e8\'e6\'e5\'ed\'e8\'ff Concurrency \'e2\'fb\'f1\'f2\'f3\'ef\'e0\'e5\'f2 \'ee\'e1\'ee\'e1\'f9\'b8\'ed\'ed\'fb\'e9 \'f2\'e5\'f0\'ec\'e8\'ed "\'f1\'e8\'ed\'f5\'f0\'ee\'ed\'e8\'e7\'e0\'f6\'e8\'ff"- \'fd\'f2\'ee Synchronized, Volatile, \'ff\'e2\'ed\'fb\'e5 \'e1\'eb\'ee\'ea\'e8\'f0\'ee\'e2\'ea\'e8, \'e0\'f2\'ee\'ec\'e0\'f0\'ed\'fb\'e5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5.\cf0\kerning1\par
+\cf2\kerning0\tab\'c5\'f1\'eb\'e8 \'e2 \'ed\'e0\'f8\'e5\'e9 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e5 \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee Threads \'ec\'ee\'e3\'f3\'f2 \'ef\'ee\'eb\'f3\'f7\'e8\'f2\'fc \'e4\'ee\'f1\'f2\'f3\'ef \'ea Shared Mutable Object \'e1\'e5\'e7 \'f1\'ee\'ee\'f2\'e2\'e5\'f2\'f1\'f2\'e2\'f3\'fe\'f9\'e5\'e9 "\'f1\'e8\'ed\'f5\'f0\'ee\'ed\'e8\'e7\'e0\'f6\'e8\'e8" - \'fd\'f2\'ee \'e1\'ee\'ec\'e1\'e0 \'f1 \'f2\'e8\'ea\'e0\'fe\'f9\'e8\'ec\'ec \'f7\'e0\'f1\'e8\'ea\'e0\'ec\'e8.\cf0\kerning1\par
+\cf2\kerning0\par
+\'ca\'e0\'ea\'ee\'e9 \'e2\'fb\'f5\'ee\'e4:\cf0\kerning1\par
+\cf2\kerning0 1. \'cd\'e5 \'e4\'e5\'eb\'e0\'f2\'fc shared objects. \'d2.\'e5. \'f3 \'ea\'e0\'e6\'e4\'ee\'e3\'ee thread \'f1\'e2\'ee\'e8 \'ee\'f2\'e4\'e5\'eb\'fc\'ed\'fb\'e5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5/\'ee\'e1\'fa\'e5\'ea\'f2\'fb.\cf0\kerning1\par
+\cf2\kerning0 2. \'d1\'e4\'e5\'eb\'e0\'f2\'fc shared objects \'ed\'e5\'e8\'e7\'ec\'e5\'ed\'ff\'e5\'ec\'fb\'ec\'e8 \cf1\kerning1\b final\cf2\kerning0\b0 .\cf0\kerning1\par
+\cf2\kerning0 3. \'c5\'f1\'eb\'e8 \'ed\'e8\'f7\'e5\'e3\'ee \'e8\'e7 \'ef\'f0\'e5\'e4\'fb\'e4\'f3\'f9\'e5\'e3\'ee \'ed\'e5 \'ef\'ee\'e4\'ee\'f8\'eb\'ee \kerning1\u8594?\kerning0  \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc "\'f1\'e8\'ed\'f5\'f0\'ee\'ed\'e8\'e7\'e0\'f6\'e8\'fe".\cf0\kerning1\par
+\cf2\kerning0\par
+\'c8\'ed\'ea\'e0\'ef\'f1\'f3\'eb\'ff\'f6\'e8\'ff, \'ed\'e5\'e8\'e7\'ec\'e5\'ed\'ff\'e5\'ec\'ee\'f1\'f2\'fc \'e8 \'f7\'b8\'f2\'ea\'e0\'ff \'f1\'ef\'e5\'f6\'e8\'f4\'e8\'ea\'e0\'f6\'e8\'ff \'e8\'ed\'e2\'e0\'f0\'e8\'e0\'ed\'f2\'ee\'e2 - \'ed\'e0\'f8\'e8 \'eb\'f3\'f7\'f8\'e8\'e5 \'e4\'f0\'f3\'e7\'fc\'ff (Java concurrency in practice.pdf \'f1\'f2\'f0.34)\cf0\kerning1\par
+\cf2\kerning0\par
+\cf1\kerning1\b class\cf2\kerning0\b0  A\cf0\kerning1\par
+\cf2\kerning0\tab\cf1\kerning1\b int\cf2\kerning0\b0  x\tab\tab\tab\'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'e0\'ff \'eb\'e5\'e6\'e8\'f2 \'e2 Heap - \'ee\'e1\'f9\'e0\'ff \'e4\'eb\'ff \'e2\'f1\'e5\'f5 \'ef\'ee\'f2\'ee\'ea\'ee\'e2 - \'e2\'f1\'ff \'c7\'c0\'cc\'ce\'d0\'ce\'d7\'dc \'e7\'e4\'e5\'f1\'fc !\cf0\kerning1\par
+\cf2\kerning0\tab\cf1\kerning1\b void\cf2\kerning0\b0  inc()\cf0\kerning1\par
+\cf2\kerning0\tab\tab\cf1\kerning1\b int\cf2\kerning0\b0  y = 10\tab\'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'e0\'ff \'e1\'f3\'e4\'e5\'f2 \'eb\'e5\'e6\'e0\'f2\'fc \'ed\'e0 Stack \'ea\'e0\'e6\'e4\'ee\'e3\'ee \'e8\'e7 \'ef\'ee\'f2\'ee\'ea\'ee\'e2 - \'f1 \'ed\'e5\'e9 \'e7\'e0\'ec\'ee\'f0\'e0\'f7\'e8\'e2\'e0\'f2\'fc\'f1\'ff \'ed\'e5 \'ed\'e0\'e4\'ee\cf0\kerning1\par
+\cf2\kerning0\tab\tab A a = \cf1\kerning1\b new\cf2\kerning0\b0  A()\cf0\kerning1\par
+\cf2\kerning0\tab\tab a.x = 30\tab\'f5\'ee\'f2\'e5\'eb \'e8\'e7\'ee\'e1\'f0\'e0\'e7\'e8\'f2\'fc, \'f7\'f2\'ee \'ea\'eb\'e0\'f1\'f1 \'f1\'f1\'fb\'eb\'e0\'e5\'f2\'f1\'ff \'ed\'e0 \'ef\'ee\'eb\'e5 \'e4\'f0\'f3\'e3\'ee\'e3\'ee \'ea\'eb\'e0\'f1\'f1\'e0 - \'f2\'ee\'e6\'e5 \'ed\'e0\'e4\'ee \'c7\'c0\'cc\'ce\'d0\'c0\'d7\'c8\'c2\'c0\'d2\'dc\'d1\'df\cf0\kerning1\par
+\cf2\kerning0\tab\tab x++\cf0\kerning1\par
+\cf2\kerning0\'cf\'ee\'f2\'ee\'ea\'ee\'e1\'e5\'e7\'ee\'ef\'e0\'f1\'ed\'fb\'e9 \'ea\'eb\'e0\'f1\'f1, \'ea\'ee\'e3\'e4\'e0 \'ee\'e4\'ed\'ee\'e2\'f0\'e5\'ec\'e5\'ed\'ed\'ee Tread1 \'e8 Tread2 \'e2\'fb\'e7\'fb\'e2\'e0\'e5\'f2 inc() \'e8 \'e2\'f1\'b8 \'ee\'f2\'f0\'e0\'e1\'e0\'f2\'fb\'e2\'e0\'e5\'f2 \'ef\'f0\'e0\'e2\'e8\'eb\'fc\'ed\'ee.\cf0\kerning1\par
+\cf2\kerning0\par
+\'c8\'ed\'ea\'e0\'ef\'f1\'f3\'eb\'ff\'f6\'e8\'ff - \'e4\'eb\'ff \'ef\'ee\'f2\'ee\'ea\'ee\'e1\'e5\'e7\'ee\'ef\'e0\'f1\'ed\'ee\'f1\'f2\'e8 \'f1\'f2\'e0\'f0\'e0\'f2\'fc\'f1\'ff \'ed\'e5 \'e4\'e5\'eb\'e0\'f2\'fc \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5 \cf1\kerning1\b public\cf2\kerning0\b0  X, \'e8\'eb\'e8 \'e5\'f9\'b8 \'f5\'f3\'e6\'e5 \cf1\kerning1\b public static\cf2\kerning0\b0  X.\cf0\kerning1\par
+\cf2\kerning0\'cd\'e5\'e8\'e7\'ec\'e5\'ed\'ff\'e5\'ec\'ee\'f1\'f2\'fc - \'ef\'ee \'e2\'ee\'e7\'ec\'ee\'e6\'ed\'ee\'f1\'f2\'e8 \'e2\'f1\'b8 \'ee\'e1\'ec\'e0\'e7\'fb\'e2\'e0\'f2\'fc \cf1\kerning1\b final\cf2\kerning0\b0 .\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\fi-2982\li2982\sl240\slmult1\cf2\kerning0\'d1\'ef\'e5\'f6\'e8\'f4\'e8\'ea\'e0\'f6\'e8\'ff \'e8\'ed\'e2\'e0\'f0\'e8\'e0\'ed\'f2\'ee\'e2 - \'ed\'e0\'f8 \'ea\'eb\'e0\'f1\'f1 \'f5\'f0\'e0\'ed\'e8\'f2 3 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5 \'e8 \'ef\'ee \'f3\'f1\'eb\'ee\'e2\'e8\'fe \'e7\'e0\'e4\'e0\'f7\'e8 \'e2 \'eb\'fe\'e1\'ee\'e9 \'ec\'ee\'ec\'e5\'ed\'f2 \'e2\'f0\'e5\'ec\'e5\'ed\'e8 \'e8\'f5 \'f1\'f3\'ec\'ec\'e0 \'e2\'f1\'e5\'e3\'e4\'e0 = 0 \kerning1\u8594?\kerning0  \'ef\'f0\'e8 \'ee\'e1\'ed\'ee\'e2\'eb\'e5\'ed\'e8\'e8 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'ff \'ee\'e4\'ed\'ee\'e9 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'ee\'e9, \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee \'ee\'e1\'ed\'ee\'e2\'e8\'f2\'fc \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'ff 2-\'f5 \'e4\'f0\'f3\'e3\'e8\'f5 \ul\i\'e2 \'f2\'ee\'e9 \'e6\'e5 \'e0\'f2\'ee\'ec\'e0\'f0\'ed\'ee\'e9 \'ee\'ef\'e5\'f0\'e0\'f6\'e8\'e8\ulnone\i0 .\cf0\kerning1\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf2\kerning0\par
+\'ce\'e1\'fa\'e5\'ea\'f2 \'ea\'eb\'e0\'f1\'f1\'e0 StatelessServlet \'f1\'ee\'e7\'e4\'e0\'b8\'f2\'f1\'ff \'ef\'f0\'e8 \'e7\'e0\'ef\'f3\'f1\'ea\'e5 \'ef\'f0\'e8\'eb\'ee\'e6\'e5\'ed\'e8\'ff. \'cf\'ee \'ef\'f0\'e8\'eb\'ee\'e6\'e5\'ed\'e8\'e8\'fe \'e3\'f3\'eb\'ff\'fe\'f2 \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee \'e0\'ea\'f2\'e8\'e2\'ed\'fb\'f5 Thread-\'ee\'e2 \'e8 \'e2 \'ea\'e0\'ea\'e8\'e5-\'f2\'ee \'ec\'ee\'ec\'e5\'ed\'f2\'fb \'e2\'f0\'e5\'ec\'e5\'ed\'e8 \'ee\'ed\'e8 \'ec\'ee\'e3\'f3\'f2 \'e2\'fb\'e7\'fb\'e2\'e0\'f2\'fc \'ec\'e5\'f2\'ee\'e4\'fb \'e4\'e0\'ed\'ed\'ee\'e3\'ee \'ee\'e1\'fa\'e5\'ea\'f2\'e0.\cf0\kerning1\par
+\cf2\kerning0\par
+\cf9\kerning1 @ThreadSafe\cf0\par
+\cf1\b class\cf2\b0  \kerning0 StatelessServlet \cf1\kerning1\b implements\cf2\b0  \kerning0 Servlet \{\cf0\kerning1\par
+\cf2\kerning0\tab\cf1\kerning1\b public void \cf2\kerning0\b0 service(ServletRequest req, ServletResponse resp)\{\cf0\kerning1\par
+\cf2\kerning0\tab\tab BigInteger i = ...\cf0\kerning1\par
+\cf2\kerning0\tab\tab encodeInfoResponse(resp,...\cf0\kerning1\par
+\cf2\kerning0\par
+\'dd\'f2\'ee\'f2 \'ea\'eb\'e0\'f1\'f1 \'ff\'e2\'eb\'ff\'e5\'f2\'f1\'ff \b Stateless\b0  = \b\'cf\'ee\'f2\'ee\'ea\'ee\'e1\'e5\'e7\'ee\'ef\'e0\'f1\'ed\'fb\'e9\b0 . \'d2.\'ea. \'f3 \'ed\'e5\'e3\'ee \'ed\'e5\'f2 \'f1\'e2\'ee\'e8\'f5 \'ef\'ee\'eb\'e5\'e9. \'ce\'ed \'ed\'e5 \'f1\'f1\'fb\'eb\'e0\'e5\'f2\'f1\'ff \'ed\'e0 \'ef\'ee\'eb\'ff \'e4\'f0\'f3\'e3\'e8\'f5 \'ea\'eb\'e0\'f1\'f1\'ee\'e2. \'c2\'f1\'e5 \'e5\'e3\'ee \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e5 - \'eb\'ee\'ea\'e0\'eb\'fc\'ed\'fb\'e5, \'f1\'ee\'ee\'f2\'e2\'e5\'f2\'f1\'f2\'e2\'e5\'ed\'ed\'ee \'ea\'e0\'e6\'e4\'fb\'e9 \'ef\'ee\'f2\'ee\'ea, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'e7\'e0\'f5\'ee\'e4\'e8\'f2 \'e2 \'fd\'f2\'ee\'f2 \'ea\'eb\'e0\'f1\'f1 ( = \'e2\'fb\'e7\'fb\'e2\'e0\'e5\'f2 \'ec\'e5\'f2\'ee\'e4 service) \'fd\'f2\'e8 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'e9 \'e4\'e5\'f0\'e6\'e8\'f2 \'e2 \'f1\'e2\'ee\'b8\'ec "\'e8\'e7\'ee\'eb\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'ee\'ec" \'ee\'f2 \'e4\'f0\'f3\'e3\'e8\'f5 \'ef\'ee\'f2\'ee\'ea\'ee\'e2 Stack-\'e5.\cf0\kerning1\par
+\cf2\kerning0\par
+\'c4\'ee\'e1\'e0\'e2\'e8\'ec \'e2 \'ed\'e0\'f8 \'ea\'eb\'e0\'f1\'f1 \'f1\'f7\'b8\'f2\'f7\'e8\'ea \'ef\'ee\'f1\'e5\'f9\'e5\'ed\'e8\'e9 \'e8 \'ee\'ed \'f1\'f2\'e0\'ed\'ee\'e2\'e8\'f2\'f1\'ff \'ed\'e5 \'ef\'ee\'f2\'ee\'ea\'ee\'e1\'e5\'e7\'ee\'ef\'e0\'f1\'ed\'fb\'ec:\cf0\kerning1\par
+\cf2\kerning0\par
+\cf9\kerning1 @NotThreadSafe\cf2\kerning0\tab\tab\'ef\'e8\'f8\'f3\'f2, \'f7\'f2\'ee \'fd\'f2\'ee \i\'ed\'e5\'f1\'f2\'e0\'ed\'e4\'e0\'f0\'f2\'ed\'e0\'ff\i0  \'e0\'ed\'ed\'ee\'f2\'e0\'f6\'e8\'ff \'ee\'e1\'ee\'e7\'ed\'e0\'f7\'e0\'fe\'f9\'e0\'ff, \'f7\'f2\'ee \'ea\'eb\'e0\'f1\'f1 \'ed\'e5\'eb\'fc\'e7\'ff \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'e2 \'ec\'ed\'ee\'e3\'ee\'ef\'ee\'f2\'ee\'f7\'ed\'ee\'ec \'f0\'e5\'e6\'e8\'ec\'e5\cf0\kerning1\par
+\cf1\b class\cf2\b0  \kerning0 UnsafeServlet \cf1\kerning1\b implements\cf2\b0  \kerning0 Servlet \{\cf0\kerning1\par
+\cf2\kerning0\tab\cf1\kerning1\b long\cf2\kerning0\b0  visitCounter\cf0\kerning1\par
+\cf2\kerning0\tab\cf1\kerning1\b public void \cf2\kerning0\b0 service(ServletRequest req, ServletResponse resp)\{\cf0\kerning1\par
+\cf2\kerning0\tab\tab BigInteger i ...\cf0\kerning1\par
+\cf2\kerning0\tab\tab encodeInfoResponse(resp,...\cf0\kerning1\par
+\cf2\kerning0\tab\tab visitCounter++\tab\tab\tab\cf3\b\'ee\'ef\'e5\'f0\'e0\'f6\'e8\'ff ++ \'ed\'e5 \'e0\'f2\'ee\'ec\'e0\'f0\'ed\'e0\cf2\b0 , \'f1\'ee\'f1\'f2\'ee\'e8\'f2 \'e8\'e7 3-\'f5: read - modify - write\cf0\kerning1\par
+\cf2\kerning0\par
+\'cc\'ee\'e6\'e5\'f2 \'ef\'f0\'ee\'e8\'e7\'ee\'e9\'f2\'e8 \'f2\'e0\'ea\'ee\'e5:\cf0\kerning1\par
+\cf2\kerning0\tab\tab Thread A -\tab\tab read 10\tab\tab\tab 10+1\tab\tab write 11\cf0\kerning1\par
+\cf2\kerning0\tab\tab Thread B - \tab\tab\tab\tab read 10\tab 10+1\tab\tab write 11\cf0\kerning1\par
+\cf2\kerning0\'d7\'e5\'f0\'e5\'e7 \'ea\'eb\'e0\'f1\'f1 \'ef\'f0\'ee\'f8\'eb\'ee 2-\'e0 \'ef\'ee\'f2\'ee\'ea\'e0, \'e0 \'f1\'f7\'b8\'f2\'f7\'e8\'ea \'ef\'f0\'e8\'e1\'e0\'e2\'e8\'eb \'f2\'ee\'eb\'fc\'ea\'ee +1. \'d2\'e0\'ea\'ee\'e5 \'ef\'ee\'e2\'e5\'e4\'e5\'ed\'e8\'e5 \'ed\'e0\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff \i Race Condition\i0 .\cf0\kerning1\par
+\cf2\kerning0\par
+\'c4\'eb\'ff \'ea\'ee\'f0\'f0\'e5\'ea\'f2\'ed\'ee\'e9 \'f0\'e0\'e1\'ee\'f2\'fb \'ec\'ee\'e6\'ed\'ee \'f1\'e4\'e5\'eb\'e0\'f2\'fc \'f2\'e0\'ea:\cf0\kerning1\par
+\cf2\kerning0\tab\cf1\kerning1\b public synchronized\cf2\kerning0\b0  \cf1\kerning1\b void \cf2\kerning0\b0 service(ServletRequest req, ServletResponse resp)\{\cf0\kerning1\par
+\cf2\kerning0\par
+\'cd\'ee \'eb\'f3\'f7\'f8\'e5 \'e2\'ec\'e5\'f1\'f2\'ee \cf1\kerning1\b long\cf2\kerning0\b0  \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc AtomicLong \'e8\'e7 \'ef\'e0\'ea\'e5\'f2\'e0 java.util.concurrent.atomic. \'c2\'f1\'e5 \'ec\'e5\'f2\'ee\'e4\'fb \'e4\'eb\'ff \'f0\'e0\'e1\'ee\'f2\'fb \'f1 \'ee\'e1\'fa\'e5\'ea\'f2\'e0\'ec\'e8 \'fd\'f2\'e8\'f5 \'ea\'eb\'e0\'f1\'f1\'ee\'e2 - \'e0\'f2\'ee\'ec\'e0\'f0\'ed\'fb. \'c5\'f1\'f2\'fc \'c0\'f2\'ee\'ec\'e0\'f0\'ed\'e0\'ff \'ee\'ef\'e5\'f0\'e0\'f6\'e8\'ff .incrementAndGet().\cf0\kerning1\par
+\cf2\kerning0\par
+\'c2\'fb\'e2\'ee\'e4: \'c5\'f1\'eb\'e8 \'e2\'ee\'e7\'fc\'ec\'b8\'ec Stateless \'ea\'eb\'e0\'f1\'f1 \'e8 \'e2 \'ed\'e5\'e3\'ee \'e4\'ee\'e1\'e0\'e2\'e8\'ec Atomic \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'f3\'fe, \'f2\'ee \'ef\'ee\'eb\'f3\'f7\'e8\'ec \'f2\'ee\'e6\'e5 \'cf\'ee\'f2\'ee\'ea\'ee\'e1\'e5\'e7\'ee\'ef\'e0\'f1\'ed\'fb\'e9 \'ea\'eb\'e0\'f1\'f1.\cf0\kerning1\par
+\cf9\par
+@ThreadSafe\cf2\kerning0\tab\tab\tab\'e0\'ed\'ed\'ee\'f2\'e0\'f6\'e8\'ff \'ec\'ee\'e6\'e5\'f2 \'f1\'f2\'ee\'ff\'f2\'fc \'ef\'e5\'f0\'e5\'e4 \'ea\'eb\'e0\'f1\'f1\'ee\'ec/\'ec\'e5\'f2\'ee\'e4\'ee\'ec. \'ce\'e1\'ee\'e7\'ed\'e0\'f7\'e0\'e5\'f2, \'f7\'f2\'ee \'ea\'eb\'e0\'f1\'f1/\'ec\'e5\'f2\'ee\'e4 \'ef\'ee\'f2\'ee\'ea\'ee\'e1\'e5\'e7\'ee\'ef\'e0\'f1\'e5\'ed.\cf0\kerning1\par
+\cf2\kerning0\par
+\par
+\par
+\par
+\par
+\par
+\par
+\'cf\'ee\'f1\'eb\'e5 \'e7\'e0\'e3\'f0\'f3\'e7\'ea\'e8 \'ea\'eb\'e0\'f1\'f1\'e0 \'ef\'f0\'ee\'e8\'f1\'f5\'ee\'e4\'e8\'f2 Bytecode Verification, \'e4\'ee \'e7\'e0\'ef\'f3\'f1\'ea\'e0 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'fb:\cf0\kerning1\par
+\cf2\kerning0 0: bipush 2\tab\tab\'f1\'f2\'e5\'ea \'f1 \'e3\'eb\'f3\'e1\'e8\'ed\'ee\'e9 = 0\cf0\kerning1\par
+\cf2\kerning0 2: bipush 2\cf0\kerning1\par
+\cf2\kerning0 4: iadd\tab\tab\'f1\'f2\'e5\'ea \'f1 \'e3\'eb\'f3\'e1\'e8\'ed\'ee\'e9 = 1\cf0\kerning1\par
+\cf2\kerning0 5: goto 0\tab\tab\'ee\'e6\'e8\'e4\'e0\'b8\'ec StackOverflowError\cf0\kerning1\par
+\cf2\kerning0\par
+\'d5\'ee\'f2\'ff \'f0\'e5\'e0\'eb\'fc\'ed\'ee \'e2\'fb\'ea\'e8\'ed\'e5\'f2 - VerifyError\cf0\kerning1\par
+\cf2\kerning0\par
+\'c2\'e5\'f0\'e8\'f4\'e8\'ea\'e0\'f2\'ee\'f0 \'ef\'f0\'ee\'e2\'e5\'f0\'ff\'e5\'f2:\cf0\kerning1\par
+\cf2\kerning0\tab -\'ea\'e0\'e6\'e4\'e0\'ff \'f4\'f3\'ed\'ea\'f6\'e8\'ff \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'f1 \'ef\'f0\'e0\'e2\'e8\'eb\'fc\'ed\'fb\'ec\'e8 \'e0\'f0\'e3\'f3\'ec\'e5\'ed\'f2\'e0\'ec\'e8 (iadd \'ed\'e5 \'f1\'ea\'eb\'e0\'e4\'fb\'e2\'e0\'e5\'f2 String \'e8 Integer)\cf0\kerning1\par
+\cf2\kerning0\tab -\'e2\'e0\'eb\'e8\'e4\'ed\'ee\'f1\'f2\'fc \'e2\'f1\'e5\'f5 \'ef\'e5\'f0\'e5\'f5\'ee\'e4\'ee\'e2 (\'e2 \'f7\'e0\'f1\'f2\'ed\'ee\'f1\'f2\'e8, goto)\cf0\kerning1\par
+\cf2\kerning0 $ java -noverify test\cf0\kerning1\par
+\cf2\kerning0\par
+\'ca\'eb\'e0\'f1\'f1 \'ec\'ee\'e6\'e5\'f2 \'f1\'ee\'e4\'e5\'f0\'e6\'e0\'f2\'fc/\'f1\'f1\'fb\'eb\'e0\'f2\'fc\'f1\'ff \'ed\'e0 \'e4\'f0\'f3\'e3\'ee\'e9 \'ea\'eb\'e0\'f1\'f1.\cf0\kerning1\par
+\cf1\b class\cf2\kerning0\b0  A\{\cf0\kerning1\par
+\cf2\kerning0\tab B b = \cf1\kerning1\b new\cf2\kerning0\b0  B();\tab\'ef\'f0\'ee\'e8\'f1\'f5\'ee\'e4\'e8\'f2 \'f0\'e0\'e7\'f0\'e5\'f8\'e5\'ed\'e8\'e5 \'f1\'e8\'ec\'e2\'ee\'eb\'fc\'ed\'fb\'f5 \'f1\'f1\'fb\'eb\'ee\'ea\cf0\kerning1\par
+\cf2\kerning0\'d0\'e0\'e7\'f0\'e5\'f8\'e5\'ed\'e8\'e5 \'e1\'fb\'e2\'e0\'e5\'f2:\cf0\kerning1\par
+\cf2\kerning0\tab -\'eb\'e5\'ed\'e8\'e2\'ee\'e5 - \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'e5\'ec \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'f3 \'e8 \'e5\'f1\'eb\'e8 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e0 \'ea\'ee\'e3\'e4\'e0-\'eb\'e8\'e1\'ee \'e4\'ee\'e9\'e4\'b8\'f2 \'e4\'ee \'fd\'f2\'ee\'e3\'ee \'ec\'e5\'f1\'f2\'e0, \'f2\'ee\'e3\'e4\'e0 \'ef\'ee\'e4\'e3\'f0\'f3\'e7\'e8\'f2\'f1\'ff \'ed\'f3\'e6\'ed\'fb\'e9 \'ed\'e0\'ec \'ea\'eb\'e0\'f1\'f1\cf0\kerning1\par
+\cf2\kerning0\tab -\'fd\'ed\'e5\'f0\'e3\'e8\'f7\'ed\'ee\'e5 - \'f1\'f0\'e0\'e7\'f3 \'e7\'e0\'e3\'f0\'f3\'e6\'e0\'e5\'ec \'e2\'f1\'e5 \'ea\'eb\'e0\'f1\'f1\'fb, \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'ef\'f0\'e8\'f1\'f3\'f2\'f1\'f2\'e2\'f3\'fe\'f2 \'e2 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e5, \'ed\'e5 \'e7\'e0\'e2\'e8\'f1\'e8\'ec\'ee \'ee\'f2 \'f2\'ee\'e3\'ee, \'f7\'f2\'ee \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e0 \'e4\'ee \'fd\'f2\'ee\'e3\'ee \'e1\'eb\'ee\'ea\'e0 \'ec\'ee\'e6\'e5\'f2 \'ed\'e8\'ea\'ee\'e3\'e4\'e0 \'e8 \'ed\'e5 \'e4\'ee\'e9\'f2\'e8\cf0\kerning1\par
+\cf2\kerning0\par
+\'c8\'ed\'e8\'f6\'e8\'e0\'eb\'e8\'e7\'e0\'f6\'e8\'ff \'ea\'eb\'e0\'f1\'f1\'e0 \'ef\'f0\'ee\'e8\'f1\'f5\'ee\'e4\'e8\'f2 \'e2\'ee \'e2\'f0\'e5\'ec\'ff first use:\cf0\kerning1\par
+\cf2\kerning0 - \cf1\kerning1\b new\cf2\kerning0\b0  A()\cf0\kerning1\par
+\cf2\kerning0 - \'ee\'e1\'f0\'e0\'f9\'e0\'e5\'ec\'f1\'ff \'ea \cf1\kerning1\b static\cf2\kerning0\b0  \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'ee\'e9/\'f4\'f3\'ed\'ea\'f6\'e8\'e8\cf0\kerning1\par
+\cf2\kerning0\'ed\'e0 \'f1\'e0\'ec\'ee\'ec \'e4\'e5\'eb\'e5 \'f3 \'ea\'e0\'e6\'e4\'ee\'e3\'ee \'ea\'eb\'e0\'f1\'f1\'e0 \'e2\'ed\'f3\'f2\'f0\'e8 \'e5\'f1\'f2\'fc \'e8\'ed\'e8\'f6\'e8\'e0\'eb\'e8\'e7\'e0\'f2\'ee\'f0 static \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'f5/\'f4\'f3\'ed\'ea\'f6\'e8\'e9\cf0\kerning1\par
+\cf2\kerning0\par
+\'c8\'f1\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'e5 Java Bytecode:\cf0\kerning1\par
+\cf2\kerning0 - \'ec\'ee\'e6\'e5\'f2 \'e8\'ed\'f2\'e5\'f0\'ef\'f0\'e5\'f2\'e8\'f0\'ee\'e2\'e0\'f2\'fc\'f1\'ff\cf0\kerning1\par
+\cf2\kerning0 - \'f2\'f0\'e0\'ed\'f1\'eb\'e8\'f0\'ee\'e2\'e0\'f2\'fc\'f1\'ff \'e2 \'ec\'e0\'f8\'e8\'ed\'ed\'fb\'e9 \'ea\'ee\'e4 CPU = JIT\cf0\kerning1\par
+\cf2\lang9\kerning0\f1\par
+\lang1033\u1053?\u1077?\u1076?\u1072?\u1074?\u1085?\u1086? \u1074? Bytecode \u1076?\u1086?\u1073?\u1072?\u1074?\u1080?\u1083?\u1080? \u1080?\u1085?\u1089?\u1090?\u1088?\u1091?\u1082?\u1094?\u1080?\u1102?: invokedynamic - \u1082?\u1072?\u1082?\u1080?\u1084?-\u1090?\u1086? \u1086?\u1073?\u1088?\u1072?\u1079?\u1086?\u1084? \u1084?\u1086?\u1078?\u1085?\u1086? \u1089?\u1072?\u1084?\u1086?\u1084?\u1091? \u1086?\u1087?\u1088?\u1077?\u1076?\u1077?\u1083?\u1103?\u1090?\u1100?, \u1095?\u1090?\u1086? \u1101?\u1090?\u1072? \u1080?\u1085?\u1089?\u1090?\u1088?\u1091?\u1082?\u1094?\u1080?\u1103? \u1073?\u1091?\u1076?\u1077?\u1090? \u1076?\u1077?\u1083?\u1072?\u1090?\u1100?\cf0\kerning1\par
+\cf2\kerning0\par
+Java Object header:\cf0\kerning1\par
+\cf2\kerning0 -Identity hashcode - \u1090?\u1086?, \u1095?\u1090?\u1086? \u1084?\u1099? \u1087?\u1086?\u1083?\u1091?\u1095?\u1072?\u1077?\u1084? \u1087?\u1088?\u1080? \u1074?\u1099?\u1079?\u1086?\u1074?\u1077? hashcode()\cf0\kerning1\par
+\cf2\lang9\kerning0 - Pointer \lang1033\u1085?\u1072? \u1082?\u1083?\u1072?\u1089?\u1089?\cf0\kerning1\par
+\cf2\kerning0 - \u1052?\u1086?\u1085?\u1080?\u1090?\u1086?\u1088? (lock)\cf0\kerning1\par
+\cf2\kerning0 - \u1060?\u1083?\u1072?\u1075?\u1080? \u1076?\u1083?\u1103? G\u1057?\cf0\kerning1\par
+\cf2\kerning0\par
+\u1063?\u1090?\u1086? \u1076?\u1077?\u1083?\u1072?\u1077?\u1090? GC:\cf0\kerning1\par
+\cf2\kerning0\tab Stop-and-copy - \u1078?\u1080?\u1074?\u1099?\u1077? \u1086?\u1073?\u1098?\u1077?\u1082?\u1090?\u1099? \u1082?\u1086?\u1087?\u1080?\u1088?\u1091?\u1077?\u1090? \u1074? \u1085?\u1086?\u1074?\u1091?\u1102? \u1086?\u1073?\u1083?\u1072?\u1089?\u1090?\u1100?, \u1072? \u1089?\u1090?\u1072?\u1088?\u1091?\u1102? \u1086?\u1073?\u1083?\u1072?\u1089?\u1090?\u1100? \u1074?\u1084?\u1077?\u1089?\u1090?\u1077? \u1089? \u1084?\u1077?\u1088?\u1090?\u1074?\u1099?\u1084?\u1080? \u1086?\u1073?\u1098?\u1077?\u1082?\u1090?\u1072?\u1084?\u1080? \u1079?\u1072?\u1090?\u1080?\u1088?\u1072?\u1077?\u1090?. \u1059?\u1076?\u1086?\u1073?\u1077?\u1085?, \u1082?\u1086?\u1075?\u1076?\u1072? 1000 \u1084?\u1077?\u1088?\u1090?\u1074?\u1099?\u1093? \u1085?\u1072? 10 \u1078?\u1080?\u1074?\u1099?\u1093?. \u1048?\u1089?\u1087?\u1086?\u1083?\u1100?\u1079?\u1091?\u1077?\u1090?\u1089?\u1103? \u1076?\u1083?\u1103? \u1087?\u1077?\u1088?\u1077?\u1085?\u1086?\u1089?\u1072? \u1086?\u1073?\u1098?\u1077?\u1082?\u1090?\u1086?\u1074? \u1080?\u1079? Eden \u1074? Survivor.\cf0\kerning1\par
+\cf2\kerning0\tab Mark-and-sweep - \u1082? \u1082?\u1072?\u1078?\u1076?\u1086?\u1084?\u1091? \u1086?\u1073?\u1098?\u1077?\u1082?\u1090?\u1091? \u1076?\u1086?\u1073?\u1072?\u1074?\u1083?\u1103?\u1077?\u1084? \u1073?\u1080?\u1090? "\u1076?\u1086?\u1089?\u1090?\u1080?\u1078?\u1080?\u1084?\u1086?\u1089?\u1090?\u1080?". \u1057?\u1085?\u1072?\u1095?\u1072?\u1083?\u1072? \u1091? \u1074?\u1089?\u1077?\u1093? \u1101?\u1090?\u1086?\u1090? \u1073?\u1080?\u1090?=0 (\u1085?\u1077?\u1076?\u1086?\u1089?\u1090?\u1080?\u1078?\u1080?\u1084?). \u1047?\u1072?\u1087?\u1091?\u1089?\u1082?\u1072?\u1077?\u1084? GC. \u1044?\u1077?\u1083?\u1072?\u1077?\u1084? STW. \u1055?\u1088?\u1086?\u1073?\u1077?\u1075?\u1072?\u1077?\u1084? \u1087?\u1086? \u1074?\u1089?\u1077?\u1084? \u1086?\u1073?\u1098?\u1077?\u1082?\u1090?\u1072?\u1084? \u1080? \u1076?\u1086? \u1090?\u1077?\u1093? \u1086?\u1073?\u1098?\u1077?\u1082?\u1090?\u1074?\u1086?\u1074?, \u1076?\u1086? \u1082?\u1086?\u1090?\u1086?\u1088?\u1099?\u1093? \u1076?\u1086?\u1073?\u1088?\u1072?\u1083?\u1080?\u1089?\u1100? \u1074?\u1099?\u1089?\u1090?\u1072?\u1074?\u1083?\u1103?\u1077?\u1084? \u1073?\u1080?\u1090?=1. \u1042?\u1099?\u1093?\u1086?\u1076?\u1080?\u1084? \u1080?\u1079? STW. \u1044?\u1077?\u1083?\u1072?\u1077?\u1084? \u1076?\u1077?\u1092?\u1088?\u1072?\u1075?\u1084?\u1077?\u1085?\u1090?\u1072?\u1094?\u1080?\u1102? (Compact).\cf0\kerning1\par
+\cf2\kerning0\par
+\b jvisualv\b0  - \u1080?\u1085?\u1089?\u1090?\u1088?\u1091?\u1084?\u1077?\u1085?\u1090? \u1076?\u1083?\u1103? \u1085?\u1072?\u1073?\u1083?\u1102?\u1076?\u1077?\u1085?\u1080?\u1103? \u1079?\u1072? JVM \u1074? \u1088?\u1077?\u1072?\u1083?\u1100?\u1085?\u1086?\u1084? \u1074?\u1088?\u1077?\u1084?\u1077?\u1085?\u1080?. \u1051?\u1077?\u1078?\u1080?\u1090? \u1074? bin JDK.\cf0\kerning1\par
+\cf2\kerning0\u1042?\u1086? \u1074?\u1088?\u1077?\u1084?\u1103? \u1089?\u1073?\u1086?\u1088?\u1082?\u1080? \u1084?\u1091?\u1089?\u1086?\u1088?\u1072? \u1042?\u1057?\u1045? treads \u1085?\u1072?\u1076?\u1086? \u1086?\u1089?\u1090?\u1072?\u1085?\u1086?\u1074?\u1080?\u1090?\u1100?. \u1069?\u1090?\u1086? \u1074?\u1088?\u1077?\u1084?\u1103? \u1085?\u1072?\u1079?\u1099?\u1074?\u1072?\u1077?\u1090?\u1089?\u1103? STW (Stop the World). \u1047?\u1072?\u1076?\u1072?\u1095?\u1072? max \u1091?\u1084?\u1077?\u1085?\u1100?\u1096?\u1080?\u1090?\u1100? \u1101?\u1090?\u1086? \u1074?\u1088?\u1077?\u1084?\u1103?.\cf0\kerning1\par
+\cf2\kerning0\par
+Runtime Stack \u1089?\u1086?\u1076?\u1077?\u1088?\u1078?\u1080?\u1090? \u1089?\u1089?\u1099?\u1083?\u1082?\u1080? \u1085?\u1072? \u1086?\u1073?\u1098?\u1077?\u1082?\u1090?\u1099?, \u1082?\u1086?\u1090?\u1086?\u1088?\u1099?\u1077? \u1083?\u1077?\u1078?\u1072?\u1090? \u1074? Heap\cf0\kerning1\par
+}
+ 

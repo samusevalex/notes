@@ -1,0 +1,462 @@
+{\rtf1\ansi\ansicpg1251\deff0\deflang1049{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sl240\slmult1\ul\f0\fs22\'c2\'e8\'e4\'fb DDoS\par
+\par
+\ulnone ICMP Flood\par
+UDP Flood\par
+\'cd\'e5 UDP\\TCP Flood\par
+TCP SYN Flood\par
+Connecton Flood\par
+TCP SYN ACK Flood - \'f1\'e5\'f0\'e2\'e0\'ea \'e4\'ee\'eb\'e6\'e5\'ed \'ef\'ee\'f1\'ec\'ee\'f2\'f0\'e5\'f2\'fc \'e2 \'f2\'e0\'e1\'eb\'e8\'f6\'f3 \'f1\'e2\'ee\'e8\'f5 \'f1\'e5\'f1\'f1\'e8\'e9 + \'ee\'f2\'e2\'e5\'f2\'e8\'f2\'fc \'ef\'e0\'ea\'e5\'f2\'ee\'ec \'e8\'eb\'e8 ACK \'e8\'eb\'e8 RST. \'c5\'f1\'eb\'e8 \'ec\'ed\'ee\'e3\'ee ACK -> \'f1\'e5\'f2\'e5\'e2\'f3\'f5\'e0 \'ec\'ee\'e6\'e5\'f2 \'f1\'ea\'eb\'e5\'e8\'f2\'fc \'eb\'e0\'f1\'f2\'fb\par
+TCP RST Flood\par
+DNS Aithentication\par
+Malformed DNS\par
+HTTP Header RegExp Flood\par
+HTTP Request Flood\par
+HTTP Object Request Floor\par
+Idle TCP Connection - \'f1\'ee\'e7\'e4\'e0\'b8\'f2 \'ea\'ee\'ed\'ed\'e5\'ea\'f6\'e8\'fe, \'e8 \'ee\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2 \'e5\'b8 \'e2\'e8\'f1\'e5\'f2\'fc\par
+HTTP GET - \'ec\'ed\'ee\'e3\'ee \'f0\'e0\'e7 \'e7\'e0\'e1\'e8\'f0\'e0\'e5\'f2 \'ee\'e4\'e8\'ed \'e8 \'f2\'ee\'f2 \'e6\'e5 \'f4\'e0\'e9\'eb\par
+HTTP POST - \'ef\'e5\'f0\'e5\'e4\'e0\'b8\'f2 \'ed\'e0 HTTP \'f1\'e5\'f0\'e2\'e5\'f0 \'ea\'e0\'ea\'ee\'e9-\'ed\'e8\'e1\'f3\'e4\'fc \'f4\'e0\'e9\'eb \'ee\'f7\'e5\'ed\'fc \'e4\'ee\'eb\'e3\'ee\par
+Slowloris - \'e4\'e5\'f0\'e6\'e8\'f2 \'ea\'ee\'ed\'ed\'e5\'ea\'f6\'e8\'fe \'ea HTTP \'f1\'e5\'f0\'e2\'e5\'f0\'f3 \'ea\'e0\'ea \'ec\'ee\'e6\'ed\'ee \'e4\'ee\'eb\'fc\'f8\'e5\ul\par
+\par
+Application Misbehavior\ulnone\par
+\par
+\'ca\'e0\'ea\'ee\'e9-\'f2\'ee \'e2\'e8\'e4 \'e0\'f2\'e0\'ea\'e8, \'ea\'ee\'f2\'ee\'f0\'fb\'e9, \'ea \'ef\'f0\'e8\'ec\'e5\'f0\'f3, \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \'ec\'ed\'ee\'e3\'ee \'ec\'e0\'eb\'e5\'ed\'fc\'ea\'e8\'f5 "\'ea\'f0\'e8\'e2\'fb\'f5" HTTP \'e7\'e0\'ef\'f0\'ee\'f1\'ee\'e2 \'e8 \'f1\'e0\'ec \'e6\'e5 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 TCP FIN \'e4\'ee \'f2\'ee\'e3\'ee \'ea\'e0\'ea \'f1\'e5\'f0\'e2\'e5\'f0 \'ee\'e1\'f0\'e0\'e1\'ee\'f2\'e0\'eb \'e7\'e0\'ef\'f0\'ee\'f1.\par
+\par
+\'c1\'eb\'ee\'f7\'e8\'f2 \'f5\'ee\'f1\'f2.\par
+\par
+\ul Block Malformed DNS Traffic\ulnone\par
+\par
+\'cf\'f0\'ee\'e2\'e5\'f0\'ff\'e5\'f2 \'e5\'f1\'f2\'fc \'eb\'e8 \'e2 DNS \'e7\'e0\'ef\'f0\'ee\'f1\'e5 \'f5\'ee\'f2\'fc \'ea\'e0\'ea\'ee\'e9-\'ed\'e8\'e1\'f3\'e4\'fc \'f2\'ee\'eb\'ea\'ee\'e2\'fb\'e9 payload, \'f2.\'e5. \'ee\'ed \'ed\'e5 \'ef\'f3\'f1\'f2\'ee\'e9, \'ef\'ee\'f2\'ee\'ec \'ef\'f0\'ee\'e2\'e5\'f0\'ff\'e5\'f2 \'ea\'e0\'ea \'e7\'e0\'ef\'f0\'ee\'f1 \'f1\'ee\'ee\'f2\'ed\'ee\'f1\'e8\'f2\'f1\'ff \'f1 RFC.\par
+\par
+\i Enable\\Disable\i0\par
+\par
+\'d5\'ee\'f1\'f2 \'ed\'e5 \'e1\'eb\'ee\'f7\'e8\'f2, \'ef\'f0\'ee\'f1\'f2\'ee drop \'ef\'e0\'ea\'e5\'f2\'e0\par
+\par
+\ul Block Malformed SIP Traffic\ulnone\par
+\par
+\'d2\'ee\'e6\'e5 \'ef\'f0\'ee\'e2\'e5\'f0\'ff\'e5\'f2 \'e5\'f1\'f2\'fc \'eb\'e8 \'e2\'ee\'ee\'e1\'f9\'e5 payload, \'ef\'ee\'f2\'ee\'ec \'ef\'f0\'ee\'e2\'e5\'f0\'ea\'e0 \'ef\'ee RFC.\par
+\par
+\i Enable\\Disable\i0\par
+\par
+\'c1\'eb\'ee\'f7\'e8\'f2 \'f5\'ee\'f1\'f2.\par
+\par
+\ul Botnet Prevention\ulnone\par
+\par
+\'c1\'eb\'ee\'f7\'e8\'f2 botnet-\'fb \'eb\'e8\'e1\'ee \'ed\'e0 \'ee\'f1\'ed\'ee\'e2\'e0\'ed\'e8\'e8 \'f1\'e8\'e3\'ed\'e0\'f2\'f3\'f0 AIF, \'eb\'e8\'e1\'ee \'ed\'e0 \'e7\'ed\'e0\'ed\'e8\'e8 \'ef\'ee\'e2\'e5\'e4\'e5\'ed\'e8\'ff \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'b8\'ed\'ed\'fb\'f5 botnet \'f1\'e5\'f2\'e5\'e9.\par
+\par
+\pard\fi-1136\li1136\sl240\slmult1\i Enable Basic Botnet Prevention\i0  - \'cf\'f0\'ee\'e2\'e5\'f0\'ff\'e5\'f2 \'ef\'e0\'ea\'e5\'f2\'fb \'e2 \'ee\'f1\'ed\'ee\'e2\'ed\'ee\'ec HTTP 1.1 \'ed\'e0 \'ed\'e0\'eb\'e8\'f7\'e8\'e5 incomplete headers. \'d2\'e0\'ec \'e5\'f9\'b8 \'ef\'f0\'ee\'e2\'e5\'f0\'ea\'e0 \'e7\'e0\'e2\'e8\'f1\'e8\'f2 \'ee\'f2 \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e8 Protection level (Low, Medium, High). \'d0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'f2\'ee\'eb\'fc\'ea\'ee \'e5\'f1\'eb\'e8 \'e2\'ea\'eb\'fe\'f7\'e5\'ed \ul Malformed HTTP Filtering\ulnone\par
+\i Prevent Slow Request Attacks\i0  - \'cf\'f0\'ee\'e2\'e5\'f0\'ff\'e5\'f2 HTTP \'ef\'e0\'ea\'e5\'f2\'fb <500 \'e1\'e0\'e9\'f2 \'e8 \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'ed\'e5 \'e7\'e0\'ea\'e0\'ed\'f7\'e8\'e2\'e0\'fe\'f2\'f1\'ff \'ed\'e0 \\n. \'d2\'e8\'ef\'e0 \'fd\'f2\'ee \'e2\'e5\'f0\'ee\'ff\'f2\'ed\'e5\'e9 \'e2\'f1\'e5\'e3\'ee slow attack.\par
+\i Enable AIF Botnet Signatures\i0  - \'c2\'ea\'eb\'fe\'f7\'e0\'e5\'f2 \'ef\'f0\'ee\'e2\'e5\'f0\'ea\'f3 \'ed\'e0 AIF \'f1\'e8\'e3\'ed\'e0\'f2\'f3\'f0\'fb\par
+\pard\sl240\slmult1\par
+\'c1\'eb\'ee\'f7\'e8\'f2 \'f5\'ee\'f1\'f2.\par
+\par
+\ul CDN and Proxy Support\ulnone\par
+\par
+CDN (content delivery network)\par
+\'cd\'f3 \'e2 \'ee\'e1\'f9\'e5\'ec \'e5\'f1\'eb\'e8 Attacker \'ed\'e0\'f5\'ee\'e4\'e8\'f2\'f1\'ff \'e7\'e0 Proxy \'e8 Arbor \'e7\'e0\'e1\'eb\'ee\'f7\'e8\'f2  \'fd\'f2\'ee\'f2 Source IP, \'f2\'ee \'e1\'f3\'e4\'e5\'f2 \'ef\'eb\'ee\'f5\'ee. \'c4\'e0\'ed\'ed\'e0\'ff \'f4\'e8\'f7\'e0 \'e3\'ee\'e2\'ee\'f0\'e8\'f2 \'ee \'f2\'ee\'ec, \'f7\'f2\'ee\'e1\'fb Arbor \'e2\'f1\'e5\'e3\'e4\'e0 drop-\'e8\'eb \'ef\'e0\'ea\'e5\'f2\'fb \'f1 \'e2\'fb\'ff\'e2\'eb\'e5\'ed\'ed\'ee\'e9 \'e0\'f2\'e0\'ea\'ee\'e9, \'e0 \'ed\'e5 \'e7\'e0\'ed\'ee\'f1\'e8\'eb \'e2 Blacklist IP Proxy.\par
+\par
+\i Enable\\Disable\i0\par
+\par
+\ul DNS Authentication\ulnone\par
+\par
+\'cd\'e5 \'ef\'ee\'ed\'ff\'eb \'f4\'e8\'f8\'ea\'e8. \'ca\'e0\'ea\'e8\'e5-\'f2\'ee \'e7\'e0\'ef\'f0\'ee\'f1\'fb \'f1 not valid \'f5\'ee\'f1\'f2\'ee\'e2 \'ed\'e0 TCP \'ef\'e5\'f0\'e5\'e4 \'f2\'e5\'ec \'ea\'e0\'ea \'e7\'e0\'ef\'f0\'ee\'f1 \'e4\'ee\'e9\'e4\'b8\'f2 \'e4\'ee DNS \'f1\'e5\'f0\'e2\'e5\'f0\'e0.\par
+\par
+\i Enable\\Disable\i0\par
+\par
+\ul DNS NXDomain Rate Limiting\ulnone\par
+\par
+NXDomain (non-existent domain)\par
+Attacker \'ec\'ee\'e6\'e5\'f2 \'e7\'e0\'ef\'f0\'e0\'f8\'e8\'e2\'e0\'f2\'fc \'ed\'e5\'f1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'fe\'f9\'e8\'e5 \'e4\'ee\'ec\'e5\'ed\'fb, \'f2\'e5\'ec \'f1\'e0\'ec\'fb\'ec \'e4\'e5\'eb\'e0\'ff DNS cache poisoning and dictionary attacks.\par
+\par
+\pard\fi-1136\li1136\sl240\slmult1\i DNS NXDomain Rate Limit\i0  - \'ed\'e0 \'ea\'e0\'e6\'e4\'ee\'e3\'ee Source IP \'e2\'fb\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2\'f1\'ff \'eb\'e8\'ec\'e8\'f2 \'ef\'ee\'e4\'ee\'e1\'ed\'fb\'f5 \'e7\'e0\'ef\'f0\'ee\'f1\'ee\'e2 \'e2 \'f1\'e5\'ea\'f3\'ed\'e4\'f3.\par
+\pard\sl240\slmult1\par
+\ul DNS Rate Limiting\ulnone\par
+\par
+\pard\fi-1136\li1136\sl240\slmult1\i DNS Query Rate Limit\i0  - \'c2\'fb\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2 \'eb\'e8\'ec\'e8\'f2 DNS queries \'e2 \'f1\'e5\'ea\'f3\'ed\'e4\'f3 \'ee\'f2 \'eb\'fe\'e1\'ee\'e3\'ee Source IP.\par
+\pard\sl240\slmult1\par
+\ul DNS Regular Expression\ulnone\par
+\par
+\'c2\'e2\'ee\'e4\'e8\'f8\'fc \'f0\'e5\'e3\'f3\'eb\'ff\'f0\'ed\'ee\'e5 \'e2\'fb\'f0\'e0\'e6\'e5\'ed\'e8\'e5, \'ea\'ee\'f2\'ee\'f0\'fb\'ec \'f2\'fb \'f1\'e0\'ec \'f5\'ee\'f7\'e5\'f8\'fc check-\'e0\'f2\'fc \'ea\'e0\'e6\'e4\'fb\'e9 DNS \'e7\'e0\'ef\'f0\'ee\'f1. \'c8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'ea\'e0\'ea\'ee\'e9-\'f2\'ee PCRE \'f4\'ee\'f0\'ec\'e0\'f2 \'e2\'fb\'f0\'e0\'e6\'e5\'ed\'e8\'e9.\par
+\par
+\ul Filter List\ulnone\par
+\par
+FCAP Expressions\par
+\'d0\'f3\'f7\'ea\'e0\'ec\'e8 \'ef\'e8\'f8\'e5\'f8\'fc \'f4\'e8\'eb\'fc\'f2\'f0, \'ef\'ee \'ea\'ee\'f2\'ee\'f0\'ee\'ec\'f3 \'ef\'f0\'ee\'ef\'f3\'f1\'ea\'e0\'e5\'f8\'fc\\drop-\'e8\'f8\'fc \'ef\'e0\'ea\'e5\'f2\'fb. \'d2\'e8\'ef\'e0 \'e1\'ee\'eb\'e5\'e5 \'e3\'e8\'e1\'ea\'e8\'e5, \'f7\'e5\'ec White \'e8 Black \'eb\'e8\'f1\'f2\'fb.\par
+\'c2\'e3\'eb\'ff\'e4\'ff\'f2 \'ea\'e0\'ea: pass port 22 and src 10.0.1.0/24 \'e8\'eb\'e8 drop port 22\par
+\par
+\ul HTTP Header Regular Expressions\ulnone\par
+\par
+\'c2\'e2\'ee\'e4\'e8\'f8\'fc \'f0\'e5\'e3\'f3\'eb\'ff\'f0\'ed\'ee\'e5 \'e2\'fb\'f0\'e0\'e6\'e5\'ed\'e8\'e5, \'ea\'ee\'f2\'ee\'f0\'fb\'ec \'f2\'fb \'f1\'e0\'ec \'f5\'ee\'f7\'e5\'f8\'fc check-\'e0\'f2\'fc \'ea\'e0\'e6\'e4\'fb\'e9 HTTP \'e7\'e0\'ef\'f0\'ee\'f1. \'c8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff PCRE \'f4\'ee\'f0\'ec\'e0\'f2 \'e2\'fb\'f0\'e0\'e6\'e5\'ed\'e8\'e9.\par
+\par
+\ul HTTP Rate Limiting\ulnone\par
+\par
+\pard\fi-1136\li1136\sl240\slmult1\i HTTP Request Limit\i0  - Temporarily Block Source IP, \'e5\'f1\'eb\'e8 \'ee\'f2 \'ed\'e5\'e3\'ee \'ef\'f0\'e8\'f5\'ee\'e4\'e8\'f2 \'e1\'ee\'eb\'fc\'f8\'e5 \'f7\'e5\'ec ... \'e7\'e0\'ef\'f0\'ee\'f1\'ee\'e2 \'e2 \'f1\'e5\'ea\'f3\'ed\'e4\'f3.\par
+\i HTTP URL Limit\i0  - Temporarily Block Source IP, \'e5\'f1\'eb\'e8 \'ee\'f2 \'ed\'e5\'e3\'ee \'ef\'f0\'e8\'f5\'ee\'e4\'e8\'f2 \'e1\'ee\'eb\'fc\'f8\'e5 \'f7\'e5\'ec ... \'ce\'c4\'c8\'cd\'c0\'ca\'ce\'c2\'db\'d5 \'e7\'e0\'ef\'f0\'ee\'f1\'ee\'e2 \'ed\'e0 \'ee\'e4\'e8\'ed \'e8 \'f2\'ee\'f2 \'e6\'e5 URL \'e2 \'f1\'e5\'ea\'f3\'ed\'e4\'f3.\par
+\par
+\ul HTTP Reporting\par
+\pard\sl240\slmult1\ulnone\par
+\i Enable\\Disable\i0  \'e5\'f1\'eb\'e8 \'ed\'e5 \'f5\'ee\'f7\'e5\'f8\'fc \'e2\'e8\'e4\'e5\'f2\'fc top URLs \'e8 top Domains \'ed\'e0 View Protection Group \'f1\'f2\'f0\'e0\'ed\'e8\'f7\'ea\'e5.\par
+\par
+\ul UDP Flood Detection\ulnone\par
+\par
+\'c1\'eb\'ee\'f7\'e8\'f2 Source IP \'e5\'f1\'eb\'e8 \'f1 \'ed\'e5\'e3\'ee \'e2\'e0\'eb\'e8\'f2\'f1\'ff \'e1\'ee\'eb\'fc\'f8\'e5 \'f7\'e5\'ec... UDP \'ef\'e0\'ea\'e5\'f2\'ee\'e2 bps \'e8\'eb\'e8 pps\par
+\'cd\'e5 \'ef\'ee\'ed\'ff\'f2\'ed\'ee, \'ea\'e0\'ea \'f1\'e8\'f1\'f2\'e5\'ec\'e0 \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2, \'e5\'f1\'eb\'e8 \'e8\'e4\'b8\'f2 \'e0\'f2\'e0\'ea\'e0 \'f1\'ee spoofed IP\ul\par
+\par
+ICMP Flood Detection\ulnone\par
+\par
+\pard\fi-1136\li1136\sl240\slmult1\i ICMP Rate\i0  - \'c1\'eb\'ee\'f7\'e8\'f2 \'f5\'ee\'f1\'f2, \'e5\'f1\'eb\'e8 \'ee\'f2 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \'e1\'ee\'eb\'fc\'f8\'e5 \'f7\'e5\'ec ... ICMP echo\par
+\pard\sl240\slmult1\par
+\ul Malformed HTTP Filtering\ulnone\par
+\par
+\'cf\'f0\'ee\'e2\'e5\'f0\'ff\'e5\'f2 \'f1\'ee\'e2\'ef\'e0\'e4\'e0\'e5\'f2 \'eb\'e8 HTTP \'e7\'e0\'ef\'f0\'ee\'f1 \'f1 RFC.\par
+\par
+\ul Payload Regular Expression\ulnone\par
+\par
+\'c2\'fb\'e1\'e8\'f0\'e0\'e5\'f2\'f1\'ff TCP\\UDP \'ef\'ee\'f0\'f2 \'e8 \'ea \'fd\'f2\'e8\'ec \'ef\'e0\'ea\'e5\'f2\'e0\'ec \'ef\'f0\'e8\'ec\'e5\'ed\'ff\'e5\'f2\'f1\'ff \'f0\'e5\'e3\'f3\'eb\'ff\'f0\'ed\'ee\'e5 \'e2\'fb\'f0\'e0\'e6\'e5\'ed\'e8\'e5 \'e2 PCRE \'f4\'ee\'f0\'ec\'e0\'f2\'e5, \'ea\'ee\'f2\'ee\'f0\'ee\'e5 \'ef\'f0\'e8\'ec\'e5\'ed\'ff\'e5\'f2\'f1\'ff \'ea\'ee \'e2\'f1\'e5\'ec\'f3 \'f7\'f2\'ee \'e2\'fb\'f8\'e5 TCP\\UDP\par
+\par
+\ul Rate-based Blocking\ulnone\par
+\par
+\'ce\'e1\'fb\'f7\'ed\'fb\'e9 rate-limit. \'c2\'fb\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f8\'fc bps \'e8\'eb\'e8 pps \'e4\'eb\'ff Source IP. \'c5\'f1\'eb\'e8 \'ef\'f0\'e5\'e2\'fb\'f8\'e0\'e5\'f2 - block \'ed\'e0 \'ec\'e8\'ed\'f3\'f2\'f3.\par
+\par
+\ul SIP Request Limiting\ulnone\par
+\par
+\pard\fi-1136\li1136\sl240\slmult1\i SIP Source Limit\i0  - \'e2\'fb\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2 \'ec\'e0\'ea\'f1\'e8\'ec\'f3\'ec SIP \'e7\'e0\'ef\'f0\'ee\'f1\'ee\'e2 \'e2 \'f1\'e5\'ea\'f3\'ed\'e4\'f3 \'ee\'f2 \'f5\'ee\'f1\'f2\'e0\par
+\pard\sl240\slmult1\par
+\ul Spoofed SYN Flood Prevention\ulnone\par
+\par
+\'c5\'f1\'eb\'e8 \'f2\'f0\'e0\'f4\'e8\'ea HTTP, \'f2\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff 2-\'e0 \'ec\'e5\'f2\'ee\'e4\'e0\par
+\pard\fi-1136\li1136\sl240\slmult1\i HTTP redirect\i0  - Arbor \'ed\'e0 TCP SYN \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \'ea\'e0\'ea\'ee\'e9-\'f2\'ee 302 redirect \'e8 \'e5\'f1\'eb\'e8 \'f5\'ee\'f1\'f2 \'ee\'f2\'e2\'e5\'f7\'e0\'e5\'f2 \'ed\'e0 \'fd\'f2\'ee\'f2 \'f0\'e5\'e4\'e8\'f0\'e5\'ea\'f2 - \'f2\'ee \'e2\'f1\'b8 ok\par
+\i HTTP soft reset\i0  - Arbor \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \'f0\'e5\'e4\'e8\'f0\'e5\'ea\'f2 \'ed\'e0 \'f2\'ee\'f2 \'e6\'e5 \'f1\'e0\'ec\'fb\'e9 URL - \'e2 \'e8\'f2\'ee\'e3\'e5 \'ea\'eb\'e8\'e5\'ed\'f2 \'e4\'ee\'eb\'e6\'e5\'ed \'f1\'e4\'e5\'eb\'e0\'f2\'fc retry. \'d3\'ef\'f0\'ee\'f9\'b8\'ed\'ed\'e0\'ff \'f1\'f5\'e5\'ec\'e0 \'ef\'e5\'f0\'e2\'ee\'e3\'ee \'ec\'e5\'f2\'ee\'e4\'e0.\par
+\pard\sl240\slmult1\'c5\'f1\'eb\'e8 \'e2\'ea\'eb\'fe\'f7\'e5\'ed\'fb \'ee\'e1\'e0 \'ec\'e5\'f2\'ee\'e4\'e0, \'f2\'ee \'e1\'f3\'e4\'e5\'f2 \'f0\'e0\'e1\'ee\'f2\'e0\'f2\'fc \'f2\'ee\'eb\'fc\'ea\'ee \'ef\'e5\'f0\'e2\'fb\'e9.\par
+\par
+\'c5\'f1\'eb\'e8 \'f2\'f0\'e0\'f4\'e8\'ea \'ed\'e5 HTTP, \'f2\'ee \'ed\'e0 TCP SYN Arbor \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2\'f1\'ff SYN-ACK \'f1\'ee \'f1\'ef\'e5\'f6\'e8\'e0\'eb\'fc\'ed\'fb\'ec sequence number. \'c5\'f1\'eb\'e8 \'ef\'f0\'e8\'eb\'e5\'f2\'e0\'e5\'f2 \'ef\'f0\'e0\'e2\'e8\'eb\'fc\'ed\'fb\'e9 ACK - ok.\par
+TCP Out of Sequence Authentication - Arbor \'f1\'e0\'ec \'ee\'f2\'e2\'e5\'f7\'e0\'e5\'f2 SYN-ACK... \'ed\'f3 \'e2 \'ee\'e1\'f9\'e5\'ec \'ed\'ee\'f0\'ec\'e0\'eb\'fc\'ed\'fb\'e9 \'ea\'eb\'e8\'e5\'ed\'f2 \'eb\'e8\'e1\'ee \'ef\'ee\'f8\'eb\'b8\'f2 RST, \'eb\'e8\'e1\'ee \'ee\'f2\'ea\'f0\'ee\'e5\'f2 \'ed\'ee\'e2\'f3\'fe \'f1\'e5\'f1\'f1\'e8\'fe.\par
+\par
+\ul TCP Connection Limiting\ulnone\par
+\par
+\'ca\'ee\'eb\'e8\'f7\'e5\'f1\'f2\'e2\'ee \'ee\'e4\'ed\'ee\'e2\'f0\'e5\'ec\'e5\'ed\'ed\'fb\'f5 TCP \'f1\'e5\'f1\'f1\'e8\'e9 \'f1 \'ee\'e4\'ed\'ee\'e3\'ee Source IP.\par
+\'d4\'e8\'f7\'e0 \'e1\'eb\'ee\'ea\'e8\'f0\'f3\'e5\'f2 \'f2\'f0\'e0\'f4\'e8\'ea, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'ef\'f0\'e5\'e2\'fb\'f8\'e0\'e5\'f2 \'ea\'e0\'ea\'ee\'e9-\'f2\'ee \'ef\'ee\'f0\'ee\'e3, \'ed\'ee \'ed\'e5 \'e7\'e0\'ed\'ee\'f1\'e8\'f2 \'f5\'ee\'f1\'f2 \'e2 Temporarily Blocked Hosts. \'cd\'ee \'e2 \'f2\'ee\'e6\'e5 \'e2\'f0\'e5\'ec\'ff \'ef\'e8\'f8\'e5\'f2 \'ef\'f0\'ee Source IP \'e2 \'eb\'ee\'e3\'e5 Blocked Hosts.\par
+\par
+\ul TCP Connection Reset\ulnone\par
+\par
+\'d0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'ed\'e0 \'ef\'ee\'f0\'f2\'e0\'f5 80, 443, 25.\par
+\'c7\'e0\'f9\'e8\'f9\'e0\'e5\'f2 \'ee\'f2 SYN Flood, slow HTTP \'e0\'f2\'e0\'ea.\par
+\pard\fi-1136\li1136\sl240\slmult1\i Minimum Request Bit Rate\i0  - \'f1\'ea\'ee\'eb\'fc\'ea\'ee \'ec\'e8\'ed\'e8\'ec\'f3\'ec \'e1\'e8\'f2 \'e2 \'f1\'e5\'ea\'f3\'ed\'e4\'f3 \'e4\'ee\'eb\'e6\'e5\'ed \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'f2\'fc Source IP, \'f7\'f2\'ee\'e1\'fb \'e1\'fb\'f2\'fc \'eb\'e5\'e3\'e8\'f2\'e8\'ec\'ed\'fb\'ec\par
+\i TCP Connection Initial Timeout\i0  - \'f1\'ea\'ee\'eb\'fc\'ea\'ee \'e2\'f0\'e5\'ec\'e5\'ed\'e8 \'ea\'ee\'ed\'ed\'e5\'ea\'f6\'e8\'ff \'ec\'ee\'e6\'e5\'f2 \'e2\'e8\'f1\'e5\'f2\'fc \'e2 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e8 Idle\par
+\i Consecutive Violations before Blocking Source\i0  - \'f1\'ea\'ee\'eb\'fc\'ea\'ee \'e4\'ee\'eb\'e6\'ed\'ee \'e2\'e8\'f1\'e5\'f2\'fc Idle \'ea\'ee\'ed\'ed\'e5\'ea\'f6\'e8\'e9 \'ee\'f2 \'ee\'e4\'ed\'ee\'e3\'ee IP \'f7\'f2\'ee\'e1\'fb \'e5\'e3\'ee \'e7\'e0\'e1\'eb\'ee\'f7\'e8\'f2\'fc\par
+\pard\sl240\slmult1\par
+\ul TCP SYN Flood Detection\ulnone\par
+\par
+\pard\fi-1136\li1136\sl240\slmult1\i SYN Rate\i0  - \'e4\'ee\'ef\'f3\'f1\'f2\'e8\'ec\'ee\'e5 \'ea\'ee\'eb\'e8\'f7\'e5\'f1\'f2\'e2\'ee SYN \'ef\'e0\'ea\'e5\'f2\'ee\'e2 \'e2 \'f1\'e5\'ea\'f3\'ed\'e4\'f3 c \'ee\'e4\'ed\'ee\'e3\'ee IP\par
+\i Syn Ack Delta Rate\i0  - \'f1\'f7\'e8\'f2\'e0\'e5\'f2 \'f0\'e0\'e7\'ed\'e8\'f6\'f3 SYN - ACK = delta\par
+\pard\sl240\slmult1\par
+\ul TLS Attack Prevention\ulnone\par
+\par
+\'e1\'f0\'e5\'e4 \'ea\'e0\'ea\'ee\'e9-\'f2\'ee\par
+\par
+\ul Traffic Shaping\ulnone\par
+\par
+\'c7\'e0\'f0\'e5\'e7\'e0\'e5\'f2 \'e2\'ee\'ee\'e1\'f9\'e5 \'e2\'e5\'f1\'fc \'f2\'f0\'e0\'f4\'e8\'ea \'ef\'ee bps \'e8 pps.\par
+Source IP, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'e7\'e0\'f0\'e5\'e7\'e0\'e5\'f2\'f1\'ff Shaping-\'ee\'ec \'ed\'e5 \'ef\'ee\'ff\'e2\'eb\'ff\'e5\'f2\'f1\'ff \'ed\'e8 \'e2 Temporarily Blocked Hosts \'ed\'e8 \'e2 \'eb\'ee\'e3\'e5 Blocked Hosts\par
+\par
+\ul Black \'eb\'e8\'f1\'f2\'fb\ulnone\par
+\par
+\'c1\'eb\'ee\'f7\'e8\'f2 \'ef\'ee IP, Domain, Country, URL\par
+\par
+\ul White \'eb\'e8\'f1\'f2\'fb\ulnone\par
+\par
+\'d0\'e0\'e7\'f0\'e5\'f8\'e0\'e5\'f2 \'f2\'ee\'eb\'fc\'ea\'ee \'ef\'ee IP\par
+\par
+----------------------------------------------------------\par
+\par
+\'c5\'f1\'eb\'e8 \'ed\'e0\'e2\'e5\'f1\'f2\'e8 \'ec\'fb\'f8\'ea\'f3 \'e2 Summary->Interface \'ed\'e0 \'ed\'e0\'e7\'e2\'e0\'ed\'e8\'e5 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0, \'f2\'ee \'e2\'fb\'eb\'e5\'e7\'e5\'f2 Packet Capture\par
+\par
+\'ca\'e0\'ea \'ee\'f2\'e1\'e8\'f2\'fc \'e0\'f2\'e0\'ea\'f3:\par
+1. \'cf\'ee\'e2\'fb\'f1\'e8\'f2\'fc Protection Level\par
+2. \'cf\'ee\'ef\'f0\'ee\'e1\'ee\'e2\'e0\'f2\'fc \'e2\'fb\'ff\'e2\'e8\'f2\'fc Source IP \'e0\'f2\'e0\'ea\'f3\'fe\'f9\'e5\'e3\'ee\par
+3. \'d1\'e0\'ec\'ee\'ec\'f3 \'ef\'ee\'ed\'ff\'f2\'fc \'f2\'e8\'ef \'e0\'f2\'e0\'ea\'e8 \'e8 \'ef\'ee\'e4\'ea\'f0\'f3\'f2\'e8\'f2\'fc \'f0\'f3\'f7\'ea\'e0\'ec\'e8\par
+4. \'ce\'e1\'f0\'e0\'f2\'e8\'f2\'fc\'f1\'ff \'ea Cloud Mitigation\par
+\par
+----------------------------------------------------------\par
+\par
+\pard\fi-568\li568\sl240\slmult1 1. \'d1\'ec\'ee\'f2\'f0\'e8\'ec \'e2 System Alerts\tab\par
+\pard\li568\sl240\slmult1 Interface Link 'int0' is Up|Down\par
+Hardware Device 'Power Supply PS2' is OK|Error\par
+Software Component 'pktengine (CPU-1)' is Running|Not Running\par
+Hardware sensor 'Temperature (CPU-1)' is OK|Critical\par
+Config file 'dpi.conf' is OK|Missing|Error\par
+Registry Version 'pktengine:dpi.conf' is In Sync|Out of Sync\par
+System Item 'Email System' is Nominal|Degraded|Critical|Error\par
+\pard\sl240\slmult1 2. \'d1\'ec\'ee\'f2\'f0\'e8\'ec \'e2 System Overview\par
+\pard\li568\sl240\slmult1 Total Trafic\par
+Passed Traffic\par
+Blocked Traffic\par
+Blocked Host\par
+\pard\fi-284\li852\sl240\slmult1\'c2\'e8\'e4\'e8\'ec, \'f7\'f2\'ee \'e2\'e7\'eb\'e5\'f2\'e5\'eb \'f3\'f0\'ee\'e2\'e5\'ed\'fc \'f2\'f0\'e0\'f4\'e8\'ea\'e0 - \'e2\'ee\'e7\'ec\'ee\'e6\'ed\'ee \'ed\'e0\'f1 \'e0\'f2\'e0\'ea\'f3\'fe\'f2.\par
+\'c2\'e8\'e4\'e8\'ec \'ec\'ed\'ee\'e3\'ee \'e2\'f5\'ee\'e4\'ff\'f9\'e5\'e3\'ee \'f2\'f0\'e0\'f4\'e8\'ea\'e0, \'e8 \'ec\'e0\'eb\'ee \'ef\'f0\'ee\'f8\'e5\'e4\'f8\'e5\'e3\'ee \'f7\'e5\'f0\'e5\'e7 Arbor - \'e2\'ee\'e7\'ec\'ee\'e6\'ed\'ee \'ed\'e0\'f1\'f2\'f0\'ee\'e5\'ed\'e0 \'f1\'eb\'e8\'f8\'ea\'ee\'ec \'e0\'e3\'f0\'e5\'f1\'f1\'e8\'e2\'ed\'e0\'ff \'ef\'ee\'eb\'e8\'f2\'e8\'ea\'e0.\par
+\pard\sl240\slmult1 3. \'c7\'e0\'e3\'f0\'f3\'e7\'ea\'e0 CPU \'e8 Memory\par
+4. \'d0\'e0\'e7\'e1\'eb\'fe\'e4\'ee\'e2\'ea\'e0 \'f2\'f0\'e0\'f4\'e8\'ea\'e0 \'ef\'ee \'ea\'f0\'e8\'f2\'e5\'f0\'e8\'ff\'ec\par
+\pard\fi-284\li852\sl240\slmult1 Top Source section - \'ef\'ee\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2 top 5 IP \'e0\'e4\'f0\'e5\'f1\'ee\'e2, \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'f8\'eb\'fe\'f2 \'e1\'ee\'eb\'fc\'f8\'e5 \'e2\'f1\'e5\'e3\'ee \'f2\'f0\'e0\'f4\'e8\'ea\'e0 \'e7\'e0 \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e8\'e9 \'f7\'e0\'f1\par
+Top Destination section - \'ef\'ee\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2 top 5 IP \'e0\'e4\'f0\'e5\'f1\'ee\'e2, \'ef\'ee\'eb\'f3\'f7\'e0\'fe\'f9\'e8\'e5 \'e1\'ee\'eb\'fc\'f8\'e5 \'e2\'f1\'e5\'e3\'ee \'f2\'f0\'e0\'f4\'e8\'ea\'e0 \'e7\'e0 \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e8\'e9 \'f7\'e0\'f1\par
+Top Countries section - \'ef\'ee\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2 top 5 \'f1\'f2\'f0\'e0\'ed, \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'f8\'eb\'fe\'f2 \'e1\'ee\'eb\'fc\'f8\'e5 \'e2\'f1\'e5\'e3\'ee \'f2\'f0\'e0\'f4\'e8\'ea\'e0 \'e7\'e0 \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e8\'e9 \'f7\'e0\'f1\par
+Top URLs section - \'ef\'ee\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2 top 10 URL \'ed\'e0\'e8\'e1\'ee\'eb\'e5\'e5 \'e7\'e0\'ef\'f0\'e0\'f8\'e8\'e2\'e0\'e5\'ec\'fb\'f5 - \'e2\'ee\'e7\'ec\'ee\'e6\'ed\'ee \'ed\'e0 \'ed\'e8\'f5 \'e8\'e4\'b8\'f2 \'e0\'f2\'e0\'ea\'e0\par
+Top Domains - ?\par
+Top IP Location - \'e1\'eb\'ee\'ea\'e8\'f0\'ee\'e2\'e0\'f2\'fc \'f1\'f2\'f0\'e0\'ed\'f3\par
+Top Protocols - \'f7\'e8\'f1\'f2\'ee \'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f2\'e8\'e2\'ed\'e0\'ff \'f4\'e8\'f7\'e0. \'c5\'f1\'eb\'e8 \'e6\'e4\'b8\'ec \'f2\'ee\'eb\'fc\'ea\'ee TCP, \'e0 \'e5\'f1\'f2\'fc \'e5\'f9\'b8 \'e8 \'ea\'e0\'ea\'ee\'e9-\'f2\'ee UDP \'fd\'f2\'ee \'ef\'ee\'e2\'ee\'e4 \'ea \'f0\'e0\'f1\'f1\'eb\'e5\'e4\'ee\'e2\'e0\'ed\'e8\'fe\par
+Top Services - \'e0\'ed\'e0\'eb\'ee\'e3\'e8\'f7\'ed\'ee \'ef\'f0\'e5\'e4\'fb\'e4\'f3\'f9\'e5\'ec\'f3\par
+Temporarily Blocked Sources - \'f2\'e8\'ef\'e0 \'f1\'ec\'ee\'f2\'f0\'e8\'f8\'fc \'e8 \'ec\'ee\'e6\'e5\'f8\'fc \'e7\'e0\'ed\'e5\'f1\'f2\'e8 \'e2 White List\par
+\pard\sl240\slmult1\par
+\par
+\par
+\par
+\par
+\ul\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+DNS NXDomain\ulnone  - \'e4\'eb\'ff \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'e5\'ed\'e8\'ff \'e0\'f2\'e0\'ea\'e8 \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee \'ef\'ee\'eb\'f3\'f7\'e0\'f2\'fc \'ef\'e0\'ea\'e5\'f2\'fb \'e8\'e4\'f3\'f9\'e8\'e5 \'ce\'d2 DNS \'f1\'e5\'f0\'e2\'e5\'f0\'e0 (\'e2 \'ef\'e0\'ea\'e5\'f2\'e5 \'e1\'f3\'e4\'e5\'f2 \'f2\'e8\'ef\'e0 Nonexistent Domain) \'ee\'e1\'f0\'e0\'f2\'ed\'ee \'ea\'eb\'e8\'e5\'ed\'f2\'f3!\par
+\par
+\pard\fi568\sl240\slmult1\'d1\'e8\'f1\'f2\'e5\'ec\'e0 \'ef\'ee BGP \'ec\'ee\'e6\'e5\'f2 \'ee\'f6\'e5\'ed\'e8\'e2\'e0\'f2\'fc \'ea\'e0\'ea \'ed\'e0\'f1\'f2\'f0\'ee\'e5\'ed peer-\'e8\'ed\'e3 \'f1 \'f1\'ee\'f1\'e5\'e4\'ff\'ec\'e8, \'f1\'f2\'e0\'e1\'e8\'eb\'fc\'ed\'ee\'f1\'f2\'fc peer-\'ee\'e2, \'f1\'f2\'ee\'e8\'ec\'ee\'f1\'f2\'fc \'ea\'e0\'ed\'e0\'eb\'ee\'e2 \'e8 \'f2.\'e4.\par
+TMS \'ec\'ee\'e6\'e5\'f2 \'ee\'f6\'e5\'ed\'e8\'e2\'e0\'f2\'fc \'f5\'e0\'f0\'e0\'ea\'f2\'e5\'f0\'e8\'f1\'f2\'e8\'ea\'e8 VoIP \'f2\'e0\'ea\'e8\'e5 \'ea\'e0\'ea jitter, RTT, latency\par
+BGP flow spec - \'fd\'f2\'ee \'e2\'ee\'e7\'ec\'ee\'e6\'ed\'ee\'f1\'f2\'fc \'ef\'e5\'f0\'e5\'e4\'e0\'f7\'e8 \'f7\'e5\'f0\'e5\'e7 BGP access-list-\'ee\'e2 \'e4\'eb\'ff \'e7\'e0\'ea\'f0\'fb\'e2\'e0\'ed\'e8\'ff \'f2\'f0\'e0\'f4\'e8\'ea\'e0, \'e2 \'f7\'e0\'f1\'f2\'ed\'ee\'f1\'f2\'e8, \'e4\'eb\'ff \'e7\'e0\'f9\'e8\'f2\'fb \'ee\'f2 DoS\par
+\pard\sl240\slmult1\par
+\pard\fi568\sl240\slmult1\'c4\'eb\'ff \'e7\'e0\'f9\'e8\'f2\'fb \'ee\'f2 DoS \'e2 TMS \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff BGP Flow Spec, ACL, Black Hole\par
+\pard\sl240\slmult1\par
+\b\tab\tab\ul CP\b0  \i Collector Platform\ulnone\i0\par
+\pard\fi568\sl240\slmult1\'c8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e4\'eb\'ff \'f3\'ef\'f0\'e0\'e2\'eb\'e5\'ed\'e8\'ff \'e4\'f0\'f3\'e3\'e8\'ec\'e8 \'f3\'f1\'f2\'f0\'ee\'e9\'f1\'f2\'e2\'e0\'ec\'e8 FS, TMS. \'c8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e2 Backbone \'e8 Peering edges \'e3\'e4\'e5 \'ec\'e0\'eb\'ee \'f0\'ee\'f3\'f2\'e5\'f0\'ee\'e2, \'ed\'ee \'ec\'ed\'ee\'e3\'ee \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'ee\'e2 + \'ed\'f3\'e6\'e5\'ed Peering \'e0\'ed\'e0\'eb\'e8\'e7 !!!\par
+\'cf\'f0\'e8\'ed\'e8\'ec\'e0\'e5\'f2 Netflow \'f1 \'f0\'ee\'f3\'f2\'b8\'f0\'ee\'e2 \'e8\'eb\'e8 ArborFlow c FS \'e8\'eb\'e8 TMS. ArborFlow \'e3\'e5\'ed\'e5\'f0\'e8\'f0\'f3\'e5\'ec\'fb\'e9 \'f1 TMS \'ed\'e5 \'f1\'f7\'e8\'f2\'e0\'e5\'f2\'f1\'ff \'ea\'e0\'ea flow source\par
+\pard\fi-1562\li2130\sl240\slmult1 CP-5500-5\tab\'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'e5\'f2 5 flow source \'e8 2 mitigation slots \'e4\'eb\'ff TMS. \'d2.\'e5. \'e2 \'e8\'f2\'ee\'e3\'e5 \'ea \'f2\'e0\'ea\'ee\'e9 \'e6\'e5\'eb\'e5\'e7\'ea\'e5 \'ec\'ee\'e6\'ed\'ee \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e8\'f2\'fc \'e4\'ee 7 TMS-\'ee\'e2\par
+CP-5500-2\tab\'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'e5\'f2 2 flow source \'e8 1 mitigation slot \'e4\'eb\'ff TMS. \'c4\'ee 3 TMS-\'ee\'e2.\par
+\pard\fi568\sl240\slmult1 CP \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'e5\'f2 \'e4\'ee 5 router, \'e4\'ee 50000 Flows \'e8 \'e4\'ee 100\'ca ArborFlows/sec\par
+\pard\sl240\slmult1\par
+\b\tab\tab\ul FS\b0  \i Flow Sensor\ulnone\i0\par
+\pard\fi568\sl240\slmult1\'cf\'f0\'e8\'ed\'e8\'ec\'e0\'fe\'f2 Netflow, BGP \'e8 SNMP (\'ed\'e0\'e7\'e2\'e0\'ed\'e8\'e5 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'ee\'e2, \'f1\'f2\'e0\'f2\'e8\'f1\'f2\'e8\'ea\'e0 \'ef\'ee \'f2\'f0\'e0\'f4\'e8\'ea\'f3). \'cc\'ee\'e6\'ed\'ee \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e8\'f2\'fc \'e4\'ee 15 \'f0\'ee\'f3\'f2\'e5\'f0\'ee\'e2. \'cd\'c5\'d2 \'e0\'ed\'e0\'eb\'e8\'e7\'e0 peering-\'e0. \'cd\'e5 \'ec\'ee\'e3\'f3\'f2 \'e6\'e8\'f2\'fc \'f1\'e0\'ec\'e8 \'ef\'ee \'f1\'e5\'e1\'e5, \'ed\'f3\'e6\'e5\'ed CP \'e4\'eb\'ff \'f3\'ef\'f0\'e0\'e2\'eb\'e5\'ed\'e8\'ff.\par
+\'c8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e4\'eb\'ff Customer \'e8 Aggregation edge \'e3\'e4\'e5 \'ec\'ed\'ee\'e3\'ee \'f0\'ee\'f3\'f2\'e5\'f0\'ee\'e2, \'ed\'ee \'ec\'e0\'eb\'ee \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'ee\'e2 + \'cd\'c5 \'ed\'f3\'e6\'e5\'ed \'e0\'ed\'e0\'eb\'e8\'e7 Peering\par
+FS \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'e5\'f2 \'e4\'ee 15 router, \'e4\'ee 25000 Flows \'e8 \'e4\'ee 50\'ca ArborFlows/sec\par
+\pard\sl240\slmult1\par
+\b\tab\tab\ul BI\b0  \i Business Intelligence\ulnone\i0\par
+\pard\fi568\sl240\slmult1\'d3\'e2\'e5\'eb\'e8\'f7\'e8\'e2\'e0\'e5\'f2 \'ea\'ee\'eb\'e8\'f7\'e5\'f1\'f2\'e2\'ee Managed Objeccts \'e4\'ee 500 \'ed\'e0 \'ee\'e4\'e8\'ed BI. \'cc\'e0\'ea\'f1\'e8\'ec\'f3\'ec \'e4\'eb\'ff \'f1\'e8\'f1\'f2\'e5\'ec\'fb <10000. \'ce\'f2\'ea\'e0\'e7\'ee\'f3\'f1\'f2\'ee\'e9\'f7\'e8\'e2\'ee\'f1\'f2\'fc \'fd\'f2\'e8\'f5 Managed Objects.\par
+\pard\sl240\slmult1\par
+\b\tab\tab\ul PI\b0  \i Portal Interface\ulnone\i0\par
+\pard\fi568\sl240\slmult1 Web \'ec\'ee\'f0\'e4\'e0. \'d6\'e5\'ed\'f2\'f0\'e0\'eb\'e8\'e7\'ee\'e2\'e0\'ed\'ed\'fb\'e9 \'e4\'ee\'f1\'f2\'f3\'ef \'ea \'f1\'e8\'f1\'f2\'e5\'ec\'e5. \'d5\'f0\'e0\'ed\'e8\'f2 user accounts. \'c3\'e5\'ed\'e5\'f0\'e8\'f0\'f3\'e5\'f2 Reports.\par
+PI \'ea\'e0\'ea \'ef\'f0\'e0\'e2\'e8\'eb\'ee \'f3\'f1\'f2\'e0\'ed\'e0\'e2\'eb\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'ed\'e0 CP Leader.\par
+\pard\sl240\slmult1\par
+\b Flow\b0  - \'dd\'d2\'ce INBOUND \'f2\'f0\'e0\'f4\'e8\'ea, \'f2.\'e5. \'e4\'ee\'eb\'e6\'ed\'fb \'ed\'e0\'f1\'f2\'f0\'e0\'e8\'e2\'e0\'f2\'fc \'f2\'ee\'eb\'fc\'ea\'ee \'e2\'f5\'ee\'e4\'ff\'f9\'e8\'e9 netflow \'ed\'e0 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e5.\par
+\'d7\'f2\'ee \'e2 \'f1\'e5\'e1\'ff \'e2\'ea\'eb\'fe\'f7\'e0\'e5\'f2 Netflow \'e8 \'f7\'f2\'ee \'f3\'f7\'e8\'f2\'fb\'e2\'e0\'e5\'f2 Arbor:\par
+\pard\fi568\sl240\slmult1 Router IP\par
+\'c8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1: Fa0/0\par
+\'cf\'f0\'ee\'f2\'ee\'ea\'ee\'eb: TCP, UDP, ICMP\par
+Type ICMP\par
+TOS = 0x0\par
+Src IP \'e8 Dest IP\par
+\'e2\'f0\'e5\'ec\'ff \'ed\'e0\'f7\'e0\'eb\'e0 \'e8 \'ea\'ee\'ed\'f6\'e0 \'f1\'e5\'f1\'f1\'e8\'e8\par
+\'ee\'e1\'f9\'e5\'e5 \'ea\'ee\'eb-\'e2\'ee \'e1\'e0\'e9\'f2 \'e8 \'ee\'e1\'f9\'e5\'e5 \'ea\'ee\'eb-\'e2\'ee \'ef\'e0\'ea\'e5\'f2\'ee\'e2\par
+TCP Flags: Syn, Push, Ack\par
+\par
+\pard\sl240\slmult1\'d1\'ed\'e0\'f7\'e0\'eb\'e0 \'f1\'f2\'e0\'f2\'e8\'f1\'f2\'e8\'ea\'e0 \'ed\'e0\'e1\'e8\'f0\'e0\'e5\'f2\'f1\'ff \'e2 flow cache, \'ef\'ee\'f2\'ee\'ec \'e2\'fb\'f2\'e0\'f1\'ea\'e0\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'e8\'e7 cache \'e8 \'f4\'ee\'f0\'ec\'e8\'f0\'f3\'e5\'f2\'f1\'ff flow \'ef\'ee\'f2\'ee\'ea \'ef\'f0\'e8 \'f3\'f1\'eb\'ee\'e2\'e8\'e8:\par
+\pard\fi568\sl240\slmult1 - \'f1\'e5\'f1\'f1\'e8\'ff \'ed\'e5 \'e0\'ea\'f2\'e8\'e2\'ed\'e0 \'ef\'ee default 15 \'f1\'e5\'ea\par
+- \'ef\'f0\'ee\'f2\'ee\'ea\'ee\'eb \'f1\'e0\'ec \'e7\'e0\'ea\'f0\'fb\'eb \'f1\'e5\'f1\'f1\'e8\'fe\par
+\pard\fi-994\li1562\sl240\slmult1 - \'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'ff \'e2 cache \'eb\'e5\'e6\'e8\'f2 \'f1\'eb\'e8\'f8\'ea\'ee\'ec \'e4\'ee\'eb\'e3\'ee \'ef\'ee default 30 \'ec\'e8\'ed, \'ed\'e0\'e4\'ee \'ec\'e5\'ed\'ff\'f2\'fc \'ed\'e0 1 \'ec\'e8\'ed.\par
+\pard\sl240\slmult1\par
+\b Managed Object\b0  \'e8\'eb\'e8 MO\par
+\'cd\'e5 \'ec\'ee\'e6\'e5\'ec \'f1\'ee\'e1\'e8\'f0\'e0\'f2\'fc \'e2\'f1\'b8 \'e8 \'e2\'f1\'ff. \'cf\'ee\'fd\'f2\'ee\'ec\'f3 \'ee\'f2\'f1\'eb\'e5\'e6\'e8\'e2\'e0\'e5\'ec \'d2\'ce\'cb\'dc\'ca\'ce \'f2\'ee \'f7\'f2\'ee \'ed\'e0\'f1\'f2\'f0\'ee\'e8\'ec.\par
+\'cc\'ee\'e6\'ed\'ee \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'f2\'fc \'ea\'e0\'ea 100.167.128.0/17 \'e8\'eb\'e8 AS 123 \'e8\'eb\'e8 community 1001:52\par
+\'cc\'ee\'e3\'f3\'f2 \'e1\'fb\'f2\'fc:\tab Internal - Customer, Datacenter\par
+\tab\tab External - Peer AS, Google\par
+\'c4\'eb\'ff \'ef\'f0\'e5\'e4\'ee\'f1\'f2\'e0\'e2\'eb\'e5\'ed\'e8\'ff \'f0\'e0\'e7\'eb\'e8\'f7\'ed\'fb\'f5 \'ee\'f2\'f7\'b8\'f2\'ee\'e2 \'e8 \'f1\'ee\'e1\'e8\'f0\'e0\'e5\'ec\'ee\'e9 \'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'e8 \'f1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'fe\'f2 \'f0\'e0\'e7\'eb\'e8\'f7\'ed\'fb\'e5 Types of MO:\par
+\pard\fi-1562\li2130\sl240\slmult1\i Customers\i0\tab\'e2\'e0\'e6\'ed\'fb\'e5 \'ea\'eb\'e8\'e5\'ed\'f2\'fb, \'ef\'ee \'ea\'ee\'f2\'ee\'f0\'fb\'ec \'f5\'ee\'f2\'e5\'eb\'ee\'f1\'fc \'e1\'fb \'ef\'ee\'eb\'f3\'f7\'e0\'f2\'fc reports \'e8 Alerts\par
+\i Peers\i0\tab\tab Upstream BGP Peers, \'ea\'ee\'f2\'ee\'f0\'fb\'f5 \'f5\'ee\'f2\'e5\'eb\'ee\'f1\'fc \'e1\'fb \'ec\'ee\'ed\'e8\'f2\'ee\'f0\'e8\'f2\'fc\par
+\i Profiles\i0\tab\'ee\'e1\'fb\'f7\'ed\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e4\'eb\'ff \'ee\'e1\'ee\'e7\'ed\'e0\'f7\'e5\'ed\'e8\'ff \'ea\'e0\'ea\'e8\'f5-\'eb\'e8\'e1\'ee \'e2\'ed\'f3\'f2\'f0\'e5\'ed\'ed\'e8\'f5 \'f0\'e5\'f1\'f3\'f0\'f1\'ee\'e2\par
+\i VPNs\i0\tab\tab\'e4\'eb\'ff \'ec\'ee\'ed\'e8\'f2\'ee\'f0\'e8\'ed\'e3\'e0 Site-to-Site \'f2\'f0\'e0\'f4\'e8\'ea\'e0\par
+\pard\sl240\slmult1\par
+\'cf\'ee\'eb\'ff \'e4\'eb\'ff \'e7\'e0\'e4\'e0\'ed\'e8\'ff Managed Object:\par
+\pard\fi-1562\li2130\sl240\slmult1\i Name\i0\par
+\i Description\i0\par
+\i Match\i0\tab\tab\'ea\'e0\'ea\'ee\'e9 \'f2\'f0\'e0\'f4\'e8\'ea \'ec\'e0\'ef\'e8\'f2\'fc. \'cc\'ee\'e6\'ed\'ee \'ec\'e0\'ef\'e8\'f2\'fc \'e2\'e5\'f1\'fc \'f2\'f0\'e0\'f4\'e8\'ea \'ef\'f0\'e8\'f5\'ee\'e4\'ff\'f9\'e8\'e9 \'ea\'e0\'ea \'f2\'e0\'ea\'ee\'e9 \'f2\'ee Interface \'ed\'e0 \'f2\'e0\'ea\'ee\'ec \'f2\'ee \'f0\'ee\'f3\'f2\'e5\'f0\'e5. \'cc\'ee\'e6\'ed\'ee IP \'e0\'f2\'f0\'e8\'e1\'f3\'f2\'fb (CIDR, Application ID, FCAP Filter). \'cc\'ee\'e6\'ed\'ee  BGP \'e0\'f2\'f0\'e8\'e1\'f3\'f2\'fb (AS number, Communities, AS path)\par
+\i Boundary\i0\tab\'e3\'e4\'e5 \'fd\'f2\'ee\'f2 \'f2\'f0\'e0\'f4\'e8\'ea \'e1\'f0\'e0\'f2\'fc. \'cf\'e5\'f0\'e5\'f7\'e5\'ed\'fc \'ee\'e4\'ed\'ee\'e3\'ee \'e8\'eb\'e8 \'e1\'ee\'eb\'e5\'e5 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0, \'f7\'e5\'f0\'e5\'e7 \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'ef\'f0\'ee\'f5\'ee\'e4\'e8\'f2 \'f2\'f0\'e0\'f4\'e8\'ea \'f2\'ee\'eb\'fc\'ea\'ee \'f0\'e0\'e7 \'ea \'e8\'eb\'e8 \'ee\'f2 MO (\'e4\'eb\'ff \'ef\'f0\'e5\'e4\'ee\'f2\'e2\'f0\'e0\'f9\'e5\'ed\'e8\'ff \'e4\'e2\'ee\'e9\'ed\'ee\'e3\'ee \'ef\'ee\'e4\'f1\'f7\'b8\'f2\'e0 \'ee\'e4\'ed\'ee\'e3\'ee \'e8 \'f2\'ee\'e3\'ee \'e6\'e5 \'f2\'f0\'e0\'f4\'e8\'ea\'e0). \'d2\'f0\'e0\'f4\'e8\'ea \'f1\'ec\'ee\'f2\'f0\'e8\'f2\'f1\'ff \'e2\'e5\'e7\'e4\'e5, \'ed\'ee \'e8\'ec\'e5\'ed\'ed\'ee \'ea\'ee\'eb\'e8\'f7\'e5\'f1\'f2\'e2\'ee \'f1\'f7\'e8\'f2\'e0\'e5\'f2\'f1\'ff \'ea\'e0\'ea \'f0\'e0\'e7 \'ed\'e0 boundary interface. Alerts, \'f1\'e2\'ff\'e7\'e0\'ed\'ed\'fb\'e5 \'f1 \'e2\'ee\'e7\'f0\'e0\'f1\'f2\'e0\'ed\'e8\'e5\'ec \'f2\'f0\'e0\'f4\'e8\'ea\'e0 \'e8\'e7-\'e7\'e0 DDoS \'e0\'f2\'e0\'ea\'e8, \'e3\'e5\'ed\'e5\'f0\'ff\'f2\'f1\'ff \'ed\'e0 \'ee\'f1\'ed\'ee\'e2\'e0\'ed\'e8\'e8 \'fd\'f2\'ee\'e3\'ee \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0.\par
+\i Detection\i0\tab\'e7\'e0\'e4\'e0\'ed\'e8\'e5 \'ef\'ee\'f0\'ee\'e3\'ee\'e2 Thresholds \'e4\'eb\'ff Alerts. Baseline \'e2\'ea\'eb\'fe\'f7\'e0\'e5\'f2 \'e2 \'f1\'e5\'e1\'ff bps \'e8 pps \'ef\'ee \'ea\'e0\'e6\'e4\'ee\'ec\'f3 \'e8\'e7 \'ee\'f1\'ed\'ee\'e2\'ed\'fb\'f5 \'ef\'f0\'ee\'f2\'ee\'ea\'ee\'eb\'ee\'e2 TCP, UDP, ICMP, AH, GRE, ESP... Baseline \'ee\'e1\'ed\'ee\'e2\'eb\'ff\'e5\'f2\'f1\'ff \'ea\'e0\'e6\'e4\'fb\'e5 30 \'ec\'e8\'ed.\par
+\i Mitigation\i0\tab Enable\\Disable \'e4\'ee\'f1\'f2\'f3\'ef customer \'e4\'eb\'ff \'ee\'f2\'f0\'e0\'e6\'e5\'ed\'e8\'ff \'e0\'f2\'e0\'ea\'e8\par
+\pard\sl240\slmult1\par
+\'ce\'f2\'e4\'e5\'eb\'fc\'ed\'ee \'ed\'e0\'e4\'ee \'e8\'e7\'f3\'f7\'e0\'f2\'fc \'f2\'e5\'ec\'f3 Reports.\par
+\par
+\pard\fi568\sl240\slmult1 SP \'f1\'ee\'e1\'e8\'f0\'e0\'e5\'f2 BGP \'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'fe \'e4\'eb\'ff "\'ce\'f2\'ea\'f3\'e4\'e0" \'e8 "\'ca\'f3\'e4\'e0" \'e8\'e4\'b8\'f2 \'f2\'f0\'e0\'f4\'e8\'ea; \'e2\'ee\'e7\'ec\'ee\'e6\'ed\'ee\'f1\'f2\'fc \'ee\'ef\'f2\'e8\'ec\'e8\'e7\'e0\'f6\'e8\'e8 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'ee\'e2 \'e4\'eb\'ff \'fd\'ea\'ee\'ed\'ee\'ec\'e8\'e8 $; \'ea\'e0\'ea \'eb\'f3\'f7\'f8\'e5 \'e4\'e5\'eb\'e0\'f2\'fc Mitigation - Black Hole, Off-ramp, Flow Spec.\par
+SP \'f1\'ee\'ee\'f2\'ed\'ee\'f1\'e8\'f2 \'ef\'ee\'eb\'ff \'e8\'e7 Netflow (Src IP, Dst IP) c prefix \'e2 BGP.\par
+\par
+\pard\sl240\slmult1\b SNMP\b0  \'ec\'ee\'ed\'e8\'f2\'ee\'f0\'e8\'f2 \'ed\'e0 \'f0\'ee\'f3\'f2\'e5\'f0\'e0\'f5 CPU, Memory, \'e2\'e5\'f0\'f1\'e8\'fe Soft \'e8 Hardware, \'e8\'ec\'e5\'ed\'e0 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'ee\'e2, speed\\duplex, \'f1\'ed\'e8\'ec\'e0\'e5\'f2 \'e7\'e0\'e3\'f0\'f3\'e7\'ea\'f3 \'f1 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'ee\'e2 \'e8 \'f1\'f0\'e0\'e2\'ed\'e8\'e2\'e0\'e5\'f2 \'f1\'ee \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'ff\'ec\'e8 Netflow. \'ce\'ef\'f0\'e0\'f8\'e8\'e2\'e0\'e5\'f2 Router \'ea\'e0\'e6\'e4\'fb\'e5 5 \'ec\'e8\'ed.\par
+\par
+\pard\fi568\sl240\slmult1\'c1\'e0\'e7\'e0 \'e4\'e0\'ed\'ed\'fb\'f5 \'f5\'f0\'e0\'ed\'e8\'f2 Netflow \'f3\'e6\'e5 \'e2 \'ef\'e5\'f0\'e5\'f0\'e0\'e1\'ee\'f2\'e0\'ed\'ed\'ee\'ec \'e2\'e8\'e4\'e5. \'c1\'e0\'e7\'e0 \'f0\'e0\'f1\'ef\'f0\'e5\'e4\'e5\'eb\'b8\'ed\'ed\'e0\'ff \'ec\'e5\'e6\'e4\'f3 Leader, Collectors \'e8 BI \'f3\'f1\'f2\'f0\'ee\'e9\'f1\'f2\'e2\'e0\'ec\'e8. \'c2\'ee\'e7\'ec\'ee\'e6\'ed\'ee \'ee\'e1\'f0\'e0\'f9\'e5\'ed\'e8\'e5 \'ea \'e1\'e0\'e7\'e5 \'ef\'ee SOAP \'e8\'eb\'e8 Web Services API.\par
+\pard\sl240\slmult1\par
+\pard\fi568\sl240\slmult1\'cd\'e0 Leader \'f5\'f0\'e0\'ed\'e8\'f2\'f1\'ff: \'ef\'e5\'f0\'e5\'f7\'e5\'ed\'fc Peakflow \'f3\'f1\'f2\'f0\'ee\'e9\'f1\'f2\'e2, \'f0\'ee\'f3\'f2\'e5\'f0\'fb, MO, Alerts, Fingerprints.\par
+\'cd\'e0 Collectors \'e8 BI \'f5\'f0\'e0\'ed\'e8\'f2\'f1\'ff \'e4\'e5\'f2\'e0\'eb\'fc\'ed\'e0\'ff \'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'ff \'ee MO, \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'ee\'ed\'e8 \'ec\'ee\'ed\'e8\'f2\'ee\'f0\'ff\'f2. \'ce\'ed\'e8 \'e7\'ed\'e0\'fe\'f2 \'ee \'c2\'d1\'c5\'d5 MO \'ee\'f2 Leader \'e8 \'ea\'e0\'ea \'f2\'ee\'eb\'fc\'ea\'ee \'e2\'e8\'e4\'ff\'f2 \'ed\'f3\'e6\'ed\'fb\'e9 \'f2\'f0\'e0\'f4\'e8\'ea, \'ed\'e0\'f7\'e8\'ed\'e0\'fe\'f2 \'e5\'e3\'ee \'f1\'ee\'e1\'e8\'f0\'e0\'f2\'fc.\par
+\'c5\'f1\'eb\'e8 Flow \'ef\'f0\'e8\'ed\'e0\'e4\'eb\'e5\'e6\'e8\'f2 MO \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'f0\'e0\'f1\'ef\'ee\'eb\'ee\'e6\'e5\'ed \'ed\'e0 BI \'f3\'f1\'f2\'f0\'ee\'e9\'f1\'f2\'e2\'e5, \'f2\'ee \'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'ff \'ee Flow \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2\'f1\'ff \'ed\'e0 \'fd\'f2\'ee BI \'f3\'f1\'f2\'f0\'ee\'e9\'f1\'f2\'e2\'ee.\par
+\'ca\'ee\'e3\'e4\'e0 FS \'e2\'e8\'e4\'e8\'f2 Flow, \'ee\'ed \'e0\'e3\'f0\'e5\'e3\'e8\'f0\'f3\'e5\'f2 \'e5\'e3\'ee \'e2 Arbor Flow \'e8 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 \'ed\'e0 \'f1\'e2\'ee\'e9 Collector.\par
+Router \'ef\'f0\'e8 \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e5 Peakflow \'e6\'e5\'f1\'f2\'ea\'ee \'ef\'f0\'e8\'e2\'ff\'e7\'fb\'e2\'e0\'fe\'f2\'f1\'ff \'ea \'ee\'e4\'ed\'ee\'ec\'f3 Collector\\FS\par
+\pard\sl240\slmult1\par
+\pard\fi568\sl240\slmult1\'c8\'f2\'ee\'e3\'ee: \'c8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'ff \'ee MO \'f5\'f0\'e0\'ed\'e8\'f2\'f1\'ff \'ed\'e0 Collector \'e8 BI. \'ca\'e0\'ea \'ff \'ef\'ee\'ed\'e8\'ec\'e0\'fe, FS \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2 \'e4\'eb\'ff \'f0\'e0\'e7\'e3\'f0\'f3\'e7\'ea\'e8 CPU Collector. \'cd\'e0 FS (\'e2\'f0\'ee\'e4\'e5 \'ea\'e0\'ea) \'ed\'e5\'f2 \'ed\'e8\'ea\'e0\'ea\'ee\'e9 \'e1\'e0\'e7\'fb \'e4\'e0\'ed\'ed\'fb\'f5, \'ee\'f1\'ed\'ee\'e2\'ed\'e0\'ff \'e7\'e0\'e4\'e0\'f7\'e0 FS \'e8\'e7 Netflow \'f1\'e4\'e5\'eb\'e0\'f2\'fc Arbor Flow.\par
+\pard\sl240\slmult1\'c4\'eb\'ff Report-\'ee\'e2 Leader \'e4\'e5\'eb\'e0\'e5\'f2 \'e7\'e0\'ef\'f0\'ee\'f1\'fb \'f2\'e5\'ec \'e8\'eb\'e8 \'e8\'ed\'fb\'ec \'f3\'f1\'f2\'f0\'ee\'e9\'f1\'f2\'e2\'e0\'ec.\par
+\par
+\pard\fi568\sl240\slmult1 Baseline - \'f1\'ee\'e4\'e5\'f0\'e6\'e8\'f2 \'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'fe \'ef\'ee \'ea\'e0\'e6\'e4\'ee\'ec\'f3 Interface, MO, Router, VPN, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'ec\'ee\'ed\'e8\'f2\'ee\'f0\'e8\'f2\'f1\'ff. Baseline \'f1\'ee\'f1\'f2\'ee\'e8\'f2 \'e8\'e7 BPS \'e8 PPS, \'ee\'f1\'ed\'ee\'e2\'ed\'fb\'f5 \'ef\'f0\'ee\'f2\'ee\'ea\'ee\'eb\'ee\'e2: TCP, UDP, ICMP, AH, GRE, ESP. Baseline update-\'e8\'f2\'fc\'f1\'ff \'ea\'e0\'e6\'e4\'fb\'e5 30 \'ec\'e8\'ed.\par
+\pard\sl240\slmult1\par
+\pard\fi568\sl240\slmult1\'d7\'e5\'ec \'f1\'f2\'e0\'f0\'e5\'e5 \'e4\'e0\'ed\'ed\'fb\'e5, \'f2\'e5\'ec \'e1\'ee\'eb\'fc\'f8\'e5 \'e8\'f5 \'e4\'e8\'f1\'ea\'f0\'e5\'f2\'ed\'ee\'f1\'f2\'fc. \'d2.\'e5. \'e4\'e0\'ed\'ed\'fb\'e5 t < 2-\'f5 \'ed\'e5\'e4\'e5\'eb\'fc \'f5\'f0\'e0\'ed\'ff\'f2\'f1\'ff \'f1 \'e4\'e8\'f1\'ea\'f0\'e5\'f2\'e8\'e7\'e0\'f6\'e8\'e5\'e9 5 \'ec\'e8\'ed. \'c4\'e0\'ed\'ed\'fb\'e5 \'f1 t < 1 \'e3\'ee\'e4\'e0 \'f5\'f0\'e0\'ed\'ff\'f2\'f1\'ff \'f1 \'e4\'e8\'f1\'ea\'f0\'e5\'f2\'e8\'e7\'e0\'f6\'e8\'e5\'e9 1 \'e4\'e5\'ed\'fc.\par
+\'c8\'f1\'f5\'ee\'e4\'ed\'fb\'e5\\\'f1\'fb\'f0\'fb\'e5 \'e4\'e0\'ed\'ed\'fb\'e5 Raw flows \'ec\'ee\'e3\'f3\'f2 \'f5\'f0\'e0\'ed\'e8\'f2\'fc\'f1\'ff \'e4\'ee 4 \'e4\'ed\'e5\'e9.\par
+\pard\sl240\slmult1\par
+\pard\fi568\sl240\slmult1 Alert \'e2 \'f1\'e8\'f1\'f2\'e5\'ec\'e5 \'f5\'f0\'e0\'ed\'ff\'f2\'f1\'ff \'f5\'e0\'ee\'f2\'e8\'f7\'ed\'ee. \'c5\'f1\'eb\'e8 Alert \'e1\'ee\'eb\'fc\'f8\'e5 100 \'ca\'e1\'e0\'e9\'f2 \'ed\'e0\'f7\'ed\'b8\'f2 \'e2\'eb\'e8\'ff\'f2\'fc \'ed\'e0 \'ef\'f0\'ee\'e8\'e7\'e2\'ee\'e4\'e8\'f2\'e5\'eb\'fc\'ed\'ee\'f1\'f2\'fc \'f1\'e8\'f1\'f2\'e5\'ec\'fb. \'c4\'eb\'ff System \'e8 Traffic alerts \'ef\'ee\'ec\'e8\'ec\'ee \'f1\'e0\'ec\'ee\'e3\'ee Alert \'f5\'f0\'e0\'ed\'ff\'f2\'f1\'ff \'e4\'e0\'ed\'ed\'fb\'e5, \'f1\'e2\'ff\'e7\'e0\'ed\'ed\'fb\'e5 \'f1 \'fd\'f2\'e8\'ec Alert-\'ee\'ec.\par
+DDoS Alert \'f5\'f0\'e0\'ed\'ff\'f2\'fc\'f1\'ff \'f1 1 \'ec\'e8\'ed \'e8\'ed\'ea\'f0\'e5\'ec\'e5\'ed\'f2\'ee\'ec \'e4\'ee 6 \'f7\'e0\'f1\'ee\'e2, \'ef\'ee\'f1\'eb\'e5 6 \'f7\'e0\'f1\'ee\'e2 \'e8\'ed\'ea\'f0\'e5\'ec\'e5\'ed\'f2 10 \'ec\'e8\'ed.\par
+\pard\sl240\slmult1\par
+\pard\fi568\sl240\slmult1 Collector \'f0\'e0\'e1\'ee\'f2\'e0\'fe\'f2 \'ea\'e0\'ea \'ea\'eb\'e8\'e5\'ed\'f2\'fb BGP route-reflector-\'ee\'e2 \'f0\'ee\'f3\'f2\'e5\'f0\'ee\'e2, \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'ee\'ed\'e8 \'ec\'ee\'ed\'e8\'f2\'ee\'f0\'ff\'f2.\par
+\'d3 \'ea\'e0\'e6\'e4\'ee\'e3\'ee \'ee\'e1\'fa\'e5\'ea\'f2\'e0 (Customer, Peer \'e8 \'f2.\'e4.) \'e2 \'e1\'e0\'e7\'e5 \'e4\'e0\'ed\'ed\'fb\'f5 Leader-\'e0 \'e5\'f1\'f2\'fc \'f3\'ed\'e8\'ea\'e0\'eb\'fc\'ed\'fb\'e9 Group ID.\par
+\pard\sl240\slmult1\par
+\b DDoS \'e0\'f2\'e0\'ea\'e8\ul\b0\par
+\ulnone Severity \'ec\'ee\'e6\'e5\'f2\'fc \'f2\'ee\'eb\'fc\'ea\'ee \'f0\'e0\'f1\'f2\'e8! \'f2.\'e5. \'e1\'fb\'eb\'ee "\'e6\'e5\'eb\'f2\'fb\'ec" \'cd\'c5 \'ec\'ee\'e6\'e5\'f2 \'f1\'f2\'e0\'f2\'fc "\'e7\'e5\'eb\'b8\'ed\'fb\'ec"\par
+\par
+\ul Misuse \'e0\'ed\'ee\'ec\'e0\'eb\'e8\'e8\par
+\ulnone\par
+\pard\fi568\sl240\slmult1\'c4\'e5\'f2\'e5\'ea\'f2\'e8\'f0\'f3\'e5\'f2 \'e0\'f2\'e0\'ea\'e8 \'f2\'ee\'eb\'fc\'ea\'ee \'ed\'e0\'ef\'f0\'e0\'e2\'eb\'e5\'ed\'ed\'fb\'e5 \'ed\'e0 \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'fb\'e9 IP. \'c8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2 \'d1\'d2\'c0\'d2\'c8\'d7\'c5\'d1\'ca\'c8\'c5 \'ef\'ee\'f0\'ee\'e3\'e8 \'f2\'f0\'e0\'f4\'e8\'ea\'e0 \'e4\'eb\'ff \'e4\'e5\'f2\'e5\'ea\'f2\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'ff. \'d0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'f1 MO \'e8 \'e1\'e5\'e7 \'ed\'e8\'f5. \'cf\'f0\'ee\'f1\'f2 \'e2 \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e5.\par
+\'d1\'ed\'e0\'f7\'e0\'eb\'e0 Leader \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'f2 Notification \'ee\'f2 \'ea\'e0\'ea\'ee\'e3\'ee-\'eb\'e8\'e1\'ee Collector-\'e0 \'ee \'f2\'ee\'ec, \'f7\'f2\'ee \'e2\'f0\'ee\'e4\'e5 \'ea\'e0\'ea \'ed\'e0 \'f2\'e0\'ea\'ee\'e9 \'f2\'ee \'f5\'ee\'f1\'f2 \'e8\'e4\'b8\'f2 \'e0\'f2\'e0\'ea\'e0. Leader \'ee\'ef\'f0\'e0\'f8\'e8\'e2\'e0\'e5\'f2 \'e2\'f1\'e5 \'ee\'f1\'f2\'e0\'eb\'fc\'ed\'fb\'e5 Collector-\'e0 \'ee \'f1\'f2\'e0\'f2\'e8\'f1\'f2\'e8\'ea\'e5 \'ef\'ee \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'ee\'ec\'f3 \'f5\'ee\'f1\'f2\'f3. \'ce\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'e5\'f2 \'e0\'f2\'e0\'ea\'f3 \'f8\'eb\'b8\'f2 Alert.\par
+\'ce\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'e5\'f2 \'e0\'f2\'e0\'ea\'e8: ICMP, TCP NULL Flag, TCP SYN Flag, TCP RST Flag, IP NULL (Proto 0), IP Fragmentation, IP Private Address Space, DNS (TCP&UDP port 53), UDP Misuse, Total Traffic bps&pps.\par
+\par
+\pard\sl240\slmult1\'ca\'e0\'ea\'e8\'e5 \'e5\'f1\'f2\'fc \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0\'fb:\par
+\pard\fi-1136\li1704\sl240\slmult1 Misuse Trigger Rate ~500 pps - \'ef\'ee\'f0\'ee\'e3, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'ed\'e0\'e4\'ee \'ef\'f0\'e5\'e2\'fb\'f1\'e8\'f2\'fc, \'e4\'eb\'ff \'f2\'ee\'e3\'ee \'f7\'f2\'ee\'e1\'fb \'f1\'ee\'e7\'e4\'e0\'f2\'fc \'ed\'e0\'f7\'e0\'eb\'fc\'ed\'fb\'e9 Alert \'f3\'f0\'ee\'e2\'ed\'ff "\'e7\'e5\'eb\'b8\'ed\'fb\'e9" \'e4\'eb\'ff Leader.\par
+Misuse Latency - \'e2 \'f2\'e5\'f7\'e5\'ed\'e8\'e8 \'ea\'e0\'ea\'ee\'e3\'ee \'e2\'f0\'e5\'ec\'e5\'ed\'e8 \'e4\'ee\'eb\'e6\'e5\'ed \'e1\'fb\'f2\'fc \'ef\'f0\'e5\'e2\'fb\'f8\'e5\'ed \'ef\'ee\'f0\'ee\'e3 Misuse Trigger Rate \'e4\'eb\'ff \'f2\'ee\'e3\'ee \'f7\'f2\'ee\'e1\'fb \'f1\'f0\'e0\'e1\'ee\'f2\'e0\'eb Alert\par
+High Severity Rate ~10000 pps - \'ef\'ee\'f0\'ee\'e3, \'ef\'f0\'e8 \'ea\'ee\'f2\'ee\'f0\'ee\'ec \'f3\'f0\'ee\'e2\'e5\'ed\'fc (Severity) \'f1\'f2\'e0\'ed\'ee\'e2\'e8\'f2\'f1\'ff "\'ea\'f0\'e0\'f1\'ed\'fb\'ec"\par
+Severity Duration - \'e2 \'f2\'e5\'f7\'e5\'ed\'e8\'e8 \'ea\'e0\'ea\'ee\'e3\'ee \'e2\'f0\'e5\'ec\'e5\'ed\'e8 \'e4\'ee\'eb\'e6\'e5\'ed \'e1\'fb\'f2\'fc \'ef\'f0\'e5\'e2\'fb\'f8\'e5\'ed \'ef\'ee\'f0\'ee\'e3 High Severity Rate \'e4\'eb\'ff \'f2\'ee\'e3\'ee \'f7\'f2\'ee\'e1\'fb \'f1\'f0\'e0\'e1\'ee\'f2\'e0\'eb Alert\par
+Middle Line (\'ed\'e5\'ed\'e0\'f1\'f2\'f0\'e0\'e8\'e2\'e0\'e5\'ec\'fb\'e9)- \'ef\'ee\'f1\'e5\'f0\'e5\'e4\'e8\'ed\'ea\'e5 \'ec\'e5\'e6\'e4\'f3 Misuse Trigger Rate \'e8 High Severity Rate. \'c8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e4\'eb\'ff \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'e5\'ed\'e8\'ff \'ef\'ee\'f0\'ee\'e3\'e0 "\'e6\'e5\'eb\'f2\'fb\'e9".\par
+\pard\fi568\sl240\slmult1\par
+\'c4\'eb\'e8\'ed\'ee\'e5 \'ee\'ef\'e8\'f1\'e0\'ed\'e8\'e5 \'e2 Unit 4 \'f1\'f2\'f0.16 \'ea\'e0\'ea \'f1\'e8\'f1\'f2\'e5\'ec\'e0 \'ea\'eb\'e0\'f1\'f1\'e8\'f4\'e8\'f6\'e8\'f0\'f3\'e5\'f2 \'ea\'e0\'ea\'ee\'e9 \'e8\'e7 Severity \'e2\'fb\'e1\'f0\'e0\'f2\'fc: \'e7\'e5\'eb\'b8\'ed\'fb\'e9, \'e6\'e5\'eb\'f2\'fb\'e9 \'e8\'eb\'e8 \'ea\'f0\'e0\'f1\'ed\'fb\'e9. \'c4\'e0\'eb\'e5\'e5 \'ed\'e0 \'f1\'eb\'e5\'e4\'f3\'fe\'f9\'e8\'f5 \'f1\'f2\'f0\'e0\'ed\'e8\'f6\'e0\'f5 \'e2 Unit-\'e5 \'e8\'e4\'b8\'f2 \'ee\'ef\'e8\'f1\'e0\'ed\'e8\'e5 \'ea\'e0\'ea \'e8\'e7\'ec\'e5\'ed\'ff\'f2\'fc \'fd\'f2\'e8 \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e8.\par
+\par
+\'c5\'f1\'eb\'e8 IP \'ed\'e0\'f5\'ee\'e4\'e8\'f2\'f1\'ff \'e2\'ed\'f3\'f2\'f0\'e8 MO, \'f2\'ee \'e2 Alert-\'e5 \'e1\'f3\'e4\'e5\'f2 \'ed\'e0\'ef\'e8\'f1\'e0\'ed\'ee, \'f7\'f2\'ee \'e0\'f2\'e0\'ea\'e0 \'ed\'e0 MO. \'c5\'f1\'eb\'e8 IP \'f1\'e0\'ec \'ef\'ee \'f1\'e5\'e1\'e5, \'f2\'ee \'e1\'f3\'e4\'e5\'f2 \'ed\'e0\'ef\'e8\'f1\'e0\'ed\'ee Other.\par
+\'cc\'ee\'e6\'e5\'f2 \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'f2\'fc \'ea\'e0\'ea\'e0\'ff \'e0\'f2\'e0\'ea\'e0: Incoming \'e8\'eb\'e8 Outgoing. \'c5\'f1\'eb\'e8 \'e0\'f2\'e0\'ea\'f3\'e5\'ec\'fb\'e9 IP \'ef\'f0\'e8\'ed\'e0\'e4\'eb\'e5\'e6\'e8\'f2 \'f1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'fe\'f9\'e5\'e9 MO = Incoming. \'d2\'e8\'ef\'e0 \'e5\'f1\'eb\'e8 IP \'ed\'e5 \'ef\'f0\'e5\'ed\'e0\'e4\'eb\'e5\'e6\'e8\'f2 \'ed\'e8\'ea\'e0\'ea\'ee\'ec\'f3 MO, \'f2\'ee \'e2 \'ef\'ee\'eb\'e5 Direction = Outgoing. \'c2\'f1\'b8 \'ed\'e0\'ef\'f0\'e0\'e2\'eb\'e5\'ed\'ee \'ed\'e0 \'f2\'ee, \'f7\'f2\'ee\'e1\'fb \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'e8\'f2\'fc \'e0\'f2\'e0\'ea\'e0 \'e2\'ee\'ee\'e1\'f9\'e5 \'e8\'e4\'b8\'f2 \'ed\'e0 \'ed\'e0\'f1 \'e8\'eb\'e8 \'ec\'fb-\'ef\'f0\'ee\'e2\'e0\'e9\'e4\'e5\'f0 \'ef\'f0\'ee\'f1\'f2\'ee \'f2\'f0\'e0\'ed\'e7\'e8\'f2\'ed\'ee\'e5 \'e7\'e2\'e5\'ed\'ee \'e2 \'e0\'f2\'e0\'ea\'e5.\par
+\par
+\pard\sl240\slmult1 Alerts - ID - \'f3\'ed\'e8\'ea\'e0\'eb\'fc\'ed\'fb\'e9 \'ed\'ee\'ec\'e5\'f0 \'e2\'ee \'e2\'f1\'e5\'e9 \'e1\'e0\'e7\'e5.\par
+\par
+\'c2 \'ee\'e1\'f9\'e5\'ec \'ed\'e0\'e4\'ee \'ed\'e0\'f1\'f2\'f0\'e0\'e8\'e2\'e0\'f2\'fc \'e6\'e5\'eb\'e5\'e7\'ea\'f3 \'e8 \'f1\'ec\'ee\'f2\'f0\'e5\'f2\'fc \'ed\'e0 Alerts. \'d2\'e0\'ea \'e6\'e5 \'ef\'ee\'eb\'e5\'e7\'ed\'ee \'e4\'eb\'ff \'e2\'fb\'f1\'f2\'e0\'e2\'eb\'e5\'ed\'e8\'ff Threshold-\'ee\'e2.\par
+\par
+Unit 4 \'f1\'f2\'f0.41 \'f0\'e0\'f1\'f1\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff \'ea\'e0\'ea \'ec\'ee\'e6\'ed\'ee "\'e0\'e2\'f2\'ee\'ec\'e0\'f2\'e8\'f7\'e5\'f1\'ea\'e8" \'e2\'eb\'e8\'e2\'e0\'f2\'fc ACL \'ed\'e0 \'f0\'ee\'f3\'f2\'e5\'f0\'fb\par
+\par
+\'c2\'f2\'e8\'f0\'e0\'fe\'f2 \'ef\'f0\'ee IPv6, \'ee \'f2\'ee\'ec \'f7\'f2\'ee Misuse Alerts \'f0\'e0\'f1\'ef\'ee\'e7\'ed\'e0\'e5\'f2\'f1\'ff \'ea\'e0\'ea /128\par
+\par
+\ul Profiled \'e0\'ed\'ee\'ec\'e0\'eb\'e8\'e8\ulnone\par
+\par
+\pard\fi568\sl240\slmult1\'d0\'e5\'e0\'e3\'e8\'f0\'f3\'e5\'f2 \'ed\'e0 \'ee\'f2\'ea\'eb\'ee\'ed\'e5\'ed\'e8\'ff \'ee\'f2 "\'ed\'ee\'f0\'ec\'e0\'eb\'fc\'ed\'ee\'e3\'ee \'f3\'f0\'ee\'e2\'ed\'ff \'f2\'f0\'e0\'f4\'e8\'ea\'e0" \'e2 \'f1\'e5\'f2\'e8.\par
+\'cd\'e0\'f1\'f2\'f0\'e0\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'e4\'eb\'ff \'ea\'e0\'e6\'e4\'ee\'e3\'ee Managed Object.\par
+\'c8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'ff \'f5\'f0\'e0\'ed\'e8\'f2\'f1\'ff \'ed\'e0 \'ea\'e0\'e6\'e4\'ee\'ec Collector-\'e5 \'ee \'f1\'e2\'ee\'e8\'f5 Baseline \'ea\'ee\'ed\'f2\'f0\'ee\'eb\'e8\'f0\'f3\'e5\'ec\'fb\'f5 \'f0\'ee\'f3\'f2\'e5\'f0\'ee\'e2.\par
+\'cf\'ce\'c4\'ce\'c1\'cd\'db\'c5 \'c0\'d2\'c0\'ca\'c8 \par
+\pard\sl240\slmult1 Fingerprint\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\'d7\'f2\'ee \'e4\'e5\'f2\'e5\'ea\'f2\'e8\'f0\'f3\'e5\'f2 NSI:\par
+\tab 1. AI \'f3\'eb\'e0\'e2\'eb\'e8\'e2\'e0\'e5\'f2, \'e5\'f1\'eb\'e8 \'ef\'f0\'e8\'eb\'ee\'e6\'e5\'ed\'e8\'e5 \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'ed\'e5 \'ef\'ee \'f1\'e2\'ee\'e5\'ec\'f3 \'ef\'ee\'f0\'f2\'f3\par
+\tab 2. AI \'f3\'eb\'e0\'e2\'eb\'e8\'e2\'e0\'e5\'f2, \'e5\'f1\'eb\'e8 \'e8\'e4\'b8\'f2 \'f8\'e8\'f4\'f0\'ee\'e2\'e0\'ed\'ed\'fb\'e9 \'f2\'f0\'e0\'f4\'e8\'ea \'f2\'e0\'ec, \'e3\'e4\'e5 \'e5\'e3\'ee \'e1\'fb\'f2\'fc \'ed\'e5 \'e4\'ee\'eb\'e6\'ed\'ee\par
+\tab 3. \'cc\'ee\'e6\'e5\'f2 \'f3\'eb\'ee\'e2\'e8\'f2\'fc \'e5\'f1\'eb\'e8 \'e7\'eb\'ee\'e4\'e5\'e9 \'f1\'ea\'e0\'ed\'e8\'f0\'f3\'e5\'f2 \'f5\'ee\'f1\'f2\'fb \'ed\'e0 \'ef\'f0\'e5\'e4\'ec\'e5\'f2 \'f2\'ee\'e3\'ee \'e8\'eb\'e8 \'e8\'ed\'ee\'e3\'ee \'f1\'e5\'f0\'e2\'e8\'f1\'e0\par
+\tab 4. \'d7\'f2\'ee-\'f2\'ee \'ef\'f0\'ee \'e4\'ee\'eb\'e3\'ee \'e6\'e8\'e2\'f3\'f9\'e8\'e5 \'f1\'e5\'f1\'f1\'e8\'e8, \'f2\'e8\'ef\'e0 \'ea\'e0\'ea-\'f2\'ee \'f2\'e0\'ea\'e8\'ec \'ee\'e1\'f0\'e0\'e7\'ee\'ec \'ec\'ee\'e6\'ed\'ee \'f1\'f2\'e0\'f9\'e8\'f2\'fc \'ea\'ee\'ed\'f4\'e8\'e4\'e5\'ed\'f6\'e8\'e0\'eb\'fc\'ed\'f3\'fe \'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'fe\par
+\tab 5. \'ce\'f2 \'f1\'ea\'e0\'ed\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'ff \'ef\'ee\'f0\'f2\'ee\'e2\par
+\tab 6. \'d3\'eb\'e0\'e2\'eb\'e8\'e2\'e0\'e5\'f2 \'f0\'e0\'e1\'ee\'f2\'f3 worms \'f1 \'ef\'ee\'ec\'ee\'f9\'fc\'fe ATF\par
+\tab 7. \'ce\'e1\'fb\'f7\'ed\'fb\'e9 Collector \'f3\'eb\'e0\'e2\'eb\'e8\'e2\'e0\'e5\'f2 \'f0\'e0\'e7\'eb\'e8\'f7\'ed\'fb\'e5 \'f4\'eb\'f3\'e4\'fb:\par
+\tab\tab TCP SYN\tab - \'ed\'e0\'f7\'e8\'ed\'e0\'e5\'f2 \'ee\'f0\'e0\'f2\'fc \'e5\'f1\'eb\'e8 100 pps SYN \'e2 \'f2\'e5\'f7\'e5\'ed\'e8\'e8 2-\'f5 \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e8\'f5 \'ec\'e8\'ed\'f3\'f2\par
+\tab\tab TCP NULL\tab - \'e5\'f1\'eb\'e8 100 pps / 2 \'ec\'e8\'ed. \'e0\'ed\'ee\'ec\'e0\'eb\'fc\'ed\'fb\'f5 TCP \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'ee\'e2 \'e1\'e5\'e7 control \'f4\'eb\'e0\'e3\'ee\'e2\par
+\tab\tab ICMP\tab - 100 pps / 2 \'ec\'e8\'ed\par
+\tab\tab IPFRAG\tab - 5000 pps /2 \'ec\'e8\'ed \'f4\'f0\'e0\'e3\'ec\'e5\'ed\'f2\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'ee\'e3\'ee TCP \'e8\'eb\'e8 UDP \'f2\'f0\'e0\'f4\'e8\'ea\'e0\par
+\tab\tab IP NULL\tab - 100 pps / 2 \'ec\'e8\'ed \'e0\'ed\'ee\'ec\'e0\'eb\'fc\'ed\'fb\'f5 IP \'f1\'e5\'e3\'ec\'e5\'ed\'f2\'ee\'e2 \'e1\'e5\'e7 control \'f4\'eb\'e0\'e3\'ee\'e2\par
+\par
+\par
+\par
+\par
+\par
+\par
+AI\par
+\'cc\'ee\'e6\'e5\'f2 \'f0\'e0\'e7\'ee\'e1\'f0\'e0\'f2\'fc:\par
+HTTP \'ef\'ee URL\par
+DNS \'ef\'ee name\par
+SIP - \'ea\'f2\'ee-\'ea\'ee\'ec\'f3 \'e7\'e2\'ee\'ed\'e8\'eb\par
+\'f2\'e0\'ea\'e6\'e5 \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'e5\'f2 Application \'ed\'e0 \'ee\'f1\'ed\'ee\'e2\'e0\'ed\'e8\'e8 Layer 7, \'f2\'e8\'ef\'e0 bitorrent (\'ed\'e5\'eb\'fc\'e7\'ff \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'e8\'f2\'fc \'ed\'e0 \'ee\'f1\'ed\'ee\'e2\'e0\'ed\'e8\'e8 Netflow). \'c8\'ec\'e5\'ed\'ed\'ee \'ef\'ee\'e2\'e5\'e4\'e5\'ed\'f7\'e5\'f1\'ea\'e8\'e5 \'f1\'e8\'e3\'ed\'e0\'f2\'f3\'f0\'fb !\par
+\par
+NSI\par
+\'cd\'e5 \'e4\'f3\'e1\'eb\'e8\'f0\'f3\'e5\'f2 flow, \'f2.\'e5. \'e5\'f1\'eb\'e8 \'ef\'f0\'e8\'f8\'eb\'ee \'ee\'e4\'ed\'ee \'e8 \'f2\'ee\'e6\'e5 flow \'f1 \'f0\'e0\'e7\'ed\'fb\'f5 \'f0\'ee\'f3\'f2\'e5\'f0\'ee\'e2 \'ee\'ed\'e0 \'e8\'f5 \'ed\'e5 \'f1\'eb\'ee\'e6\'e8\'f2, \'e0 \'ef\'ee\'f1\'f7\'e8\'f2\'e0\'e5\'f2 \'ea\'e0\'ea \'e7\'e0 \'ee\'e4\'e8\'ed.\par
+\par
+\'d2\'ee\'eb\'fc\'ea\'ee \'e2 NSI 5230 \'e8 \'e2\'fb\'f8\'e5 \'ec\'ee\'e6\'ed\'ee \'e7\'e0\'f1\'f3\'ed\'f3\'f2\'fc \'ea\'e0\'f0\'f2\'ee\'f7\'ea\'f3 FC.\par
+\par
+\'ce\'f1\'ed\'ee\'e2\'ed\'e0\'ff \'e8\'e4\'e5\'e0\'eb\'ee\'e3\'e8\'ff \'f3 \'e7\'e0\'ea\'e0\'e7\'f7\'e8\'ea\'ee\'e2 - \'c3\'cb\'c0\'c2\'cd\'ce\'c5 \'e7\'e0\'f9\'e8\'f2\'e8\'f2\'fc \'ef\'e5\'f0\'e8\'ec\'e5\'f2\'f0. \'d1\'e5\'e9\'f7\'e0\'f1 \'ef\'e5\'f0\'e8\'ec\'e5\'f2\'f0 \'f1\'e8\'eb\'fc\'ed\'ee \'f0\'e0\'e7\'ec\'fb\'f2 (\'f1\'ec\'e0\'f0\'f2\'f4\'ee\'ed\'fb, \'ed\'ee\'f3\'f2\'e1\'f3\'ea\'e8, \'f3\'e4\'e0\'eb\'b8\'ed\'ed\'fb\'e5 \'ea\'ee\'ec\'ef\'fb) - \'ed\'ee\'e2\'e0\'ff \'e7\'e0\'e4\'e0\'f7\'e0: \'ec\'ed\'ee\'e6\'e5\'f1\'f2\'e2\'ee \'e2\'ed\'f3\'f2\'f0\'e5\'ed\'ed\'e8\'f5 \'f3\'e3\'f0\'ee\'e7 \'e8\'e7 \'f1\'e5\'f2\'e8.\par
+\par
+\'cf\'f0\'ee\'e1\'eb\'e5\'ec\'fb: \'e2\'e8\'e7\'f3\'e0\'eb\'e8\'e7\'e0\'f6\'e8\'ff \'f1\'e5\'f2\'e8, \'ee\'f2\'ea\'f3\'e4\'e0 \'ea\'f3\'e4\'e0 \'f5\'ee\'e4\'e8\'f2 \'f2\'f0\'e0\'f4\'e8\'ea. \'cb\'ee\'e2\'e8\'f2\'fc Botnet-\'fb. Fingerprint-\'fb \'f0\'e0\'f1\'f7\'e8\'f2\'e0\'ed\'fb \'ed\'e0 \'e1\'e5\'e7\'ee\'ef\'e0\'f1\'ed\'ee\'f1\'f2\'fc.\par
+\par
+router(config)#ip flow-cache timeout inactive <sec>\par
+Default: 15 \'f1\'e5\'ea\par
+\'ce\'e1\'fb\'f7\'ed\'ee flow \'ed\'e0\'ea\'ea\'e0\'ef\'eb\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'e2 \'ea\'fd\'f8\'e5, \'e0 \'ef\'ee\'f2\'ee\'ec \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2\'f1\'ff \'ed\'e0 flow collector. \'dd\'f2\'e0 \'ea\'ee\'ec\'e0\'ed\'e4\'e0 \'e3\'ee\'e2\'ee\'f0\'e8\'f2 \'ee \'f2\'ee\'ec, \'f1\'ea\'ee\'eb\'fc\'ea\'ee max \'e2\'f0\'e5\'ec\'e5\'ed\'e8 \'ec\'ee\'e6\'e5\'f2 \'eb\'e5\'e6\'e0\'f2\'fc flow \'e2 \'ea\'fd\'f8\'e5, \'ef\'f0\'e5\'e6\'e4\'e5 \'f7\'e5\'ec \'ee\'f2\'ef\'f0\'e0\'e2\'f2\'fc\'f1\'ff \'ed\'e0 \'e0\'ed\'e0\'eb\'e8\'e7\'e0\'f2\'ee\'f0\par
+\par
+router(config)#ip flow-cache timeout active <min>\par
+Default: 30 \'ec\'e8\'ed\par
+\'d1\'e8\'f1\'f2\'e5\'ec\'e0 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2 flow \'f2\'ee\'eb\'fc\'ea\'ee \'f2\'ee\'e3\'e4\'e0, \'ea\'ee\'e3\'e4\'e0 \'f1\'e5\'f1\'f1\'e8\'ff \'e7\'e0\'e2\'e5\'f0\'f8\'e8\'f2\'f1\'ff. \'c5\'f1\'eb\'e8 \'e8\'e4\'b8\'f2 \'e4\'ee\'eb\'e3\'e0\'ff \'f1\'ea\'e0\'f7\'ea\'e0 ~1 \'f7\'e0\'f1\'e0, \'f2\'ee \'e4\'e0\'ed\'ed\'fb\'e5 \'ee flow \'e1\'f3\'e4\'f3\'f2 \'e7\'e0\'ef\'e0\'e7\'e4\'fb\'e2\'e0\'f2\'fc.\par
+\par
+\'c2 Policy \'ed\'e0 \'e7\'e0\'ea\'eb\'e0\'e4\'ea\'e5 Built-In \'ed\'f3\'e6\'e5\'ed AI (\'f2.\'e5 \'ed\'e0 \'ee\'f1\'ed\'ee\'e2\'e0\'ed\'e8\'e8 SPAN \'f2\'f0\'e0\'f4\'e8\'ea\'e0)\'e4\'eb\'ff \'f0\'e0\'e1\'ee\'f2\'fb:\par
+Clandestine - \'f2\'f0\'e0\'f4\'e8\'ea \'ed\'e5 \'ed\'e0 \'f2\'e5\'f5 \'ef\'ee\'f0\'f2\'e0\'f5\par
+Encrypted - \'e8\'e4\'b8\'f2 \'f8\'e8\'f4\'f0\'ee\'e2\'e0\'ed\'ed\'fb\'e9 \'f2\'f0\'e0\'f4\'e8\'ea\par
+\par
+\'c2\'f1\'b8 \'ee\'f1\'f2\'e0\'eb\'fc\'ed\'ee\'e5 \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'ed\'e0 \'ee\'f1\'ed\'ee\'e2\'e0\'ed\'e8\'e8 Netflow:\par
+Floods - \'f1 \'ee\'e4\'ed\'ee\'e3\'ee Src IP \'e8\'e4\'b8\'f2 \'ec\'ed\'ee\'e3\'ee TCP SYN, ICMP (\'e2 \'e4\'ee\'ea\'e5 \'ed\'e0 \'f1\'f2\'f0.25 \'e5\'f1\'f2\'fc \'f2\'e0\'e1\'eb\'f2\'f7\'ea\'e0, \'f7\'f2\'ee \'f2\'e0\'ea\'ee\'e5 \'ec\'ed\'ee\'e3\'ee TCP SYN). \'c2\'d0\'c5\'cc\'df \'e4\'e5\'f2\'e5\'ea\'f2\'e8\'f0\'ee\'e2\'e0\'ed\'e8 2 \'ec\'e8\'ed !!!!!!!\par
+Host scans - \'f0\'e5\'e0\'e3\'e8\'f0\'f3\'e5\'f2 \'ed\'e0 \'e3\'ee\'f0\'e8\'e7\'ee\'ed\'f2\'e0\'eb\'fc\'ed\'ee\'e5 TCP\\UDP \'f1\'ea\'e0\'ed\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'e5\par
+Long lived sessions - \par
+Port scans - \'f0\'e5\'e0\'e3\'e8\'f0\'f3\'e5\'f2 \'ed\'e0 TCP\\UDP \'e2\'e5\'f0\'f2\'e8\'ea\'e0\'eb\'fc\'ed\'ee\'e5 \'f1\'ea\'e0\'ed\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'e5\par
+Worms - \'f0\'e5\'e0\'e3\'e8\'f0\'f3\'e5\'f2 \'ed\'e0 TCP\\UDP \'e3\'ee\'f0\'e8\'e7\'ee\'ed\'f2\'e0\'eb\'fc\'ed\'ee\'e5 \'f1\'ea\'e0\'ed\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'e5. \'c2 \'e7\'e0\'ea\'eb\'e0\'e4\'ea\'e5 \'ef\'ee\'f7\'e5\'ec\'f3-\'f2\'ee \'f2\'ee\'eb\'fc\'ea\'ee TCP 25 \'e8 TCP\\UDP 53 ????\par
+\par
+\'d2\'e8\'ef\'fb Alerts (\'f2\'e0\'e1\'eb\'e8\'f7\'ea\'e0 \'ed\'e0 \'f1\'f2\'f0.28 \'f1 \'ea\'e0\'ea\'e8\'ec\'e8 Rules \'f0\'e0\'e1\'ee\'f2\'e0\'fe\'f2):\par
+Client - \'ef\'ee\'ff\'e2\'eb\'e5\'ed\'e8\'e5 \'ea\'eb\'e8\'e5\'ed\'f2\'e0 (Src IP), \'ea\'ee\'f2\'ee\'f0\'ee\'e3\'ee \'f0\'e0\'ed\'fc\'f8\'e5 \'ed\'e5 \'e2\'e8\'e4\'e5\'eb\'e8\par
+Server - \'ef\'ee\'ff\'e2\'eb\'e5\'ed\'e8\'e5 \'f2\'f0\'e0\'f4\'e8\'ea\'e0 \'ee\'f2 \'f1\'e5\'f0\'e2\'e5\'f0\'e0 (Dst IP, \'ed\'e5 \'ef\'f3\'f2\'e0\'f2\'fc Dst IP:Port) \'f2\'f3\'e4\'e0, \'ee\'f2\'ea\'f3\'e4\'e0 \'f0\'e0\'ed\'fc\'f8\'e5 \'e7\'e0\'ef\'f0\'ee\'f1\'ee\'e2 \'ed\'e5 \'e1\'fb\'eb\'ee\par
+Service - \'ef\'ee\'ff\'e2\'e5\'ed\'e8\'e5 \'f1\'e5\'f0\'e2\'e8\'f1\'e0 (Dst Port), \'e2 \'e3\'f0\'f3\'ef\'ef\'e5, \'e3\'e4\'e5 \'f0\'e0\'ed\'fc\'f8\'e5 \'f2\'e0\'ea\'ee\'e3\'ee \'ef\'ee\'f0\'f2\'e0 \'ed\'e5 \'e1\'fb\'eb\'ee\par
+Connection -\'ef\'ee\'ff\'e2\'eb\'e5\'ed\'e8\'e5 \'f1\'e2\'ff\'e7\'ea\'e8 Src IP\\Dst IP:Port\par
+Over Rate - \'f1\'f3\'ec\'ec\'e0\'f0\'ed\'ee\'e3\'ee \'f2\'f0\'e0\'f4\'e8\'ea\'e0 \'e1\'ee\'eb\'fc\'f8\'e5 threshold \'e2 \'f2\'e5\'f7\'e5\'ed\'e8\'e8 2 \'ec\'e8\'ed\par
+Under Rate - \'f2\'f0\'e0\'f4\'e8\'ea\'e0 \'ec\'e5\'ed\'fc\'f8\'e5 threshold \'e2 \'f2\'e5\'f7\'e5\'ed\'e8\'e8 2 \'ec\'e8\'ed\par
+Host Pair - \'ef\'ee\'ff\'e2\'eb\'e5\'ed\'e8\'e5 \'f2\'f0\'e0\'f4\'e8\'ea\'e0 \'ec\'e5\'e6\'e4\'f3 \'f5\'ee\'f1\'f2\'e0\'ec\'e8 \'f1\'ee\'f1\'f2\'ee\'ff\'f9\'e8\'ec\'e8 \'e2 \'e2\'fb\'e1\'f0\'e0\'ed\'ed\'fb\'f5 \'e3\'f0\'f3\'ef\'ef\'e0\'f5\par
+Host Rate - \'f5\'ee\'f1\'f2 \'e3\'e5\'ed\'e5\'f0\'e8\'f0\'f3\'e5\'f2 \'ec\'ed\'ee\'e3\'ee \'f2\'f0\'e0\'f4\'e8\'ea\'e0\par
+Over Baseline \'e8 Under Baseline - \'e4\'eb\'ff \'e2\'fb\'f0\'e0\'e1\'ee\'f2\'ea\'e8 Baseline \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee, \'f7\'f2\'ee\'e1\'fb \'f1\'e8\'f1\'f2\'e5\'ec\'e0 \'ee\'e1\'f3\'f7\'e0\'eb\'e0\'f1\'fc \'e2 \'f2\'e5\'f7\'e5\'ed\'e8\'e8 7 \'e4\'ed\'e5\'e9! \'e8\'ed\'e0\'f7\'e5 \'ed\'e5 \'e1\'f3\'e4\'e5\'f2 Alert-\'e8\'f2\'fc\par
+\par
+Rule Editors (\'f1\'f2\'f0.45)\par
+Standart - \'e4\'eb\'ff \'eb\'e0\'ec\'e5\'f0\'ee\'e2\par
+Freeform - \'f2\'ee\'e6\'e5 \'f1\'e0\'ec\'ee\'e5, \'f2\'ee\'eb\'fc\'ea\'ee \'ed\'e0 FCAP \'e2\'fb\'f0\'e0\'e6\'e5\'ed\'e8\'ff\'f5\par
+\par
+\'c3\'e4\'e5 \'e5\'f1\'f2\'fc Approved \'f5\'ee\'f1\'f2\'fb => Policy -> Active -> \'e2\'fb\'e1\'f0\'e0\'f2\'fc Policy -> \'ea\'ed\'ee\'ef\'ee\'f7\'ea\'e0 Rule Editor\par
+\'f2\'f3\'f2 \'e6\'e5 \'e5\'f1\'f2\'fc \'e7\'e0\'e1\'e0\'e2\'ed\'e0\'ff \'ea\'ed\'ee\'ef\'ee\'f7\'ea\'e0 View ACL\par
+\par
+Severity \'f0\'e0\'e7\'ec\'e5\'f0 (\'f1\'f2\'f0.30)\par
+Client - severity src IP\par
+Server - severity dst IP\par
+Service - severity port\par
+Host Pair - \'ed\'e0\'e8\'e1\'ee\'eb\'fc\'f8\'e0\'ff severity \'e8\'e7 src IP \'e8 dst IP\par
+Connection - \'ed\'e0\'e8\'e1\'ee\'eb\'fc\'f8\'e0\'ff severity \'e8\'e7 src IP \'e8 dst IP \'e8 port\par
+Rate alerts - severity FCAP \'e2\'fb\'f0\'e0\'e6\'e5\'ed\'e8\'ff\par
+\par
+\'c5\'f1\'eb\'e8 \'e5\'f1\'f2\'fc AI, \'f2\'ee \'ec\'ee\'e6\'ed\'ee \'e2\'e8\'e4\'e5\'f2\'fc Proxy \'f2\'f0\'e0\'f4\'e8\'ea: "Detect HTTP Proxies for Alerting". \'cf\'ee\'e7\'e2\'ee\'eb\'ff\'e5\'f2 \'e2\'e8\'e4\'e5\'f2\'fc: \'f7\'e5\'e9 \'f2\'f0\'e0\'f4\'e8\'ea \'f5\'ee\'e4\'e8\'f2 \'f7\'e5\'f0\'e5\'e7 Proxy, \'ea\'e0\'ea\'ee\'e9 \'f1\'e5\'f0\'e2\'e5\'f0 \'e4\'e5\'eb\'e0\'e5\'f2 Proxy, \'ea\'ee\'ed\'e5\'f7\'ed\'fb\'e9 \'e0\'e4\'f0\'e5\'f1 \'ef\'ee\'f1\'eb\'e5 Proxy.\par
+\par
+\'d7\'f2\'ee \'f2\'e0\'ea\'ee\'e5 User Defined Rules:\par
+\par
+\'cf\'e5\'f0\'e2\'e0\'ff \'e7\'e0\'e4\'e0\'f7\'e0 \'f1\'f4\'ee\'f0\'ec\'e8\'f0\'ee\'e2\'e0\'f2\'fc access-list\par
+\'c7\'e0\'e4\'e0\'b8\'f2\'f1\'ff \'ef\'f0\'e0\'e2\'e8\'eb\'ee Traffic to watch, \'f2\'e8\'ef\'e0 From -> \'f4\'ee\'f0\'ec\'e8\'f0\'f3\'e5\'f2\'f1\'ff ACL\par
+access-list 100 deny 192.168.0.0/16 172.16.0.0/16\par
+\'e8\'eb\'e8 Between -> \'f4\'ee\'f0\'ec\'e8\'f0\'f3\'e5\'f2\'f1\'ff ACL\par
+access-list 100 deny 192.168.0.0 0.0.0.255 172.16.0.0 0.0.0.255\par
+access-list 100 deny 172.16.0.0 0.0.0.255 192.168.0.0 0.0.0.255\par
+\'cc\'e5\'f5\'e0\'ed\'e8\'e7\'ec\'ee\'ec Define Acceptable Use \'f4\'ee\'f0\'ec\'e8\'f0\'f3\'fe\'f2\'f1\'ff \'f1\'f2\'f0\'ee\'ea\'e8 \'e2 ACL. \'ca \'ef\'f0\'e8\'ec\'e5\'f0\'f3, \'e4\'ee\'e1\'e0\'e2\'e8\'eb\'e8 Approved Client 192.168.10.10 -> \'f1\'ee\'e7\'e4\'e0\'eb\'f1\'ff ACL\par
+access-list 100 permit host 192.168.10.10 172.16.0.0 0.0.0.255\par
+\par
+\'c2\'f2\'ee\'f0\'e0\'ff \'e7\'e0\'e4\'e0\'f7\'e0: \'ea\'ee\'e3\'e4\'e0 ACL \'f1\'f4\'ee\'f0\'ec\'e8\'f0\'ee\'e2\'e0\'ed \'e8 \'ed\'e5\'ea\'e8\'e9 \'ef\'e0\'ea\'e5\'f2 \'e4\'ee\'f5\'ee\'e4\'e8\'f2 \'e4\'ee \'f1\'f2\'f0\'ee\'ea\'e8 ACL deny, \'f2\'ee \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee \'f1\'ee\'e7\'e4\'e0\'f2\'fc \'ea\'e0\'ea\'ee\'e9-\'ed\'e8\'e1\'f3\'e4\'fc Alert.\par
+\par
+\'d5\'f0\'e0\'ed\'e5\'ed\'e8\'e5 \'e4\'e0\'ed\'ed\'fb\'f5 \'f1 Router Interface:\par
+-\'ef\'ee\'ec\'e8\'ed\'f3\'f2\'ed\'ee \'e7\'e0 \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e8\'e9 \'f7\'e0\'f1\par
+-\'ea\'e2\'e0\'ed\'f2\'ee\'e2\'e0\'ed\'e8\'e5 \'ef\'ee 5 \'ec\'e8\'ed \'e7\'e0 \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e8\'e9 \'e4\'e5\'ed\'fc\par
+-\'ef\'ee\'f7\'e0\'f1\'ee\'e2\'ee\'e9 \'e7\'e0 \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'fe\'fe \'ed\'e5\'e4\'e5\'eb\'fe\par
+-\'e4\'e5\'ed\'fc \'e7\'e0 \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e8\'e9 \'ec\'e5\'f1\'ff\'f6\par
+-\'ed\'e5\'e4\'e5\'eb\'ff \'e7\'e0 \'e3\'ee\'e4\par
+}
+ 
