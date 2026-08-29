@@ -1,0 +1,667 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1049{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}{\f1\fnil\fcharset0 Courier New;}}
+{\colortbl ;\red0\green0\blue255;\red0\green0\blue0;}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sl240\slmult1\f0\fs22 Access \'f3\'f0\'ee\'e2\'e5\'ed\'fc:\par
+\pard{\pntext\f0 1.\tab}{\*\pn\pnlvlbody\pnf0\pnindent0\pnstart1\pndec{\pntxta.}}
+\fi-360\li720\sl240\slmult1 Layer 2 access control - \'e2\'f1\'ff\'ea\'e8\'e5 DHCP snooping, IP source guard, ARP inspection\par
+{\pntext\f0 2.\tab}User authentication - dot1x\par
+{\pntext\f0 3.\tab}Flow-based rate limiting/policing + CoS\par
+\pard\sl240\slmult1 Distribution \'f3\'f0\'ee\'e2\'e5\'ed\'fc:\par
+\pard{\pntext\f0 1.\tab}{\*\pn\pnlvlbody\pnf0\pnindent0\pnstart1\pndec{\pntxta.}}
+\fi-360\li720\sl240\slmult1\'d0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'f1 L2\\L3 \'f1\'e2\'e8\'f2\'f7\'e0\'ec\'e8. L2 \'e4\'eb\'ff access \'e8 L3 \'e4\'eb\'ff \'ef\'f0\'ee\'ea\'e8\'e4\'fb\'e2\'e0\'ed\'e8\'ff \'e4\'ee Core. L3 \'e1\'ee\'eb\'e5\'e5 \'f1\'eb\'ee\'e6\'ed\'fb\'e5, \'ed\'ee \'e1\'ee\'eb\'e5\'e5 \'f4\'f3\'ed\'ea\'f6\'e8\'ee\'ed\'e0\'eb\'fc\'ed\'fb\'e5, \'ed\'e5\'e6\'e5\'eb\'e8 L2.\par
+{\pntext\f0 2.\tab}Firewall Filters\par
+{\pntext\f0 3.\tab}NAT\par
+{\pntext\f0 4.\tab}CoS + QoS\par
+\pard\sl240\slmult1 Core \'f3\'f0\'ee\'e2\'e5\'ed\'fc:\par
+\pard{\pntext\f0 1.\tab}{\*\pn\pnlvlbody\pnf0\pnindent0\pnstart1\pndec{\pntxta.}}
+\fi-360\li720\sl240\slmult1\'c2\'fb\'f1\'ee\'ea\'ee\'f3\'f0\'ee\'e2\'ed\'e5\'e2\'fb\'e9 \'f0\'ee\'f3\'f2\'e8\'ed\'e3 Layer 3 \'ec\'e5\'e6\'e4\'f3 Distribution \'e8 \'e2\'ed\'e5\'f8\'ed\'e8\'ec\'e8 \'f1\'e5\'f2\'ff\'ec\'e8\kerning1\par
+\kerning0{\pntext\f0 2.\tab}\'ca\'e0\'ea \'ef\'f0\'e0\'e2\'e8\'eb\'ee \'ed\'e5 \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'e5\'f2 \'f4\'f3\'ed\'ea\'f6\'e8\'e8 security \'e8  policing.\kerning1\par
+\pard\nowidctlpar\sl240\slmult1\par
+{\field{\*\fldinst{HYPERLINK "https://habrahabr.ru/users/bormoglotx/topics/"}}{\fldrslt{\ul\cf1 https://habrahabr.ru/users/bormoglotx/topics/}}}\cf2\f0\fs22\par
+\par
+BFD - Bidirectional Forwarding Detection - \'ee\'e1\'fb\'f7\'ed\'fb\'e5 hello \'ef\'e0\'ea\'e5\'f2\'fb \'e4\'eb\'ff \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'e5\'ed\'e8\'ff \'e6\'e8\'e2 \'eb\'e8 \'e5\'f9\'b8 \'f1\'ee\'f1\'e5\'e4 \'e8\'eb\'e8 \'ed\'e5\'f2, \'ed\'ee \'f2\'ee\'eb\'fc\'ea\'ee \'f1 \'ec\'e5\'ed\'fc\'f8\'e8\'ec\'e8 \'f2\'e0\'e9\'ec\'e5\'f0\'e0\'ec\'e8, \'f7\'e5\'ec hello \'f3 \'ee\'e1\'fb\'f7\'ed\'ee\'e3\'ee BGP\par
+\par
+set interface lo0 unit 3 family ...\par
+show bgp summary\par
+show bgp neighbor\par
+show bgp groups - \'ef\'f0\'ee\'e2\'e5\'f0\'ea\'e0 \'f6\'e5\'eb\'fb\'f5 \'e3\'f0\'f3\'ef\'ef\par
+show route \par
+show route table mpls.0\par
+show route receive-protocol bgp (neighbor) terse\par
+show ldp neighbor\par
+show ldp session\par
+show ldp database session 10.210.0.4\par
+show firewall\par
+\par
+\par
+R1#show ip ospf database router self-originate\par
+root@R1> show ospf database router advertising-router self extensive\par
+\par
+R1#show ip route ospf\par
+root@R1> show route protocol ospf\par
+\par
+R1#show mpls ldp neighbor\par
+root@R1> show ldp neighbor extensive\par
+\par
+R1#show mpls ldp bindings\par
+root@R1> show ldp database \par
+\par
+R1#show mpls forwarding-table\par
+root@R1> show route protocol ldp \par
+\par
+interfaces\par
+    xe-0/0/0                \par
+        vlan-tagging;\par
+        unit 10\par
+            vlan-id 10;\par
+            family inet\par
+                filter\par
+                    input acl_in;\par
+                address 10.0.1.1/24;\par
+            family mpls;\par
+    fxp0\par
+        unit 0\par
+            family inet\par
+                address 192.168.4.189/26;\par
+routing-options\par
+    static\par
+        route 0.0.0.0/0 next-hop 192.168.4.129;\par
+    autonomous-system 1;\par
+protocols\par
+    bgp\par
+        group int\par
+            type internal;\par
+            family inet\par
+                unicast;\par
+                flow\par
+                    no-validate no_val;\par
+            export p1;\par
+            peer-as 1;\par
+            neighbor 10.0.13.3;\par
+            neighbor 10.0.12.2;\par
+    mpls\par
+        static-label-switched-path asd\par
+            transit 1000001\par
+                next-hop 10.0.12.1;\par
+                swap 10;\par
+    ldp\par
+        interface xe-0/0/0.10\par
+policy-options\par
+    policy-statement no_val\par
+        term 1\par
+            then accept;\par
+    policy-statement p1\par
+        term 1\par
+            from protocol direct;\par
+            then accept;\par
+firewall\par
+    filter acl_in\par
+        term 1\par
+            from\par
+                source-address\par
+                    100.0.0.0/24;\par
+                destination-address\par
+                    200.0.0.0/24;\par
+            then\par
+                discard;\par
+\par
+\'cf\'ee\'eb\'e5\'e7\'ed\'fb\'e5 \'f1\'f1\'fb\'eb\'ea\'e8:\par
+\cf0{\field{\*\fldinst{HYPERLINK "http://pathfinder.juniper.net/home/"}}{\fldrslt{\ul\cf1 http://pathfinder.juniper.net/home/}}}\cf2\f0\fs22\par
+\par
+\par
+craft interface (craftd) - \'eb\'e0\'ec\'ef\'ee\'f7\'ea\'e8, \'ea\'ed\'ee\'ef\'ee\'f7\'ea\'e8, \'f1\'eb\'e5\'e4\'e8\'f2 \'e7\'e0 \'ef\'e8\'f2\'e0\'ed\'e8\'ec \'ee\'f5\'eb\'e0\'e6\'e4\'e5\'ed\'e8\'e5\'ec\par
+SCB - Switch Control Boards ~ Routing Engine - \'ef\'eb\'e0\'f2\'e0 \'e4\'ee\'eb\'e6\'ed\'e0 \'e1\'fb\'f2\'fc \'e2 \'ea\'e0\'e6\'e4\'ee\'ec \'f0\'ee\'f3\'f2\'e5\'f0\'e5. \'cc\'ee\'e6\'ed\'ee 2-\'e5 \'e4\'eb\'ff redundancy. \'d1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'e5\'f2 \'ea\'e0\'ea \'f1\'e2\'ff\'e7\'ea\'e0 \'ec\'e5\'e6\'e4\'f3 MPC\\DPC. \'c5\'f1\'eb\'e8 \'e5\'f1\'f2\'fc \'f2\'ee\'eb\'fc\'ea\'ee \'ee\'e4\'e8\'ed MPC \'ea\'e0\'ea \'e2 MX80, \'f2\'ee \'ef\'eb\'e0\'f2\'e0 \'ed\'e5 \'ed\'f3\'e6\'ed\'e0.\par
+FPC - Flexible Port Concentrator - \'ed\'ee\'ec\'e5\'f0 \'f1\'eb\'ee\'f2\'e0/\'e4\'fb\'f0\'ea\'e8 \'ed\'e0 \'e6\'e5\'eb\'e5\'e7\'ea\'e5\par
+DPC - Dense Port Concentrator - \'f2\'e8\'ef \'ec\'ee\'e4\'f3\'eb\'ff, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'e2\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2\'f1\'ff \'e2 FPC\par
+MPC - Modular Port Concentrator  - \'f2\'e8\'ef \'ec\'ee\'e4\'f3\'eb\'ff, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'e2\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2\'f1\'ff \'e2 FPC\par
+MIC - Modular Interface Card - \'ec\'ee\'e4\'f3\'eb\'fc \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'e2\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2\'f1\'ff \'e2 MPC\par
+PIC - Physical Interface Card - \'ec\'ee\'e4\'f3\'eb\'fc \'e2 MIC\par
+PEM - Power Entry Module - \'f0\'e0\'e7\'fa\'b8\'ec \'e4\'eb\'ff \'e1\'eb\'ee\'ea\'e0 \'ef\'e8\'f2\'e0\'ed\'e8\'ff\par
+PFE - Packet Forwarding Engine = CEF, \'f2\'ee\'f7\'ed\'e5\'e5 \'ed\'e0\'e2\'e5\'f0\'ed\'ee DFC, \'f2.\'e5. Routing Engine \'f0\'e0\'f1\'f1\'fb\'eb\'e0\'e5\'f2 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff FIB \'ed\'e0 \'fd\'f2\'e8 PFE\par
+RIB - Routing Information Base\par
+FIB - Forwarding Information Base\par
+IPC - Interprocess Communication\par
+IFD - Interface Device - \'e5\'f1\'eb\'e8 \'f1\'ec\'ee\'f2\'f0\'e5\'f2\'fc \'ed\'e0 Routing Sockets\par
+IFL - Interface Logical - \'e5\'f1\'eb\'e8 \'f1\'ec\'ee\'f2\'f0\'e5\'f2\'fc \'ed\'e0 Routing Sockets\par
+IFF - Interface fam\lang1033\f1 i\lang1049\f0 ly - \'e5\'f1\'eb\'e8 \'f1\'ec\'ee\'f2\'f0\'e5\'f2\'fc \'ed\'e0 Routing Sockets\par
+IFA - Interface Address - \'e5\'f1\'eb\'e8 \'f1\'ec\'ee\'f2\'f0\'e5\'f2\'fc \'ed\'e0 Routing Sockets\par
+NSR - Non-Stop Routing\par
+NSB - Non-Stop Bridging\par
+ISSU - In-Service Software Upgrade\par
+GRES - Graceful Routing Engine Switch over\par
+GR - Graceful Restart\par
+BNG - Broadband Network Gateway\par
+BFD - Bidirectional Forwarding Detection\par
+NISP - Network Instruction Set Processor\par
+FPGA - Field Programmable Gate Array\par
+RLDRAM - Reduced Latency Dynamic Random Access Memory\par
+EDMEM - External Data Memory\par
+UPOH - Universal Packet over HSL2\par
+\par
+# \b run ping 10.0.0.1\b0  !!! \'ea\'ee\'ec\'e0\'ed\'e4\'e0 run !\par
+# \b show interfaces terse\b0  - \'ea\'f0\'e0\'f2\'ea\'ee \'ee \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e8 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'ee\'e2\par
+> \b show chassis routing-engine\b0  - \'ef\'ee\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2 CPU, Mem \'e8 \'f2\'e5\'ec\'ef\'e5\'f0\'e0\'f2\'f3\'f0\'f3\par
+> \b show chassis environment\par
+\b0 Class Item                        Status   Measurement\par
+Power FPC 0 Power Supply 0        OK\par
+      FPC 0 Power Supply 1        Absent\par
+Temp  FPC 0 CPU                   OK       39 degrees C / 102 degrees F\par
+      FPC 0 EX-PFE1               OK       42 degrees C / 107 degrees F\par
+      FPC 0 GEPHY Front Left      OK       29 degrees C / 84 degrees F\par
+      FPC 0 GEPHY Front Right     OK       28 degrees C / 82 degrees F\par
+      FPC 0 Uplink Conn           OK       29 degrees C / 84 degrees F\par
+Fans  FPC 0 Fan 1                 OK       Spinning at normal speed\par
+\par
+> \b show chassis temperature-thresholds\par
+\b0                         Fan speed      Yellow alarm      Red alarm\par
+Item                   Normal   High  Normal   Bad fan  Normal   Bad fan\par
+FPC 0 CPU                  60     70      80     70         95     85\par
+FPC 0 EX-PFE1              60     70      80     70         95     85\par
+FPC 0 GEPHY Front Left     60     70      80     70         95     85\par
+FPC 0 GEPHY Front Right    60     70      80     70         95     85\par
+FPC 0 Uplink Conn          60     70      80     70         95     85\par
+\b\par
+\b0 > \b monitor traffic interface ge-0/0/1\b0  \'ef\'ee\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2 \'ea\'e0\'ea\'e8\'e5 \'e8 \'ea\'f3\'e4\'e0 \'e1\'e5\'e3\'f3\'f2 \'ef\'e0\'ea\'e5\'f2\'fb \'e2 \'f0\'e5\'e0\'eb\'fc\'ed\'ee\'ec \'e2\'f0\'e5\'ec\'e5\'ed\'e8\par
+> \b monitor interface traffic\b0  - \'f2\'f0\'e0\'f4\'e8\'ea \'ed\'e0 \'e2\'f1\'e5\'f5 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0\'f5\par
+> \b restart \b0\{\i process\i0\} \b gracefully\b0  - \'f0\'e5\'f1\'f2\'e0\'f0\'f2 \'ef\'f0\'ee\'f6\'e5\'f1\'f1\'e0\par
+> \b request system reboot\b0  - \'ef\'e5\'f0\'e5\'e7\'e0\'e3\'f0\'f3\'e7\'ea\'e0 \'f1\'e8\'f1\'f2\'e5\'ec\'fb\par
+# \b set system root-authentication plain-text-password\b0  - \'f3\'f1\'f2\'e0\'ed\'ee\'e2\'ea\'e0 \'ef\'e0\'f0\'ee\'eb\'ff \'ed\'e0 root\par
+# \b set system login user \b0\{\i\'e8\'ec\'ff \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'ff\i0\}\b  class \b0\{\i type: operator, read-only, super-user\i0\}\b  authentication plain-text-password\b0  - \'f1\'ee\'e7\'e4\'e0\'f2\'fc \'ed\'ee\'e2\'ee\'e3\'ee \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'ff\par
+# \b set system services ssh\b0  - \'e2\'ea\'eb\'fe\'f7\'e8\'f2\'fc ssh\par
+> \b show chassis hardware\b0\par
+\par
+\'c2 JunOS \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee \'f2\'e0\'e1\'eb\'e8\'f6 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'e8\'e7\'e0\'f6\'e8\'e8, \'ef\'e8\'f8\'e5\'f8\'fc show route \'e8 \'e2 \'ef\'e5\'f0\'e2\'ee\'e9 \'f1\'f2\'f0\'ee\'ea\'e5 \'e1\'f3\'e4\'e5\'f2 inet.0 - \'f2.\'e5. \'f2\'e0\'e1\'eb\'e8\'f6\'e0 \'e4\'eb\'ff IPv4.\par
+inet.0 - \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e4\'eb\'ff ipv4 \'fe\'ed\'e8\'ea\'e0\'f1\'f2 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'ee\'e2;\par
+inet.1 - \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e4\'eb\'ff \'ec\'f3\'eb\'fc\'f2\'e8\'ea\'e0\'f1\'f2\'e0;\par
+inet.2 - \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e4\'eb\'ff Multicast Border Gateway Protocol (MBGP) \'f1 \'ef\'f0\'ee\'e2\'e5\'f0\'ea\'ee\'e9 RPF (Reverse Path Forwarding);\par
+inet.3 - \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e4\'eb\'ff MPLS \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'ee\'e2;\par
+inet.4 - \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e4\'eb\'ff Multicast Source Discovery Protocol (MSDP) \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'ee\'e2;\par
+inet6.0 - \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e4\'eb\'ff ipv6 \'fe\'ed\'e8\'ea\'e0\'f1\'f2 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'ee\'e2;\par
+mpls.0 - \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e4\'eb\'ff mpls next hops.\par
+\par
+\b Routing Instance \b0 ~ VRF \cf0{\field{\*\fldinst{HYPERLINK "https://habrahabr.ru/post/275119/"}}{\fldrslt{\ul\cf1 https://habrahabr.ru/post/275119/}}}\cf2\f0\fs22\par
+# set routing-instances asd instance-type ...\par
+# show route instance summary\par
+Instance             Type\par
+         Primary RIB                                     Active/holddown/hidden\par
+master               forwarding\par
+         inet.0                                          120/0/0\par
+\par
+VRF_INTERNET         virtual-router\par
+         VRF_INTERNET.inet.0                             6/0/3\par
+\par
+__juniper_private1__ forwarding\par
+         __juniper_private1__.inet.0                     7/0/0\par
+\par
+__juniper_private2__ forwarding\par
+         __juniper_private2__.inet.0                     0/0/1\par
+\par
+# show route forwarding-table \'ef\'ee\'ea\'e0\'e6\'e5\'f2 FIB b \par
+\par
+\'c1\'fb\'e2\'e0\'fe\'f2:\par
+\b 1. Forwarding\b0  - Filter Based Routing = PBR \'e2 Cisco.\par
+\'dd\'f2\'e0 routing instance \'ed\'e5 \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'e5\'f2 \'f3\'ea\'e0\'e7\'e0\'ed\'e8\'e5 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e0 \'e8 \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'e5 \'ef\'f0\'ee\'f2\'ee\'ea\'ee\'eb\'e0 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'e8\'e7\'e0\'f6\'e8\'e8. \'cd\'e0 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1 \'ed\'e0\'e4\'ee \'ef\'ee\'e2\'e5\'f1\'e8\'f2\'fc filter.\par
+routing-instances FORWARD \{\par
+\tab instance-type forwarding;\par
+\tab routing-options \{\par
+\tab\tab static \{\par
+\tab\tab\tab route 10.0.0.0/24 next-hop 10.0.1.1;\par
+filter classify-customers \{\par
+\tab term sp1-customers \{\par
+\tab\tab from \{\par
+\tab\tab\tab source-address \{\par
+\tab\tab\tab\tab 10.1.1.0/24;\par
+\tab\tab\tab\tab 10.1.2.0/24;\}\par
+\tab\tab then \{\par
+\tab\tab\tab log;\par
+\tab\tab\tab routing-instance FORWARD;\}\par
+fe-1/2/0 \{\par
+\tab unit 0 \{\par
+\tab\tab family inet \{\par
+\tab\tab\tab filter \{\par
+\tab\tab\tab\tab input classify-customers;\}\par
+\tab\tab\tab address 172.16.0.10/30;\par
+\par
+2. Layer 2 Backhaul VPN\par
+\b 3. Layer 2 Control\b0  - \'e4\'eb\'ff \'e7\'e0\'ef\'f3\'f1\'ea\'e0 STP \'ef\'f0\'e8 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'ed\'e8\'e8 VPLS Multihoming. \cf0{\field{\*\fldinst{HYPERLINK "https://habrahabr.ru/post/259645/"}}{\fldrslt{\ul\cf1 https://habrahabr.ru/post/259645/}}}\cf2\f0\fs22\par
+\b 4. Layer 2 VPN\b0  - \'ef\'f0\'ee\'f1\'f2\'ee\'e9 L2vpn, \'ef\'e8\'f8\'f3\'f2 \'ed\'e5 \'f0\'e0\'e1\'ee\'f2\'e0\'e5\'f2 \'ec\'e5\'e6\'e4\'f3 Cisco - Juniper, \'f2\'ee\'eb\'fc\'ea\'ee Juniper - Juniper.\par
+routing-instances VPN \{\par
+\tab instance-type l2vpn;\par
+\tab interface ge-0/0/3.0;\par
+\tab route-distinguisher 100:100;\par
+\tab vrf-target target:1:1;\par
+\tab protocols \{\par
+\tab\tab l2vpn \{\par
+\tab\tab\tab encapsulation-type ethernet-vlan;\par
+\tab\tab\tab no-control-word;\par
+\tab\tab\tab site site2 \{\par
+\tab\tab\tab\tab site-identifier 2;\par
+\tab\tab\tab\tab interface ge-0/0/3.0 \{\par
+\tab\tab\tab\tab\tab remote-site-id 1;\par
+\'c4\'eb\'ff \'ef\'f0\'ee\'e2\'e5\'f0\'ea\'e8 # show route table vpn.l2vpn.0 \'e8\'eb\'e8 # show l2vpn connections\par
+\b 5. No-forwarding\b0  - \'e2 Juniper \'e5\'f1\'f2\'fc \'f2\'e0\'e1\'eb\'e8\'f6\'e0 RIB, \'ea\'f3\'e4\'e0 \'ef\'ee\'ef\'e0\'e4\'e0\'fe\'f2 \'e2\'f1\'e5 OSPF, BGP (\'e2 RIB \'e4\'eb\'ff \'f1\'e5\'f2\'e8 10.0.0.0 \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc 2-\'e0 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'e0). \'c8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e4\'eb\'ff \'e2\'e7\'e0\'e8\'ec\'ee\'e4\'e5\'e9\'f1\'f2\'e2\'e8\'ff IGP. \'c5\'f1\'f2\'fc FIB \'f2\'f3\'e4\'e0 \'ef\'ee\'ef\'e0\'e4\'e0\'fe\'f2 \'f2\'ee\'eb\'fc\'ea\'ee \'eb\'f3\'f7\'f8\'e8\'e5 \'e8\'e7 RIB. \'dd\'f2\'ee\'f2 routing-instance \'e2\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2 \'f1\'e2\'ee\'e8 \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'fb \'f1\'f0\'e0\'e7\'f3 \'e2 FIB. \'d1\'e5\'e3\'ec\'e5\'ed\'f2\'e0\'f6\'e8\'ff \'f1\'e5\'f2\'e8 \'ea\'e0\'ea VLAN \'f2\'ee\'eb\'fc\'ea\'ee \'ed\'e0 L3. \'cc\'f3\'f2\'ed\'ee \'ee\'ef\'e8\'f1\'e0\'ed\'ee!\par
+routing-instances NOFORWARD \{\par
+\tab instance-type no-forwarding;\par
+\tab interface ge-0/0/3.0;\par
+\tab routing-options \{\par
+\tab\tab auto-export; auto-export \'ee\'e1\'ff\'e7\'e0\'f2\'e5\'eb\'fc\'ed\'ee \'e4\'ee\'eb\'e6\'ed\'ee \'e1\'fb\'f2\'fc \'f1\'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e8\'f0\'ee\'e2\'e0\'ed\'ee \'e2 \'ee\'f1\'ed\'ee\'e2\'ed\'ee\'e9 routing instance \'e8 routing instance no-forwarding\par
+\tab protocols \{\par
+\tab\tab ospf \{\par
+\tab\tab\tab export export-100;\par
+\tab\tab\tab area 0.0.0.0 \{\par
+\tab\tab\tab interface ge-0/0/3.0;\par
+\b 6. Virtual router\b0  \emdash  \'f2\'ee\'f2 \'e6\'e5 VRF, \'f2\'ee\'eb\'fc\'ea\'ee \'e1\'e5\'e7 RD, export RT \'e8 import RT, \'ed\'e5 \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'e5\'f2 RSVP. \'cc\'e0\'f0\'f8\'f0\'f3\'f2\'e0\'ec\'e8 \'ec\'ee\'e6\'ed\'ee \'ee\'e1\'ec\'e5\'ed\'e8\'e2\'e0\'f2\'fc\'f1\'ff \'f7\'e5\'f0\'e5\'e7 RIB Groups.\par
+routing-instances VR \{\par
+\tab instance-type virtual-router;\par
+\tab interface ge-0/0/2.0;\par
+\tab protocols \{\par
+\tab\tab ospf \{\par
+\tab\tab\tab export export-200;\par
+\tab\tab\tab area 0.0.0.0 \{\par
+\tab\tab\tab\tab interface all;\par
+\par
+\b 7. Virtual switch\b0  - \'e2\'f1\'e5 trunk \'ef\'ee\'f0\'f2\'fb \'ef\'ee\'ef\'e0\'e4\'e0\'fe\'f2 \'e2 \'ee\'e4\'e8\'ed bridge domain = default-switch routing-instance\par
+routing-instances \{\par
+\tab routing-instance-name (\par
+\tab\tab instance-type virtual-switch;\par
+\tab\tab bridge-domains \{\par
+\tab\tab\tab bridge-domain-name \{\par
+\tab\tab\tab\tab domain-type bridge;\par
+\tab\tab\tab\tab interface interface-name;\par
+\tab\tab\tab\tab vlan-id (all | none | number); \par
+\tab\tab\tab\tab vlan-id-list [ vlan-id-numbers ];\par
+\tab\tab\tab\tab vlan-tags outer number inner number; \par
+\tab\tab protocols \{\par
+\tab\tab\tab mstp \{\par
+\tab\tab\tab\tab ...mstp-configuration ...\par
+\b 8. VPLS\b0\par
+\'cf\'f0\'ee\'e1\'f0\'ee\'f1 L2 p-t-p \'e1\'fb\'e2\'e0\'e5\'f2:\par
+\ul Martini\ulnone  - \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2  directed LDP \'e4\'eb\'ff \'d1\'c8\'c3\'cd\'c0\'cb\'c8\'c7\'c0\'d6\'c8\'c8 \'ea\'e0\'ea\'ee\'e9 VPN Label \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'ec\'e5\'e6\'e4\'f3 PE. \ul Kompella\ulnone  - \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2 BGP \'e4\'eb\'ff \'d1\'c8\'c3\'cd\'c0\'cb\'c8\'c7\'c0\'d6\'c8\'c8.\par
+\'c4\'eb\'ff \ul Martini\ulnone  \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'e0 \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e0\'f6\'e8\'ff \'e2 \'ff\'e2\'ed\'ee\'ec \'e2\'e8\'e4\'e5 \'ed\'e0 \'ea\'e0\'e6\'e4\'ee\'ec p-t-p \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'e5. \ul Kompella\ulnone  - \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2 autodiscovery \'ee\'f1\'ed\'ee\'e2\'e0\'ed\'ed\'ee\'e9 \'ed\'e0 BGP.\par
+routing-instances Kompella \{\par
+\tab instance-type vpls;\par
+\tab interface ge-0/0/3.0;\par
+\tab route-distinguisher 10.0.1.1:100;\par
+\tab vrf-target target:10.0.1.0:100;\par
+\tab protocols \{\par
+\tab\tab vpls \{\par
+\tab\tab\tab no-tunnel-services;\par
+\tab\tab\tab site site1 \{\par
+\tab\tab\tab\tab site-range 10;\par
+\tab\tab\tab\tab site-identifier 1;\par
+\tab\tab\tab\tab interface ge-0/0/3.0;\par
+routing-instances Martini \{ \'ed\'e5\'f2 autodiscovery, \'ed\'f3\'e6\'e5\'ed \'ea\'ee\'f1\'f2\'fb\'eb\'fc \'f1 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'ed\'e8\'e5\'ec BGP \'e8 address family bgp l2vpn auto-discovery-only\par
+\tab instance-type vpls;\par
+\tab interface ge-0/0/3.0;\par
+\tab protocols \{\par
+\tab\tab vpls \{\par
+\tab\tab\tab no-tunnel-services;\par
+\tab\tab\tab vpls-id 101;\par
+\tab\tab\tab neighbor 1.1.1.1;\par
+\tab\tab\tab neighbor 2.2.2.2;\par
+\'c4\'eb\'ff \'ef\'f0\'ee\'e2\'e5\'f0\'ea\'e8 # show vpls connections\par
+\b 9. VRF\b0  - \'ea\'e0\'ea \'e8 \'e2 Cisco \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'e5\'f2 \'e2 \'f1\'e5\'e1\'e5 \'ee\'f2 BGP \'e4\'ee PIM \'e8 LDP.\par
+routing-instances VRF \{\par
+\tab instance-type vrf;\par
+\tab interface ge-0/0/3.101;\par
+\tab route-distinguisher 2001:31133;\par
+\tab vrf-target target:200:31133;\par
+\tab vrf-table-label;\par
+\tab routing-options \{\par
+\tab\tab router-id 101.101.101.101;\par
+\tab protocols \{\par
+\tab\tab ospf3 \{\par
+\tab\tab export isis-ce2-export;\par
+\tab\tab area 0.0.0.0 \{\par
+\tab\tab\tab interface ge-0/0/3.101;\par
+\par
+\par
+\b Logical-system\b0  - \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'e5\'f2\'f1\'ff \'ee\'f2\'e4\'e5\'eb\'fc\'ed\'fb\'e9 demon \'e4\'eb\'ff \'ec\'e0\'f0\'f8\'f0\'f3\'f2\'e8\'e7\'e0\'f6\'e8\'e8. \'ce\'f2\'e4\'e5\'eb\'fc\'ed\'fb\'e5 \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'e8 \'ec\'ee\'e3\'f3\'f2 \'e7\'e0\'f5\'ee\'e4\'e8\'f2\'fc \'f2\'ee\'eb\'fc\'ea\'ee \'ed\'e0 \'ee\'f2\'e4\'e5\'eb\'fc\'ed\'fb\'e5 logical-system. \cf0{\field{\*\fldinst{HYPERLINK "http://www.juniper.net/documentation/en_US/junos/topics/concept/logical-systems-overview-solutions.html"}}{\fldrslt{\ul\cf1 http://www.juniper.net/documentation/en_US/junos/topics/concept/logical-systems-overview-solutions.html}}}\cf2\f0\fs22\par
+\par
+\cf0{\field{\*\fldinst{HYPERLINK "http://juniper-rus.blogspot.ru/"}}{\fldrslt{\ul\cf1 http://juniper-rus.blogspot.ru/}}}\cf2\f0\fs22\par
+\'c2 cli \'ec\'ee\'e6\'ed\'ee \'e4\'e5\'eb\'e0\'f2\'fc clear, monitor, ping, show, test, traceroute, mtrace\par
+> \b help topic\b0  interfaces addresses - \'e2\'fb\'e4\'e0\'f1\'f2 \'ee\'ef\'e8\'f1\'e0\'ed\'e8\'e5, \'ea\'e0\'ea \'e2 linux man\par
+> \b help reference\b0  interfaces addresses - \'e2\'fb\'e4\'e0\'f1\'f2 \'e2\'f1\'e5 \'e2\'ee\'e7\'ec\'ee\'e6\'ed\'fb\'e5 \'ea\'ee\'ec\'e0\'ed\'e4\'fb \'e4\'eb\'ff interfaces addresses, \'ea\'e0\'ea \'ed\'e0 \'f1\'e0\'e9\'f2\'e5 Juniper\par
+> \b help apropos\b0  asdfasdfg - \'e2\'fb\'e4\'e0\'f1\'f2 \'e2\'f1\'b8 \'e3\'e4\'e5 \'e2\'f1\'f2\'f0\'e5\'f7\'e0\'e5\'f2\'f1\'ff \'ed\'e0\'e1\'ee\'f0 asdfasdfg\par
+\par
+\'cf\'ee\'f1\'eb\'e5 | \'ec\'ee\'e6\'ed\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc:\par
+\pard\nowidctlpar\fi-852\li852\sl240\slmult1 # \b show | compare\b0  (\i filename\i0  | rollback n) - \'f2\'ee\'eb\'fc\'ea\'ee \'e2 # \'e8 \'f1 \'ea\'ee\'ec\'e0\'ed\'e4\'ee\'e9 show. \'d1\'ee\'ef\'ee\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff \'e2 \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e0\'f6\'e8\'e8 \'f1 \'e4\'f0\'f3\'e3\'e8\'ec \'f4\'e0\'e9\'eb\'ee\'ec \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e0\'f6\'e8\'e8. \'ce\'e1\'fb\'f7\'ed\'ee \'ef\'e5\'f0\'e5\'e4 commit, \'e2\'e1\'e8\'e2\'e0\'e5\'f8\'fc show | compare, \'f7\'f2\'ee \'f0\'e0\'e2\'ed\'ee\'f1\'e8\'eb\'fc\'ed\'ee show | compare rolback 0, \'f2.\'e5. \'f1\'f0\'e0\'e2\'ed\'e8\'e2\'e0\'e5\'f8\'fc \'ea\'e0\'ed\'e4\'e8\'e4\'e0\'f2\'f1\'ea\'f3\'fe \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e0\'f6\'e8\'fe \'f1 \'e0\'ea\'f2\'e8\'e2\'ed\'ee\'e9.\par
+count - \'ef\'ee\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2 \'f7\'e8\'f1\'eb\'ee \'f1\'f2\'f0\'ee\'ea \'e2 \'e2\'fb\'e2\'ee\'e4\'e5\par
+display changed - \'f2\'ee\'eb\'fc\'ea\'ee \'e2 #. \'d2\'e5\'e3\'e8 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff \'e0\'f2\'f0\'e8\'e1\'f3\'f2\'e0 junos:changed. \'c8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'f2\'ee\'eb\'fc\'ea\'ee \'e4\'eb\'ff XML\par
+display commit-scripts - \'ef\'ee\'ea\'e0\'e7\'fb\'e2\'e5\'f2 \'e4\'e0\'ed\'ed\'fb\'e5 \'ef\'ee\'f1\'eb\'e5 \'ef\'f0\'e8\'ec\'e5\'ed\'e5\'ed\'e8\'ff commit scripts\par
+display detail - \'f2\'ee\'eb\'fc\'ea\'ee \'e2 #. \'cf\'ee\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2 \'e4\'ee\'ef\'ee\'eb\'ed\'e8\'f2\'e5\'eb\'fc\'ed\'f3\'fe \'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'fe \'ee \'f1\'ee\'e4\'e5\'f0\'e6\'e0\'ed\'e8\'e8 \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e0\'f6\'e8\'e8.\par
+display inheritance - \'f2\'ee\'eb\'fc\'ea\'ee \'e2 #. \'cf\'ee\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2 \'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'fe \'ee \'ed\'e0\'f1\'eb\'e5\'e4\'ee\'e2\'e0\'ed\'e8\'e8 \'e2 \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e0\'f6\'e8\'e8 \'e8 \'e3\'f0\'f3\'ef\'ef\'f3 \'e8\'f1\'f2\'ee\'f7\'ed\'e8\'ea\'e0.\par
+display omit - \'f2\'ee\'eb\'fc\'ea\'ee \'e2 #. \'cf\'f0\'ee\'ef\'f3\'f1\'ea\'e0\'e5\'f2 \'f0\'e0\'e7\'e4\'e5\'eb\'fb \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e0\'f6\'e8\'e8 \'f1 \'ee\'ef\'f6\'e8\'e5\'e9 omit.\par
+display set - \'f2\'ee\'eb\'fc\'ea\'ee \'e2 #. \'cf\'ee\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2 \'ea\'ee\'ec\'e0\'ed\'e4\'fb set, \'ea\'ee\'f2\'ee\'f0\'fb\'ec\'e8 \'f1\'ee\'e7\'e4\'e0\'e2\'e0\'eb\'e8\'f1\'fc \'f0\'e0\'e7\'e4\'e5\'eb\'fb \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e0\'f6\'e8\'e8.\par
+display xml - \'ef\'ee\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2 \'e2\'fb\'e2\'ee\'e4 \'e2 \'f4\'ee\'f0\'ec\'e0\'f2\'e5 XML.\par
+except regular-expression - \'e8\'e3\'ed\'ee\'f0\'e8\'f0\'f3\'e5\'f2 \'f2\'e5\'ea\'f1\'f2, \'e2\'f5\'ee\'e4\'ff\'f9\'e8\'e9 \'e2 \'f0\'e5\'e3\'f3\'eb\'ff\'f0\'ed\'ee\'e5 \'e2\'fb\'f0\'e0\'e6\'e5\'ed\'e8\'e5 \'e2 \'e2\'fb\'e2\'ee\'e4\'e5. \'c5\'f1\'eb\'e8 \'f0\'e5\'e3\'f3\'eb\'ff\'f0\'ed\'ee\'e5 \'e2\'fb\'f0\'e0\'e6\'e5\'ed\'e8\'e5 \'f1\'ee\'e4\'e5\'f0\'e6\'e8\'f2 \'ef\'f0\'ee\'e1\'e5\'eb\'fb, \'ee\'ef\'e5\'f0\'e0\'f2\'ee\'f0\'fb \'e8\'eb\'e8 wildcard \'f1\'e8\'ec\'e2\'ee\'eb\'fb, \'ed\'f3\'e6\'ed\'ee \'e7\'e0\'ea\'eb\'fe\'f7\'e0\'f2\'fc \'e5\'e3\'ee \'e2 \'ea\'e0\'e2\'fb\'f7\'ea\'e8.\par
+find regular-expression - \'ef\'ee\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2 \'e2\'fb\'e2\'ee\'e4, \'ed\'e0\'f7\'e8\'ed\'e0\'fe\'f9\'e8\'e9\'f1\'ff \'f1 \'ef\'e5\'f0\'e2\'ee\'e3\'ee \'e2\'f5\'ee\'e6\'e4\'e5\'ed\'e8\'ff \'f2\'e5\'ea\'f1\'f2\'e0, \'e2\'f5\'ee\'e4\'ff\'f9\'e5\'e3\'ee \'e2 \'f0\'e5\'e3\'f3\'eb\'ff\'f0\'ed\'ee\'e5 \'e2\'fb\'f0\'e0\'e6\'e5\'ed\'e8\'e5. \'c5\'f1\'eb\'e8 \'f0\'e5\'e3\'f3\'eb\'ff\'f0\'ed\'ee\'e5 \'e2\'fb\'f0\'e0\'e6\'e5\'ed\'e8\'e5 \'f1\'ee\'e4\'e5\'f0\'e6\'e8\'f2 \'ef\'f0\'ee\'e1\'e5\'eb\'fb, \'ee\'ef\'e5\'f0\'e0\'f2\'ee\'f0\'fb \'e8\'eb\'e8 wildcard \'f1\'e8\'ec\'e2\'ee\'eb\'fb, \'ed\'f3\'e6\'ed\'ee \'e7\'e0\'ea\'eb\'fe\'f7\'e0\'f2\'fc \'e5\'e3\'ee \'e2 \'ea\'e0\'e2\'fb\'f7\'ea\'e8.\par
+hold - \'ce\'f1\'f2\'e0\'ed\'e0\'e2\'eb\'e8\'e2\'e0\'e5\'f2 \'e2\'fb\'e2\'ee\'e4 \'f1\'f2\'f0\'ee\'ea\'ee\'e9 --(more)--.\par
+last - \'cf\'ee\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2 \'ef\'ee\'f1\'eb\'e5\'e4\'ed\'e8\'e9 \'ee\'f2\'f0\'e5\'e7\'ee\'ea \'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'e8.\par
+match regular-expression - \'c2\'fb\'e2\'ee\'e4\'e8\'f2 \'f1\'f2\'f0\'ee\'ea\'e8, \'f1\'ee\'e4\'e5\'f0\'e6\'e0\'f9\'e8\'e5 \'f2\'e5\'ea\'f1\'f2, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'e2\'f5\'ee\'e4\'e8\'f2 \'e2 \'f0\'e5\'e3\'f3\'eb\'ff\'f0\'ed\'ee\'e5 \'e2\'fb\'f0\'e0\'e6\'e5\'ed\'e8\'e5. \'c5\'f1\'eb\'e8 \'f0\'e5\'e3\'f3\'eb\'ff\'f0\'ed\'ee\'e5 \'e2\'fb\'f0\'e0\'e6\'e5\'ed\'e8\'e5 \'f1\'ee\'e4\'e5\'f0\'e6\'e8\'f2 \'ef\'f0\'ee\'e1\'e5\'eb\'fb, \'ee\'ef\'e5\'f0\'e0\'f2\'ee\'f0\'fb \'e8\'eb\'e8 wildcard \'f1\'e8\'ec\'e2\'ee\'eb\'fb, \'ed\'f3\'e6\'ed\'ee \'e7\'e0\'ea\'eb\'fe\'f7\'e0\'f2\'fc \'e5\'e3\'ee \'e2 \'ea\'e0\'e2\'fb\'f7\'ea\'e8.\par
+no-more - \'cf\'ee\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2 \'e2\'fb\'e2\'ee\'e4 \'e2\'e5\'f1\'fc \'f1\'f0\'e0\'e7\'f3, \'e1\'e5\'e7 \'f1\'f2\'ee\'ef-\'f1\'f2\'f0\'ee\'ea\'e8 --(more)--.\par
+request message - \'cf\'ee\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2 \'e2\'fb\'e2\'ee\'e4 \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'e8\'ec \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'ff\'ec.\par
+resolve - \'ca\'ee\'ed\'e2\'e5\'f0\'f2\'e8\'f0\'f3\'e5\'f2 IP \'e0\'e4\'f0\'e5\'f1 \'e2 Domain Name Server (DNS) \'e8\'ec\'ff. \'d3\'f1\'e5\'ea\'e0\'e5\'f2 \'ee\'f0\'e8\'e3\'e8\'ed\'e0\'eb\'fc\'ed\'fb\'e9 \'f0\'e0\'e7\'ec\'e5\'f0, \'e5\'f1\'eb\'e8 \'ed\'e5 \'f3\'ea\'e0\'e7\'e0\'ed\'e0 \'ee\'ef\'f6\'e8\'ff full-names.\par
+save filename - \'d1\'ee\'f5\'f0\'e0\'ed\'ff\'e5\'f2 \'e2\'fb\'e2\'ee\'e4 \'e2 \'f4\'e0\'e9\'eb \'e8\'eb\'e8 URL.\par
+trim - \'c2\'fb\'f0\'e5\'e7\'e0\'e5\'f2 \'f3\'ea\'e0\'e7\'e0\'ed\'ed\'ee\'e5 \'f7\'e8\'f1\'eb\'ee \'f1\'e8\'ec\'e2\'ee\'eb\'ee\'e2 \'f1 \'ed\'e0\'f7\'e0\'eb\'e0 \'f1\'f2\'f0\'ee\'ea\'e8 \'e2\'fb\'e2\'ee\'e4\'e0.\par
+\pard\nowidctlpar\sl240\slmult1\par
+\'c4\'eb\'ff \'ee\'f2\'ea\'e0\'f2\'e0 \'ed\'e0 \'ef\'f0\'e5\'e4\'fb\'e4\'f3\'f9\'f3\'fe \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e0\'f6\'e8\'fe, \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'ea\'ee\'ec\'e0\'ed\'e4\'e0 \b rollback n\b0 . JunOS \'f5\'f0\'e0\'ed\'e8\'f2 max 50 \'ef\'f0\'e5\'e4\'fb\'e4\'f3\'f9\'e8\'f5 \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e0\'f6\'e8\'e9 \'e2\'ea\'eb\'fe\'f7\'e0\'ff \'e0\'ea\'f2\'e8\'e2\'ed\'f3\'fe, \'ea\'ee\'f2\'ee\'f0\'e0\'ff \'e8\'e4\'b8\'f2 \'ea\'e0\'ea rollback 0 \'e8 \'e4\'e0\'eb\'fc\'f8\'e5 \'e4\'ee rollback 49. \'cf\'ee\'f1\'eb\'e5 rollback n \'ed\'e0\'e4\'ee \'ed\'e0\'ef\'e8\'f1\'e0\'f2\'fc commit !!!\par
+\par
+> configure exclusive - \'ea\'e0\'ea-\'f2\'ee \'f2\'e0\'ec \'e5\'e4\'e8\'ed\'ee\'eb\'e8\'f7\'ed\'ee\'e5 \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'e5\par
+> configure private - \'ea\'e0\'ea\'e0\'ff-\'f2\'ee \'f2\'e0\'ec \'ec\'f3\'f2\'fc, \'ef\'f0\'ee \'f2\'ee \'ea\'e0\'ea \'ec\'ed\'ee\'e3\'ee \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'e5\'e9 \'ee\'e4\'ed\'ee\'e2\'f0\'e5\'ec\'e5\'ed\'ed\'ee \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e8\'f0\'f3\'fe\'f2 \'f3\'f1\'f2\'f0\'ee\'e9\'f1\'f2\'e2\'ee\par
+\par
+\'cc\'ee\'e6\'ed\'ee \'e2\'e2\'e5\'f0\'f5 \'ef\'ee \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e0\'f6\'e8\'e8 \'e4\'e2\'e8\'e3\'e0\'f2\'fc\'f1\'ff #\b up\b0  \'e8\'eb\'e8 #\b up 2\b0\par
+\par
+[edit system login]\par
+# \b top show system services - \b0\'ea\'ee\'ec\'e0\'ed\'e4\'e0 top \'ef\'ee\'e4\'ed\'e8\'ec\'e0\'e5\'f2 \'ed\'e0 \'e2\'e5\'f0\'f8\'e8\'ed\'f3 \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e0\'f6\'e8\'e8 \'e8 \'e7\'e0\'ef\'f3\'f1\'ea\'e0\'e5\'f2 show system services\par
+\par
+# rename ge-0/0/1 unit 0 family inet address 192.168.0.1/28 to address 192.168.0.2/28 - \'f7\'f2\'ee\'e1\'fb \'ed\'e5 \'f3\'e4\'e0\'eb\'ff\'f2\'fc IP, \'e0 \'ef\'ee\'f2\'ee\'ec \'ef\'f0\'e8\'f1\'e2\'e0\'e8\'e2\'e0\'f2\'fc\par
+# replace pattern ge0/0/10 with ge-0/0/11\par
+# copy interfaces ge0/0/10 to ge-0/0/11 - \'ea\'ee\'ef\'e8\'f0\'ee\'e2\'e0\'f2\'fc \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e8 \'e8\'e7 \'ee\'e4\'ed\'ee\'e9 \'e2\'e5\'f2\'ea\'e8 XML \'e2 \'e4\'f0\'f3\'e3\'f3\'fe\par
+\par
+\'c4\'e0\'eb\'fc\'f8\'e5 \'ee\'ef\'e8\'f1\'fb\'e2\'e0\'fe\'f2\'f1\'ff \'e7\'e0\'ec\'ee\'f0\'ee\'f7\'ea\'e8 \'f1 activate \'e8 deactivate....\par
+\par
+# \b show\b0  - \'ef\'f0\'ee\'f1\'ec\'ee\'f2\'f0 "\'ea\'e0\'ed\'e4\'e8\'e4\'e0\'f2\'f1\'ea\'ee\'e9" \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e0\'f6\'e8\'e8\par
+> \b show configure\b0  - \'ef\'f0\'ee\'f1\'ec\'ee\'f2\'f0 \'e0\'ea\'f2\'e8\'e2\'ed\'ee\'e9 \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e0\'f6\'e8\'e8, \'f2\'ee\'e9 \'ea\'ee\'f2\'ee\'f0\'e0\'ff \'e1\'f3\'e4\'e5\'f2 \'e7\'e0\'e3\'f0\'f3\'e6\'e0\'f2\'fc\'f1\'ff \'ef\'ee\'f1\'eb\'e5 reboot\par
+> \b show configure | compare rollback 24 \endash\b0  \'f1\'f0\'e0\'e2\'ed\'e8\'e2\'e0\'e5\'f2 \'ed\'fb\'ed\'e5\'f8\'ed\'fe\'fe \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e0\'f6\'e8\'fe \'f1 24\par
+> \b show system commit\b0  \endash  \'f1\'ef\'e8\'f1\'ee\'ea \'ef\'f0\'e5\'e4\'fb\'e4\'f3\'f9\'e8\'f5 commit-\'ee\'e2\par
+\par
+\b commit confirmed\b0  \i time-out\i0  - \'f7\'e5\'f0\'e5\'e7 time-out \'e4\'ee\'eb\'e6\'ed\'e0 \'e1\'fb\'f2\'fc \'e2\'e2\'e5\'e4\'e5\'ed\'e0 \'ea\'ee\'ec\'e0\'ed\'e4\'e0 commit\par
+\b commit comment\b0  - \'e4\'ee\'e1\'e0\'e2\'eb\'ff\'e5\'f2 \'ea\'ee\'ec\'ec\'e5\'ed\'f2\'e0\'f0\'e8\'e9 \'e2 commit\par
+\b commit and-quit\b0  - \'ef\'f0\'ee\'f1\'f2\'ee \'fd\'ea\'ee\'ed\'ee\'ec\'e8 \'e2\'f0\'e5\'ec\'ff\par
+\b commit check\b0  - \'ef\'f0\'ee\'e2\'e5\'f0\'ea\'e0 commit \'ed\'e0 \'ee\'f8\'e8\'e1\'ea\'e8\par
+\par
+\b save\b0  scp://user@host/path/filename \emdash  \'f1\'ee\'f5\'f0\'e0\'ed\'e5\'ed\'e8\'e5 \'f4\'e0\'e9\'eb\'e0 \'e2 ASCII.\par
+\par
+\'c7\'e0\'e3\'f0\'f3\'e7\'ea\'e0 \'f4\'e0\'e9\'eb\'ee\'e2 \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e0\'f6\'e8\'e8: \b load\b0  + \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc \'ef\'ee \'ee\'f2\'e4\'e5\'eb\'fc\'ed\'ee\'f1\'f2\'e8 \'f1\'eb\'e5\'e4\'f3\'fe\'f9\'e8\'e5 \par
+factory-default \endash  \'e7\'e0\'ec\'e5\'ed\'ff\'e5\'f2\'fc \'ef\'ee\'eb\'ed\'ee\'f1\'f2\'fc \'f2\'e5\'ea\'f3\'f9\'f3\'fe \'ea\'ee\'ed\'f4\'f3 \endash  \'e7\'e0\'e2\'ee\'e4\'f1\'ea\'ee\'e9\par
+merge \endash  \'ee\'e1\'fa\'e5\'e4\'e8\'ed\'ff\'e5\'f2 \'f2\'e5\'ea\'f3\'f9\'f3\'fe \'f1 \'f1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'fe\'f9\'e5\'e9\par
+override \endash  \'ef\'ee\'eb\'ed\'ee\'f1\'f2\'fc\'fe \'ef\'e5\'f0\'e5\'e7\'e0\'ef\'e8\'f1\'fb\'e2\'e0\'e5\'f2 \'f1\'f3\'f9\'e5\'f1\'f2\'e2\'f3\'fe\'f9\'f3\'fe, \'e7\'e0\'e3\'f0\'f3\'e6\'e0\'e5\'ec\'ee\'e9\par
+patch \endash  \'ec\'f3\'f2\'fc \'f1 \'ef\'e0\'f2\'f7-\'f4\'e0\'e9\'eb\'e0\'ec\'e8 - \'e8\'ed\'ea\'f0\'e5\'ec\'e5\'ed\'f2\'e0\'eb\'fc\'ed\'e0\'ff \'ea\'ee\'ed\'f4\'e0 \'ed\'e0 \'ee\'f1\'ed\'ee\'e2\'e0\'ed\'e8\'e8 #show | compare | save\par
+replace \endash  \'e7\'e0\'ec\'e5\'ed\'ff\'e5\'f2 \'f2\'ee\'eb\'fc\'ea\'ee \'e8\'e7 \'ea\'ee\'ed\'f4\'e8\'e3\'e0 \'f2\'ee\'eb\'fc\'ea\'ee \'f2\'ee, \'f7\'f2\'ee \'ef\'ee\'ec\'e5\'f7\'e5\'ed\'ee \'f2\'e5\'e3\'ee\'ec replace\par
+set \endash  \'e7\'e0\'e3\'f0\'f3\'e6\'e0\'f2\'fc \'ea\'ee\'ec\'e0\'ed\'e4\'fb \'e8\'e7 \'f2\'e5\'f0\'ec\'e8\'ed\'e0\'eb\'e0\par
+update \endash  \'e0\'ed\'e0\'eb\'ee\'e3 override \'f2\'ee\'eb\'fc\'ea\'ee \'ce\'d1 Junos \'ef\'f0\'ee\'e1\'f3\'e5\'f2 \'ef\'f0\'e5\'e4\'e2\'e0\'f0\'e8\'f2\'e5\'eb\'fc\'ed\'ee \'ee\'f1\'f2\'e0\'ed\'ee\'e2\'e8\'f2\'fc \'e7\'e0\'f2\'f0\'e0\'e3\'e8\'e2\'e0\'e5\'ec\'fb\'e5 \'ef\'f0\'ee\'f6\'e5\'f1\'f1\'fb\par
+terminal \endash  \'ea\'e0\'ea \'e2 Cisco \'e7\'e0\'eb\'e8\'e2 \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e0\'f6\'e8\'e8 copy paste\par
+relative \endash  \'e7\'e0\'e3\'f0\'f3\'e6\'e0\'e5\'f2 \'e4\'e0\'ed\'ed\'fb\'e5 \'e2 \'ea\'ee\'ed\'ea\'f0\'e5\'f2\'ed\'f3\'fe \'e2\'e5\'f2\'ea\'f3, \'ef\'f0\'e8\'ec\'e5\'f0 \'e5\'f1\'eb\'e8 \'f2\'fb \'f1\'e8\'e4\'e8\'f8\'fc \'e2 [edit logical-system 1]\par
+\par
+\ul\'d0\'e0\'e7\'e4\'e5\'eb\'e5\'ed\'e8\'e5 \'ed\'e0 Control Plane \'e8 \'ed\'e0 Data Plane\ulnone\par
+\par
+\'c7\'e0 Data Plane \'ee\'f2\'e2\'e5\'f7\'e0\'e5\'f2 PFE. \'c2 \'ed\'e5\'e3\'ee \'e2\'f5\'ee\'e4\'e8\'f2 FIB \'e8 Junos Micro Kernel. Junos Micro Kernel \'f3\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2\'f1\'ff Junos Kernel.\par
+\'c7\'e0 Control Plane \'ee\'f2\'e2\'e5\'f7\'e0\'e5\'f2 Routing Engine. \'c2 \'ed\'e5\'e3\'ee \'e2\'f5\'ee\'e4\'e8\'f2 Daemons:\par
+\par
+mgd - management daemon - \'e8\'eb\'e8 \'e2 \'ed\'e0\'f0\'ee\'e4\'e5 User Interface. \par
+\pard\nowidctlpar\li568\sl240\slmult1 User Interface \'f1\'ee\'f1\'f2\'ee\'e8\'f2 \'e8\'e7 configuration database, database schema, management daemon(mgd) \'e8 command line interface (cli)\par
+\'ef\'ee\'f1\'ec\'ee\'f2\'f0\'e5\'f2\'fc \'ed\'e0 \'f0\'e0\'e7\'ed\'e8\'f6\'f3 \'ec\'e5\'e6\'e4\'f3 >\b show isis adjacency\b0  \'e8 >\b show isis adjacency | display xml\b0\par
+\pard\nowidctlpar\sl240\slmult1 rpd - routing protocol daemon - \'ed\'e5 \'ee\'f2\'ed\'ee\'f1\'e8\'f2\'f1\'ff \'ea \'e4\'e5\'eb\'f3, \'ed\'ee \'e2 \'f0\'e0\'e7\'e4\'e5\'eb\'e5 \'ef\'e8\'f1\'e0\'eb\'e8 \'ef\'f0\'ee >\b show task accounting on\b0  \'e8 >\b show task accounting\b0\par
+\pard\nowidctlpar\fi-568\li568\sl240\slmult1 dcd - device control daemon - \'ee\'f2\'e2\'e5\'f7\'e0\'e5\'f2 \'e7\'e0 \'ef\'f0\'e8\'f1\'ee\'e5\'e4\'e8\'ed\'b8\'ed\'ed\'fb\'e5 device. \'ca \'ef\'f0\'e8\'ec\'e5\'f0\'f3, \'ef\'e8\'f8\'e5\'f8\'fc >set interface ge-1/0/0.0 family inet address 10.0.0.1/24 \'e8 commit, \'e0 \'f0\'e5\'e0\'eb\'fc\'ed\'ee \'ed\'e5\'f2 FPC1. \'c8 \'f1\'e8\'f1\'f2\'e5\'ec\'e0 \'ed\'e5 \'e1\'f3\'e4\'e5\'f2 \'f3\'f7\'e8\'f2\'fb\'e2\'e0\'f2\'fc \'fd\'f2\'e8 \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e8 \'e4\'ee \'f2\'ee\'e3\'ee, \'ea\'e0\'ea \'ed\'e5 \'ef\'ee\'ff\'e2\'e8\'f2\'f1\'ff FPC1. \'ca\'e0\'ea \'f2\'ee\'eb\'fc\'ea\'ee \'ef\'ee\'ff\'e2\'e8\'f2\'f1\'ff FPC1, \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e8 \'ef\'f0\'e8\'ec\'e5\'ed\'ff\'f2\'f1\'ff. \'c7\'e0 \'fd\'f2\'ee \'ee\'f2\'e2\'e5\'f7\'e0\'e5\'f2 dcd.\par
+chassisd - \'ee\'f2\'e2\'e5\'f7\'e0\'e5\'f2 \'e7\'e0 \'eb\'e0\'ec\'ef\'ee\'f7\'ea\'e8 >\b show chassis craft-interface\b0\par
+\par
+\ul Routing Sockets\ulnone\par
+\par
+\'d7\'f2\'ee \'ef\'f0\'ee\'e8\'f1\'f5\'ee\'e4\'e8\'f2 \'ea\'ee\'e3\'e4\'e0 \'ed\'e0 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1 ge-1/0/0.0 \'ed\'e0\'e7\'ed\'e0\'f7\'e0\'e5\'f2\'f1\'ff IP \'e0\'e4\'f0\'e5\'f1\par
+> start shell\par
+% rtsockmon -st\par
+\'ec\'ee\'e6\'ed\'ee \'e2\'e8\'e4\'e5\'f2\'fc \'ea\'e0\'ea \'f1\'ee\'e7\'e4\'e0\'b8\'f2\'f1\'ff \'ed\'ee\'e2\'fb\'e9 \'eb\'ee\'e3\'e8\'f7\'e5\'f1\'ea\'e8\'e9 \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1, \'ed\'ee\'e2\'fb\'e9 interface family, \'ed\'ee\'e2\'fb\'e9 interface address \'e8 \'f2.\'e4.\par
+\par
+\pard\nowidctlpar\sl240\slmult1\ul\'ce\'f1\'ed\'ee\'e2\'ed\'fb\'e5 \'f8\'e0\'f1\'f1\'e8:\ulnone\par
+\par
+MX80: \'e2 \'f8\'e0\'f1\'f1\'e8 \'ec\'ee\'e6\'ed\'ee \'e2\'f1\'f2\'e0\'e2\'e8\'f2\'fc \'e4\'ee 2-\'f5 PEM, \'f1\'ee\'f1\'f2\'ee\'e8\'f2 \'e8\'e7 \'ee\'e4\'ed\'ee\'e3\'ee MPC \'ef\'ee\'fd\'f2\'ee\'ec\'f3 \'ed\'e5 \'ed\'e0\'e4\'ee SCB. FPC0 - 4-\'e5 \'ef\'ee\'f0\'f2\'e0 10G. FPC1 \'f1\'ee\'f1\'f2\'ee\'e8\'f2 \'e8\'e7 2-\'f5 MIC. \'ca\'e0\'e6\'e4\'fb\'e9 MIC \'f1\'ee\'f1\'f2\'ee\'e8\'f2 \'e8\'e7 2-\'f5 PIC. \'c2 \'ee\'e1\'f9\'e5\'ec \'e5\'f1\'f2\'fc \'ee\'f2\'e4\'e5\'eb\'fc\'ed\'e0\'ff \'ec\'ee\'e4\'e5\'eb\'fc\'ea\'e0 MX80-48T, \'e2 \'ea\'ee\'f2\'ee\'f0\'ee\'e9 \'e2 FPC1 \'f1\'f2\'ee\'e8\'f2 48 x 1G \'ef\'ee\'f0\'f2\'ee\'e2, \'f2.\'e5. \'ed\'e0 \'ea\'e0\'e6\'e4\'fb\'e9 PIC \'ef\'f0\'e8\'f5\'ee\'e4\'e8\'f2\'f1\'ff \'ef\'ee 12 \'ef\'ee\'f0\'f2\'ee\'e2 1G. \'cd\'e0 \'f1\'f2\'f0.16 \'f1\'ee\'ee\'f2\'e2\'e5\'f2\'f1\'f2\'e2\'e8\'e5 \'ee\'ef\'e8\'f1\'e0\'ed\'ee, \'f2\'e8\'ef\'e0 ge-1/2/11 - \'fd\'f2\'ee FPC1, PIC2, \'ef\'ee\'f0\'f2 11.\par
+\par
+MX240: \'e2\'f1\'e5\'e3\'ee 4-\'e5 \'f1\'eb\'ee\'f2\'e0. \'c1\'fb\'e2\'e0\'fe\'f2 \'ea\'ee\'ed\'f4\'e8\'e3\'f3\'f0\'e0\'f6\'e8\'e8 1 \'f5 SCB + \'e4\'ee 3 x FPC \'e8\'eb\'e8 2 \'f5 SCB + \'e4\'ee 2-\'f5 SCB.\par
+\par
+\ul Trio\ulnone\par
+\par
+\'ed\'e0\'e2\'ee\'f0\'ee\'f7\'e5\'ed\'ed\'fb\'e9 ASIC !!! \'cd\'e0 \'fd\'f2\'ee\'ec trio \'ec\'ee\'e6\'ed\'ee NAT \'e4\'e5\'eb\'e0\'f2\'fc.\par
+Bandwidth (high-density 10G/100g)\par
+Services (IPFLOW, NAT, GRE, BFD)\par
+SubScribers (IFL, IPv4, IPv6, hierarchical queuing)\par
+\'cf\'f0\'ee\'e8\'e7\'e2\'ee\'e4\'e8\'f2\'e5\'eb\'fc\'ed\'ee\'f1\'f2\'fc \'ea\'e0\'ea \'f3 ASIC, \'ed\'ee \'e3\'e8\'e1\'ea\'ee\'f1\'f2\'fc FPGA\par
+\par
+Trio \'f1\'ee\'f1\'f2\'ee\'e8\'f2 \'e8\'e7 \'f7\'e5\'f2\'fb\'f0\'b8\'f5 \'e1\'eb\'ee\'ea\'ee\'e2:\par
+\par
+\tab\tab Dense Queuing Block\par
+\tab\tab\tab |\par
+Interface Block <-> Buffering Block <-> Switch Fabric\par
+\tab\tab\tab |\par
+\tab\tab Lockup&Processing Block\par
+\par
+Buffering block - \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'e5\'f2 \'f4\'f3\'ed\'ea\'f6\'e8\'fe \'f1\'e2\'ff\'e7\'ea\'e8 \'e8 \'e1\'e0\'eb\'e0\'ed\'f1\'e8\'f0\'ee\'e2\'ea\'e8 \'ec\'e5\'e6\'e4\'f3 \'e1\'eb\'ee\'ea\'e0\'ec\'e8\par
+Lockup&Processing - \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'e5\'f2 \'f4\'f3\'ed\'ea\'f6\'e8\'e8:\par
+\pard\nowidctlpar\li568\sl240\slmult1 Route lookups\par
+MAC lookups\par
+Class of Service (QoS) Classification\par
+Firewall filters\par
+Policers\par
+Accounting\par
+Encapsulation\par
+Statistics\par
+DPI - \'ec\'ee\'e6\'e5\'f2 \'e7\'e0\'eb\'e0\'e7\'e8\'f2\'fc \'e2 \'ef\'e0\'ea\'e5\'f2\'fb \'ed\'e0 \'e3\'eb\'f3\'e1\'e8\'ed\'f3 256 \'e1\'e0\'e9\'f2\par
+\'c5\'f1\'eb\'e8 \'ef\'e0\'ea\'e5\'f2 \'ef\'f0\'e8\'f8\'b8\'eb \'ed\'e0 Buffering Block, \'f2\'ee \'e7\'e0\'e3\'ee\'eb\'ee\'e2\'ee\'ea \'f1\'f0\'e0\'e7\'f3 \'ee\'f2\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'f2\'f1\'ff \'ed\'e0 Lockup&Processing Block. \'c7\'e0\'e3\'ee\'eb\'ee\'e2\'ee\'ea \'ee\'e1\'f0\'e0\'e1\'e0\'f2\'fb\'e2\'e0\'e5\'f2\'f1\'ff \'e7\'e0 \'ee\'e4\'e8\'ed \'ef\'f0\'ee\'f5\'ee\'e4 \'e2 Lockup&Processing Block \'ea\'e0\'ea\'ee\'e9 \'f1\'eb\'ee\'e6\'ed\'ee\'f1\'f2\'e8 \'ee\'ed \'ed\'e5 \'e1\'fb\'eb \'e1\'fb.\par
+\pard\nowidctlpar\sl240\slmult1 Interface Block - \'ee\'ef\'f6\'e8\'ee\'ed\'e0\'eb\'fc\'ed\'fb\'e9 \'ea\'ee\'ec\'ef\'ee\'ed\'e5\'ed\'f2. \'c2 \'ea\'e0\'ea\'e8\'f5-\'f2\'ee MIC \'ee\'ed \'e5\'f1\'f2\'fc, \'e2 \'ea\'e0\'ea\'e8\'f5-\'f2\'ee \'e5\'e3\'ee \'ed\'e5\'f2\'f3. \'c1\'fb\'e2\'e0\'fe\'f2 MPC1 \'e8 MPC2 = 2xMPC1.\par
+\pard\nowidctlpar\fi-568\li568\sl240\slmult1 Dense Queuing Block - \'ee\'ef\'f6\'e8\'ee\'ed\'e0\'eb\'fc\'ed\'fb\'e9 \'ea\'ee\'ec\'ef\'ee\'ed\'e5\'ed\'f2, \'f2\'e0\'ec \'e3\'e4\'e5 \'ed\'e0\'e4\'ee Hierarchical QoS, \'e4\'ee 512 \'f2\'fb\'f1 queues. \'d2\'e0\'ea \'e2\'ee\'ee\'e1\'f9\'e5 Buffering block \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'e5\'f2 \'ee\'f7\'e5\'f0\'e5\'e4\'e8.\par
+\par
+\'cf\'eb\'e0\'f2\'fb \'ed\'e0 \'ef\'f0\'ee\'f1\'f2\'ee\'ec ASIC - \'fd\'f2\'ee FPC \'e8 DPC - 80 Gbps ports per slot\par
+DPC \'f2\'f0\'b8\'f5 \'f2\'e8\'ef\'ee\'e2:\par
+\pard\nowidctlpar\li568\sl240\slmult1 DPCE-R - Routing and Switching - \'ed\'e0\'e8\'e1\'ee\'eb\'e5\'e5 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'ec\'fb\'e9, \'e4\'e5\'f8\'b8\'e2\'fb\'e9\par
+DPCE-X - Switching - \'f5\'f3\'e6\'e5 \'f7\'e5\'ec DPC-R, \'f2\'e0\'ea \'ea\'e0\'ea routing table = 32000 \'ef\'f0\'e5\'f4\'e8\'ea\'f1\'ee\'e2 \'e8 \'ed\'e5 \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'e5\'f2 L3VPN. \'d0\'e5\'ea\'ee\'ec\'e5\'ed\'e4\'f3\'e5\'f2\'f1\'ff \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc \'e2 L2 \'f1\'f6\'e5\'ed\'e0\'f0\'e8\'ff\'f5.\par
+DPCE-Q - Enhanced Queuing - \'fd\'f2\'ee DPC-R + H-QoS\par
+\pard\nowidctlpar\sl240\slmult1 DPC \'ef\'ee\'ea\'e0 \'ef\'f0\'ee\'e4\'e0\'fe\'f2\'f1\'ff, \'ed\'ee \'e1\'ee\'eb\'fc\'f8\'e5 \'ed\'e5 \'f0\'e0\'e7\'f0\'e0\'e1\'e0\'f2\'fb\'e2\'e0\'fe\'f2\'f1\'ff. \'d2.\'e5. \'ec\'b8\'f0\'f2\'e2\'e0\'ff \'eb\'e8\'ed\'e5\'e9\'ea\'e0.\par
+DPC - \'f6\'e5\'eb\'fc\'ed\'fb\'e9 \'ec\'ee\'e4\'f3\'eb\'fc. \'c2 MPC \'ec\'ee\'e6\'ed\'ee \'e5\'f9\'b8 \'e7\'e0\'ef\'e8\'f5\'e8\'e2\'e0\'f2\'fc MIC.\par
+\par
+\pard\nowidctlpar\fi-568\li568\sl240\slmult1\'cf\'eb\'e0\'f2\'fb \'ed\'e0 Trio - \'fd\'f2\'ee MPC - 160 Gbps ports per slot. MPC \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'e5\'f2 \'f0\'e0\'e7\'eb\'e8\'f7\'ed\'fb\'e5 MIC. MPC \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'e5\'f2 \'f7\'e0\'f1\'f2\'fc \'f4\'f3\'ed\'ea\'f6\'e8\'e9 MIC.\par
+\'cd\'e0 MIC \'e8\'e4\'b8\'f2 \'f2\'ee\'eb\'fc\'ea\'ee \'ed\'e0\'f1\'f2\'f0\'ee\'e9\'ea\'e0 \'ef\'ee\'f0\'f2\'e0, \'e2\'f1\'b8 \'ee\'f1\'f2\'e0\'eb\'fc\'ed\'ee\'e5: oversubscription, features, services \'e4\'e5\'eb\'e0\'e5\'f2\'f1\'ff \'ed\'e0 MPC.\par
+\'c2 MIC \'e1\'fb\'e2\'e0\'e5\'f2 \'f0\'e0\'f1\'ef\'ee\'eb\'ee\'e6\'e5\'ed Interface Block.\par
+\par
+\'c5\'f1\'f2\'fc \'ee\'f2\'e4\'e5\'eb\'fc\'ed\'e0\'ff \'ef\'eb\'e0\'f2\'e0 MPC-3D-16X10GE-SFPP \'f1\'ee \'e2\'f1\'f2\'f0\'ee\'e5\'ed\'ed\'fb\'ec\'e8 16 x 10G \'ef\'ee\'f0\'f2\'ee\'e2. \'cd\'e5\'eb\'fc\'e7\'ff \'e2\'f1\'f2\'e0\'e2\'e8\'f2\'fc MIC. \'c8\'ec\'e5\'e5\'f2 4 Trio \'f7\'e8\'ef\'f1\'e5\'f2\'ee\'e2.\par
+\par
+Model\tab\'b9 Trio\tab Trio Bandwidth\tab Interface Support\par
+--------------------------------------------------------------\par
+MPC1\tab\tab 1\tab\tab 40 Gbps\tab\tab 1GE and 10GE\par
+MPC2\tab\tab 2\tab\tab 80 Gbps\tab\tab 1GE and 10GE\par
+MPC3E\tab 1\tab\tab 130 Gbps\tab\tab 1GE, 10GE, 40GE, and 100GE\par
+\par
+MPC3E \'ec\'ee\'e6\'e5\'f2 \'f2\'ff\'ed\'f3\'f2\'fc 2 \'f5 100G \'ef\'ee\'f0\'f2\'e0, \'ed\'ee \'e5\'e3\'ee \'f8\'e8\'ed\'e0 \'f1 Fabric \'e2\'f1\'e5\'e3\'ee 130G, \'f2.\'e5. \'e2 \'f0\'e5\'e0\'eb\'fc\'ed\'ee\'f1\'f2\'e8 oversubscription 3:2. \'cd\'e5 \'ef\'ee\'e4\'e4\'e5\'f0\'e6\'e8\'e2\'e0\'e5\'f2 H-QoS. \'d2.\'e5. \'ec\'ee\'e6\'e5\'f2 \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'f2\'fc \'e1\'e0\'e7\'ee\'e2\'fb\'e9 QoS, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'e5\'f1\'f2\'fc \'e2 Buffering Block. \'cf\'f0\'e8\'f1\'f3\'f2\'f1\'f2\'e2\'f3\'e5\'f2 \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'ee Lookup Block, \'e2 \'ee\'f2\'eb\'e8\'f7\'e8\'e8 \'ee\'f2 MPC \'e8 MPC2, \'e2 \'ea\'ee\'f2\'ee\'f0\'fb\'f5 \'ee\'e4\'e8\'ed Lookup Block -> \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec \'ec\'e5\'f5\'e0\'ed\'e8\'e7\'ec \'f1\'e8\'ed\'f5\'f0\'ee\'ed\'e8\'e7\'e0\'f6\'e8\'e8 \'ec\'e5\'e6\'e4\'f3 \'ed\'e5\'f1\'ea\'ee\'eb\'fc\'ea\'e8\'ec\'e8 Lookup Block. \'f1\'f2\'f0.39\par
+\par
+\'ca\'e0\'ea \'e8 \'e2 DPC, \'f2\'f3\'f2 \'e5\'f1\'f2\'fc \'f2\'e0\'ea\'ee\'e5\par
+\par
+Model\tab\tab Full Layer 2\tab Full Layer 3\tab Enhanced Queuing\par
+----------------------------------------------------------------\par
+MX-3D\tab\tab Yes\tab\tab\tab No\tab\tab\tab No\par
+MX-3D-Q\tab Yes\tab\tab\tab No\tab\tab\tab Yes\par
+MX-3D-R-B\tab Yes\tab\tab\tab Yes\tab\tab\tab No\par
+MX-3D-Q-R-B\tab Yes\tab\tab\tab Yes\tab\tab\tab Yes\par
+\par
+\'d2\'e8\'ef\'fb MIC:\par
+\'c2 \'ea\'e0\'e6\'e4\'fb\'e9 MPC \'ec\'ee\'e6\'ed\'ee \'e2\'f1\'f2\'e0\'e2\'e8\'f2\'fc \'e4\'ee 2-\'f5 MIC. \'c4\'e0\'eb\'e5\'e5 \'e8\'e4\'b8\'f2 \'ee\'e1\'e7\'ee\'f0 MIC \'f1\'f2\'f0.44\par
+\par
+\'c1\'fb\'e2\'e0\'fe\'f2 \'f1\'eb\'e5\'e4\'f3\'fe\'f9\'e8\'e5 Network Services:\tab\'ed\'e0 \'f1\'f2\'f0.47 \'ee\'ef\'e8\'f1\'fb\'e2\'e0\'e5\'f2\'f1\'ff \'ed\'e0\'e4\'ee \'eb\'e8 \'e4\'e5\'eb\'e0\'f2\'fc reboot \'ef\'f0\'e8 \'ef\'e5\'f0\'e5\'f5\'ee\'e4\'e5 \'ee\'f2 \'ee\'e4\'ed\'ee\'e3\'ee \'ea \'e4\'f0\'f3\'e3\'ee\'ec\'f3\par
+#\b set chassis network-services\b0  - \'e7\'e0\'e4\'e0\'b8\'f2\'f1\'ff \'fd\'f2\'ee\'e9 \'ea\'ee\'ec\'e0\'ed\'e4\'ee\'e9\par
+ip\tab\tab\tab\'ef\'ee\'e7\'e2\'ee\'eb\'ff\'e5\'f2 \'e2\'eb\'fe\'f7\'e8\'f2\'fc \'e2\'f1\'e5 Line Cards \'ea\'f0\'ee\'ec\'e5 DPCE-X, \'ea\'ee\'f2\'ee\'f0\'e0\'ff \'e7\'e0\'ed\'e8\'ec\'e0\'e5\'f2\'f1\'ff \'f2\'ee\'eb\'fc\'ea\'ee bridging\par
+ethernet\tab\tab\'ef\'ee\'e7\'e2\'ee\'eb\'ff\'e5\'f2 \'e2\'eb\'fe\'f7\'e8\'f2\'fc \'e2\'f1\'e5 Line Cards \'ea\'eb\'fe\'f7\'e0\'ff DPCE-X, DPCE-R \'e8 DPCE-Q\par
+enhanced-ip\tab\'ef\'ee\'e7\'e2\'ee\'eb\'ff\'e5\'f2 \'e2\'eb\'fe\'f7\'e8\'f2\'fc \'e2\'f1\'e5 Trio-based Line Cards: MPC\par
+enhanced-ethernet\tab\'ef\'ee\'e7\'e2\'ee\'eb\'ff\'e5\'f2 \'e2\'eb\'fe\'f7\'e8\'f2\'fc \'f2\'ee\'eb\'fc\'ea\'ee Trio-based Line Cards: MPC-3D, MPC-3D-Q \'e8 MPC-3D-EQ\par
+all-ip\tab\tab\tab\'ef\'ee\'e7\'e2\'ee\'eb\'ff\'e5\'f2 \'e2\'eb\'fe\'f7\'e8\'f2\'fc DPC \'e8 MPC Line Cards, \'ea\'f0\'ee\'ec\'e5 DPCE-X. \'ce\'ef\'f6\'e8\'ff hidden \'e2 Junos 10.0 \'e8 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e4\'eb\'ff \'f2\'e5\'f1\'f2\'ee\'e2.\par
+all-ethernet\tab\'ef\'ee\'e7\'e2\'ee\'eb\'ff\'e5\'f2 \'e2\'eb\'fe\'f7\'e8\'f2\'fc DPC \'e8 MPC Line Cards, \'e2\'ea\'eb\'fe\'f7\'e0\'ff DPCE-X \'e8 \'e4\'f0\'f3\'e3\'e8\'e5 Layer 2 Line Cards. \'ce\'ef\'f6\'e8\'ff hidden \'e2 Junos 10.0 \'e8 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff \'e4\'eb\'ff \'f2\'e5\'f1\'f2\'ee\'e2.\par
+\par
+\ul SCB\ulnone  - \'ef\'f0\'e5\'e4\'ed\'e0\'e7\'ed\'e0\'f7\'e5\'ed\'ee \'e4\'eb\'ff\par
+- C\'e2\'e8\'f2\'f7\'e8\'e2\'e0\'ed\'e8\'ff \'ec\'e5\'e6\'e4\'f3 Line Cards, \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'f2\'f1\'ff 2-\'e0 fabric switch\par
+- Control Board (\'f1\'ea\'ee\'f0\'e5\'e9 \'e2\'f1\'e5\'e3\'ee \'eb\'e0\'ec\'ef\'ee\'f7\'ea\'e8 \'e8 \'f2 .\'ef.) \'e8 \'ea\'e0\'ea \'ef\'e8\'f8\'f3\'f2 house the routing engine\par
+- Routing Engine carrier (\'ed\'e0 \'f1\'f5\'e5\'ec\'ea\'e5 \'ed\'e0\'f0\'e8\'f1\'ee\'e2\'e0\'ed: CPU, Memory, Ethernet \'e8 SSD\\HDD) - Control Plane, \'e0 PFE - \'fd\'f2\'ee \'f2\'ee\'eb\'fc\'ea\'ee forwarding.\par
+- \'ce\'e4\'e8\'ed \'e2\'fb\'e4\'e5\'eb\'e5\'ed\'ed\'fb\'e9 24 \'ef\'ee\'f0\'f2\'ee\'e2\'fb\'e9 \'f1\'e2\'e8\'f2\'f7: \'ea \'ef\'ee\'f0\'f2\'e0\'ec 0..11 \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e0\'fe\'f2\'f1\'ff FPC0..FPC11, \'ea \'ef\'ee\'f0\'f2\'f3 13 \'f1\'e2\'ee\'e9 Routing Engine, \'ea \'ef\'ee\'f0\'f2\'f3 12 \'f3 \'f1\'ee\'f1\'e5\'e4\'ed\'e5\'e3\'ee SCB Routing Engine\par
+>\b show chassis ethernet-switch\b0  - \'ec\'ee\'e6\'ed\'ee \'e2\'e8\'e4\'e5\'f2\'fc \'ea\'e0\'ea \'e2\'ed\'f3\'f2\'f0\'e5\'ed\'ed\'e8\'e5 \'f1\'e2\'e8\'f2\'f7\'e8 \'f1\'e2\'ff\'e7\'e0\'ed\'fb \'ec\'e5\'e6\'e4\'f3 \'f1\'ee\'e1\'ee\'e9.\par
+>\b show chassis ethernet-switch statistics\b0\par
+>\b show chassis fpc\b0  - \'ef\'f0\'ee\'f1\'ec\'ee\'f2\'f0 \'f0\'e0\'e7\'eb\'e8\'f7\'ed\'fb\'f5 \'f5\'e0\'f0\'e0\'ea\'f2\'e5\'f0\'e8\'f1\'f2\'e8\'ea FPC\par
+\par
+\ul Switch Fabric\ulnone\par
+\'ca\'e0\'e6\'e4\'fb\'e9 SCB \'e8\'ec\'e5\'e5\'f2 2-\'e5 switch fabric, \'e0 \'ec\'ee\'e4\'e5\'eb\'e8 MX240 \'e8 MX480 \'e2\'ed\'f3\'f2\'f0\'e8 \'ee\'e4\'ed\'ee\'e9 switch fabric \'e5\'f9\'b8 \'ef\'ee 2-\'e0 fabric planes. \'d3 MX960 \'e2 \'ea\'e0\'e6\'e4\'ee\'e9 switch fabric \'f2\'ee\'eb\'fc\'ea\'ee \'ef\'ee \'ee\'e4\'ed\'ee\'ec\'f3 fabric plane, \'f1\'e2\'ff\'e7\'e0\'ed\'ee \'f1 \'f2\'e5\'ec, \'f7\'f2\'ee \'e2 MX960 \'ec\'ed\'ee\'e3\'ee PFE, \'e8 \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee \'ec\'ed\'ee\'e3\'ee \'ef\'ee\'f0\'f2\'ee\'e2.\par
+>\b show chassis fabric plane-location\b0  - \'ef\'f0\'ee\'f1\'ec\'ee\'f2\'f0 fabric planes.\par
+\'ca\'e0\'ea \'ef\'f0\'e0\'e2\'e8\'eb\'ee SCB0 \'ed\'e0\'f5\'ee\'e4\'e8\'f2\'f1\'ff \'e2 Online, \'e0 SCB1 \'e2 \'f1\'ee\'f1\'f2\'ee\'ff\'ed\'e8\'e8 Spare.\par
+>\b show chassis fabric summary\b0\par
+\'cf\'f0\'e5\'e6\'e4\'e5 \'f7\'e5\'ec \'ef\'e0\'ea\'e5\'f2 \'ee\'f2 \'ee\'e4\'ed\'ee\'e3\'ee PFE \'f7\'e5\'f0\'e5\'e7 switch fabric \'ef\'ee\'eb\'e5\'f2\'e8\'f2 \'ea \'e4\'f0\'f3\'e3\'ee\'ec\'f3 PFE, \'ee\'ed \'e4\'ee\'eb\'e6\'e5\'ed \'f0\'e0\'e7\'e1\'e8\'f2\'fc\'f1\'ff \'ed\'e0 64 \'e1\'e0\'e9\'f2\'ed\'fb\'e9 J-Cell\par
+\'ca\'e0\'ea-\'f2\'ee \'ee\'e1\'fa\'ff\'f1\'ed\'ff\'e5\'f2\'f1\'ff, \'e4\'eb\'ff \'f7\'e5\'e3\'ee \'ed\'f3\'e6\'ed\'fb fabric plane.\par
+\'c4\'eb\'ff \'ef\'e5\'f0\'e5\'e4\'e0\'f7\'e8 J-Cell \'f1 \'ee\'e4\'ed\'ee\'e3\'ee PFE \'ed\'e0 \'e4\'f0\'f3\'e3\'ee\'e9, \'f1\'ed\'e0\'f7\'e0\'eb\'e0 \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee \'ef\'ee\'f1\'eb\'e0\'f2\'fc Request, \'ef\'ee\'eb\'f3\'f7\'e8\'f2\'fc Grant \'e8 \'f2\'ee\'eb\'fc\'ea\'ee \'f2\'ee\'e3\'e4\'e0 \'ee\'f2\'ef\'f0\'e0\'e2\'e8\'f2\'fc Data. \'cf\'e8\'f8\'f3\'f2, \'f7\'f2\'ee \'e5\'f1\'f2\'fc 2-\'e0 \'e2\'e8\'e4\'e0 priority \'e2\'ed\'f3\'f2\'f0\'e8 switch fabric.\par
+>\b show chassis hardware\b0\par
+\'c5\'f1\'f2\'fc 1-st Generation SCB, \'e0 \'e5\'f1\'f2\'fc 2-nd Generation - SCBE (Enhanced)\par
+\par
+\ul\'d0\'e0\'f1\'f1\'ea\'e0\'e7\'fb\'e2\'e0\'e5\'f2\'f1\'ff \'ef\'f0\'ee MX2020\ulnone\par
+\par
+\ul Junos Interfaces\ulnone\par
+\par
+\'d3 xe-0/0/0 \'ea\'e0\'ea \'f0\'e0\'f1\'f1\'ea\'e0\'e7\'fb\'e2\'e0\'eb\'ee\'f1\'fc \'e2 \ul Routing Sockets \ulnone\'f1\'eb\'e5\'e4\'f3\'fe\'f9\'e0\'ff \'ef\'ee\'f1\'eb\'e5\'e4\'ee\'e2\'e0\'f2\'e5\'eb\'fc\'ed\'ee\'f1\'f2\'fc IFD -> IFL -> IFF -> IFA\par
+IFD - Interface Device - \'ed\'e0 \'fd\'f2\'ee\'ec \'f3\'f0\'ee\'e2\'ed\'e5 \'f3\'f1\'f2\'e0\'ed\'e0\'e2\'eb\'e8\'e2\'e0\'e5\'f2\'f1\'ff MTU, link speed, Etherchannel\par
+IFL - Interface Logical - \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'e5\'f2\'f1\'ff \'ed\'ee\'ec\'e5\'f0 unit-\'e0 \'e8\'eb\'e8 Vlan ID: xe-0/0/0.0 \'e8\'eb\'e8 xe-0/0/0.1\par
+IFF - Interface Family - \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'e5\'f2\'f1\'ff \'f2\'e8\'ef \'ef\'f0\'ee\'f2\'ee\'ea\'ee\'eb\'e0: inet \'e4\'eb\'ff IPv4, inet6 \'e4\'eb\'ff IPv6 \'e8\'eb\'e8 iso \'e4\'eb\'ff IS-IS\par
+IFA - Interface Address - \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'ff\'e5\'f2 "\'e2\'e8\'e4" \'e0\'e4\'f0\'e5\'f1\'e0, \'f2\'e8\'ef\'e0 \'e5\'f1\'eb\'e8 \'fd\'f2\'ee IPv4, \'f2\'ee \'e0\'e4\'f0\'e5\'f1 \'e4\'ee\'eb\'e6\'e5\'ed \'e2\'fb\'e3\'eb\'ff\'e4\'e5\'f2\'fc 10.0.0.1/24\par
+\par
+\tab\tab\tab\tab IFD\tab\tab\tab IFL\tab IFF\tab\tab IFA\par
+> \b set\tab\tab interface xe-0/0/0\tab .1\tab family inet\tab address 10.0.0.1/24\b0\par
+\par
+\'c4\'e0\'eb\'e5\'e5 \'ee\'ef\'e8\'f1\'fb\'e2\'e0\'e5\'f2\'f1\'ff \'ea\'e0\'ea \'e4\'e5\'eb\'e0\'f2\'fc dot1.q \'f0\'e0\'e7\'ed\'fb\'ec\'e8 \'f1\'ef\'ee\'f1\'ee\'e1\'e0\'ec\'e8 \'e8 QinQ \'f1\'f2\'f0.80\par
+\'c7\'e0\'ee\'f1\'f2\'f0\'ff\'fe\'f2 \'e2\'ed\'e8\'ec\'e0\'ed\'e8\'e5 \'ed\'e0 \'ef\'ee\'ed\'ff\'f2\'e8\'e8 \'e2\'e0\'e6\'ed\'ee\'ec Bridge Domain.\par
+\par
+\ul Bridge Domain\ulnone\par
+\par
+\'c2 Juniper \'ef\'ee\'ed\'ff\'f2\'e8\'e5 bridge domain \'f0\'e0\'e2\'ed\'ee\'f1\'e8\'eb\'fc\'ed\'ee \'ef\'ee\'ed\'ff\'f2\'e8\'fe broadcast domain\par
+> \b show configuration bridge-domain\b0\par
+> \b show bridge mac-table\b0\par
+> \b show bridge domain\b0\par
+Routing instance\tab Bridge domain\tab VLAN ID\tab Interfaces\par
+default-switch\tab\tab VLAN100\tab 100\tab\tab ae0.0\par
+\tab\tab\tab\tab\tab\tab\tab\tab ae1.0\par
+default-switch\tab\tab VLAN200\tab 200\tab\tab ae0.0\par
+\tab\tab\tab\tab\tab\tab\tab\tab ae1.0\par
+\par
+\'cf\'ee default-\'f3 \'e2\'f1\'e5 bridge domain \'f1\'ee\'f1\'f2\'ee\'ff\'f2 \'e2 default-switch \'ef\'ee\'ed\'ff\'f2\'e8\'e8 routing instance.\par
+\'cd\'ee \'ea\'e0\'ea \'ff \'ef\'ee\'ed\'ff\'eb \'e1\'fb\'e2\'e0\'e5\'f2 \'e8 \'f2\'e0\'ea\'e0\'ff \'ea\'ee\'ed\'f1\'f2\'f0\'f3\'ea\'f6\'e8\'ff:\par
+> show bridge domain\par
+Routing instance\tab Bridge domain\tab VLAN ID\tab Interfaces\par
+default-switch\tab\tab ALL\tab\tab 100\tab\tab ae0.0\par
+\tab\tab\tab\tab\tab\tab\tab\tab ae1.0\par
+\tab\tab\tab\tab\tab\tab 200\tab\tab ae0.0\par
+\tab\tab\tab\tab\tab\tab\tab\tab ae1.0\par
+\'d2.\'e5 \'f1\'ed\'e0\'f7\'e0\'eb\'e0 \'e8\'e4\'b8\'f2 Routing instance, \'ef\'ee\'f2\'ee\'ec Bridge domain, \'ef\'ee\'f2\'ee\'ec \'f1\'e0\'ec VLAN \'e8 \'f3\'e6\'e5 \'ea VLAN \'ef\'f0\'e8\'e2\'ff\'e7\'fb\'e2\'e0\'fe\'f2\'f1\'ff \'e8\'ed\'f2\'e5\'f0\'f4\'e5\'e9\'f1\'fb.\par
+\'cd\'e0 \'f1\'f2\'f0. 115 \'ef\'e5\'f0\'e5\'f7\'e8\'f1\'eb\'e5\'ed\'fb 6 \'e2\'e8\'e4\'ee\'e2 bridge domain modes.\par
+\ul\'d0\'e0\'e7\'ed\'fb\'e5 \'f2\'e8\'ef\'fb Encapsulation:\ulnone\par
+\par
+1. Ethernet Bridge - \'ee\'e1\'fb\'f7\'ed\'fb\'e9 access \'ef\'ee\'f0\'f2\par
+interface \{\par
+  xe-0/0/0 \{\par
+    encapsulation ethernet-bridge;\par
+    unit 0;\par
+  \}\par
+\}\par
+bridge-domains \{\par
+  vlan-100 \{\par
+    domain-type bridge;\par
+    vlan-id 100;\par
+    interface xe-0/0/0.0;\par
+  \}\par
+\}\par
+2. Extended VLAN Bridge - \'fd\'f2\'e0 \'e8\'ed\'ea\'e0\'ef\'f1\'f3\'eb\'ff\'f6\'e8\'ff \'ef\'f0\'e8\'ec\'e5\'ed\'ff\'e5\'f2\'f1\'ff \'f2\'ee\'eb\'fc\'ea\'ee \'ed\'e0 IFD. \'ca\'e0\'ea \'f2\'ee\'eb\'fc\'ea\'ee \'ee\'ed\'e0 \'ef\'f0\'e8\'ec\'e5\'ed\'e8\'eb\'e0\'f1\'fc \'ed\'e0 IFD, \'ee\'ed\'e0 \'f1\'f0\'e0\'e7\'f3 \'ef\'f0\'e8\'ec\'e5\'ed\'ff\'e5\'f2\'f1\'ff \'ed\'e0 IFL\par
+interface \{\par
+  ae5 \{\par
+    flexible-vlan-tagging;\par
+    encapsulation extended-vlan-bridge;\par
+    unit 100 \{\par
+      vlan-id 100;\par
+    \}\par
+    unit 200 \{\par
+      vlan-tags outer 200 inner 2000;\par
+    \}\par
+  \}\par
+\}\par
+3. Flexible Ethernet Services\par
+interface \{\par
+  ae5 \{\par
+    flexible-vlan-tagging:\par
+    encapsulation flexible-ethernet-services;\par
+    unit 100 \{\par
+      encapsulation vlan-bridge;\par
+      vlan-id 100;\par
+    \}\par
+    unit 200 \{\par
+      encapsulation vlan-vpls;\par
+      vlan-id 200\par
+    \}\par
+    unit 1000 \{\par
+      encapsulation vlan-bridge;\par
+      vlan-tag outer 300 inner 1000;\par
+    \}\par
+    unit 3000 \{\par
+      vlan-id 3000;\par
+      family inet4 \{\par
+        address 10.0.0.1/24;\par
+      \}\par
+    \}\par
+  \}\par
+\}\par
+4. Enterprice Mode\par
+interface \{\par
+  xe-0/0/0 \{\par
+    unit 0 \{\par
+      family bridge \{\par
+        interface-mode access;\par
+        vlan-id 100;\par
+      \}\par
+    \}\par
+  \}\par
+\}\par
+bridge-domains \{\par
+  vlan-100 \{\par
+    vlan-id 100;\par
+  \} \par
+\}\par
+\'e8\'eb\'e8\par
+\par
+interface \{\par
+  xe-0/0/0 \{\par
+    unit 0 \{\par
+      family bridge \{\par
+        interface-mode trunk;\par
+        vlan-id-list 1-4094;\par
+      \}\par
+    \}\par
+  \}\par
+\}\par
+bridge-domains \{\par
+  vlan-100 \{\par
+    vlan-id 100;\par
+  \} \par
+  vlan-200 \{\par
+    vlan-id 200;\par
+  \} \par
+\}\par
+\'e8\'eb\'e8\par
+\par
+interface \{\par
+  xe-2/1/1 \{\par
+    flexible-vlan-tagging;\par
+    unit 0 \{\par
+      vlan-id 100;\par
+      family bridge \{\par
+        interface-mode trunk;\par
+        inner-vlan-id-list [ 1000 2000 ];\par
+      \}\par
+    \}\par
+  \}\par
+\}\par
+\par
+at\tab ATM-over-SONET/SDH ports\par
+e1\tab E1 ports\par
+e3\tab E3 ports\par
+fe\tab Fast Ethernet ports\par
+so\tab SONET/SDH ports\par
+t1\tab T1 ports\par
+t3\tab DS-3 ports\par
+ge\tab Gigabit Ethernet ports\par
+ae\tab Aggregated Ethernet ports\par
+es\tab Excryption interface\par
+gr\tab Generic route exncapsulation tunnel interface\par
+ip\tab IP-over-IP encapsulation tunnel interface\par
+ls\tab Link services interface\par
+ml\tab Multilink interface\par
+mo\tab Passive monitoring interface\par
+mt\tab Multicast tunnel interface\par
+sp\tab Adaptive services interface\par
+vt\tab Virtual loopback tunnel interface\par
+}
+ 

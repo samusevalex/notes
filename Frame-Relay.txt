@@ -1,0 +1,42 @@
+ICND23_SG_Vol_2.pdf
+
+Родитель X.25
+
+Frame switches - перекладывание фреймов.
+Frame - сумма 32 timeslot-ов это один фрейм, то чем отличается от packet.
+Relay - перекладывать. Принял из порта №3 переложил в порт №5.
+
+Frame relay acts as a TDM over a public network.
+Frame relay - connection-oriented, packet switching technology.
+
+DLCI меняется на каждом hop-е. Это позволяет скрещивать FR - ATM - X.25 Т.е. делать DLCI 200 <-> VPI 100
+
+У FR есть параметры:
+Поле адреса = 16 бит = 10 бит (DLCI) + 6 бит (congestion management)
+
+CIR - Committed information rate - гарантированная пропускная способность PVC (выставляется ручками). Если отправлять пакеты быстрее чем указано в CIR, то сеть выставляет на пакетах флаг DE (discard eligible) и в месте где будет congestion эти пакеты в первую очередь будут drop-аться. Поэтому FR - bandwidth-efficient, позволяющий делать oversubscription. Сумма PVC > пропускной способности линка.
+
+Inverse ARP - метод динамической настройки DLCI
+
+LMI - сигнальный стандарт для управления соединением между роутером и сетью FR. Бывает 3-х типов: Cisco, ANSI, Q.933A. Состояния: Active - всё работает; Inactive - соединение до свитча есть, а вот до другого End-а нет; Deleted - отсутствует соединение до свитча.
+
+FECN (Forware explicit congestion notification) - роутер отправил пакет в сеть FR. Сеть FR находится в состоянии congestion. Сеть выставляет в поле адреса, после  DLCI бит FECN=1. Пакет доходит по конечного роутера. Роутер видит, что выставлен бит FECN, понимает что сеть в состоянии congestion и данную информацию передаёт более высшему протоколу (IP\TCP\...). Что-то связанное с Flow-Control. Или вообще эта информация игнорируется.
+
+BECN (Backward explicit congestion notification) - тоже самое, что и FECN, только флаг BECN=1 выставляется на пакетах, которые идут назад к "источнику".
+
+Router# show frame-relay lmi
+Router# show frame-relay pvc
+Router# show frame-relay map
+Router# clear frame-relay-inarp
+
+CTS (Clear to send) - CSU\DSU готово принимать данные
+RTS (Request ro send) - DTE готово отправлять данные
+DCD (Carrier detect) - CSU\DSU генерируют carrier сигнал
+
+interface Serial2/0
+ ip address 10.0.0.1 255.255.255.0
+ encapsulation frame-relay
+ no keepalive
+ serial restart-delay 0
+ frame-relay interface-dlci 102
+ frame-relay lmi-type cisco

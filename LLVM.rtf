@@ -1,0 +1,220 @@
+{\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}{\f1\fnil\fcharset0 Courier New;}{\f2\fnil\fcharset2 Symbol;}}
+{\colortbl ;\red0\green0\blue0;\red0\green0\blue255;\red255\green0\blue0;}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf1\lang1049\kerning1\f0\fs22 Frontend \'e4\'eb\'ff \'d1++ - Clang.\cf0\par
+\cf1\par
+\'c5\'f0\'ec\'e0\'ea\'ee\'e2. \'ce\'e1\'e7\'ee\'f0 \'ff\'e7\'fb\'ea\'ee\'e2 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'ff \b\'ce\'c1\'c5\'d0\'ce\'cd\b0  \cf0{\field{\*\fldinst{HYPERLINK "http://www.iermakov.ru/study/Languages.pdf"}}{\fldrslt{\ul\cf2 http://www.iermakov.ru/study/Languages.pdf}}}\f0\fs22\par
+\cf1\'d2\'e8\'ef\'fb Back\lang1033\f1 e\lang1049\f0 nd \'ea\'ee\'ec\'ef\'e8\'eb\'ff\'f2\'ee\'f0\'ee\'e2:\cf0\par
+\cf1\tab BlackBox - \'ed\'e5\'ea\'e0\'ff \'f1\'f0\'e5\'e4\'e0, \'ed\'e0\'e1\'ee\'f0 \'f3\'f2\'e8\'eb\'e8\'f2 \'e4\'eb\'ff \'ed\'e0\'ef\'e8\'f1\'e0\'ed\'e8\'ff \'ef\'ee\'eb\'ed\'ee\'f1\'f2\'fc\'fe \'f1\'e2\'ee\'e5\'e3\'ee \'ea\'ee\'ec\'ef\'e8\'eb\'ff\'f2\'ee\'f0\'e0, \'ed\'e0 \'e2\'fb\'f5\'ee\'e4\'e5 \'ec\'e0\'f8\'e8\'ed\'ed\'fb\'e9 \'ea\'ee\'e4\cf0\par
+\cf1\tab LLVM - \'ed\'e0 \'e2\'fb\'f5\'ee\'e4\'e5 LLVM \'ea\'ee\'e4\cf0\par
+\cf1\tab ??? - \'ed\'e0 \'e2\'fb\'f5\'ee\'e4\'e5 ANSI \'d1\'e8. \'d4\'e8\'f0\'ec\'e0 \'e2\'fb\'ef\'f3\'f1\'ea\'e0\'e5\'f2 \'ef\'f0\'ee\'f6\'e5\'f1\'f1\'ee\'f0 \'e8 \'e2\'f1\'e5\'e3\'e4\'e0 \'ef\'ee\'f1\'f2\'e0\'e2\'eb\'ff\'e5\'f2 \'d1-\'ea\'ee\'ec\'ef\'e8\'eb\'ff\'f2\'ee\'f0 \'f1 \'ed\'e8\'ec. \'c2\'ee\'f2 \'e4\'eb\'ff \'fd\'f2\'ee\'e3\'ee \'ed\'f3\'e6\'e5\'ed \'ea\'ee\'ec\'ef\'e8\'eb\'ff\'f2\'ee\'f0 \'f1 Oberon \'e2 \'d1\'e8\cf0\par
+\cf1\par
+3-\'e8 Back\lang1033\f1 e\lang1049\f0 nd \'ea\'ee\'ec\'ef\'e8\'eb\'ff\'f2\'ee\'f0\'e0: GCC, LLVM, MSVC\cf0\par
+\cf1 AST - \'e0\'e1\'f1\'f2\'f0\'e0\'ea\'f2\'ed\'fb\'e5 \'f1\'e8\'ed\'f2\'e0\'ea\'f1\'e8\'f7\'e5\'f1\'ea\'e8\'e5 \'e4\'e5\'f0\'e5\'e2\'fc\'ff\cf0\par
+\cf1\'c0\'eb\'e3\'ee\'eb 60 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'eb \'f4\'ee\'f0\'ec\'fb \'c1\'fd\'ea\'f3\'f1\'e0-\'cd\'e0\'f3\'f0\'e0 (\'c1\'cd\'d4). \'c2 \'ce\'e1\'e5\'f0\'ee\'ed\'e5 \'f7\'f3\'f2\'fc-\'f7\'f3\'f2\'fc \'ef\'ee\'ec\'e5\'ed\'ff\'eb\'e8 \'f1\'e8\'ed\'f2\'e0\'ea\'f1\'e8\'f1 \'e4\'eb\'ff \'e1\'ee\'eb\'e5\'e5 \'eb\'f3\'f7\'f8\'e5\'e3\'ee \'e2\'ee\'f1\'ef\'f0\'e8\'ff\'f2\'e8\'ff \'f0\'e5\'ea\'f3\'f0\'f1\'e8\'e2\'ed\'fb\'f5 \'e2\'e5\'f9\'e5\'e9. \'cd\'e0\'e7\'e2\'e0\'eb\'e8 \'f0\'e0\'f1\'f8\'e8\'f0\'e5\'ed\'ed\'fb\'e9 \'c1\'cd\'d4 - \'d0\'c1\'cd\'d4. \'c2\'e8\'f0\'f2 - \'cf\'ee\'f1\'f2\'f0\'ee\'e5\'ed\'e8\'e5 \'ea\'ee\'ec\'ef\'e8\'eb\'ff\'f2\'ee\'f0\'ee\'e2 (\'f1\'f2\'f0.23)\cf0\par
+\cf1\tab syntax = \{production\}\cf0\par
+\cf1\b\par
+GCC\b0  - \'ed\'e0 \'f1\'e5\'e3\'ee\'e4\'ed\'ff\'f8\'ed\'e8\'e9 \'e4\'e5\'ed\'fc \'fd\'f2\'ee \'ea\'ee\'e4\'ee\'e3\'e5\'ed\'e5\'f0\'e0\'f2\'ee\'f0. \'d2.\'e5. \'ec\'ee\'e6\'ed\'ee \'e2\'e7\'ff\'f2\'fc \'eb\'fe\'e1\'ee\'e9 \'ff\'e7\'fb\'ea, \'ed\'e0\'ef\'e8\'f1\'e0\'f2\'fc \'e4\'eb\'ff \'ed\'e5\'e3\'ee Front\lang1033\f1 e\lang1049\f0 nd \'ea\'ee\'ec\'ef\'e8\'eb\'ff\'f2\'ee\'f0, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'ed\'e0 \'e2\'fb\'f5\'ee\'e4\'e5 \'e4\'ee\'eb\'e6\'e5\'ed \'e8\'ec\'e5\'f2\'fc \'f1\'f2\'e0\'ed\'e4\'e0\'f0\'f2\'e8\'e7\'ee\'e2\'e0\'ed\'ed\'ee\'e5 GCC \'e4\'e5\'f0\'e5\'e2\'ee. \'cf\'ee\'f2\'ee\'ec \'fd\'f2\'ee \'e4\'e5\'f0\'e5\'e2\'ee \'e7\'e0\'e3\'ee\'ed\'ff\'e5\'ec \'e2 gcc, \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'f3\'e5\'ec gcc \'ee\'ef\'f2\'e8\'ec\'e8\'e7\'e0\'f2\'ee\'f0\'fb \'e8 \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'ec \'e3\'ee\'f2\'ee\'e2\'fb\'e9 \'ea \'e8\'f1\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'fe \'ec\'e0\'f8\'e8\'ed\'ed\'fb\'e9 \'ea\'ee\'e4 \'e4\'eb\'ff \'f0\'e0\'e7\'ed\'fb\'e9 Hardware \'e0\'f0\'f5\'e8\'f2\'e5\'ea\'f2\'f3\'f0.\cf0\par
+\cf1\par
+\'c4\'eb\'ff \'f0\'e0\'e7\'e3\'f0\'f3\'e7\'ea\'e8 CPU \'ec\'e0\'ea\'f1\'e8\'ec\'e0\'eb\'fc\'ed\'ee \'ef\'e5\'f0\'e5\'eb\'ee\'e6\'e8\'f2\'fc \'e7\'e0\'e4\'e0\'f7\'e8 \'f1 \'e2\'f0\'e5\'ec\'e5\'ed\'e8 \'e8\'f1\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'ff \'ed\'e0 \'e2\'f0\'e5\'ec\'ff \'ea\'ee\'ec\'ef\'e8\'eb\'ff\'f6\'e8\'e8. \'c2\'f0\'e5\'ec\'ff \'e8\'f1\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'ff \'e2 \'f2\'ee\'ec \'f7\'e8\'f1\'eb\'e5 \'e8 \'f1\'f3\'ef\'e5\'f0\'f1\'ea\'e0\'eb\'ff\'f0\'ed\'ee\'f1\'f2\'fc \'e2 RISC (\'f1\'ec. \'f2\'f3\'f2 "\'ca\'ee\'ed\'e2\'e5\'e9\'e5\'f0\'fb RISC")\cf0\par
+\cf1\par
+\tab\tab\ul\'ca\'ee\'ec\'ef\'e8\'eb\'e8\'f0\'f3\'e5\'ec\'fb\'e5 \'df\'e7\'fb\'ea\'e8\cf0\ulnone\par
+\cf1\'cf\'eb\'fe\'f1\'fb:\cf0\par
+\pard{\pntext\f2\'B7\tab}{\*\pn\pnlvlblt\pnf2\pnindent0{\pntxtb\'B7}}\nowidctlpar\hyphpar0\fi-360\li720\sl240\slmult1\cf1\'e2\'fb\'f1\'ee\'ea\'e0\'ff \'f1\'ea\'ee\'f0\'ee\'f1\'f2\'fc\cf0\par
+\cf1{\pntext\f2\'B7\tab}\'ee\'f2 \'e8\'f1\'f5\'ee\'e4\'ed\'ee\'e3\'ee \'ea\'ee\'e4\'e0 \'e4\'ee \'ef\'ee\'eb\'f3\'f7\'e5\'ed\'e8\'ff \'ea\'ee\'ed\'e5\'f7\'ed\'ee\'e3\'ee \'f0\'e0\'e7\'f3\'eb\'fc\'f2\'e0\'f2\'e0 \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee \'e2\'fb\'ef\'ee\'eb\'ed\'e8\'f2\'fc \'f0\'e0\'e1\'ee\'f2\'f3. \'d7\'e0\'f1\'f2\'fc \'f0\'e0\'e1\'ee\'f2\'fb (\'ea\'ee\'ec\'ef\'e8\'eb\'ff\'f6\'e8\'ff) \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'e5\'ec \'ed\'e0 \'ec\'ee\'f9\'ed\'fb\'f5 CPU, \'e0 \'ee\'f1\'f2\'e0\'e2\'f8\'e0\'ff\'f1\'ff \'f7\'e0\'f1\'f2\'fc \'ed\'e0 \'ec\'e8\'ea\'f0\'ee\'ea\'ee\'ed\'f2\'f0\'ee\'eb\'eb\'e5\'f0\'e5\cf0\par
+\cf1{\pntext\f2\'B7\tab}\'e2\'fb\'f1\'ee\'ea\'e0\'ff \'f3\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'ec\'ee\'f1\'f2\'fc CPU; \'e2\'ee\'e7\'ec\'ee\'e6\'ed\'ee\'f1\'f2\'fc \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'ed\'e8\'ff \'f3\'ed\'e8\'ea\'e0\'eb\'fc\'ed\'fb\'f5 \'ee\'f1\'ee\'e1\'e5\'ed\'ed\'ee\'f1\'f2\'e5\'e9 CPU; ARM, MIPS, x86 - \'ef\'ee-\'f1\'e2\'ee\'e5\'ec\'f3 \'f3\'ed\'e8\'ea\'e0\'eb\'e5\'ed\cf0\par
+\cf1{\pntext\f2\'B7\tab}\'e2\'fb\'f1\'ee\'ea\'e0\'ff \'f3\'ef\'f0\'e0\'e2\'eb\'ff\'e5\'ec\'ee\'f1\'f2\'fc RAM - \'e3\'e4\'e5-\'f2\'ee \'e5\'f1\'f2\'fc MMU, \'e3\'e4\'e5-\'f2\'ee \'ed\'e5\'f2 - \'e2\'f1\'b8 \'fd\'f2\'ee \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e0 \'ec\'ee\'e6\'e5\'f2 \'f3\'f7\'e8\'f2\'fb\'e2\'e0\'f2\'fc \'e8 \'f0\'e5\'e3\'f3\'eb\'e8\'f0\'ee\'e2\'e0\'f2\'fc\cf0\par
+\cf1{\pntext\f2\'B7\tab}\'ef\'e5\'f0\'e5\'ed\'ee\'f1 \'ee\'f8\'e8\'e1\'ee\'ea \'f1 \'e2\'f0\'e5\'ec\'e5\'ed\'e8 \'e2\'fb\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'ff \'ed\'e0 \'e2\'f0\'e5\'ec\'ff \'ea\'ee\'ec\'ef\'e8\'eb\'ff\'f6\'e8\'e8\cf0\par
+\pard\nowidctlpar\hyphpar0\fi-426\li1136\sl240\slmult1\cf1\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\'cc\'e8\'ed\'f3\'f1\'fb:\cf0\par
+\pard{\pntext\f2\'B7\tab}{\*\pn\pnlvlblt\pnf2\pnindent0{\pntxtb\'B7}}\nowidctlpar\hyphpar0\fi-360\li720\sl240\slmult1\cf1\'ee\'f2\'f1\'f3\'f2\'f1\'f2\'e2\'e8\'e5 \'ea\'f0\'ee\'f1\'f1\'ef\'eb\'e0\'f2\'f4\'ee\'f0\'ec\'e5\'ed\'ed\'ee\'f1\'f2\'e8, \'ef\'ee\'e4 \'ea\'e0\'e6\'e4\'fb\'e9 CPU \'ed\'e0\'e4\'ee \'ef\'e8\'f1\'e0\'f2\'fc \'ec\'e8\'ed\'e8\'ec\'f3\'ec \'f1\'e2\'ee\'e9 \'ea\'ee\'ec\'ef\'e8\'eb\'ff\'f2\'ee\'f0, \'ec\'e0\'ea\'f1\'e8\'ec\'f3\'ec \'ed\'ee\'e2\'fb\'e9 \'ea\'ee\'e4, \'f2.\'ea. \'f3\'f7\'e8\'f2\'fb\'e2\'e0\'f2\'fc \'ee\'f1\'ee\'e1\'e5\'ed\'ed\'ee\'f1\'f2\'e8 \'e0\'f0\'f5\'e8\'f2\'e5\'ea\'f2\'f3\'f0\'fb CPU; \'e2 ARM \'e5\'f1\'f2\'fc \'e8\'ed\'f1\'f2\'f0\'f3\'ea\'f6\'e8\'e8, \'e0\'ed\'e0\'eb\'ee\'e3\'e0 \'ea\'ee\'f2\'ee\'f0\'fb\'ec \'ed\'e5\'f2 \'e2 \'f586 - \'e2 \'ea\'ee\'e4 \'ef\'ee\'e4 ARM \'ef\'f0\'e8\'e4\'b8\'f2\'f1\'ff \'ef\'ee\'e4\'ea\'eb\'fe\'f7\'e0\'f2\'fc \'ee\'f1\'ee\'e1\'fb\'e5 \'e1\'e8\'e1\'eb\'e8\'ee\'f2\'e5\'ea\'e8\cf0\par
+\cf1{\pntext\f2\'B7\tab}\'e5\'f1\'eb\'e8 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'f3 \'f1\'ea\'ee\'ec\'ef\'e8\'eb\'e8\'f0\'ee\'e2\'e0\'eb\'e8, \'e7\'e0\'ef\'f3\'f1\'f2\'e8\'eb\'e8 \'e8 \'ef\'ee\'eb\'f3\'f7\'e8\'eb\'e8 \'ee\'f8\'e8\'e1\'ea\'f3, \'f2\'ee \'ef\'f0\'ee\'e1\'eb\'e5\'ec\'ee\'f2\'e8\'f7\'ed\'ee \'e2\'fb\'ff\'f1\'ed\'e8\'f2\'fc \'e2 \'ea\'e0\'ea\'ee\'e9 \'f1\'f2\'f0\'ee\'ea\'e5 \'ee\'ed\'e0\cf0\par
+\cf1{\pntext\f2\'B7\tab}\'ef\'f0\'e8 \'e8\'f1\'ef\'f0\'e0\'e2\'eb\'e5\'ed\'e8\'e8 \'ee\'f8\'e8\'e1\'ea\'e8 \'ea\'e0\'e6\'e4\'fb\'e9 \'f0\'e0\'e7 \'ef\'e5\'f0\'e5\'ea\'ee\'ec\'ef\'e8\'eb\'e8\'f0\'f3\'e5\'ec \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'f3 - \'e7\'ed\'e0\'f7\'e8\'f2\'e5\'eb\'fc\'ed\'ee \'f3\'e2\'e5\'eb\'e8\'f7\'e8\'e2\'e0\'e5\'f2\'f1\'ff \'c2\'d0\'c5\'cc\'df \'d0\'c0\'c7\'d0\'c0\'c1\'ce\'d2\'ca\'c8\cf0\par
+\cf1{\pntext\f2\'B7\tab}\'ee\'f7\'e5\'ed\'fc \'f1\'eb\'ee\'e6\'ed\'ee \'ed\'e0\'ef\'e8\'f1\'e0\'f2\'fc \'ea\'ee\'ec\'ef\'e8\'eb\'ff\'f2\'ee\'f0 - \'ef\'e5\'f0\'e5\'e2\'ee\'e4 \'f2\'e5\'ea\'f1\'f2\'e0 \'d1++ \'e2 \'ec\'e0\'f8\'e8\'ed\'ed\'fb\'e9 \'ea\'ee\'e4\cf0\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf1\tab\tab\cf0\par
+\cf1\tab\tab\ul\'c8\'ed\'f2\'e5\'f0\'ef\'f0\'e5\'f2\'e8\'f0\'f3\'e5\'ec\'fb\'e5 \'df\'e7\'fb\'ea\'e8\cf0\ulnone\par
+\cf1\'cf\'eb\'fe\'f1\'fb:\cf0\par
+\pard{\pntext\f2\'B7\tab}{\*\pn\pnlvlblt\pnf2\pnindent0{\pntxtb\'B7}}\nowidctlpar\hyphpar0\fi-360\li720\sl240\slmult1\cf1\'ed\'e0\'ef\'e8\'f1\'e0\'f2\'fc \'e8\'ed\'f2\'e5\'f0\'ef\'f0\'e5\'f2\'e0\'f2\'ee\'f0 \'ed\'e0 \'ef\'ee\'f0\'ff\'e4\'ee\'ea \'ef\'f0\'ee\'f9\'e5 \'ea\'ee\'ec\'ef\'e8\'eb\'ff\'f2\'ee\'f0\'e0 - \b\'e8\'ed\'f2\'e5\'f0\'ef\'f0\'e5\'f2\'e0\'f2\'ee\'f0 \'ed\'e5 \'ef\'e5\'f0\'e5\'e2\'ee\'e4\'e8\'f2 \'f2\'e5\'ea\'f1\'f2 \'e2 \'ec\'e0\'f8\'e8\'ed\'ed\'fb\'e9 \'ea\'ee\'e4\b0 . \'c8\'ed\'f2\'e5\'f0\'ef\'f0\'e5\'f2\'e0\'f2\'ee\'f0 \'e2\'e8\'e4\'e8\'f2 \'e2 \'ea\'ee\'e4\'e5 "+" \cf0\u8594? \'e4\'ee\'f1\'f2\'e0\'b8\'f2 \'e3\'ee\'f2\'ee\'e2\'fb\'e9 \'ec\'ee\'e4\'f3\'eb\'fc \'e4\'eb\'ff \'f1\'eb\'ee\'e6\'e5\'ed\'e8\'ff \i\'ed\'e5 \'e2\'e0\'e6\'ed\'ee \'ed\'e0 \'f7\'b8\'ec \'ed\'e0\'ef\'e8\'f1\'e0\'ed\'ed\'fb\'e9\i0\par
+\cf1{\pntext\f2\'B7\tab}\'ef\'f0\'e8\'ec\'e5\'ed\'ff\'e5\'f2\'f1\'ff \'f2\'e0\'ec, \'e3\'e4\'e5 \'ef\'ee\'e4 \'ea\'e0\'ef\'ee\'f2\'ee\'ec \'f5\'ee\'f0\'ee\'f8\'e8\'e9 CPU \'e8 \'ed\'e5 \'ea\'f0\'e8\'f2\'e8\'f7\'ed\'e0 \'f1\'ea\'ee\'f0\'ee\'f1\'f2\'fc, \'e8\'ed\'f2\'e5\'f0\'e0\'ea\'f2\'e8\'e2\'ed\'fb\'e5 \'f1\'e8\'f1\'f2\'e5\'ec\'fb \'e2\'e7\'e0\'e8\'ec\'ee\'e4\'e5\'e9\'f1\'f2\'e2\'e8\'ff \'f1 \'f7\'e5\'eb\'ee\'e2\'e5\'ea\'ee\'ec - Web \'e1\'f0\'e0\'f3\'e7\'e5\'f0\'fb\cf0\par
+\cf1{\pntext\f2\'B7\tab}\'ea\'f0\'ee\'f1\'f1\'ef\'eb\'e0\'f2\'f4\'ee\'f0\'ec\'e5\'ed\'ed\'ee\'f1\'f2\'fc\cf0\par
+\cf1{\pntext\f2\'B7\tab}\'ef\'f0\'e8 \'e2\'ee\'e7\'ed\'e8\'ea\'ed\'ee\'e2\'e5\'ed\'e8\'e8 \'ee\'f8\'e8\'e1\'ea\'e8 \'f1\'f0\'e0\'e7\'f3 \'ef\'ee\'ed\'e8\'ec\'e0\'e5\'ec \'e2 \'ea\'e0\'ea\'ee\'e9 \'f1\'f2\'f0\'ee\'ea\'e5 \'ea\'ee\'e4\'e0 - \'f3\'f1\'ea\'ee\'f0\'e5\'ed\'e8\'e5 \'c2\'d0\'c5\'cc\'c5\'cd\'c8 \'d0\'c0\'c7\'d0\'c0\'c1\'ce\'d2\'ca\'c8\cf0\par
+\cf1{\pntext\f2\'B7\tab}\'f0\'e5\'f4\'eb\'e5\'ea\'f1\'e8\'ff (\'e8\'eb\'e8 \'ee\'f2\'f0\'e0\'e6\'e5\'ed\'e8\'e5) - \'e2\'f0\'ee\'e4\'e5 \'ea\'e0\'ea Java Reflection API - \'e2\'ee\'e7\'ec\'ee\'e6\'ed\'ee\'f1\'f2\'fc \'e7\'e0\'eb\'e5\'f1\'f2\'fc \'e2 \'ef\'ee\'f2\'f0\'ee\'f5\'e0 \'ea\'eb\'e0\'f1\'f1\'e0 \'f7\'e5\'f0\'e5\'e7 "backdoor"\cf0\par
+\cf1{\pntext\f2\'B7\tab}\'e4\'e8\'ed\'e0\'ec\'e8\'f7\'e5\'f1\'ea\'e0\'ff \'f2\'e8\'ef\'e8\'e7\'e0\'f6\'e8\'ff - \'e2\'ee\'e7\'ec\'ee\'e6\'ed\'ee\'f1\'f2\'fc \'ef\'e5\'f0\'e5\'e4\'e0\'e2\'e0\'f2\'fc \'ee\'e4\'e8\'ed \'e8 \'f2\'ee\'f2 \'e6\'e5 \'ef\'e0\'f0\'e0\'ec\'e5\'f2\'f0 \'ef\'f0\'ee\'f6\'e5\'e4\'f3\'f0\'e5 \'e2 \'e2\'e8\'e4\'e5 \'ef\'f0\'ff\'ec\'ee\'e3\'ee \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'ff, \'f1\'f1\'fb\'eb\'ea\'e8 \'ed\'e0 \'fd\'f2\'ee \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5 \'eb\'e8\'e1\'ee \'e2\'fb\'e7\'ee\'e2\'e0 \'ef\'f0\'ee\'f6\'e5\'e4\'f3\'f0\'fb, \'ea\'ee\'f2\'ee\'f0\'e0\'ff \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 \'ed\'f3\'e6\'ed\'ee\'e5 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5\cf0\par
+\cf1{\pntext\f2\'B7\tab}\'ec\'e5\'ed\'fc\'f8\'e8\'e9 \'f0\'e0\'e7\'ec\'e5\'f0 \'e8\'f1\'ef\'ee\'eb\'ed\'ff\'e5\'ec\'ee\'e3\'ee \'f4\'e0\'e9\'eb\'e0 - \'e8\'f1\'f5\'ee\'e4\'ed\'e8\'ea \'ed\'e0 ASCII < \'ec\'e0\'f8\'e8\'ed\'ed\'ee\'e3\'ee \'ea\'ee\'e4\'e0\cf0\par
+\cf1{\pntext\f2\'B7\tab}\'e4\'e8\'ed\'e0\'ec\'e8\'f7\'e5\'f1\'ea\'e8\'e5 \'ee\'e1\'eb\'e0\'f1\'f2\'e8 \'e2\'e8\'e4\'e8\'ec\'ee\'f1\'f2\'e8\cf0\par
+\cf1{\pntext\f2\'B7\tab}lazy \'e2\'fb\'f7\'e8\'f1\'eb\'e5\'ed\'e8\'ff: \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'e0 \'ed\'e0 1000 \'f1\'f2\'f0\'ee\'ea, \'ed\'ee \'f0\'e5\'e0\'eb\'fc\'ed\'ee \'f0\'e0\'e1\'ee\'f2\'e0\'fe\'f2 \'f2\'ee\'eb\'fc\'ea\'ee 100, \'ee\'f1\'f2\'e0\'e2\'f8\'e8\'e5\'f1\'ff 900 \'f7\'e5\'f0\'e5\'e7 "\'ea\'ee\'ec\'ef\'e8\'eb\'ff\'f6\'e8\'fe" \'ed\'e5 \'ef\'f0\'ee\'f5\'ee\'e4\'ff\'f2\cf0\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf1\'cc\'e8\'ed\'f3\'f1\'fb:\cf0\par
+\pard{\pntext\f2\'B7\tab}{\*\pn\pnlvlblt\pnf2\pnindent0{\pntxtb\'B7}}\nowidctlpar\hyphpar0\fi-360\li720\sl240\slmult1\cf1\'ef\'eb\'ee\'f5\'ee \'f1 \'ee\'ef\'f2\'e8\'ec\'e8\'e7\'e0\'f6\'e8\'e5\'e9\cf0\par
+\cf1{\pntext\f2\'B7\tab}\'ed\'e8\'e7\'ea\'e0\'ff \'f1\'ea\'ee\'f0\'ee\'f1\'f2\'fc, \'ec\'ee\'e6\'ed\'ee \'f3\'e2\'e5\'eb\'e8\'f7\'e8\'f2\'fc \'e5\'f1\'eb\'e8 \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'fc JIT\cf0\par
+\cf1{\pntext\f2\'B7\tab}\'e8\'e7-\'e7\'e0 \'e4\'e8\'ed\'e0\'ec\'e8\'f7\'e5\'f1\'ea\'ee\'e9 \'f2\'e8\'ef\'e8\'e7\'e0\'f6\'e8\'e8 \'f1\'eb\'ee\'e6\'ed\'ee \'f1\'ea\'ee\'ec\'ef\'e8\'eb\'e8\'f0\'ee\'e2\'e0\'f2\'fc \'ea\'ee\'e4 - Type (\'ef\'f0\'e8 \'ea\'ee\'ec\'ef\'e8\'eb\'ff\'f6\'e8\'e8 \'ed\'e5\'e2\'e0\'e6\'ed\'ee Value) \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'ee\'e9 \'ec\'ee\'e6\'ed\'ee \'ee\'ef\'f0\'e5\'e4\'e5\'eb\'e8\'f2\'fc \'f2\'ee\'eb\'fc\'ea\'ee \'e2 Runtime\cf0\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf1\par
+\par
+\par
+\ul JIT (Just-in-Time) vs AOT (Ahead-of-Time)\ulnone\par
+\par
+JIT - \'ef\'ee\'f1\'eb\'e5 \'ea\'ee\'ec\'ef\'e8\'eb\'ff\'f6\'e8\'e8 \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'ec \'e1\'e0\'e9\'f2-\'ea\'ee\'e4 \'e8 \'ef\'ee\'f2\'ee\'ec \'e5\'e3\'ee \'e7\'e0\'e3\'ee\'ed\'ff\'e5\'ec \'e2 JVM\par
+AOT - \'ef\'ee\'f1\'eb\'e5 \'ea\'ee\'ec\'ef\'e8\'eb\'ff\'f6\'e8\'e8 \'ef\'ee\'eb\'f3\'f7\'e0\'e5\'ec \'ec\'e0\'f8\'e8\'ed\'ed\'fb\'e9 \'ea\'ee\'e4\par
+\par
+AOT \'e4\'eb\'ff Java \cf0\u8594? GraalVM\cf1\par
+\par
+\'ce\'ef\'f2\'e8\'ec\'e8\'e7\'e0\'f6\'e8\'ff \'ea\'ee\'e4\'e0 \'e1\'fb\'e2\'e0\'e5\'f2 \'d1\'f2\'e0\'f2\'e8\'f7\'e5\'f1\'ea\'e0\'ff \'e8 \'c4\'e8\'ed\'e0\'ec\'e8\'f7\'e5\'f1\'ea\'e0\'ff:\par
+\'ca\'e0\'ea \'f3 \'dd\'eb\'fc\'e1\'f0\'f3\'f1\'e0 \'f1 Intel. \'dd\'eb\'fc\'e1\'f0\'f3\'f1 \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'e5\'f2 \'f1\'f2\'e0\'f2\'e8\'f7\'e5\'f1\'ea\'f3\'fe \'ee\'ef\'f2\'e8\'ec\'e8\'e7\'e0\'f6\'e8\'fe \'ef\'f0\'e8 \'ea\'ee\'ec\'ef\'e8\'eb\'e8\'f0\'ee\'e2\'e0\'ed\'e8\'e8. \'c2 Intel \'e2\'ed\'f3\'f2\'f0\'e8 CPU \'e5\'f1\'f2\'fc \'e4\'e8\'ed\'e0\'ec\'e8\'f7\'e5\'f1\'ea\'e0\'ff \'ee\'ef\'f2\'e8\'ec\'e8\'e7\'e0\'f6\'e8\'ff.\par
+\par
+AOT - \'d1\'f2\'e0\'f2\'e8\'f7\'e5\'f1\'ea\'e0\'ff - \'ef\'f0\'e8 \'ea\'ee\'ec\'ef\'e8\'eb\'ff\'f6\'e8\'e8.\par
+JIT - \'d1\'f2\'e0\'f2\'e8\'f7\'e5\'f1\'ea\'e0\'ff + \'c4\'e8\'ed\'e0\'ec\'e8\'f7\'e5\'f1\'ea\'e0\'ff - \'e8 \'ef\'f0\'e8 \'ea\'ee\'ec\'ef\'e8\'eb\'ff\'f6\'e8\'e8 \'e8 \'ef\'f0\'e8 \'e2\'fb\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'e8.\par
+\par
+JIT \'ef\'ee\'e7\'e2\'ee\'eb\'ff\'e5\'f2 \'e4\'e5\'eb\'e0\'f2\'fc \'fd\'f4\'f4\'e5\'ea\'f2\'e8\'e2\'ed\'fb\'e9 inline-\'e8\'ed\'e3 \'ea\'ee\'e4\'e0.\par
+JIT \'ec\'ee\'e6\'e5\'f2 \'ef\'f0\'ee\'f4\'e8\'eb\'e8\'f0\'ee\'e2\'e0\'f2\'fc \'ef\'f0\'e8\'eb\'ee\'e6\'e5\'ed\'e8\'e5 \'e2\'ee \'e2\'f0\'e5\'ec\'ff \'e5\'e3\'ee \'e8\'f1\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'ff.\par
+JIT \'f1\'ec\'ee\'e6\'e5\'f2 \'f3\'e2\'e8\'e4\'e5\'f2\'fc, \'f7\'f2\'ee \'ef\'e5\'f0\'e2\'fb\'e5 10\super 6\nosupersub  \'f6\'e8\'ea\'eb\'ee\'e2 \'ec\'ee\'e6\'ed\'ee \'ef\'f0\'ee\'ef\'f3\'f1\'f2\'e8\'f2\'fc, \'e0 AOT - \'ed\'e5\'f2:\par
+\tab for (i=0; i<10\super 7\nosupersub ; i++)\par
+\tab\tab if (i>10\super 6\nosupersub ) ...\par
+\'c7\'e0 \'f1\'f7\'b8\'f2 \'c4\'e8\'ed\'e0\'ec\'e8\'f7\'e5\'f1\'ea\'ee\'e9 \'ee\'ef\'f2\'e8\'ec\'e8\'e7\'e0\'f6\'e8\'e8 JIT-\'f1\'ea\'ee\'ec\'ef\'e8\'eb\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'fb\'e9 \'ea\'ee\'e4 \'ec\'ee\'e6\'e5\'f2 \'ee\'e1\'e3\'ee\'ed\'ff\'f2\'fc AOT-\'f1\'ea\'ee\'ec\'ef\'e8\'eb\'e8\'f0\'ee\'e2\'e0\'ed\'ed\'fb\'e9 \'ea\'ee\'e4.\par
+\par
+\'c2\'f0\'ee\'e4\'e5 \'ea\'e0\'ea \'e4\'e8\'ed\'e0\'ec\'e8\'f7\'e5\'f1\'ea\'e0\'ff \'f2\'e8\'ef\'e8\'e7\'e0\'f6\'e8\'ff \'e2 Python ~ Generics \'e2 Java \'ed\'e5 \'ec\'ee\'e3\'f3\'f2 \'e6\'e8\'f2\'fc \'e1\'e5\'e7 \'e1\'e0\'e9\'f2-\'ea\'ee\'e4\'e0 \'e8 JIT "\'cf\'ee\'e7\'e4\'ed\'e5\'e5 \'f1\'e2\'ff\'e7\'fb\'e2\'e0\'ed\'e8\'e5" ???? \'d5\'ee\'f2\'ff \'f1 \'d1++ \'e5\'f1\'f2\'fc Templates.\par
+\par
+\par
+\par
+\tab\tab\ul\'d2\'e8\'ef\'e8\'e7\'e0\'f6\'e8\'ff\cf0\ulnone\par
+\pard\nowidctlpar\hyphpar0\fi-1420\li1420\sl240\slmult1\cf1\par
+\'c1\'e5\'e7\'f2\'e8\'ef\'ee\'e2\'fb\'e9:\tab\'e0\'f1\'f1\'e5\'ec\'e1\'eb\'e5\'f0\cf0\par
+\cf1\'d1\'f2\'e0\'f2\'e8\'f7\'e5\'f1\'ea\'e0\'ff:\'d1++, Java. \'ce\'e1\'fa\'ff\'e2\'eb\'ff\'e5\'ec int \'f5. \'cf\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'e0\'ff \'f5 \'e2\'e5\'e7\'e4\'e5 \'e1\'f3\'e4\'e5\'f2 int-\'ee\'ec. \'cf\'f0\'ee\'e2\'e5\'f0\'ea\'e0 \'f2\'e8\'ef\'ee\'e2 \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'e5\'f2\'f1\'ff \'ed\'e0 \'fd\'f2\'e0\'ef\'e5 \'ea\'ee\'ec\'ef\'e8\'eb\'ff\'f6\'e8\'e8. \'c2 \'ee\'e4\'ed\'ee\'e9 \'ee\'e1\'eb\'e0\'f1\'f2\'e8 RAM \'f5\'f0\'e0\'ed\'e8\'ec Var name \'e8 Type \'e2 \'e4\'f0\'f3\'e3\'ee\'ec Value. \'c4\'eb\'ff \'ea\'e0\'e6\'e4\'ee\'e3\'ee \'f2\'e8\'ef\'e0 \'ed\'e0\'e4\'ee \'ef\'e8\'f1\'e0\'f2\'fc \'ee\'f2\'e4\'e5\'eb\'fc\'ed\'f3\'fe \'f4\'f3\'ed\'ea\'f6\'e8\'fe: mult(int,int), mult(float,float)\cf0\par
+\cf1\'c4\'e8\'ed\'e0\'ec\'e8\'f7\'e5\'f1\'e0\'ff:Python, JS. var \'f5; \'f5="\'cf\'f0\'e8\'e2\'e5\'f2"; \'f5=10 - \'ee\'e1\'fa\'ff\'e2\'e8\'eb\'e8 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'f3\'fe, \'f1\'e4\'e5\'eb\'e0\'eb\'e8 \'e5\'b8 string-\'ee\'ec \'ef\'ee\'f2\'ee\'ec \'f1\'e4\'e5\'eb\'e0\'eb\'e8 \'e5\'b8 int-\'ee\'ec. \'cf\'f0\'ee\'e2\'e5\'f0\'ea\'e0 \'f2\'e8\'ef\'ee\'e2 \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'e5\'f2\'f1\'ff \'ed\'e0 \'fd\'f2\'e0\'ef\'e5 \'e2\'fb\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'ff, \'ea\'ee\'e3\'e4\'e0 Instruction Pointer (EIP) \'e4\'ee\'f8\'b8\'eb \'e4\'ee \'fd\'f2\'ee\'e3\'ee \'ec\'e5\'f1\'f2\'e0. \'cf\'f0\'ee\'e2\'e5\'f0\'ea\'e0 - \'e7\'ed\'e0\'f7\'e8\'f2 \'e2\'fb\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'e5 \'e4\'ee\'ef\'ee\'eb\'ed\'e8\'f2\'e5\'eb\'fc\'ed\'fb\'f5 \'e8\'ed\'f1\'f2\'f0\'f3\'ea\'f6\'e8\'e9, \'e2\'fb\'ff\'e2\'eb\'e5\'ed\'e8\'e5 \'ef\'ee\'f2\'e5\'ed\'f6\'e8\'e0\'eb\'fc\'ed\'fb\'f5 \'ee\'f8\'e8\'e1\'ee\'ea \u8594? \'e7\'e0\'ec\'e5\'e4\'eb\'e5\'ed\'e8\'e5 \'e2\'fb\'ef\'ee\'eb\'ed\'e5\'ed\'e8\'e5 \'ef\'f0\'ee\'e3\'f0\'e0\'ec\'ec\'fb. \'c2 \'ee\'e4\'ed\'ee\'e9 \'ee\'e1\'eb\'e0\'f1\'f2\'e8 RAM \'f5\'f0\'e0\'ed\'e8\'ec Var name \'e2 \'e4\'f0\'f3\'e3\'ee\'ec Type \'e8 Value. \'cd\'e5\'f2 \'ed\'e5\'ee\'e1\'f5\'ee\'e4\'e8\'ec\'ee\'f1\'f2\'e8 \'ef\'ee\'e4 \'ea\'e0\'e6\'e4\'fb\'e9 \'f2\'e8\'ef \'ef\'e8\'f1\'e0\'f2\'fc \'ee\'f2\'e4\'e5\'eb\'fc\'ed\'f3\'fe \'f4\'f3\'ed\'ea\'f6\'e8\'fe. \'c2 mult \'ec\'ee\'e6\'ed\'ee \'ef\'e5\'f0\'e5\'e4\'e0\'f2\'fc \'ea\'e0\'ea int, \'f2\'e0\'ea \'e8 float.\cf0\par
+\cf1\'d1\'e8\'eb\'fc\'ed\'e0\'ff:\tab Python, Haskell, Lisp. \'cd\'e5\'eb\'fc\'e7\'ff \'ea int \'ef\'f0\'e8\'e1\'e0\'e2\'e8\'f2\'fc string. \'cd\'e5\'f2 \'e0\'e2\'f2\'ee\'ec\'e0\'f2\'e8\'f7\'e5\'f1\'ea\'e8\'f5 \'cd\'c5\'df\'c2\'cd\'db\'d5 \'ef\'f0\'e5\'ee\'e1\'f0\'e0\'e7\'ee\'e2\'e0\'ed\'e8\'e9 \'f2\'e8\'ef\'ee\'e2. \'cf\'f0\'e8\'ec\'e5\'f0 Python: a=2 b='L' c=a+b - TypeError: unsupported operand for +: 'int' and 'str' \cf0\par
+\cf1\'d1\'eb\'e0\'e1\'e0\'ff:\tab Java, \'d1++, JS. \'cf\'f0\'e8\'ec\'e5\'f0 \'d1++: int a=2 char b='L' auto c=a+b - \'f0\'e5\'e7\'f3\'eb\'fc\'f2\'e0\'f2 = 2 + 76(\'ef\'ee\'e7\'e8\'f6\'e8\'ff 'L' \'e2 ASCII) = 78. \'cd\'e5\'ff\'e2\'ed\'ee \'ef\'f0\'e5\'ee\'e1\'f0\'e0\'e7\'f3\'e5\'f2 char \'e2 int.\cf0\par
+\cf1\'df\'e2\'ed\'e0\'ff:\tab int add(int x, int y)\cf0\par
+\cf1\'cd\'e5\'ff\'e2\'ed\'e0\'ff:\tab def add(x, y) - \'f5\'ee\'f0\'ee\'f8\'ee \'e2\'e8\'e4\'ed\'ee \'ed\'e0 \'ef\'f0\'e8\'ec\'e5\'f0\'e5 Kotlin:\cf0\par
+\pard\nowidctlpar\hyphpar0\fi-568\li568\sl240\slmult1\cf1\par
+Kotlin - \'ed\'e5\'ff\'e2\'ed\'e0\'ff \'f1\'f2\'e0\'f2\'e8\'f7\'e5\'f1\'ea\'e0\'ff \'f1\'e8\'eb\'fc\'ed\'e0\'ff \'f2\'e8\'ef\'e8\'e7\'e0\'f6\'e8\'ff:\cf0\par
+\cf1\tab var a = 10\tab\tab\'ee\'e1\'fa\'ff\'e2\'eb\'ff\'e5\'ec \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'f3\'fe \'ed\'e5\'ff\'e2\'ed\'ee. \'ca\'ee\'ec\'ef\'e8\'eb\'ff\'f2\'ee\'f0 \'f1\'e0\'ec \'f0\'e0\'e7\'e1\'e5\'f0\'b8\'f2\'f1\'ff, \'f7\'f2\'ee \'f2\'e8\'ef \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'ee\'e9 :Int\cf0\par
+\cf1\tab var b : Int\tab\tab\'ee\'e1\'fa\'ff\'e2\'eb\'ff\'e5\'ec \'ff\'e2\'ed\'ee. \'c5\'f1\'eb\'e8 \'ef\'f0\'e8 \'ee\'e1\'fa\'ff\'e2\'eb\'e5\'ed\'e8\'e8 \'ed\'e5 \'ef\'f0\'e8\'f1\'e2\'e0\'e8\'e2\'e0\'e5\'ec \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5, \'f2\'ee \'ee\'e1\'ff\'e7\'e0\'f2\'e5\'eb\'fc\'ed\'ee \'ef\'e8\'f1\'e0\'f2\'fc ":Int"\cf0\par
+\cf1\tab b = 15.0\tab\tab\'ee\'f8\'e8\'e1\'ea\'e0. \b\'f1\'f2\'e0\'f2\'e8\'f7\'e5\'f1\'ea\'e0\'ff\b0  \'f2\'e8\'ef\'e8\'e7\'e0\'f6\'e8\'ff \'ed\'e5 \'ef\'ee\'e7\'e2\'ee\'eb\'ff\'e5\'f2 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'ee\'e9 Int \'ef\'f0\'e8\'f1\'e2\'ee\'e8\'f2\'fc Float. \'c2 Python \'e2\'f1\'b8 \'e1\'fb\'eb\'ee \'e1\'fb ok.\cf0\par
+\cf1\tab var c = 'L'\tab\tab\b\'ed\'e5\'ff\'e2\'ed\'e0\'ff\b0  - \'ed\'e5 \'e4\'f3\'ec\'e0\'e5\'ec \'ee \'f2\'e8\'ef\'e5 \'ef\'e5\'f0\'e5\'ec\'e5\'ed\'ed\'ee\'e9 "\'f1"\cf0\par
+\cf1\tab var d:Double=15.0\tab\'ef\'e8\'f1\'e0\'f2\'fc :Double \'ed\'e5 \'ee\'e1\'ff\'e7\'e0\'f2\'e5\'eb\'fc\'ed\'ee, \'ed\'ee \'ef\'ee \'ef\'f0\'e0\'e2\'e8\'eb\'e0\'ec \'f5\'ee\'f0\'ee\'f8\'e5\'e3\'ee \'f2\'ee\'ed\'e0 \'e6\'e5\'eb\'e0\'f2\'e5\'eb\'fc\'ed\'ee\cf0\par
+\cf1\tab var e = a + c\tab\tab\'ee\'f8\'e8\'e1\'ea\'e0. \b\'f1\'e8\'eb\'fc\'ed\'e0\'ff \b0\'f2\'e8\'ef\'e8\'e7\'e0\'f6\'e8\'ff - \'ed\'e5\'eb\'fc\'e7\'ff \'f1\'ea\'eb\'e0\'e4\'fb\'e2\'e0\'f2\'fc Char \'e8 Int\cf0\par
+\cf1\tab var f = a + d\tab\tab =25.0 Int \'ed\'e5\'ff\'e2\'ed\'ee \'ef\'f0\'e8\'e2\'ee\'e4\'e8\'ec \'ea Double \'e8 \'f1\'ea\'e0\'eb\'e4\'fb\'e2\'e0\'e5\'ec. \'dd\'f2\'ee \'ec\'ee\'e6\'ed\'ee \'ef\'f0\'e8 \'f1\'e8\'eb\'fc\'ed\'ee\'e9 \'f2\'e8\'ef\'e8\'e7\'e0\'f6\'e8\'e8.\cf0\par
+\pard\nowidctlpar\hyphpar0\sl240\slmult1\cf1\par
+\'d2\'e8\'ef\'e8\'e7\'e0\'f6\'e8\'ff \'d5\'e8\'ed\'e4\'eb\'e8-\'cc\'e8\'eb\'ed\'e5\'f0\'e0: Haskell, ML\cf0\par
+\cf1\'c7\'e0\'e4\'e0\'f7\'e0: \'ce\'ef\'f0\'e5\'e4\'e5\'eb\'e8\'f2\'fc \'f1\'e8\'e3\'ed\'e0\'f2\'f3\'f0\'f3 \'f4\'f3\'ed\'ea\'f6\'e8\'e8 bar?\cf0\par
+\cf1 10\tab def foo(s: string) = s.length\cf0\par
+\cf1 20\tab def bar(x, y) = foo(x) + y\cf0\par
+\cf1\'d2\'e0\'ea \'ea\'e0\'ea \'e2 \'f1\'f2\'f0\'ee\'ea\'e5 10 \'f4\'f3\'ed\'ea\'f6\'e8\'ff foo \'ef\'f0\'e8\'ed\'e8\'ec\'e0\'e5\'f2 s:string \'e7\'ed\'e0\'f7\'e8\'f2 \'f5 \'e2 \'f1\'f2\'f0\'ee\'ea\'e5 20 \'e8\'ec\'e5\'e5\'f2 \'f2\'e8\'ef string. \'c2 \'f1\'f2\'f0\'ee\'ea\'e5 10 s.length \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 int, \'e7\'ed\'e0\'f7\'e8\'f2 foo \'e2 \'f1\'f2\'f0\'ee\'ea\'e5 20 \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 int. \'ce\'ef\'e5\'f0\'e0\'f6\'e8\'ff "int + ..." \'ec\'ee\'e6\'e5\'f2 \'e1\'fb\'f2\'fc \'f2\'ee\'eb\'fc\'ea\'ee "int + int", \'e7\'ed\'e0\'f7\'e8\'f2 \'f2\'e8\'ef y:int \'e8 \'f4\'f3\'ed\'ea\'f6\'e8\'ff bar \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'f2 int. \'c8\'f2\'ee\'e3\'ee: int bar(string, int)\cf0\par
+\cf1\kerning0\par
+\'cf\'e0\'e2\'e5\'eb \'d1\'fb\'f7\'b8\'e2 "\'cf\'ee\'f1\'f2\'f0\'ee\'e5\'ed\'e8\'e5 \'ea\'ee\'ec\'ef\'e8\'eb\'ff\'f2\'ee\'f0\'e0 \'ed\'e0 \'e1\'e0\'e7\'e5 LLVM" \cf0{\field{\*\fldinst{HYPERLINK "http://www.youtube.com/watch?v=PauCAyVg348"}}{\fldrslt{\ul\cf2 http://www.youtube.com/watch?v=PauCAyVg348}}}\kerning1\f0\fs22\par
+\cf1\kerning0\par
+\'d0\'e5\'ea\'ee\'ec\'e5\'ed\'e4\'f3\'e5\'f2 \'eb\'e8\'f2\'e5\'f0\'e0\'f2\'f3\'f0\'f3:\cf0\kerning1\par
+\cf1\kerning0 Lexer&Parser\cf0\kerning1\par
+\kerning0{\field{\*\fldinst{HYPERLINK "http://berthub.eu/lex-yacc/cvs/lex-yacc-howto.html"}}{\fldrslt{\ul\cf2 http://berthub.eu/lex-yacc/cvs/lex-yacc-howto.html}}}\kerning1\f0\fs22\par
+\kerning0{\field{\*\fldinst{HYPERLINK "http://masters.donntu.org/2014/fknt/ianushkevych/ind/index.htm"}}{\fldrslt{\ul\cf2 http://masters.donntu.org/2014/fknt/ianushkevych/ind/index.htm}}}\kerning1\f0\fs22\par
+\cf1\kerning0\par
+LLVM Overview\cf0\kerning1\par
+\kerning0{\field{\*\fldinst{HYPERLINK "http://habr.ru/post/47878"}}{\fldrslt{\ul\cf2 http://habr.ru/post/47878}}}\kerning1\f0\fs22\par
+\kerning0{\field{\*\fldinst{HYPERLINK "http://aosabook.org/en/llvm.html"}}{\fldrslt{\ul\cf2 http://aosabook.org/en/llvm.html}}}\kerning1\f0\fs22\par
+\cf1\kerning0\par
+LLVM Tutorial\cf0\kerning1\par
+\kerning0{\field{\*\fldinst{HYPERLINK "http://llvm.org/docs/tutorial/index.html"}}{\fldrslt{\ul\cf2 http://llvm.org/docs/tutorial/index.html}}}\kerning1\f0\fs22\par
+\kerning0{\field{\*\fldinst{HYPERLINK "http://habr.ru/post/119850"}}{\fldrslt{\ul\cf2 http://habr.ru/post/119850}}}\kerning1\f0\fs22\par
+\cf1\kerning0\par
+\'cd\'e0\'f1\'f2\'ee\'eb\'fc\'ed\'e0\'ff \'ea\'ed\'e8\'e3\'e0: \'c0\'eb\'fc\'f4\'f0\'e5\'e4\'e0 \'c2. \'c0\'f5\'ee\tab\'ca\'ee\'ec\'ef\'e8\'eb\'ff\'f2\'ee\'f0\'fb: \'ef\'f0\'e8\'ed\'f6\'e8\'ef\'fb, \'f2\'e5\'f5\'ed\'ee\'eb\'ee\'e3\'e8\'e8 \'e8 \'e8\'ed\'f1\'f2\'f0\'f3\'ec\'e5\'ed\'f2\'fb\cf0\kerning1\par
+\cf1\kerning0\par
+\'c2 \'ea\'ed\'e8\'e3\'e5 \'c1\'f3\'f0\'f6\'e5\'e2\'e0: \'f1\'f2\'f0.51\cf0\kerning1\par
+\cf1\kerning0\'cc\'e0\'f8\'e8\'ed\'fb, \'f0\'e0\'e1\'ee\'f2\'e0\'fe\'f9\'e8\'e5 \'ef\'ee \'ef\'f0\'e8\'ed\'f6\'e8\'ef\'f3 \'ef\'ee\'f2\'ee\'ea\'e0 \'e4\'e0\'ed\'ed\'fb\'f5.\cf0\kerning1\par
+\cf1\kerning0\'cf\'f0\'e8 \'ef\'e0\'f0\'e0\'eb\'eb\'e5\'eb\'fc\'ed\'ee \'e2\'fb\'ef\'ee\'eb\'ed\'ff\'e5\'ec\'ee\'e9 \'ee\'e1\'f0\'e0\'e1\'ee\'f2\'ea\'e5 \'e4\'e0\'ed\'ed\'fb\'f5 \'e8\'f1\'ea\'eb\'fe\'f7\'e0\'e5\'f2\'f1\'ff \'e2\'ee\'e7\'ec\'ee\'e6\'ed\'ee\'f1\'f2\'fc \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'ed\'e8\'ff \'f3\'f1\'f2\'e0\'f0\'e5\'e2\'f8\'e8\'f5 \'e4\'e0\'ed\'ed\'fb\'f5, \'f2.\'ea. \'ed\'e5\'f2 \'ef\'ee\'e2\'f2\'ee\'f0\'ed\'ee\'e3\'ee \'e8\'f1\'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'ed\'e8\'ff \'f6\'e5\'ef\'e5\'e9 \'e3\'f0\'e0\'f4\'e0, \'e0, \'f1\'eb\'e5\'e4\'ee\'e2\'e0\'f2\'e5\'eb\'fc\'ed\'ee, \'e4\'e0\'ed\'ed\'fb\'e5 \'ea \'ef\'ee\'e8\'ec\'e5\'ed\'ee\'e2\'e0\'ed\'ed\'ee\'ec\'f3 \'ee\'ef\'e5\'f0\'e0\'f2\'ee\'f0\'f3 \'ee\'e1\'f0\'e0\'f9\'e0\'fe\'f2\'f1\'ff \'f2\'ee\'eb\'fc\'ea\'ee \'ee\'e4\'e8\'ed \'f0\'e0\'e7, \'f7\'f2\'ee \'fd\'ea\'e2\'e8\'e2\'e0\'eb\'e5\'ed\'f2\'ed\'ee \'ef\'f0\'e8\'ed\'f6\'e8\'ef\'f3, \'e7\'e0\'eb\'ee\'e6\'e5\'ed\'ed\'ee\'ec\'f3 \'e2 \'ff\'e7\'fb\'ea\'e0\'f5 \'ee\'e4\'ed\'ee\'f0\'e0\'e7\'ee\'e2\'ee\'e3\'ee \'ef\'f0\'e8\'f1\'e2\'ee\'e5\'ed\'e8\'ff \'e8\'ec\'e5\'ed.\cf0\kerning1\par
+\cf1\kerning0 LLVM - \'ff\'e7\'fb\'ea \'ee\'e4\'ed\'ee\'f0\'e0\'e7\'ee\'e2\'ee\'e3\'ee \'ef\'f0\'e8\'f1\'e2\'ee\'e5\'ed\'e8\'ff \'e8\'ec\'e5\'ed.\cf0\kerning1\par
+\cf1\kerning0\par
+\b Source code\b0\tab\tab\b Frontend\tab\tab\tab\tab\tab\tab Backend\tab\tab\tab Hardware\cf0\kerning1\b0\par
+\cf1\kerning0 C/C++\tab\tab ->\tab Clang\tab\tab\tab\tab\tab\tab\tab LLVM x86\tab\tab ->\tab x86\cf0\kerning1\par
+\cf1\kerning0 Haskell\tab ->\tab STG \'e8 C--\tab ->\tab\'ce\'ef\'f2\'e8\'ec\'e8\'e7\'e0\'f2\'ee\'f0\tab\tab ->\tab\cf3\b LLVM \'dd\'eb\'fc\'e1\'f0\'f3\'f1\cf1\b0\tab ->\tab\cf3\b\'dd\'eb\'fc\'e1\'f0\'f3\'f1\cf0\kerning1\b0\par
+\cf1\kerning0 Rust\tab\tab ->\tab Rust\tab\tab\tab    LLVM\tab\tab\tab LLVM JavaScript\tab ->\tab\'ea\'ee\'e4 \'e4\'eb\'ff \'e1\'f0\'e0\'f3\'e7\'e5\'f0\'e0\cf0\kerning1\par
+\cf1\kerning0\par
+\'d2.\'e5. \'e4\'eb\'ff \'f1\'ee\'e7\'e4\'e0\'ed\'e8\'ff \'f1\'e2\'ee\'e5\'e3\'ee \'ff\'e7\'fb\'ea\'e0 \'ec\'fb \'e4\'ee\'eb\'e6\'ed\'fb \'ed\'e0\'ef\'e8\'f1\'e0\'f2\'fc \'ea\'ee\'ec\'ef\'e8\'eb\'ff\'f2\'ee\'f0, \'ea\'ee\'f2\'ee\'f0\'fb\'e9 \'ea\'ee\'ed\'f1\'f2\'f0\'f3\'ea\'f6\'e8\'e9 \'ed\'e0\'f8\'e5\'e3\'ee \'ff\'e7\'fb\'ea\'e0 \'ef\'e5\'f0\'e5\'e2\'ee\'e4\'e8\'f2 \'e2 LLVM.\cf0\kerning1\par
+\cf1\kerning0\'ce\'ef\'f2\'e8\'ec\'e8\'e7\'e0\'f2\'ee\'f0 LLVM \'f3\'e6\'e5 \'f1\'ee\'e4\'e5\'f0\'e6\'e8\'f2 ~70 \'e0\'eb\'e3\'ee\'f0\'e8\'f2\'ec\'ee\'e2 \'ee\'ef\'f2\'e8\'ec\'e8\'e7\'e0\'f6\'e8\'e8 \'f2\'e8\'ef\'e0 "SimplifySubInst" \'e8\'f9\'e5\'f2 \'e2\'fb\'f0\'e0\'e6\'e5\'ed\'e8\'ff \'e2\'e8\'e4\'e0 \'d5-\'d5 \'e8\'eb\'e8 \'d5-0. \'c4\'e0\'eb\'e5\'e5 \'fd\'f2\'ee\'f2 \'ea\'ee\'e4 \'ec\'fb \'ec\'ee\'e6\'e5\'ec \'f1\'ea\'ee\'ec\'ef\'e8\'eb\'e8\'f0\'ee\'e2\'e0\'f2\'fc \'f3\'e6\'e5 \'e3\'ee\'f2\'ee\'e2\'fb\'ec LLVM \'ea\'ee\'ec\'ef\'e8\'eb\'ff\'f2\'ee\'f0\'ee\'ec \'e2 native \'ea\'ee\'e4 \'eb\'fe\'e1\'ee\'e9 \'ef\'eb\'e0\'f2\'f4\'ee\'f0\'ec\'fb.\cf0\kerning1\par
+\cf1\kerning0\par
+\'ca\'ee\'ec\'ef\'e8\'eb\'ff\'f2\'ee\'f0 \'f1\'ee\'f1\'f2\'ee\'e8\'f2:\cf0\kerning1\par
+\cf1\kerning0 1. \'cb\'e5\'ea\'f1\'e8\'f7\'e5\'f1\'ea\'e8\'e9 \'e0\'ed\'e0\'eb\'e8\'e7 - \'e4\'eb\'ff \'d1++ \'e2 Linux \'fd\'f2\'ee flex\cf0\kerning1\par
+\cf1\kerning0\tab >> (3 + 4.1) * a\cf0\kerning1\par
+\cf1\kerning0\tab "("\tab "3"\tab "+"\tab "4.1"\tab ")"\tab "*"\tab "a"\cf0\kerning1\par
+\cf1\kerning0\tab (LPAR)(INT, "3")(PLUS)(FLOAT, "4.1")(RPAR)(MUL)(ID, "a")\tab\tab\'ef\'ee\'eb\'f3\'f7\'e0\'e5\'ec \'ef\'ee\'f1\'eb\'e5\'e4\'ee\'e2\'e0\'f2\'e5\'eb\'fc\'ed\'ee\'f1\'f2\'fc \'f2\'ee\'ea\'e5\'ed\'ee\'e2\cf0\kerning1\par
+\cf1\kerning0\par
+2. \'d1\'e8\'ed\'f2\'e0\'ea\'f1\'e8\'f7\'e5\'f1\'ea\'e8\'e9 \'e0\'ed\'e0\'eb\'e8\'e7 \'e8\'eb\'e8 \'ef\'e0\'f0\'f1\'e5\'f0 - \'e4\'eb\'ff \'d1++ \'fd\'f2\'ee bison, \'e4\'eb\'ff Java \'fd\'f2\'ee JavaCC.\cf0\kerning1\par
+\cf1\kerning0\tab\'ef\'f0\'e5\'ee\'e1\'f0\'e0\'e7\'f3\'e5\'f2 \'ef\'ee\'f1\'eb\'e5\'e4\'ee\'e2\'e0\'f2\'e5\'eb\'fc\'ed\'ee\'f1\'f2\'fc \'f2\'ee\'ea\'e5\'ed\'ee\'e2 \'e2 \'e4\'e5\'f0\'e5\'e2\'ee \'f0\'e0\'e7\'e1\'ee\'f0\'e0 (AST)\cf0\kerning1\par
+\cf1\kerning0\tab\tab\tab (MUL)\cf0\kerning1\par
+\cf1\kerning0\tab   (PLUS)\tab\tab\tab (ID, a)\cf0\kerning1\par
+\cf1\kerning0 (INT, "3")\tab (FLOAT, "4.1")\cf0\kerning1\par
+\cf1\kerning0\par
+\ul\'d2\'e8\'ef\'fb \'e4\'e0\'ed\'ed\'fb\'f5 \'e2 LLVM\ulnone .\cf0\kerning1\par
+\cf1\kerning0\'d6\'e5\'eb\'fb\'e5 \'f7\'e8\'f1\'eb\'e0 \'f1 \'ef\'f0\'ee\'e8\'e7\'e2\'ee\'eb\'fc\'ed\'ee\'e9 \'f0\'e0\'e7\'f0\'ff\'e4\'ed\'ee\'f1\'f2\'fc\'fe: i1(=boolean), i32, i17, i256 ...\cf0\kerning1\par
+\cf1\kerning0\'d7\'e8\'f1\'eb\'e0 \'f1 \'ef\'eb\'e0\'e2\'e0\'fe\'f9\'e5\'e9 \'f2\'ee\'f7\'ea\'ee\'e9: float, double + \'ef\'eb\'e0\'f2\'f4\'ee\'f0\'ec\'e5\'ed\'ed\'ee \'e7\'e0\'e2\'e8\'f1\'e8\'ec\'fb\'e5 \'f2\'e8\'ef\'fb MMX, \'ea\'ee\'f2\'ee\'f0\'fb\'f5 \'ed\'e5\'f2 \'e2 ARM.\cf0\kerning1\par
+\cf1\kerning0\'cf\'f3\'f1\'f2\'ee\'e5 \'e7\'ed\'e0\'f7\'e5\'ed\'e8\'e5: void - \'ed\'e8\'f7\'e5\'e3\'ee \'ed\'e5 \'e2\'ee\'e7\'e2\'f0\'e0\'f9\'e0\'e5\'ec \'e8\'e7 \'f4\'f3\'ed\'ea\'f6\'e8\'e8.\cf0\kerning1\par
+\cf1\kerning0\'d3\'ea\'e0\'e7\'e0\'f2\'e5\'eb\'e8: i1*, i32*, float* ...\cf0\kerning1\par
+\cf1\kerning0\'cc\'e0\'f1\'f1\'e8\'e2\'fb: [10 x float], [2 x i32]\cf0\kerning1\par
+\cf1\kerning0\'c2\'e5\'ea\'f2\'ee\'f0\'e0 \'e4\'eb\'ff \'f3\'ef\'f0\'ee\'f9\'e5\'ed\'e8\'ff SIMD \'ee\'ef\'e5\'f0\'e0\'f6\'e8\'e9: <4 x i32>\cf0\kerning1\par
+\cf1\kerning0\'d1\'f2\'f0\'f3\'ea\'f2\'f3\'f0\'fb: \{i1, i32, double\}\cf0\kerning1\par
+\cf1\kerning0\'d4\'f3\'ed\'ea\'f6\'e8\'e8: float (\{float, i32\}, i1*)\cf0\kerning1\par
+\cf1\kerning0\par
+\ul\'ce\'ef\'e5\'f0\'e0\'f6\'e8\'e8 \'e2 LLVM\ulnone .\cf0\kerning1\par
+\cf1\kerning0\'ce\'ef\'e5\'f0\'e0\'f6\'e8\'e8 \'ec\'ee\'e6\'ed\'ee \'e4\'e5\'eb\'e0\'f2\'fc \'f2\'ee\'eb\'fc\'ea\'ee int c int-\'ee\'ec \'e8\'eb\'e8 double \'f1 double-\'ee\'ec.\cf0\kerning1\par
+\cf1\kerning0 %temp1 = add float %a, %b\cf0\kerning1\par
+\cf1\kerning0 %temp2 = mul float %c, %d\cf0\kerning1\par
+\cf1\kerning0\par
+\ul\'cf\'f0\'ee\'f1\'f2\'ee\'e9 Calc\ulnone .\cf0\kerning1\par
+\cf1\kerning0\'d7\'f2\'ee \'f5\'ee\'f2\'e8\'ec:\cf0\kerning1\par
+\cf1\kerning0 $> echo '(1+1)-123/(6-3)' | ./llvm_calc\cf0\kerning1\par
+\cf1\kerning0 82\cf0\kerning1\par
+\cf1\kerning0\par
+\'cf\'e8\'f8\'e5\'ec Flex. \cf0{\field{\*\fldinst{HYPERLINK "https://www.geeksforgeeks.org/flex-fast-lexical-analyzer-generator/"}}{\fldrslt{\ul\cf2 https://www.geeksforgeeks.org/flex-fast-lexical-analyzer-generator/}}}\kerning1\f0\fs22\par
+\cf1\kerning0 %\{\cf0\kerning1\par
+\cf1\kerning0 #include <string>\cf0\kerning1\par
+\cf1\kerning0 #include "parser.hpp"\cf0\kerning1\par
+\cf1\kerning0\par
+#define SAVE_TOKEN yylval.string = new std::string(yytext, yyleng)\cf0\kerning1\par
+\cf1\kerning0 #define TOKEN(t) (yylval.token = t)\cf0\kerning1\par
+\cf1\kerning0\par
+%\}\cf0\kerning1\par
+\cf1\kerning0\par
+%option noyywrap\cf0\kerning1\par
+\cf1\kerning0\par
+%%\cf0\kerning1\par
+\cf1\kerning0 [ \\t\\n]\tab\tab ;\cf0\kerning1\par
+\cf1\kerning0 [0-9]+\\.[0-9]*\tab SAVE_TOKEN; return TDOUBLE;\cf0\kerning1\par
+\cf1\kerning0 [0-9]+\tab\tab SAVE_TOKEN; return TINT;\cf0\kerning1\par
+\cf1\kerning0\par
+"("\tab\tab\tab return TOKEN(TLPAREN);\cf0\kerning1\par
+\cf1\kerning0 ")"\tab\tab\tab return TOKEN(TRPAREN);\cf0\kerning1\par
+\cf1\kerning0\par
+"+"\tab\tab\tab return TOKEN(TPLUS);\cf0\kerning1\par
+\cf1\kerning0 "-"\tab\tab\tab return TOKEN(TMINUS);\cf0\kerning1\par
+\cf1\kerning0 "*"\tab\tab\tab return TOKEN(TMUL);\cf0\kerning1\par
+\cf1\kerning0 "/"\tab\tab\tab return TOKEN(TDIV);\cf0\kerning1\par
+\cf1\kerning0\par
+.\tab\tab\tab printf("Unknown token"); yyterminate();\cf0\kerning1\par
+\cf1\kerning0 %%\cf0\kerning1\par
+\cf1\kerning0\par
+\'cf\'e8\'f8\'e5\'ec Bison.\cf0\kerning1\par
+\cf1\kerning0 %%\cf0\kerning1\par
+\cf1\kerning0 program : expr \{ROOT_NODE = $1; \};\cf0\kerning1\par
+\cf1\kerning0\par
+numeric : TINT \{ $$ = new TInteger(atol($1->c_str())); delete $1; \}\cf0\kerning1\par
+\cf1\kerning0\tab | TDOUBLE \{ $$ = new TDouble(atol($1->c_str())); delete $1; \}\cf0\kerning1\par
+\cf1\kerning0\tab ;\cf0\kerning1\par
+\cf1\kerning0\par
+expr : numeric\cf0\kerning1\par
+\cf1\kerning0\tab | expr TMUL expr \{ $$ = new TBinaryOperator(*$1, $2, *$3); \}\cf0\kerning1\par
+\cf1\kerning0\tab | expr TDIV expr \{ $$ = new TBinaryOperator(*$1, $2, *$3); \}\cf0\kerning1\par
+\cf1\kerning0\tab | expr TPLUS expr \{ $$ = new TBinaryOperator(*$1, $2, *$3); \}\cf0\kerning1\par
+\cf1\kerning0\tab | expr TMINUS expr \{ $$ = new TBinaryOperator(*$1, $2, *$3); \}\cf0\kerning1\par
+\cf1\kerning0\tab | TLPARENT expr TRPARENT \{ $$ = $2; \}\cf0\kerning1\par
+\cf1\kerning0\tab ;\cf0\kerning1\par
+\cf1\kerning0 %%\cf0\kerning1\par
+\cf1\kerning0\par
+\'cf\'e8\'f8\'e5\'ec LLVM AST.\cf0\kerning1\par
+\cf1\kerning0 Value* TInteger::codeGen(TCodeGenContext& context) \{\cf0\kerning1\par
+\cf1\kerning0\tab return ConstantInt::get(\cf0\kerning1\par
+\cf1\kerning0\tab\tab Type::getInt64Ty(getGlobalContext()), value\cf0\kerning1\par
+\cf1\kerning0\tab );\cf0\kerning1\par
+\cf1\kerning0\}\cf0\kerning1\par
+\cf1\kerning0 Value* TDouble::codeGen(TCodeGenContext& context) \{\cf0\kerning1\par
+\cf1\kerning0\tab return ConstantFP::get(\cf0\kerning1\par
+\cf1\kerning0\tab\tab Type::getDouble64Ty(getGlobalContext()), value\cf0\kerning1\par
+\cf1\kerning0\tab );\cf0\kerning1\par
+\cf1\kerning0\}\cf0\kerning1\par
+}
+ 
