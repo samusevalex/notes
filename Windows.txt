@@ -71,10 +71,14 @@ about:about	about:profiles	about:networking
 - Рекомендовать функции при просмотре
 
 - Автоматически подключать наиболее подходящие фильтры
-? Блокировка рекламы -> Базовый фильтр AdGuard			yandex.ru##div[class$="Organic"]
+? Блокировка рекламы -> Базовый фильтр AdGuard
 Раздражители ->  Раздражители
 Другие -> DNS фильтр
 Языковые -> Русский фильтр
+
+yandex.ru##div[class$="Organic"]
+yandex.ru##div[class^="Organic Organic_with"]
+tv.starhit.ru##aside[class="_rightColumn_1jaki_4"]
 
 Создание загрузочной флешки с Windows 7:
 	diskpart
